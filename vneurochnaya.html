@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Активности | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); }
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        nav { background-color: var(--color-primary); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .nav-menu { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-menu a { color: white; text-decoration: none; padding: 1rem 1rem; display: block; transition: background-color 0.3s ease; border-radius: 4px 4px 0 0; }
+        .nav-menu a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu a.active { background-color: var(--color-danger); }
+        main { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+        .page-title { font-size: 2.5rem; color: var(--color-primary); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 4px solid var(--color-danger); }
+        .section { margin-bottom: 3rem; }
+        .section h2 { font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem; }
+        .card { background-color: var(--color-surface); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 2rem; }
+        .card h3 { color: var(--color-primary); margin-bottom: 1rem; }
+        .activity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .activity-card { background: white; padding: 2rem; border-radius: 12px; border: 2px solid var(--color-border); transition: all 0.3s ease; }
+        .activity-card:hover { border-color: var(--color-primary); box-shadow: 0 8px 24px rgba(0,61,122,0.15); transform: translateY(-4px); }
+        .activity-icon { font-size: 3rem; margin-bottom: 1rem; }
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.9rem; opacity: 0.8; }
+        @media (max-width: 768px) { .mobile-menu-toggle { display: block; } .nav-menu { display: none; flex-direction: column; } .nav-menu.active { display: flex; } .activity-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .header-photo { width: 50px; height: 50px; } .header-title h1 { font-size: 1.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/photo.jpg" alt="Дёмин Александр Юрьевич" class="header-photo">
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                                                                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html" class="active">Активности</a></li>
+                    <li><a href="parents.html">Родителям</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Активности</h1>
+
+        <section class="section">
+            <h2>🎖️ Юнармия</h2>
+            <div class="card">
+                <h3>Всероссийское детско-юношеское военно-патриотическое общественное движение</h3>
+                <p>В нашей школе действует отряд Юнармии, который объединяет учащихся 8-11 классов, интересующихся военной историей, спортом и патриотическим воспитанием.</p>
+                <h3 style="margin-top: 1.5rem;">Направления работы:</h3>
+                <ul>
+                    <li>Строевая подготовка и дисциплина</li>
+                    <li>Изучение истории Вооружённых Сил РФ</li>
+                    <li>Участие в военно-патриотических мероприятиях и акциях</li>
+                    <li>Волонтёрская деятельность (помощь ветеранам, благоустройство мемориалов)</li>
+                    <li>Спортивно-прикладная подготовка</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>Фотографии и отчёты о деятельности отряда (с соблюдением ФЗ-152)</em></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🚦 ЮИД (Юные инспекторы движения)</h2>
+            <div class="card">
+                <h3>Отряд ЮИД МБОУ СШ № 2</h3>
+                <p>Команда учащихся, занимающаяся профилактикой детского дорожно-транспортного травматизма и пропагандой безопасности дорожного движения.</p>
+                <h3 style="margin-top: 1.5rem;">Деятельность отряда:</h3>
+                <ul>
+                    <li>Изучение и пропаганда Правил дорожного движения</li>
+                    <li>Проведение профилактических мероприятий для младших школьников</li>
+                    <li>Участие в районных и областных конкурсах ЮИД</li>
+                    <li>Патрулирование около школы совместно с ГИБДД</li>
+                    <li>Создание агитационных материалов по безопасности на дорогах</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Достижения:</strong> <em>Укажите призовые места в конкурсах, благодарности от ГИБДД</em></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Зарница 2.0</h2>
+            <div class="card">
+                <h3>Военно-спортивная игра нового поколения</h3>
+                <p>"Зарница 2.0" — современная версия классической военно-спортивной игры, дополненная элементами цифровых технологий, командной стратегии и практической подготовки по ОБЗР.</p>
+                <h3 style="margin-top: 1.5rem;">Этапы игры:</h3>
+                <ul>
+                    <li><strong>Строевая подготовка:</strong> Оценка строевых приёмов команды</li>
+                    <li><strong>Медицинская подготовка:</strong> Оказание первой помощи в условиях игры</li>
+                    <li><strong>Военная топография:</strong> Ориентирование с использованием карт и компаса</li>
+                    <li><strong>Тактическая подготовка:</strong> Командная игра по захвату флага, оборона позиций</li>
+                    <li><strong>Полоса препятствий:</strong> Физическая подготовка и выносливость</li>
+                    <li><strong>Киберполигон (новинка!):</strong> Задания на информационную безопасность</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Результаты:</strong> <em>Укажите место команды школы в районных/областных соревнованиях</em></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Олимпиады по ОБЗР</h2>
+            <div class="card">
+                <h3>Подготовка к олимпиадам и результаты участия</h3>
+                <p>Учащиеся нашей школы ежегодно принимают участие во Всероссийской олимпиаде школьников по ОБЗР (бывший ОБЖ) на школьном, муниципальном и региональном уровнях.</p>
+                <h3 style="margin-top: 1.5rem;">Система подготовки:</h3>
+                <ul>
+                    <li>Индивидуальные консультации для участников</li>
+                    <li>Решение олимпиадных задач прошлых лет</li>
+                    <li>Практические тренинги по оказанию первой помощи</li>
+                    <li>Изучение расширенной программы ОБЗР</li>
+                    <li>Тестирование в условиях, приближенных к олимпиадным</li>
+                </ul>
+
+                <h3 style="margin-top: 1.5rem;">Результаты 2024-2025 учебного года:</h3>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                    <p><strong>Школьный этап:</strong></p>
+                    <ul>
+                        <li>Участников: <em>[количество]</em></li>
+                        <li>Победителей и призёров: <em>[количество]</em></li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Муниципальный этап:</strong></p>
+                    <ul>
+                        <li>Участников: <em>[количество]</em></li>
+                        <li>Призовые места: <em>[ФИО обезличенно, класс, место]</em></li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Региональный этап:</strong></p>
+                    <ul>
+                        <li><em>Укажите результаты, если учащиеся прошли на региональный уровень</em></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏕️ Учебно-полевые сборы</h2>
+            <div class="card">
+                <h3>Программа учебных сборов 2024-2025</h3>
+                <p><strong>Сборы для 10 класса (5 дней):</strong></p>
+                <ul>
+                    <li>Строевая подготовка</li>
+                    <li>Огневая подготовка (учебное оружие)</li>
+                    <li>Тактическая подготовка</li>
+                    <li>Физическая подготовка</li>
+                    <li>Военная топография</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Сборы для 8 класса (3 дня):</strong></p>
+                <ul>
+                    <li>Основы строевой подготовки</li>
+                    <li>Ориентирование на местности</li>
+                    <li>Первая помощь в полевых условиях</li>
+                    <li>Командная работа</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Результаты сборов</h3>
+                <p><em>Здесь можно разместить отчёты о проведённых сборах, фотографии (с размытыми лицами или без лиц по ФЗ-152), отзывы участников.</em></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🔥 Гражданская оборона и ЧС</h2>
+            <div class="card">
+                <h3>Учебные тревоги и эвакуации</h3>
+                <ul>
+                    <li>Плановые учебные эвакуации (2 раза в год)</li>
+                    <li>Тренировки по действиям при пожаре</li>
+                    <li>Отработка действий при угрозе теракта</li>
+                    <li>Учения с участием МЧС</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Обучение населения</h3>
+                <p>Организация занятий для педагогического коллектива и технического персонала школы по темам:</p>
+                <ul>
+                    <li>Действия при ЧС природного и техногенного характера</li>
+                    <li>Правила пожарной безопасности</li>
+                    <li>Оказание первой помощи</li>
+                    <li>Средства индивидуальной защиты</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🤝 Взаимодействие с партнёрами</h2>
+            <div class="card">
+                <h3>Совместная работа с организациями</h3>
+                <ul>
+                    <li><strong>Военкомат:</strong> Организация учебных сборов, встречи с призывниками</li>
+                    <li><strong>МЧС:</strong> Учебные занятия, демонстрация техники и оборудования</li>
+                    <li><strong>ГИБДД:</strong> Профилактика ДТП, изучение ПДД, работа с отрядом ЮИД</li>
+                    <li><strong>Полиция:</strong> Профилактика правонарушений, кибербезопасность</li>
+                    <li><strong>Центр медицины катастроф:</strong> Обучение первой помощи</li>
+                    <li><strong>Юнармия (штаб):</strong> Координация деятельности юнармейского отряда</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 <a href="mailto:demin.obzr@school2-lyskovo.ru">demin.obzr@school2-lyskovo.ru</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

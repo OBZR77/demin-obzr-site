@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио преподавателя-организатора ОБЗР - результаты, достижения, методическая активность">
+    <title>Портфолио | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        nav {
+            background-color: var(--color-primary);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 4px 4px 0 0;
+        }
+        .nav-menu a:hover {
+            background-color: var(--color-primary-hover);
+        }
+        .nav-menu a.active {
+            background-color: var(--color-danger);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid var(--color-danger);
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section h2 {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+        .card {
+            background-color: var(--color-surface);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        .card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .achievement-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+        .achievement-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0,61,122,0.15);
+        }
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+        .footer-section a:hover {
+            opacity: 1;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; }
+            .nav-menu.active { display: flex; }
+            .achievement-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .header-photo { width: 50px; height: 50px; }
+            .header-title h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/photo.jpg" alt="Дёмин Александр Юрьевич" class="header-photo">
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                                                                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="portfolio.html" class="active">Портфолио</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                    <li><a href="parents.html">Родителям</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Портфолио педагога</h1>
+
+        <section class="section">
+            <h2>📊 Результаты освоения ОБЗР обучающимися</h2>
+            <div class="card">
+                <h3>Успеваемость по предмету ОБЗР</h3>
+                <p><em>Здесь вы можете разместить таблицы и графики успеваемости учащихся (обезличенные данные без ФИО).</em></p>
+                <p><strong>Пример структуры:</strong></p>
+                <ul>
+                    <li>Динамика качества знаний по классам (8, 9, 10, 11)</li>
+                    <li>Результаты контрольных работ по модулям ОБЗР</li>
+                    <li>Средний балл по предмету в сравнении с прошлым годом</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Достижения в учебных сборах</h3>
+                <p><em>Результаты учебно-полевых сборов для 8 и 10 классов.</em></p>
+                <ul>
+                    <li>Количество учащихся, прошедших сборы</li>
+                    <li>Оценки по итогам практических испытаний</li>
+                    <li>Отзывы от военкомата и организаторов</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🏆 Достижения учащихся</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🥇</div>
+                    <h3>Олимпиады по ОБЗР</h3>
+                    <p>Укажите участников и призовые места (обезличенно: "Иван К., 10 класс — призёр регионального этапа")</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3>Конкурсы и соревнования</h3>
+                    <p>Результаты участия в конкурсах по безопасности, военно-спортивных состязаниях</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">📝</div>
+                    <h3>Проектные работы</h3>
+                    <p>Названия исследовательских и проектных работ учащихся (без указания ФИО авторов)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💼 Методическая активность</h2>
+            <div class="card">
+                <h3>Участие в профессиональных мероприятиях</h3>
+                <ul>
+                    <li><strong>Конференции и семинары:</strong> <em>Укажите темы выступлений, даты, места проведения</em></li>
+                    <li><strong>Публикации:</strong> <em>Статьи в методических журналах (ссылки на публикации)</em></li>
+                    <li><strong>Мастер-классы:</strong> <em>Проведённые мастер-классы для коллег</em></li>
+                    <li><strong>Профессиональные конкурсы:</strong> <em>Участие в конкурсах педагогического мастерства</em></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Разработанные программы и материалы</h3>
+                <ul>
+                    <li>Рабочие программы по ОБЗР для 8-11 классов</li>
+                    <li>Программы учебно-полевых сборов</li>
+                    <li>Методические разработки уроков по 11 модулям ОБЗР</li>
+                    <li>Дидактические материалы и тесты</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📄 Документы портфолио</h2>
+            <div class="card">
+                <p>В этом разделе вы можете разместить ссылки на следующие документы (в формате PDF):</p>
+                <ul>
+                    <li>Рабочие программы по ОБЗР</li>
+                    <li>Справки об эффективности педагогической деятельности</li>
+                    <li>Аналитические отчёты</li>
+                    <li>Сертификаты и удостоверения о повышении квалификации</li>
+                </ul>
+                <p><em>Примечание: Документы с персональными данными учащихся размещать НЕЛЬЗЯ (ФЗ-152)</em></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 <a href="mailto:demin.obzr@school2-lyskovo.ru">demin.obzr@school2-lyskovo.ru</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

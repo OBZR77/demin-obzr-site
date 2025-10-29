@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методическая копилка | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+        }
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        nav {
+            background-color: var(--color-primary);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+            border-radius: 4px 4px 0 0;
+        }
+        .nav-menu a:hover {
+            background-color: var(--color-primary-hover);
+        }
+        .nav-menu a.active {
+            background-color: var(--color-danger);
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid var(--color-danger);
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .module-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+        .module-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 24px rgba(0,61,122,0.15);
+            transform: translateY(-4px);
+        }
+        .module-card.featured {
+            border-color: var(--color-danger);
+            background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+        }
+        .module-number {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .module-card.featured .module-number {
+            background: var(--color-danger);
+        }
+        .module-title {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .module-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .module-content ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .module-content ul li::before {
+            content: "📄";
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; }
+            .nav-menu.active { display: flex; }
+            .modules-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .header-photo { width: 50px; height: 50px; }
+            .header-title h1 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/photo.jpg" alt="Дёмин Александр Юрьевич" class="header-photo">
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                                                                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="metodika.html" class="active">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                    <li><a href="parents.html">Родителям</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Методическая копилка</h1>
+        
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; background: var(--color-surface); padding: 1rem; border-radius: 8px;">
+            <strong>Практические материалы для работы:</strong> рабочие программы, конспекты уроков, презентации, тесты и методические рекомендации по курсу ОБЗР.
+        </p>
+
+        <section style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">📖 Рабочие программы</h2>
+            
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Рабочие программы по ОБЗР на 2024-2025 учебный год</h3>
+                <ul style="line-height: 2;">
+                    <li>📄 <strong>Рабочая программа ОБЗР 8-9 классы</strong> <em>(скачать PDF)</em></li>
+                    <li>📄 <strong>Рабочая программа ОБЗР 10-11 классы</strong> <em>(скачать PDF)</em></li>
+                    <li>📄 <strong>Календарно-тематическое планирование 8 класс</strong> <em>(скачать PDF)</em></li>
+                    <li>📄 <strong>Календарно-тематическое планирование 9 класс</strong> <em>(скачать PDF)</em></li>
+                    <li>📄 <strong>Календарно-тематическое планирование 10 класс</strong> <em>(скачать PDF)</em></li>
+                    <li>📄 <strong>Календарно-тематическое планирование 11 класс</strong> <em>(скачать PDF)</em></li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">📝 Конспекты уроков по модулям</h2>
+            
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Модуль 1: Безопасное и устойчивое развитие личности, общества, государства</h3>
+                <ul>
+                    <li>Урок 1: <em>Название темы</em> — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
+                    <li>Урок 2: <em>Название темы</em> — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
+                    <li><em>Добавьте свои материалы...</em></li>
+                </ul>
+            </div>
+
+            <div class="module-card featured">
+                <h3 style="color: var(--color-danger); margin-bottom: 1rem;">Модуль 2: Военная подготовка. Основы военных знаний ⭐ НОВОЕ</h3>
+                <ul>
+                    <li>Урок 1: История Вооружённых Сил РФ — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
+                    <li>Урок 2: Строевая подготовка — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
+                    <li>Урок 3: Воинские звания и знаки различия — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
+                    <li><em>Добавьте свои материалы...</em></li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Модуль 3-11: Остальные модули</h3>
+                <p><em>Здесь вы можете разместить ссылки на конспекты уроков по модулям 3-11. Структура аналогична модулям 1-2.</em></p>
+                <p style="margin-top: 1rem;"><strong>Краткий список модулей:</strong></p>
+                <ul>
+                    <li>Модуль 3: Культура безопасности жизнедеятельности</li>
+                    <li>Модуль 4: Безопасность в быту</li>
+                    <li>Модуль 5: Безопасность на транспорте</li>
+                    <li>Модуль 6: Безопасность в общественных местах</li>
+                    <li>Модуль 7: Безопасность в природной среде</li>
+                    <li>Модуль 8: Основы медицинских знаний. Оказание первой помощи</li>
+                    <li>Модуль 9: Безопасность в социуме</li>
+                    <li>Модуль 10: Безопасность в информационном пространстве</li>
+                    <li>Модуль 11: Основы противодействия экстремизму и терроризму</li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">🎨 Презентации и наглядные материалы</h2>
+            
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Презентации PowerPoint по модулям ОБЗР</h3>
+                <ul>
+                    <li>Модуль 2: "Военная подготовка. Строевые приёмы" — <a href="#" style="color: var(--color-primary);">[скачать PPTX]</a></li>
+                    <li>Модуль 4: "Пожарная безопасность в быту" — <a href="#" style="color: var(--color-primary);">[скачать PPTX]</a></li>
+                    <li>Модуль 8: "Первая помощь при переломах" — <a href="#" style="color: var(--color-primary);">[скачать PPTX]</a></li>
+                    <li><em>Добавьте свои презентации...</em></li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Наглядные материалы для учебных сборов</h3>
+                <ul>
+                    <li>Карточки строевых команд — <a href="#" style="color: var(--color-primary);">[скачать PDF]</a></li>
+                    <li>Схемы действий при ЧС — <a href="#" style="color: var(--color-primary);">[скачать PDF]</a></li>
+                    <li>Плакаты по безопасности — <a href="#" style="color: var(--color-primary);">[скачать PDF]</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">✅ Тесты и контрольные работы</h2>
+            
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Интерактивные тесты (HTML)</h3>
+                <p><em>Тесты можно встроить прямо на сайт или скачать как HTML-файлы</em></p>
+                <ul>
+                    <li>Тест "Модуль 2: Военная подготовка" (20 вопросов) — <a href="#" style="color: var(--color-primary);">[открыть тест]</a> | <a href="#" style="color: var(--color-primary);">[скачать HTML]</a></li>
+                    <li>Тест "Модуль 8: Первая помощь" (15 вопросов) — <a href="#" style="color: var(--color-primary);">[открыть тест]</a></li>
+                    <li><em>Добавьте свои тесты...</em></li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Печатные тесты и контрольные (PDF)</h3>
+                <ul>
+                    <li>Контрольная работа "Модуль 4: Безопасность в быту" — <a href="#" style="color: var(--color-primary);">[скачать PDF]</a></li>
+                    <li>Итоговый тест за 8 класс — <a href="#" style="color: var(--color-primary);">[скачать PDF]</a></li>
+                    <li><em>Добавьте свои материалы...</em></li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">👨‍🏫 Методические рекомендации для коллег</h2>
+            
+            <div class="module-card" style="border-left-color: var(--color-success);">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">📚 Как эффективно преподавать ОБЗР</h3>
+                <p><strong>Рекомендации на основе личного опыта:</strong></p>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Практика важнее теории:</strong> Уделяйте больше времени практическим занятиям (оказание первой помощи, строевая подготовка, эвакуация)</li>
+                    <li><strong>Приглашайте специалистов:</strong> Сотрудники МЧС, военкомата, полиции делают уроки живыми и интересными</li>
+                    <li><strong>Используйте кейс-метод:</strong> Разбирайте реальные ситуации из СМИ, обсуждайте правильные действия</li>
+                    <li><strong>Геймификация:</strong> Квесты, соревнования, симуляции ЧС повышают вовлечённость учащихся</li>
+                    <li><strong>Личный пример:</strong> Демонстрируйте навыки сами — это вдохновляет учеников</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>[Скачать полную методичку — PDF]</em></p>
+            </div>
+
+            <div class="module-card" style="border-left-color: var(--color-success);">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">🏕️ Организация учебных сборов: чек-лист</h3>
+                <p><strong>За 2 месяца до сборов:</strong></p>
+                <ul>
+                    <li>☐ Согласование программы с военкоматом</li>
+                    <li>☐ Определение места проведения (воинская часть, учебный центр)</li>
+                    <li>☐ Медицинские осмотры учащихся</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>За 1 месяц:</strong></p>
+                <ul>
+                    <li>☐ Родительское собрание (объяснение программы, развеивание страхов)</li>
+                    <li>☐ Подготовка документов (приказы, списки, страховки)</li>
+                    <li>☐ Согласие родителей (девушки участвуют добровольно)</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>За 2 недели:</strong></p>
+                <ul>
+                    <li>☐ Выдача списка необходимых вещей</li>
+                    <li>☐ Инструктаж по технике безопасности</li>
+                    <li>☐ Финальное согласование с организаторами</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>[Скачать полный чек-лист — PDF]</em></p>
+            </div>
+
+            <div class="module-card" style="border-left-color: var(--color-success);">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">🤝 Работа с военкоматом и МЧС</h3>
+                <p><strong>Советы по взаимодействию:</strong></p>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Установите контакт заранее:</strong> Познакомьтесь с представителями организаций в начале учебного года</li>
+                    <li><strong>Планируйте совместные мероприятия:</strong> Экскурсии, открытые уроки, демонстрация техники</li>
+                    <li><strong>Используйте их экспертизу:</strong> Приглашайте для проверки качества учебных сборов, консультаций по программе</li>
+                    <li><strong>Документируйте сотрудничество:</strong> Фиксируйте совместную работу для портфолио (важно для аттестации)</li>
+                </ul>
+            </div>
+
+            <div class="module-card" style="border-left-color: var(--color-success);">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">🏆 Подготовка к олимпиадам по ОБЗР</h3>
+                <p><strong>Стратегия подготовки:</strong></p>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Начинайте с августа:</strong> Выявите мотивированных учащихся, предложите дополнительные занятия</li>
+                    <li><strong>Изучайте задания прошлых лет:</strong> Анализируйте типичные вопросы и практические задания</li>
+                    <li><strong>Практика, практика, практика:</strong> Отрабатывайте оказание первой помощи, ориентирование, действия при ЧС</li>
+                    <li><strong>Расширенная программа:</strong> Олимпиадные задания выходят за рамки школьной программы — изучайте дополнительную литературу</li>
+                    <li><strong>Тестирование в условиях олимпиады:</strong> Проводите репетиции с ограничением времени</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>[Скачать примеры олимпиадных заданий — PDF]</em></p>
+            </div>
+
+            <div class="module-card" style="border-left-color: var(--color-success);">
+                <h3 style="color: var(--color-success); margin-bottom: 1rem;">🤖 Использование ИИ в подготовке материалов</h3>
+                <p>ИИ-инструменты (Claude AI, ChatGPT, Gamma App и др.) могут значительно ускорить создание методических материалов.</p>
+                <p style="margin-top: 1rem;"><strong>Что можно делать с помощью ИИ:</strong></p>
+                <ul style="line-height: 1.8;">
+                    <li>Генерация конспектов уроков по ФГОС</li>
+                    <li>Создание тестов и контрольных работ</li>
+                    <li>Разработка презентаций (текст → Gamma App → готовые слайды)</li>
+                    <li>Генерация иллюстраций и инфографики для уроков</li>
+                    <li>Создание памяток и инструкций для учащихся</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Подробнее:</strong> <a href="ai-projects.html" style="color: var(--color-primary); font-weight: 600;">Страница "ИИ в образовании"</a> — готовые промпты и примеры использования</p>
+            </div>
+        </section>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center;">
+            <h3 style="margin-bottom: 1rem;">💬 Обмен опытом</h3>
+            <p>Если вы — коллега-педагог и хотите получить материалы или поделиться своими наработками, напишите мне на email:</p>
+            <p style="margin-top: 1rem; font-size: 1.2rem; font-weight: 600;">
+                <a href="mailto:demin.obzr@school2-lyskovo.ru" style="color: white; text-decoration: underline;">demin.obzr@school2-lyskovo.ru</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 <a href="mailto:demin.obzr@school2-lyskovo.ru">demin.obzr@school2-lyskovo.ru</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

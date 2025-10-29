@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для родителей | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952; --color-danger: #E53935; --color-success: #4CAF50; --color-background: #FFFFFF; --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #7F8C8D; --color-border: #E0E6ED; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); }
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        nav { background-color: var(--color-primary); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .nav-menu { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-menu a { color: white; text-decoration: none; padding: 1rem 1rem; display: block; transition: background-color 0.3s ease; border-radius: 4px 4px 0 0; }
+        .nav-menu a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu a.active { background-color: var(--color-danger); }
+        main { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+        .page-title { font-size: 2.5rem; color: var(--color-primary); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 4px solid var(--color-danger); }
+        .card { background-color: var(--color-surface); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 2rem; }
+        .card h2 { color: var(--color-primary); margin-bottom: 1.5rem; }
+        .card h3 { color: var(--color-primary); margin-top: 1.5rem; margin-bottom: 1rem; }
+        .faq-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid var(--color-border); }
+        .faq-question { font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; }
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.9rem; opacity: 0.8; }
+        @media (max-width: 768px) { .mobile-menu-toggle { display: block; } .nav-menu { display: none; flex-direction: column; } .nav-menu.active { display: flex; } }
+        @media (max-width: 480px) { .header-photo { width: 50px; height: 50px; } .header-title h1 { font-size: 1.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/photo.jpg" alt="Дёмин Александр Юрьевич" class="header-photo">
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                                                                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                    <li><a href="parents.html" class="active">Родителям</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Для родителей</h1>
+
+        <div class="card">
+            <h2>📋 О предмете ОБЗР</h2>
+            <p>С 1 сентября 2024 года предмет ОБЖ заменён на <strong>ОБЗР (Основы безопасности и защиты Родины)</strong>. Это обновлённый курс, который включает не только традиционные темы безопасности, но и элементы военной подготовки.</p>
+            <h3>Что изучают дети:</h3>
+            <ul>
+                <li>Безопасность в быту, на транспорте, в природе</li>
+                <li>Первая помощь и медицинские знания</li>
+                <li>Военная подготовка (НОВОЕ с 2024 года)</li>
+                <li>Информационная безопасность</li>
+                <li>Противодействие терроризму и экстремизму</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🏕️ Учебно-полевые сборы</h2>
+            <h3>Для 10 класса (юноши — обязательно, девушки — по желанию):</h3>
+            <ul>
+                <li><strong>Продолжительность:</strong> 5 дней (40 учебных часов)</li>
+                <li><strong>Когда:</strong> Май-июнь (точные даты сообщаются заранее)</li>
+                <li><strong>Где:</strong> На базе воинской части или учебного центра</li>
+            </ul>
+            <h3>Для 8 класса (все учащиеся):</h3>
+            <ul>
+                <li><strong>Продолжительность:</strong> 3 дня</li>
+                <li><strong>Программа:</strong> Основы строевой подготовки, ориентирование, первая помощь</li>
+            </ul>
+            <h3>Что нужно взять на сборы:</h3>
+            <ul>
+                <li>Спортивная форма и удобная обувь</li>
+                <li>Головной убор</li>
+                <li>Средства гигиены</li>
+                <li>Питьевая вода</li>
+                <li>Блокнот и ручка</li>
+            </ul>
+            <p><em>Подробная информация будет выдана за 2 недели до сборов.</em></p>
+        </div>
+
+        <div class="card">
+            <h2>📞 График консультаций</h2>
+            <p>Вы можете обратиться ко мне по любым вопросам, связанным с обучением вашего ребёнка:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:demin.obzr@school2-lyskovo.ru" style="color: var(--color-primary);">demin.obzr@school2-lyskovo.ru</a></li>
+                <li><strong>Консультации:</strong> По предварительной договорённости (напишите на email)</li>
+                <li><strong>Родительские собрания:</strong> По расписанию школы</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>❓ Часто задаваемые вопросы (FAQ)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Обязательны ли учебные сборы для девушек?</div>
+                <div>Для девушек 10 класса сборы проводятся по желанию. Для юношей — обязательны.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Что делать, если ребёнок пропустил урок ОБЗР?</div>
+                <div>Необходимо изучить пропущенную тему самостоятельно по учебнику. Материалы также доступны в разделе "Методическая копилка" на этом сайте.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как оценивается предмет ОБЗР?</div>
+                <div>По пятибалльной системе. Оценки выставляются за устные ответы, письменные работы, тесты и практические задания.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Нужны ли дополнительные расходы на предмет?</div>
+                <div>Нет, все учебники и материалы предоставляются школой. Для учебных сборов может потребоваться спортивная форма.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как связаться с преподавателем?</div>
+                <div>Через email: demin.obzr@school2-lyskovo.ru или через классного руководителя.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📚 Полезные ресурсы для родителей</h2>
+            <ul>
+                <li><a href="https://mchs.gov.ru" target="_blank" style="color: var(--color-primary);">МЧС России</a> — правила безопасности, действия при ЧС</li>
+                <li><a href="https://gibdd.ru" target="_blank" style="color: var(--color-primary);">ГИБДД</a> — правила дорожного движения</li>
+                <li><a href="https://edu.gov.ru" target="_blank" style="color: var(--color-primary);">Минпросвещения РФ</a> — нормативные документы</li>
+                <li><a href="https://fgos.ru" target="_blank" style="color: var(--color-primary);">ФГОС</a> — образовательные стандарты</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 <a href="mailto:demin.obzr@school2-lyskovo.ru">demin.obzr@school2-lyskovo.ru</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
