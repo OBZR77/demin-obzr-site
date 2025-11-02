@@ -635,45 +635,836 @@ document.addEventListener('keydown', function(event) {
 </body>
 </html>
 
-        <section style="margin-bottom: 3rem;">
-            <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">📝 Конспекты уроков по модулям</h2>
-            
-            <div class="module-card">
-                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Модуль 1: Безопасное и устойчивое развитие личности, общества, государства</h3>
-                <ul>
-                    <li>Урок 1: <em>Название темы</em> — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
-                    <li>Урок 2: <em>Название темы</em> — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
-                    <li><em>Добавьте свои материалы...</em></li>
-                </ul>
-            </div>
+        <!-- ============================================ -->
+<!-- СЕКЦИЯ "КОНСПЕКТЫ УРОКОВ ПО МОДУЛЯМ"       -->
+<!-- Двухуровневый accordion в едином стиле     -->
+<!-- Вставьте этот код ПОСЛЕ секции с документами -->
+<!-- ============================================ -->
 
-            <div class="module-card featured">
-                <h3 style="color: var(--color-danger); margin-bottom: 1rem;">Модуль 2: Военная подготовка. Основы военных знаний ⭐ НОВОЕ</h3>
-                <ul>
-                    <li>Урок 1: История Вооружённых Сил РФ — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
-                    <li>Урок 2: Строевая подготовка — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
-                    <li>Урок 3: Воинские звания и знаки различия — <a href="#" style="color: var(--color-primary);">[скачать конспект]</a></li>
-                    <li><em>Добавьте свои материалы...</em></li>
-                </ul>
-            </div>
+<!-- 1. ДОПОЛНИТЕЛЬНЫЕ СТИЛИ (добавьте в существующий <style>) -->
+<style>
+    /* === СЕКЦИЯ КОНСПЕКТОВ (главная вкладка) === */
+    .lessons-section {
+        margin: 3rem 0;
+    }
 
-            <div class="module-card">
-                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Модуль 3-11: Остальные модули</h3>
-                <p><em>Здесь вы можете разместить ссылки на конспекты уроков по модулям 3-11. Структура аналогична модулям 1-2.</em></p>
-                <p style="margin-top: 1rem;"><strong>Краткий список модулей:</strong></p>
-                <ul>
-                    <li>Модуль 3: Культура безопасности жизнедеятельности</li>
-                    <li>Модуль 4: Безопасность в быту</li>
-                    <li>Модуль 5: Безопасность на транспорте</li>
-                    <li>Модуль 6: Безопасность в общественных местах</li>
-                    <li>Модуль 7: Безопасность в природной среде</li>
-                    <li>Модуль 8: Основы медицинских знаний. Оказание первой помощи</li>
-                    <li>Модуль 9: Безопасность в социуме</li>
-                    <li>Модуль 10: Безопасность в информационном пространстве</li>
-                    <li>Модуль 11: Основы противодействия экстремизму и терроризму</li>
-                </ul>
+    /* Заголовок секции конспектов (как у нормативных документов) */
+    .lessons-accordion-header {
+        background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 61, 122, 0.2);
+    }
+
+    .lessons-accordion-header:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 61, 122, 0.3);
+    }
+
+    .lessons-accordion-header:focus {
+        outline: 3px solid #FFA500;
+        outline-offset: 2px;
+    }
+
+    .lessons-accordion-header.active .accordion-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Контент секции конспектов */
+    .lessons-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, padding 0.3s ease;
+        padding: 0 1.5rem;
+    }
+
+    .lessons-accordion-content.active {
+        max-height: 8000px; /* Большое значение для всех модулей */
+        padding: 2rem 1.5rem;
+        transition: max-height 1s ease-in, padding 0.3s ease;
+    }
+
+    .lessons-accordion-inner {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .lessons-description {
+        margin-top: 0;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    /* === МОДУЛИ (внутренние вкладки) === */
+    .modules-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .module-accordion {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .module-header {
+        background: var(--color-surface);
+        padding: 1.25rem 1.5rem;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--color-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .module-header:hover {
+        background: #E8EDF2;
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(0, 61, 122, 0.1);
+    }
+
+    .module-header:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    .module-header.active {
+        background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+        color: white;
+    }
+
+    .module-header.active .module-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Специальный стиль для модуля 2 (новый) */
+    .module-header.featured {
+        border-left: 4px solid var(--color-danger);
+        background: linear-gradient(135deg, #FFF5F5 0%, #FFE5E5 100%);
+    }
+
+    .module-header.featured:hover {
+        background: linear-gradient(135deg, #FFEBEB 0%, #FFD5D5 100%);
+    }
+
+    .module-header.featured.active {
+        background: linear-gradient(135deg, #C41E3A 0%, #D32F2F 100%);
+        color: white;
+    }
+
+    .module-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-grow: 1;
+    }
+
+    .module-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        opacity: 0.7;
+    }
+
+    .module-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .module-badge {
+        background: var(--color-danger);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .module-icon {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    /* Контент модуля */
+    .module-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+        background: white;
+    }
+
+    .module-content.active {
+        max-height: 1500px;
+        transition: max-height 0.7s ease-in;
+    }
+
+    .module-inner {
+        padding: 1.5rem;
+        border: 1px solid #E0E7EE;
+        border-top: none;
+    }
+
+    .lessons-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .lesson-item {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        background: var(--color-surface);
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s;
+    }
+
+    .lesson-item:hover {
+        background: #E8EDF2;
+        transform: translateX(5px);
+    }
+
+    .lesson-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .lesson-title {
+        flex-grow: 1;
+        font-weight: 500;
+        color: var(--color-text-primary);
+    }
+
+    .lesson-link {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        transition: color 0.3s;
+    }
+
+    .lesson-link:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+    }
+
+    .placeholder-text {
+        color: var(--color-text-secondary);
+        font-style: italic;
+        padding: 1rem;
+        text-align: center;
+        background: #F9FAFB;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    /* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
+    @media (max-width: 768px) {
+        .lessons-accordion-header {
+            padding: 1rem;
+        }
+
+        .accordion-title {
+            font-size: 1.2rem;
+        }
+
+        .lessons-accordion-content.active {
+            padding: 1rem 0.5rem;
+        }
+
+        .lessons-accordion-inner {
+            padding: 1.5rem 1rem;
+        }
+
+        .module-header {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .module-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .module-title {
+            font-size: 1rem;
+            padding-right: 2rem;
+        }
+
+        .module-number {
+            font-size: 1.25rem;
+        }
+
+        .lesson-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .lesson-link {
+            align-self: flex-start;
+        }
+
+        .module-inner {
+            padding: 1rem;
+        }
+    }
+
+    /* === АНИМАЦИИ === */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .lessons-section {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .module-accordion {
+        animation: slideIn 0.3s ease-out;
+        animation-fill-mode: backwards;
+    }
+
+    .module-accordion:nth-child(1) { animation-delay: 0.05s; }
+    .module-accordion:nth-child(2) { animation-delay: 0.1s; }
+    .module-accordion:nth-child(3) { animation-delay: 0.15s; }
+    .module-accordion:nth-child(4) { animation-delay: 0.2s; }
+    .module-accordion:nth-child(5) { animation-delay: 0.25s; }
+    .module-accordion:nth-child(6) { animation-delay: 0.3s; }
+    .module-accordion:nth-child(7) { animation-delay: 0.35s; }
+    .module-accordion:nth-child(8) { animation-delay: 0.4s; }
+    .module-accordion:nth-child(9) { animation-delay: 0.45s; }
+    .module-accordion:nth-child(10) { animation-delay: 0.5s; }
+    .module-accordion:nth-child(11) { animation-delay: 0.55s; }
+</style>
+
+<!-- 2. HTML-РАЗМЕТКА (вставьте в <body> после секции "Нормативные документы") -->
+<section class="lessons-section">
+    <!-- ГЛАВНАЯ ВКЛАДКА (как у нормативных документов) -->
+    <div class="lessons-accordion-header" 
+         tabindex="0" 
+         role="button" 
+         aria-expanded="false" 
+         aria-controls="lessons-accordion-content"
+         id="lessons-toggle">
+        <h2 class="accordion-title">
+            📝 Конспекты уроков по модулям
+            <span class="accordion-status">(нажмите для раскрытия)</span>
+        </h2>
+        <span class="accordion-icon" aria-hidden="true">▼</span>
+    </div>
+
+    <!-- РАСКРЫВАЮЩИЙСЯ КОНТЕНТ С МОДУЛЯМИ -->
+    <div class="lessons-accordion-content" id="lessons-accordion-content">
+        <div class="lessons-accordion-inner">
+            <p class="lessons-description">
+                11 модулей курса ОБЗР (8-11 классы) согласно ФГОС 2024-2025. Нажмите на модуль, чтобы увидеть доступные конспекты уроков.
+            </p>
+
+            <div class="modules-grid">
+                <!-- МОДУЛЬ 1 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-1-content"
+                         data-module="1">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">01</span>
+                            <h3 class="module-title">Безопасное и устойчивое развитие личности, общества, государства</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-1-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Национальная безопасность Российской Федерации</span>
+                                    <a href="lessons/module-1/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Угрозы национальной безопасности</span>
+                                    <a href="lessons/module-1/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Роль личности в обеспечении безопасности</span>
+                                    <a href="lessons/module-1/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 2: НОВЫЙ (featured) -->
+                <div class="module-accordion">
+                    <div class="module-header featured" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-2-content"
+                         data-module="2">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">02</span>
+                            <h3 class="module-title">Военная подготовка. Основы военных знаний</h3>
+                            <span class="module-badge">⭐ НОВОЕ</span>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-2-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: История Вооружённых Сил Российской Федерации</span>
+                                    <a href="lessons/module-2/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Строевая подготовка</span>
+                                    <a href="lessons/module-2/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Воинские звания и знаки различия</span>
+                                    <a href="lessons/module-2/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 4: Организация и проведение учебных сборов</span>
+                                    <a href="lessons/module-2/lesson-4.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 3 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-3-content"
+                         data-module="3">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">03</span>
+                            <h3 class="module-title">Культура безопасности жизнедеятельности</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-3-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Понятие культуры безопасности</span>
+                                    <a href="lessons/module-3/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Формирование безопасного поведения</span>
+                                    <a href="lessons/module-3/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 4 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-4-content"
+                         data-module="4">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">04</span>
+                            <h3 class="module-title">Безопасность в быту</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-4-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Пожарная безопасность в жилище</span>
+                                    <a href="lessons/module-4/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Электробезопасность</span>
+                                    <a href="lessons/module-4/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Безопасное использование газа</span>
+                                    <a href="lessons/module-4/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 4</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 5 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-5-content"
+                         data-module="5">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">05</span>
+                            <h3 class="module-title">Безопасность на транспорте</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-5-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Правила дорожного движения для пешеходов</span>
+                                    <a href="lessons/module-5/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Безопасность в общественном транспорте</span>
+                                    <a href="lessons/module-5/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Безопасность на железнодорожном транспорте</span>
+                                    <a href="lessons/module-5/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 5</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 6 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-6-content"
+                         data-module="6">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">06</span>
+                            <h3 class="module-title">Безопасность в общественных местах</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-6-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Действия при массовых мероприятиях</span>
+                                    <a href="lessons/module-6/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Поведение при панике и давке</span>
+                                    <a href="lessons/module-6/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 6</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 7 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-7-content"
+                         data-module="7">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">07</span>
+                            <h3 class="module-title">Безопасность в природной среде</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-7-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Автономное существование в природе</span>
+                                    <a href="lessons/module-7/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Ориентирование на местности</span>
+                                    <a href="lessons/module-7/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Действия при встрече с дикими животными</span>
+                                    <a href="lessons/module-7/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 7</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 8 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-8-content"
+                         data-module="8">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">08</span>
+                            <h3 class="module-title">Основы медицинских знаний. Оказание первой помощи</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-8-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Алгоритм оказания первой помощи</span>
+                                    <a href="lessons/module-8/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Сердечно-лёгочная реанимация (СЛР)</span>
+                                    <a href="lessons/module-8/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Первая помощь при ранениях</span>
+                                    <a href="lessons/module-8/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 4: Первая помощь при переломах</span>
+                                    <a href="lessons/module-8/lesson-4.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 9 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-9-content"
+                         data-module="9">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">09</span>
+                            <h3 class="module-title">Безопасность в социуме</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-9-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Конфликты и способы их разрешения</span>
+                                    <a href="lessons/module-9/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Противодействие буллингу</span>
+                                    <a href="lessons/module-9/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Безопасное общение в социальных сетях</span>
+                                    <a href="lessons/module-9/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 9</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 10 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-10-content"
+                         data-module="10">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">10</span>
+                            <h3 class="module-title">Безопасность в информационном пространстве</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-10-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Угрозы информационной безопасности</span>
+                                    <a href="lessons/module-10/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Защита персональных данных</span>
+                                    <a href="lessons/module-10/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Распознавание фейков и дезинформации</span>
+                                    <a href="lessons/module-10/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- МОДУЛЬ 11 -->
+                <div class="module-accordion">
+                    <div class="module-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="module-11-content"
+                         data-module="11">
+                        <div class="module-title-wrapper">
+                            <span class="module-number">11</span>
+                            <h3 class="module-title">Основы противодействия экстремизму и терроризму</h3>
+                        </div>
+                        <span class="module-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="module-content" id="module-11-content">
+                        <div class="module-inner">
+                            <ul class="lessons-list">
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 1: Понятие экстремизма и терроризма</span>
+                                    <a href="lessons/module-11/lesson-1.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 2: Действия при угрозе террористического акта</span>
+                                    <a href="lessons/module-11/lesson-2.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                                <li class="lesson-item">
+                                    <span class="lesson-title">Урок 3: Профилактика вовлечения в экстремистскую деятельность</span>
+                                    <a href="lessons/module-11/lesson-3.pdf" class="lesson-link" target="_blank">Скачать конспект →</a>
+                                </li>
+                            </ul>
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков по модулю 11</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+<!-- 3. JAVASCRIPT (добавьте к существующему скрипту перед </body>) -->
+<script>
+    // === ГЛАВНАЯ ВКЛАДКА "КОНСПЕКТЫ УРОКОВ" ===
+    const lessonsToggle = document.getElementById('lessons-toggle');
+    const lessonsContent = document.getElementById('lessons-accordion-content');
+    const lessonsIcon = lessonsToggle.querySelector('.accordion-icon');
+    const lessonsStatus = lessonsToggle.querySelector('.accordion-status');
+
+    function toggleLessonsAccordion() {
+        const isActive = lessonsToggle.classList.contains('active');
+        
+        if (isActive) {
+            // Закрываем
+            lessonsToggle.classList.remove('active');
+            lessonsContent.classList.remove('active');
+            lessonsToggle.setAttribute('aria-expanded', 'false');
+            lessonsStatus.textContent = '(нажмите для раскрытия)';
+        } else {
+            // Открываем
+            lessonsToggle.classList.add('active');
+            lessonsContent.classList.add('active');
+            lessonsToggle.setAttribute('aria-expanded', 'true');
+            lessonsStatus.textContent = '(нажмите для скрытия)';
+        }
+    }
+
+    lessonsToggle.addEventListener('click', toggleLessonsAccordion);
+    lessonsToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleLessonsAccordion();
+        }
+    });
+
+    // === ВНУТРЕННИЕ ВКЛАДКИ (МОДУЛИ) ===
+    const moduleHeaders = document.querySelectorAll('.module-header');
+
+    function toggleModule(header) {
+        const moduleNumber = header.getAttribute('data-module');
+        const content = document.getElementById(`module-${moduleNumber}-content`);
+        const isActive = header.classList.contains('active');
+
+        if (isActive) {
+            // Закрываем
+            header.classList.remove('active');
+            content.classList.remove('active');
+            header.setAttribute('aria-expanded', 'false');
+        } else {
+            // Открываем
+            header.classList.add('active');
+            content.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    moduleHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            toggleModule(this);
+        });
+
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleModule(this);
+            }
+        });
+    });
+
+    // ОПЦИОНАЛЬНО: Раскрыть "Конспекты уроков" по умолчанию
+    // Раскомментируйте следующую строку:
+    // toggleLessonsAccordion();
+</script>
 
         <section style="margin-bottom: 3rem;">
             <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">🎨 Презентации и наглядные материалы</h2>
