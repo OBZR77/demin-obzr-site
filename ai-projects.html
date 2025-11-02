@@ -1299,83 +1299,502 @@ document.addEventListener('keydown', function(event) {
     // toggleParentsAccordion();
 </script>
 
-        <section class="section">
-            <h2>👨‍🏫 Для коллег-педагогов — Методические материалы</h2>
-            <div class="card">
-                <h3>Конспекты уроков (шаблоны)</h3>
-                <p>Готовые конспекты уроков по модулям ОБЗР, созданные с помощью ИИ и адаптированные под ФГОС.</p>
-                
-                <div class="content-block">
-                    <h4>Конспект урока "Первая помощь при переломах" (8 класс, модуль 8)</h4>
-                    <p><strong>Тип урока:</strong> Комбинированный (теория + практика)</p>
-                    <p><strong>Длительность:</strong> 45 минут</p>
-                    <p><strong>Цели урока:</strong></p>
-                    <ul>
-                        <li><strong>Предметные:</strong> Научиться определять признаки перелома, правильно иммобилизировать конечность</li>
-                        <li><strong>Метапредметные:</strong> Развитие навыков работы в группе, критического мышления</li>
-                        <li><strong>Личностные:</strong> Формирование ответственности за жизнь и здоровье окружающих</li>
-                    </ul>
-                    <p style="margin-top: 1rem;"><em>[Скачать полный конспект с хронометражем и домашним заданием — PDF]</em></p>
-                    <div class="author-meta">
-                        <strong>Инструмент:</strong> Claude AI<br>
-                        <strong>Адаптировано:</strong> Дёмин А.Ю.<br>
-                        <strong>Дата создания:</strong> Октябрь 2025
+      <!-- ============================================ -->
+<!-- СЕКЦИЯ "ДЛЯ КОЛЛЕГ-ПЕДАГОГОВ — МЕТОДИЧЕСКИЕ МАТЕРИАЛЫ" -->
+<!-- Двухуровневый accordion в едином стиле     -->
+<!-- Вставьте этот код ПОСЛЕ секции "Для родителей" -->
+<!-- ============================================ -->
+
+<!-- 1. ДОПОЛНИТЕЛЬНЫЕ СТИЛИ (добавьте в существующий <style>) -->
+<style>
+    /* === СЕКЦИЯ ДЛЯ КОЛЛЕГ-ПЕДАГОГОВ (главная вкладка) === */
+    .colleagues-section {
+        margin: 3rem 0;
+    }
+
+    /* Заголовок секции для коллег (как у конспектов уроков) */
+    .colleagues-accordion-header {
+        background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 61, 122, 0.2);
+    }
+
+    .colleagues-accordion-header:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 61, 122, 0.3);
+    }
+
+    .colleagues-accordion-header:focus {
+        outline: 3px solid #FFA500;
+        outline-offset: 2px;
+    }
+
+    .colleagues-accordion-header.active .accordion-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Контент секции для коллег */
+    .colleagues-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, padding 0.3s ease;
+        padding: 0 1.5rem;
+    }
+
+    .colleagues-accordion-content.active {
+        max-height: 6000px;
+        padding: 2rem 1.5rem;
+        transition: max-height 1s ease-in, padding 0.3s ease;
+    }
+
+    .colleagues-accordion-inner {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .colleagues-description {
+        margin-top: 0;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    /* Уменьшенный шрифт для текста в скобках (как в секции "Для детей") */
+    .accordion-status {
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.9;
+    }
+
+    /* === КАТЕГОРИИ МЕТОДИЧЕСКИХ МАТЕРИАЛОВ (внутренние вкладки) === */
+    .colleagues-categories-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .colleague-category-accordion {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .colleague-category-header {
+        background: var(--color-surface);
+        padding: 1.25rem 1.5rem;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--color-primary);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .colleague-category-header:hover {
+        background: #E8EDF2;
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(0, 61, 122, 0.1);
+    }
+
+    .colleague-category-header:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    .colleague-category-header.active {
+        background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+        color: white;
+    }
+
+    .colleague-category-header.active .colleague-category-icon {
+        transform: rotate(180deg);
+    }
+
+    .colleague-category-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-grow: 1;
+    }
+
+    .colleague-category-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        opacity: 0.7;
+    }
+
+    .colleague-category-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .colleague-category-icon {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    /* Контент категории */
+    .colleague-category-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+        background: white;
+    }
+
+    .colleague-category-content.active {
+        max-height: 2000px;
+        transition: max-height 0.7s ease-in;
+    }
+
+    .colleague-category-inner {
+        padding: 1.5rem;
+        border: 1px solid #E0E7EE;
+        border-top: none;
+    }
+
+    /* === СПИСОК МАТЕРИАЛОВ === */
+    .materials-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .material-item {
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        background: var(--color-surface);
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        transition: all 0.3s;
+    }
+
+    .material-item:hover {
+        background: #E8EDF2;
+        transform: translateX(5px);
+    }
+
+    .material-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .material-title {
+        flex-grow: 1;
+        font-weight: 500;
+        color: var(--color-text-primary);
+    }
+
+    .material-link {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        transition: color 0.3s;
+    }
+
+    .material-link:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+    }
+
+    /* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
+    @media (max-width: 768px) {
+        .colleagues-accordion-header {
+            padding: 1rem;
+        }
+
+        .accordion-title {
+            font-size: 1.2rem;
+        }
+
+        .colleagues-accordion-content.active {
+            padding: 1rem 0.5rem;
+        }
+
+        .colleagues-accordion-inner {
+            padding: 1.5rem 1rem;
+        }
+
+        .colleague-category-header {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .colleague-category-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .colleague-category-title {
+            font-size: 1rem;
+            padding-right: 2rem;
+        }
+
+        .colleague-category-number {
+            font-size: 1.25rem;
+        }
+
+        .material-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .material-link {
+            align-self: flex-start;
+        }
+
+        .colleague-category-inner {
+            padding: 1rem;
+        }
+    }
+
+    /* === АНИМАЦИИ === */
+    @keyframes fadeInColleagues {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .colleagues-section {
+        animation: fadeInColleagues 0.5s ease-out;
+    }
+
+    @keyframes slideInColleagueCategory {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .colleague-category-accordion {
+        animation: slideInColleagueCategory 0.3s ease-out;
+        animation-fill-mode: backwards;
+    }
+
+    .colleague-category-accordion:nth-child(1) { animation-delay: 0.05s; }
+    .colleague-category-accordion:nth-child(2) { animation-delay: 0.1s; }
+    .colleague-category-accordion:nth-child(3) { animation-delay: 0.15s; }
+    .colleague-category-accordion:nth-child(4) { animation-delay: 0.2s; }
+    .colleague-category-accordion:nth-child(5) { animation-delay: 0.25s; }
+</style>
+
+<!-- 2. HTML-РАЗМЕТКА (вставьте в <body> после секции "Для родителей") -->
+<section class="colleagues-section">
+    <!-- ГЛАВНАЯ ВКЛАДКА (как у конспектов уроков) -->
+    <div class="colleagues-accordion-header" 
+         tabindex="0" 
+         role="button" 
+         aria-expanded="false" 
+         aria-controls="colleagues-accordion-content"
+         id="colleagues-toggle">
+        <h2 class="accordion-title">
+            👨‍🏫 Для коллег-педагогов — Методические материалы
+            <span class="accordion-status">(нажмите для раскрытия)</span>
+        </h2>
+        <span class="accordion-icon" aria-hidden="true">▼</span>
+    </div>
+
+    <!-- РАСКРЫВАЮЩИЙСЯ КОНТЕНТ С КАТЕГОРИЯМИ -->
+    <div class="colleagues-accordion-content" id="colleagues-accordion-content">
+        <div class="colleagues-accordion-inner">
+            <p class="colleagues-description">
+                Методические материалы, разработки уроков, презентации и опыт работы для обмена с коллегами-педагогами ОБЗР. Нажмите на категорию, чтобы увидеть доступные материалы.
+            </p>
+
+            <div class="colleagues-categories-grid">
+                <!-- КАТЕГОРИЯ 1: Конспекты уроков (шаблоны) -->
+                <div class="colleague-category-accordion">
+                    <div class="colleague-category-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="colleague-cat-1-content"
+                         data-colleague-category="1">
+                        <div class="colleague-category-title-wrapper">
+                            <span class="colleague-category-number">📝</span>
+                            <h3 class="colleague-category-title">Конспекты уроков (шаблоны)</h3>
+                        </div>
+                        <span class="colleague-category-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="colleague-category-content" id="colleague-cat-1-content">
+                        <div class="colleague-category-inner">
+                            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                                Готовые конспекты уроков по модулям ОБЗР, созданные с помощью ИИ и адаптированные под ФГОС.
+                            </p>
+
+                            <!-- Конспект 1 -->
+                            <div class="content-block">
+                                <h4>Конспект урока "Первая помощь при переломах" (8 класс, модуль 8)</h4>
+                                <p><strong>Тип урока:</strong> Комбинированный (теория + практика)</p>
+                                <p><strong>Длительность:</strong> 45 минут</p>
+                                <p><strong>Цели урока:</strong></p>
+                                <ul style="line-height: 1.8;">
+                                    <li><strong>Предметные:</strong> Научиться определять признаки перелома, правильно иммобилизировать конечность</li>
+                                    <li><strong>Метапредметные:</strong> Развитие навыков работы в группе, критического мышления</li>
+                                    <li><strong>Личностные:</strong> Формирование ответственности за жизнь и здоровье окружающих</li>
+                                </ul>
+                                <p style="margin-top: 1rem;">
+                                    <a href="materials/colleagues/konspekt-perelomy.pdf" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary-hover)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--color-primary)'; this.style.textDecoration='none'">📥 Скачать полный конспект с хронометражем и домашним заданием (PDF) →</a>
+                                </p>
+                                <div class="author-meta">
+                                    <strong>Инструмент:</strong> Claude AI<br>
+                                    <strong>Адаптировано:</strong> Дёмин А.Ю.<br>
+                                    <strong>Дата создания:</strong> Октябрь 2025
+                                </div>
+                            </div>
+
+                            <p class="placeholder-text">💡 Добавьте свои конспекты уроков</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <h3>Тесты и задания по модулям ОБЗР</h3>
-                <p>Интерактивные и печатные тесты для проверки знаний учащихся.</p>
-                
-                <div class="content-block">
-                    <h4>Тест "Модуль 2: Военная подготовка" (10 класс)</h4>
-                    <p><strong>Формат:</strong> 20 вопросов с множественным выбором</p>
-                    <p><strong>Темы:</strong></p>
-                    <ul>
-                        <li>История Вооружённых Сил РФ</li>
-                        <li>Строевая подготовка</li>
-                        <li>Воинские звания</li>
-                        <li>Организация ВС РФ</li>
-                    </ul>
-                    <p style="margin-top: 1rem;"><em>[Скачать тест — PDF] | [Интерактивная версия — HTML]</em></p>
-                    <div class="author-meta">
-                        <strong>Инструмент:</strong> ChatGPT<br>
-                        <strong>Адаптировано:</strong> Дёмин А.Ю.<br>
-                        <strong>Дата создания:</strong> Сентябрь 2025
+                <!-- КАТЕГОРИЯ 2: Тесты и задания по модулям ОБЗР -->
+                <div class="colleague-category-accordion">
+                    <div class="colleague-category-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="colleague-cat-2-content"
+                         data-colleague-category="2">
+                        <div class="colleague-category-title-wrapper">
+                            <span class="colleague-category-number">📋</span>
+                            <h3 class="colleague-category-title">Тесты и задания по модулям ОБЗР</h3>
+                        </div>
+                        <span class="colleague-category-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="colleague-category-content" id="colleague-cat-2-content">
+                        <div class="colleague-category-inner">
+                            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                                Интерактивные и печатные тесты для проверки знаний учащихся.
+                            </p>
+
+                            <!-- Тест 1 -->
+                            <div class="content-block">
+                                <h4>Тест "Модуль 2: Военная подготовка" (10 класс)</h4>
+                                <p><strong>Формат:</strong> 20 вопросов с множественным выбором</p>
+                                <p><strong>Темы:</strong></p>
+                                <ul style="line-height: 1.8;">
+                                    <li>История Вооружённых Сил РФ</li>
+                                    <li>Строевая подготовка</li>
+                                    <li>Воинские звания</li>
+                                    <li>Организация ВС РФ</li>
+                                </ul>
+                                <p style="margin-top: 1rem;">
+                                    <a href="materials/colleagues/test-modul-2.pdf" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 600; transition: color 0.3s; margin-right: 1rem;" onmouseover="this.style.color='var(--color-primary-hover)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--color-primary)'; this.style.textDecoration='none'">📥 Скачать тест (PDF) →</a>
+                                    <a href="materials/colleagues/test-modul-2.html" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary-hover)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--color-primary)'; this.style.textDecoration='none'">🌐 Интерактивная версия (HTML) →</a>
+                                </p>
+                                <div class="author-meta">
+                                    <strong>Инструмент:</strong> ChatGPT<br>
+                                    <strong>Адаптировано:</strong> Дёмин А.Ю.<br>
+                                    <strong>Дата создания:</strong> Сентябрь 2025
+                                </div>
+                            </div>
+
+                            <p class="placeholder-text">💡 Добавьте свои тесты и задания</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <h3>Презентации для уроков</h3>
-                <p>Готовые презентации PowerPoint/Google Slides, созданные с помощью ИИ.</p>
-                
-                <div class="content-block">
-                    <h4>Презентация "Безопасность в информационном пространстве" (9 класс, модуль 10)</h4>
-                    <p><strong>Количество слайдов:</strong> 25</p>
-                    <p><strong>Содержание:</strong></p>
-                    <ul>
-                        <li>Виды киберугроз</li>
-                        <li>Фишинг и социальная инженерия</li>
-                        <li>Защита персональных данных</li>
-                        <li>Цифровая гигиена</li>
-                    </ul>
-                    <p style="margin-top: 1rem;"><em>[Скачать презентацию — PPTX] | [Просмотр онлайн]</em></p>
-                    <div class="author-meta">
-                        <strong>Инструмент:</strong> Gamma App (на основе текста из Claude AI)<br>
-                        <strong>Дата создания:</strong> Ноябрь 2025
+                <!-- КАТЕГОРИЯ 3: Презентации для уроков -->
+                <div class="colleague-category-accordion">
+                    <div class="colleague-category-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="colleague-cat-3-content"
+                         data-colleague-category="3">
+                        <div class="colleague-category-title-wrapper">
+                            <span class="colleague-category-number">🖥️</span>
+                            <h3 class="colleague-category-title">Презентации для уроков</h3>
+                        </div>
+                        <span class="colleague-category-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="colleague-category-content" id="colleague-cat-3-content">
+                        <div class="colleague-category-inner">
+                            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                                Готовые презентации PowerPoint/Google Slides, созданные с помощью ИИ.
+                            </p>
+
+                            <!-- Презентация 1 -->
+                            <div class="content-block">
+                                <h4>Презентация "Безопасность в информационном пространстве" (9 класс, модуль 10)</h4>
+                                <p><strong>Количество слайдов:</strong> 25</p>
+                                <p><strong>Содержание:</strong></p>
+                                <ul style="line-height: 1.8;">
+                                    <li>Виды киберугроз</li>
+                                    <li>Фишинг и социальная инженерия</li>
+                                    <li>Защита персональных данных</li>
+                                    <li>Цифровая гигиена</li>
+                                </ul>
+                                <p style="margin-top: 1rem;">
+                                    <a href="materials/colleagues/prez-bezopasnost-internet.pptx" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 600; transition: color 0.3s; margin-right: 1rem;" onmouseover="this.style.color='var(--color-primary-hover)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--color-primary)'; this.style.textDecoration='none'">📥 Скачать презентацию (PPTX) →</a>
+                                    <a href="materials/colleagues/prez-bezopasnost-internet-online.html" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary-hover)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--color-primary)'; this.style.textDecoration='none'">🌐 Просмотр онлайн →</a>
+                                </p>
+                                <div class="author-meta">
+                                    <strong>Инструмент:</strong> Gamma App (на основе текста из Claude AI)<br>
+                                    <strong>Дата создания:</strong> Ноябрь 2025
+                                </div>
+                            </div>
+
+                            <p class="placeholder-text">💡 Добавьте свои презентации</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <h3>Промпты для создания материалов</h3>
-                <p>Готовые промпты для коллег, которые хотят использовать ИИ в подготовке уроков.</p>
-                
-                <div class="content-block">
-                    <h4>Промпт для создания конспекта урока</h4>
-                    <pre style="background: #f5f7fa; padding: 1rem; border-radius: 4px; overflow-x: auto; line-height: 1.6;">
+                <!-- КАТЕГОРИЯ 4: Промпты для создания материалов -->
+                <div class="colleague-category-accordion">
+                    <div class="colleague-category-header" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="colleague-cat-4-content"
+                         data-colleague-category="4">
+                        <div class="colleague-category-title-wrapper">
+                            <span class="colleague-category-number">💡</span>
+                            <h3 class="colleague-category-title">Промпты для создания материалов</h3>
+                        </div>
+                        <span class="colleague-category-icon" aria-hidden="true">▼</span>
+                    </div>
+                    <div class="colleague-category-content" id="colleague-cat-4-content">
+                        <div class="colleague-category-inner">
+                            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+                                Готовые промпты для коллег, которые хотят использовать ИИ в подготовке уроков.
+                            </p>
+
+                            <!-- Промпт 1 -->
+                            <div class="content-block">
+                                <h4>Промпт для создания конспекта урока</h4>
+                                <pre style="background: #f5f7fa; padding: 1rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 0.9rem;">
 Создай подробный конспект урока ОБЗР для [класс] класса по теме "[тема]" из модуля [номер].
 
 Требования:
@@ -1389,13 +1808,14 @@ document.addEventListener('keydown', function(event) {
 8. Список необходимых материалов
 
 Стиль: Официальный, методический, соответствующий требованиям ФГОС ОБЗР 2024-2025.
-                    </pre>
-                    <p style="margin-top: 1rem;"><strong>Использование:</strong> Скопируйте промпт в Claude AI или ChatGPT и подставьте свои данные</p>
-                </div>
+                                </pre>
+                                <p style="margin-top: 1rem;"><strong>Использование:</strong> Скопируйте промпт в Claude AI или ChatGPT и подставьте свои данные</p>
+                            </div>
 
-                <div class="content-block">
-                    <h4>Промпт для создания теста</h4>
-                    <pre style="background: #f5f7fa; padding: 1rem; border-radius: 4px; overflow-x: auto; line-height: 1.6;">
+                            <!-- Промпт 2 -->
+                            <div class="content-block">
+                                <h4>Промпт для создания теста</h4>
+                                <pre style="background: #f5f7fa; padding: 1rem; border-radius: 4px; overflow-x: auto; line-height: 1.6; font-size: 0.9rem;">
 Создай тест по ОБЗР для [класс] класса по модулю [номер] "[название модуля]".
 
 Требования:
@@ -1406,14 +1826,96 @@ document.addEventListener('keydown', function(event) {
 5. К каждому вопросу укажи правильный ответ и краткое объяснение
 
 Формат вывода: Таблица с колонками "№", "Вопрос", "Варианты ответа", "Правильный ответ", "Объяснение"
-                    </pre>
+                                </pre>
+                            </div>
+
+                            <p class="placeholder-text">💡 Добавьте свои полезные промпты</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
-            <div class="warning-box">
+            <!-- Предупреждение для коллег -->
+            <div class="warning-box" style="background: linear-gradient(135deg, #FFF3CD 0%, #FFE8A3 100%); border-left: 4px solid #FFA500; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
                 <strong>📌 Рекомендации для коллег:</strong> Все материалы, созданные с помощью ИИ, необходимо проверять на соответствие ФГОС, адаптировать под конкретный класс и дополнять собственным педагогическим опытом. ИИ — это помощник, а не замена профессионализма педагога.
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+<!-- 3. JAVASCRIPT (добавьте к существующему скрипту перед </body>) -->
+<script>
+    // === ГЛАВНАЯ ВКЛАДКА "ДЛЯ КОЛЛЕГ-ПЕДАГОГОВ — МЕТОДИЧЕСКИЕ МАТЕРИАЛЫ" ===
+    const colleaguesToggle = document.getElementById('colleagues-toggle');
+    const colleaguesContent = document.getElementById('colleagues-accordion-content');
+    const colleaguesIcon = colleaguesToggle.querySelector('.accordion-icon');
+    const colleaguesStatus = colleaguesToggle.querySelector('.accordion-status');
+
+    function toggleColleaguesAccordion() {
+        const isActive = colleaguesToggle.classList.contains('active');
+        
+        if (isActive) {
+            // Закрываем
+            colleaguesToggle.classList.remove('active');
+            colleaguesContent.classList.remove('active');
+            colleaguesToggle.setAttribute('aria-expanded', 'false');
+            colleaguesStatus.textContent = '(нажмите для раскрытия)';
+        } else {
+            // Открываем
+            colleaguesToggle.classList.add('active');
+            colleaguesContent.classList.add('active');
+            colleaguesToggle.setAttribute('aria-expanded', 'true');
+            colleaguesStatus.textContent = '(нажмите для скрытия)';
+        }
+    }
+
+    colleaguesToggle.addEventListener('click', toggleColleaguesAccordion);
+    colleaguesToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleColleaguesAccordion();
+        }
+    });
+
+    // === ВНУТРЕННИЕ ВКЛАДКИ (КАТЕГОРИИ) ===
+    const colleagueCategoryHeaders = document.querySelectorAll('.colleague-category-header');
+
+    function toggleColleagueCategory(header) {
+        const categoryNumber = header.getAttribute('data-colleague-category');
+        const content = document.getElementById(`colleague-cat-${categoryNumber}-content`);
+        const isActive = header.classList.contains('active');
+
+        if (isActive) {
+            // Закрываем
+            header.classList.remove('active');
+            content.classList.remove('active');
+            header.setAttribute('aria-expanded', 'false');
+        } else {
+            // Открываем
+            header.classList.add('active');
+            content.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    colleagueCategoryHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            toggleColleagueCategory(this);
+        });
+
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleColleagueCategory(this);
+            }
+        });
+    });
+
+    // ОПЦИОНАЛЬНО: Раскрыть секцию "Для коллег-педагогов" по умолчанию
+    // Раскомментируйте следующую строку:
+    // toggleColleaguesAccordion();
+</script>
 
         <section class="section">
             <div class="card">
