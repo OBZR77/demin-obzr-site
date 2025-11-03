@@ -18,11 +18,29 @@
             --color-text-secondary: #7F8C8D;
             --color-border: #E0E6ED;
         }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden !important;
+       }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 16px;
             line-height: 1.6;
             color: var(--color-text-primary);
+            background: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         header {
             background-color: var(--color-primary);
@@ -31,6 +49,17 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
+            margin: 0;
+            left: 0;
+            position: relative;
+            box-sizing: border-box;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            position: relative !important;
+            box-sizing: border-box !important;
         }
         .header-top {
             background-color: var(--color-primary-active);
@@ -75,6 +104,17 @@
         }
         nav {
             background-color: var(--color-primary);
+            width: 100%;
+            margin: 0;
+            left: 0;
+            position: relative;
+            box-sizing: border-box;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            position: relative !important;
+            box-sizing: border-box !important;
         }
         .nav-container {
             max-width: 1200px;
@@ -172,6 +212,17 @@
             color: white;
             padding: 2rem 1rem;
             margin-top: 4rem;
+            width: 100%;
+            margin: 0;
+            left: 0;
+            position: relative;
+            box-sizing: border-box;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            left: 0 !important;
+            position: relative !important;
+            box-sizing: border-box !important; 
         }
         .footer-content {
             max-width: 1200px;
