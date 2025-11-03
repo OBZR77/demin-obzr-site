@@ -27,11 +27,15 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%; 
-}.header-top {
+    width: 100vw; 
+    left: 0;         
+}
+.header-top {
     background-color: var(--color-primary-active);
     padding: 0.5rem 0;
-    width: 100%; 
+    width: 100vw;
+    left: 0;
+    position: relative;
 }
 .header-content {
     max-width: 1200px; 
@@ -48,10 +52,10 @@
         .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
      nav {
     background-color: var(--color-primary);
-    width: 100%; /* Добавлено */
+    width: 100%; 
 }
       .nav-container {
-    max-width: 1200px; /* Оставляем ограничение для меню */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -73,14 +77,14 @@
        footer {
     background-color: var(--color-primary);
     color: white;
-    padding: 2rem 0; /* Изменено: убрали горизонтальный padding */
+    padding: 2rem 0; 
     margin-top: 4rem;
-    width: 100%; /* Добавлено */
+    width: 100%; 
 }
       .footer-content {
-    max-width: 1200px; /* Оставляем ограничение для контента */
+    max-width: 1200px; 
     margin: 0 auto;
-    padding: 0 1rem; /* Добавляем горизонтальный padding */
+    padding: 0 1rem; 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
@@ -89,11 +93,11 @@
         .footer-section ul { list-style: none; }
         .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
        .footer-bottom {
-    max-width: 1200px; /* Оставляем ограничение для контента */
+    max-width: 1200px; 
     margin: 2rem auto 0;
     padding-top: 2rem;
-    padding-left: 1rem; /* Добавлено */
-    padding-right: 1rem; /* Добавлено */
+    padding-left: 1rem; 
+    padding-right: 1rem; 
     border-top: 1px solid rgba(255,255,255,0.2);
     text-align: center;
     font-size: 0.9rem;
