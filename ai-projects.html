@@ -257,7 +257,113 @@
     main {
         margin-top: 110px;
     }
-}     
+}  
+  /* Стили для volume slider */
+    #musicVolumeSlider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: #003D7A;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    #musicVolumeSlider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: #003D7A;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+    }
+
+    /* Hover эффекты для кнопок плейлиста */
+    .music-control-btn:hover {
+        transform: scale(1.1);
+    }
+
+    #musicPlayPauseBtn:hover {
+        background: #00518A !important;
+        box-shadow: 0 6px 16px rgba(0,61,122,0.4) !important;
+    }
+
+    #musicPrevBtn:hover,
+    #musicNextBtn:hover {
+        background: #003D7A !important;
+        color: white !important;
+    }
+
+    /* Стили для треков */
+    .music-track-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: #F5F7FA;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .music-track-item:hover {
+        background: #E3F2FD;
+        border-left-color: #003D7A;
+        transform: translateX(5px);
+    }
+
+    .music-track-item.active {
+        background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+        border-left-color: #003D7A;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(0,61,122,0.15);
+    }
+
+    .music-track-number {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #003D7A;
+        min-width: 28px;
+        text-align: center;
+    }
+
+    .music-track-info {
+        flex: 1;
+    }
+
+    .music-track-title {
+        font-size: 0.95rem;
+        color: #2C3E50;
+        margin-bottom: 3px;
+    }
+
+    .music-track-duration {
+        font-size: 0.8rem;
+        color: #7F8C8D;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 600px) {
+        #musicCurrentTitle {
+            font-size: 1.1rem !important;
+        }
+
+        #musicPlayPauseBtn {
+            width: 55px !important;
+            height: 55px !important;
+            font-size: 1.4rem !important;
+        }
+
+        #musicPrevBtn, #musicNextBtn {
+            width: 38px !important;
+            height: 38px !important;
+        }
+
+        .embedded-music-player > div:first-child {
+            padding: 15px !important;
+        }
+    }       
     </style>
 </head>
 <body>
@@ -816,55 +922,99 @@ document.addEventListener('keydown', function(event) {
                         </div>
                     </div>
 
-                    <!-- КАТЕГОРИЯ 2: Музыкальные проекты -->
-                    <div class="module-accordion">
-                        <div class="module-header" 
-                             tabindex="0" 
-                             role="button" 
-                             aria-expanded="false" 
-                             aria-controls="music-content"
-                             data-module="music">
-                            <div class="module-title-wrapper">
-                                <span class="module-number">🎵</span>
-                                <h3 class="module-title">Музыкальные проекты</h3>
-                            </div>
-                            <span class="module-icon" aria-hidden="true">▼</span>
+                 <!-- КАТЕГОРИЯ 2: Музыкальные проекты -->
+<div class="module-accordion">
+    <!-- КЛИКАБЕЛЬНЫЙ ЗАГОЛОВОК -->
+    <div class="module-header" 
+         tabindex="0" 
+         role="button" 
+         aria-expanded="false" 
+         aria-controls="music-content"
+         data-module="music">
+        <div class="module-title-wrapper">
+            <span class="module-number">🎵</span>
+            <h3 class="module-title">Музыкальные проекты</h3>
+        </div>
+        <span class="module-icon" aria-hidden="true">▼</span>
+    </div>
+    
+    <!-- РАСКРЫВАЮЩИЙСЯ КОНТЕНТ (скрыт по умолчанию) -->
+    <div class="module-content" id="music-content">
+        <div class="module-inner">
+            <p class="project-description">
+                Патриотические песни для уроков ОБЗР: гимны, марши, песни военных лет.
+            </p>
+
+            <!-- ============================================ -->
+            <!-- ВСТРОЕННЫЙ ПЛЕЙЛИСТ (5 патриотических песен) -->
+            <!-- ============================================ -->
+            <div class="content-block" style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%); border-left: 4px solid #003D7A;">
+                <h4>🎵 Патриотический плейлист для уроков ОБЗР</h4>
+                
+                <div class="embedded-music-player" style="margin-top: 20px;">
+                    
+                    <!-- Основной плеер -->
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        
+                        <!-- Сейчас играет -->
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="font-size: 0.85rem; color: #7F8C8D; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">♫ Сейчас играет:</div>
+                            <div id="musicCurrentTitle" style="font-size: 1.3rem; font-weight: bold; color: #003D7A; margin-bottom: 5px;">Выберите трек из списка ниже</div>
+                            <div id="musicCurrentSubtitle" style="font-size: 0.9rem; color: #7F8C8D;">—</div>
                         </div>
-                        <div class="module-content" id="music-content">
-                            <div class="module-inner">
-                                <p class="project-description">
-                                    Песни о героях, безопасности и патриотических темах, созданные с помощью ИИ-генераторов музыки.
-                                </p>
-
-                                <!-- Музыкальный проект 1 -->
-                                <div class="content-block">
-                                    <h4>Песня "Герои среди нас"</h4>
-                                    <p style="line-height: 1.8;">
-                                        <strong>Текст песни:</strong><br><br>
-                                        <em>Куплет 1:</em><br>
-                                        В тревожные минуты, когда беда придёт,<br>
-                                        Спасатель смело в огонь и в воду идёт,<br>
-                                        Врачи и педагоги, солдаты на посту —<br>
-                                        Герои нашей жизни хранят её мечту.<br><br>
-                                        
-                                        <em>Припев:</em><br>
-                                        Герои среди нас, они не носят плащ,<br>
-                                        Но каждый день спасают тех, кто ждёт их в дальний час...<br><br>
-                                        
-                                        <em>[Полный текст песни здесь]</em>
-                                    </p>
-                                    <div class="author-meta">
-                                        <strong>Автор:</strong> Мария С., 11 класс<br>
-                                        <strong>Инструменты:</strong> Claude AI (текст) + Suno AI (мелодия)<br>
-                                        <strong>Дата:</strong> Сентябрь 2025<br>
-                                        <strong>Аудио:</strong> <em>[Ссылка на MP3-файл]</em>
-                                    </div>
-                                </div>
-
-                                <p class="placeholder-text">💡 Добавьте музыкальные проекты ваших учеников</p>
+                        
+                        <!-- Прогресс-бар -->
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #7F8C8D; margin-bottom: 8px;">
+                                <span id="musicCurrentTime">0:00</span>
+                                <span id="musicDuration">0:00</span>
+                            </div>
+                            <div id="musicProgressBar" style="width: 100%; height: 6px; background: #E0E0E0; border-radius: 10px; cursor: pointer; position: relative;">
+                                <div id="musicProgressFill" style="height: 100%; background: linear-gradient(90deg, #003D7A 0%, #0066CC 100%); border-radius: 10px; width: 0%; transition: width 0.1s linear;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Контролы -->
+                        <div style="display: flex; justify-content: center; gap: 15px; align-items: center; flex-wrap: wrap;">
+                            <button id="musicPrevBtn" class="music-control-btn" style="background: white; border: 2px solid #003D7A; color: #003D7A; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" title="Предыдущий трек">⏮</button>
+                            
+                            <button id="musicPlayPauseBtn" class="music-control-btn" style="background: #003D7A; border: none; color: white; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,61,122,0.3);" title="Воспроизведение/Пауза">▶️</button>
+                            
+                            <button id="musicNextBtn" class="music-control-btn" style="background: white; border: 2px solid #003D7A; color: #003D7A; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" title="Следующий трек">⏭</button>
+                            
+                            <div style="display: flex; align-items: center; gap: 10px; margin-left: 10px;">
+                                <span style="font-size: 1.1rem;">🔊</span>
+                                <input type="range" id="musicVolumeSlider" min="0" max="100" value="70" style="width: 90px; height: 5px; cursor: pointer; -webkit-appearance: none; appearance: none; background: #E0E0E0; border-radius: 10px; outline: none;">
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Список треков -->
+                    <div style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                        <div style="font-weight: 600; color: #003D7A; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 1rem;">
+                            <span>📋</span> Список треков (5)
+                        </div>
+                        
+                        <div id="musicTrackList" style="display: flex; flex-direction: column; gap: 8px;">
+                            <!-- Треки добавятся через JavaScript -->
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Метаданные плейлиста -->
+                <div class="author-meta" style="margin-top: 15px;">
+                    <strong>Назначение:</strong> Учебное пособие для модуля № 2 "Военная подготовка"<br>
+                    <strong>Инструменты:</strong> HTML5 Audio API, JavaScript<br>
+                    <strong>Формат:</strong> MP3<br>
+                    <strong>Примечание:</strong> Все музыкальные произведения используются в образовательных целях
+                </div>
+            </div>
+
+            <p class="placeholder-text">💡 Здесь вы можете добавить музыкальные проекты ваших учеников</p>
+        </div>
+    </div>
+</div>
 
                     <!-- КАТЕГОРИЯ 3: Визуальные проекты -->
                     <div class="module-accordion">
@@ -2165,6 +2315,188 @@ document.addEventListener('keydown', function(event) {
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
+         const musicPlaylist = [
+        {
+            title: "Гимн Российской Федерации",
+            subtitle: "Официальный гимн РФ",
+            filename: "01-gimn-rf.mp3",
+            duration: "3:42"
+        },
+        {
+            title: "Священная война",
+            subtitle: "В. Лебедев-Кумач, А. Александров",
+            filename: "02-svyaschennaya-voyna.mp3",
+            duration: "3:05"
+        },
+        {
+            title: "День Победы",
+            subtitle: "В. Харитонов, Д. Тухманов",
+            filename: "03-den-pobedy.mp3",
+            duration: "4:12"
+        },
+        {
+            title: "Катюша",
+            subtitle: "М. Исаковский, М. Блантер",
+            filename: "04-katyusha.mp3",
+            duration: "2:48"
+        },
+        {
+            title: "Прощание славянки",
+            subtitle: "В. Агапкин (марш)",
+            filename: "05-proschanie-slavyanki.mp3",
+            duration: "3:30"
+        }
+    ];
+
+    // Переменные
+    const musicAudio = document.createElement('audio');
+    musicAudio.id = 'musicAudioPlayer';
+    document.body.appendChild(musicAudio);
+
+    const musicPlayPauseBtn = document.getElementById('musicPlayPauseBtn');
+    const musicPrevBtn = document.getElementById('musicPrevBtn');
+    const musicNextBtn = document.getElementById('musicNextBtn');
+    const musicProgressBar = document.getElementById('musicProgressBar');
+    const musicProgressFill = document.getElementById('musicProgressFill');
+    const musicCurrentTime = document.getElementById('musicCurrentTime');
+    const musicDuration = document.getElementById('musicDuration');
+    const musicCurrentTitle = document.getElementById('musicCurrentTitle');
+    const musicCurrentSubtitle = document.getElementById('musicCurrentSubtitle');
+    const musicVolumeSlider = document.getElementById('musicVolumeSlider');
+    const musicTrackList = document.getElementById('musicTrackList');
+
+    let musicCurrentTrackIndex = 0;
+    let musicIsPlaying = false;
+
+    // Инициализация списка треков
+    function initMusicPlaylist() {
+        if (!musicTrackList) return; // Защита от ошибок
+        
+        musicPlaylist.forEach((track, index) => {
+            const trackItem = document.createElement('div');
+            trackItem.className = 'music-track-item';
+            if (index === 0) trackItem.classList.add('active');
+            
+            trackItem.innerHTML = `
+                <div class="music-track-number">${index + 1}</div>
+                <div class="music-track-info">
+                    <div class="music-track-title">${track.title}</div>
+                    <div class="music-track-duration">${track.duration}</div>
+                </div>
+            `;
+            
+            trackItem.addEventListener('click', () => loadMusicTrack(index));
+            musicTrackList.appendChild(trackItem);
+        });
+    }
+
+    // Загрузка трека
+    function loadMusicTrack(index) {
+        musicCurrentTrackIndex = index;
+        const track = musicPlaylist[index];
+        
+        musicAudio.src = `audio/${track.filename}`;
+        musicCurrentTitle.textContent = track.title;
+        musicCurrentSubtitle.textContent = track.subtitle;
+        
+        // Обновление активного трека
+        document.querySelectorAll('.music-track-item').forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+        
+        if (musicIsPlaying) {
+            musicAudio.play();
+        }
+    }
+
+    // Play/Pause
+    function toggleMusicPlayPause() {
+        if (musicIsPlaying) {
+            musicAudio.pause();
+            musicPlayPauseBtn.textContent = '▶️';
+        } else {
+            musicAudio.play();
+            musicPlayPauseBtn.textContent = '⏸';
+        }
+        musicIsPlaying = !musicIsPlaying;
+    }
+
+    // Предыдущий трек
+    function musicPrevTrack() {
+        musicCurrentTrackIndex = (musicCurrentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
+        loadMusicTrack(musicCurrentTrackIndex);
+        if (musicIsPlaying) musicAudio.play();
+    }
+
+    // Следующий трек
+    function musicNextTrack() {
+        musicCurrentTrackIndex = (musicCurrentTrackIndex + 1) % musicPlaylist.length;
+        loadMusicTrack(musicCurrentTrackIndex);
+        if (musicIsPlaying) musicAudio.play();
+    }
+
+    // Обновление прогресса
+    function updateMusicProgress() {
+        if (musicAudio.duration) {
+            const progress = (musicAudio.currentTime / musicAudio.duration) * 100;
+            musicProgressFill.style.width = `${progress}%`;
+            musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
+        }
+    }
+
+    // Форматирование времени
+    function formatMusicTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // События
+    if (musicProgressBar) {
+        musicProgressBar.addEventListener('click', (e) => {
+            const rect = musicProgressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            musicAudio.currentTime = percent * musicAudio.duration;
+        });
+    }
+
+    if (musicVolumeSlider) {
+        musicVolumeSlider.addEventListener('input', (e) => {
+            musicAudio.volume = e.target.value / 100;
+        });
+    }
+
+    musicAudio.addEventListener('loadedmetadata', () => {
+        if (musicDuration) {
+            musicDuration.textContent = formatMusicTime(musicAudio.duration);
+        }
+    });
+
+    musicAudio.addEventListener('timeupdate', updateMusicProgress);
+
+    musicAudio.addEventListener('ended', () => {
+        musicNextTrack();
+    });
+
+    if (musicPlayPauseBtn) musicPlayPauseBtn.addEventListener('click', toggleMusicPlayPause);
+    if (musicPrevBtn) musicPrevBtn.addEventListener('click', musicPrevTrack);
+    if (musicNextBtn) musicNextBtn.addEventListener('click', musicNextTrack);
+
+    // Инициализация плейлиста
+    musicAudio.volume = 0.7;
+    
+    // Инициализируем плейлист только когда DOM готов
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMusicPlaylist);
+    } else {
+        initMusicPlaylist();
+    }
+    
+    // Загружаем первый трек
+    if (musicCurrentTitle) {
+        loadMusicTrack(0);
+    }
     </script>
 </body>
 </html>
