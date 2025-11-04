@@ -230,6 +230,19 @@
         font-size: 0.95rem;
     }
 }
+       @media (max-width: 480px) {
+    .section .card {
+        padding-left: 1rem;
+        padding-right: 0.5rem; /* для баланса, обычно правый край проблем не вызывает */
+        margin-left: 0.25rem;  /* чуть-чуть отступнуть от самого края экрана */
+        margin-right: 0.25rem;
+        box-sizing: border-box;
+    }
+    .section {
+        padding-left: 0; /* чтобы секция не добавляла свой внешний отступ */
+        padding-right: 0;
+    }
+} 
     </style>
 </head>
 <body>
