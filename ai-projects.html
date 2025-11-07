@@ -413,6 +413,52 @@ a img:hover {
         opacity: 1;
     }
 }
+ @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Анимация увеличения изображения */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Эффект при наведении на миниатюру обложки */
+#bookCoverThumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,61,122,0.3);
+}
+
+/* Эффект при наведении на кнопку закрытия */
+#closeButton:hover {
+    color: #E53935 !important;
+    transform: scale(1.2);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    #fullscreenCoverImage {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+    
+    #closeButton {
+        top: 10px;
+        right: 15px;
+        font-size: 35px;
+    }
+}   
 </style>
 
 <script>
@@ -912,19 +958,78 @@ document.addEventListener('keydown', function(event) {
                 <!-- ОБЛОЖКА И ИНФОРМАЦИЯ О КНИГЕ -->
                 <div style="background: white; border: 2px solid #003D7A; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,61,122,0.15);">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
-                     <!-- Обложка книги (кликабельная для скачивания) -->
+                    <!-- Обложка книги (кликабельная для полноэкранного просмотра) -->
 <div style="text-align: center;">
-    <a href="files/books/book1-full.pdf" download style="display: inline-block;">
-        <img src="files/books/book1-cover.jpg.png" 
-             alt="Обложка книги — кликните для скачивания" 
-             style="width: 100%; 
-                    max-width: 300px; 
-                    border-radius: 8px; 
-                    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-                    cursor: pointer; 
-                    transition: transform 0.3s ease;">
-    </a>
-</div
+    <img src="files/books/book1-cover.jpg" 
+         alt="Обложка книги — кликните для увеличения" 
+         id="bookCoverThumbnail"
+         onclick="openFullscreenCover()"
+         style="width: 100%; 
+                max-width: 300px; 
+                border-radius: 8px; 
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+                cursor: pointer; 
+                transition: all 0.3s ease;">
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #7F8C8D; font-style: italic;">
+        Кликните для полноэкранного просмотра
+    </p>
+</div>
+<!-- Полноэкранное модальное окно для обложки -->
+<div id="coverModal" 
+     onclick="closeFullscreenCover()"
+     style="display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.95); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center; 
+            animation: fadeIn 0.3s ease;">
+    
+    <!-- Кнопка закрытия -->
+    <span onclick="closeFullscreenCover()" 
+          id="closeButton"
+          style="position: absolute; 
+                 top: 20px; 
+                 right: 30px; 
+                 color: white; 
+                 font-size: 40px; 
+                 font-weight: bold; 
+                 cursor: pointer; 
+                 z-index: 10000;
+                 transition: color 0.3s ease;
+                 user-select: none;">
+        &times;
+    </span>
+    
+    <!-- Изображение обложки в полный экран -->
+    <img src="files/books/book1-cover.jpg" 
+         alt="Обложка книги" 
+         id="fullscreenCoverImage"
+         onclick="event.stopPropagation()"
+         style="max-width: 90%; 
+                max-height: 90vh; 
+                object-fit: contain; 
+                border-radius: 8px; 
+                box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                animation: zoomIn 0.3s ease;">
+    
+    <!-- Подсказка -->
+    <p style="position: absolute; 
+              bottom: 30px; 
+              color: rgba(255,255,255,0.8); 
+              font-size: 1rem; 
+              text-align: center;
+              width: 100%;
+              padding: 0 20px;
+              box-sizing: border-box;">
+        Кликните вне изображения или нажмите ESC для закрытия
+    </p>
+</div>
+
                         <!-- Информация о книге -->
                         <div>
                             <h3 style="color: #003D7A; font-size: 2rem; margin-bottom: 1rem;">
@@ -3259,6 +3364,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+ // Открыть обложку на полный экран
+function openFullscreenCover() {
+    const modal = document.getElementById('coverModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+}
+
+// Закрыть полноэкранный просмотр
+function closeFullscreenCover() {
+    const modal = document.getElementById('coverModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Разблокируем прокрутку
+}
+
+// Закрытие по клавише ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+        closeFullscreenCover();
+    }
+});
+
+// Предотвращение закрытия при клике на само изображение
+document.getElementById('fullscreenCoverImage').addEventListener('click', function(e) {
+    e.stopPropagation();
+});       
 </script>
 </body>
 </html>
