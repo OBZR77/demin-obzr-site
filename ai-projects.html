@@ -377,7 +377,15 @@ a[download]:hover {
         .embedded-music-player > div:first-child {
             padding: 15px !important;
         }
-    }       
+    } 
+      a img {
+    transition: all 0.3s ease;
+}
+
+a img:hover {
+    transform: scale(1.05) translateY(-5px);  /* Увеличение + подъём */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);  /* Усиленная тень */
+}  
     </style>
 </head>
 <body>
@@ -892,7 +900,7 @@ document.addEventListener('keydown', function(event) {
                             <div class="module-inner">
                              <div style="background: #F5F7FA; border-left: 4px solid #003D7A; padding: 1.5rem; margin-bottom: 2rem; border-radius: 8px;">
                 <p style="margin: 0; line-height: 1.8; color: #2C3E50;">
-                    Стихи, рассказы и литературные произведения, созданные учащимися с помощью ИИ-инструментов на темы безопасности, военной подготовки и патриотизма. Все материалы отредактированы и проверены преподавателем.
+                    Стихи, рассказы и литературные произведения, созданные с помощью ИИ-инструментов на темы безопасности, военной подготовки и патриотизма. 
                 </p>
             </div>
 
@@ -904,31 +912,31 @@ document.addEventListener('keydown', function(event) {
                 <!-- ОБЛОЖКА И ИНФОРМАЦИЯ О КНИГЕ -->
                 <div style="background: white; border: 2px solid #003D7A; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,61,122,0.15);">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
-                        
-                        <!-- Обложка (placeholder - замените на реальное изображение) -->
-                        <div style="text-align: center;">
-                            <div style="width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: bold; padding: 1rem; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
-                                📖<br>
-                                ОБЛОЖКА<br>
-                                КНИГИ
-                            </div>
-                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #7F8C8D; font-style: italic;">
-                                (Загрузите изображение обложки)
-                            </p>
-                        </div>
-
+                     <!-- Обложка книги (кликабельная для скачивания) -->
+<div style="text-align: center;">
+    <a href="files/books/book1-full.pdf" download style="display: inline-block;">
+        <img src="files/books/book1-cover.jpg.png" 
+             alt="Обложка книги — кликните для скачивания" 
+             style="width: 100%; 
+                    max-width: 300px; 
+                    border-radius: 8px; 
+                    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+                    cursor: pointer; 
+                    transition: transform 0.3s ease;">
+    </a>
+</div
                         <!-- Информация о книге -->
                         <div>
                             <h3 style="color: #003D7A; font-size: 2rem; margin-bottom: 1rem;">
-                                Название вашей книги
+                                Цифровой фантом
                             </h3>
                             
                             <div style="margin-bottom: 1.5rem;">
                                 <p style="margin: 0.5rem 0; color: #2C3E50;">
-                                    <strong>Автор:</strong> Имя Автора, 10 класс
+                                    <strong>Автор:</strong> Дёмин А.Ю.
                                 </p>
                                 <p style="margin: 0.5rem 0; color: #2C3E50;">
-                                    <strong>Жанр:</strong> Приключения / Военная история
+                                    <strong>Жанр:</strong> Образовательный детектив для подростков
                                 </p>
                                 <p style="margin: 0.5rem 0; color: #2C3E50;">
                                     <strong>Количество глав:</strong> 20
@@ -943,7 +951,19 @@ document.addEventListener('keydown', function(event) {
                             <div style="background: #F5F7FA; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
                                 <h4 style="color: #003D7A; margin-bottom: 1rem;">О книге:</h4>
                                 <p style="line-height: 1.8; color: #2C3E50; margin: 0;">
-                                    Здесь напишите описание вашей книги (2-4 абзаца). О чём книга? Какие темы раскрывает? Чему учит читателей?
+                                 История, которую ты не расскажешь родителям. Пока не прочтёшь эту книгу.
+Фишинг. Шантаж. Кибербуллинг. Фейковые друзья. Цифровой след.
+Это не просто слова из учебника — это реальные угрозы, с которыми может столкнуться каждый подросток с телефоном в руках.
+"Цифровой Фантом" — это:
+
+📱 20 глав, 20 табуированных тем
+🕵️ Захватывающий детектив с настоящими героями
+🛡️ Практические знания о безопасности
+💬 Ответы на вопросы, которые стыдно задать
+
+Даша, Артём, Лиза и Стас не супергерои. Они обычные школьники, которые совершают ошибки, боятся осуждения и не всегда знают, как поступить правильно.
+Но они нашли мужество действовать. Сможешь ли ты?
+
                                 </p>
                             </div>
 
@@ -980,7 +1000,7 @@ document.addEventListener('keydown', function(event) {
                                  style="padding: 1.25rem; background: #F5F7FA; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s ease;">
                                 <div style="flex: 1;">
                                     <h5 style="color: #003D7A; margin: 0 0 0.5rem 0; font-size: 1.2rem;">
-                                        Глава 1: Название первой главы
+                                        Глава 1: Странное сообщение
                                     </h5>
                                     <p style="margin: 0; color: #7F8C8D; font-size: 0.9rem;">
                                         Краткое описание главы 1 (1-2 предложения)
