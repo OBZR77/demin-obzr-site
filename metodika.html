@@ -2055,7 +2055,7 @@ document.addEventListener('keydown', function(event) {
     // Раскомментируйте следующую строку:
     // toggleLessonsAccordion();
 </script>
-<!-- СЕКЦИЯ: Презентации, наглядные материалы, печатные тесты и контрольные -->
+<!-- СЕКЦИЯ: Презентации и наглядные материалы -->
 <section class="content-section" style="margin-bottom: 2rem;">
     
     <!-- КЛИКАБЕЛЬНЫЙ ЗАГОЛОВОК СЕКЦИИ -->
@@ -2325,73 +2325,6 @@ document.addEventListener('keydown', function(event) {
     </div>
 
 </section>
-
-<!-- ============================================ -->
-<!-- CSS ДЛЯ АНИМАЦИЙ (точно как на странице ИИ) -->
-<!-- ============================================ -->
-<style>
-/* Главная секция при открытии */
-.section-accordion-content.active {
-    max-height: 8000px !important;
-    padding: 2rem 0 !important;
-    transition: max-height 1s ease-in, padding 0.3s ease !important;
-}
-
-/* Внутренние блоки при открытии */
-.module-content.active {
-    max-height: 3000px !important;
-    transition: max-height 0.7s ease-in !important;
-}
-
-/* Стиль заголовка блока при активации */
-.module-header.active {
-    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
-    color: white !important;
-}
-
-.module-header.active h3 {
-    color: white !important;
-}
-
-.module-header.active .module-icon {
-    transform: rotate(180deg) !important;
-    color: white !important;
-}
-
-/* Hover эффекты */
-.module-header:hover {
-    background: #E8EDF2;
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0,61,122,0.1);
-}
-
-.module-header.active:hover {
-    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
-    transform: translateX(0) !important;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .section-accordion-header h2 {
-        font-size: 1.2rem !important;
-    }
-    
-    .module-header h3 {
-        font-size: 1rem !important;
-    }
-    
-    .module-inner ul li {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start !important;
-    }
-    
-    .module-inner ul li a {
-        width: 100%;
-        text-align: center;
-    }
-}
-</style>
         <section style="margin-bottom: 3rem;">
             <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">👨‍🏫 Методические рекомендации для коллег</h2>
             
