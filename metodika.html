@@ -365,10 +365,71 @@
 .section-accordion-header {
     transition: all 0.3s ease;
 }
+/* Главная секция при открытии */
+.section-accordion-content.active {
+    max-height: 8000px !important;
+    padding: 2rem 0 !important;
+    transition: max-height 1s ease-in, padding 0.3s ease !important;
+}
 
+/* Внутренние блоки при открытии */
+.module-content.active {
+    max-height: 3000px !important;
+    transition: max-height 0.7s ease-in !important;
+}
+
+/* Стиль заголовка блока при активации */
+.module-header.active {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    color: white !important;
+}
+
+.module-header.active h3 {
+    color: white !important;
+}
+
+.module-header.active .module-icon {
+    transform: rotate(180deg) !important;
+    color: white !important;
+}
+
+/* Hover эффекты */
+.module-header:hover {
+    background: #E8EDF2;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,61,122,0.1);
+}
+
+.module-header.active:hover {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    transform: translateX(0) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-accordion-header h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .module-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .module-inner ul li {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    .module-inner ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}
 .section-accordion-header:hover {
     box-shadow: 0 6px 20px rgba(0,61,122,0.2);
-}  
+} 
+    
 </style>
 
 <script>
@@ -1597,7 +1658,7 @@ document.addEventListener('keydown', function(event) {
     // Раскомментируйте следующую строку:
     // toggleLessonsAccordion();
 </script>
-<!-- СЕКЦИЯ: Презентации и наглядные материалы (ПОЛНОСТЬЮ СВОРАЧИВАЕМАЯ) -->
+<!-- СЕКЦИЯ: Презентации, наглядные материалы, печатные тесты и контрольные -->
 <section class="content-section" style="margin-bottom: 2rem;">
     
     <!-- КЛИКАБЕЛЬНЫЙ ЗАГОЛОВОК СЕКЦИИ -->
@@ -1606,10 +1667,10 @@ document.addEventListener('keydown', function(event) {
          role="button" 
          aria-expanded="false" 
          aria-controls="presentations-section-content"
-         onclick="toggleSectionAccordion(this)"
+         id="presentations-section-toggle"
          style="background: #003D7A; 
                 border: 3px solid #FFA500; 
-                border-radius: 8px; 
+                border-radius: 12px;
                 padding: 1.5rem; 
                 color: white; 
                 cursor: pointer; 
@@ -1617,7 +1678,8 @@ document.addEventListener('keydown', function(event) {
                 justify-content: space-between; 
                 align-items: center; 
                 transition: all 0.3s ease;
-                margin-bottom: 0;">
+                margin-bottom: 0;
+                box-shadow: 0 4px 12px rgba(0,61,122,0.2);">
         <h2 style="margin: 0; font-size: 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
             🎨 Презентации и наглядные материалы
             <span style="font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem;">(нажмите для раскрытия)</span>
@@ -1625,36 +1687,49 @@ document.addEventListener('keydown', function(event) {
         <span class="section-accordion-icon" style="font-size: 1.8rem; transition: transform 0.3s ease;">▼</span>
     </div>
 
-    <!-- СОДЕРЖИМОЕ СЕКЦИИ (сворачивается) -->
+    <!-- СОДЕРЖИМОЕ СЕКЦИИ -->
     <div class="section-accordion-content" 
          id="presentations-section-content" 
          style="max-height: 0; 
                 overflow: hidden; 
-                transition: max-height 0.4s ease;">
+                transition: max-height 0.5s ease-out, padding 0.3s ease;
+                padding: 0;">
         
-        <div style="padding-top: 2rem;">
+        <div class="section-inner" style="padding: 2rem 0;">
             
             <!-- БЛОК 1: Презентации PowerPoint -->
-            <div class="module-accordion" style="background: #003D7A; border: 3px solid #FFA500; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s ease;">
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
                 <div class="module-header" 
                      tabindex="0" 
                      role="button" 
                      aria-expanded="false" 
                      aria-controls="presentations-content"
-                     onclick="toggleInnerAccordion(this)"
-                     style="padding: 1.5rem; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
+                     data-module="presentations"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
                         <span style="font-size: 1.5rem;">📊</span>
-                        <h3 style="margin: 0; font-size: 1.3rem; font-weight: 600;">
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
                             Презентации PowerPoint по модулям ОБЗР
-                            <span style="font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem;">(нажмите для раскрытия)</span>
                         </h3>
                     </div>
-                    <span class="module-icon" style="font-size: 1.5rem; transition: transform 0.3s ease;">▼</span>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
                 </div>
                 
-                <div class="module-content" id="presentations-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white;">
-                    <div style="padding: 2rem;">
+                <div class="module-content" 
+                     id="presentations-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
                                 <span style="color: #2C3E50;">
@@ -1695,26 +1770,38 @@ document.addEventListener('keydown', function(event) {
             </div>
 
             <!-- БЛОК 2: Наглядные материалы -->
-            <div class="module-accordion" style="background: #003D7A; border: 3px solid #FFA500; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s ease;">
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
                 <div class="module-header" 
                      tabindex="0" 
                      role="button" 
                      aria-expanded="false" 
                      aria-controls="materials-content"
-                     onclick="toggleInnerAccordion(this)"
-                     style="padding: 1.5rem; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
+                     data-module="materials"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
                         <span style="font-size: 1.5rem;">📋</span>
-                        <h3 style="margin: 0; font-size: 1.3rem; font-weight: 600;">
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
                             Наглядные материалы для учебных сборов
-                            <span style="font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem;">(нажмите для раскрытия)</span>
                         </h3>
                     </div>
-                    <span class="module-icon" style="font-size: 1.5rem; transition: transform 0.3s ease;">▼</span>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
                 </div>
                 
-                <div class="module-content" id="materials-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white;">
-                    <div style="padding: 2rem;">
+                <div class="module-content" 
+                     id="materials-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
                                 <span style="color: #2C3E50;">
@@ -1754,27 +1841,39 @@ document.addEventListener('keydown', function(event) {
                 </div>
             </div>
 
-            <!-- БЛОК 3: Печатные тесты и контрольные ⭐ НОВЫЙ -->
-            <div class="module-accordion" style="background: #003D7A; border: 3px solid #FFA500; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; transition: all 0.3s ease;">
+            <!-- БЛОК 3: Печатные тесты -->
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
                 <div class="module-header" 
                      tabindex="0" 
                      role="button" 
                      aria-expanded="false" 
                      aria-controls="tests-content"
-                     onclick="toggleInnerAccordion(this)"
-                     style="padding: 1.5rem; color: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
+                     data-module="tests"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
                         <span style="font-size: 1.5rem;">📝</span>
-                        <h3 style="margin: 0; font-size: 1.3rem; font-weight: 600;">
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
                             Печатные тесты и контрольные (PDF)
-                            <span style="font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem;">(нажмите для раскрытия)</span>
                         </h3>
                     </div>
-                    <span class="module-icon" style="font-size: 1.5rem; transition: transform 0.3s ease;">▼</span>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
                 </div>
                 
-                <div class="module-content" id="tests-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white;">
-                    <div style="padding: 2rem;">
+                <div class="module-content" 
+                     id="tests-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
                             <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
                                 <span style="color: #2C3E50;">
@@ -1824,12 +1923,78 @@ document.addEventListener('keydown', function(event) {
                 </div>
             </div>
 
-        </div> <!-- /padding-top -->
+        </div>
         
-    </div> <!-- /section-accordion-content -->
+    </div>
 
 </section>
 
+<!-- ============================================ -->
+<!-- CSS ДЛЯ АНИМАЦИЙ (точно как на странице ИИ) -->
+<!-- ============================================ -->
+<style>
+/* Главная секция при открытии */
+.section-accordion-content.active {
+    max-height: 8000px !important;
+    padding: 2rem 0 !important;
+    transition: max-height 1s ease-in, padding 0.3s ease !important;
+}
+
+/* Внутренние блоки при открытии */
+.module-content.active {
+    max-height: 3000px !important;
+    transition: max-height 0.7s ease-in !important;
+}
+
+/* Стиль заголовка блока при активации */
+.module-header.active {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    color: white !important;
+}
+
+.module-header.active h3 {
+    color: white !important;
+}
+
+.module-header.active .module-icon {
+    transform: rotate(180deg) !important;
+    color: white !important;
+}
+
+/* Hover эффекты */
+.module-header:hover {
+    background: #E8EDF2;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,61,122,0.1);
+}
+
+.module-header.active:hover {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    transform: translateX(0) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-accordion-header h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .module-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .module-inner ul li {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    .module-inner ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
         <section style="margin-bottom: 3rem;">
             <h2 style="font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem;">👨‍🏫 Методические рекомендации для коллег</h2>
             
@@ -2649,6 +2814,143 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 4. Hover для кнопок скачивания
     const downloadButtons = document.querySelectorAll('.module-content a[download]');
+    downloadButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
+    });
+});
+</script> 
+  <script>
+// ==========================================
+// ГЛАВНАЯ СЕКЦИЯ
+// ==========================================
+const sectionToggle = document.getElementById('presentations-section-toggle');
+const sectionContent = document.getElementById('presentations-section-content');
+
+if (sectionToggle && sectionContent) {
+    sectionToggle.addEventListener('click', function() {
+        const icon = this.querySelector('.section-accordion-icon');
+        const isActive = sectionContent.classList.contains('active');
+        
+        if (isActive) {
+            // ЗАКРЫВАЕМ
+            sectionContent.classList.remove('active');
+            sectionContent.style.maxHeight = '0px';
+            sectionContent.style.padding = '0';
+            icon.style.transform = 'rotate(0deg)';
+            this.style.background = '#003D7A';
+            this.setAttribute('aria-expanded', 'false');
+        } else {
+            // ОТКРЫВАЕМ
+            sectionContent.classList.add('active');
+            sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+            icon.style.transform = 'rotate(180deg)';
+            this.style.background = 'linear-gradient(135deg, #003D7A 0%, #00518A 100%)';
+            this.setAttribute('aria-expanded', 'true');
+        }
+    });
+    
+    // Hover эффект для главной секции
+    sectionToggle.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 6px 20px rgba(0,61,122,0.3)';
+    });
+    
+    sectionToggle.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 12px rgba(0,61,122,0.2)';
+    });
+}
+
+// ==========================================
+// ВНУТРЕННИЕ БЛОКИ (точно как toggleModule)
+// ==========================================
+function togglePresentationsModule(header) {
+    const moduleId = header.getAttribute('data-module');
+    const contentId = moduleId + '-content';
+    const content = document.getElementById(contentId);
+    const isActive = header.classList.contains('active');
+    const icon = header.querySelector('.module-icon');
+    const title = header.querySelector('h3');
+
+    if (isActive) {
+        // ЗАКРЫВАЕМ
+        header.classList.remove('active');
+        content.classList.remove('active');
+        content.style.maxHeight = '0px';
+        icon.style.transform = 'rotate(0deg)';
+        icon.style.color = '#003D7A';
+        header.style.background = '#F5F7FA';
+        header.style.color = '#2C3E50';
+        title.style.color = '#2C3E50';
+        header.setAttribute('aria-expanded', 'false');
+    } else {
+        // ОТКРЫВАЕМ
+        header.classList.add('active');
+        content.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+        icon.style.color = 'white';
+        header.style.background = 'linear-gradient(135deg, #003D7A 0%, #00518A 100%)';
+        header.style.color = 'white';
+        title.style.color = 'white';
+        header.setAttribute('aria-expanded', 'true');
+        
+        // Пересчитываем высоту родительской секции
+        setTimeout(() => {
+            if (sectionContent.classList.contains('active')) {
+                sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+            }
+        }, 700); // После окончания анимации блока (0.7s)
+    }
+}
+
+// Привязываем события ко всем блокам
+const moduleHeaders = document.querySelectorAll('.module-header[data-module]');
+moduleHeaders.forEach(header => {
+    // Клик
+    header.addEventListener('click', function() {
+        togglePresentationsModule(this);
+    });
+    
+    // Клавиатура (Enter или Space)
+    header.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            togglePresentationsModule(this);
+        }
+    });
+});
+
+// ==========================================
+// HOVER-ЭФФЕКТЫ ДЛЯ ЭЛЕМЕНТОВ
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Hover для строк с файлами
+    const listItems = document.querySelectorAll('.module-inner ul li');
+    listItems.forEach(item => {
+        if (!item.textContent.includes('💡')) {
+            item.addEventListener('mouseenter', function() {
+                this.style.background = '#F5F7FA';
+                this.style.transform = 'translateX(8px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.background = '';
+                this.style.transform = 'translateX(0)';
+            });
+        }
+    });
+    
+    // Hover для кнопок скачивания
+    const downloadButtons = document.querySelectorAll('.module-inner a[download]');
     downloadButtons.forEach(btn => {
         btn.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
