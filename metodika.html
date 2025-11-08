@@ -3307,5 +3307,61 @@ sectionToggle.addEventListener('click', function() {
   icon.style.transform = isActive ? "rotate(180deg)" : "rotate(0deg)";
   icon.style.color = isActive ? "#fff" : "#003D7A";
 });  
+ <script>
+  // Управление раскрытием главной секции "Презентации и наглядные материалы"
+  document.addEventListener('DOMContentLoaded', function () {
+    const sectionToggle = document.getElementById('presentations-section-toggle');
+    const sectionContent = document.getElementById('presentations-section-content');
+    const icon = sectionToggle.querySelector('.section-accordion-icon');
+
+    sectionToggle.addEventListener('click', function () {
+      const isActive = sectionContent.classList.toggle('active');
+      sectionToggle.classList.toggle('active', isActive);
+      sectionToggle.setAttribute('aria-expanded', isActive);
+
+      if(isActive) {
+        sectionContent.hidden = false;
+        sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+        icon.style.color = 'white';
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        sectionContent.style.maxHeight = '0';
+        icon.style.color = 'white';
+        icon.style.transform = 'rotate(0deg)';
+        setTimeout(() => sectionContent.hidden = true, 500);
+      }
+    });
+
+    // Управление модулями внутри секции
+    const moduleHeaders = document.querySelectorAll('.module-header[data-module]');
+    moduleHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const contentId = header.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+        const icon = header.querySelector('.module-icon');
+        const isActive = header.classList.toggle('active');
+        content.classList.toggle('active', isActive);
+        header.setAttribute('aria-expanded', isActive);
+
+        if(isActive) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.color = 'white';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0';
+          icon.style.color = 'var(--color-primary)';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+      // Клавиатурное управление Enter и Space
+      header.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+  });
+</script>   
 </body>
 </html>
