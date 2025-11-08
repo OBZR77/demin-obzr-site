@@ -3293,6 +3293,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-</script>  
+</script> 
+  const sectionToggle = document.getElementById('presentations-section-toggle');
+const sectionContent = document.getElementById('presentations-section-content');
+const icon = sectionToggle.querySelector('.section-accordion-icon');
+
+sectionToggle.addEventListener('click', function() {
+  const isActive = sectionContent.classList.toggle('active');
+  sectionToggle.classList.toggle('active', isActive);
+  sectionToggle.setAttribute('aria-expanded', isActive);
+
+  // Поворот и цвет стрелки
+  icon.style.transform = isActive ? "rotate(180deg)" : "rotate(0deg)";
+  icon.style.color = isActive ? "#fff" : "#003D7A";
+});  
 </body>
 </html>
