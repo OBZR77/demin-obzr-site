@@ -429,7 +429,67 @@
 .section-accordion-header:hover {
     box-shadow: 0 6px 20px rgba(0,61,122,0.2);
 } 
+ /* Главная секция при открытии */
+.section-accordion-content.active {
+    max-height: 8000px !important;
+    padding: 2rem 0 !important;
+    transition: max-height 1s ease-in, padding 0.3s ease !important;
+}
+
+/* Внутренние блоки при открытии */
+.module-content.active {
+    max-height: 3000px !important;
+    transition: max-height 0.7s ease-in !important;
+}
+
+/* Стиль заголовка блока при активации */
+.module-header.active {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    color: white !important;
+}
+
+.module-header.active h3 {
+    color: white !important;
+}
+
+.module-header.active .module-icon {
+    transform: rotate(180deg) !important;
+    color: white !important;
+}
+
+/* Hover эффекты */
+.module-header:hover {
+    background: #E8EDF2;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,61,122,0.1);
+}
+
+.module-header.active:hover {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    transform: translateX(0) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-accordion-header h2 {
+        font-size: 1.2rem !important;
+    }
     
+    .module-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .module-inner ul li {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    .module-inner ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}   
 </style>
 
 <script>
@@ -696,6 +756,343 @@ document.addEventListener('keydown', function(event) {
         .content-section {
             animation: fadeIn 0.5s ease-out;
         }
+       <!-- СЕКЦИЯ: Презентации и наглядные материалы -->
+<section class="content-section" style="margin-bottom: 2rem;">
+    
+    <!-- КЛИКАБЕЛЬНЫЙ ЗАГОЛОВОК СЕКЦИИ -->
+    <div class="section-accordion-header" 
+         tabindex="0" 
+         role="button" 
+         aria-expanded="false" 
+         aria-controls="presentations-section-content"
+         id="presentations-section-toggle"
+         style="background: #003D7A; 
+                border: 3px solid #FFA500; 
+                border-radius: 12px;
+                padding: 1.5rem; 
+                color: white; 
+                cursor: pointer; 
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
+                transition: all 0.3s ease;
+                margin-bottom: 0;
+                box-shadow: 0 4px 12px rgba(0,61,122,0.2);">
+        <h2 style="margin: 0; font-size: 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.75rem;">
+            🎨 Презентации и наглядные материалы
+            <span style="font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem;">(нажмите для раскрытия)</span>
+        </h2>
+        <span class="section-accordion-icon" style="font-size: 1.8rem; transition: transform 0.3s ease;">▼</span>
+    </div>
+
+    <!-- СОДЕРЖИМОЕ СЕКЦИИ -->
+    <div class="section-accordion-content" 
+         id="presentations-section-content" 
+         style="max-height: 0; 
+                overflow: hidden; 
+                transition: max-height 0.5s ease-out, padding 0.3s ease;
+                padding: 0;">
+        
+        <div class="section-inner" style="padding: 2rem 0;">
+            
+            <!-- БЛОК 1: Презентации PowerPoint -->
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
+                <div class="module-header" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="presentations-content"
+                     data-module="presentations"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
+                        <span style="font-size: 1.5rem;">📊</span>
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
+                            Презентации PowerPoint по модулям ОБЗР
+                        </h3>
+                    </div>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
+                </div>
+                
+                <div class="module-content" 
+                     id="presentations-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Модуль 2:</strong> "Военная подготовка. Строевые приёмы"
+                                </span>
+                                <a href="files/presentations/modul-02-stroevye.pptx" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #003D7A; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PPTX
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Модуль 4:</strong> "Пожарная безопасность в быту"
+                                </span>
+                                <a href="files/presentations/modul-04-pozharnaya.pptx" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #003D7A; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PPTX
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Модуль 8:</strong> "Первая помощь при переломах"
+                                </span>
+                                <a href="files/presentations/modul-08-pervaya-pomosh.pptx" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #003D7A; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PPTX
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; background: #F5F7FA; text-align: center; color: #7F8C8D; font-style: italic;">
+                                💡 Добавьте свои презентации...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 2: Наглядные материалы -->
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
+                <div class="module-header" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="materials-content"
+                     data-module="materials"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
+                        <span style="font-size: 1.5rem;">📋</span>
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
+                            Наглядные материалы для учебных сборов
+                        </h3>
+                    </div>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
+                </div>
+                
+                <div class="module-content" 
+                     id="materials-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Карточки строевых команд</strong> — для практических занятий
+                                </span>
+                                <a href="files/materials/stroevye-kartochki.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #E53935; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Схемы действий при ЧС</strong> — инфографика для класса
+                                </span>
+                                <a href="files/materials/skhemy-chs.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #E53935; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Плакаты по безопасности</strong> — комплект для кабинета
+                                </span>
+                                <a href="files/materials/plakaty-bezopasnost.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #E53935; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; background: #F5F7FA; text-align: center; color: #7F8C8D; font-style: italic;">
+                                💡 Добавьте свои наглядные материалы...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 3: Печатные тесты -->
+            <div class="module-accordion" style="border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
+                <div class="module-header" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="tests-content"
+                     data-module="tests"
+                     style="background: #F5F7FA;
+                            padding: 1.25rem 1.5rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            transition: all 0.3s ease;
+                            border-left: 4px solid #003D7A;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1;">
+                        <span style="font-size: 1.5rem;">📝</span>
+                        <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: #2C3E50; transition: color 0.3s ease;">
+                            Печатные тесты и контрольные (PDF)
+                        </h3>
+                    </div>
+                    <span class="module-icon" style="font-size: 1.25rem; transition: transform 0.3s ease; color: #003D7A;">▼</span>
+                </div>
+                
+                <div class="module-content" 
+                     id="tests-content" 
+                     style="max-height: 0; 
+                            overflow: hidden; 
+                            transition: max-height 0.5s ease-out;
+                            background: white;">
+                    <div class="module-inner" style="padding: 2rem; border: 1px solid #E0E7EE; border-top: none;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Тест по модулю 2:</strong> "Военная подготовка" (8 класс)
+                                </span>
+                                <a href="files/tests/test-modul-02-8klass.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Контрольная работа:</strong> "Основы медицинских знаний" (9 класс)
+                                </span>
+                                <a href="files/tests/kontrolnaya-modul-08-9klass.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Тест итоговый:</strong> "Безопасность в быту и на транспорте" (10 класс)
+                                </span>
+                                <a href="files/tests/test-itogovyy-10klass.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; border-bottom: 1px solid #E1E8ED; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;">
+                                <span style="color: #2C3E50;">
+                                    <strong style="color: #003D7A;">Зачёт по учебным сборам:</strong> Теоретическая часть (10 класс)
+                                </span>
+                                <a href="files/tests/zachet-sbory-10klass.pdf" 
+                                   download 
+                                   style="padding: 0.5rem 1.25rem; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; white-space: nowrap; transition: all 0.3s ease;">
+                                    📥 Скачать PDF
+                                </a>
+                            </li>
+                            <li style="padding: 1rem; background: #F5F7FA; text-align: center; color: #7F8C8D; font-style: italic;">
+                                💡 Добавьте свои тесты и контрольные работы...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+</section>
+
+<!-- ============================================ -->
+<!-- CSS ДЛЯ АНИМАЦИЙ (точно как на странице ИИ) -->
+<!-- ============================================ -->
+<style>
+/* Главная секция при открытии */
+.section-accordion-content.active {
+    max-height: 8000px !important;
+    padding: 2rem 0 !important;
+    transition: max-height 1s ease-in, padding 0.3s ease !important;
+}
+
+/* Внутренние блоки при открытии */
+.module-content.active {
+    max-height: 3000px !important;
+    transition: max-height 0.7s ease-in !important;
+}
+
+/* Стиль заголовка блока при активации */
+.module-header.active {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    color: white !important;
+}
+
+.module-header.active h3 {
+    color: white !important;
+}
+
+.module-header.active .module-icon {
+    transform: rotate(180deg) !important;
+    color: white !important;
+}
+
+/* Hover эффекты */
+.module-header:hover {
+    background: #E8EDF2;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,61,122,0.1);
+}
+
+.module-header.active:hover {
+    background: linear-gradient(135deg, #003D7A 0%, #00518A 100%) !important;
+    transform: translateX(0) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-accordion-header h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    .module-header h3 {
+        font-size: 1rem !important;
+    }
+    
+    .module-inner ul li {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+    
+    .module-inner ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style> 
     </style>
 </head>
 <body>
