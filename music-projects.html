@@ -875,235 +875,246 @@
         // ============================================
         // ПЛЕЙЕР
         // ============================================
-        
-        // Данные плейлиста
-        const musicPlaylist = [
-            {
-                title: "01 Нашей школе 55!",
-                subtitle: "К юбилею школы",
-                filename: "01-nashey-shcolye-55!.mp3",
-                duration: "4:27",
-                isEmpty: false
-            },
-            {
-                title: "Трек 2 — будет добавлен позже",
-                subtitle: "Загрузите MP3-файл 02.mp3",
-                filename: "02.mp3",
-                duration: "0:00",
-                isEmpty: true
-            },
-            {
-                title: "Трек 3 — будет добавлен позже",
-                subtitle: "Загрузите MP3-файл 03.mp3",
-                filename: "03.mp3",
-                duration: "0:00",
-                isEmpty: true
-            },
-            {
-                title: "Трек 4 — будет добавлен позже",
-                subtitle: "Загрузите MP3-файл 04.mp3",
-                filename: "04.mp3",
-                duration: "0:00",
-                isEmpty: true
-            },
-            {
-                title: "Трек 5 — будет добавлен позже",
-                subtitle: "Загрузите MP3-файл 05.mp3",
-                filename: "05.mp3",
-                duration: "0:00",
-                isEmpty: true
-            }
-        ];
-
-        // Переменные
-        const musicAudio = document.createElement('audio');
-        musicAudio.id = 'musicAudioPlayer';
-        document.body.appendChild(musicAudio);
-
-        const musicPlayPauseBtn = document.getElementById('musicPlayPauseBtn');
-        const musicPrevBtn = document.getElementById('musicPrevBtn');
-        const musicNextBtn = document.getElementById('musicNextBtn');
-        const musicProgressBar = document.getElementById('musicProgressBar');
-        const musicProgressFill = document.getElementById('musicProgressFill');
-        const musicCurrentTime = document.getElementById('musicCurrentTime');
-        const musicDuration = document.getElementById('musicDuration');
-        const musicCurrentTitle = document.getElementById('musicCurrentTitle');
-        const musicCurrentSubtitle = document.getElementById('musicCurrentSubtitle');
-        const musicVolumeSlider = document.getElementById('musicVolumeSlider');
-        const musicTrackList = document.getElementById('musicTrackList');
-
-        let musicCurrentTrackIndex = 0;
-        let musicIsPlaying = false;
-
-        // Инициализация списка треков
-        function initMusicPlaylist() {
-            if (!musicTrackList) return;
-            
-            musicPlaylist.forEach((track, index) => {
-                const trackItem = document.createElement('div');
-                trackItem.className = 'music-track-item';
-                if (index === 0) trackItem.classList.add('active');
-                
-                if (track.isEmpty) {
-                    trackItem.style.opacity = '0.6';
-                    trackItem.style.cursor = 'not-allowed';
-                }
-                
-                trackItem.innerHTML = `
-                    <div class="music-track-number">${index + 1}</div>
-                    <div class="music-track-info">
-                        <div class="music-track-title">${track.title}</div>
-                        <div class="music-track-duration">${track.isEmpty ? '📁 Файл не загружен' : track.duration}</div>
-                    </div>
-                `;
-                
-                trackItem.addEventListener('click', () => {
-                    if (track.isEmpty) {
-                        alert('⚠️ Этот трек ещё не загружен.\n\nЗагрузите MP3-файл "' + track.filename + '" в папку audio/ на GitHub.');
-                    } else {
-                        loadMusicTrack(index);
-                    }
-                });
-                
-                musicTrackList.appendChild(trackItem);
-            });
+      <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
         }
+        // Данные плейлиста (ПУСТЫЕ СЛОТЫ)
+    const musicPlaylist = [
+        {
+            title: "Нашей школе 55!",
+            subtitle: "К юбилею школы.mp3",
+            filename: "01-nashey-shcolye-55!.mp3",
+            duration: "4:27",
+            isEmpty: false   // Флаг пустого слота
+        },
+        {
+            title: "Трек 2 — будет добавлен позже",
+            subtitle: "Загрузите MP3-файл 02.mp3",
+            filename: "02.mp3",
+            duration: "0:00",
+            isEmpty: true
+        },
+        {
+            title: "Трек 3 — будет добавлен позже",
+            subtitle: "Загрузите MP3-файл 03.mp3",
+            filename: "03.mp3",
+            duration: "0:00",
+            isEmpty: true
+        },
+        {
+            title: "Трек 4 — будет добавлен позже",
+            subtitle: "Загрузите MP3-файл 04.mp3",
+            filename: "04.mp3",
+            duration: "0:00",
+            isEmpty: true
+        },
+        {
+            title: "Трек 5 — будет добавлен позже",
+            subtitle: "Загрузите MP3-файл 05.mp3",
+            filename: "05.mp3",
+            duration: "0:00",
+            isEmpty: true
+        }
+    ];
 
-        // Загрузка трека
-        function loadMusicTrack(index) {
-            const track = musicPlaylist[index];
+    // Переменные
+    const musicAudio = document.createElement('audio');
+    musicAudio.id = 'musicAudioPlayer';
+    document.body.appendChild(musicAudio);
+
+    const musicPlayPauseBtn = document.getElementById('musicPlayPauseBtn');
+    const musicPrevBtn = document.getElementById('musicPrevBtn');
+    const musicNextBtn = document.getElementById('musicNextBtn');
+    const musicProgressBar = document.getElementById('musicProgressBar');
+    const musicProgressFill = document.getElementById('musicProgressFill');
+    const musicCurrentTime = document.getElementById('musicCurrentTime');
+    const musicDuration = document.getElementById('musicDuration');
+    const musicCurrentTitle = document.getElementById('musicCurrentTitle');
+    const musicCurrentSubtitle = document.getElementById('musicCurrentSubtitle');
+    const musicVolumeSlider = document.getElementById('musicVolumeSlider');
+    const musicTrackList = document.getElementById('musicTrackList');
+
+    let musicCurrentTrackIndex = 0;
+    let musicIsPlaying = false;
+
+    // Инициализация списка треков
+    function initMusicPlaylist() {
+        if (!musicTrackList) return;
+        
+        musicPlaylist.forEach((track, index) => {
+            const trackItem = document.createElement('div');
+            trackItem.className = 'music-track-item';
+            if (index === 0) trackItem.classList.add('active');
             
+            // Добавляем класс для пустых слотов
             if (track.isEmpty) {
-                musicCurrentTitle.textContent = 'Трек не загружен';
-                musicCurrentSubtitle.textContent = 'Загрузите файл ' + track.filename;
-                return;
+                trackItem.style.opacity = '0.6';
+                trackItem.style.cursor = 'not-allowed';
             }
             
-            musicCurrentTrackIndex = index;
+            trackItem.innerHTML = `
+                <div class="music-track-number">${index + 1}</div>
+                <div class="music-track-info">
+                    <div class="music-track-title">${track.title}</div>
+                    <div class="music-track-duration">${track.isEmpty ? '📁 Файл не загружен' : track.duration}</div>
+                </div>
+            `;
             
-            musicAudio.src = `audio/${track.filename}`;
-            musicCurrentTitle.textContent = track.title;
-            musicCurrentSubtitle.textContent = track.subtitle;
-            
-            document.querySelectorAll('.music-track-item').forEach((item, i) => {
-                item.classList.toggle('active', i === index);
+            trackItem.addEventListener('click', () => {
+                if (track.isEmpty) {
+                    alert('⚠️ Этот трек ещё не загружен.\n\nЗагрузите MP3-файл "' + track.filename + '" в папку audio/ на GitHub.');
+                } else {
+                    loadMusicTrack(index);
+                }
             });
             
-            if (musicIsPlaying) {
-                musicAudio.play();
-            }
-        }
-
-        // Play/Pause
-        function toggleMusicPlayPause() {
-            const currentTrack = musicPlaylist[musicCurrentTrackIndex];
-            
-            if (currentTrack.isEmpty) {
-                alert('⚠️ Сначала загрузите MP3-файлы в папку audio/');
-                return;
-            }
-            
-            if (musicIsPlaying) {
-                musicAudio.pause();
-                musicPlayPauseBtn.textContent = '▶️';
-            } else {
-                musicAudio.play();
-                musicPlayPauseBtn.textContent = '⏸';
-            }
-            musicIsPlaying = !musicIsPlaying;
-        }
-
-        // Предыдущий трек
-        function musicPrevTrack() {
-            let newIndex = (musicCurrentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
-            
-            while (musicPlaylist[newIndex].isEmpty && newIndex !== musicCurrentTrackIndex) {
-                newIndex = (newIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
-            }
-            
-            musicCurrentTrackIndex = newIndex;
-            loadMusicTrack(musicCurrentTrackIndex);
-            if (musicIsPlaying && !musicPlaylist[newIndex].isEmpty) {
-                musicAudio.play();
-            }
-        }
-
-        // Следующий трек
-        function musicNextTrack() {
-            let newIndex = (musicCurrentTrackIndex + 1) % musicPlaylist.length;
-            
-            while (musicPlaylist[newIndex].isEmpty && newIndex !== musicCurrentTrackIndex) {
-                newIndex = (newIndex + 1) % musicPlaylist.length;
-            }
-            
-            musicCurrentTrackIndex = newIndex;
-            loadMusicTrack(musicCurrentTrackIndex);
-            if (musicIsPlaying && !musicPlaylist[newIndex].isEmpty) {
-                musicAudio.play();
-            }
-        }
-
-        // Обновление прогресса
-        function updateMusicProgress() {
-            if (musicAudio.duration) {
-                const progress = (musicAudio.currentTime / musicAudio.duration) * 100;
-                musicProgressFill.style.width = `${progress}%`;
-                musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
-            }
-        }
-        // Форматирование времени
-        function formatMusicTime(seconds) {
-            if (isNaN(seconds)) return '0:00';
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        // События
-        if (musicProgressBar) {
-            musicProgressBar.addEventListener('click', (e) => {
-                const rect = musicProgressBar.getBoundingClientRect();
-                const percent = (e.clientX - rect.left) / rect.width;
-                musicAudio.currentTime = percent * musicAudio.duration;
-            });
-        }
-
-        if (musicVolumeSlider) {
-            musicVolumeSlider.addEventListener('input', (e) => {
-                musicAudio.volume = e.target.value / 100;
-            });
-        }
-
-        musicAudio.addEventListener('loadedmetadata', () => {
-            if (musicDuration) {
-                musicDuration.textContent = formatMusicTime(musicAudio.duration);
-            }
+            musicTrackList.appendChild(trackItem);
         });
+    }
 
-        musicAudio.addEventListener('timeupdate', updateMusicProgress);
-
-        musicAudio.addEventListener('ended', () => {
-            musicNextTrack();
-        });
-
-        if (musicPlayPauseBtn) musicPlayPauseBtn.addEventListener('click', toggleMusicPlayPause);
-        if (musicPrevBtn) musicPrevBtn.addEventListener('click', musicPrevTrack);
-        if (musicNextBtn) musicNextBtn.addEventListener('click', musicNextTrack);
-
-        // Инициализация
-        musicAudio.volume = 0.7;
+    // Загрузка трека
+    function loadMusicTrack(index) {
+        const track = musicPlaylist[index];
         
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initMusicPlaylist);
+        // Проверка на пустой слот
+        if (track.isEmpty) {
+            musicCurrentTitle.textContent = 'Трек не загружен';
+            musicCurrentSubtitle.textContent = 'Загрузите файл ' + track.filename;
+            return;
+        }
+        
+        musicCurrentTrackIndex = index;
+        
+        musicAudio.src = `audio/${track.filename}`;
+        musicCurrentTitle.textContent = track.title;
+        musicCurrentSubtitle.textContent = track.subtitle;
+        
+        // Обновление активного трека
+        document.querySelectorAll('.music-track-item').forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+        
+        if (musicIsPlaying) {
+            musicAudio.play();
+        }
+    }
+
+    // Play/Pause
+    function toggleMusicPlayPause() {
+        const currentTrack = musicPlaylist[musicCurrentTrackIndex];
+        
+        if (currentTrack.isEmpty) {
+            alert('⚠️ Сначала загрузите MP3-файлы в папку audio/');
+            return;
+        }
+        
+        if (musicIsPlaying) {
+            musicAudio.pause();
+            musicPlayPauseBtn.textContent = '▶️';
         } else {
-            initMusicPlaylist();
+            musicAudio.play();
+            musicPlayPauseBtn.textContent = '⏸';
+        }
+        musicIsPlaying = !musicIsPlaying;
+    }
+
+    // Предыдущий трек
+    function musicPrevTrack() {
+        let newIndex = (musicCurrentTrackIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
+        
+        // Пропускаем пустые слоты
+        while (musicPlaylist[newIndex].isEmpty && newIndex !== musicCurrentTrackIndex) {
+            newIndex = (newIndex - 1 + musicPlaylist.length) % musicPlaylist.length;
         }
         
-        if (musicCurrentTitle) {
-            musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
-            musicCurrentSubtitle.textContent = 'Треки будут добавлены после загрузки MP3-файлов';
+        musicCurrentTrackIndex = newIndex;
+        loadMusicTrack(musicCurrentTrackIndex);
+        if (musicIsPlaying && !musicPlaylist[newIndex].isEmpty) {
+            musicAudio.play();
         }
-    </script>
+    }
+
+    // Следующий трек
+    function musicNextTrack() {
+        let newIndex = (musicCurrentTrackIndex + 1) % musicPlaylist.length;
+        
+        // Пропускаем пустые слоты
+        while (musicPlaylist[newIndex].isEmpty && newIndex !== musicCurrentTrackIndex) {
+            newIndex = (newIndex + 1) % musicPlaylist.length;
+        }
+        
+        musicCurrentTrackIndex = newIndex;
+        loadMusicTrack(musicCurrentTrackIndex);
+        if (musicIsPlaying && !musicPlaylist[newIndex].isEmpty) {
+            musicAudio.play();
+        }
+    }
+
+    // Обновление прогресса
+    function updateMusicProgress() {
+        if (musicAudio.duration) {
+            const progress = (musicAudio.currentTime / musicAudio.duration) * 100;
+            musicProgressFill.style.width = `${progress}%`;
+            musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
+        }
+    }
+
+    // Форматирование времени
+    function formatMusicTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // События
+    if (musicProgressBar) {
+        musicProgressBar.addEventListener('click', (e) => {
+            const rect = musicProgressBar.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            musicAudio.currentTime = percent * musicAudio.duration;
+        });
+    }
+
+    if (musicVolumeSlider) {
+        musicVolumeSlider.addEventListener('input', (e) => {
+            musicAudio.volume = e.target.value / 100;
+        });
+    }
+
+    musicAudio.addEventListener('loadedmetadata', () => {
+        if (musicDuration) {
+            musicDuration.textContent = formatMusicTime(musicAudio.duration);
+        }
+    });
+
+    musicAudio.addEventListener('timeupdate', updateMusicProgress);
+
+    musicAudio.addEventListener('ended', () => {
+        musicNextTrack();
+    });
+
+    if (musicPlayPauseBtn) musicPlayPauseBtn.addEventListener('click', toggleMusicPlayPause);
+    if (musicPrevBtn) musicPrevBtn.addEventListener('click', musicPrevTrack);
+    if (musicNextBtn) musicNextBtn.addEventListener('click', musicNextTrack);
+
+    // Инициализация плейлиста
+    musicAudio.volume = 0.7;
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMusicPlaylist);
+    } else {
+        initMusicPlaylist();
+    }
+    
+    // Загружаем первый трек (placeholder)
+    if (musicCurrentTitle) {
+        musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
+        musicCurrentSubtitle.textContent = 'Треки будут добавлены после загрузки MP3-файлов';
+    }
+    </script>   
+    
 <!-- Плавающая кнопка QR-код -->
     <div id="qrFloatingButton" 
          style="position: fixed; 
@@ -1511,6 +1522,7 @@
 </body>
 
 </html>
+
 
 
 
