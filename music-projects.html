@@ -1051,6 +1051,13 @@
                 musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
             }
         }
+        // Добавить этот блок для оставшегося времени
+        if (musicTimeRemaining) {
+            const remaining = musicAudio.duration - musicAudio.currentTime;
+            musicTimeRemaining.textContent = '-' + formatMusicTime(remaining);
+        }
+    }
+}
 
         // Форматирование времени
         function formatMusicTime(seconds) {
@@ -1512,6 +1519,7 @@
 </body>
 
 </html>
+
 
 
 
