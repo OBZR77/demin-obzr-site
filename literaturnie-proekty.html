@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Литературные проекты, созданные с использованием ИИ-инструментов">
+    <title>Литературные проекты | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+        
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+        
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transition-delay: 0s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+        
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+        
+        .submenu li {
+            margin: 0;
+        }
+        
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+        
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-danger);
+            font-weight: bold;
+        }
+        
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-top: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           БИБЛИОТЕКА КНИГ (АККОРДЕОН)
+           ============================================ */
+
+        .library-section {
+            margin: 3rem 0;
+            background: white;
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,61,122,0.15);
+        }
+
+        .library-header {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .library-header:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary-active) 100%);
+        }
+
+        .library-title {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .library-toggle-icon {
+            color: white;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+
+        .library-header.active .library-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .library-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+        }
+
+        .library-content.active {
+            max-height: 2000px;
+            padding: 2rem;
+        }
+
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Карточка книги */
+        .library-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .library-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,61,122,0.2);
+        }
+
+        /* Placeholder для будущих книг */
+        .library-card-placeholder {
+            opacity: 0.7;
+        }
+
+        .library-card-placeholder:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Обложка книги */
+        .library-card-cover {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: var(--color-surface);
+        }
+
+        .library-card-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .library-card:hover .library-card-cover img {
+            transform: scale(1.05);
+        }
+
+        /* Placeholder обложки */
+        .library-card-cover-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e6ed 0%, #c8d0d9 100%);
+        }
+
+        /* Контент карточки */
+        .library-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .library-card-content h4 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .library-card-genre {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .library-card-description {
+            color: var(--color-text-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        /* Кнопка "Читать" */
+        .library-card-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .library-card-btn:hover {
+            background: var(--color-primary-hover);
+            transform: scale(1.02);
+        }
+
+        .library-card-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ============================================
+           СТИЛИ ДЛЯ КНИГИ
+           ============================================ */
+        
+        .book-container {
+            margin-top: 2rem;
+        }
+
+        .book-info-card {
+            background: white;
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,61,122,0.15);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .book-cover-wrapper {
+            text-align: center;
+        }
+
+        .book-cover-wrapper img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-cover-wrapper img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        .book-cover-hint {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+
+        .book-details h3 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta {
+            margin-bottom: 1.5rem;
+        }
+
+        .book-meta p {
+            margin: 0.5rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .ai-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .book-description {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-description h4 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .book-description p {
+            line-height: 1.8;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .download-btn.secondary {
+            background: var(--color-primary-hover);
+        }
+
+        /* Главы книги */
+        .chapters-section {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .chapters-header {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chapter-accordion {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chapter-header {
+            padding: 1.25rem;
+            background: var(--color-surface);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .chapter-header:hover {
+            background: #E8ECF0;
+        }
+
+        .chapter-header.active {
+            background: #E8F0FA;
+        }
+
+        .chapter-info {
+            flex: 1;
+        }
+
+        .chapter-info h5 {
+            color: var(--color-primary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .chapter-info p {
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .chapter-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chapter-pdf-btn {
+            padding: 0.5rem 1rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .chapter-pdf-btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .chapter-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .chapter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .chapter-text {
+            padding: 2rem;
+            background: white;
+            border-top: 1px solid var(--color-border);
+            line-height: 2;
+            white-space: pre-line;
+            color: var(--color-text-primary);
+        }
+
+        .chapters-controls {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .chapters-controls button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .expand-btn {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .expand-btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .collapse-btn {
+            background: var(--color-text-secondary);
+            color: white;
+        }
+
+        .collapse-btn:hover {
+            background: #6c7a89;
+        }
+
+        /* Модальное окно для обложки */
+        #coverModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        #coverModal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            transition: color 0.3s ease;
+        }
+
+        #coverModal .close-btn:hover {
+            color: var(--color-danger);
+        }
+
+        #coverModal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            animation: zoomIn 0.3s ease;
+        }
+
+        #coverModal .hint {
+            position: absolute;
+            bottom: 30px;
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .placeholder-text {
+            color: var(--color-text-secondary);
+            font-style: italic;
+            padding: 1.5rem;
+            text-align: center;
+            background: #F9FAFB;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ============================================
+           АДАПТИВНОСТЬ
+           ============================================ */
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-primary);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu > li {
+                width: 100%;
+            }
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                border-top: none;
+                border-left: 3px solid var(--color-danger);
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                background-color: white !important;
+            }
+            
+            .nav-menu > li.has-submenu.open .submenu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+            
+            .submenu a {
+                color: var(--color-text-primary);
+                background-color: white;
+                padding-left: 2rem;
+            }
+            
+            main {
+                padding: 0 1rem 2rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .library-header {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .library-title {
+                font-size: 1.4rem;
+            }
+
+            .library-toggle-icon {
+                font-size: 1.5rem;
+            }
+
+            .library-content.active {
+                padding: 1.5rem 1rem;
+            }
+
+            .library-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .library-card-cover {
+                height: 250px;
+            }
+
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-cover-wrapper img {
+                max-width: 250px;
+            }
+
+            .book-details h3 {
+                font-size: 1.5rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .chapter-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .chapter-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .chapter-info h5 {
+                font-size: 1rem;
+            }
+
+            .chapters-controls {
+                flex-direction: column;
+            }
+
+            .chapters-controls button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openEmblemLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeEmblemLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+                    
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie.html">Образование</a></li>
+                            <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady.html">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="dokumenty.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="metodika.html#normativnaya-dokumentaciya">Нормативная документация</a></li>
+                            <li><a href="metodika.html#konspekty-urokov">Конспекты уроков</a></li>
+                            <li><a href="metodika.html#prezentacii-testy">Презентации и тесты</a></li>
+                            <li><a href="metodika.html#metodicheskie-rekomendacii">Методические рекомендации</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" class="active" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-poleznye-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya.html">Юнармия</a></li>
+                            <li><a href="yuid.html">ЮИД</a></li>
+                            <li><a href="zarnica.html">Зарница 2.0</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="uchebno-polevye-sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь</a></li>
+                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="page-title">📝 Литературные проекты</h2>
+        
+        <p class="page-subtitle">
+            Стихи, рассказы и литературные произведения, созданные с помощью ИИ-инструментов на темы безопасности, военной подготовки и патриотизма.
+        </p>
+
+        <!-- ============================================
+             БИБЛИОТЕКА КНИГ (КЛИКАБЕЛЬНЫЙ АККОРДЕОН)
+             ============================================ -->
+        <div class="library-section">
+            <div class="library-header" onclick="toggleLibrary()">
+                <h3 class="library-title">📚 Библиотека проектов</h3>
+                <span class="library-toggle-icon">▼</span>
+            </div>
+            
+            <div class="library-content" id="libraryContent">
+                <div class="library-grid">
+                    
+                    <!-- Карточка книги 1 -->
+                    <div class="library-card">
+                        <div class="library-card-cover">
+                            <img src="files/books/book1-cover.jpg" alt="Обложка: Цифровой фантом">
+                        </div>
+                        <div class="library-card-content">
+                            <h4>Цифровой фантом</h4>
+                            <p class="library-card-genre">🎭 Образовательный детектив</p>
+                            <p class="library-card-description">История о кибербезопасности и цифровых угрозах для подростков</p>
+                            <a href="#book1" class="library-card-btn" onclick="scrollToBook('book1')">📖 Читать онлайн</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Карточка книги 2 (placeholder) -->
+                    <div class="library-card library-card-placeholder">
+                        <div class="library-card-cover">
+                            <div class="library-card-cover-placeholder">
+                                <span style="font-size: 4rem;">📕</span>
+                            </div>
+                        </div>
+                        <div class="library-card-content">
+                            <h4>Книга 2 — скоро</h4>
+                            <p class="library-card-genre">🚧 В разработке</p>
+                            <p class="library-card-description">Новый литературный проект будет добавлен позже</p>
+                            <button class="library-card-btn" disabled style="opacity: 0.5; cursor: not-allowed;">🔒 Скоро</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Карточка книги 3 (placeholder) -->
+                    <div class="library-card library-card-placeholder">
+                        <div class="library-card-cover">
+                            <div class="library-card-cover-placeholder">
+                                <span style="font-size: 4rem;">📗</span>
+                            </div>
+                        </div>
+                        <div class="library-card-content">
+                            <h4>Книга 3 — скоро</h4>
+                            <p class="library-card-genre">🚧 В разработке</p>
+                            <p class="library-card-description">Новый литературный проект будет добавлен позже</p>
+                            <button class="library-card-btn" disabled style="opacity: 0.5; cursor: not-allowed;">🔒 Скоро</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================
+             ПОЛНОЕ СОДЕРЖИМОЕ КНИГИ
+             ============================================ -->
+        <div class="book-container" id="book1">
+            
+            <!-- Информация о книге -->
+            <div class="book-info-card">
+                <div class="book-grid">
+                    <!-- Обложка -->
+                    <div class="book-cover-wrapper">
+                        <img src="files/books/book1-cover.jpg" 
+                             alt="Обложка книги — кликните для увеличения" 
+                             onclick="openCoverModal()">
+                        <p class="book-cover-hint">Кликните для полноэкранного просмотра</p>
+                    </div>
+                    
+                    <!-- Детали книги -->
+                    <div class="book-details">
+                        <h3>Цифровой фантом</h3>
+                        
+                        <div class="book-meta">
+                            <p><strong>Автор:</strong> © А.Ю.Дёмин, 2025</p>
+                            <p><strong>Жанр:</strong> Образовательный детектив для подростков</p>
+                            <p><strong>Создано с помощью:</strong> <span class="ai-badge">Claude AI</span></p>
+                            <p><strong>Примечание:</strong> При копировании ссылка на источник обязательна</p>
+                        </div>
+
+                        <!-- Описание -->
+                        <div class="book-description">
+                            <h4>О книге:</h4>
+                            <p>История, которую ты не расскажешь родителям.<br> 
+                            Пока не прочтёшь эту книгу.<br><br>
+                            Фишинг. Шантаж. Кибербуллинг. Фейковые друзья. Цифровой след.<br>
+                            Это не просто слова из учебника — это реальные угрозы,<br>
+                            с которыми может столкнуться каждый подросток с телефоном в руках.<br><br>
+                            Даша, Артём, Лиза и Стас не супергерои. Они обычные школьники,<br>
+                            которые совершают ошибки, боятся осуждения и не всегда знают,<br>
+                            как поступить правильно.<br><br>
+                            Но они нашли мужество действовать. Сможешь ли ты?</p>
+                        </div>
+
+                        <!-- Кнопки скачивания -->
+                        <div class="download-buttons">
+                            <a href="files/books/book1-full.pdf" download class="download-btn">
+                                📥 Скачать всю книгу (PDF)
+                            </a>
+                            <a href="files/books/book1-full.docx" download class="download-btn secondary">
+                                📥 Скачать всю книгу (DOCX)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Главы книги -->
+            <div class="chapters-section">
+                <h4 class="chapters-header">📚 Главы книги</h4>
+
+                <div class="chapters-list">
+                    
+                    <!-- Глава 1 -->
+                    <div class="chapter-accordion">
+                        <div class="chapter-header" onclick="toggleChapter(this)">
+                            <div class="chapter-info">
+                                <h5>Глава 1: Странное сообщение</h5>
+                                <p>На тренировке Даша узнает о списании денег с игрового аккаунта, подруги по команде получают странные сообщения от неизвестного бота.</p>
+                            </div>
+                            <div class="chapter-actions">
+                                <a href="files/books/chapters/chapter-01.pdf" download class="chapter-pdf-btn" onclick="event.stopPropagation();">📥 PDF</a>
+                                <span class="chapter-icon">▼</span>
+                            </div>
+                        </div>
+                        <div class="chapter-content">
+                            <div class="chapter-text">Здесь размещается полный текст главы 1.
+
+Вставьте весь текст главы сюда. Переносы строк сохранятся автоматически.
+
+Вы можете использовать абзацы, просто разделяя их пустой строкой.
+
+<strong style="color: #003D7A;">Конец главы 1</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Глава 2 -->
+                    <div class="chapter-accordion">
+                        <div class="chapter-header" onclick="toggleChapter(this)">
+                            <div class="chapter-info">
+                                <h5>Глава 2: Бот-помощник</h5>
+                                <p>Лиза подписывается на бота для помощи с уроками, постепенно втягивается в зависимость, получает личные вопросы от бота.</p>
+                            </div>
+                            <div class="chapter-actions">
+                                <a href="files/books/chapters/chapter-02.pdf" download class="chapter-pdf-btn" onclick="event.stopPropagation();">📥 PDF</a>
+                                <span class="chapter-icon">▼</span>
+                            </div>
+                        </div>
+                        <div class="chapter-content">
+                            <div class="chapter-text">Текст главы 2...
+
+<strong style="color: #003D7A;">Конец главы 2</strong></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Кнопки управления главами -->
+                <div class="chapters-controls">
+                    <button onclick="expandAllChapters()" class="expand-btn">📖 Развернуть все главы</button>
+                    <button onclick="collapseAllChapters()" class="collapse-btn">📕 Свернуть все главы</button>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="placeholder-text">💡 Здесь могут быть добавлены другие литературные проекты</p>
+        
+    </main>
+
+    <!-- Модальное окно для обложки -->
+    <div id="coverModal" onclick="closeCoverModal()">
+        <span class="close-btn" onclick="closeCoverModal()">&times;</span>
+        <img src="files/books/book1-cover.jpg" alt="Обложка книги" onclick="event.stopPropagation()">
+        <p class="hint">Кликните вне изображения или нажмите ESC для закрытия</p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта.<br>
+            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function handleSubmenuClick(event, element) {
+            if (window.innerWidth <= 768) {
+                const parentLi = element.parentElement;
+                const isOpen = parentLi.classList.contains('open');
+                if (isOpen) {
+                    return true;
+                }
+                event.preventDefault();
+                document.querySelectorAll('.has-submenu.open').forEach(item => {
+                    if (item !== parentLi) {
+                        item.classList.remove('open');
+                    }
+                });
+                parentLi.classList.add('open');
+                return false;
+            }
+            return true;
+        }
+
+        // Lightbox для эмблемы
+        function openEmblemLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEmblemLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Модальное окно для обложки
+        function openCoverModal() {
+            document.getElementById('coverModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCoverModal() {
+            document.getElementById('coverModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeEmblemLightbox();
+                closeCoverModal();
+            }
+        });
+
+        // ============================================
+        // АККОРДЕОН БИБЛИОТЕКИ
+        // ============================================
+
+        function toggleLibrary() {
+            const header = document.querySelector('.library-header');
+            const content = document.getElementById('libraryContent');
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // ============================================
+        // ПЛАВНАЯ ПРОКРУТКА К КНИГЕ
+        // ============================================
+
+        function scrollToBook(bookId) {
+            // Сначала закрываем библиотеку
+            const header = document.querySelector('.library-header');
+            const content = document.getElementById('libraryContent');
+            header.classList.remove('active');
+            content.classList.remove('active');
+            
+            // Затем прокручиваем к книге
+            setTimeout(() => {
+                const bookElement = document.getElementById(bookId);
+                if (bookElement) {
+                    bookElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                    
+                    // Добавляем визуальный эффект "подсветки"
+                    bookElement.style.transition = 'all 0.5s ease';
+                    bookElement.style.boxShadow = '0 0 30px rgba(0, 61, 122, 0.3)';
+                    
+                    setTimeout(() => {
+                        bookElement.style.boxShadow = '';
+                    }, 2000);
+                }
+            }, 400);
+        }
+
+        // ============================================
+        // АККОРДЕОН ДЛЯ ГЛАВ
+        // ============================================
+
+        function toggleChapter(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.chapter-icon');
+            
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                header.classList.remove('active');
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                header.classList.add('active');
+            }
+        }
+
+        function expandAllChapters() {
+            const allHeaders = document.querySelectorAll('.chapter-header');
+            const allContents = document.querySelectorAll('.chapter-content');
+            const allIcons = document.querySelectorAll('.chapter-icon');
+            
+            allContents.forEach((content, index) => {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                allIcons[index].style.transform = 'rotate(180deg)';
+                allHeaders[index].classList.add('active');
+            });
+        }
+
+        function collapseAllChapters() {
+            const allHeaders = document.querySelectorAll('.chapter-header');
+            const allContents = document.querySelectorAll('.chapter-content');
+            const allIcons = document.querySelectorAll('.chapter-icon');
+            
+            allContents.forEach((content, index) => {
+                content.style.maxHeight = '0px';
+                allIcons[index].style.transform = 'rotate(0deg)';
+                allHeaders[index].classList.remove('active');
+            });
+        }
+    </script>
+<!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="images/qr-code-obzr.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <!-- Стили для анимаций -->
+    <style>
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+
+    <!-- JavaScript для работы кнопки -->
+    <script>
+        const qrFloatingButton = document.getElementById('qrFloatingButton');
+        const qrModalWindow = document.getElementById('qrModalWindow');
+        const qrButtonHint = document.getElementById('qrButtonHint');
+        
+        let isDragging = false;
+        let startX, startY;
+        let currentX, currentY;
+        let offsetX = 0, offsetY = 0;
+        let dragStartTime = 0;
+        let hasMoved = false;
+        
+        function loadButtonPosition() {
+            const savedPos = localStorage.getItem('qrButtonPosition');
+            if (savedPos) {
+                const pos = JSON.parse(savedPos);
+                qrFloatingButton.style.left = pos.x + 'px';
+                qrFloatingButton.style.top = pos.y + 'px';
+                qrFloatingButton.style.right = 'auto';
+                qrFloatingButton.style.bottom = 'auto';
+            }
+        }
+        
+        function saveButtonPosition(x, y) {
+            localStorage.setItem('qrButtonPosition', JSON.stringify({ x, y }));
+        }
+        
+        qrFloatingButton.addEventListener('mousedown', function(e) {
+            startDragging(e.clientX, e.clientY);
+        });
+        
+        qrFloatingButton.addEventListener('touchstart', function(e) {
+            const touch = e.touches[0];
+            startDragging(touch.clientX, touch.clientY);
+        }, { passive: true });
+        
+        function startDragging(clientX, clientY) {
+            dragStartTime = Date.now();
+            hasMoved = false;
+            isDragging = true;
+            
+            const rect = qrFloatingButton.getBoundingClientRect();
+            offsetX = clientX - rect.left;
+            offsetY = clientY - rect.top;
+            
+            qrFloatingButton.classList.add('dragging');
+            qrButtonHint.style.display = 'none';
+        }
+        
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                moveButton(e.clientX, e.clientY);
+            }
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging) {
+                const touch = e.touches[0];
+                moveButton(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+        
+        function moveButton(clientX, clientY) {
+            hasMoved = true;
+            
+            currentX = clientX - offsetX;
+            currentY = clientY - offsetY;
+            
+            const maxX = window.innerWidth - qrFloatingButton.offsetWidth;
+            const maxY = window.innerHeight - qrFloatingButton.offsetHeight;
+            
+            currentX = Math.max(0, Math.min(currentX, maxX));
+            currentY = Math.max(0, Math.min(currentY, maxY));
+            
+            qrFloatingButton.style.left = currentX + 'px';
+            qrFloatingButton.style.top = currentY + 'px';
+            qrFloatingButton.style.right = 'auto';
+            qrFloatingButton.style.bottom = 'auto';
+        }
+        
+        document.addEventListener('mouseup', function() {
+            endDragging();
+        });
+        
+        document.addEventListener('touchend', function() {
+            endDragging();
+        });
+        
+        function endDragging() {
+            if (isDragging) {
+                qrFloatingButton.classList.remove('dragging');
+                
+                const dragDuration = Date.now() - dragStartTime;
+                
+                if (!hasMoved || dragDuration < 200) {
+                    openQRModal();
+                } else {
+                    saveButtonPosition(currentX, currentY);
+                }
+                
+                isDragging = false;
+            }
+        }
+        
+        function openQRModal() {
+            qrModalWindow.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            qrModalWindow.scrollTop = 0;
+        }
+        
+        function closeQRModal() {
+            qrModalWindow.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+        
+        qrModalWindow.addEventListener('click', function(event) {
+            if (event.target === qrModalWindow) {
+                closeQRModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && qrModalWindow.style.display === 'flex') {
+                closeQRModal();
+            }
+        });
+        
+        function showHintIfNeeded() {
+            const hintShown = localStorage.getItem('qrButtonHintShown');
+            if (!hintShown) {
+                setTimeout(() => {
+                    qrButtonHint.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        qrButtonHint.style.opacity = '0';
+                        qrButtonHint.style.transition = 'opacity 0.5s ease';
+                        setTimeout(() => {
+                            qrButtonHint.style.display = 'none';
+                        }, 500);
+                    }, 5000);
+                    
+                    localStorage.setItem('qrButtonHintShown', 'true');
+                }, 2000);
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            loadButtonPosition();
+            showHintIfNeeded();
+            
+            setTimeout(function() {
+                qrFloatingButton.style.opacity = '0';
+                qrFloatingButton.style.transform = 'scale(0)';
+                
+                setTimeout(function() {
+                    qrFloatingButton.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    qrFloatingButton.style.opacity = '1';
+                    qrFloatingButton.style.transform = 'scale(1)';
+                }, 100);
+            }, 500);
+        });
+        
+        qrFloatingButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>
