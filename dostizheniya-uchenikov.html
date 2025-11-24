@@ -664,11 +664,20 @@ main > .slider-btn,
 .gallery-grid > .slider-btn {
     display: none !important;
 }
+/* Скрываем стрелки, которые находятся НЕ внутри слайдера */
+body > .slider-btn,
+main > .slider-btn,
+.page-title + .slider-btn,
+.page-subtitle + .slider-btn,
+.info-box + .slider-btn {
+    display: none !important;
+}
 
 /* Показываем стрелки ТОЛЬКО внутри слайдеров */
 .gallery-slider .slider-btn {
     display: flex !important;
 }
+
     </style>
 </head>
 <body>
@@ -1588,6 +1597,7 @@ main > .slider-btn,
 </script>
 </body>
 </html>
+
 
 
 
