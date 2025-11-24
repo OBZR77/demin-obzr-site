@@ -658,6 +658,17 @@
     background-color: var(--color-surface);
     border-radius: 12px;
 }  
+        /* Скрываем стрелки, которые находятся НЕ внутри слайдера */
+body > .slider-btn,
+main > .slider-btn,
+.gallery-grid > .slider-btn {
+    display: none !important;
+}
+
+/* Показываем стрелки ТОЛЬКО внутри слайдеров */
+.gallery-slider .slider-btn {
+    display: flex !important;
+}
     </style>
 </head>
 <body>
@@ -1577,6 +1588,7 @@
 </script>
 </body>
 </html>
+
 
 
 
