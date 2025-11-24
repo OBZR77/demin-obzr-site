@@ -751,7 +751,7 @@
                     <div class="progress-container">
                         <div class="time-display">
                             <span id="musicCurrentTime">0:00</span>
-                            <span id="musicDuration">0:00</span>
+                            <span id="musicTimeRemaining">-0:00</span>
                         </div>
                         <div id="musicProgressBar">
                             <div id="musicProgressFill"></div>
@@ -1044,13 +1044,22 @@
         }
 
         // Обновление прогресса
-        function updateMusicProgress() {
-            if (musicAudio.duration) {
-                const progress = (musicAudio.currentTime / musicAudio.duration) * 100;
-                musicProgressFill.style.width = `${progress}%`;
-                musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
-            }
+      function updateMusicProgress() {
+    if (musicAudio.duration) {
+        const progress = (musicAudio.currentTime / musicAudio.duration) * 100;
+        musicProgressFill.style.width = `${progress}%`;
+        
+        // Текущее время
+        musicCurrentTime.textContent = formatMusicTime(musicAudio.currentTime);
+        
+        // Оставшееся время (обратный отсчёт)
+        const timeRemaining = musicAudio.duration - musicAudio.currentTime;
+        const musicTimeRemaining = document.getElementById('musicTimeRemaining');
+        if (musicTimeRemaining) {
+            musicTimeRemaining.textContent = '-' + formatMusicTime(timeRemaining);
         }
+    }
+} 
 
         // Форматирование времени
         function formatMusicTime(seconds) {
@@ -1074,13 +1083,14 @@
                 musicAudio.volume = e.target.value / 100;
             });
         }
-
-        musicAudio.addEventListener('loadedmetadata', () => {
-            if (musicDuration) {
-                musicDuration.textContent = formatMusicTime(musicAudio.duration);
-            }
-        });
-
+        
+musicAudio.addEventListener('loadedmetadata', () => {
+    const musicTimeRemaining = document.getElementById('musicTimeRemaining');
+    if (musicTimeRemaining) {
+        musicTimeRemaining.textContent = '-' + formatMusicTime(musicAudio.duration);
+    }
+});
+      
         musicAudio.addEventListener('timeupdate', updateMusicProgress);
 
         musicAudio.addEventListener('ended', () => {
@@ -1099,11 +1109,17 @@
         } else {
             initMusicPlaylist();
         }
-        
         if (musicCurrentTitle) {
-            musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
-            musicCurrentSubtitle.textContent = 'Треки будут добавлены после загрузки MP3-файлов';
-        }
+    musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
+    musicCurrentSubtitle.textContent = 'Треки будут добавлены после загрузки MP3-файлов';
+}
+
+// Устанавливаем начальное значение обратного отсчёта
+const musicTimeRemaining = document.getElementById('musicTimeRemaining');
+if (musicTimeRemaining) {
+    musicTimeRemaining.textContent = '-0:00';
+}
+       
     </script>
     
 <!-- Плавающая кнопка QR-код -->
@@ -1513,6 +1529,7 @@
 </body>
 
 </html>
+
 
 
 
