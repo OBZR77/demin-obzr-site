@@ -223,13 +223,14 @@
         /* ============================================
            ГАЛЕРЕЯ ФОТОГРАФИЙ
            ============================================ */
-        
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));  /* Шире карточки */
+    column-gap: 3rem;  /* Больше горизонтальный отступ */
+    row-gap: 2.5rem;   /* Больше вертикальный отступ */
+    margin-top: 2rem;
+}
+        
         
         /* Карточка фотографии */
         .gallery-item {
@@ -251,12 +252,13 @@
             cursor: pointer;
         }
         
-        .gallery-item-image img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+       .gallery-item-image img {
+    width: 100%;
+    height: 400px;  /* Увеличена высота для вертикального формата */
+    object-fit: contain;  /* ИЗМЕНЕНО: contain вместо cover - показывает всю грамоту */
+    background: var(--color-surface);  /* Фон для пустых областей */
+    transition: transform 0.3s ease;
+}
         
         .gallery-item:hover .gallery-item-image img {
             transform: scale(1.05);
@@ -1345,6 +1347,7 @@ function openEmblemLightbox() {
 </body>
 
 </html>
+
 
 
 
