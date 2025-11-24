@@ -223,13 +223,14 @@
         /* ============================================
            ГАЛЕРЕЯ ФОТОГРАФИЙ
            ============================================ */
-        
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    row-gap: 2rem;     /* Вертикальный отступ (между строками) */
+    column-gap: 6rem;  /* Горизонтальный отступ (между колонками) */
+    margin-top: 2rem;
+}
+       
         
         /* Карточка фотографии */
         .gallery-item {
@@ -1578,6 +1579,7 @@
 </script>
 </body>
 </html>
+
 
 
 
