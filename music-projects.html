@@ -384,22 +384,59 @@
             border: none;
         }
 
-        .track-list-container {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+       .track-list-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
 
-        .track-list-header {
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-        }
+.track-list-header {
+    font-weight: 600;
+    color: var(--color-primary);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+.track-list-header:hover {
+    background: linear-gradient(135deg, #e8eef5 0%, #d5dde8 100%);
+}
+
+.track-list-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.track-list-toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
+}
+
+.track-list-header.active .track-list-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.track-list-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 15px;
+}
+
+.track-list-content.active {
+    max-height: 800px;
+    padding: 15px;
+}
 
         #musicTrackList {
             display: flex;
@@ -770,17 +807,21 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Список треков -->
-                <div class="track-list-container">
-                    <div class="track-list-header">
-                        <span>📋</span> Список треков (5)
-                    </div>
-                    <div id="musicTrackList">
-                        <!-- Треки добавятся через JavaScript -->
-                    </div>
-                </div>
-                
+<div class="track-list-container">
+    <div class="track-list-header" onclick="toggleTrackList()">
+        <div class="track-list-header-title">
+            <span>📋</span>
+            <span>Список треков (5)</span>
+        </div>
+        <span class="track-list-toggle-icon">▼</span>
+    </div>
+    <div class="track-list-content" id="trackListContent">
+        <div id="musicTrackList">
+            <!-- Треки добавятся через JavaScript -->
+        </div>
+    </div>
+</div>      
             </div>
             
             <!-- Метаданные плейлиста -->
@@ -875,7 +916,15 @@
         // ============================================
         // ПЛЕЙЕР
         // ============================================
-      
+ // Функция открытия/закрытия списка треков
+        function toggleTrackList() {
+            const header = document.querySelector('.track-list-header');
+            const content = document.getElementById('trackListContent');
+            
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+        
         // Данные плейлиста
         const musicPlaylist = [
             {
@@ -1529,6 +1578,7 @@ if (musicTimeRemaining) {
 </body>
 
 </html>
+
 
 
 
