@@ -512,10 +512,13 @@
     /* СТИЛИ ДЛЯ СЛАЙДЕРА */
     /* ========================================== */
   .gallery-slider {
-    aspect-ratio: 210/297;  /* Пропорции A4 */
-    max-height: 600px;
+    position: relative;        /* ← ДОБАВИТЬ */
+    aspect-ratio: 16/9;        /* ← Или оставить 210/297, если нужен вертикальный формат */
+    max-height: 400px;         /* ← Или оставить 600px */
     background: var(--color-surface);
-} 
+    overflow: hidden;          /* ← ДОБАВИТЬ */
+    border-radius: 8px 8px 0 0;
+}
 
     .slider-wrapper {
         width: 100%;
@@ -1597,6 +1600,7 @@ main > .slider-btn,
 </script>
 </body>
 </html>
+
 
 
 
