@@ -456,14 +456,73 @@
                 align-items: flex-start;
                 gap: 0.75rem;
             }
-            
-            .download-link {
+      .download-link {
                 width: 100%;
                 justify-content: center;
             }
         }
 
-<!-- Плавающая кнопка QR-код -->
+               /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+    </style>
+</head>
+<body>      
+
+    <!-- Плавающая кнопка QR-код -->
     <div id="qrFloatingButton" 
          style="position: fixed; 
                 bottom: 30px; 
@@ -630,9 +689,6 @@
         </div>
     </div>
 
-    </style>
-</head>
-<body>
     <header>
         <div class="header-top">
             <div class="header-content">
@@ -759,7 +815,7 @@
                             <span class="document-icon">📘</span>
                             <span class="document-title">Рабочая программа ОБЗР 8-9 классы</span>
                         </div>
-                        <a href="rp-obzr-8-9.pdf.pdf" class="download-link">
+                        <a href="rp-obzr-8-9.pdf.pdf.pdf" class="download-link">
                             <span>Скачать PDF</span>
                             <span>⬇️</span>
                         </a>
@@ -770,7 +826,7 @@
                             <span class="document-icon">📕</span>
                             <span class="document-title">Рабочая программа OBZR 10-11 классы</span>
                         </div>
-                        <a href="rp-obzr-10-11.pdf.pdf" class="download-link">
+                        <a href="rp-obzr-10-11.pdf.pdf.pdf" class="download-link">
                             <span>Скачать PDF</span>
                             <span>⬇️</span>
                         </a>
