@@ -500,34 +500,10 @@
             color: var(--color-text-secondary);
         }
 
-        .author-meta strong {
+       .author-meta strong {
             color: var(--color-text-primary);
         }
-
-        <br><button onclick="clearMusicPlayerState()" 
-         style="margin-top: 10px;
-                padding: 8px 16px;
-                background: var(--color-danger);
-                color: white;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 0.9rem;">
-    🔄 Сбросить плейер
-</button>
-
-<script>
-function clearMusicPlayerState() {
-    localStorage.removeItem('musicPlayerState');
-    musicAudio.pause();
-    musicAudio.currentTime = 0;
-    musicIsPlaying = false;
-    musicPlayPauseBtn.textContent = '▶️';
-    musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
-    musicCurrentSubtitle.textContent = '—';
-    alert('✅ Состояние плейера сброшено');
-}
-</script>
+        
         footer {
             background-color: var(--color-primary);
             color: white;
@@ -682,9 +658,16 @@ function clearMusicPlayerState() {
                 margin-top: 15px;
             }
         }
+  /* Скрываем мини-плейер и промпт на странице с основным плейером */
+        body.music-player-page #floatingMiniPlayer,
+        body.music-player-page #continuePlaybackPrompt,
+        body.music-player-page #playerRestoreNotification {
+            display: none !important;
+        }
+        
     </style>
 </head>
-<body>
+<body class="music-player-page">
     <header>
         <div class="header-top">
             <div class="header-content">
@@ -933,14 +916,25 @@ function closeRestoreNotification() {
     }
 }
 </script>
-            
             <!-- Метаданные плейлиста -->
             <div class="author-meta">
                 <strong>Автор:</strong> © А.Ю.Дёмин, 2025<br>
                 <strong>Инструменты:</strong> Perplexity AI, Claude AI, Suno AI<br>
                 <strong>Формат:</strong> MP3<br>
-                <strong>Примечание:</strong> При копировании ссылка на источник обязательна
-            </div>
+                <strong>Примечание:</strong> При копировании ссылка на источник обязательна<br>
+                <button onclick="clearMusicPlayerState()" 
+                        style="margin-top: 10px;
+                               padding: 8px 16px;
+                               background: var(--color-danger);
+                               color: white;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-size: 0.9rem;">
+                    🔄 Сбросить состояние плейера
+                </button>
+            </div>    
+          
         </div>
         
     </main>
@@ -1278,7 +1272,29 @@ const musicTimeRemaining = document.getElementById('musicTimeRemaining');
 if (musicTimeRemaining) {
     musicTimeRemaining.textContent = '-0:00';
 }
-       
+     // Функция сброса состояния плейера
+function clearMusicPlayerState() {
+    if (confirm('Сбросить состояние плейера? Музыка остановится.')) {
+        localStorage.removeItem('musicPlayerState');
+        localStorage.removeItem('miniPlayerVisible');
+        
+        if (musicAudio) {
+            musicAudio.pause();
+            musicAudio.currentTime = 0;
+        }
+        
+        musicIsPlaying = false;
+        if (musicPlayPauseBtn) musicPlayPauseBtn.textContent = '▶️';
+        if (musicCurrentTitle) musicCurrentTitle.textContent = 'Выберите трек из списка ниже';
+        if (musicCurrentSubtitle) musicCurrentSubtitle.textContent = '—';
+        
+        if (floatingMiniPlayer) {
+            floatingMiniPlayer.style.display = 'none';
+        }
+        
+        alert('✅ Состояние плейера сброшено');
+    }
+}  
     </script>
     
 <!-- Плавающая кнопка QR-код -->
@@ -2147,6 +2163,7 @@ window.addEventListener('load', () => {
 </body>
 
 </html>
+
 
 
 
