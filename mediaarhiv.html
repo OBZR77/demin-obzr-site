@@ -1287,9 +1287,9 @@ function filterMediaType(type, button) {
     currentMediaTypeFilter = type;
     applyFilters();
     
-    // Обновляем активную кнопку - ищем кнопки только в первой секции фильтров
-    const firstFilterSection = document.querySelector('.filter-section:nth-of-type(1)');
-    firstFilterSection.querySelectorAll('.filter-btn').forEach(btn => {
+    // Находим родительский контейнер с кнопками и убираем active у всех
+    const parentContainer = button.parentElement;
+    parentContainer.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     button.classList.add('active');
@@ -1299,9 +1299,9 @@ function filterEvent(eventType, button) {
     currentEventFilter = eventType;
     applyFilters();
     
-    // Обновляем активную кнопку - ищем кнопки только во второй секции фильтров
-    const secondFilterSection = document.querySelector('.filter-section:nth-of-type(2)');
-    secondFilterSection.querySelectorAll('.filter-btn').forEach(btn => {
+    // Находим родительский контейнер с кнопками и убираем active у всех
+    const parentContainer = button.parentElement;
+    parentContainer.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     button.classList.add('active');
