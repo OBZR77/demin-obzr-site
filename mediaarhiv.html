@@ -238,11 +238,11 @@
             transform: translateY(-2px);
         }
 
-        .filter-btn.active {
-            background: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
+       .filter-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+}
 
         /* МЕДИАГАЛЕРЕЯ */
         .media-gallery {
@@ -937,28 +937,28 @@
             Фото и видео с мероприятий, учебных сборов, экскурсий, соревнований и других событий по ОБЗР.
         </p>
 
-        <!-- Фильтр по типу медиа -->
-        <div class="filter-section">
-            <div class="filter-label">📂 Тип медиа</div>
-            <div class="news-filters">
-           <button class="filter-btn active" onclick="filterMediaType('all', this)">Все</button>
-<button class="filter-btn" onclick="filterMediaType('photo', this)">📷 Фото</button>
-<button class="filter-btn" onclick="filterMediaType('video', this)">🎬 Видео</button>    
-            </div>
-        </div>
+<!-- Фильтр по типу медиа -->
+<div class="filter-section">
+    <div class="filter-label">📂 Тип медиа</div>
+    <div class="news-filters">
+        <button class="filter-btn active" onclick="filterMediaType('all', this)">Все</button>
+        <button class="filter-btn" onclick="filterMediaType('photo', this)">📷 Фото</button>
+        <button class="filter-btn" onclick="filterMediaType('video', this)">🎬 Видео</button>
+    </div>
+</div>
 
-        <!-- Фильтр по событиям -->
-        <div class="filter-section">
-            <div class="filter-label">🎯 События</div>
-            <div class="news-filters">
-                <button class="filter-btn active" onclick="filterEvent('all, this)">Все события</button>
-                <button class="filter-btn" onclick="filterEvent('olimpiada', this)">Олимпиады</button>
-                <button class="filter-btn" onclick="filterEvent('zarnica', this)">Зарница 2.0</button>
-                <button class="filter-btn" onclick="filterEvent('sbory', this)">Учебные сборы</button>
-                <button class="filter-btn" onclick="filterEvent('yunarmiya', this)">Юнармия</button>
-                <button class="filter-btn" onclick="filterEvent('excursion', this)">Экскурсии</button>
-            </div>
-        </div>
+<!-- Фильтр по событиям -->
+<div class="filter-section">
+    <div class="filter-label">🎯 События</div>
+    <div class="news-filters">
+        <button class="filter-btn active" onclick="filterEvent('all', this)">Все события</button>
+        <button class="filter-btn" onclick="filterEvent('sbory', this)">Учебные сборы</button>
+        <button class="filter-btn" onclick="filterEvent('zarnica', this)">Зарница 2.0</button>
+        <button class="filter-btn" onclick="filterEvent('excursion', this)">Экскурсии</button>
+        <button class="filter-btn" onclick="filterEvent('competition', this)">Соревнования</button>
+        <button class="filter-btn" onclick="filterEvent('yunarmiya', this)">Юнармия</button>
+    </div>
+</div>
 
         <!-- Медиагалерея -->
         <div class="media-gallery" id="mediaGallery">
@@ -1284,27 +1284,42 @@ let currentMediaTypeFilter = 'all';
 let currentEventFilter = 'all';
 
 function filterMediaType(type, button) {
+    console.log('filterMediaType вызвана:', type, button); // Отладка
+    
     currentMediaTypeFilter = type;
     applyFilters();
     
-    // Находим родительский контейнер с кнопками и убираем active у всех
-    const parentContainer = button.parentElement;
-    parentContainer.querySelectorAll('.filter-btn').forEach(btn => {
+    // Убираем active у ВСЕХ кнопок в родительском контейнере
+    const allButtons = button.parentElement.querySelectorAll('.filter-btn');
+    allButtons.forEach(btn => {
         btn.classList.remove('active');
     });
+    
+    // Добавляем active к нажатой кнопке
     button.classList.add('active');
+    
+    console.log('Активная кнопка тип медиа:', button.textContent); // Отладка
 }
 
 function filterEvent(eventType, button) {
+    console.log('filterEvent вызвана:', eventType, button); // Отладка
+    
     currentEventFilter = eventType;
     applyFilters();
     
-    // Находим родительский контейнер с кнопками и убираем active у всех
-    const parentContainer = button.parentElement;
-    parentContainer.querySelectorAll('.filter-btn').forEach(btn => {
+    // Убираем active у ВСЕХ кнопок в родительском контейнере
+    const allButtons = button.parentElement.querySelectorAll('.filter-btn');
+    console.log('Найдено кнопок в контейнере:', allButtons.length); // Отладка
+    
+    allButtons.forEach(btn => {
+        console.log('Убираем active у:', btn.textContent); // Отладка
         btn.classList.remove('active');
     });
+    
+    // Добавляем active к нажатой кнопке
     button.classList.add('active');
+    
+    console.log('Активная кнопка события:', button.textContent); // Отладка
 }
 
 function applyFilters() {
@@ -1335,7 +1350,7 @@ function applyFilters() {
         gallery.style.display = 'grid';
     }
 }
-
+        
         // ============================================
         // QR-КНОПКА
         // ============================================
