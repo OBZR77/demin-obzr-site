@@ -941,9 +941,9 @@
         <div class="filter-section">
             <div class="filter-label">📂 Тип медиа</div>
             <div class="news-filters">
-                <button class="filter-btn active" onclick="filterMediaType('all')">Все</button>
-                <button class="filter-btn" onclick="filterMediaType('photo')">📷 Фото</button>
-                <button class="filter-btn" onclick="filterMediaType('video')">🎬 Видео</button>
+           <button class="filter-btn active" onclick="filterMediaType('all', this)">Все</button>
+<button class="filter-btn" onclick="filterMediaType('photo', this)">📷 Фото</button>
+<button class="filter-btn" onclick="filterMediaType('video', this)">🎬 Видео</button>    
             </div>
         </div>
 
@@ -951,12 +951,12 @@
         <div class="filter-section">
             <div class="filter-label">🎯 События</div>
             <div class="news-filters">
-                <button class="filter-btn active" onclick="filterEvent('all')">Все события</button>
-                <button class="filter-btn" onclick="filterEvent('sbory')">Учебные сборы</button>
-                <button class="filter-btn" onclick="filterEvent('zarnica')">Зарница 2.0</button>
-                <button class="filter-btn" onclick="filterEvent('excursion')">Экскурсии</button>
-                <button class="filter-btn" onclick="filterEvent('competition')">Соревнования</button>
-                <button class="filter-btn" onclick="filterEvent('yunarmiya')">Юнармия</button>
+                <button class="filter-btn active" onclick="filterEvent('all, this')">Все события</button>
+                <button class="filter-btn" onclick="filterEvent('olimpiada', this)">Олимпиады</button>
+                <button class="filter-btn" onclick="filterEvent('zarnica', this)">Зарница 2.0</button>
+                <button class="filter-btn" onclick="filterEvent('sbory', this)">Учебные сборы</button>
+                <button class="filter-btn" onclick="filterEvent('yunarmiya', this)">Юнармия</button>
+                <button class="filter-btn" onclick="filterEvent('excursion', this)">Экскурсии</button>
             </div>
         </div>
 
@@ -1278,63 +1278,33 @@
             }
         });
 
-        // ============================================
-        // ФИЛЬТРАЦИЯ
-        // ============================================
-        let currentMediaTypeFilter = 'all';
-        let currentEventFilter = 'all';
+  // ============================================
+// ФИЛЬТРАЦИЯ
+// ============================================
+let currentMediaTypeFilter = 'all';
+let currentEventFilter = 'all';
 
-        function filterMediaType(type) {
-            currentMediaTypeFilter = type;
-            applyFilters();
-            
-            // Обновляем активную кнопку
-            document.querySelectorAll('.filter-section:first-of-type .filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
+function filterMediaType(type, button) {
+    currentMediaTypeFilter = type;
+    applyFilters();
+    
+    // Обновляем активную кнопку
+    document.querySelectorAll('.filter-section:first-of-type .filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    button.classList.add('active');
+}
 
-        function filterEvent(eventType) {
-            currentEventFilter = eventType;
-            applyFilters();
-            
-            // Обновляем активную кнопку
-            document.querySelectorAll('.filter-section:last-of-type .filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        function applyFilters() {
-            const items = document.querySelectorAll('.media-item');
-            let visibleCount = 0;
-            
-            items.forEach(item => {
-                const matchesType = currentMediaTypeFilter === 'all' || item.dataset.type === currentMediaTypeFilter;
-                const matchesEvent = currentEventFilter === 'all' || item.dataset.event === currentEventFilter;
-                
-                if (matchesType && matchesEvent) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            
-            // Показываем/скрываем пустое состояние
-            const emptyState = document.getElementById('emptyState');
-            const gallery = document.getElementById('mediaGallery');
-            
-            if (visibleCount === 0) {
-                emptyState.style.display = 'block';
-                gallery.style.display = 'none';
-            } else {
-                emptyState.style.display = 'none';
-                gallery.style.display = 'grid';
-            }
-        }
-
+function filterEvent(eventType, button) {
+    currentEventFilter = eventType;
+    applyFilters();
+    
+    // Обновляем активную кнопку
+    document.querySelectorAll('.filter-section:last-of-type .filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    button.classList.add('active');
+}
         // ============================================
         // QR-КНОПКА
         // ============================================
