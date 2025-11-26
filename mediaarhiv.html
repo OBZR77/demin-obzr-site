@@ -951,7 +951,7 @@
         <div class="filter-section">
             <div class="filter-label">🎯 События</div>
             <div class="news-filters">
-                <button class="filter-btn active" onclick="filterEvent('all, this')">Все события</button>
+                <button class="filter-btn active" onclick="filterEvent('all, this)">Все события</button>
                 <button class="filter-btn" onclick="filterEvent('olimpiada', this)">Олимпиады</button>
                 <button class="filter-btn" onclick="filterEvent('zarnica', this)">Зарница 2.0</button>
                 <button class="filter-btn" onclick="filterEvent('sbory', this)">Учебные сборы</button>
@@ -1277,8 +1277,7 @@
                 closeQRModal();
             }
         });
-
-  // ============================================
+// ============================================
 // ФИЛЬТРАЦИЯ
 // ============================================
 let currentMediaTypeFilter = 'all';
@@ -1288,8 +1287,9 @@ function filterMediaType(type, button) {
     currentMediaTypeFilter = type;
     applyFilters();
     
-    // Обновляем активную кнопку
-    document.querySelectorAll('.filter-section:first-of-type .filter-btn').forEach(btn => {
+    // Обновляем активную кнопку - ищем кнопки только в первой секции фильтров
+    const firstFilterSection = document.querySelector('.filter-section:nth-of-type(1)');
+    firstFilterSection.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     button.classList.add('active');
@@ -1299,12 +1299,43 @@ function filterEvent(eventType, button) {
     currentEventFilter = eventType;
     applyFilters();
     
-    // Обновляем активную кнопку
-    document.querySelectorAll('.filter-section:last-of-type .filter-btn').forEach(btn => {
+    // Обновляем активную кнопку - ищем кнопки только во второй секции фильтров
+    const secondFilterSection = document.querySelector('.filter-section:nth-of-type(2)');
+    secondFilterSection.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     button.classList.add('active');
 }
+
+function applyFilters() {
+    const items = document.querySelectorAll('.media-item');
+    let visibleCount = 0;
+    
+    items.forEach(item => {
+        const matchesType = currentMediaTypeFilter === 'all' || item.dataset.type === currentMediaTypeFilter;
+        const matchesEvent = currentEventFilter === 'all' || item.dataset.event === currentEventFilter;
+        
+        if (matchesType && matchesEvent) {
+            item.style.display = 'block';
+            visibleCount++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    // Показываем/скрываем пустое состояние
+    const emptyState = document.getElementById('emptyState');
+    const gallery = document.getElementById('mediaGallery');
+    
+    if (visibleCount === 0) {
+        emptyState.style.display = 'block';
+        gallery.style.display = 'none';
+    } else {
+        emptyState.style.display = 'none';
+        gallery.style.display = 'grid';
+    }
+}
+
         // ============================================
         // QR-КНОПКА
         // ============================================
