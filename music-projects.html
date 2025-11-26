@@ -823,6 +823,92 @@
     </div>
 </div>      
             </div>
+<!-- Уведомление о восстановлении плейера -->
+<div id="playerRestoreNotification" 
+     style="position: fixed;
+            bottom: 120px;
+            right: 30px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.4);
+            z-index: 9998;
+            display: none;
+            max-width: 280px;
+            animation: slideInRight 0.4s ease;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.5rem;">🎵</span>
+        <div style="flex: 1;">
+            <div style="font-weight: 600; margin-bottom: 4px;">Воспроизведение продолжено</div>
+            <div id="playerRestoreTrackName" style="font-size: 0.85rem; opacity: 0.9;"></div>
+        </div>
+        <button onclick="closeRestoreNotification()" 
+                style="background: rgba(255,255,255,0.2);
+                       border: none;
+                       color: white;
+                       width: 24px;
+                       height: 24px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;">×</button>
+    </div>
+</div>
+
+<style>
+    @keyframes slideInRight {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+function showRestoreNotification(trackTitle) {
+    const notification = document.getElementById('playerRestoreNotification');
+    const trackName = document.getElementById('playerRestoreTrackName');
+    
+    if (notification && trackName) {
+        trackName.textContent = trackTitle;
+        notification.style.display = 'block';
+        
+        // Автоматически скрыть через 4 секунды
+        setTimeout(() => {
+            closeRestoreNotification();
+        }, 4000);
+    }
+}
+
+function closeRestoreNotification() {
+    const notification = document.getElementById('playerRestoreNotification');
+    if (notification) {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            notification.style.display = 'none';
+            notification.style.animation = 'slideInRight 0.4s ease';
+        }, 300);
+    }
+}
+</script>
             
             <!-- Метаданные плейлиста -->
             <div class="author-meta">
@@ -1574,10 +1660,138 @@ if (musicTimeRemaining) {
             e.stopPropagation();
         });
     </script>
+<script>
+// ============================================
+// ГЛОБАЛЬНЫЙ ПЛЕЙЕР (работает между страницами)
+// ============================================
 
+// Сохранение состояния плейера
+function saveMusicPlayerState() {
+    if (!musicAudio.src) return;
+    
+    const state = {
+        trackIndex: musicCurrentTrackIndex,
+        currentTime: musicAudio.currentTime,
+        isPlaying: musicIsPlaying,
+        volume: musicAudio.volume,
+        timestamp: Date.now()
+    };
+    
+    localStorage.setItem('musicPlayerState', JSON.stringify(state));
+}
+
+// Восстановление состояния плейера
+function restoreMusicPlayerState() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        // Проверяем, не устарело ли состояние (более 1 часа)
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        // Восстанавливаем трек
+        if (state.trackIndex !== undefined && state.trackIndex < musicPlaylist.length) {
+            musicCurrentTrackIndex = state.trackIndex;
+            loadMusicTrack(state.trackIndex);
+            
+            // Восстанавливаем время
+            musicAudio.addEventListener('loadedmetadata', function restoreTime() {
+                if (state.currentTime) {
+                    musicAudio.currentTime = state.currentTime;
+                }
+                
+                // Восстанавливаем громкость
+                if (state.volume !== undefined) {
+                    musicAudio.volume = state.volume;
+                    if (musicVolumeSlider) {
+                        musicVolumeSlider.value = state.volume * 100;
+                    }
+                }
+                
+                // Восстанавливаем воспроизведение
+             if (state.isPlaying) {
+    musicAudio.play().then(() => {
+        // Показываем уведомление
+        const track = musicPlaylist[state.trackIndex];
+        if (track && typeof showRestoreNotification === 'function') {
+            showRestoreNotification(track.title);
+        }
+    }).catch(err => {
+        console.log('Автовоспроизведение заблокировано браузером');
+        musicIsPlaying = false;
+        musicPlayPauseBtn.textContent = '▶️';
+    });
+    musicIsPlaying = true;
+    musicPlayPauseBtn.textContent = '⏸';
+}
+                musicAudio.removeEventListener('loadedmetadata', restoreTime);
+            }, { once: true });
+        }
+    } catch (e) {
+        console.error('Ошибка восстановления состояния плейера:', e);
+        localStorage.removeItem('musicPlayerState');
+    }
+}
+
+// Автосохранение каждые 2 секунды во время воспроизведения
+setInterval(() => {
+    if (musicIsPlaying && musicAudio.src) {
+        saveMusicPlayerState();
+    }
+}, 2000);
+
+// Сохранение при паузе, смене трека, изменении громкости
+if (musicAudio) {
+    musicAudio.addEventListener('pause', saveMusicPlayerState);
+    musicAudio.addEventListener('play', saveMusicPlayerState);
+    musicAudio.addEventListener('ended', () => {
+        saveMusicPlayerState();
+        localStorage.removeItem('musicPlayerState'); // Очистка после завершения
+    });
+}
+
+if (musicVolumeSlider) {
+    musicVolumeSlider.addEventListener('change', saveMusicPlayerState);
+}
+
+// Сохранение при закрытии/переходе
+window.addEventListener('beforeunload', saveMusicPlayerState);
+window.addEventListener('pagehide', saveMusicPlayerState);
+
+// Восстановление при загрузке страницы
+window.addEventListener('load', () => {
+    setTimeout(restoreMusicPlayerState, 500);
+});
+
+// Добавить кнопку "Продолжить воспроизведение" (опционально)
+function showContinuePlaybackPrompt() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        if (state.isPlaying && Date.now() - state.timestamp < 3600000) {
+            const track = musicPlaylist[state.trackIndex];
+            if (track && !track.isEmpty) {
+                // Можно показать уведомление
+                console.log(`Продолжить воспроизведение: ${track.title}`);
+            }
+        }
+    } catch (e) {
+        // Игнорируем ошибки
+    }
+}
+</script>
 </body>
 
 </html>
+
 
 
 
