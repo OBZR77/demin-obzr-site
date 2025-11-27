@@ -984,8 +984,10 @@
     </footer>
 
     <!-- Плавающая кнопка QR (ИДЕНТИЧНАЯ ДРУГИМ СТРАНИЦАМ) -->
-    <div id="qrFloatingButton" 
-         style="position: fixed; 
+   <div id="qrFloatingButton" 
+     onclick="openQRModal()"
+     style="position: fixed;
+            cursor: pointer;
                 bottom: 30px; 
                 right: 30px; 
                 width: 65px; 
@@ -1173,16 +1175,14 @@
         // ===========================================
         // QR-КОД МОДАЛЬНОЕ ОКНО
         // ===========================================
-        function openQRModal() {
-            document.getElementById('qr-modal').style.display = 'flex';
-            document.body.classList.add('modal-open');
+         function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+           document.body.classList.add('modal-open');
         }
-
-        function closeQRModal() {
-            document.getElementById('qr-modal').style.display = 'none';
-            document.body.classList.remove('modal-open');
-        }
-
+       function closeQRModal() {
+    document.getElementById('qrModalWindow').style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
         // Закрытие по клавише Escape (включая QR)
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
@@ -1413,3 +1413,4 @@
 </body>
 
 </html>
+
