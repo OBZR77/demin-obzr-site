@@ -687,7 +687,14 @@ document.addEventListener('keydown', function(event) {
         <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
     </ul>
 </li>
-</ul>                       
+
+    <li class="has-submenu">
+                        <a href="interactive.html" class="active" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>               
+                   </ul>                       
             </div>
         </nav>
     </header>
@@ -1126,8 +1133,363 @@ function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('active');
 }
 </script>
+<!-- Минимизированный плавающий плейер -->
+<div id="floatingMiniPlayer" 
+     style="position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 300px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.5);
+            z-index: 10000;
+            display: none;
+            animation: slideInLeft 0.4s ease;">
+    
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="miniPlayPauseBtn" 
+                onclick="toggleMiniMusicPlayPause()"
+                style="background: white;
+                       color: #003D7A;
+                       border: none;
+                       width: 40px;
+                       height: 40px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">
+            ▶️
+        </button>
+        
+        <div style="flex: 1; min-width: 0;">
+            <div id="miniPlayerTitle" 
+                 style="font-size: 0.9rem;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;">
+                Нет трека
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                <div id="miniProgressBar" 
+                     style="flex: 1;
+                            height: 3px;
+                            background: rgba(255,255,255,0.3);
+                            border-radius: 2px;
+                            cursor: pointer;
+                            position: relative;">
+                    <div id="miniProgressFill" 
+                         style="height: 100%;
+                                background: white;
+                                border-radius: 2px;
+                                width: 0%;
+                                transition: width 0.1s linear;"></div>
+                </div>
+                <span id="miniCurrentTime" style="font-size: 0.75rem; opacity: 0.8;">0:00</span>
+            </div>
+        </div>
+        
+        <button onclick="hideMiniPlayer()"
+                style="background: rgba(255,255,255,0.2);
+                       border: none;
+                       color: white;
+                       width: 28px;
+                       height: 28px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">×</button>
+    </div>
+</div>
+
+<!-- Уведомление "Продолжить воспроизведение" -->
+<div id="continuePlaybackPrompt" 
+     style="position: fixed;
+            top: 80px;
+            right: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            display: none;
+            max-width: 320px;
+            animation: slideInRight 0.4s ease;
+            border-left: 4px solid #003D7A;">
+    
+    <div style="display: flex; align-items: start; gap: 15px;">
+        <span style="font-size: 2.5rem;">🎵</span>
+        <div style="flex: 1;">
+            <div style="font-weight: 600; 
+                        color: #2C3E50; 
+                        margin-bottom: 6px;
+                        font-size: 1.05rem;">
+                Продолжить воспроизведение?
+            </div>
+            <div id="continueTrackName" 
+                 style="color: #7F8C8D; 
+                        font-size: 0.9rem;
+                        margin-bottom: 12px;
+                        line-height: 1.4;"></div>
+            
+            <div style="display: flex; gap: 8px;">
+                <button onclick="resumePlayback()" 
+                        style="flex: 1;
+                               padding: 10px;
+                               background: #003D7A;
+                               color: white;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-weight: 600;
+                               font-size: 0.9rem;">
+                    ▶️ Продолжить
+                </button>
+                <button onclick="dismissPlaybackPrompt()" 
+                        style="padding: 10px 15px;
+                               background: #F5F7FA;
+                               color: #7F8C8D;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-size: 0.9rem;">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes slideInLeft {
+        from { transform: translateX(-400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOutLeft {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-400px); opacity: 0; }
+    }
+    
+    @media (max-width: 768px) {
+        #floatingMiniPlayer {
+            width: 260px;
+            left: 15px;
+            bottom: 90px;
+            padding: 10px 12px;
+        }
+        
+        #miniPlayPauseBtn {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+        
+        #miniPlayerTitle {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<script>
+// ============================================
+// МИНИМИЗИРОВАННЫЙ ПЛЕЙЕР (для других страниц)
+// ============================================
+
+const miniAudio = document.createElement('audio');
+miniAudio.id = 'miniAudioPlayer';
+document.body.appendChild(miniAudio);
+
+const floatingMiniPlayer = document.getElementById('floatingMiniPlayer');
+const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
+const miniPlayerTitle = document.getElementById('miniPlayerTitle');
+const miniProgressBar = document.getElementById('miniProgressBar');
+const miniProgressFill = document.getElementById('miniProgressFill');
+const miniCurrentTime = document.getElementById('miniCurrentTime');
+
+let miniIsPlaying = false;
+
+// Форматирование времени
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Показать мини-плейер
+function showMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.display = 'block';
+    }
+}
+
+// Скрыть мини-плейер
+function hideMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.animation = 'slideOutLeft 0.3s ease';
+        setTimeout(() => {
+            floatingMiniPlayer.style.display = 'none';
+            floatingMiniPlayer.style.animation = 'slideInLeft 0.4s ease';
+        }, 300);
+        localStorage.setItem('miniPlayerVisible', 'false');
+    }
+}
+
+// Play/Pause мини-плейера
+function toggleMiniMusicPlayPause() {
+    if (miniIsPlaying) {
+        miniAudio.pause();
+        miniPlayPauseBtn.textContent = '▶️';
+        miniIsPlaying = false;
+    } else {
+        miniAudio.play();
+        miniPlayPauseBtn.textContent = '⏸';
+        miniIsPlaying = true;
+    }
+    
+    // Обновляем состояние в localStorage
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (savedState) {
+        try {
+            const state = JSON.parse(savedState);
+            state.isPlaying = miniIsPlaying;
+            state.currentTime = miniAudio.currentTime;
+            localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        } catch (e) {}
+    }
+}
+
+// Обновление мини-плейера
+function updateMiniPlayer() {
+    if (!miniAudio.duration) return;
+    
+    const progress = (miniAudio.currentTime / miniAudio.duration) * 100;
+    if (miniProgressFill) miniProgressFill.style.width = `${progress}%`;
+    if (miniCurrentTime) miniCurrentTime.textContent = formatTime(miniAudio.currentTime);
+}
+
+// Клик по прогресс-бару
+if (miniProgressBar) {
+    miniProgressBar.addEventListener('click', (e) => {
+        const rect = miniProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        miniAudio.currentTime = percent * miniAudio.duration;
+    });
+}
+
+miniAudio.addEventListener('timeupdate', updateMiniPlayer);
+
+// Восстановление состояния
+function restoreMiniPlayer() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    const miniPlayerVisible = localStorage.getItem('miniPlayerVisible');
+    
+    if (!savedState || miniPlayerVisible === 'false') return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        // Проверка актуальности
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        // Загружаем трек
+        miniAudio.src = `audio/${state.filename || '01-nashey-shcolye-55!.mp3'}`;
+        miniAudio.volume = state.volume || 0.7;
+        
+        miniAudio.addEventListener('loadedmetadata', function() {
+            miniAudio.currentTime = state.currentTime || 0;
+            
+            if (miniPlayerTitle) {
+                miniPlayerTitle.textContent = state.trackTitle || 'Трек';
+            }
+            
+            if (state.isPlaying) {
+                showMiniPlayer();
+            }
+        }, { once: true });
+        
+    } catch (e) {
+        console.error('Ошибка восстановления мини-плейера:', e);
+    }
+}
+
+// Показать промпт продолжения
+function showContinuePrompt() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        if (state.isPlaying) {
+            const prompt = document.getElementById('continuePlaybackPrompt');
+            const trackName = document.getElementById('continueTrackName');
+            
+            if (prompt && trackName) {
+                trackName.textContent = `${state.trackTitle || 'Музыка'} • ${formatTime(state.currentTime)}`;
+                prompt.style.display = 'block';
+            }
+        }
+    } catch (e) {}
+}
+
+// Продолжить воспроизведение
+function resumePlayback() {
+    restoreMiniPlayer();
+    
+    setTimeout(() => {
+        if (miniAudio.src) {
+            miniAudio.play();
+            miniIsPlaying = true;
+            if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = '⏸';
+            showMiniPlayer();
+        }
+    }, 500);
+    
+    dismissPlaybackPrompt();
+}
+
+// Закрыть промпт
+function dismissPlaybackPrompt() {
+    const prompt = document.getElementById('continuePlaybackPrompt');
+    if (prompt) {
+        prompt.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            prompt.style.display = 'none';
+            prompt.style.animation = 'slideInRight 0.4s ease';
+        }, 300);
+    }
+}
+
+// Инициализация
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        restoreMiniPlayer();
+        showContinuePrompt();
+    }, 1000);
+});
+</script>
+    
 </body>
 </html>
+
 
 
 
