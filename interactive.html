@@ -1409,8 +1409,49 @@
         console.log('%cviewAllFeedbacks()     → Посмотреть все отзывы', 'font-size: 13px; color: #003D7A;');
         console.log('%cexportFeedbacksToCSV() → Скачать отзывы в CSV (Excel)', 'font-size: 13px; color: #003D7A;');
         console.log('%cclearAllFeedbacks()    → Удалить все отзывы', 'font-size: 13px; color: #E53935;');
-    </script>
-</body>
+</script>
 
+<script>
+// ============================================
+// QR-КОД: ОТКРЫТИЕ/ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА
+// ============================================
+function openQRModal() {
+    document.getElementById('qrModalWindow').style.display = 'flex';
+    document.body.classList.add('modal-open');
+}
+
+function closeQRModal() {
+    document.getElementById('qrModalWindow').style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
+
+// Закрытие по Escape
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeQRModal();
+    }
+});
+
+// Мобильное меню
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+</script>
+
+<script src="script.js"></script>
+</body>
 </html>
+        
+
 
