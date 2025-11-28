@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальные документы для аттестации преподавателя-организатора ОБЗР - справки, дипломы, сертификаты, грамоты">
+    <title>Документы для аттестации | Дёмин А.Ю.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-warning: #FFA500;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: var(--color-primary);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-menu > li > a.active:hover {
+            background-color: var(--color-danger) !important;
+            cursor: default;
+        }
+
+        .nav-menu:has(a.active) > li > a:not(.active):hover {
+            background-color: var(--color-primary-hover);
+        }
+        
+        /* ВЫПАДАЮЩИЕ ПОДМЕНЮ */
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .nav-menu > li.has-submenu > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        /* Стили выпадающего подменю - БАЗОВОЕ КРАСНОЕ */
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;  /* БЕЛЫЙ ФОН (для отступов) */
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;  /* БЕЛЫЕ ОТСТУПЫ СВЕРХУ/СНИЗУ */
+            margin: 0;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transition-delay: 0s;
+            
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        /* КРАСНЫЙ ФОН ДЛЯ АКТИВНОЙ СТРАНИЦЫ - НА ПУНКТАХ МЕНЮ */
+        .nav-menu > li.has-submenu > a.active + .submenu li {
+            background-color: #E53935;  /* КРАСНЫЙ ФОН НА <li> */
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a {
+            color: var(--color-primary);  /* СИНИЙ ТЕКСТ */
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover {
+            background-color: white;  /* БЕЛЫЙ ФОН ПРИ HOVER */
+            color: var(--color-primary);  /* СИНИЙ ТЕКСТ */
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a::before {
+            color: white;  /* БЕЛАЯ СТРЕЛКА */
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
+            color: var(--color-danger);  /* КРАСНАЯ СТРЕЛКА ПРИ HOVER */
+        }
+
+        /* БЕЛОЕ ПОДМЕНЮ ДЛЯ НЕАКТИВНЫХ СТРАНИЦ */
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu li {
+            background-color: white;  /* БЕЛЫЙ ФОН */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+            color: var(--color-text-primary);  /* ТЁМНЫЙ ТЕКСТ */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+            background-color: var(--color-surface);  /* СВЕТЛО-СЕРЫЙ ФОН */
+            color: var(--color-primary);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+            color: var(--color-danger);
+        }
+
+        /* Показываем при наведении с задержкой 350ms */
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        /* Стили пунктов подменю - БЕЛЫЙ ТЕКСТ */
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            color: white;  /* БЕЛЫЙ ТЕКСТ */
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .submenu a:hover {
+            background-color: white;  /* БЕЛЫЙ ФОН ПРИ HOVER */
+            color: var(--color-primary);  /* СИНИЙ ТЕКСТ ПРИ HOVER */
+            padding-left: 2rem;
+        }
+
+        /* Иконка стрелки появляется при hover */
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: white;  /* БЕЛАЯ СТРЕЛКА */
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+            color: var(--color-danger);  /* КРАСНАЯ СТРЕЛКА ПРИ HOVER */
+        }
+
+        /* БЕЛОЕ ПОДМЕНЮ ДЛЯ НЕАКТИВНЫХ СТРАНИЦ */
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu {
+            background-color: white;  /* БЕЛЫЙ ФОН */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+            color: var(--color-text-primary);  /* ТЁМНЫЙ ТЕКСТ */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+            background-color: var(--color-surface);  /* СВЕТЛО-СЕРЫЙ ФОН ПРИ HOVER */
+            color: var(--color-primary);  /* СИНИЙ ТЕКСТ */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+            color: var(--color-danger);  /* КРАСНАЯ СТРЕЛКА */
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover::before {
+            opacity: 1;
+        }
+
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        /* Информационный блок */
+        .info-banner {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            border-left: 4px solid var(--color-warning);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-banner h3 {
+            color: #856404;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-banner p {
+            color: #856404;
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .info-banner ul {
+            margin-left: 1.5rem;
+            color: #856404;
+        }
+
+        .info-banner ul li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Кнопка скачать всё портфолио */
+        .download-all-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #00518A 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.3);
+        }
+
+        .download-all-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-all-section p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .download-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .download-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Аккордеон */
+        .accordion {
+            margin-bottom: 2rem;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0,61,122,0.15);
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-surface);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #E8EEF5;
+        }
+
+        .accordion-header.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .accordion-icon {
+            font-size: 1.8rem;
+        }
+
+        .accordion-badge {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .accordion-header.active .accordion-badge {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        .accordion-arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 3000px;
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+        }
+
+        /* Таблица документов */
+        .documents-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .documents-table th {
+            background: var(--color-surface);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .documents-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .documents-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .documents-table tr:hover {
+            background: var(--color-surface);
+        }
+
+        .doc-name {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .doc-icon {
+            font-size: 1.5rem;
+        }
+
+        .doc-date {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .doc-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-view {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,61,122,0.3);
+        }
+
+        .btn-download {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .btn-download:hover {
+            background: #43A047;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76,175,80,0.3);
+        }
+
+        .btn-copy {
+            background: var(--color-text-secondary);
+            color: white;
+        }
+
+        .btn-copy:hover {
+            background: #6C7B8A;
+            transform: translateY(-2px);
+        }
+
+        /* Статистика */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,61,122,0.2);
+            border-left-color: var(--color-danger);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        /* QR-КНОПКА И АНИМАЦИИ */
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Lightbox для PDF */
+        #pdfLightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            width: 90%;
+            height: 90%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-header {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lightbox-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .lightbox-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-danger);
+        }
+
+        .lightbox-iframe {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
+        }
+
+        /* QR Floating Button */
+        #qrFloatingButton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;
+        }
+
+        #qrFloatingButton span {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu > li > a {
+                border-radius: 0;
+            }
+
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                transform: none;
+                padding: 0;
+                background-color: var(--color-primary-active);
+            }
+
+            .nav-menu > li.has-submenu:hover .submenu {
+                display: none;
+            }
+
+            .nav-menu > li.has-submenu.open .submenu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-menu > li.has-submenu.open > a::after {
+                transform: rotate(180deg);
+            }
+
+            .submenu a {
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                padding-left: 2.5rem;
+            }
+            
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documents-table {
+                font-size: 0.85rem;
+            }
+
+            .documents-table th,
+            .documents-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .doc-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+
+            .lightbox-content {
+                width: 95%;
+                height: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <!-- Эмблема с lightbox -->
+                    <img src="images/emblem-obzr.png.png" 
+                         alt="Эмблема ОБЗР СШ 2 Лысково" 
+                         onclick="openLightbox()" 
+                         style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.05)'" 
+                         onmouseout="this.style.transform='scale(1)'">
+
+                    <!-- Lightbox overlay -->
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie">Образование</a></li>
+                            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" class="active" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+                            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya">Юнармия</a></li>
+                            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica">Зарница 2.0</a></li>
+                            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+                            <li><a href="sorevnovaniya">Соревнования и конкурсы</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="raspisanie-konsultacij">Расписание консультаций</a></li>
+                            <li><a href="faq">Часто задаваемые вопросы</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="forma-svyazi">Форма обратной связи</a></li>
+                            <li><a href="rekvizity">Реквизиты и адрес</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 style="font-size: 2rem; 
+                   color: var(--color-primary); 
+                   margin-bottom: 0.5rem; 
+                   padding-bottom: 0.75rem; 
+                   border-bottom: 3px solid var(--color-danger);">
+            Документы для аттестации
+        </h2>
+        
+        <div style="background-color: #F0F7FF;
+                    border: 2px solid var(--color-border); 
+                    border-radius: 10px; 
+                    padding: 1.75rem 2rem; 
+                    margin-top: 2rem;
+                    margin-bottom: 2.5rem;">
+            <h3 style="color: var(--color-primary); 
+                       margin-bottom: 1rem; 
+                       font-size: 1.3rem; 
+                       font-weight: 700;">
+                📄 Документы для аттестационной комиссии
+            </h3>
+            <p style="color: var(--color-text-primary); 
+                      line-height: 1.7; 
+                      margin-bottom: 0.75rem;">
+                Все документы заверены печатью и подписью директора МБОУ СШ № 2, 
+                соответствуют Приказу Минпросвещения РФ от 24.03.2023 № 196.
+            </p>
+            <p style="color: var(--color-text-primary); 
+                      line-height: 1.7; 
+                      margin-bottom: 0;">
+                <strong>Данные обезличены</strong> в соответствии с ФЗ-152 "О персональных данных". 
+                Все файлы доступны для просмотра и скачивания в формате PDF.
+            </p>
+        </div>
+
+        <!-- Информационный баннер -->
+        <div class="info-banner">
+            <h3>⚠️ Важная информация</h3>
+            <p><strong>Все документы на этой странице:</strong></p>
+            <ul>
+                <li>✅ Заверены печатью и подписью директора МБОУ СШ № 2 г. Лысково</li>
+                <li>✅ Соответствуют требованиям Приказа Минпросвещения РФ от 24.03.2023 № 196</li>
+                <li>✅ Содержат только обезличенные данные обучающихся (ФЗ-152)</li>
+                <li>✅ Актуальны на 2024-2025 учебный год</li>
+            </ul>
+        </div>
+
+        <!-- Статистика -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Всего документов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Категорий документов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Наград и грамот</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Сертификатов ПК</div>
+            </div>
+        </div>
+
+        <!-- Кнопка скачать всё портфолио -->
+        <div class="download-all-section">
+            <h3>📦 Скачать полное портфолио</h3>
+            <p>ZIP-архив (45 МБ) со всеми документами для аттестационной комиссии</p>
+            <a href="documents/portfolio-full.zip" class="download-all-btn" download>
+                <span style="font-size: 1.5rem;">📥</span>
+                Скачать портфолио.zip
+            </a>
+        </div>
+
+        <!-- Аккордеон с документами -->
+        <div class="accordion">
+            
+            <!-- БЛОК 1: Справки для аттестации -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📝</span>
+                        <span>Справки для аттестации</span>
+                        <span class="accordion-badge">5 документов</span>
+                    </div>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📄</span>
+                                            <span>Справка о наличии персонального сайта</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">20.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-sayt.pdf', 'Справка о наличии персонального сайта')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-sayt.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📊</span>
+                                            <span>Справка о результатах освоения ОБЗР обучающимися</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">15.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-rezultaty.pdf', 'Справка о результатах освоения ОБЗР')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-rezultaty.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🏆</span>
+                                            <span>Справка об участии обучающихся в олимпиадах, конкурсах</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">10.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-olimpiady.pdf', 'Справка об участии в олимпиадах')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-olimpiady.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎓</span>
+                                            <span>Справка о проведении открытых уроков, мастер-классов</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">05.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-uroki.pdf', 'Справка о проведении открытых уроков')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-uroki.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🗣️</span>
+                                            <span>Справка об участии в РМО, педсоветах, конференциях</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">01.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-rmo.pdf', 'Справка об участии в РМО')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-rmo.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 2: Дипломы и сертификаты образования -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🎓</span>
+                        <span>Дипломы и сертификаты образования</span>
+                        <span class="accordion-badge">4 документа</span>
+                    </div>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎓</span>
+                                            <span>Диплом о высшем образовании (Нижегородская академия МВД)</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2001</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/diplom-vuz.pdf', 'Диплом о высшем образовании')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/diplom-vuz.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📜</span>
+                                            <span>Диплом о профессиональной переподготовке (ООО "Импульс")</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2023</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/diplom-perepodgotovka.pdf', 'Диплом о переподготовке')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/diplom-perepodgotovka.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📚</span>
+                                            <span>Удостоверение о повышении квалификации (НИРО, ОБЗР)</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/udostoverenie-pk-niro.pdf', 'Удостоверение ПК НИРО')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/udostoverenie-pk-niro.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📄</span>
+                                            <span>Справка о трудовом и педагогическом стаже</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">25.11.2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/spravka-stazh.pdf', 'Справка о стаже')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/spravka-stazh.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 3: Награды и грамоты -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">🏆</span>
+                        <span>Награды и грамоты</span>
+                        <span class="accordion-badge">6 документов</span>
+                    </div>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎖️</span>
+                                            <span>Благодарственное письмо УЦПВ ПФО "Гвардеец"</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2023</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/blagodarnoe-gvardeec.pdf', 'Благодарственное письмо Гвардеец')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/blagodarnoe-gvardeec.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🏅</span>
+                                            <span>Почётная грамота Управления образования Лысковского МО</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/gramota-upravlenie.pdf', 'Почётная грамота УО')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/gramota-upravlenie.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">⭐</span>
+                                            <span>Грамота за организацию Юнармейского движения</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/gramota-yunarmiya.pdf', 'Грамота Юнармия')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/gramota-yunarmiya.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🚦</span>
+                                            <span>Благодарность за работу с отрядом ЮИД</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/blagodarnost-yuid.pdf', 'Благодарность ЮИД')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/blagodarnost-yuid.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎯</span>
+                                            <span>Диплом за участие в конкурсе "Зарница 2.0"</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/diplom-zarnica.pdf', 'Диплом Зарница')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/diplom-zarnica.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📜</span>
+                                            <span>Грамота МБОУ СШ № 2 за добросовестный труд</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/gramota-shkola.pdf', 'Грамота школы')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/gramota-shkola.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 4: Сертификаты публикаций -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📄</span>
+                        <span>Сертификаты публикаций</span>
+                        <span class="accordion-badge">6 документов</span>
+                    </div>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📜</span>
+                                            <span>Сертификат публикации: Рабочая программа ОБЗР 8-11 классы</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-1.pdf', 'Сертификат: Рабочая программа')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-1.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📋</span>
+                                            <span>Сертификат публикации: КТП по модулям ОБЗР</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-2.pdf', 'Сертификат: КТП')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-2.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📝</span>
+                                            <span>Сертификат публикации: Методические разработки уроков</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-3.pdf', 'Сертификат: Методразработки')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-3.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎓</span>
+                                            <span>Сертификат публикации: Программа учебных сборов</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-4.pdf', 'Сертификат: Учебные сборы')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-4.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📊</span>
+                                            <span>Сертификат публикации: Контрольно-измерительные материалы</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2025</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-5.pdf', 'Сертификат: КИМ')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-5.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎖️</span>
+                                            <span>Сертификат публикации: Программа внеурочной деятельности "Юнармия"</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('certificates/infourok-cert-6.pdf', 'Сертификат: Юнармия')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="certificates/infourok-cert-6.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 5: Экспертные листы и отзывы -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <span class="accordion-icon">📋</span>
+                        <span>Экспертные листы и отзывы</span>
+                        <span class="accordion-badge">3 документа</span>
+                    </div>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">📝</span>
+                                            <span>Экспертный лист открытого урока по модулю 2 "Военная подготовка"</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">15.10.2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/ekspert-list-1.pdf', 'Экспертный лист урока')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/ekspert-list-1.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">💬</span>
+                                            <span>Отзыв о мастер-классе "Использование ИИ в преподавании ОБЗР"</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">20.11.2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/otzyv-master-klass.pdf', 'Отзыв о мастер-классе')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/otzyv-master-klass.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-name">
+                                            <span class="doc-icon">🎖️</span>
+                                            <span>Отзыв военкомата о проведении учебно-полевых сборов</span>
+                                        </div>
+                                    </td>
+                                    <td class="doc-date">30.05.2024</td>
+                                    <td class="doc-actions">
+                                        <button class="btn btn-view" onclick="viewDocument('documents/otzyv-voenkomat.pdf', 'Отзыв военкомата')">
+                                            👁️ Просмотр
+                                        </button>
+                                        <a href="documents/otzyv-voenkomat.pdf" class="btn btn-download" download>
+                                            📥 Скачать
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="/cdn-cgi/l/email-protection#1c7d78797175722d252b2b5c6a77327f7371"><span class="__cf_email__" data-cfemail="29484d4c44404718101e1e695f42074a4644">[email&#160;protected]</span></a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.7;">
+                При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI)
+            </p>
+        </div>
+    </footer>
+
+    <!-- Плавающая кнопка QR (НЕ ТРОГАТЬ!) -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно QR-кода -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <!-- Lightbox для просмотра PDF -->
+    <div id="pdfLightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-header">
+                <div class="lightbox-title" id="lightboxTitle">Просмотр документа</div>
+                <button class="lightbox-close" onclick="closePDFLightbox()">&times;</button>
+            </div>
+            <iframe class="lightbox-iframe" id="lightboxIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+    
+    <script>
+        // Lightbox для эмблемы
+        function openLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+            }
+        });
+
+        // QR Modal
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // ============================================
+        // ПЕРЕТАСКИВАНИЕ QR-КНОПКИ
+        // ============================================
+        (function() {
+            const button = document.getElementById('qrFloatingButton');
+            const hint = document.getElementById('qrButtonHint');
+            let isDragging = false;
+            let hasMoved = false;
+            let startX, startY, initialX, initialY;
+            let dragThreshold = 5;
+
+            // Показать подсказку при загрузке (один раз)
+            setTimeout(() => {
+                if (!localStorage.getItem('qrButtonHintShown')) {
+                    hint.style.display = 'block';
+                    setTimeout(() => {
+                        hint.style.display = 'none';
+                        localStorage.setItem('qrButtonHintShown', 'true');
+                    }, 4000);
+                }
+            }, 2000);
+
+            function getCoordinates(e) {
+                return e.type.includes('mouse') ? { x: e.clientX, y: e.clientY } : 
+                       { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+
+            function onStart(e) {
+                isDragging = true;
+                hasMoved = false;
+                const coords = getCoordinates(e);
+                startX = coords.x;
+                startY = coords.y;
+                const rect = button.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                button.classList.add('dragging');
+                hint.style.display = 'none';
+            }
+
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const coords = getCoordinates(e);
+                const deltaX = coords.x - startX;
+                const deltaY = coords.y - startY;
+                
+                if (Math.abs(deltaX) > dragThreshold || Math.abs(deltaY) > dragThreshold) {
+                    hasMoved = true;
+                    button.style.left = (initialX + deltaX) + 'px';
+                    button.style.top = (initialY + deltaY) + 'px';
+                    button.style.right = 'auto';
+                    button.style.bottom = 'auto';
+                }
+            }
+
+            function onEnd(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                button.classList.remove('dragging');
+                
+                if (!hasMoved) {
+                    openQRModal();
+                }
+            }
+
+            // События мыши
+            button.addEventListener('mousedown', onStart);
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+
+            // События касания
+            button.addEventListener('touchstart', onStart, { passive: false });
+            document.addEventListener('touchmove', onMove, { passive: false });
+            document.addEventListener('touchend', onEnd);
+        })();
+
+        // Мобильное меню
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function handleSubmenuClick(event, element) {
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                const parent = element.parentElement;
+                parent.classList.toggle('open');
+                return false;
+            }
+            return true;
+        }
+
+        // Аккордеон
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+
+            // Закрываем все другие аккордеоны
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('active');
+                    h.nextElementSibling.classList.remove('active');
+                }
+            });
+
+            // Переключаем текущий
+            if (isActive) {
+                header.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Просмотр PDF в lightbox
+        function viewDocument(url, title) {
+            document.getElementById('lightboxTitle').textContent = title;
+            document.getElementById('lightboxIframe').src = url;
+            document.getElementById('pdfLightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePDFLightbox() {
+            document.getElementById('pdfLightbox').style.display = 'none';
+            document.getElementById('lightboxIframe').src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие по Escape
+        document.addEv
