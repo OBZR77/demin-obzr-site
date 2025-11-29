@@ -571,77 +571,175 @@
         }
 
         /* Адаптивность */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
 
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0;
-            }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
 
-            .nav-menu.active {
-                display: flex;
-            }
+    .nav-menu.active {
+        display: flex;
+    }
 
-            .nav-menu > li > a {
-                border-radius: 0;
-            }
+    .nav-menu > li > a {
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                transform: none;
-                padding: 0;
-                background-color: var(--color-primary-active);
-            }
+    /* Стрелка подменю */
+    .submenu-toggle {
+        display: inline-block;
+        margin-left: auto;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu-toggle {
+        transform: rotate(180deg);
+    }
 
-            .nav-menu > li.has-submenu:hover .submenu {
-                display: none;
-            }
+    /* ИСПРАВЛЕННОЕ ПОДМЕНЮ */
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: white !important;
+    }
+    
+    .submenu li {
+        background-color: white !important;
+    }
 
-            .nav-menu > li.has-submenu.open .submenu {
-                display: block;
-                opacity: 1;
-                visibility: visible;
-            }
+    .nav-menu > li.has-submenu:hover .submenu {
+        max-height: 0;
+    }
 
-            .nav-menu > li.has-submenu.open > a::after {
-                transform: rotate(180deg);
-            }
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
 
-            .submenu a {
-                padding-left: 2rem;
-            }
-            
-            .submenu a:hover {
-                padding-left: 2.5rem;
-            }
+    .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
+        padding-left: 2rem;
+    }
+    
+    .submenu a:hover {
+        background-color: var(--color-surface) !important;
+        color: var(--color-primary) !important;
+        padding-left: 2.5rem;
+    }
 
-            .page-title {
-                font-size: 1.8rem;
-            }
+    .page-title {
+        font-size: 1.8rem;
+        margin-top: 1.5rem;
+    }
 
-            .page-subtitle {
-                font-size: 1rem;
-            }
+    .page-subtitle {
+        font-size: 1rem;
+    }
 
-            main {
-                padding: 0 1rem 2rem 1rem;
-            }
+    main {
+        padding: 0 1rem 2rem 1rem;
+    }
 
-            .chart-grid {
-                grid-template-columns: 1fr;
-            }
+    /* Навигация вкладок */
+    .tabs-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
-            .canvas-wrapper {
-                height: 300px;
-            }
-        }
+    .tab-button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    /* Графики */
+    .chart-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .canvas-wrapper {
+        height: 300px;
+    }
+
+    .chart-container {
+        padding: 1rem;
+    }
+
+    .chart-title {
+        font-size: 1.3rem;
+    }
+
+    .chart-item h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Статистика */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Выводы */
+    .conclusions {
+        padding: 1.5rem;
+    }
+
+    .conclusions h2 {
+        font-size: 1.3rem;
+    }
+
+    /* QR-кнопка */
+    #qrFloatingButton {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #qrFloatingButton span {
+        font-size: 1.8rem;
+    }
+
+    /* Футер */
+    .footer-bottom {
+        font-size: 0.75rem;
+        padding: 1rem;
+    }
+    
+    .footer-bottom p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .footer-bottom br {
+        display: none;
+    }
+}
     </style>
 </head>
 <body>
@@ -879,7 +977,7 @@
             <ul>
                 <li>
                     <span style="color: #4CAF50;">✓</span>
-                    <span>Успеваемость остается стабильной на уровне 100% в оба года</span>
+                    <span>Успеваемость остается стабильной на уровне 100% в течение последних двух лет</span>
                 </li>
                 <li>
                     <span style="color: #2196F3;">📊</span>
@@ -887,7 +985,7 @@
                 </li>
                 <li>
                     <span style="color: #9C27B0;">👥</span>
-                    <span>Общее количество учащихся: 2024 — <span id="conclusionStudents2024">0</span>, 2025 — <span id="conclusionStudents2025">0</span></span>
+                    <span>Общее количество учащихся: 2024 — <span id="conclusion2024">0</span>, 2025 — <span id="conclusion2025">0</span></span>
                 </li>
                 <li>
                     <span style="color: #FF9800;">🎯</span>
@@ -1244,7 +1342,7 @@
             grades2024Chart = new Chart(ctx3, {
                 type: 'pie',
                 data: {
-                    labels: ['Отлично (5)', 'Хорошо (4)', 'Удовл. (3)'],
+                    labels: ['Отлично (5)', 'Хорошо (4)', 'Удовлетворительно (3)'],
                     datasets: [{
                         data: [grades2024.grade5, grades2024.grade4, grades2024.grade3],
                         backgroundColor: ['#EF4444', '#4CAF50', '#2196F3'],
@@ -1278,7 +1376,7 @@
             grades2025Chart = new Chart(ctx4, {
                 type: 'pie',
                 data: {
-                    labels: ['Отлично (5)', 'Хорошо (4)', 'Удовл. (3)'],
+                    labels: ['Отлично (5)', 'Хорошо (4)', 'Удовлетворительно (3)'],
                     datasets: [{
                         data: [grades2025.grade5, grades2025.grade4, grades2025.grade3],
                         backgroundColor: ['#EF4444', '#4CAF50', '#2196F3'],
@@ -1441,15 +1539,21 @@
             navMenu.classList.toggle('active');
         }
 
-        function handleSubmenuClick(event, element) {
-            if (window.innerWidth <= 768) {
-                event.preventDefault();
-                const parent = element.parentElement;
-                parent.classList.toggle('open');
-                return false;
-            }
-            return true;
+      function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        // Проверяем, кликнули ли по стрелке
+        if (event.target.classList.contains('submenu-toggle')) {
+            event.preventDefault();
+            event.stopPropagation();
+            const parent = element.parentElement;
+            parent.classList.toggle('open');
+            return false;
         }
+        // Если клик НЕ по стрелке — разрешаем переход
+        return true;
+    }
+    return true;
+}
 
         // ПЕРЕТАСКИВАНИЕ QR-КНОПКИ
         (function() {
