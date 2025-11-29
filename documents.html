@@ -792,103 +792,205 @@
         }
 
         /* Адаптивность */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
+      @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
 
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0;
-            }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
 
-            .nav-menu.active {
-                display: flex;
-            }
+    .nav-menu.active {
+        display: flex;
+    }
 
-            .nav-menu > li > a {
-                border-radius: 0;
-            }
+    .nav-menu > li > a {
+        border-radius: 0;
+    }
 
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                transform: none;
-                padding: 0;
-                background-color: var(--color-primary-active);
-            }
+    /* ИСПРАВЛЕННОЕ ПОДМЕНЮ */
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: white !important;
+    }
+    
+    .submenu li {
+        background-color: white !important;
+    }
 
-            .nav-menu > li.has-submenu:hover .submenu {
-                display: none;
-            }
+    .nav-menu > li.has-submenu:hover .submenu {
+        max-height: 0;
+    }
 
-            .nav-menu > li.has-submenu.open .submenu {
-                display: block;
-                opacity: 1;
-                visibility: visible;
-            }
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
 
-            .nav-menu > li.has-submenu.open > a::after {
-                transform: rotate(180deg);
-            }
+    .submenu a {
+        color: var(--color-text-primary);
+        background-color: white;
+        padding-left: 2rem;
+    }
+    
+    .submenu a:hover {
+        background-color: var(--color-surface);
+        color: var(--color-primary);
+        padding-left: 2.5rem;
+    }
 
-            .submenu a {
-                padding-left: 2rem;
-            }
-            
-            .submenu a:hover {
-                padding-left: 2.5rem;
-            }
+    /* ЗАГОЛОВКИ */
+    .page-title {
+        font-size: 1.8rem;
+    }
 
-            .page-title {
-                font-size: 1.8rem;
-            }
+    .page-subtitle {
+        font-size: 1rem;
+    }
 
-            .page-subtitle {
-                font-size: 1rem;
-            }
+    /* СТАТИСТИКА */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+    /* АККОРДЕОН */
+    .accordion-title {
+        font-size: 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .accordion-icon {
+        font-size: 1.5rem;
+    }
+    
+    .accordion-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .accordion-body {
+        padding: 1rem;
+    }
 
-            .documents-table {
-                font-size: 0.85rem;
-            }
+    /* ТАБЛИЦЫ - КАРТОЧНЫЙ ВИД */
+    .documents-table {
+        display: block;
+        overflow-x: visible;
+    }
+    
+    .documents-table thead {
+        display: none;
+    }
+    
+    .documents-table tbody,
+    .documents-table tr,
+    .documents-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    .documents-table tr {
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--color-border);
+        border-radius: 8px;
+        padding: 1rem;
+        background: white;
+    }
+    
+    .documents-table td {
+        padding: 0.75rem 0;
+        border-bottom: none;
+    }
+    
+    .documents-table td:not(:last-child) {
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
 
-            .documents-table th,
-            .documents-table td {
-                padding: 0.75rem 0.5rem;
-            }
+    /* ИКОНКИ И НАЗВАНИЯ */
+    .doc-name {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .doc-icon {
+        font-size: 1.8rem;
+    }
 
-            .doc-actions {
-                flex-direction: column;
-            }
+    /* ДЕЙСТВИЯ */
+    .doc-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
 
-            .btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+        justify-content: center;
+        width: 100%;
+    }
 
-            #qrFloatingButton {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
+    /* QR-КНОПКА */
+    #qrFloatingButton {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
 
-            #qrFloatingButton span {
-                font-size: 1.8rem;
-            }
+    #qrFloatingButton span {
+        font-size: 1.8rem;
+    }
 
-            .lightbox-content {
-                width: 95%;
-                height: 85%;
-            }
-        }
+    /* LIGHTBOX */
+    .lightbox-content {
+        width: 95%;
+        height: 85%;
+    }
+    
+    /* СКАЧАТЬ ВСЁ */
+    .download-all-section {
+        padding: 1.5rem;
+    }
+    
+    .download-all-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .download-all-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
