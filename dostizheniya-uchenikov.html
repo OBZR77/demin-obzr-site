@@ -402,7 +402,6 @@
 .lightbox-nav-btn.next {
     right: 20px;
 }
-
 /* Счётчик фото */
 .lightbox-counter {
     position: absolute;
@@ -420,9 +419,10 @@
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
     .lightbox-nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        top: 15px;
     }
     
     .lightbox-nav-btn.prev {
@@ -658,46 +658,45 @@
         opacity: 1;
         z-index: 1;
     }
-
- .slider-btn {
+.slider-btn {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 61, 122, 0.7);
+        top: 10px;
+        background: rgba(0, 61, 122, 0.75);
         color: white;
         border: none;
-        width: 35px;
-        height: 35px;
+        width: 32px;
+        height: 32px;
         border-radius: 6px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         cursor: pointer;
         z-index: 2;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: 0;
-        pointer-events: none;
+        opacity: 0.7;
     }
-    
+
     /* Показываем стрелки при наведении на слайдер */
     .gallery-slider:hover .slider-btn {
         opacity: 1;
         pointer-events: auto;
     }
 
-    .slider-btn:hover {
+   .slider-btn:hover {
         background: var(--color-primary);
-        transform: translateY(-50%) scale(1.15);
-        box-shadow: 0 4px 12px rgba(0, 61, 122, 0.4);
+        transform: scale(1.1);
+        box-shadow: 0 3px 10px rgba(0, 61, 122, 0.4);
+        opacity: 1;
     }
 
     .slider-btn.prev {
-        left: 8px;
+        left: 10px;
     }
 
     .slider-btn.next {
-        right: 8px;
+        right: 10px;
+    }
 
     .slider-dots {
         position: absolute;
@@ -727,8 +726,8 @@
     /* Адаптивность для мобильных */
 @media (max-width: 768px) {
     .slider-btn {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         font-size: 1.1rem;
     }
     
@@ -2194,6 +2193,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
