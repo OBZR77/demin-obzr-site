@@ -372,35 +372,7 @@
         }
 /* Кнопки навигации в lightbox */
 .lightbox-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 61, 122, 0.8);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100001;
-}
-
-.lightbox-nav-btn:hover {
-    background: var(--color-primary);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.lightbox-nav-btn.prev {
-    left: 20px;
-}
-
-.lightbox-nav-btn.next {
-    right: 20px;
+    display: none !important;
 }
 /* Счётчик фото */
 .lightbox-counter {
@@ -418,21 +390,6 @@
 
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
-    .lightbox-nav-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1.3rem;
-        top: 15px;
-    }
-    
-    .lightbox-nav-btn.prev {
-        left: 10px;
-    }
-    
-    .lightbox-nav-btn.next {
-        right: 10px;
-    }
-    
     .lightbox-counter {
         bottom: -30px;
         font-size: 0.8rem;
@@ -678,24 +635,8 @@
     }
 
     /* Показываем стрелки при наведении на слайдер */
-    .gallery-slider:hover .slider-btn {
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-   .slider-btn:hover {
-        background: var(--color-primary);
-        transform: scale(1.1);
-        box-shadow: 0 3px 10px rgba(0, 61, 122, 0.4);
-        opacity: 1;
-    }
-
-    .slider-btn.prev {
-        left: 10px;
-    }
-
-    .slider-btn.next {
-        right: 10px;
+    .slider-btn {
+        display: none !important;
     }
 
     .slider-dots {
@@ -707,38 +648,32 @@
         gap: 8px;
         z-index: 2;
     }
-
-    .dot {
-        width: 10px;
-        height: 10px;
+  .dot {
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.6);
         cursor: pointer;
         transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .dot:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
     }
 
     .dot.active {
         background: white;
-        width: 30px;
-        border-radius: 5px;
+        width: 35px;
+        border-radius: 6px;
+        border-color: white;
     }
 
     /* Адаптивность для мобильных */
 @media (max-width: 768px) {
-    .slider-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 1.1rem;
-    }
-    
-    /* На мобильных стрелки всегда видны (нет hover) */
-    .slider-btn {
-        opacity: 1;
-        pointer-events: auto;
-    }
-    
     .gallery-slider {
-        max-height: 400px;   /* ДОБАВЛЕНО */
+        max-height: 400px;
     }
 }
        .gallery-info {
@@ -1720,6 +1655,25 @@ main > .slider-btn,
             }
         });
     });
+  // Клик по точкам-индикаторам
+    document.querySelectorAll('.gallery-slider').forEach(slider => {
+        const dots = slider.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                const images = slider.querySelectorAll('.slider-image');
+                const allDots = slider.querySelectorAll('.dot');
+                
+                // Убираем active со всех
+                images.forEach(img => img.classList.remove('active'));
+                allDots.forEach(d => d.classList.remove('active'));
+                
+                // Добавляем active к выбранным
+                images[index].classList.add('active');
+                this.classList.add('active');
+            });
+        });
+    });
+    
     // ========================================
 // LIGHTBOX ФУНКЦИИ С НАВИГАЦИЕЙ
 // ========================================
@@ -2193,6 +2147,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
