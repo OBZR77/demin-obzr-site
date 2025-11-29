@@ -874,7 +874,7 @@
         }
 
         /* Адаптивность */
-      @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
     }
@@ -892,6 +892,23 @@
 
     .nav-menu > li > a {
         border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Стрелка подменю */
+    .submenu-toggle {
+        display: inline-block;
+        margin-left: auto;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu-toggle {
+        transform: rotate(180deg);
     }
 
     /* ИСПРАВЛЕННОЕ ПОДМЕНЮ */
@@ -979,7 +996,7 @@
         padding: 1rem;
     }
 
-    /* ТАБЛИЦЫ - КАРТОЧНЫЙ ВИД */
+    /* ТАБЛИЦЫ */
     .documents-table {
         display: block;
         overflow-x: visible;
@@ -1015,7 +1032,6 @@
         margin-bottom: 0.75rem;
     }
 
-    /* ИКОНКИ И НАЗВАНИЯ */
     .doc-name {
         flex-direction: row;
         align-items: center;
@@ -1026,7 +1042,6 @@
         font-size: 1.8rem;
     }
 
-    /* ДЕЙСТВИЯ */
     .doc-actions {
         display: flex;
         flex-direction: column;
@@ -1039,6 +1054,23 @@
         padding: 0.6rem 1rem;
         justify-content: center;
         width: 100%;
+    }
+
+    /* ФУТЕР */
+    .footer-bottom {
+        font-size: 0.75rem;
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .footer-bottom p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .footer-bottom br {
+        display: none;
     }
 
     /* QR-КНОПКА */
