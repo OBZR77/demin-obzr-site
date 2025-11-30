@@ -754,10 +754,6 @@
             <img src="images/moi-dostizheniya/diploma-page2.jpg" alt="Диплом страница 2" class="slider-image">
         </div>
         
-        <!-- Кнопки навигации -->
-        <button class="slider-btn prev" onclick="changeSlide(this, -1)">‹</button>
-        <button class="slider-btn next" onclick="changeSlide(this, 1)">›</button>
-        
         <!-- Индикаторы -->
         <div class="slider-dots">
             <span class="dot active"></span>
@@ -1328,8 +1324,26 @@
         dots[currentIndex].classList.remove('active');
         dots[newIndex].classList.add('active');
     }
-
-    // Свайп для мобильных
+// Клик по точкам-индикаторам
+document.querySelectorAll('.gallery-slider').forEach(slider => {
+    const dots = slider.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            const images = slider.querySelectorAll('.slider-image');
+            const allDots = slider.querySelectorAll('.dot');
+            
+            // Убираем active со всех
+            images.forEach(img => img.classList.remove('active'));
+            allDots.forEach(d => d.classList.remove('active'));
+            
+            // Добавляем active к выбранным
+            images[index].classList.add('active');
+            this.classList.add('active');
+        });
+    });
+});
+    
+ // Свайп для мобильных
     document.querySelectorAll('.gallery-slider').forEach(slider => {
         let startX = 0;
         
@@ -1342,19 +1356,47 @@
             const diff = startX - endX;
             
             if (Math.abs(diff) > 50) {
-                const nextBtn = slider.querySelector('.slider-btn.next');
-                const prevBtn = slider.querySelector('.slider-btn.prev');
-                
-
-                            if (diff > 0 && nextBtn) {
-                    changeSlide(nextBtn, 1);
-                } else if (diff < 0 && prevBtn) {
-                    changeSlide(prevBtn, -1);
+                if (diff > 0) {
+                    changeSlideByElement(slider, 1);
+                } else {
+                    changeSlideByElement(slider, -1);
                 }
             }
         });
+        
+        // Прокрутка колесиком мыши (только для десктопа)
+        slider.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            
+            if (e.deltaY > 0) {
+                // Прокрутка вниз = следующее фото
+                changeSlideByElement(slider, 1);
+            } else if (e.deltaY < 0) {
+                // Прокрутка вверх = предыдущее фото
+                changeSlideByElement(slider, -1);
+            }
+        }, { passive: false });
     });
     
+    // Новая функция для переключения по элементу слайдера
+    function changeSlideByElement(slider, direction) {
+        const images = slider.querySelectorAll('.slider-image');
+        const dots = slider.querySelectorAll('.dot');
+        
+        let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+        let newIndex = currentIndex + direction;
+        
+        // Зацикливание
+        if (newIndex < 0) newIndex = images.length - 1;
+        if (newIndex >= images.length) newIndex = 0;
+        
+        // Переключение
+        images[currentIndex].classList.remove('active');
+        images[newIndex].classList.add('active');
+        dots[currentIndex].classList.remove('active');
+        dots[newIndex].classList.add('active');
+    }
+   
     // ========================================
     // LIGHTBOX ФУНКЦИИ
     // ========================================
@@ -1395,6 +1437,20 @@
             closeLightbox();
         }
     });
+/ Прокрутка колесиком в lightbox
+document.getElementById('lightbox').addEventListener('wheel', function(e) {
+    if (!this.classList.contains('active')) return;
+    
+    e.preventDefault();
+    
+    if (e.deltaY > 0) {
+        // Прокрутка вниз = следующее фото
+        navigateLightbox(1);
+    } else if (e.deltaY < 0) {
+        // Прокрутка вверх = предыдущее фото
+        navigateLightbox(-1);
+    }
+}, { passive: false });
     
     // ========================================
     // ФУНКЦИЯ ДЛЯ ЭМБЛЕМЫ
@@ -1759,6 +1815,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
