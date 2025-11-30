@@ -758,7 +758,6 @@
         <div class="slider-dots">
             <span class="dot active"></span>
             <span class="dot"></span>
-            <span class="dot"></span>
         </div>
     </div>
     
@@ -1256,12 +1255,15 @@
     });
     
     // Закрытие по ESC
+ // Закрытие по Escape (общий обработчик)
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && qrModalWindow.style.display === 'flex') {
-            closeQRModal();
+        if (event.key === 'Escape') {
+            closeLightbox();
+            if (qrModalWindow.style.display === 'flex') {
+                closeQRModal();
+            }
         }
     });
-    
     // Подсказка при первом посещении
     function showHintIfNeeded() {
         const hintShown = localStorage.getItem('qrButtonHintShown');
@@ -1400,16 +1402,95 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
     // ========================================
     // LIGHTBOX ФУНКЦИИ
     // ========================================
+       // ========================================
+    // LIGHTBOX ФУНКЦИИ С НАВИГАЦИЕЙ
+    // ========================================
+    
+    let currentLightboxSlider = null;
+    let currentLightboxIndex = 0;
     
     // Открытие lightbox при клике на изображение в слайдере
     document.addEventListener('DOMContentLoaded', function() {
-        // Добавляем обработчик клика на все изображения слайдера
         document.querySelectorAll('.slider-image').forEach(img => {
             img.addEventListener('click', function() {
-                openLightbox(this.src, this.alt);
+                const slider = this.closest('.gallery-slider');
+                const images = Array.from(slider.querySelectorAll('.slider-image'));
+                const index = images.indexOf(this);
+                
+                openLightboxWithSlider(slider, index);
             });
         });
     });
+    
+    // Открытие lightbox с привязкой к слайдеру
+    function openLightboxWithSlider(slider, startIndex) {
+        currentLightboxSlider = slider;
+        currentLightboxIndex = startIndex;
+        
+        showLightboxImage(startIndex);
+        
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+    
+    // Показать изображение в lightbox
+    function showLightboxImage(index) {
+        if (!currentLightboxSlider) return;
+        
+        const images = currentLightboxSlider.querySelectorAll('.slider-image');
+        
+        if (index < 0) index = images.length - 1;
+        if (index >= images.length) index = 0;
+        
+        currentLightboxIndex = index;
+        
+        const currentImage = images[index];
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        
+        lightboxImage.src = currentImage.src;
+        lightboxCaption.textContent = currentImage.alt;
+    }
+    
+    // Навигация в lightbox
+    function navigateLightbox(direction) {
+        if (!currentLightboxSlider) return;
+        
+        const images = currentLightboxSlider.querySelectorAll('.slider-image');
+        let newIndex = currentLightboxIndex + direction;
+        
+        // Зацикливание
+        if (newIndex < 0) newIndex = images.length - 1;
+        if (newIndex >= images.length) newIndex = 0;
+        
+        showLightboxImage(newIndex);
+    }
+    
+    // Старая функция openLightbox для обратной совместимости
+    function openLightbox(imageSrc, imageAlt) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        
+        lightboxImage.src = imageSrc;
+        lightboxCaption.textContent = imageAlt;
+        
+        lightbox.classList.add('active');
+        document.body.classList.add('modal-open');
+        
+        currentLightboxSlider = null;
+    }
+    
+    // Функция закрытия lightbox
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        
+        currentLightboxSlider = null;
+        currentLightboxIndex = 0;
+    }
     
     // Функция открытия lightbox
     function openLightbox(imageSrc, imageAlt) {
@@ -1430,13 +1511,21 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
         lightbox.classList.remove('active');
         document.body.classList.remove('modal-open');
     }
-    
-    // Закрытие по ESC
+  // Закрытие по ESC и навигация стрелками
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
+        const lightbox = document.getElementById('lightbox');
+        
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                navigateLightbox(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateLightbox(1);
+            }
         }
-    });
+    });  
+  
 / Прокрутка колесиком в lightbox
 document.getElementById('lightbox').addEventListener('wheel', function(e) {
     if (!this.classList.contains('active')) return;
@@ -1451,6 +1540,39 @@ document.getElementById('lightbox').addEventListener('wheel', function(e) {
         navigateLightbox(-1);
     }
 }, { passive: false });
+/ Свайп в полноэкранном режиме (lightbox) для мобильных
+(function() {
+    const lightbox = document.getElementById('lightbox');
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    lightbox.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    lightbox.addEventListener('touchend', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Свайп влево = следующее фото
+                navigateLightbox(1);
+            } else {
+                // Свайп вправо = предыдущее фото
+                navigateLightbox(-1);
+            }
+        }
+    }
+})();
+    
     
     // ========================================
     // ФУНКЦИЯ ДЛЯ ЭМБЛЕМЫ
@@ -1815,6 +1937,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
