@@ -1254,17 +1254,6 @@
         }
     });
     
-    // Закрытие по ESC
- // Закрытие по Escape (общий обработчик)
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeLightbox();
-            if (qrModalWindow.style.display === 'flex') {
-                closeQRModal();
-            }
-        }
-    });
-    
     // Подсказка при первом посещении
     function showHintIfNeeded() {
         const hintShown = localStorage.getItem('qrButtonHintShown');
@@ -1309,7 +1298,8 @@
     // ========================================
     // ФУНКЦИИ ДЛЯ СЛАЙДЕРА
     // ========================================
-    function changeSlide(button, direction) {
+
+   function changeSlide(button, direction) {
         const slider = button.closest('.gallery-slider');
         const images = slider.querySelectorAll('.slider-image');
         const dots = slider.querySelectorAll('.dot');
@@ -1327,26 +1317,27 @@
         dots[currentIndex].classList.remove('active');
         dots[newIndex].classList.add('active');
     }
-// Клик по точкам-индикаторам
-document.querySelectorAll('.gallery-slider').forEach(slider => {
-    const dots = slider.querySelectorAll('.dot');
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            const images = slider.querySelectorAll('.slider-image');
-            const allDots = slider.querySelectorAll('.dot');
-            
-            // Убираем active со всех
-            images.forEach(img => img.classList.remove('active'));
-            allDots.forEach(d => d.classList.remove('active'));
-            
-            // Добавляем active к выбранным
-            images[index].classList.add('active');
-            this.classList.add('active');
+
+    // Клик по точкам-индикаторам
+    document.querySelectorAll('.gallery-slider').forEach(slider => {
+        const dots = slider.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                const images = slider.querySelectorAll('.slider-image');
+                const allDots = slider.querySelectorAll('.dot');
+                
+                // Убираем active со всех
+                images.forEach(img => img.classList.remove('active'));
+                allDots.forEach(d => d.classList.remove('active'));
+                
+                // Добавляем active к выбранным
+                images[index].classList.add('active');
+                this.classList.add('active');
+            });
         });
     });
-});
-    
- // Свайп для мобильных
+        
+    // Свайп для мобильных
     document.querySelectorAll('.gallery-slider').forEach(slider => {
         let startX = 0;
         
@@ -1401,9 +1392,6 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
     }
    
     // ========================================
-    // LIGHTBOX ФУНКЦИИ
-    // ========================================
-       // ========================================
     // LIGHTBOX ФУНКЦИИ С НАВИГАЦИЕЙ
     // ========================================
     
@@ -1468,7 +1456,7 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
         showLightboxImage(newIndex);
     }
     
-    // Старая функция openLightbox для обратной совместимости
+    // Старая функция openLightbox для обратной совместимости (эмблема и др.)
     function openLightbox(imageSrc, imageAlt) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
@@ -1493,26 +1481,7 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
         currentLightboxIndex = 0;
     }
     
-    // Функция открытия lightbox
-    function openLightbox(imageSrc, imageAlt) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        
-        lightboxImage.src = imageSrc;
-        lightboxCaption.textContent = imageAlt;
-        
-        lightbox.classList.add('active');
-        document.body.classList.add('modal-open');
-    }
-    
-    // Функция закрытия lightbox
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-  // Закрытие по ESC и навигация стрелками
+    // Закрытие по ESC и навигация стрелками
     document.addEventListener('keydown', function(e) {
         const lightbox = document.getElementById('lightbox');
         
@@ -1527,60 +1496,61 @@ document.querySelectorAll('.gallery-slider').forEach(slider => {
         }
     });  
   
-/ Прокрутка колесиком в lightbox
-document.getElementById('lightbox').addEventListener('wheel', function(e) {
-    if (!this.classList.contains('active')) return;
-    
-    e.preventDefault();
-    
-    if (e.deltaY > 0) {
-        // Прокрутка вниз = следующее фото
-        navigateLightbox(1);
-    } else if (e.deltaY < 0) {
-        // Прокрутка вверх = предыдущее фото
-        navigateLightbox(-1);
-    }
-}, { passive: false });
-/ Свайп в полноэкранном режиме (lightbox) для мобильных
-(function() {
-    const lightbox = document.getElementById('lightbox');
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    lightbox.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    
-    lightbox.addEventListener('touchend', function(e) {
-        if (!lightbox.classList.contains('active')) return;
+    // Прокрутка колесиком в lightbox
+    document.getElementById('lightbox').addEventListener('wheel', function(e) {
+        if (!this.classList.contains('active')) return;
         
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
+        e.preventDefault();
         
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Свайп влево = следующее фото
-                navigateLightbox(1);
-            } else {
-                // Свайп вправо = предыдущее фото
-                navigateLightbox(-1);
+        if (e.deltaY > 0) {
+            // Прокрутка вниз = следующее фото
+            navigateLightbox(1);
+        } else if (e.deltaY < 0) {
+            // Прокрутка вверх = предыдущее фото
+            navigateLightbox(-1);
+        }
+    }, { passive: false });
+
+    // Свайп в полноэкранном режиме (lightbox) для мобильных
+    (function() {
+        const lightbox = document.getElementById('lightbox');
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        lightbox.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        lightbox.addEventListener('touchend', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Свайп влево = следующее фото
+                    navigateLightbox(1);
+                } else {
+                    // Свайп вправо = предыдущее фото
+                    navigateLightbox(-1);
+                }
             }
         }
-    }
-})();
-    
+    })();
     
     // ========================================
     // ФУНКЦИЯ ДЛЯ ЭМБЛЕМЫ
     // ========================================
     function openEmblemLightbox() {
         openLightbox('images/emblem-obzr.png.png', 'Эмблема ОБЗР МБОУ СШ № 2 г. Лысково');
-    }
+    }  
+ 
 </script>
 <!-- Минимизированный плавающий плейер -->
 <div id="floatingMiniPlayer" 
@@ -1938,6 +1908,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
