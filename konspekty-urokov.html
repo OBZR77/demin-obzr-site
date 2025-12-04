@@ -634,149 +634,219 @@
         }
         
         /* АДАПТИВНОСТЬ */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu > li > a {
-                padding: 0.75rem 1rem;
-            }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-            }
-            
-            .nav-menu > li.has-submenu.open .submenu {
-                max-height: 500px;
-                padding: 0.5rem 0;
-            }
-            
-            .submenu a {
-                padding-left: 2rem;
-            }
-            
-            .submenu a:hover {
-                padding-left: 2.5rem;
-            }
-            
-            .header-title h1 {
-                font-size: 1.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 0.8rem;
-            }
-            
-            .page-title {
-                font-size: 1.5rem;
-            }
+   @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu > li > a {
+        padding: 0.75rem 1rem;
+    }
+    
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+    
+    .submenu a {
+        padding-left: 2rem;
+    }
+    
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+    
+    .header-title h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
 
-            .page-subtitle {
-                font-size: 1rem;
-            }
+    .page-subtitle {
+        font-size: 1rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
 
-            .filters-row {
-                flex-direction: column;
-            }
+    .filters-row {
+        flex-direction: column;
+    }
 
-            .class-filters {
-                flex-wrap: wrap;
-            }
+    .class-filters {
+        flex-wrap: wrap;
+    }
 
-            .accordion-title {
-                font-size: 1.1rem;
-            }
+    .accordion-title {
+        font-size: 1.1rem;
+    }
 
-            .accordion-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
+    .accordion-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
-            .lessons-grid {
-                grid-template-columns: 1fr;
-            }
-           .additional-info ul[style*="grid-template-columns"] {
-              grid-template-columns: 1fr !important;
-            }
-        }
+    .lessons-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .additional-info ul[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+    }
+    
+    /* ИСПРАВЛЕНИЕ 1: Убираем дёргание при прокрутке */
+    body {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+    }
+    
+    #qrFloatingButton {
+        will-change: auto;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        animation: none !important;
+    }
+    
+    /* ИСПРАВЛЕНИЕ 2: Переносы длинных ссылок */
+    .additional-info a {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        display: inline-block;
+        max-width: 100%;
+    }
+    
+    .additional-info li {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    main {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .additional-info {
+        overflow-x: hidden;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .highlight-box p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    #qrFloatingButton {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    #qrFloatingButton span {
+        font-size: 1.8rem;
+    }
+    
+    #qrButtonHint {
+        bottom: 90px;
+        right: 20px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        max-width: 160px;
+    }
+}
 
         /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
-            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        #qrFloatingButton.dragging {
-            animation: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
-            transform: scale(1.1);
-            cursor: grabbing;
-            transition: none;
-        }
-        
-        @media (hover: hover) {
-            #qrFloatingButton:hover {
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            #qrFloatingButton {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            #qrFloatingButton span {
-                font-size: 1.8rem;
-            }
-            
-            #qrButtonHint {
-                bottom: 90px;
-                right: 20px;
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                max-width: 160px;
-            }
-        }
-        
-        body.modal-open {
-            overflow: hidden;
-            height: 100vh;
-        }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+    50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#qrFloatingButton.dragging {
+    animation: none;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+    transform: scale(1.1);
+    cursor: grabbing;
+    transition: none;
+}
+
+@media (hover: hover) {
+    #qrFloatingButton:hover {
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    }
+}
+
+/* МОБИЛЬНАЯ АДАПТАЦИЯ QR-КНОПКИ */
+@media (max-width: 768px) {
+    /* Отключаем анимацию pulse на мобильных (убирает дёргание при прокрутке) */
+    #qrFloatingButton {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+        animation: none !important; /* ⬅️ ДОБАВЛЕНО */
+        will-change: auto; /* ⬅️ ДОБАВЛЕНО */
+        transform: translateZ(0); /* ⬅️ ДОБАВЛЕНО */
+        -webkit-transform: translateZ(0); /* ⬅️ ДОБАВЛЕНО */
+    }
+    
+    #qrFloatingButton span {
+        font-size: 1.8rem;
+    }
+    
+    #qrButtonHint {
+        bottom: 90px;
+        right: 20px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        max-width: 160px;
+    }
+}
+
+body.modal-open {
+    overflow: hidden;
+    height: 100vh;
+} 
     </style>
 </head>
 <body>
