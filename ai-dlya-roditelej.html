@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Практические материалы для родителей: памятки, инфографика и рекомендации по безопасности, созданные с помощью ИИ">
+    <title>Для родителей - практические материалы | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* HEADER */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-danger);
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-top: 2.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        /* ИНФОРМАЦИОННЫЙ БЛОК */
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 2px solid var(--color-primary);
+            border-left: 5px solid var(--color-primary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .info-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+        
+        .info-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .info-box li::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* ПОИСК */
+        .search-container {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-container label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+        }
+
+        /* АККОРДЕОН */
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-left: 5px solid var(--color-primary);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 61, 122, 0.1);
+        }
+
+        .accordion-item.featured {
+            border-left-color: var(--color-danger);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: var(--color-surface);
+        }
+
+        .accordion-item.active .accordion-header {
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.05) 0%, rgba(0, 81, 138, 0.02) 100%);
+        }
+
+        .accordion-item.featured.active .accordion-header {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.05) 0%, rgba(229, 57, 53, 0.02) 100%);
+        }
+
+        .accordion-title-wrapper {
+            flex: 1;
+        }
+
+        .accordion-title {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion-item.featured .accordion-title {
+            color: var(--color-danger);
+        }
+
+        .accordion-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .accordion-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.75rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 10000px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* КАРТОЧКИ МАТЕРИАЛОВ */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .material-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .material-icon {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, var(--color-surface) 0%, #E8EEF5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .material-content {
+            padding: 1.25rem;
+        }
+
+        .material-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .material-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .material-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .material-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .material-list li {
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .material-list li::before {
+            content: '•';
+            color: var(--color-primary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .material-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .material-btn {
+            padding: 0.65rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .material-btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .material-btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+        }
+
+        .material-btn-disabled {
+            background: var(--color-surface);
+            color: var(--color-text-secondary);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .material-btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* NO RESULTS */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--color-text-secondary);
+            display: none;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            border: 2px solid #FFC107;
+            border-left: 5px solid #FF9800;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .highlight-box p {
+            color: var(--color-text-primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
+        }
+
+        /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background-color: #F0F7FF;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .additional-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+
+        .additional-info h4 {
+            color: var(--color-primary);
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.1rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.75rem 0;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .additional-info li::before {
+            content: '📌';
+            flex-shrink: 0;
+        }
+
+        .additional-info a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        .additional-info a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                border-top: none;
+                border-left: 3px solid var(--color-danger);
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+            }
+            
+            .nav-menu > li.has-submenu.open .submenu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+            
+            .submenu a {
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                padding-left: 2.5rem;
+            }
+            
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+
+            .accordion-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .material-buttons {
+                flex-direction: column;
+            }
+
+            #qrFloatingButton {
+                animation: none !important;
+                transform: translateZ(0);
+            }
+        }
+
+        /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr">О предмете ОБЗР</a></li>
+                            <li><a href="novosti">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie">Образование</a></li>
+                            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost">Методическая активность</a></li>
+                            <li><a href="dokumenty-portfolio">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+                            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" class="active" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej.html" style="font-weight: 700; color: var(--color-primary);">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-projects.html#poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya">Юнармия</a></li>
+                            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica">Зарница 2.0</a></li>
+                            <li><a href="olimpiady-obzr">Олимпиады по ОБЗР</a></li>
+                            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie-partnery">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue">Диалоги о безопасности</a></li>
+                            <li><a href="feedback">Обратная связь</a></li>
+                            <li><a href="grading">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+                </ul>                        
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="page-title">👨‍👩‍👧‍👦 Для родителей — практические материалы</h2>
+        
+        <p class="page-subtitle">
+            Созданные с помощью ИИ памятки, инфографика и рекомендации по безопасности для семьи
+        </p>
+
+        <!-- ИНФОРМАЦИОННЫЙ БЛОК -->
+        <div class="info-box">
+            <h3>💡 Зачем родителям использовать ИИ в обучении детей ОБЗР?</h3>
+            <p>Искусственный интеллект помогает родителям стать активными участниками образовательного процесса:</p>
+            <ul>
+                <li><strong>Помочь ребёнку</strong> с домашним заданием интерактивно и понятно</li>
+                <li><strong>Создать персонализированные памятки</strong> по безопасности для вашего дома</li>
+                <li><strong>Объяснить сложные темы</strong> простым языком, адаптированным для возраста ребёнка</li>
+                <li><strong>Проверить знания</strong> через игровые и интерактивные форматы</li>
+                <li><strong>Подготовить ребёнка</strong> к учебным сборам (10-11 классы) психологически и практически</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-weight: 600; color: var(--color-danger);">⚠️ Важно: Все материалы, созданные с помощью ИИ, должны быть проверены ВАМИ перед использованием детьми. ИИ — это инструмент помощи, а не замена родительского контроля.</p>
+        </div>
+
+        <!-- ПОИСК -->
+        <div class="search-container">
+            <label for="searchInput">🔍 Поиск по материалам</label>
+            <input type="text" 
+                   id="searchInput" 
+                   class="search-input" 
+                   placeholder="Введите название материала..."
+                   oninput="filterMaterials()">
+        </div>
+
+        <!-- АККОРДЕОН КАТЕГОРИЙ -->
+        <div class="accordion" id="categoriesAccordion">
+            
+            <!-- КАТЕГОРИЯ 1 ⭐ FEATURED -->
+            <div class="accordion-item featured" data-category="1">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrapper">
+                        <div class="accordion-title">🛡️ Памятки по безопасности для дома</div>
+                        <div class="accordion-meta">
+                            <span>📦 5 материалов</span>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▶</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="materials-grid">
+                        
+                        <!-- Материал 1 -->
+                        <div class="material-card" data-title="Семейный план эвакуации при пожаре">
+                            <div class="material-icon">🚨</div>
+                            <div class="material-content">
+                                <div class="material-title">Семейный план эвакуации при пожаре</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Для: всей семьи</div>
+                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude, ChatGPT</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Схема квартиры с маршрутами эвакуации</li>
+                                    <li>Точка сбора семьи</li>
+                                    <li>Номера экстренных служб</li>
+                                    <li>Инструкции для каждого члена семьи</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать пример (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 2 -->
+                        <div class="material-card" data-title="Инфографика Что делать при ЧС">
+                            <div class="material-icon">🖼️</div>
+                            <div class="material-content">
+                                <div class="material-title">Инфографика "Что делать при ЧС" для детей</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: DALL-E 3, Kandinsky</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Красочный постер с правилами при пожаре</li>
+                                    <li>Действия при ЧС в доме</li>
+                                    <li>Визуальные пиктограммы для быстрого запоминания</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Примеры постеров (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>💬 Готовые промпты (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 3 -->
+                        <div class="material-card" data-title="Чек-лист проверки домашней аптечки">
+                            <div class="material-icon">💊</div>
+                            <div class="material-content">
+                                <div class="material-title">Чек-лист проверки домашней аптечки</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Для: всей семьи</div>
+                                    <div class="material-info-item">⏱️ Время создания: 5 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Список необходимых медикаментов</li>
+                                    <li>Средства первой помощи</li>
+                                    <li>Сроки годности и периодичность проверки</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>✅ Скачать чек-лист (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📝 Персонализировать (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 4 -->
+                        <div class="material-card" data-title="Плакат Правила безопасности на кухне">
+                            <div class="material-icon">🍳</div>
+                            <div class="material-content">
+                                <div class="material-title">Плакат "Правила безопасности на кухне"</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Для: всей семьи</div>
+                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: DALL-E 3</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Яркий плакат для размещения дома</li>
+                                    <li>Правила работы с плитой, электроприборами</li>
+                                    <li>Что делать при порезах и ожогах</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Примеры плакатов (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>💬 Готовые промпты (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 5 -->
+                        <div class="material-card" data-title="Инструкция по использованию огнетушителя">
+                            <div class="material-icon">🧯</div>
+                            <div class="material-content">
+                                <div class="material-title">Инструкция по использованию огнетушителя</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Для: всей семьи</div>
+                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Canva + ИИ для иконок</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Пошаговая визуальная инструкция</li>
+                                    <li>Типы огнетушителей для дома</li>
+                                    <li>Когда можно тушить самостоятельно, а когда — эвакуироваться</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инструкцию (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>🎨 Шаблон Canva (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- КАТЕГОРИЯ 2 -->
+            <div class="accordion-item" data-category="2">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrapper">
+                        <div class="accordion-title">📋 Рекомендации по домашней подготовке</div>
+                        <div class="accordion-meta">
+                            <span>📦 4 материала</span>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▶</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="materials-grid">
+                        
+                        <!-- Материал 1 -->
+                        <div class="material-card" data-title="Помощь с домашними заданиями по ОБЗР">
+                            <div class="material-icon">📚</div>
+                            <div class="material-content">
+                                <div class="material-title">Помощь с домашними заданиями по ОБЗР</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время: 2-3 минуты на вопрос</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude, ChatGPT, YandexGPT</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Объяснение сложных тем простым языком</li>
+                                    <li>30 готовых промптов для родителей</li>
+                                    <li>Примеры ответов ИИ с комментариями</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📝 30 готовых промптов (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>🎓 Примеры ответов (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 2 -->
+                        <div class="material-card" data-title="Интерактивные карточки для запоминания">
+                            <div class="material-icon">🎴</div>
+                            <div class="material-content">
+                                <div class="material-title">Интерактивные карточки для запоминания</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude + Quizlet</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Флеш-карточки с вопросами и ответами</li>
+                                    <li>По всем 11 модулям ОБЗР</li>
+                                    <li>Режимы обучения: заучивание, тест, игра</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>🎴 Примеры карточек (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 3 -->
+                        <div class="material-card" data-title="Список вещей для учебно-полевых сборов">
+                            <div class="material-icon">🎒</div>
+                            <div class="material-content">
+                                <div class="material-title">Список вещей для учебно-полевых сборов</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 10-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 5 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Персонализированный список с учётом погоды</li>
+                                    <li>Обязательные и рекомендуемые вещи</li>
+                                    <li>Что брать НЕ нужно</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>✅ Универсальный список (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📝 Персонализировать (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 4 -->
+                        <div class="material-card" data-title="Психологическая подготовка ребёнка к сборам">
+                            <div class="material-icon">🧠</div>
+                            <div class="material-content">
+                                <div class="material-title">Психологическая подготовка ребёнка к сборам</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 10 класс (первые сборы)</div>
+                                    <div class="material-info-item">⏱️ Время: 5 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: ChatGPT, Claude</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Как морально подготовить ребёнка</li>
+                                    <li>Типичные страхи и как с ними работать</li>
+                                    <li>Рекомендации психологов</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать гайд (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>💬 Промпты для диалога (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- КАТЕГОРИЯ 3 -->
+            <div class="accordion-item" data-category="3">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrapper">
+                        <div class="accordion-title">🧠 Инфографика по цифровой безопасности подростков</div>
+                        <div class="accordion-meta">
+                            <span>📦 4 материала</span>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▶</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="materials-grid">
+                        
+                        <!-- Материал 1 -->
+                        <div class="material-card" data-title="Защита персональных данных в интернете">
+                            <div class="material-icon">🔒</div>
+                            <div class="material-content">
+                                <div class="material-title">Защита персональных данных в интернете</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Canva + DALL-E</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Какие данные нельзя публиковать в соцсетях</li>
+                                    <li>Настройки приватности ВКонтакте, Telegram</li>
+                                    <li>Как распознать фишинг и мошенничество</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инфографику (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>🎨 Шаблон Canva (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 2 -->
+                        <div class="material-card" data-title="Противодействие кибербуллингу">
+                            <div class="material-icon">🛡️</div>
+                            <div class="material-content">
+                                <div class="material-title">Противодействие кибербуллингу</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude + Canva</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Что такое кибербуллинг и его формы</li>
+                                    <li>Как защитить ребёнка</li>
+                                    <li>Куда обращаться за помощью</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать памятку (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>💬 Сценарии разговора (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 3 -->
+                        <div class="material-card" data-title="Безопасное использование смартфона">
+                            <div class="material-icon">📱</div>
+                            <div class="material-content">
+                                <div class="material-title">Безопасное использование смартфона</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-9 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: DALL-E 3 + Canva</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Правила установки приложений</li>
+                                    <li>Родительский контроль (настройка)</li>
+                                    <li>Баланс экранного времени</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инфографику (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>⚙️ Гайд по настройкам (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 4 -->
+                        <div class="material-card" data-title="Распознавание опасного контента">
+                            <div class="material-icon">⚠️</div>
+                            <div class="material-content">
+                                <div class="material-title">Распознавание опасного контента в интернете</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 10-11 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude + Canva</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Признаки деструктивных сообществ</li>
+                                    <li>Как говорить с ребёнком о рисках</li>
+                                    <li>Алгоритм действий при обнаружении угрозы</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать чек-лист (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📞 Контакты служб (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- КАТЕГОРИЯ 4 -->
+            <div class="accordion-item" data-category="4">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title-wrapper">
+                        <div class="accordion-title">🎮 Игровые форматы проверки знаний</div>
+                        <div class="accordion-meta">
+                            <span>📦 2 материала</span>
+                        </div>
+                    </div>
+                    <div class="accordion-icon">▶</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="materials-grid">
+                        
+                        <!-- Материал 1 -->
+                        <div class="material-card" data-title="Семейная викторина по ОБЗР">
+                            <div class="material-icon">🎮</div>
+                            <div class="material-content">
+                                <div class="material-title">Создание семейной викторины по ОБЗР</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Для: всей семьи</div>
+                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: Claude (React)</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Интерактивная викторина на 10-15 вопросов</li>
+                                    <li>Темы: пожарная безопасность, первая помощь, ПДД</li>
+                                    <li>Подсчёт баллов и награждение победителя</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>🎮 Пример викторины (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Материал 2 -->
+                        <div class="material-card" data-title="Настольная игра Безопасный дом">
+                            <div class="material-icon">🎲</div>
+                            <div class="material-content">
+                                <div class="material-title">Настольная игра "Безопасный дом"</div>
+                                <div class="material-info">
+                                    <div class="material-info-item">🎯 Возраст: 8-9 классы</div>
+                                    <div class="material-info-item">⏱️ Время создания: 30 минут</div>
+                                    <div class="material-info-item">🤖 ИИ: DALL-E + Canva</div>
+                                </div>
+                                <ul class="material-list">
+                                    <li>Игровое поле для печати</li>
+                                    <li>Карточки с заданиями и вопросами</li>
+                                    <li>Правила игры для 2-4 игроков</li>
+                                </ul>
+                                <div class="material-buttons">
+                                    <button class="material-btn material-btn-disabled" disabled>🎲 Скачать игру PDF (скоро)</button>
+                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Промпты для иллюстраций (скоро)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- СООБЩЕНИЕ "НЕТ РЕЗУЛЬТАТОВ" -->
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить запрос в поиске</p>
+        </div>
+
+        <!-- HIGHLIGHT BOX -->
+        <div class="highlight-box">
+            <h3>💡 Важно для родителей!</h3>
+            <p>
+                Все материалы, созданные с помощью ИИ, должны быть <strong>проверены ВАМИ</strong> перед использованием детьми.<br>
+             ИИ — это инструмент помощи, а не замена родительского контроля и ответственности.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                ❓ Есть вопросы по использованию ИИ-инструментов? Напишите мне через раздел <a href="contacts.html">«Контакты»</a> или <a href="contacts.html#feedback-form">форму обратной связи</a>.
+            </p>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+        <div class="additional-info">
+            <h3>ℹ️ Рекомендуемые ИИ-инструменты для родителей</h3>
+            
+           <div class="highlight-box">
+    <h3>🤖 Полезные ресурсы по ИИ в образовании</h3>
+    <p>
+        Полный каталог бесплатных и платных ИИ-инструментов для учителей, учеников и родителей (Claude, ChatGPT, Gamma App, DALL-E 3, Kandinsky, Suno и др.) доступен в разделе <a href="ai-resursy.html">«Полезные ресурсы по ИИ в образовании»</a>.
+    </p>
+</div>
+
+            <h4>📚 Дополнительные ресурсы:</h4>
+            <ul>
+                <li>Методические рекомендации по использованию ИИ доступны в разделе <a href="metodicheskie-rekomendacii.html">«Методика → Методические рекомендации для коллег»</a></li>
+                <li>Примеры промптов и готовые материалы — в разделе <a href="ai-dlya-kolleg.html">«ИИ в образовании → Для коллег»</a></li>
+                <li>Все инструменты бесплатны для базового использования</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, DALL-E 3, Kandinsky 3.0, Canva и др.)<br>
+            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
+        // ============================================
+        function openLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ============================================
+        // МОБИЛЬНОЕ МЕНЮ
+        // ============================================
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function handleSubmenuClick(event, element) {
+            if (window.innerWidth <= 768) {
+                const parentLi = element.parentElement;
+                const isOpen = parentLi.classList.contains('open');
+                
+                if (isOpen) {
+                    return true;
+                }
+                
+                event.preventDefault();
+                document.querySelectorAll('.has-submenu.open').forEach(item => {
+                    if (item !== parentLi) {
+                        item.classList.remove('open');
+                    }
+                });
+                parentLi.classList.add('open');
+                return false;
+            }
+            return true;
+        }
+
+        // ============================================
+        // QR-КОД
+        // ============================================
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+            }
+        });
+
+        // ============================================
+        // ПЕРЕТАСКИВАЕМАЯ КНОПКА QR
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrButton = document.getElementById('qrFloatingButton');
+            const qrHint = document.getElementById('qrButtonHint');
+            
+            const savedLeft = localStorage.getItem('qrButtonLeft');
+            const savedTop = localStorage.getItem('qrButtonTop');
+            if (savedLeft && savedTop) {
+                qrButton.style.left = savedLeft;
+                qrButton.style.top = savedTop;
+                qrButton.style.bottom = 'auto';
+                qrButton.style.right = 'auto';
+            }
+            
+            let isDragging = false;
+            let startX, startY;
+            let initialX, initialY;
+            let moveThreshold = 10;
+            let hasMoved = false;
+
+            if (!localStorage.getItem('qrHintShown')) {
+                setTimeout(() => {
+                    qrHint.style.display = 'block';
+                    setTimeout(() => {
+                        qrHint.style.display = 'none';
+                        localStorage.setItem('qrHintShown', 'true');
+                    }, 4000);
+                }, 1000);
+            }
+
+            qrButton.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+
+            qrButton.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+        });
+
+        // ============================================
+        // АККОРДЕОН
+        // ============================================
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+            
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // ============================================
+        // ПОИСК И ФИЛЬТРАЦИЯ
+        // ============================================
+        let currentSearchQuery = '';
+
+        function filterMaterials() {
+            currentSearchQuery = document.getElementById('searchInput').value.toLowerCase();
+            
+            let visibleCount = 0;
+            
+            document.querySelectorAll('.material-card').forEach(card => {
+                const cardTitle = card.getAttribute('data-title').toLowerCase();
+                const matchesSearch = currentSearchQuery === '' || cardTitle.includes(currentSearchQuery);
+                
+                if (matchesSearch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                const visibleCards = item.querySelectorAll('.material-card[style="display: block;"]').length;
+                
+                if (visibleCards === 0) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+            
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            filterMaterials();
+        });
+    </script>
+
+</body>
+</html>
