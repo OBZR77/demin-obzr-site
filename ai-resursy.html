@@ -544,185 +544,221 @@
         }
         
         /* АДАПТИВНОСТЬ */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu > li > a {
-                padding: 0.75rem 1rem;
-            }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-            }
-            
-            .nav-menu > li.has-submenu.open .submenu {
-                max-height: 500px;
-                padding: 0.5rem 0;
-            }
-            
-            .submenu a {
-                padding-left: 2rem;
-            }
-            
-            .submenu a:hover {
-                padding-left: 2.5rem;
-            }
-            
-            .header-title h1 {
-                font-size: 1.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 0.8rem;
-            }
-            
-            .page-title {
-                font-size: 1.5rem;
-            }
-            
+    @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu > li > a {
+        padding: 0.75rem 1rem;
+    }
+    
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+    
+    .submenu a {
+        padding-left: 2rem;
+    }
+    
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+    
+    .header-title h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.8rem;
+    }
+    
+    main {
+        padding: 0 0.5rem 2rem;
+        overflow-x: hidden;
+    }
+    
+    .page-title {
+        font-size: 1.4rem;
+        word-wrap: break-word;
+    }
 
-            .page-subtitle {
-                font-size: 1rem;
-            }
-
-/* ДОБАВЬТЕ ЭТИ СТИЛИ ДЛЯ ФИОЛЕТОВОГО БЛОКА */
-            div[style*="background: linear-gradient(135deg, #7B68EE"] {
-                padding: 2rem 1.5rem !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-            
-            div[style*="grid-template-columns: repeat(2, 1fr)"] {
-                grid-template-columns: 1fr !important;
-                gap: 1rem !important;
-            }
-            
-            /* Заголовок блока на мобильных */
-            div[style*="background: linear-gradient(135deg, #7B68EE"] h3 {
-                font-size: 1.4rem !important;
-                flex-direction: column !important;
-                text-align: center !important;
-            }
-            
-            /* Иконка заголовка */
-            div[style*="background: linear-gradient(135deg, #7B68EE"] h3 span {
-                font-size: 2.5rem !important;
-            }
-            
-            /* Элементы списка ресурсов */
-            div[style*="display: flex"][style*="gap: 0.75rem"] {
-                flex-direction: column !important;
-                gap: 0.5rem !important;
-                align-items: flex-start !important;
-            }
-            
-            div[style*="display: flex"][style*="gap: 0.75rem"] span {
-                margin-top: 0 !important;
-            }
-            
-            div[style*="display: flex"][style*="gap: 0.75rem"] strong {
-                font-size: 1rem !important;
-            }
-            
-            div[style*="display: flex"][style*="gap: 0.75rem"] span[style*="opacity: 0.9"] {
-                font-size: 0.9rem !important;
-                display: block !important;
-                margin-top: 0.25rem !important;
-            }
-            
-            .resources-grid {
-                grid-template-columns: 1fr;
-                padding: 1.5rem;
-            }
-            
-            .resources-grid {
-                grid-template-columns: 1fr;
-                padding: 1.5rem;
-            }
-
-            .audience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #qrFloatingButton {
-                animation: none !important;
-                transform: translateZ(0);
-            }
-        }
-
-        /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
-            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        #qrFloatingButton.dragging {
-            animation: none;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
-            transform: scale(1.1);
-            cursor: grabbing;
-            transition: none;
-        }
-        
-        @media (hover: hover) {
-            #qrFloatingButton:hover {
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            #qrFloatingButton {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            #qrFloatingButton span {
-                font-size: 1.8rem;
-            }
-            
-            #qrButtonHint {
-                bottom: 90px;
-                right: 20px;
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                max-width: 160px;
-            }
-        }
+    .page-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    /* ИНФОРМАЦИОННЫЙ БЛОК */
+    .info-box {
+        padding: 1.5rem 1rem;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        border-radius: 8px;
+    }
+    
+    .info-box h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* СЕКЦИИ РЕСУРСОВ */
+    .resources-section {
+        margin-bottom: 2rem;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+    
+    .section-header {
+        padding: 1.2rem 1rem;
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .section-header h2 {
+        font-size: 1.3rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .section-header p {
+        font-size: 0.9rem;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem 0.5rem;
+        gap: 1rem;
+    }
+    
+    /* КАРТОЧКИ РЕСУРСОВ */
+    .resource-card {
+        padding: 1.2rem;
+    }
+    
+    .resource-icon {
+        font-size: 2.5rem;
+    }
+    
+    .resource-title {
+        font-size: 1.1rem;
+    }
+    
+    .resource-url {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+        word-break: break-all;
+    }
+    
+    .resource-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .resource-tags {
+        gap: 0.4rem;
+    }
+    
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    /* АУДИТОРИЯ */
+    .audience-section {
+        padding: 1.5rem 1rem;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        border-radius: 8px;
+    }
+    
+    .audience-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .audience-card {
+        padding: 1rem;
+    }
+    
+    .audience-card h4 {
+        font-size: 1rem;
+    }
+    
+    .audience-card li {
+        font-size: 0.9rem;
+    }
+    
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+        padding: 1.5rem 1rem;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+        border-radius: 8px;
+    }
+    
+    .highlight-box h3 {
+        font-size: 1.2rem;
+    }
+    
+    .highlight-box p,
+    .highlight-box li {
+        font-size: 0.9rem;
+    }
+    
+    /* QR КНОПКА */
+    #qrFloatingButton {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+        animation: none !important;
+        transform: translateZ(0);
+    }
+    
+    #qrFloatingButton span {
+        font-size: 1.8rem;
+    }
+    
+    #qrButtonHint {
+        bottom: 90px;
+        right: 20px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        max-width: 160px;
+    }
+}
         
         body.modal-open {
             overflow: hidden;
