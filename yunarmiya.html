@@ -1675,99 +1675,76 @@
         <div class="gallery-section">
             <h3 class="section-title">Фотогалерея</h3>
             <div class="gallery-grid">
-                <!-- Категория 1: Смотр строя и песни -->
-                <div class="gallery-category" data-category="1">
-                    <div class="gallery-category-header">Смотр строя и песни</div>
-                    <div class="gallery-slider" onclick="openGalleryLightbox(1, 0)">
-                        <div class="gallery-slide active">
-                            <div class="gallery-placeholder">
-                                <div class="icon">📷</div>
-                                <p>Фото смотра строя<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">📷</div>
-                                <p>Фото 2<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">📷</div>
-                                <p>Фото 3<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(1)">◀</button>
-                        <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(1)">▶</button>
-                        <div class="gallery-indicators">
-                            <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(1, 0)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 1)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 2)"></div>
-                        </div>
-                    </div>
-                </div>
-
+               <!-- Категория 1: Смотр строя и песни -->
+<div class="gallery-category" data-category="1">
+    <div class="gallery-category-header">Смотр строя и песни</div>
+    <div class="gallery-slider" onclick="openGalleryLightbox(1, 0)">
+        <!-- Фото 1 -->
+        <div class="gallery-slide active">
+            <img src="yunarmiya/smotr-stroya-2024-1" 
+                 alt="Смотр строя и песни - отряд Вымпел"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 2 -->
+        <div class="gallery-slide">
+            <img src="smotr-stroya-2024-2" 
+                 alt="Смотр строя и песни - церемония награждения"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 3 -->
+        <div class="gallery-slide">
+            <img src="images/yunarmiya/smotr-stroya-3.jpg" 
+                 alt="Смотр строя и песни - командный состав"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+         </div>
                 <!-- Категория 2: Военно-спортивная игра -->
-                <div class="gallery-category" data-category="2">
-                    <div class="gallery-category-header">Военно-спортивная игра</div>
-                    <div class="gallery-slider" onclick="openGalleryLightbox(2, 0)">
-                        <div class="gallery-slide active">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Метание гранаты<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Фото 2<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Фото 3<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(2)">◀</button>
-                        <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(2)">▶</button>
-                        <div class="gallery-indicators">
-                            <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(2, 0)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(2, 1)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(2, 2)"></div>
-                        </div>
+               <div class="gallery-category" data-category="1">
+    <div class="gallery-category-header">Смотр строя и песни</div>
+    <div class="gallery-slider" onclick="openGalleryLightbox(1, 0)">
+        <!-- Фото 1 -->
+        <div class="gallery-slide active">
+            <img src="yunarmiya/voyennye-igry-2024-1" 
+                 alt="Смотр строя и песни - отряд Вымпел"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 2 -->
+        <div class="gallery-slide">
+            <img src="yunarmiya/voyennye-igry-2025-1" 
+                 alt="Смотр строя и песни - церемония награждения"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 3 -->
+        <div class="gallery-slide">
+            <img src="yunarmiya/voyennye-igry-2025-2" 
+                 alt="Смотр строя и песни - командный состав"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
                     </div>
                 </div>
 
                 <!-- Категория 3: Огневая подготовка -->
-                <div class="gallery-category" data-category="3">
-                    <div class="gallery-category-header">Огневая подготовка</div>
-                    <div class="gallery-slider" onclick="openGalleryLightbox(3, 0)">
-                        <div class="gallery-slide active">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Стрельба на пневматической винтовке<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Фото 2<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <div class="gallery-slide">
-                            <div class="gallery-placeholder">
-                                <div class="icon">🎯</div>
-                                <p>Фото 3<br>(будет добавлено)</p>
-                            </div>
-                        </div>
-                        <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(3)">◀</button>
-                        <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(3)">▶</button>
-                        <div class="gallery-indicators">
-                            <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(3, 0)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(3, 1)"></div>
-                            <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(3, 2)"></div>
-                        </div>
+               <div class="gallery-category" data-category="1">
+    <div class="gallery-category-header">Смотр строя и песни</div>
+    <div class="gallery-slider" onclick="openGalleryLightbox(1, 0)">
+        <!-- Фото 1 -->
+        <div class="gallery-slide active">
+            <img src="yunarmiya/ognyevaya-2024-1" 
+                 alt="Смотр строя и песни - отряд Вымпел"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 2 -->
+        <div class="gallery-slide">
+            <img src="yunarmiya/ognyevaya-2025-1" 
+                 alt="Смотр строя и песни - церемония награждения"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <!-- Фото 3 -->
+        <div class="gallery-slide">
+            <img src="images/yunarmiya/smotr-stroya-3.jpg" 
+                 alt="Смотр строя и песни - командный состав"
+                 style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
                     </div>
                 </div>
 
