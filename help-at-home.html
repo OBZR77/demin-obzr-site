@@ -768,7 +768,7 @@ document.addEventListener('keydown', function(event) {
                     
                     <h3>📺 Рекомендуемые источники:</h3>
                     <ul>
-                        <li><strong>YouTube-канал МЧС России:</strong> Образовательные ролики о действиях в ЧС</li>
+                        <li><strong>Rutube-канал МЧС России:</strong> Образовательные ролики о действиях в ЧС</li>
                         <li><strong>Сайт mchs.gov.ru:</strong> Раздел "Населению" → "Памятки и рекомендации"</li>
                         <li><strong>Образовательные программы:</strong> "Школа безопасности", "Спасатели"</li>
                     </ul>
@@ -889,9 +889,9 @@ document.addEventListener('keydown', function(event) {
 
             <div class="resource-card">
                 <div class="resource-icon">🎥</div>
-                <h3>Видео "Семейные учения"</h3>
-                <p>Как провести семейную тренировку по эвакуации</p>
-                <a href="#" class="resource-link">▶️ Смотреть на YouTube →</a>
+                <h3>Видео для семейного просмотра</h3>
+                <p>Подборка видеоконтента по тематике ОБЗР</p>
+                <a href="https://rutube.ru/plst/882004/?ysclid=miyt7bi7lb411157851" class="resource-link">▶️ Смотреть на Rutube →</a>
             </div>
         </div>
     </main>
@@ -1140,17 +1140,78 @@ function handleSubmenuClick(event, element) {
 // ============================================
 // QR-КОД МОДАЛЬНОЕ ОКНО
 // ============================================
-
 const qrButton = document.getElementById('qrFloatingButton');
 const qrModal = document.getElementById('qrModalWindow');
 
+// Переменные для перетаскивания
+let isDragging = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
+
 if (qrButton) {
-    qrButton.addEventListener('click', function() {
+    qrButton.addEventListener('mousedown', dragStart);
+    qrButton.addEventListener('touchstart', dragStart);
+    
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag);
+    
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('touchend', dragEnd);
+}
+
+function dragStart(e) {
+    if (e.type === 'touchstart') {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+    } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+    }
+
+    if (e.target === qrButton || qrButton.contains(e.target)) {
+        isDragging = true;
+    }
+}
+
+function drag(e) {
+    if (isDragging) {
+        e.preventDefault();
+        
+        if (e.type === 'touchmove') {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+        } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, qrButton);
+    }
+}
+
+function dragEnd(e) {
+    // Если это был короткий клик (не перетаскивание), открываем модал
+    if (isDragging && Math.abs(xOffset) < 5 && Math.abs(yOffset) < 5) {
         if (qrModal) {
             qrModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-    });
+    }
+    
+    initialX = currentX;
+    initialY = currentY;
+    isDragging = false;
+}
+
+function setTranslate(xPos, yPos, el) {
+    el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
 }
 
 function closeQRModal() {
