@@ -208,46 +208,59 @@
         }
         
         /* ИНФОРМАЦИОННЫЙ БЛОК */
-        .info-box {
-            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-            border: 2px solid var(--color-primary);
-            border-left: 5px solid var(--color-primary);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 3rem;
-        }
-        
-        .info-box h3 {
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-        
-        .info-box p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
+    .info-box {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border: 2px solid var(--color-primary);
+    border-left: 5px solid var(--color-primary);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    word-wrap: break-word;  /* ← ДОБАВЛЕНО */
+    overflow-wrap: break-word;  /* ← ДОБАВЛЕНО */
+}
 
-        .info-box ul {
-            list-style: none;
-            padding: 0;
-        }
+.info-box h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
 
-        .info-box li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
+.info-box p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    word-wrap: break-word;  /* ← ДОБАВЛЕНО */
+}
 
-        .info-box li::before {
-            content: '✓';
-            color: var(--color-success);
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 1.2rem;
-        }
+.info-box ul {
+    list-style: none;
+    padding: 0;
+}
 
+.info-box li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    word-wrap: break-word;  /* ← ДОБАВЛЕНО */
+    overflow-wrap: break-word;  /* ← ДОБАВЛЕНО */
+    max-width: 100%;  /* ← ДОБАВЛЕНО */
+}
+
+.info-box li::before {
+    content: '✓';
+    color: var(--color-success);
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+/* ← ДОБАВЬ ЭТО НОВОЕ ПРАВИЛО */
+.info-box a {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    display: inline-block;
+}
         /* КАТЕГОРИИ РЕСУРСОВ */
         .resources-section {
             margin-bottom: 4rem;
@@ -544,7 +557,7 @@
         }
         
         /* АДАПТИВНОСТЬ */
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     * {
         max-width: 100%;
         word-wrap: break-word;
@@ -718,12 +731,76 @@
     #qrFloatingButton span {
         font-size: 1.5rem;
     }
-}
+    
+    /* ========================================== */
+    /* ← НОВЫЕ ПРАВИЛА ДОБАВЛЯЮТСЯ ЗДЕСЬ */
+    /* ========================================== */
+    
+    /* Фикс для info-box */
+    .info-box {
+        padding: 1rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .info-box h3 {
+        font-size: 1.1rem;
+        word-wrap: break-word;
+    }
+    
+    .info-box p {
+        font-size: 0.85rem;
+        word-wrap: break-word;
+    }
+    
+    .info-box li {
+        font-size: 0.85rem;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.5rem;
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+    
+    .info-box a {
+        word-break: break-all;
+        hyphens: auto;
+        max-width: 100%;
+    }
+    
+    /* Фикс для highlight-box */
+    .highlight-box {
+        padding: 1rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    /* Фикс для audience-section */
+    .audience-section {
+        padding: 1rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    /* Универсальный фикс для всех текстовых элементов */
+    main * {
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Фикс горизонтального скролла */
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+} /* ← Закрывающая скобка @media */
         
-        body.modal-open {
-            overflow: hidden;
-            height: 100vh;
-        }
+body.modal-open {
+    overflow: hidden;
+    height: 100vh;
+}
     </style>
 </head>
 <body>
