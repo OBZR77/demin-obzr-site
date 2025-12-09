@@ -737,63 +737,70 @@
     /* ========================================== */
     
     /* Фикс для info-box */
-    .info-box {
-        padding: 1rem;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    .info-box h3 {
-        font-size: 1.1rem;
-        word-wrap: break-word;
-    }
-    
-    .info-box p {
-        font-size: 0.85rem;
-        word-wrap: break-word;
-    }
-    
-    .info-box li {
-        font-size: 0.85rem;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 0.5rem;
-        max-width: 100%;
-        word-wrap: break-word;
-    }
-    
-    .info-box a {
-        word-break: break-all;
-        hyphens: auto;
-        max-width: 100%;
-    }
-    
-    /* Фикс для highlight-box */
-    .highlight-box {
-        padding: 1rem;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    /* Фикс для audience-section */
-    .audience-section {
-        padding: 1rem;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    /* Универсальный фикс для всех текстовых элементов */
-    main * {
-        max-width: 100%;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    /* Фикс горизонтального скролла */
-    html, body {
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
+ .info-box {
+    padding: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.info-box h3 {
+    font-size: 1rem;
+    word-wrap: break-word;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.info-box p {
+    font-size: 0.85rem;
+    word-wrap: break-word;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.info-box ul {
+    padding: 0;
+    margin: 0;
+}
+
+.info-box li {
+    font-size: 0.8rem;
+    display: block;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.5;
+    margin-bottom: 0.3rem;
+}
+
+.info-box li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    color: var(--color-success);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.info-box a {
+    color: var(--color-primary);
+    font-weight: 700;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    display: inline;
+    text-decoration: underline;
+    font-size: 0.8rem;
+}
+
+.info-box li strong {
+    display: inline;
+    word-wrap: break-word;
+    font-weight: 700;
+}
     
 } /* ← Закрывающая скобка @media */
         
