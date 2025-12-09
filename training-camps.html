@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Готовимся к учебным сборам | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952; --color-danger: #E53935; --color-success: #4CAF50; --color-background: #FFFFFF; --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #7F8C8D; --color-border: #E0E6ED; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); }
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+       /* Навигация */
+nav {
+    background-color: var(--color-primary);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 0;
+}
+
+.nav-menu > li {
+    position: relative;
+}
+
+.nav-menu > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+     border-radius: 8px 8px 0 0; 
+}
+        .nav-menu a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu a.active { background-color: var(--color-danger); }
+        .nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ИСКЛЮЧЕНИЕ: активная страница не меняет цвет при hover */
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+}
+
+/* Убираем hover на активной странице */
+.nav-menu > li > a.active:hover {
+    background-color: var(--color-danger) !important;
+    cursor: default;
+}
+
+/* НЕ показываем красный на других кнопках, когда есть активная */
+.nav-menu:has(a.active) > li > a:not(.active):hover {
+    background-color: var(--color-primary-hover);
+}
+    main { 
+    max-width: 1200px; 
+    margin: 2rem auto;          
+    padding: 0 1rem 2rem;       
+}   
+    .page-title { 
+    font-size: 2.5rem; 
+    color: var(--color-primary); 
+    margin-bottom: 1.5rem;     
+    padding-bottom: 0.5rem;     
+    border-bottom: 3px solid var(--color-danger);  
+}
+
+/* Вводный блок */
+.intro-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 16px rgba(0, 61, 122, 0.3);
+}
+
+.intro-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.intro-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.intro-section strong {
+    font-weight: 700;
+    opacity: 1;
+}
+
+/* Информационные карточки */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.info-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card ul li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.info-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+/* Accordion стили */
+.accordion-container {
+    margin-bottom: 2rem;
+}
+
+.accordion-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.accordion-header {
+    background: linear-gradient(135deg, var(--color-danger) 0%, #C62828 100%);
+    color: white;
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+    position: relative;
+    user-select: none;
+}
+
+.accordion-header::before {
+    content: '📋';
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.accordion-header::after {
+    content: '▼';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    transform: rotate(180deg);
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: white;
+}
+
+.accordion-content.active {
+    max-height: 3000px;
+    padding: 2rem 1.5rem;
+}
+
+.accordion-content h3 {
+    color: var(--color-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.accordion-content h3:first-child {
+    margin-top: 0;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.accordion-content ul li {
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.accordion-content ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-danger);
+    font-weight: bold;
+}
+
+.accordion-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.accordion-content strong {
+    color: var(--color-primary);
+}
+
+/* Чек-лист вещей */
+.checklist-section {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid #FFA500;
+    margin-bottom: 2.5rem;
+}
+
+.checklist-section h2 {
+    color: #856404;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.checklist-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.checklist-category h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checklist-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist-category ul li {
+    padding-left: 1.75rem;
+    margin-bottom: 0.65rem;
+    position: relative;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.checklist-category ul li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-secondary);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Warning блок */
+.warning-block {
+    background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-danger);
+    margin: 1.5rem 0;
+}
+
+.warning-block h4 {
+    color: var(--color-danger);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.warning-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.warning-block ul li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.warning-block ul li::before {
+    content: '✖';
+    position: absolute;
+    left: 0;
+    color: var(--color-danger);
+    font-weight: bold;
+}
+
+/* FAQ секция */
+.faq-section {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2.5rem;
+}
+
+.faq-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.faq-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+}
+
+.faq-answer {
+    color: var(--color-text-primary);
+    line-height: 1.7;
+}
+
+/* Галерея */
+.gallery-section {
+    margin-top: 3rem;
+}
+
+.gallery-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    background: var(--color-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.gallery-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #E8EEF5 0%, #D1DCE8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.gallery-caption {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* CTA блок */
+.cta-section {
+    background: linear-gradient(135deg, var(--color-success) 0%, #388E3C 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+}
+
+.cta-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--color-success);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    background: var(--color-surface);
+}
+
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.9rem; opacity: 0.8; }
+        @media (max-width: 768px) { 
+        .mobile-menu-toggle { 
+        display: block; }
+        .nav-menu { 
+        display: none; 
+         flex-direction: column; 
+        width: 100%;
+        background-color: var(--color-primary);
+        } 
+        .nav-menu.active { 
+        display: flex;
+        }
+      .nav-menu > li > a {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav-menu > li.has-submenu.open > a::after {
+    content: ' ↗';
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+    opacity: 0.7;
+    transform: none;
+}
+  
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+            
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+    border-radius: 8px 8px 0 0;
+}
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .intro-section {
+        padding: 1.5rem;
+    }
+    
+    .accordion-header {
+        padding: 1.25rem 1rem 1.25rem 3.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .accordion-header::before {
+        left: 1rem;
+    }
+    
+    .accordion-content.active {
+        padding: 1.5rem 1rem;
+    }
+    
+    .checklist-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}  
+       
+        @media (max-width: 480px) { 
+            .header-photo { width: 50px; height: 50px; } 
+            .header-title h1 { font-size: 1.2rem; }
+            
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .accordion-header {
+                padding: 1rem 0.75rem 1rem 3rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+<img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+<div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+    <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+</div>
+
+<style>
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.nav-menu > li.has-submenu {
+    position: relative;
+}
+
+.nav-menu > li.has-submenu > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 8px 8px;
+    list-style: none;
+    padding: 0.75rem 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transition-delay: 0s;
+    border-top: 3px solid var(--color-danger);
+    z-index: 1000;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu li {
+    background-color: #E53935;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a::before {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu li {
+    background-color: white;
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+    color: var(--color-text-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.35s;
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+    padding-left: 2rem;
+}
+
+.submenu a::before {
+    content: '→';
+    margin-right: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: white;
+    font-weight: bold;
+}
+
+.submenu a:hover::before {
+    opacity: 1;
+    color: var(--color-danger);
+}
+
+@media (max-width: 768px) {
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+
+    .submenu a {
+        padding-left: 2rem;
+    }
+
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+}
+</style>
+
+<script>
+function openLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                 <ul class="nav-menu" id="navMenu">
+    <li class="has-submenu">
+        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+        <ul class="submenu">
+            <li><a href="o-predmete-obzr">О предмете ОБЗР</a></li>
+            <li><a href="novosti">Последние новости</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+        <ul class="submenu">
+            <li><a href="obrazovanie">Образование</a></li>
+            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+            <li><a href="nagrady">Награды и достижения</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+        <ul class="submenu">
+            <li><a href="portfolio.html#rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+            <li><a href="portfolio.html#dostizheniya-uchenikov">Достижения учащихся</a></li>
+            <li><a href="portfolio.html#metodicheskaya-aktivnost">Методическая активность</a></li>
+            <li><a href="portfolio.html#dokumenty">Документы портфолио</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+        <ul class="submenu">
+            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+        <ul class="submenu">
+            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+            <li><a href="ai-projects.html#poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+        <ul class="submenu">
+            <li><a href="yunarmiya">Юнармия</a></li>
+            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+            <li><a href="zarnica">Зарница 2.0</a></li>
+            <li><a href="olimpiady">Олимпиады по ОБЗР</a></li>
+            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+            <li><a href="vzaimodejstvie">Взаимодействие с партнёрами</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="parents.html" class="active" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+        <ul class="submenu">
+            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+            <li><a href="safety-dialogue">Диалоги о безопасности</a></li>
+            <li><a href="feedback">Обратная связь</a></li>
+            <li><a href="grading">Как оценивается ОБЗР</a></li>
+            <li><a href="faq">Часто задаваемые вопросы (FAQ)</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+    <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+    <ul class="submenu">
+        <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+        <li><a href="contacts.html#about-school">О школе</a></li>
+        <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+    </ul>
+</li>
+<li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+</ul>                                              
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">🎒 Готовимся к учебным сборам</h1>
+
+        <div class="intro-section">
+            <h2>Учебно-полевые сборы — обязательная часть программы ОБЗР</h2>
+            <p>Сборы проводятся для закрепления практических навыков по модулю № 2 <strong>"Военная подготовка"</strong> и являются <strong>обязательными для всех учащихся</strong> (юношей и девушек) 8 и 10 классов.</p>
+            <p style="margin-top: 1rem;"><strong>Важно!</strong> Без участия в сборах или без уважительной причины пропуска невозможно получить положительную оценку по предмету ОБЗР за год.</p>
+        </div>
+
+        <!-- Информационные карточки -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-card-icon">📅</div>
+                <h3>Длительность сборов</h3>
+                <ul>
+                    <li><strong>10 класс:</strong> 5 дней (35 учебных часов)</li>
+                    <li><strong>8 класс:</strong> 3 дня (21 учебный час)</li>
+                    <li>Проводятся в конце учебного года (май-июнь)</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-icon">📍</div>
+                <h3>Место проведения</h3>
+                <ul>
+                    <li>На базе школы (территория, спортзал)</li>
+                    <li>Возможен выезд на учебно-полевую базу</li>
+                    <li>Взаимодействие с военкоматом, МЧС</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-icon">🎯</div>
+                <h3>Программа сборов</h3>
+                <ul>
+                    <li>Строевая подготовка</li>
+                    <li>Тактическая подготовка</li>
+                    <li>Огневая подготовка (АК-74, сборка/разборка)</li>
+                    <li>Физическая подготовка (полоса препятствий)</li>
+                    <li>Радиационная, химическая, биологическая защита</li>
+                    <li>Первая помощь в полевых условиях</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Accordion секции -->
+        <div class="accordion-container">
+            <!-- Медицинская справка -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Медицинская справка обязательна
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Участие в сборах возможно только при наличии медицинской справки</strong>, подтверждающей, что ребёнок может выполнять физические нагрузки и участвовать в практических занятиях.</p>
+                    
+                    <h3>📋 Какую справку нужно получить:</h3>
+                    <ul>
+                        <li><strong>Форма 086-У:</strong> Медицинская справка для учебных сборов (получается в поликлинике)</li>
+                        <li><strong>Альтернатива:</strong> Справка от врача-педиатра с печатью и подписью</li>
+                        <li>В справке должно быть указано: "Допущен(а) к участию в учебно-полевых сборах по ОБЗР"</li>
+                    </ul>
+                    
+                    <h3>🏥 Где получить справку:</h3>
+                    <ul>
+                        <li><strong>Поликлиника по месту жительства:</strong> Обратитесь к участковому педиатру/терапевту</li>
+                        <li><strong>Военкомат:</strong> Для юношей 10 класса (если стоят на воинском учёте)</li>
+                        <li>Срок оформления: 1-3 дня</li>
+                    </ul>
+                    
+                    <h3>⏰ Срок действия справки:</h3>
+                    <ul>
+                        <li>Справка действительна <strong>1 год</strong> с момента выдачи</li>
+                        <li>Рекомендую получить за 1-2 недели до сборов</li>
+                    </ul>
+                    
+                    <h3>⚠️ Противопоказания для участия:</h3>
+                    <ul>
+                        <li>Серьёзные заболевания сердечно-сосудистой системы</li>
+                        <li>Заболевания опорно-двигательного аппарата (переломы, травмы)</li>
+                        <li>Обострение хронических заболеваний</li>
+                        <li>Недавно перенесённые операции</li>
+                    </ul>
+                    
+                    <div class="warning-block">
+                        <h4>⚠️ Важно!</h4>
+                        <ul>
+                            <li>Без справки ребёнок НЕ допускается к сборам</li>
+                            <li>Если есть противопоказания — сообщите преподавателю заранее для альтернативного задания</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Список вещей -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Список вещей получите заранее
+                </div>
+                <div class="accordion-content">
+                    <p>Правильно собранный рюкзак — залог комфорта на сборах. Ниже — <strong>полный чек-лист</strong> необходимых вещей.</p>
+                    
+                    <div class="checklist-section">
+                        <h2>🎒 Чек-лист вещей для учебных сборов</h2>
+                        
+                        <div class="checklist-grid">
+                            <div class="checklist-category">
+                                <h3>👕 Одежда</h3>
+                                <ul>
+                                    <li>Спортивная форма (2 комплекта)</li>
+                                    <li>Удобные кроссовки (беговые)</li>
+                                    <li>Запасные носки (3-4 пары)</li>
+                                    <li>Головной убор (кепка, бандана)</li>
+                                    <li>Ветровка/дождевик (на случай непогоды)</li>
+                                    <li>Сменная обувь (кроссовки для зала)</li>
+                                </ul>
+                            </div>
+
+                            <div class="checklist-category">
+                                <h3>🧴 Гигиена</h3>
+                                <ul>
+                                    <li>Мыло/гель для душа</li>
+                                    <li>Зубная щётка + паста</li>
+                                    <li>Полотенце (2 шт: для душа и рук)</li>
+                                    <li>Влажные салфетки</li>
+                                    <li>Солнцезащитный крем (SPF 30+)</li>
+                                    <li>Репеллент от комаров</li>
+                                </ul>
+                            </div>
+
+                            <div class="checklist-category">
+                                <h3>📄 Документы</h3>
+                                <ul>
+                                    <li>Медицинская справка (форма 086-У)</li>
+                                    <li>Паспорт/свидетельство о рождении (копия)</li>
+                                    <li>Полис ОМС (копия)</li>
+                                    <li>Согласие родителей (если требуется)</li>
+                                </ul>
+                            </div>
+
+                            <div class="checklist-category">
+                                <h3>🍽️ Питание</h3>
+                                <ul>
+                                    <li>Бутылка для воды (многоразовая, 0.5-1 л)</li>
+                                    <li>Лёгкие перекусы (батончики, орехи)</li>
+                                    <li>Фрукты (яблоки, бананы)</li>
+                                </ul>
+                            </div>
+
+                            <div class="checklist-category">
+                                <h3>🩹 Аптечка (личная)</h3>
+                                <ul>
+                                    <li>Пластыри (от мозолей)</li>
+                                    <li>Бинт эластичный</li>
+                                    <li>Обезболивающее (парацетамол)</li>
+                                    <li>Антисептик (перекись, хлоргексидин)</li>
+                                    <li>Средство от аллергии (если есть)</li>
+                                </ul>
+                            </div>
+
+                            <div class="checklist-category">
+                                <h3>📱 Прочее</h3>
+                                <ul>
+                                    <li>Мобильный телефон + зарядка</li>
+                                    <li>Пауэрбанк (портативная зарядка)</li>
+                                    <li>Блокнот + ручка (для конспектов)</li>
+                                    <li>Небольшой рюкзак/сумка</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning-block">
+                        <h4>🚫 ЗАПРЕЩЕНО брать с собой:</h4>
+                        <ul>
+                            <li>Алкоголь, сигареты, электронные сигареты</li>
+                            <li>Ценные вещи (дорогие украшения, гаджеты)</li>
+                            <li>Острые предметы (ножи, пиротехника)</li>
+                            <li>Большие суммы денег</li>
+                            <li>Игровые приставки, ноутбуки (кроме случаев особой договорённости)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>💡 Рекомендации по упаковке:</h3>
+                    <ul>
+                        <li>Используйте рюкзак объёмом 30-40 литров</li>
+                        <li>Тяжёлые вещи кладите ближе к спине (внизу рюкзака)</li>
+                        <li>Одежду сворачивайте трубочками — экономит место</li>
+                        <li>Мелкие вещи (носки, белье) складывайте в пакеты-зиплоки</li>
+                        <li>Документы и телефон — в непромокаемый пакет</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Психологическая готовность -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Психологическая готовность
+                </div>
+                <div class="accordion-content">
+                    <p>Для многих учеников сборы — это <strong>первый опыт</strong> пребывания вне дома в условиях, требующих дисциплины и самостоятельности. Важно подготовить ребёнка морально.</p>
+                    
+                    <h3>💬 Как подготовить ребёнка психологически:</h3>
+                    <ul>
+                        <li><strong>Обсудите, что будет на сборах:</strong> Расскажите о программе, режиме дня, чтобы не было неожиданностей</li>
+                        <li><strong>Подчеркните позитив:</strong> "Это интересный опыт, ты узнаешь много нового", а не "Ты обязан пройти это"</li>
+                        <li><strong>Объясните важность дисциплины:</strong> На сборах будут требования к режиму, форме одежды — это нормально</li>
+                        <li><strong>Обсудите возможные трудности:</strong> "Может быть сложно, но ты справишься. Если что-то не так — можно обратиться к преподавателю"</li>
+                    </ul>
+                    
+                    <h3>🧠 Типичные переживания и как их преодолеть:</h3>
+                    <ul>
+                        <li><strong>"Не хочу вставать рано"</strong> → Начните за 1-2 недели практиковать ранний подъём (7:00-7:30)</li>
+                        <li><strong>"Боюсь, что не получится выполнить нормативы"</strong> → Подготовьтесь физически заранее (см. страницу "Как помочь ребёнку дома")</li>
+                        <li><strong>"Буду скучать по дому"</strong> → Объясните, что это всего 3-5 дней, связь с родителями будет (телефон преподавателя)</li>
+                        <li><strong>"Стесняюсь, что не знаю, как что делать"</strong> → Успокойте: "Все учатся вместе, никто не родился с этими знаниями"</li>
+                    </ul>
+                    
+                    <h3>🤝 Что делать, если ребёнок категорически не хочет ехать:</h3>
+                    <ul>
+                        <li><strong>Выясните причину:</strong> Страх? Стеснение? Конфликт с одноклассниками?</li>
+                        <li><strong>Обсудите с преподавателем:</strong> Возможно, есть способ адаптировать программу или решить конкретную проблему</li>
+                        <li><strong>Не угрожайте:</strong> "Поедешь или получишь двойку" — не лучший подход. Попробуйте найти мотивацию</li>
+                        <li><strong>Рассмотрите альтернативу:</strong> Если есть серьёзные психологические причины — обсудите с преподавателем альтернативное задание</li>
+                    </ul>
+                    
+                    <h3>📞 Связь с домом во время сборов:</h3>
+                    <ul>
+                        <li>У учеников будут мобильные телефоны (но использование регламентировано)</li>
+                        <li>Телефон преподавателя доступен круглосуточно: <a href="mailto:ademin1977@vk.com" style="color: var(--color-primary); font-weight: 600;">ademin1977@vk.com</a></li>
+                        <li>В экстренных случаях — немедленная связь с родителями</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2>❓ Частые вопросы о сборах</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Сколько стоит участие в сборах?</div>
+                <div class="faq-answer">
+                    <strong>Базовое обучение абсолютно бесплатно.</strong> Школа предоставляет место проведения, инструкторов, базовое оборудование. Дополнительные расходы возможны только на питание (если сборы с выездом) — в этом случае будет предварительное согласование с родителями.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Чем кормят на сборах?</div>
+                <div class="faq-answer">
+                    Если сборы проводятся на базе школы — ученики приходят утром и уходят вечером, питание дома. Если сборы с выездом — трёхразовое питание (завтрак, обед, ужин), меню согласовано с требованиями СанПиН для детского питания. Учитываются аллергии и особенности питания (сообщите заранее!).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Есть ли душ и туалеты?</div>
+                <div class="faq-answer">
+                    Да, условия соответствуют санитарным нормам. Если сборы на базе школы — используются школьные раздевалки и душевые спортзала. Если на выезде — учебная база оборудована душами, туалетами, умывальниками.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Что делать, если ребёнок заболел во время сборов?</div>
+                <div class="faq-answer">
+                    На сборах присутствует медицинский работник (медсестра или фельдшер) 24/7. При первых признаках недомогания ребёнок направляется к медику. При необходимости — немедленная связь с родителями и транспортировка в медучреждение. Все участники застрахованы от несчастных случаев.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Обязательны ли сборы для девушек?</div>
+                <div class="faq-answer">
+                    <strong>Да, сборы обязательны для всех</strong> — и юношей, и девушек. Программа адаптирована с учётом гендерных особенностей (например, нормативы физподготовки разные). Это требование ФГОС ОБЗР 2024 года.
+                </div>
+            </div>
+        </div>
+
+        <!-- Галерея прошлых сборов -->
+        <div class="gallery-section">
+            <h2>📸 Фотогалерея прошлых учебных сборов</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-text-secondary);">Фотографии сделаны с соблюдением ФЗ-152 "О персональных данных" (лица размыты или не распознаются)</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎖️</div>
+                    <div class="gallery-caption">Строевая подготовка</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🔫</div>
+                    <div class="gallery-caption">Огневая подготовка: сборка/разборка АК-74</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🏃</div>
+                    <div class="gallery-caption">Полоса препятствий</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🧭</div>
+                    <div class="gallery-caption">Тактическая подготовка: ориентирование</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎯</div>
+                    <div class="gallery-caption">Марш-бросок</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🏆</div>
+                    <div class="gallery-caption">Церемония закрытия сборов</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>✅ Готовы к сборам?</h2>
+            <p>Если остались вопросы — свяжитесь со мной для консультации</p>
+            <a href="contacts.html" class="cta-button">📧 Задать вопрос о сборах</a>
+        </div>
+    </main>
+
+ <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+ Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+    
+ <!-- Плавающая кнопка QR -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Модальное окно QR -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const isActive = this.classList.contains('active');
+            
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    otherHeader.classList.remove('active');
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    const otherContent = otherHeader.nextElementSibling;
+                    if (otherContent) {
+                        otherContent.classList.remove('active');
+                    }
+                }
+            });
+            
+            this.classList.toggle('active');
+            content.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isActive);
+            
+            if (!isActive) {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
+        
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+});
+
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+if (qrButton) {
+    qrButton.addEventListener('click', function() {
+        if (qrModal) {
+            qrModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+}
+
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+if (qrModal) {
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
+        }
+    });
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
+        closeQRModal();
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        50% {
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диалоги о безопасности | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952; --color-danger: #E53935; --color-success: #4CAF50; --color-background: #FFFFFF; --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #7F8C8D; --color-border: #E0E6ED; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); }
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+       /* Навигация */
+nav {
+    background-color: var(--color-primary);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 0;
+}
+
+.nav-menu > li {
+    position: relative;
+}
+
+.nav-menu > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+     border-radius: 8px 8px 0 0; 
+}
+        .nav-menu a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu a.active { background-color: var(--color-danger); }
+        .nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ИСКЛЮЧЕНИЕ: активная страница не меняет цвет при hover */
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+}
+
+/* Убираем hover на активной странице */
+.nav-menu > li > a.active:hover {
+    background-color: var(--color-danger) !important;
+    cursor: default;
+}
+
+/* НЕ показываем красный на других кнопках, когда есть активная */
+.nav-menu:has(a.active) > li > a:not(.active):hover {
+    background-color: var(--color-primary-hover);
+}
+    main { 
+    max-width: 1200px; 
+    margin: 2rem auto;          
+    padding: 0 1rem 2rem;       
+}   
+    .page-title { 
+    font-size: 2.5rem; 
+    color: var(--color-primary); 
+    margin-bottom: 1.5rem;     
+    padding-bottom: 0.5rem;     
+    border-bottom: 3px solid var(--color-danger);  
+}
+
+/* Вводный блок */
+.intro-section {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-success);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.intro-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.intro-section strong {
+    color: #2E7D32;
+}
+
+/* Accordion стили */
+.accordion-container {
+    margin-bottom: 2.5rem;
+}
+
+.accordion-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.accordion-header {
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: white;
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+    position: relative;
+    user-select: none;
+}
+
+.accordion-header::before {
+    content: '✓';
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.accordion-header::after {
+    content: '▼';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    transform: rotate(180deg);
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #388E3C 0%, #2E7D32 100%);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: white;
+}
+
+.accordion-content.active {
+    max-height: 3000px;
+    padding: 2rem 1.5rem;
+}
+
+.accordion-content h3 {
+    color: var(--color-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.accordion-content h3:first-child {
+    margin-top: 0;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.accordion-content ul li {
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.accordion-content ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: bold;
+}
+
+.accordion-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.accordion-content strong {
+    color: var(--color-primary);
+}
+
+/* Примеры диалогов */
+.dialogue-examples {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+}
+
+.dialogue-examples h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.dialogue-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.dialogue-title {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dialogue-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.parent-message {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border-left: 3px solid var(--color-primary);
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+.parent-message::before {
+    content: '👨‍👩‍👧 Родитель: ';
+    font-weight: 600;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.child-message {
+    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+    border-left: 3px solid #9C27B0;
+    margin-left: 2rem;
+    margin-right: 0;
+}
+
+.child-message::before {
+    content: '👦 Ребёнок: ';
+    font-weight: 600;
+    color: #9C27B0;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.dialogue-note {
+    background: #FFF9E6;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid #FFA500;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.dialogue-note strong {
+    color: #856404;
+}
+
+/* Comparison блоки */
+.comparison-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.comparison-box {
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.comparison-bad {
+    background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+    border-left: 4px solid var(--color-danger);
+}
+
+.comparison-good {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+    border-left: 4px solid var(--color-success);
+}
+
+.comparison-box h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comparison-bad h4 {
+    color: var(--color-danger);
+}
+
+.comparison-good h4 {
+    color: var(--color-success);
+}
+
+.comparison-box p {
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Resources секция */
+.resources-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 61, 122, 0.3);
+}
+
+.resources-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.resource-card {
+    background: white;
+    color: var(--color-text-primary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.resource-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.resource-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.15rem;
+}
+
+.resource-card p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.resource-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.resource-link:hover {
+    color: var(--color-danger);
+}
+
+/* Tips блок */
+.tips-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid #FFA500;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.tips-section h2 {
+    color: #856404;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.tip-item {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 3px solid #FFA500;
+    line-height: 1.6;
+}
+
+.tip-item strong {
+    color: #856404;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.9rem; opacity: 0.8; }
+        @media (max-width: 768px) { 
+        .mobile-menu-toggle { 
+        display: block; }
+        .nav-menu { 
+        display: none; 
+         flex-direction: column; 
+        width: 100%;
+        background-color: var(--color-primary);
+        } 
+        .nav-menu.active { 
+        display: flex;
+        }
+      .nav-menu > li > a {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav-menu > li.has-submenu.open > a::after {
+    content: ' ↗';
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+    opacity: 0.7;
+    transform: none;
+}
+  
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+            
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+    border-radius: 8px 8px 0 0;
+}
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .intro-section {
+        padding: 1.5rem;
+    }
+    
+    .accordion-header {
+        padding: 1.25rem 1rem 1.25rem 3.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .accordion-header::before {
+        left: 1rem;
+    }
+    
+    .accordion-content.active {
+        padding: 1.5rem 1rem;
+    }
+    
+    .comparison-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .parent-message {
+        margin-right: 0;
+    }
+    
+    .child-message {
+        margin-left: 0;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}  
+       
+        @media (max-width: 480px) { 
+            .header-photo { width: 50px; height: 50px; } 
+            .header-title h1 { font-size: 1.2rem; }
+            
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .accordion-header {
+                padding: 1rem 0.75rem 1rem 3rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+<img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+<div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+    <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+</div>
+
+<style>
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.nav-menu > li.has-submenu {
+    position: relative;
+}
+
+.nav-menu > li.has-submenu > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 8px 8px;
+    list-style: none;
+    padding: 0.75rem 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transition-delay: 0s;
+    border-top: 3px solid var(--color-danger);
+    z-index: 1000;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu li {
+    background-color: #E53935;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a::before {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu li {
+    background-color: white;
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+    color: var(--color-text-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.35s;
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+    padding-left: 2rem;
+}
+
+.submenu a::before {
+    content: '→';
+    margin-right: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: white;
+    font-weight: bold;
+}
+
+.submenu a:hover::before {
+    opacity: 1;
+    color: var(--color-danger);
+}
+
+@media (max-width: 768px) {
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+
+    .submenu a {
+        padding-left: 2rem;
+    }
+
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+}
+</style>
+
+<script>
+function openLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                 <ul class="nav-menu" id="navMenu">
+    <li class="has-submenu">
+        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+        <ul class="submenu">
+            <li><a href="o-predmete-obzr">О предмете ОБЗР</a></li>
+            <li><a href="novosti">Последние новости</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+        <ul class="submenu">
+            <li><a href="obrazovanie">Образование</a></li>
+            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+            <li><a href="nagrady">Награды и достижения</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+        <ul class="submenu">
+            <li><a href="portfolio.html#rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+            <li><a href="portfolio.html#dostizheniya-uchenikov">Достижения учащихся</a></li>
+            <li><a href="portfolio.html#metodicheskaya-aktivnost">Методическая активность</a></li>
+            <li><a href="portfolio.html#dokumenty">Документы портфолио</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+        <ul class="submenu">
+            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+        <ul class="submenu">
+            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+            <li><a href="ai-projects.html#poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+        <ul class="submenu">
+            <li><a href="yunarmiya">Юнармия</a></li>
+            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+            <li><a href="zarnica">Зарница 2.0</a></li>
+            <li><a href="olimpiady">Олимпиады по ОБЗР</a></li>
+            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+            <li><a href="vzaimodejstvie">Взаимодействие с партнёрами</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="parents.html" class="active" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+        <ul class="submenu">
+            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+            <li><a href="feedback">Обратная связь</a></li>
+            <li><a href="grading">Как оценивается ОБЗР</a></li>
+            <li><a href="faq">Часто задаваемые вопросы (FAQ)</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+    <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+    <ul class="submenu">
+        <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+        <li><a href="contacts.html#about-school">О школе</a></li>
+        <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+    </ul>
+</li>
+<li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+</ul>                                              
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">💬 Диалоги о безопасности</h1>
+
+        <div class="intro-section">
+            <p><strong>Подростки часто думают: "Со мной этого не случится".</strong> Задача родителей — научить ребёнка <strong>критически оценивать риски</strong> и принимать разумные решения, не впадая в панику.</p>
+            <p>Правильно построенный диалог помогает подростку понять, что <strong>безопасность — это не ограничения, а свобода</strong> делать осознанный выбор.</p>
+        </div>
+
+        <div class="accordion-container">
+            <!-- Принцип 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Не запугивайте, а объясняйте
+                </div>
+                <div class="accordion-content">
+                    <p>Запугивание создаёт страх, но не понимание. <strong>Ребёнок должен знать ПОЧЕМУ правило важно</strong>, а не просто подчиняться из страха.</p>
+                    
+                    <h3>🧠 Психология подросткового возраста:</h3>
+                    <ul>
+                        <li>Подростки склонны к протесту против запретов без объяснений</li>
+                        <li>Они считают себя неуязвимыми ("со мной этого не случится")</li>
+                        <li>Эффективнее — объяснять логику и последствия, а не запрещать</li>
+                    </ul>
+                    
+                    <div class="comparison-section">
+                        <div class="comparison-box comparison-bad">
+                            <h4>❌ Плохо: Запугивание</h4>
+                            <p>"Не ходи туда, убьют! Сколько раз повторять?!"</p>
+                        </div>
+                        
+                        <div class="comparison-box comparison-good">
+                            <h4>✅ Хорошо: Объяснение</h4>
+                            <p>"Давай разберём, какие риски есть в этом месте и как их избежать. Что бы ты сделал, если бы оказался там один?"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-section">
+                        <div class="comparison-box comparison-bad">
+                            <h4>❌ Плохо</h4>
+                            <p>"Никому не открывай дверь! Всё, точка!"</p>
+                        </div>
+                        
+                        <div class="comparison-box comparison-good">
+                            <h4>✅ Хорошо</h4>
+                            <p>"Мы не открываем дверь незнакомым, потому что не знаем их намерений. Даже если человек кажется добрым, лучше перестраховаться. Если кто-то настойчиво звонит — позвони мне или соседям."</p>
+                        </div>
+                    </div>
+                    
+                    <h3>💡 Техника "Что, если...":</h3>
+                    <p>Моделируйте ситуации и обсуждайте варианты действий:</p>
+                    <ul>
+                        <li>"Что бы ты сделал, если бы увидел дым из соседней квартиры?"</li>
+                        <li>"Представь: незнакомец на улице предлагает подвезти. Как поступишь?"</li>
+                        <li>"В подъезде незнакомый человек просит помочь донести пакеты. Твои действия?"</li>
+                    </ul>
+                    
+                    <p><strong>Цель</strong>: Ребёнок сам приходит к правильному решению через рассуждение, а не просто заучивает правила.</p>
+                </div>
+            </div>
+
+            <!-- Принцип 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Приводите реальные примеры
+                </div>
+                <div class="accordion-content">
+                    <p>Новости о ЧС, происшествия, кейсы из жизни — всё это можно использовать для обучения. <strong>Главное — без лишнего драматизма.</strong></p>
+                    
+                    <h3>📺 Как использовать новости для обучения:</h3>
+                    <ul>
+                        <li><strong>Выбирайте проверенные источники:</strong> МЧС России, официальные новостные каналы (не "жёлтую прессу")</li>
+                        <li><strong>Фокус на действиях, а не на жертвах:</strong> Обсуждайте, что помогло людям спастись, а не сколько пострадало</li>
+                        <li><strong>Анализируйте причины:</strong> "Как думаешь, можно было предотвратить эту ситуацию?"</li>
+                        <li><strong>Моделируйте на себя:</strong> "Представь, что это случилось с нами. Что бы мы сделали первым делом?"</li>
+                    </ul>
+                    
+                    <h3>💬 Примеры разбора кейсов:</h3>
+                    
+                    <div class="dialogue-note">
+                        <strong>Кейс 1: Пожар в многоквартирном доме</strong><br>
+                        <strong>Вопросы для обсуждения:</strong>
+                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                            <li>Что сделали жильцы правильно? (вызвали пожарных, эвакуировались)</li>
+                            <li>Были ли ошибки? (кто-то пользовался лифтом — это опасно)</li>
+                            <li>Как бы мы действовали в нашем доме?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dialogue-note">
+                        <strong>Кейс 2: Ребёнок потерялся в торговом центре</strong><br>
+                        <strong>Обсуждение:</strong>
+                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                            <li>Почему ребёнок потерялся? (отвлёкся, родители не держали за руку)</li>
+                            <li>Что нужно делать, если потерялся? (стоять на месте, обратиться к охране/продавцу)</li>
+                            <li>Что НЕ делать? (не уходить с посторонними, даже если говорят "мама просила")</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>🎥 Рекомендуемые образовательные каналы:</h3>
+                    <ul>
+                        <li><strong>YouTube-канал МЧС России:</strong> Короткие ролики о действиях в ЧС (без драматизации)</li>
+                        <li><strong>Программа "Школа безопасности":</strong> Образовательные сюжеты для подростков</li>
+                        <li><strong>Сайт mchs.gov.ru → "Населению":</strong> Памятки в формате инфографики</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Принцип 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Спрашивайте мнение ребёнка
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Диалог, а не монолог!</strong> Подростки лучше усваивают информацию, когда могут высказать своё мнение и почувствовать, что их слушают.</p>
+                    
+                    <h3>🗣️ Техника активного слушания:</h3>
+                    <ul>
+                        <li><strong>Задавайте открытые вопросы:</strong> "Как ты думаешь, почему это правило важно?", "Что бы ты сделал в этой ситуации?"</li>
+                        <li><strong>Не перебивайте:</strong> Дайте ребёнку высказаться полностью, даже если он ошибается</li>
+                        <li><strong>Подтверждайте понимание:</strong> "Правильно ли я понял, что ты считаешь..."</li>
+                        <li><strong>Хвалите логику:</strong> "Интересная мысль! Давай развивать её дальше"</li>
+                    </ul>
+                    
+                    <h3>💬 Примеры вопросов для диалога:</h3>
+                    
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <strong>О модуле № 2 "Военная подготовка":</strong>
+                            "Как ты думаешь, зачем нужна строевая подготовка? Это же не настоящая армия?"
+                        </div>
+                        
+                        <div class="tip-item">
+                            <strong>О пожарной безопасности:</strong>
+                            "Представь, что ты один дома и услышал сигнализацию у соседей. Что сделаешь?"
+                        </div>
+                        
+                        <div class="tip-item">
+                            <strong>О кибербезопасности:</strong>
+                            "Почему, по-твоему, нельзя указывать в соцсетях адрес школы и расписание уроков?"
+                        </div>
+                        
+                        <div class="tip-item">
+                            <strong>О первой помощи:</strong>
+                            "Если друг порезался на улице, а аптечки нет — как поможешь?"
+                        </div>
+                    </ul>
+                    
+                    <h3>⚠️ Что НЕ делать:</h3>
+                    <ul>
+                        <li>❌ Критиковать неправильный ответ: "Какая глупость!", "Где ты этому научился?"</li>
+                        <li>❌ Перебивать: "Нет, неправильно, слушай меня!"</li>
+                        <li>❌ Игнорировать мнение: "Мал ещё рассуждать, делай как сказано"</li>
+                    </ul>
+                    
+                    <p><strong>Правильная реакция на неверный ответ:</strong><br>
+                    "Понимаю твою логику. Но давай подумаем, что может пойти не так в этом случае?"</p>
+                </div>
+            </div>
+
+            <!-- Принцип 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header" tabindex="0" role="button" aria-expanded="false">
+                    Поддерживайте интерес
+                </div>
+                <div class="accordion-content">
+                    <p>Безопасность — не самая увлекательная тема для подростков. Задача родителей — <strong>сделать обучение интересным</strong> через игры, викторины, совместные активности.</p>
+                    
+                    <h3>🎮 Геймификация обучения:</h3>
+                    <ul>
+                        <li><strong>Семейные квизы:</strong> Устройте викторину по ОБЗР с призами (например, раз в месяц за ужином)</li>
+                        <li><strong>Ролевые игры:</strong> "Ты — спасатель МЧС. Что делаешь при пожаре?"</li>
+                        <li><strong>Челленджи:</strong> "Давай посоревнуемся: кто быстрее правильно наложит бинт?"</li>
+                        <li><strong>Мобильные приложения:</strong> Есть обучающие игры по первой помощи, действиям в ЧС</li>
+                    </ul>
+                    
+                    <h3>🎬 Совместный просмотр фильмов:</h3>
+                    <ul>
+                        <li><strong>Фильмы-катастрофы</strong> (но адекватные, без жёсткого натурализма): После просмотра обсудите, что герои делали правильно/неправильно</li>
+                        <li><strong>Документальные фильмы:</strong> О работе МЧС, пожарных, врачей скорой помощи</li>
+                        <li><strong>Сериалы:</strong> Образовательные сериалы про безопасность (например, "Спасатели")</li>
+                    </ul>
+                    
+                    <h3>🏆 Поощрение участия в конкурсах:</h3>
+                    <ul>
+                        <li>Олимпиады по ОБЗР (школьные, муниципальные, всероссийские)</li>
+                        <li>Конкурсы "Безопасное колесо" (ПДД + первая помощь)</li>
+                        <li>Соревнования "Зарница 2.0" (военно-спортивные игры)</li>
+                        <li>Конкурсы рисунков, плакатов, видеороликов по безопасности</li>
+                    </ul>
+                    
+                    <h3>📚 Необычные форматы обучения:</h3>
+                    <ul>
+                        <li><strong>Экскурсии:</strong> В пожарную часть, военкомат, центр МЧС</li>
+                        <li><strong>Мастер-классы:</strong> По первой помощи, ориентированию, вязанию узлов</li>
+                        <li><strong>Походы:</strong> С отработкой навыков выживания (безопасно, под присмотром взрослых)</li>
+                        <li><strong>Волонтёрство:</strong> Участие в акциях "Безопасный двор", "Вода — безопасная территория"</li>
+                    </ul>
+                    
+                    <div class="dialogue-note">
+                        <strong>💡 Совет:</strong> Не превращайте безопасность в "обязаловку". Если ребёнок устал от темы — сделайте перерыв. Лучше 1 увлекательная беседа в месяц, чем ежедневные нудные нотации.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Примеры диалогов -->
+        <div class="dialogue-examples">
+            <h2>🗨️ Сценарии диалогов (примеры)</h2>
+            
+            <!-- Диалог 1 -->
+            <div class="dialogue-box">
+                <div class="dialogue-title">🔥 Диалог о пожарной безопасности</div>
+                
+                <div class="dialogue-message parent-message">
+                    Помнишь, на уроке ОБЗР вы изучали правила при пожаре?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Да, вызвать пожарных — 101, эвакуироваться через лестницу.
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Правильно! А что делать, если дым уже в коридоре?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Закрыться в комнате и заткнуть щели мокрой тканью?
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Молодец! И что потом?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Открыть окно и звать на помощь. И не прыгать!
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Отлично! Видишь, ты всё знаешь. Давай на выходных проверим, работает ли датчик дыма в квартире?
+                </div>
+                
+                <div class="dialogue-note">
+                    <strong>Что здесь хорошо:</strong> Родитель проверяет знания через вопросы, хвалит правильные ответы, предлагает практическую проверку (датчик дыма).
+                </div>
+            </div>
+
+            <!-- Диалог 2 -->
+            <div class="dialogue-box">
+                <div class="dialogue-title">🚗 Диалог о действиях при теракте</div>
+                
+                <div class="dialogue-message parent-message">
+                    Представь: ты в торговом центре и слышишь взрыв вдалеке. Что делать?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Бежать к выходу?
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Давай подумаем. Если все побегут к одному выходу — что произойдёт?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Давка...
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Верно. Поэтому первое правило — сохранять спокойствие. Смотришь, где ближайший выход (не обязательно главный — можно через служебные, запасные). Идёшь туда быстро, но без паники. Если толпа — прижимаешься к стене. А что насчёт телефона?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Позвонить родителям?
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Хорошая мысль, но сначала — выйти наружу в безопасное место. Потом звонишь мне, говоришь, где ты. И ждёшь. Договорились?
+                </div>
+                
+                <div class="dialogue-note">
+                    <strong>Что здесь хорошо:</strong> Родитель не запугивает, а учит логике действий через рассуждение. Обсуждается конкретный план действий.
+                </div>
+            </div>
+
+            <!-- Диалог 3 -->
+            <div class="dialogue-box">
+                <div class="dialogue-title">🌐 Диалог о безопасности в интернете (модуль № 10)</div>
+                
+                <div class="dialogue-message parent-message">
+                    Слушай, я тут читал про кибермошенничество. Ты знаешь, как это работает?
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Ну, типа присылают ссылку и взламывают?
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Почти. Присылают ссылку, ты переходишь, вводишь пароль на фейковом сайте — и всё, мошенники получили доступ к аккаунту. А дальше могут просить деньги у твоих друзей от твоего имени.
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Жесть...
+                </div>
+                
+                <div class="dialogue-message parent-message">
+                    Да. Поэтому правило: никогда не переходи по ссылкам от незнакомых людей. Даже если пишут "ты выиграл iPhone". И если вдруг ты случайно перешёл и ввёл пароль — сразу меняй пароли везде и скажи мне. Без ругани, просто исправим.
+                </div>
+                
+                <div class="dialogue-message child-message">
+                    Ок, запомнил.
+                </div>
+                
+                <div class="dialogue-note">
+                    <strong>Что здесь хорошо:</strong> Родитель объясняет механизм мошенничества, даёт чёткое правило, убирает страх перед признанием ошибки ("без ругани").
+                </div>
+            </div>
+        </div>
+
+        <!-- Рекомендуемая литература -->
+        <div class="resources-section">
+            <h2>📚 Рекомендуемая литература для родителей</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📖</div>
+                    <h3>Книги по детской психологии</h3>
+                    <p>Ю. Гиппенрейтер "Общаться с ребёнком. Как?" — классика о технике активного слушания</p>
+                    <a href="#" class="resource-link">Подробнее →</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🔗</div>
+                    <h3>Методички МЧС России</h3>
+                    <p>Официальные рекомендации для семей по действиям в ЧС</p>
+                    <a href="https://mchs.gov.ru" target="_blank" class="resource-link">Перейти на сайт →</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🎥</div>
+                    <h3>YouTube-канал МЧС России</h3>
+                    <p>Короткие образовательные ролики для семейного просмотра</p>
+                    <a href="https://www.youtube.com/@MCHS_RUSSIA" target="_blank" class="resource-link">Смотреть →</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📱</div>
+                    <h3>Мобильное приложение "МЧС России"</h3>
+                    <p>Уведомления о ЧС, интерактивные инструкции по действиям в различных ситуациях</p>
+                    <a href="#" class="resource-link">Скачать →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips секция -->
+        <div class="tips-section">
+            <h2>💡 Практические советы</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <strong>Регулярность:</strong>
+                    Лучше 1 короткая беседа в неделю, чем длинная лекция раз в месяц.
+                </div>
+                
+                <div class="tip-item">
+                    <strong>Спокойствие:</strong>
+                    Обсуждайте безопасность в спокойной обстановке, а не когда уже случилась проблема.
+                </div>
+                
+                <div class="tip-item">
+                    <strong>Личный пример:</strong>
+                    Дети копируют родителей. Соблюдайте правила безопасности сами.
+                </div>
+                
+                <div class="tip-item">
+                    <strong>Без паники:</strong>
+                    Не превращайте мир в опасное место. Учите разумной осторожности, а не параноидальному страху.
+                </div>
+            </div>
+        </div>
+    </main>
+
+ <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+ Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+    
+ <!-- Плавающая кнопка QR -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Модальное окно QR -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const isActive = this.classList.contains('active');
+            
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== this) {
+                    otherHeader.classList.remove('active');
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    const otherContent = otherHeader.nextElementSibling;
+                    if (otherContent) {
+                        otherContent.classList.remove('active');
+                    }
+                }
+            });
+            
+            this.classList.toggle('active');
+            content.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isActive);
+            
+            if (!isActive) {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
+        
+        header.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+});
+
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+if (qrButton) {
+    qrButton.addEventListener('click', function() {
+        if (qrModal) {
+            qrModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+}
+
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+if (qrModal) {
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
+        }
+    });
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
+        closeQRModal();
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        50% {
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
