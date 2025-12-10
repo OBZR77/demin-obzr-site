@@ -1476,6 +1476,147 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// DRAG-AND-DROP ФУНКЦИОНАЛ ДЛЯ QR-КНОПКИ
+// ============================================
+
+let isDragging = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
+
+// Восстановление позиции из localStorage
+function restoreQRButtonPosition() {
+    const savedPosition = localStorage.getItem('qrButtonPosition');
+    if (savedPosition) {
+        const position = JSON.parse(savedPosition);
+        qrButton.style.bottom = 'auto';
+        qrButton.style.right = 'auto';
+        qrButton.style.left = position.x + 'px';
+        qrButton.style.top = position.y + 'px';
+        xOffset = position.x;
+        yOffset = position.y;
+    }
+}
+
+// Сохранение позиции в localStorage
+function saveQRButtonPosition(x, y) {
+    localStorage.setItem('qrButtonPosition', JSON.stringify({ x: x, y: y }));
+}
+
+// Начало перетаскивания
+function dragStart(e) {
+    if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+    } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+    }
+
+    if (e.target === qrButton || e.target.parentElement === qrButton) {
+        isDragging = true;
+        qrButton.style.cursor = 'grabbing';
+    }
+}
+
+// Перемещение
+function drag(e) {
+    if (isDragging) {
+        e.preventDefault();
+        
+        if (e.type === "touchmove") {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+        } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, qrButton);
+    }
+}
+
+// Завершение перетаскивания
+function dragEnd(e) {
+    if (isDragging) {
+        initialX = currentX;
+        initialY = currentY;
+        isDragging = false;
+        qrButton.style.cursor = 'move';
+        
+        // Сохранение позиции
+        saveQRButtonPosition(currentX, currentY);
+    }
+}
+
+// Установка позиции элемента
+function setTranslate(xPos, yPos, el) {
+    el.style.left = xPos + 'px';
+    el.style.top = yPos + 'px';
+    el.style.bottom = 'auto';
+    el.style.right = 'auto';
+}
+
+// Добавление обработчиков событий
+if (qrButton) {
+    // Восстановление позиции при загрузке
+    restoreQRButtonPosition();
+    
+    // Mouse events
+    qrButton.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+    
+    // Touch events
+    qrButton.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', dragEnd);
+    
+    // Изменение курсора
+    qrButton.style.cursor = 'move';
+    
+    // Клик для открытия модального окна (только если не было перетаскивания)
+    let clickStartTime = 0;
+    let clickStartX = 0;
+    let clickStartY = 0;
+    
+    qrButton.addEventListener('mousedown', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.clientX;
+        clickStartY = e.clientY;
+    });
+    
+    qrButton.addEventListener('touchstart', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.touches[0].clientX;
+        clickStartY = e.touches[0].clientY;
+    });
+    
+    qrButton.addEventListener('click', function(e) {
+        const clickEndTime = Date.now();
+        const timeDiff = clickEndTime - clickStartTime;
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - clickStartX, 2) + 
+            Math.pow(e.clientY - clickStartY, 2)
+        );
+        
+        // Открываем модальное окно только если это был быстрый клик без перемещения
+        if (timeDiff < 200 && distance < 10) {
+            if (qrModal) {
+                qrModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
+}
 </script>
 </body>
 </html>
