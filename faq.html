@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часто задаваемые вопросы (FAQ) | Дёмин А.Ю.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952; --color-danger: #E53935; --color-success: #4CAF50; --color-warning: #FFA500; --color-background: #FFFFFF; --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #7F8C8D; --color-border: #E0E6ED; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); }
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+       /* Навигация */
+nav {
+    background-color: var(--color-primary);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 0;
+}
+
+.nav-menu > li {
+    position: relative;
+}
+
+.nav-menu > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+     border-radius: 8px 8px 0 0; 
+}
+        .nav-menu a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu a.active { background-color: var(--color-danger); }
+        .nav-menu > li > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ИСКЛЮЧЕНИЕ: активная страница не меняет цвет при hover */
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+}
+
+/* Убираем hover на активной странице */
+.nav-menu > li > a.active:hover {
+    background-color: var(--color-danger) !important;
+    cursor: default;
+}
+
+/* НЕ показываем красный на других кнопках, когда есть активная */
+.nav-menu:has(a.active) > li > a:not(.active):hover {
+    background-color: var(--color-primary-hover);
+}
+    main { 
+    max-width: 1200px; 
+    margin: 2rem auto;          
+    padding: 0 1rem 2rem;       
+}   
+    .page-title { 
+    font-size: 2.5rem; 
+    color: var(--color-primary); 
+    margin-bottom: 1.5rem;     
+    padding-bottom: 0.5rem;     
+    border-bottom: 3px solid var(--color-danger);  
+}
+
+/* Вводный блок */
+.intro-section {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.intro-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.intro-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* Поиск */
+.search-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 2.5rem;
+}
+
+.search-box {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 3.5rem 1rem 1.5rem;
+    font-size: 1.05rem;
+    border: 2px solid var(--color-border);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 61, 122, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.search-results-info {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Категории */
+.categories-nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+}
+
+.category-button {
+    background: white;
+    padding: 0.875rem 1.75rem;
+    border: 2px solid var(--color-border);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-button:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 61, 122, 0.2);
+}
+
+.category-button.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.category-count {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.category-button.active .category-count {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* FAQ секции */
+.faq-category {
+    margin-bottom: 3rem;
+}
+
+.faq-category.hidden {
+    display: none;
+}
+
+.category-title {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* FAQ Items (Accordion) */
+.faq-item {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.hidden {
+    display: none;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+    padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.faq-question::before {
+    content: 'Q';
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-danger);
+}
+
+.faq-question::after {
+    content: '▼';
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    color: var(--color-text-secondary);
+}
+
+.faq-question.active {
+    background: var(--color-surface);
+}
+
+.faq-question.active::after {
+    transform: rotate(180deg);
+}
+
+.faq-question:hover {
+    background: var(--color-surface);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: white;
+}
+
+.faq-answer.active {
+    max-height: 2000px;
+    padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+}
+
+.faq-answer p {
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0;
+}
+
+.faq-answer li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    line-height: 1.7;
+}
+
+.faq-answer li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.faq-answer strong {
+    color: var(--color-primary);
+}
+
+/* Важные ответы */
+.important-answer {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--color-warning);
+    margin-top: 1rem;
+}
+
+.important-answer strong {
+    color: #856404;
+}
+
+/* Нет результатов поиска */
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--color-surface);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.no-results.active {
+    display: block;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.no-results h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.no-results p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Статистика */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+/* CTA блок */
+.cta-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 61, 122, 0.3);
+    margin-top: 3rem;
+}
+
+.cta-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.cta-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--color-primary);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    margin: 0.5rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 4rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.9rem; opacity: 0.8; }
+        @media (max-width: 768px) { 
+        .mobile-menu-toggle { 
+        display: block; }
+        .nav-menu { 
+        display: none; 
+         flex-direction: column; 
+        width: 100%;
+        background-color: var(--color-primary);
+        } 
+        .nav-menu.active { 
+        display: flex;
+        }
+      .nav-menu > li > a {
+        padding: 0.75rem 1rem;
+    }
+    
+    nav-menu > li.has-submenu.open > a::after {
+    content: ' ↗';
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+    opacity: 0.7;
+    transform: none;
+}
+  
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+            
+.nav-menu > li > a.active {
+    background-color: var(--color-danger);
+    border-radius: 8px 8px 0 0;
+}
+    .nav-menu > li.has-submenu.open > a {
+        background-color: var(--color-primary-active);
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .intro-section {
+        padding: 1.5rem;
+    }
+    
+    .categories-nav {
+        flex-direction: column;
+    }
+    
+    .category-button {
+        justify-content: center;
+    }
+    
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .faq-question {
+        padding: 1.25rem 1rem 1.25rem 3rem;
+        font-size: 1rem;
+    }
+    
+    .faq-question::before {
+        left: 1rem;
+    }
+    
+    .faq-answer.active {
+        padding: 1.25rem 1rem 1.25rem 3rem;
+    }
+}  
+       
+        @media (max-width: 480px) { 
+            .header-photo { width: 50px; height: 50px; } 
+            .header-title h1 { font-size: 1.2rem; }
+            
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+<img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+<div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+    <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+</div>
+
+<style>
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.nav-menu > li.has-submenu {
+    position: relative;
+}
+
+.nav-menu > li.has-submenu > a:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 8px 8px;
+    list-style: none;
+    padding: 0.75rem 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transition-delay: 0s;
+    border-top: 3px solid var(--color-danger);
+    z-index: 1000;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu li {
+    background-color: #E53935;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a::before {
+    color: white;
+}
+
+.nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu li {
+    background-color: white;
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+    color: var(--color-text-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+.nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+    color: var(--color-danger);
+}
+
+.nav-menu > li.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.35s;
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.submenu a:hover {
+    background-color: white;
+    color: var(--color-primary);
+    padding-left: 2rem;
+}
+
+.submenu a::before {
+    content: '→';
+    margin-right: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: white;
+    font-weight: bold;
+}
+
+.submenu a:hover::before {
+    opacity: 1;
+    color: var(--color-danger);
+}
+
+@media (max-width: 768px) {
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+
+    .submenu a {
+        padding-left: 2rem;
+    }
+
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+}
+</style>
+
+<script>
+function openLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+    }
+});
+</script>
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                 <ul class="nav-menu" id="navMenu">
+    <li class="has-submenu">
+        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+        <ul class="submenu">
+            <li><a href="o-predmete-obzr">О предмете ОБЗР</a></li>
+            <li><a href="novosti">Последние новости</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+        <ul class="submenu">
+            <li><a href="obrazovanie">Образование</a></li>
+            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+            <li><a href="nagrady">Награды и достижения</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+        <ul class="submenu">
+            <li><a href="portfolio.html#rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+            <li><a href="portfolio.html#dostizheniya-uchenikov">Достижения учащихся</a></li>
+            <li><a href="portfolio.html#metodicheskaya-aktivnost">Методическая активность</a></li>
+            <li><a href="portfolio.html#dokumenty">Документы портфолио</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+        <ul class="submenu">
+            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+        <ul class="submenu">
+            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+            <li><a href="ai-projects.html#poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+        <ul class="submenu">
+            <li><a href="yunarmiya">Юнармия</a></li>
+            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+            <li><a href="zarnica">Зарница 2.0</a></li>
+            <li><a href="olimpiady">Олимпиады по ОБЗР</a></li>
+            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+            <li><a href="vzaimodejstvie">Взаимодействие с партнёрами</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="parents.html" class="active" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+        <ul class="submenu">
+            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+            <li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+    <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+    <ul class="submenu">
+        <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+        <li><a href="contacts.html#about-school">О школе</a></li>
+        <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+    </ul>
+</li>
+<li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+</ul>                                              
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">❓ Часто задаваемые вопросы (FAQ)</h1>
+
+        <div class="intro-section">
+            <p>Здесь собраны ответы на самые популярные вопросы о предмете ОБЗР. Используйте поиск или выберите интересующую категорию.</p>
+            <p><strong>Не нашли ответ?</strong> Свяжитесь со мной через <a href="feedback.html" style="color: var(--color-primary); text-decoration: underline;">форму обратной связи</a>.</p>
+        </div>
+
+        <!-- Поиск -->
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Поиск по вопросам..." aria-label="Поиск по FAQ">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="search-results-info" id="searchResults"></div>
+        </div>
+
+        <!-- Статистика -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalQuestions">32</div>
+                <div class="stat-label">Всего вопросов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Категорий</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Покрытие тем</div>
+            </div>
+        </div>
+
+        <!-- Категории -->
+        <div class="categories-nav">
+            <button class="category-button active" onclick="filterCategory('all')" data-category="all">
+                🌐 Все вопросы
+                <span class="category-count" id="countAll">32</span>
+            </button>
+            <button class="category-button" onclick="filterCategory('general')" data-category="general">
+                📚 Общие
+                <span class="category-count">8</span>
+            </button>
+            <button class="category-button" onclick="filterCategory('camps')" data-category="camps">
+                🏕️ Учебные сборы
+                <span class="category-count">7</span>
+            </button>
+            <button class="category-button" onclick="filterCategory('grading')" data-category="grading">
+                📊 Оценивание
+                <span class="category-count">6</span>
+            </button>
+            <button class="category-button" onclick="filterCategory('health')" data-category="health">
+                🏥 Здоровье
+                <span class="category-count">5</span>
+            </button>
+            <button class="category-button" onclick="filterCategory('parents')" data-category="parents">
+                👪 Родителям
+                <span class="category-count">6</span>
+            </button>
+        </div>
+
+        <!-- Нет результатов -->
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить поисковый запрос или выберите другую категорию</p>
+            <a href="feedback.html" class="cta-button">Задать свой вопрос</a>
+        </div>
+
+        <!-- КАТЕГОРИЯ: Общие вопросы -->
+        <div class="faq-category" data-category="general">
+            <h2 class="category-title">📚 Общие вопросы об ОБЗР</h2>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Чем ОБЗР отличается от ОБЖ?
+                </div>
+                <div class="faq-answer">
+                    <p>С 1 сентября 2024 года предмет ОБЖ переименован в <strong>ОБЗР (Основы безопасности и защиты Родины)</strong>. Главное отличие — введение <strong>модуля № 2 "Военная подготовка"</strong>, который включает:</p>
+                    <ul>
+                        <li>Строевую подготовку</li>
+                        <li>Основы тактической подготовки</li>
+                        <li>Изучение истории Вооружённых Сил РФ</li>
+                        <li>Практическую физическую подготовку (360 часов/год)</li>
+                        <li>Обязательные учебно-полевые сборы (5 дней для 10 класса, 3 дня для 8 класса)</li>
+                    </ul>
+                    <p>Остальные модули (пожарная безопасность, первая помощь, информационная безопасность и т.д.) остались схожими с прежним курсом ОБЖ, но обновлены в соответствии с актуальными угрозами.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    В каких классах изучается ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>ОБЗР изучается с <strong>8 по 11 классы</strong> (2 часа в неделю во всех классах).</p>
+                    <p>Программа включает 11 модулей, которые распределены по годам обучения в зависимости от возрастных особенностей учащихся.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Обязателен ли предмет ОБЗР для всех учащихся?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, ОБЗР обязателен для всех учащихся 8-11 классов</strong>, независимо от пола и профиля обучения.</p>
+                    <p>Это базовый предмет федерального компонента, по которому проводится итоговая аттестация. Освобождение от изучения ОБЗР не предусмотрено.</p>
+                    <div class="important-answer">
+                        <strong>Важно:</strong> Учебные сборы также обязательны для всех (кроме девочек 8 класса по желанию). Неявка без уважительной причины приравнивается к академической задолженности.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что такое 11 модулей ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Программа ОБЗР состоит из 11 тематических модулей:</p>
+                    <ul>
+                        <li><strong>Модуль 1:</strong> Безопасное и устойчивое развитие личности, общества, государства</li>
+                        <li><strong>Модуль 2:</strong> Военная подготовка. Основы военных знаний ⭐ НОВЫЙ</li>
+                        <li><strong>Модуль 3:</strong> Культура безопасности жизнедеятельности</li>
+                        <li><strong>Модуль 4:</strong> Безопасность в быту</li>
+                        <li><strong>Модуль 5:</strong> Безопасность на транспорте</li>
+                        <li><strong>Модуль 6:</strong> Безопасность в общественных местах</li>
+                        <li><strong>Модуль 7:</strong> Безопасность в природной среде</li>
+                        <li><strong>Модуль 8:</strong> Основы медицинских знаний. Оказание первой помощи</li>
+                        <li><strong>Модуль 9:</strong> Безопасность в социуме</li>
+                        <li><strong>Модуль 10:</strong> Безопасность в информационном пространстве</li>
+                        <li><strong>Модуль 11:</strong> Основы противодействия экстремизму и терроризму</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Нужно ли покупать учебники по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Нет, учебники предоставляет школа</strong> из библиотечного фонда бесплатно.</p>
+                    <p>Рекомендуется иметь рабочую тетрадь для конспектов и выполнения практических заданий (обычная тетрадь 48 листов).</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Есть ли домашние задания по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, домашние задания есть</strong>, но они не объёмные:</p>
+                    <ul>
+                        <li>Чтение параграфов учебника (15-20 минут)</li>
+                        <li>Ответы на вопросы после параграфа</li>
+                        <li>Подготовка к практическим занятиям (повторение правил оказания первой помощи)</li>
+                        <li>Проектные задания (1-2 раза в четверть)</li>
+                    </ul>
+                    <p>В среднем домашнее задание занимает 20-30 минут.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Где можно посмотреть расписание уроков ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Расписание доступно в электронном дневнике и на информационном стенде в школе.</p>
+                    <p>Обычно ОБЗР проводится 2 раза в неделю во всех классах (8-11).</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Можно ли изучать ОБЗР дистанционно?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Теоретическую часть — да, практическую — нет.</strong></p>
+                    <p>ОБЗР — практико-ориентированный предмет. Многие навыки (строевая подготовка, оказание первой помощи, действия в ЧС) невозможно освоить удалённо. Дистанционное обучение возможно только в исключительных случаях (болезнь, карантин) и только для теоретических занятий.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАТЕГОРИЯ: Учебные сборы -->
+        <div class="faq-category" data-category="camps">
+            <h2 class="category-title">🏕️ Учебно-полевые сборы</h2>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Обязательны ли учебные сборы?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, учебные сборы обязательны</strong> для всех учащихся:</p>
+                    <ul>
+                        <li><strong>10 класс (юноши):</strong> 5 дней, обязательны</li>
+                        <li><strong>10 класс (девушки):</strong> 5 дней, обязательны</li>
+                        <li><strong>8 класс (мальчики):</strong> 3 дня, обязательны</li>
+                        <li><strong>8 класс (девочки):</strong> 3 дня, по желанию</li>
+                    </ul>
+                    <div class="important-answer">
+                        <strong>⚠️ Внимание:</strong> Неявка на сборы без уважительной причины (медицинская справка) приравнивается к академической задолженности и влияет на итоговую оценку по ОБЗР.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Когда проводятся учебные сборы?
+                </div>
+                <div class="faq-answer">
+                    <p>Обычно сборы проводятся в <strong>мае-июне</strong>, после завершения основной учебной программы.</p>
+                    <p>Точные даты сообщаются за месяц до начала сборов.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Где проводятся сборы?
+                </div>
+                <div class="faq-answer">
+                    <p>Варианты мест проведения:</p>
+                    <ul>
+                        <li>Учебный центр военного комиссариата</li>
+                        <li>Военная часть (по согласованию)</li>
+                        <li>Лагерь на базе школы (для младших классов)</li>
+                    </ul>
+                    <p>Место проведения зависит от возможностей школы и военкомата.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что входит в программу учебных сборов?
+                </div>
+                <div class="faq-answer">
+                    <p>Программа сборов включает:</p>
+                    <ul>
+                        <li><strong>Строевая подготовка:</strong> Повороты, движение строем, выполнение команд</li>
+                        <li><strong>Тактическая подготовка:</strong> Действия в бою, ориентирование на местности</li>
+                        <li><strong>Огневая подготовка:</strong> Изучение автомата Калашникова (разборка/сборка), стрельба (по возможности)</li>
+                        <li><strong>Физическая подготовка:</strong> Кросс, полоса препятствий, силовые упражнения</li>
+                        <li><strong>РХБЗ:</strong> Действия в условиях радиационного, химического и биологического заражения</li>
+                        <li><strong>Первая помощь:</strong> Отработка навыков оказания помощи пострадавшим</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что нужно взять на сборы?
+                </div>
+                <div class="faq-answer">
+                    <p>Подробный список выдаётся перед сборами. Основное:</p>
+                    <ul>
+                        <li>Спортивная форма и кроссовки</li>
+                        <li>Сменная одежда и бельё</li>
+                        <li>Предметы личной гигиены</li>
+                        <li>Медицинская справка (форма 086-У)</li>
+                        <li>Копия паспорта</li>
+                        <li>Питьевая вода в многоразовой бутылке</li>
+                        <li>Перекус (печенье, орехи — не скоропортящиеся продукты)</li>
+                    </ul>
+                    <div class="important-answer">
+                        <strong>Запрещено:</strong> Алкоголь, сигареты, дорогие гаджеты (кроме телефона для связи), острые предметы, взрывоопасные вещества.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Где будут жить дети во время сборов?
+                </div>
+                <div class="faq-answer">
+                    <p>Варианты размещения:</p>
+                    <ul>
+                        <li><strong>Казармы военной части</strong> (для старших классов)</li>
+                        <li><strong>Общежития учебного центра</strong></li>
+                        <li><strong>Школьные помещения</strong> (для младших классов при проведении сборов на базе школы)</li>
+                    </ul>
+                    <p>Условия базовые, но безопасные: кровати, душ, туалеты, столовая.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="camps">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Платные ли учебные сборы?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Нет, сборы бесплатные.</strong></p>
+                    <p>Расходы на транспорт, питание, проживание и медицинское сопровождение берёт на себя школа и военкомат.</p>
+                    <p>Родители оплачивают только личные нужды ребёнка (например, дополнительные перекусы).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАТЕГОРИЯ: Оценивание -->
+        <div class="faq-category" data-category="grading">
+            <h2 class="category-title">📊 Оценивание по ОБЗР</h2>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Из чего складывается итоговая оценка по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Итоговая оценка складывается из 4 компонентов:</p>
+                    <ul>
+                        <li><strong>40%</strong> — Теоретические знания (тесты, контрольные, устные ответы)</li>
+                        <li><strong>30%</strong> — Практические навыки (выполнение нормативов)</li>
+                        <li><strong>20%</strong> — Учебные сборы (участие, дисциплина)</li>
+                        <li><strong>10%</strong> — Проектная работа (исследования, олимпиады)</li>
+                    </ul>
+                    <p>Подробнее на странице <a href="grading.html" style="color: var(--color-primary); text-decoration: underline;">Как оценивается ОБЗР</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Можно ли исправить плохую оценку?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, можно.</strong></p>
+                    <p>Способы исправления:</p>
+                    <ul>
+                        <li>Пересдача контрольной работы (во внеурочное время)</li>
+                        <li>Дополнительное задание (реферат, презентация)</li>
+                        <li>Повторное выполнение практического норматива</li>
+                    </ul>
+                    <p>Договоритесь с преподавателем о времени пересдачи.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Влияют ли пропуски уроков на оценку?
+                </div>
+                <div class="faq-answer">
+                    <p>Пропуски влияют косвенно:</p>
+                    <ul>
+                        <li>Пропуски по болезни (с медсправкой) не снижают оценку, но материал нужно изучить самостоятельно</li>
+                        <li>Пропуски без уважительной причины приводят к пробелам в знаниях и невозможности выполнить практические задания</li>
+                    </ul>
+                    <p>Рекомендуется при длительной болезни связаться с преподавателем для получения заданий.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Учитывается ли дисциплина при выставлении оценки?
+                </div>
+                <div class="faq-answer">
+                    <p>Дисциплина важна, особенно для модуля "Военная подготовка".</p>
+                    <p>Систематические нарушения дисциплины могут снизить оценку за поведение, но не влияют напрямую на оценку за знания.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Обязательно ли участвовать в олимпиадах по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Участие в олимпиадах не обязательно, но <strong>настоятельно рекомендуется</strong>.</p>
+                    <p>Олимпиады входят в компонент "Проектная работа" (10% итоговой оценки) и дают дополнительные баллы.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="grading">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Как часто выставляются оценки?
+                </div>
+                <div class="faq-answer">
+                    <p>Текущие оценки выставляются на каждом уроке (устные ответы, практические задания).</p>
+                    <p>Контрольные работы проводятся 1-2 раза в четверть.</p>
+                    <p>Итоговые оценки выставляются за полугодие и год.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАТЕГОРИЯ: Здоровье и безопасность -->
+        <div class="faq-category" data-category="health">
+            <h2 class="category-title">🏥 Здоровье и безопасность</h2>
+
+            <div class="faq-item" data-category="health">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что делать, если у ребёнка есть медицинские противопоказания к физическим нагрузкам?
+                </div>
+                <div class="faq-answer">
+                    <p>Предоставьте медицинскую справку с указанием ограничений.</p>
+                    <p>В зависимости от диагноза:</p>
+                    <ul>
+                        <li><strong>Лёгкие ограничения:</strong> Ребёнок освобождается от тяжёлых физических нагрузок, но участвует в теоретических занятиях и лёгких упражнениях</li>
+                        <li><strong>Серьёзные ограничения:</strong> Альтернативные задания (рефераты, презентации) вместо практики</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="health">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Нужна ли специальная форма для уроков ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Для практических занятий требуется <strong>спортивная форма</strong> (футболка, спортивные брюки, кроссовки).</p>
+                    <p>Для учебных сборов может потребоваться камуфляжная форма (выдаётся на месте или уточняется заранее).</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="health">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что делать, если ребёнок плохо себя чувствует на уроке?
+                </div>
+                <div class="faq-answer">
+                    <p>Ребёнок должен <strong>немедленно сообщить преподавателю</strong>.</p>
+                    <p>Преподаватель:</p>
+                    <ul>
+                        <li>Освобождает от физических нагрузок</li>
+                        <li>Провожает в медицинский кабинет</li>
+                        <li>Связывается с родителями при необходимости</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="health">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Безопасны ли практические занятия (например, разборка автомата)?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, абсолютно безопасны.</strong></p>
+                    <p>Все практические занятия проводятся:</p>
+                    <ul>
+                        <li>Под контролем преподавателя</li>
+                        <li>С соблюдением техники безопасности</li>
+                        <li>С использованием учебного оборудования (макеты, манекены)</li>
+                        <li>В специально оборудованных помещениях</li>
+                    </ul>
+                    <p>Огнестрельное оружие используется только на учебных сборах под контролем военных инструкторов.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="health">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что делать, если ребёнок получил травму на уроке ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Преподаватель:</p>
+                    <ul>
+                        <li>Оказывает первую помощь</li>
+                        <li>Вызывает медработника школы</li>
+                        <li>Немедленно информирует родителей</li>
+                        <li>При необходимости вызывает скорую помощь</li>
+                        <li>Составляет акт о несчастном случае</li>
+                    </ul>
+                    <p>Родители должны предоставить медицинскую справку по факту травмы для оформления документов.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАТЕГОРИЯ: Родителям -->
+        <div class="faq-category" data-category="parents">
+            <h2 class="category-title">👪 Вопросы родителей</h2>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Как помочь ребёнку с подготовкой по ОБЗР дома?
+                </div>
+                <div class="faq-answer">
+                    <p>Рекомендации для родителей:</p>
+                    <ul>
+                        <li>Обсуждайте правила безопасности в быту (1 раз в неделю)</li>
+                        <li>Смотрите вместе образовательные видео по ЧС</li>
+                        <li>Проверяйте домашнюю аптечку (раз в 3 месяца)</li>
+                        <li>Занимайтесь физической подготовкой (15-20 минут в день)</li>
+                    </ul>
+                    <p>Подробнее на странице <a href="help-at-home.html" style="color: var(--color-primary); text-decoration: underline;">Как помочь ребёнку дома</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Можно ли присутствовать на уроках ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, родители могут посетить уроки по предварительной договорённости.</strong></p>
+                    <p>Для этого:</p>
+                    <ul>
+                        <li>Свяжитесь с преподавателем за 2-3 дня</li>
+                        <li>Согласуйте удобное время</li>
+                        <li>Получите разрешение администрации школы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Как узнать текущую успеваемость ребёнка по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Способы:</p>
+                    <ul>
+                        <li><strong>Электронный дневник</strong> — оценки обновляются ежедневно</li>
+                        <li><strong>Личная встреча</strong> с преподавателем (по записи)</li>
+                        <li><strong>Email</strong> — ademin1977@vk.com</li>
+                        <li><strong>Родительские собрания</strong> (раз в четверть)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Что делать, если ребёнок не хочет участвовать в учебных сборах?
+                </div>
+                <div class="faq-answer">
+                    <p>Рекомендации:</p>
+                    <ul>
+                        <li>Выясните причину отказа (страх, стеснение, конфликт с одноклассниками)</li>
+                        <li>Объясните важность и обязательность сборов</li>
+                        <li>Свяжитесь с преподавателем для индивидуальной беседы с ребёнком</li>
+                        <li>Расскажите о позитивном опыте других учеников</li>
+                    </ul>
+                    <p>Подробнее на странице <a href="training-camps.html" style="color: var(--color-primary); text-decoration: underline;">Готовимся к учебным сборам</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Как связаться с преподавателем ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p>Контакты:</p>
+                    <ul>
+                        <li><strong>Email:</strong> ademin1977@vk.com (ответ в течение 24-48 часов)</li>
+                        <li><strong>Личная встреча:</strong> Вторник 14:30-16:00, Четверг 15:00-16:30 (по записи)</li>
+                        <li><strong>Телефон школы:</strong> +7 (831XX) X-XX-XX</li>
+                        <li><strong>Форма обратной связи:</strong> <a href="feedback.html" style="color: var(--color-primary); text-decoration: underline;">feedback.html</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="parents">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Есть ли дополнительные занятия или кружки по ОБЗР?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Да, есть внеурочная деятельность:</strong></p>
+                    <ul>
+                        <li><strong>Юнармия</strong> — военно-патриотическое движение</li>
+                        <li><strong>ЮИД</strong> — Юные инспекторы движения (ПДД)</li>
+                        <li><strong>Зарница 2.0</strong> — военно-спортивные игры</li>
+                        <li><strong>Подготовка к олимпиадам</strong> по ОБЗР</li>
+                    </ul>
+                    <p>Подробнее на странице <a href="vneurochnaya.html" style="color: var(--color-primary); text-decoration: underline;">Внеурочная деятельность</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>💬 Не нашли ответ на свой вопрос?</h2>
+            <p>Свяжитесь со мной, и я отвечу на любые вопросы об ОБЗР</p>
+            <a href="feedback.html" class="cta-button">Задать вопрос</a>
+            <a href="contacts.html" class="cta-button">Контакты</a>
+        </div>
+    </main>
+
+ <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="vneurochnaya.html">Активности</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+ Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+    
+ <!-- Плавающая кнопка QR -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Модальное окно QR -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+// FAQ Accordion
+function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    const isActive = element.classList.contains('active');
+    
+    // Закрыть все другие ответы
+    document.querySelectorAll('.faq-question').forEach(q => {
+        if (q !== element) {
+            q.classList.remove('active');
+            q.nextElementSibling.classList.remove('active');
+        }
+    });
+    
+    // Переключить текущий
+    element.classList.toggle('active');
+    answer.classList.toggle('active');
+    
+    // Скролл к открытому вопросу
+    if (!isActive) {
+        setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+}
+
+// Фильтрация по категориям
+function filterCategory(category) {
+    const buttons = document.querySelectorAll('.category-button');
+    const categories = document.querySelectorAll('.faq-category');
+    const items = document.querySelectorAll('.faq-item');
+    
+    // Обновить активную кнопку
+    buttons.forEach(btn => {
+        if (btn.dataset.category === category) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Показать/скрыть категории
+    if (category === 'all') {
+        categories.forEach(cat => cat.classList.remove('hidden'));
+        items.forEach(item => item.classList.remove('hidden'));
+    } else {
+        categories.forEach(cat => {
+            if (cat.dataset.category === category) {
+                cat.classList.remove('hidden');
+            } else {
+                cat.classList.add('hidden');
+            }
+        });
+        
+        items.forEach(item => {
+            if (item.dataset.category === category) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+    
+    // Скрыть блок "нет результатов"
+    document.getElementById('noResults').classList.remove('active');
+}
+
+// Поиск по вопросам
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const noResults = document.getElementById('noResults');
+
+searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    const items = document.querySelectorAll('.faq-item');
+    let visibleCount = 0;
+    
+    if (query === '') {
+        // Сброс поиска
+        items.forEach(item => item.classList.remove('hidden'));
+        document.querySelectorAll('.faq-category').forEach(cat => cat.classList.remove('hidden'));
+        searchResults.textContent = '';
+        noResults.classList.remove('active');
+        
+        // Восстановить активный фильтр категории
+        const activeCategory = document.querySelector('.category-button.active').dataset.category;
+        filterCategory(activeCategory);
+        return;
+    }
+    
+    // Показать все категории при поиске
+    document.querySelectorAll('.faq-category').forEach(cat => cat.classList.remove('hidden'));
+    
+    // Фильтрация вопросов
+    items.forEach(item => {
+        const question = item.querySelector('.faq-question').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+        
+        if (question.includes(query) || answer.includes(query)) {
+            item.classList.remove('hidden');
+            visibleCount++;
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+    
+    // Обновить счётчик результатов
+    if (visibleCount > 0) {
+        searchResults.textContent = `Найдено вопросов: ${visibleCount}`;
+        noResults.classList.remove('active');
+    } else {
+        searchResults.textContent = '';
+        noResults.classList.add('active');
+    }
+});
+
+// QR код
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+if (qrButton) {
+    qrButton.addEventListener('click', function() {
+        if (qrModal) {
+            qrModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+}
+
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+if (qrModal) {
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
+        }
+    });
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        if (qrModal && qrModal.style.display === 'flex') {
+            closeQRModal();
+        }
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        50% {
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// ============================================
+// DRAG-AND-DROP ФУНКЦИОНАЛ ДЛЯ QR-КНОПКИ
+// ============================================
+
+let isDragging = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
+
+// Восстановление позиции из localStorage
+function restoreQRButtonPosition() {
+    const savedPosition = localStorage.getItem('qrButtonPosition');
+    if (savedPosition) {
+        const position = JSON.parse(savedPosition);
+        qrButton.style.bottom = 'auto';
+        qrButton.style.right = 'auto';
+        qrButton.style.left = position.x + 'px';
+        qrButton.style.top = position.y + 'px';
+        xOffset = position.x;
+        yOffset = position.y;
+    }
+}
+
+// Сохранение позиции в localStorage
+function saveQRButtonPosition(x, y) {
+    localStorage.setItem('qrButtonPosition', JSON.stringify({ x: x, y: y }));
+}
+
+// Начало перетаскивания
+function dragStart(e) {
+    if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+    } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+    }
+
+    if (e.target === qrButton || e.target.parentElement === qrButton) {
+        isDragging = true;
+        qrButton.style.cursor = 'grabbing';
+    }
+}
+
+// Перемещение
+function drag(e) {
+    if (isDragging) {
+        e.preventDefault();
+        
+        if (e.type === "touchmove") {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+        } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, qrButton);
+    }
+}
+
+// Завершение перетаскивания
+function dragEnd(e) {
+    if (isDragging) {
+        initialX = currentX;
+        initialY = currentY;
+        isDragging = false;
+        qrButton.style.cursor = 'move';
+        
+        // Сохранение позиции
+        saveQRButtonPosition(currentX, currentY);
+    }
+}
+
+// Установка позиции элемента
+function setTranslate(xPos, yPos, el) {
+    el.style.left = xPos + 'px';
+    el.style.top = yPos + 'px';
+    el.style.bottom = 'auto';
+    el.style.right = 'auto';
+}
+
+// Добавление обработчиков событий
+if (qrButton) {
+    // Восстановление позиции при загрузке
+    restoreQRButtonPosition();
+    
+    // Mouse events
+    qrButton.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+    
+    // Touch events
+    qrButton.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', dragEnd);
+    
+    // Изменение курсора
+    qrButton.style.cursor = 'move';
+    
+    // Клик для открытия модального окна (только если не было перетаскивания)
+    let clickStartTime = 0;
+    let clickStartX = 0;
+    let clickStartY = 0;
+    
+    qrButton.addEventListener('mousedown', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.clientX;
+        clickStartY = e.clientY;
+    });
+    
+    qrButton.addEventListener('touchstart', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.touches[0].clientX;
+        clickStartY = e.touches[0].clientY;
+    });
+    
+    qrButton.addEventListener('click', function(e) {
+        const clickEndTime = Date.now();
+        const timeDiff = clickEndTime - clickStartTime;
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - clickStartX, 2) + 
+            Math.pow(e.clientY - clickStartY, 2)
+        );
+        
+        // Открываем модальное окно только если это был быстрый клик без перемещения
+        if (timeDiff < 200 && distance < 10) {
+            if (qrModal) {
+                qrModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
+}
+</script>
+</body>
+</html>
