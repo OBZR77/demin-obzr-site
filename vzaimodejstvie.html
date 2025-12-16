@@ -192,6 +192,9 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem 2rem;
+            overflow-x: hidden;        /* ← ДОБАВЬ ЭТУ СТРОКУ */
+            width: 100%;               /* ← ДОБАВЬ ЭТУ СТРОКУ */
+            box-sizing: border-box; 
         }
         
         .page-title {
@@ -716,189 +719,231 @@
         .events-table tbody tr:nth-child(even) {
             background: var(--color-surface);
         }
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+        @media (max-width: 768px) {
+            /* МОБИЛЬНОЕ МЕНЮ - КАК В YUNARMY */
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                border-top: none;
+                border-left: 3px solid var(--color-partners-main);
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+            }
+            
+            .nav-menu > li.has-submenu.open .submenu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+            
+            .submenu a {
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                padding-left: 2.5rem;
+            }
+            
+            /* HEADER */
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            /* ЗАГОЛОВКИ */
+            .page-title {
+                font-size: 1.5rem;
+                margin-top: 1rem;
+            }
 
-       /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-    /* Мобильное меню */
-    .mobile-menu-toggle {
-        display: block;
-    }
-    
-    .nav-menu {
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--color-primary);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        max-height: 1000px;
-    }
-    
-    .nav-menu > li {
-        width: 100%;
-    }
-    
-    .nav-menu > li > a {
-        padding: 1rem 1.5rem;
-    }
-    
-    .submenu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        border-top: none;
-        background-color: var(--color-primary-hover);
-    }
-    
-    .has-submenu.open .submenu {
-        max-height: 500px;
-    }
-    
-    /* Заголовки */
-    .page-title {
-        font-size: 1.5rem;
-        margin-top: 1.5rem;
-    }
-    
-    .page-subtitle {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.3rem;
-    }
-    
-    /* Hero блок */
-    .hero-section {
-        padding: 1.5rem 1.25rem;
-    }
-    
-    .hero-section h2 {
-        font-size: 1.4rem;
-    }
-    
-    .hero-section p {
-        font-size: 0.95rem;
-    }
-    
-    /* Карточки */
-    .about-cards,
-    .direction-cards,
-    .achievement-cards {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .about-card,
-    .direction-card,
-    .achievement-card {
-        padding: 1.25rem;
-    }
-    
-    .about-card h3,
-    .about-card h4,
-    .direction-card h4,
-    .achievement-card h4 {
-        font-size: 1.1rem;
-    }
-    
-    .achievement-card .stat {
-        font-size: 2rem;
-    }
-    
-    /* Таблица мероприятий */
-    .events-table {
-        font-size: 0.85rem;
-    }
-    
-    .events-table th,
-    .events-table td {
-        padding: 0.75rem 0.5rem;
-    }
-    
-    /* Фотогалерея */
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .gallery-slider {
-        height: 200px;
-    }
-    
-    .gallery-nav {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
-    }
-    
-    /* Lightbox на мобильных */
-    .lightbox-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .lightbox-nav.prev {
-        left: 10px;
-    }
-    
-    .lightbox-nav.next {
-        right: 10px;
-    }
-    
-    .lightbox-placeholder {
-        padding: 2rem 1rem;
-        height: 60vh;
-    }
-    
-    .lightbox-placeholder .icon {
-        font-size: 5rem;
-    }
-    
-    .lightbox-placeholder p {
-        font-size: 1.1rem;
-    }
-    
-    /* Дополнительная информация */
-    .additional-info {
-        padding: 1.5rem 1rem;
-    }
-    
-    .additional-info h3 {
-        font-size: 1.2rem;
-        line-height: 1.4;
-    }
-    
-    .additional-info li {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        padding: 0.6rem 0;
-        gap: 0.5rem;
-    }
-    
-    .additional-info strong {
-        word-break: break-word;
-    }
-    
-    /* Footer */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-} 
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            /* HERO БЛОК */
+            .hero-section {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .hero-section p {
+                font-size: 0.95rem;
+            }
+
+            /* КАРТОЧКИ */
+            .about-cards,
+            .direction-cards,
+            .achievement-cards {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .about-card,
+            .direction-card,
+            .achievement-card {
+                padding: 1.25rem;
+            }
+
+            .about-card h3,
+            .about-card h4,
+            .direction-card h4,
+            .achievement-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .achievement-card .stat {
+                font-size: 2rem;
+            }
+
+            /* ТАБЛИЦА МЕРОПРИЯТИЙ */
+            .events-table {
+                font-size: 0.85rem;
+                overflow-x: auto;
+            }
+
+            .events-table table {
+                min-width: 600px;
+            }
+
+            .events-table th,
+            .events-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            /* ФОТОГАЛЕРЕЯ */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-slider {
+                height: 200px;
+            }
+
+            .gallery-nav {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+
+            /* LIGHTBOX НА МОБИЛЬНЫХ */
+            .lightbox-placeholder {
+                width: 90vw;
+                max-width: 100%;
+                height: 60vh;
+                max-height: 500px;
+                padding: 2rem;
+            }
+
+            .lightbox-placeholder .icon {
+                font-size: 5rem;
+                margin-bottom: 1rem;
+            }
+
+            .lightbox-placeholder p {
+                font-size: 1.1rem;
+            }
+
+            .lightbox-nav {
+                width: 45px;
+                height: 45px;
+            }
+
+            .lightbox-nav.prev {
+                left: 15px;
+            }
+
+            .lightbox-nav.next {
+                right: 15px;
+            }
+
+            /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ - ФИКС ГОРИЗОНТАЛЬНОГО СКРОЛЛА */
+            .additional-info {
+                padding: 1.25rem 1rem;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
+            .additional-info h3 {
+                font-size: 1.1rem;
+                line-height: 1.4;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .additional-info ul {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .additional-info li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                padding: 0.5rem 0;
+                gap: 0.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .additional-info li span:last-child {
+                flex: 1;
+                min-width: 0;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .additional-info strong {
+                word-break: break-word;
+                display: inline;
+            }
+
+            /* FOOTER */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
     </style>
+      
 </head>
 <body>
 
