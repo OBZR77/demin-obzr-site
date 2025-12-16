@@ -719,6 +719,51 @@
         .events-table tbody tr:nth-child(even) {
             background: var(--color-surface);
         }
+ /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background: #F0F7FF;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 2rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .additional-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+            word-wrap: break-word;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.7;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .additional-info li span:first-child {
+            flex-shrink: 0;
+            min-width: 20px;
+        }
+
+        .additional-info li span:last-child {
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        
 /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
         @media (max-width: 768px) {
             /* МОБИЛЬНОЕ МЕНЮ - КАК В YUNARMY */
@@ -926,18 +971,18 @@
     box-sizing: border-box;
 }
 .additional-info li span:first-child {
-    flex-shrink: 0;                   /* ← Иконка не сжимается */
-    min-width: 20px;                  /* ← Минимальная ширина иконки */
-}
+                flex-shrink: 0;
+                font-size: 1rem;
+            }
 
-.additional-info li span:last-child {
-    flex: 1;                          /* ← Текст занимает оставшееся место */
-    min-width: 0;                     /* ← Позволяет тексту сжиматься */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;           /* ← ДОБАВЬ для принудительного переноса */
-}
-           
+            .additional-info li span:last-child {
+                flex: 1;
+                min-width: 0;
+                max-width: 100%;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
 
             .additional-info strong {
                 word-break: break-word;
