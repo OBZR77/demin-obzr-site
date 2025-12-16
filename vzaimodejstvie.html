@@ -740,29 +740,22 @@
             list-style: none;
             padding: 0;
         }
-
-        .additional-info li {
-            padding: 0.75rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
+.additional-info li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
             line-height: 1.7;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .additional-info li span:first-child {
-            flex-shrink: 0;
-            min-width: 20px;
-        }
-
-        .additional-info li span:last-child {
-            flex: 1;
-            min-width: 0;
             word-wrap: break-word;
             overflow-wrap: break-word;
             word-break: break-word;
         }
+
+        .additional-info li::before {
+            content: '📌';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+        }
+       
         
 /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
         @media (max-width: 768px) {
@@ -957,36 +950,21 @@
                 padding: 0;
                 margin: 0;
             }
-
-           additional-info li {
-    display: flex;                    /* ← ДОБАВЬ */
-    align-items: flex-start;          /* ← ДОБАВЬ */
-    font-size: 0.9rem;
-    line-height: 1.5;
-    padding: 0.5rem 0;
-    gap: 0.5rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    width: 100%;
-    box-sizing: border-box;
-}
-.additional-info li span:first-child {
-                flex-shrink: 0;
-                font-size: 1rem;
-            }
-
-            .additional-info li span:last-child {
-                flex: 1;
-                min-width: 0;
-                max-width: 100%;
+ .additional-info li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                padding: 0.5rem 0 0.5rem 1.75rem;
                 word-wrap: break-word;
                 overflow-wrap: break-word;
                 word-break: break-word;
             }
 
+            .additional-info li::before {
+                top: 0.5rem;
+            }
+
             .additional-info strong {
                 word-break: break-word;
-                display: inline;
             }
 
             /* FOOTER */
@@ -1778,31 +1756,17 @@
         </div>
 
         <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
-        <div style="background: #F0F7FF; border: 2px solid var(--color-primary); border-radius: 10px; padding: 2rem;">
-            <h3 style="color: var(--color-primary); margin-bottom: 1.25rem; font-size: 1.4rem;">ℹ️ Дополнительная информация</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Все совместные мероприятия с партнёрами <strong>проводятся безвозмездно</strong> в рамках социального партнёрства
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Для участия несовершеннолетних в мероприятиях <strong>требуется согласие родителей</strong> или законных представителей
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Все участники мероприятий <strong>застрахованы</strong> от несчастных случаев в соответствии с требованиями законодательства
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Соблюдение <strong>техники безопасности</strong> контролируется на всех этапах проведения совместных мероприятий
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Публикация фото и видеоматериалов с мероприятий осуществляется <strong>с согласия участников</strong> и с соблюдением ФЗ-152
-                </li>
-            </ul>
-        </div>
+      <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+<div class="additional-info">
+    <h3>ℹ️ Дополнительная информация</h3>
+    <ul>
+        <li>Все совместные мероприятия с партнёрами <strong>проводятся безвозмездно</strong> в рамках социального партнёрства</li>
+        <li>Для участия несовершеннолетних в мероприятиях <strong>требуется согласие родителей</strong> или законных представителей</li>
+        <li>Все участники мероприятий <strong>застрахованы</strong> от несчастных случаев в соответствии с требованиями законодательства</li>
+        <li>Соблюдение <strong>техники безопасности</strong> контролируется на всех этапах проведения совместных мероприятий</li>
+        <li>Публикация фото и видеоматериалов с мероприятий осуществляется <strong>с согласия участников</strong> и с соблюдением ФЗ-152</li>
+    </ul>
+</div>
 
     </main>
 
