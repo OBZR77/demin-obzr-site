@@ -913,23 +913,31 @@
                 margin: 0;
             }
 
-            .additional-info li {
-                font-size: 0.9rem;
-                line-height: 1.5;
-                padding: 0.5rem 0;
-                gap: 0.5rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                width: 100%;
-                box-sizing: border-box;
-            }
+           additional-info li {
+    display: flex;                    /* ← ДОБАВЬ */
+    align-items: flex-start;          /* ← ДОБАВЬ */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+}
+.additional-info li span:first-child {
+    flex-shrink: 0;                   /* ← Иконка не сжимается */
+    min-width: 20px;                  /* ← Минимальная ширина иконки */
+}
 
-            .additional-info li span:last-child {
-                flex: 1;
-                min-width: 0;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
+.additional-info li span:last-child {
+    flex: 1;                          /* ← Текст занимает оставшееся место */
+    min-width: 0;                     /* ← Позволяет тексту сжиматься */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;           /* ← ДОБАВЬ для принудительного переноса */
+}
+           
 
             .additional-info strong {
                 word-break: break-word;
