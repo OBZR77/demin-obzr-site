@@ -626,6 +626,43 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
+/* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background: #F0F7FF;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .additional-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
+            line-height: 1.7;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .additional-info li::before {
+            content: '📌';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
         
         /* АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
@@ -698,6 +735,29 @@
             .about-cards {
                 grid-template-columns: 1fr;
             }
+.about-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .additional-info {
+                padding: 1.25rem 1rem;
+            }
+
+            .additional-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .additional-info li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                padding: 0.5rem 0 0.5rem 1.75rem;
+            }
+
+            .additional-info li::before {
+                top: 0.5rem;
+            }
+        }
+            
         }
 
         /* АНИМАЦИИ */
@@ -1569,27 +1629,15 @@
         </div>
 
         <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
-        <div style="background: #F0F7FF; border: 2px solid var(--color-primary); border-radius: 10px; padding: 2rem;">
-            <h3 style="color: var(--color-primary); margin-bottom: 1.25rem; font-size: 1.4rem;">ℹ️ Дополнительная информация</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Участие в военно-полевых сборах <strong>обязательно для всех юношей 10 классов</strong> в соответствии с ФГОС ОБЗР
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Оценка за сборы <strong>влияет на итоговую отметку по предмету ОБЗР</strong> 
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Питание, проживание и транспорт <strong>организуются школой бесплатно</strong> за счёт бюджетных средств
-                </li>
-                <li style="padding: 0.75rem 0; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.7;">
-                    <span style="flex-shrink: 0;">📌</span>
-                    Девушки 10 класса <strong></strong>не участвуют 
-                </li>
+         <div class="additional-info">
+            <h3>ℹ️ Дополнительная информация</h3>
+            <ul>
+                <li>Участие в военно-полевых сборах <strong>обязательно для всех юношей 10 классов</strong> в соответствии с ФГОС ОБЗР</li>
+                <li>Оценка за сборы <strong>влияет на итоговую отметку по предмету ОБЗР</strong></li>
+                <li>Питание, проживание и транспорт <strong>организуются школой бесплатно</strong> за счёт бюджетных средств</li>
+                <li>Девушки 10 класса <strong>не участвуют</strong></li>
             </ul>
-        </div>
+        </div> 
 
     </main>
 
