@@ -716,6 +716,188 @@
         .events-table tbody tr:nth-child(even) {
             background: var(--color-surface);
         }
+
+       /* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 768px) {
+    /* Мобильное меню */
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-primary);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        max-height: 1000px;
+    }
+    
+    .nav-menu > li {
+        width: 100%;
+    }
+    
+    .nav-menu > li > a {
+        padding: 1rem 1.5rem;
+    }
+    
+    .submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-top: none;
+        background-color: var(--color-primary-hover);
+    }
+    
+    .has-submenu.open .submenu {
+        max-height: 500px;
+    }
+    
+    /* Заголовки */
+    .page-title {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Hero блок */
+    .hero-section {
+        padding: 1.5rem 1.25rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-section p {
+        font-size: 0.95rem;
+    }
+    
+    /* Карточки */
+    .about-cards,
+    .direction-cards,
+    .achievement-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .about-card,
+    .direction-card,
+    .achievement-card {
+        padding: 1.25rem;
+    }
+    
+    .about-card h3,
+    .about-card h4,
+    .direction-card h4,
+    .achievement-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .achievement-card .stat {
+        font-size: 2rem;
+    }
+    
+    /* Таблица мероприятий */
+    .events-table {
+        font-size: 0.85rem;
+    }
+    
+    .events-table th,
+    .events-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    /* Фотогалерея */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-slider {
+        height: 200px;
+    }
+    
+    .gallery-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    /* Lightbox на мобильных */
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-nav.prev {
+        left: 10px;
+    }
+    
+    .lightbox-nav.next {
+        right: 10px;
+    }
+    
+    .lightbox-placeholder {
+        padding: 2rem 1rem;
+        height: 60vh;
+    }
+    
+    .lightbox-placeholder .icon {
+        font-size: 5rem;
+    }
+    
+    .lightbox-placeholder p {
+        font-size: 1.1rem;
+    }
+    
+    /* Дополнительная информация */
+    .additional-info {
+        padding: 1.5rem 1rem;
+    }
+    
+    .additional-info h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+    
+    .additional-info li {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 0.6rem 0;
+        gap: 0.5rem;
+    }
+    
+    .additional-info strong {
+        word-break: break-word;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+} 
     </style>
 </head>
 <body>
