@@ -1202,6 +1202,8 @@ document.addEventListener('keydown', function(event) {
         </div>
     </div>
     
+    <script>
+        
     function toggleMenu() {
     const menu = document.getElementById('navMenu');
     menu.classList.toggle('active');
@@ -1404,135 +1406,271 @@ if (qrButton) {
     });
 }
 </script>
-<!-- ... (весь остальной код страницы) ... -->
- <!-- Плавающая кнопка QR и модальное окно (ваш существующий код) -->
-    ...
-    
-    <!-- hCaptcha Script -->
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    
-    <!-- EmailJS Script -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
-    <script>
-    // ИНИЦИАЛИЗАЦИЯ EMAILJS
-    (function() {
-        emailjs.init("mi7B9cfIzCbiwKLLv");
-    })();
-    
-    // ОБРАБОТКА ФОРМЫ ОБРАТНОЙ СВЯЗИ
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
+</div><!-- конец QR modal -->
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
         event.preventDefault();
-        
-        const submitBtn = document.querySelector('.submit-button');
-        const formStatus = document.getElementById('formStatus');
-        const honeypot = document.querySelector('input[name="honeypot"]');
-        
-        // Защита от спам-ботов
-        if (honeypot && honeypot.value) {
-            console.log('Спам-бот обнаружен');
-            return false;
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+if (qrButton) {
+    qrButton.addEventListener('click', function() {
+        if (qrModal) {
+            qrModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-        
-        // Проверка hCaptcha
-        const hcaptchaResponse = hcaptcha.getResponse();
-        if (!hcaptchaResponse) {
-            if (formStatus) {
-                formStatus.style.display = 'block';
-                formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
-                formStatus.style.borderLeft = '4px solid #E53935';
-                formStatus.style.color = '#C62828';
-                formStatus.style.padding = '1rem';
-                formStatus.style.borderRadius = '8px';
-                formStatus.style.marginBottom = '1rem';
-                formStatus.innerHTML = '❌ Пожалуйста, подтвердите, что вы не робот';
-            }
-            return false;
+    });
+}
+
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+if (qrModal) {
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
         }
-        
-        // Блокировка кнопки
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '⏳ Отправка...';
-        if (formStatus) formStatus.style.display = 'none';
-        
-        // Получение данных формы
-        const templateParams = {
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
-            student_info: document.getElementById('student').value || 'Не указано',
-            topic: document.getElementById('topic').options[document.getElementById('topic').selectedIndex].text,
-            message: document.getElementById('message').value,
-            to_email: 'ademin1977@vk.com'
-        };
-        
-        // Отправка через EmailJS
-        emailjs.send(
-            'service_hropd5d',
-            'template_454l35e',
-            templateParams
-        )
-        .then(function(response) {
-            if (formStatus) {
-                formStatus.style.display = 'block';
-                formStatus.style.background = 'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)';
-                formStatus.style.borderLeft = '4px solid #4CAF50';
-                formStatus.style.color = '#2E7D32';
-                formStatus.style.padding = '1rem';
-                formStatus.style.borderRadius = '8px';
-                formStatus.style.marginBottom = '1rem';
-                formStatus.innerHTML = '✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.';
-            }
-            
-            document.getElementById('contactForm').reset();
-            hcaptcha.reset();
-            
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Отправить сообщение';
-            
-            setTimeout(function() {
-                if (formStatus) formStatus.style.display = 'none';
-            }, 10000);
-            
-        }, function(error) {
-            if (formStatus) {
-                formStatus.style.display = 'block';
-                formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
-                formStatus.style.borderLeft = '4px solid #E53935';
-                formStatus.style.color = '#C62828';
-                formStatus.style.padding = '1rem';
-                formStatus.style.borderRadius = '8px';
-                formStatus.style.marginBottom = '1rem';
-                formStatus.innerHTML = '❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com';
-            }
-            
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Отправить сообщение';
-            
-            console.error('EmailJS error:', error);
-        });
+    });
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && qrModal && qrModal.style.display === 'flex') {
+        closeQRModal();
+    }
+});
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6); }
+    }
+`;
+document.head.appendChild(style);
+
+// DRAG-AND-DROP ФУНКЦИОНАЛ ДЛЯ QR-КНОПКИ
+let isDragging = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
+
+function restoreQRButtonPosition() {
+    const savedPosition = localStorage.getItem('qrButtonPosition');
+    if (savedPosition) {
+        const position = JSON.parse(savedPosition);
+        qrButton.style.bottom = 'auto';
+        qrButton.style.right = 'auto';
+        qrButton.style.left = position.x + 'px';
+        qrButton.style.top = position.y + 'px';
+        xOffset = position.x;
+        yOffset = position.y;
+    }
+}
+
+function saveQRButtonPosition(x, y) {
+    localStorage.setItem('qrButtonPosition', JSON.stringify({ x: x, y: y }));
+}
+
+function dragStart(e) {
+    if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+    } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+    }
+    if (e.target === qrButton || e.target.parentElement === qrButton) {
+        isDragging = true;
+        qrButton.style.cursor = 'grabbing';
+    }
+}
+
+function drag(e) {
+    if (isDragging) {
+        e.preventDefault();
+        if (e.type === "touchmove") {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+        } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+        }
+        xOffset = currentX;
+        yOffset = currentY;
+        setTranslate(currentX, currentY, qrButton);
+    }
+}
+
+function dragEnd(e) {
+    if (isDragging) {
+        initialX = currentX;
+        initialY = currentY;
+        isDragging = false;
+        qrButton.style.cursor = 'move';
+        saveQRButtonPosition(currentX, currentY);
+    }
+}
+
+function setTranslate(xPos, yPos, el) {
+    el.style.left = xPos + 'px';
+    el.style.top = yPos + 'px';
+    el.style.bottom = 'auto';
+    el.style.right = 'auto';
+}
+
+if (qrButton) {
+    restoreQRButtonPosition();
+    qrButton.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+    qrButton.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', dragEnd);
+    qrButton.style.cursor = 'move';
+    
+    let clickStartTime = 0;
+    let clickStartX = 0;
+    let clickStartY = 0;
+    
+    qrButton.addEventListener('mousedown', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.clientX;
+        clickStartY = e.clientY;
     });
     
-    // ВСЕ ОСТАЛЬНЫЕ ФУНКЦИИ (toggleMenu, QR-кнопка и т.д.)
-    function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        menu.classList.toggle('active');
-    }
+    qrButton.addEventListener('touchstart', function(e) {
+        clickStartTime = Date.now();
+        clickStartX = e.touches[0].clientX;
+        clickStartY = e.touches[0].clientY;
+    });
     
-    function handleSubmenuClick(event, element) {
-        if (window.innerWidth <= 768) {
-            event.preventDefault();
-            const parent = element.parentElement;
-            parent.classList.toggle('open');
-            return false;
+    qrButton.addEventListener('click', function(e) {
+        const clickEndTime = Date.now();
+        const timeDiff = clickEndTime - clickStartTime;
+        const distance = Math.sqrt(
+            Math.pow(e.clientX - clickStartX, 2) + 
+            Math.pow(e.clientY - clickStartY, 2)
+        );
+        if (timeDiff < 200 && distance < 10) {
+            if (qrModal) {
+                qrModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
         }
-        return true;
+    });
+}
+</script>
+
+<!-- hCaptcha Script -->
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+// ИНИЦИАЛИЗАЦИЯ EMAILJS
+(function() {
+    emailjs.init("mi7B9cfIzCbiwKLLv");
+})();
+
+// ОБРАБОТКА ФОРМЫ ОБРАТНОЙ СВЯЗИ
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.querySelector('.submit-button');
+    const formStatus = document.getElementById('formStatus');
+    const honeypot = document.querySelector('input[name="honeypot"]');
+    
+    if (honeypot && honeypot.value) {
+        console.log('Спам-бот обнаружен');
+        return false;
     }
     
-    // ... (весь остальной JavaScript для QR-кнопки)
+    const hcaptchaResponse = hcaptcha.getResponse();
+    if (!hcaptchaResponse) {
+        if (formStatus) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+            formStatus.style.borderLeft = '4px solid #E53935';
+            formStatus.style.color = '#C62828';
+            formStatus.style.padding = '1rem';
+            formStatus.style.borderRadius = '8px';
+            formStatus.style.marginBottom = '1rem';
+            formStatus.innerHTML = '❌ Пожалуйста, подтвердите, что вы не робот';
+        }
+        return false;
+    }
     
-    </script>
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '⏳ Отправка...';
+    if (formStatus) formStatus.style.display = 'none';
     
+    const templateParams = {
+        from_name: document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        student_info: document.getElementById('student').value || 'Не указано',
+        topic: document.getElementById('topic').options[document.getElementById('topic').selectedIndex].text,
+        message: document.getElementById('message').value,
+        to_email: 'ademin1977@vk.com'
+    };
+    
+    emailjs.send('service_hropd5d', 'template_454l35e', templateParams)
+    .then(function(response) {
+        if (formStatus) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)';
+            formStatus.style.borderLeft = '4px solid #4CAF50';
+            formStatus.style.color = '#2E7D32';
+            formStatus.style.padding = '1rem';
+            formStatus.style.borderRadius = '8px';
+            formStatus.style.marginBottom = '1rem';
+            formStatus.innerHTML = '✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.';
+        }
+        document.getElementById('contactForm').reset();
+        hcaptcha.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Отправить сообщение';
+        setTimeout(function() {
+            if (formStatus) formStatus.style.display = 'none';
+        }, 10000);
+    }, function(error) {
+        if (formStatus) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+            formStatus.style.borderLeft = '4px solid #E53935';
+            formStatus.style.color = '#C62828';
+            formStatus.style.padding = '1rem';
+            formStatus.style.borderRadius = '8px';
+            formStatus.style.marginBottom = '1rem';
+            formStatus.innerHTML = '❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com';
+        }
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Отправить сообщение';
+        console.error('EmailJS error:', error);
+    });
+});
+</script>
+
 </body>
-</html>   
- 
-            
+</html>
