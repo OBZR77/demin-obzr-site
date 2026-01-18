@@ -968,16 +968,17 @@ document.addEventListener('keydown', function(event) {
                     <textarea id="message" name="message" required placeholder="Опишите ваш вопрос подробно..."></textarea>
                 </div>
 
-                <div class="form-note">
-                    <!-- hCaptcha -->
+<div class="form-note">
+    <strong>⚠️ Обратите внимание:</strong> Форма обратной связи не предназначена для срочных вопросов. Если требуется немедленный ответ, позвоните в администрацию школы.
+</div>
+
+<!-- hCaptcha -->
 <div class="form-group">
     <div class="h-captcha" data-sitekey="b982a2d2-6634-469e-a95c-a30a38842b94"></div>
 </div>
 
 <!-- Сообщения об успехе/ошибке -->
 <div id="formStatus" style="display: none;"></div>
-                    <strong>⚠️ Обратите внимание:</strong> Форма обратной связи не предназначена для срочных вопросов. Если требуется немедленный ответ, позвоните в администрацию школы.
-                </div>
 
                 <button type="submit" class="submit-button">Отправить сообщение</button>
             </form>
@@ -1200,122 +1201,6 @@ document.addEventListener('keydown', function(event) {
             </p>
         </div>
     </div>
-
-<script>
-
-<!-- hCaptcha Script -->
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script> 
-
-  <!-- EmailJS Script -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>  
-
- <script>
-// ============================================
-// ИНИЦИАЛИЗАЦИЯ EMAILJS
-// ============================================
-(function() {
-    emailjs.init("ВАШ_PUBLIC_KEY"); // 👈 Замените на ваш Public Key из EmailJS
-})();
-
-// ============================================
-// ОБРАБОТКА ФОРМЫ ОБРАТНОЙ СВЯЗИ
-// ============================================
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const submitBtn = document.querySelector('.submit-button');
-    const formStatus = document.getElementById('formStatus');
-    const honeypot = document.querySelector('input[name="honeypot"]');
-    
-    // Защита от спам-ботов (honeypot)
-    if (honeypot && honeypot.value) {
-        console.log('Спам-бот обнаружен');
-        return false;
-    }
-    
-    // Проверка hCaptcha
-    const hcaptchaResponse = hcaptcha.getResponse();
-    if (!hcaptchaResponse) {
-        if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
-            formStatus.style.borderLeft = '4px solid #E53935';
-            formStatus.style.color = '#C62828';
-            formStatus.style.padding = '1rem';
-            formStatus.style.borderRadius = '8px';
-            formStatus.style.marginBottom = '1rem';
-            formStatus.innerHTML = '❌ Пожалуйста, подтвердите, что вы не робот';
-        }
-        return false;
-    }
-    
-    // Блокировка кнопки
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '⏳ Отправка...';
-    if (formStatus) formStatus.style.display = 'none';
-    
-    // Получение данных формы
-    const templateParams = {
-        from_name: document.getElementById('name').value,
-        from_email: document.getElementById('email').value,
-        student_info: document.getElementById('student').value || 'Не указано',
-        topic: document.getElementById('topic').options[document.getElementById('topic').selectedIndex].text,
-        message: document.getElementById('message').value,
-        to_email: 'ademin1977@vk.com'
-    };
-    
-    // Отправка через EmailJS
-    emailjs.send(
-        'service_hropd5d',      // 👈 Замените на ваш Service ID
-        'template_454l35e',     // 👈 Замените на ваш новый Template ID для обратной связи
-        templateParams
-    )
-    .then(function(response) {
-        // Успешная отправка
-        if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)';
-            formStatus.style.borderLeft = '4px solid #4CAF50';
-            formStatus.style.color = '#2E7D32';
-            formStatus.style.padding = '1rem';
-            formStatus.style.borderRadius = '8px';
-            formStatus.style.marginBottom = '1rem';
-            formStatus.innerHTML = '✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.';
-        }
-        
-        // Очистка формы
-        document.getElementById('contactForm').reset();
-        hcaptcha.reset();
-        
-        // Разблокировка кнопки
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Отправить сообщение';
-        
-        // Автоскрытие через 10 секунд
-        setTimeout(function() {
-            if (formStatus) formStatus.style.display = 'none';
-        }, 10000);
-        
-    }, function(error) {
-        // Ошибка
-        if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
-            formStatus.style.borderLeft = '4px solid #E53935';
-            formStatus.style.color = '#C62828';
-            formStatus.style.padding = '1rem';
-            formStatus.style.borderRadius = '8px';
-            formStatus.style.marginBottom = '1rem';
-            formStatus.innerHTML = '❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com';
-        }
-        
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Отправить сообщение';
-        
-        console.error('EmailJS error:', error);
-    });
-});
-</script> 
     
     function toggleMenu() {
     const menu = document.getElementById('navMenu');
@@ -1520,6 +1405,8 @@ if (qrButton) {
 }
 </script>
 <!-- ... (весь остальной код страницы) ... -->
+ <!-- Плавающая кнопка QR и модальное окно (ваш существующий код) -->
+    ...
     
     <!-- hCaptcha Script -->
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
@@ -1533,21 +1420,119 @@ if (qrButton) {
         emailjs.init("mi7B9cfIzCbiwKLLv");
     })();
     
-    // ОБРАБОТКА ФОРМЫ
+    // ОБРАБОТКА ФОРМЫ ОБРАТНОЙ СВЯЗИ
     document.getElementById('contactForm').addEventListener('submit', function(event) {
-        // ... весь код обработки формы ...
+        event.preventDefault();
+        
+        const submitBtn = document.querySelector('.submit-button');
+        const formStatus = document.getElementById('formStatus');
+        const honeypot = document.querySelector('input[name="honeypot"]');
+        
+        // Защита от спам-ботов
+        if (honeypot && honeypot.value) {
+            console.log('Спам-бот обнаружен');
+            return false;
+        }
+        
+        // Проверка hCaptcha
+        const hcaptchaResponse = hcaptcha.getResponse();
+        if (!hcaptchaResponse) {
+            if (formStatus) {
+                formStatus.style.display = 'block';
+                formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+                formStatus.style.borderLeft = '4px solid #E53935';
+                formStatus.style.color = '#C62828';
+                formStatus.style.padding = '1rem';
+                formStatus.style.borderRadius = '8px';
+                formStatus.style.marginBottom = '1rem';
+                formStatus.innerHTML = '❌ Пожалуйста, подтвердите, что вы не робот';
+            }
+            return false;
+        }
+        
+        // Блокировка кнопки
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '⏳ Отправка...';
+        if (formStatus) formStatus.style.display = 'none';
+        
+        // Получение данных формы
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            student_info: document.getElementById('student').value || 'Не указано',
+            topic: document.getElementById('topic').options[document.getElementById('topic').selectedIndex].text,
+            message: document.getElementById('message').value,
+            to_email: 'ademin1977@vk.com'
+        };
+        
+        // Отправка через EmailJS
+        emailjs.send(
+            'service_hropd5d',
+            'template_454l35e',
+            templateParams
+        )
+        .then(function(response) {
+            if (formStatus) {
+                formStatus.style.display = 'block';
+                formStatus.style.background = 'linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%)';
+                formStatus.style.borderLeft = '4px solid #4CAF50';
+                formStatus.style.color = '#2E7D32';
+                formStatus.style.padding = '1rem';
+                formStatus.style.borderRadius = '8px';
+                formStatus.style.marginBottom = '1rem';
+                formStatus.innerHTML = '✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.';
+            }
+            
+            document.getElementById('contactForm').reset();
+            hcaptcha.reset();
+            
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Отправить сообщение';
+            
+            setTimeout(function() {
+                if (formStatus) formStatus.style.display = 'none';
+            }, 10000);
+            
+        }, function(error) {
+            if (formStatus) {
+                formStatus.style.display = 'block';
+                formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+                formStatus.style.borderLeft = '4px solid #E53935';
+                formStatus.style.color = '#C62828';
+                formStatus.style.padding = '1rem';
+                formStatus.style.borderRadius = '8px';
+                formStatus.style.marginBottom = '1rem';
+                formStatus.innerHTML = '❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com';
+            }
+            
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Отправить сообщение';
+            
+            console.error('EmailJS error:', error);
+        });
     });
-    </script>
     
-    <script>
-    // ВАШ СУЩЕСТВУЮЩИЙ КОД
+    // ВСЕ ОСТАЛЬНЫЕ ФУНКЦИИ (toggleMenu, QR-кнопка и т.д.)
     function toggleMenu() {
         const menu = document.getElementById('navMenu');
         menu.classList.toggle('active');
     }
-    // ... и так далее ...
+    
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 768) {
+            event.preventDefault();
+            const parent = element.parentElement;
+            parent.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+    
+    // ... (весь остальной JavaScript для QR-кнопки)
+    
     </script>
     
 </body>
-</html>
+</html>   
+ 
             
