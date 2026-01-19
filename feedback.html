@@ -974,13 +974,15 @@ document.addEventListener('keydown', function(event) {
 
 <!-- hCaptcha -->
 <div class="form-group">
-    <div class="h-captcha" data-sitekey="b982a2d2-6634-469e-a95c-a30a38842b94"></div>
+    <div class="h-captcha" 
+         data-sitekey="b982a2d2-6634-469e-a95c-a30a38842b94"
+         data-callback="onCaptchaSuccess"></div>
 </div>
 
 <!-- Сообщения об успехе/ошибке -->
 <div id="formStatus" style="display: none;"></div>
 
-                <button type="submit" class="submit-button">Отправить сообщение</button>
+             <button type="submit" class="submit-button" id="submitBtn" disabled>Отправить сообщение</button>
             </form>
         </div>
 
@@ -1589,6 +1591,11 @@ if (qrButton) {
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
+
+   // РАЗБЛОКИРОВКА КНОПКИ ПОСЛЕ КАПЧИ
+function onCaptchaSuccess() {
+    document.getElementById('submitBtn').disabled = false;
+} 
 // ИНИЦИАЛИЗАЦИЯ EMAILJS
 (function() {
     emailjs.init("mi7B9cfIzCbiwKLLv");
