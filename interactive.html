@@ -1007,174 +1007,145 @@
         </div>
     </footer>
 
-    <!-- Плавающая кнопка QR (ИДЕНТИЧНАЯ ДРУГИМ СТРАНИЦАМ) -->
-   <div id="qrFloatingButton" 
-     onclick="openQRModal()"
-     style="position: fixed;
-            cursor: pointer;
-                bottom: 30px; 
-                right: 30px; 
-                width: 65px; 
-                height: 65px; 
-                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
-                border-radius: 50%; 
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
-                display: flex; 
-                align-items: center; 
-                justify-content: center; 
-                cursor: move;
-                z-index: 10000; 
-                transition: box-shadow 0.3s ease;
-                animation: pulse 2s infinite;
-                touch-action: none;
-                user-select: none;">
-        <span style="font-size: 2.2rem; 
-                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-                     pointer-events: none;">📱</span>
-    </div>
+<!-- Плавающая кнопка QR -->
+<div id="qrFloatingButton" 
+     style="position: fixed !important; 
+            bottom: 30px; 
+            right: 30px; 
+            width: 65px; 
+            height: 65px; 
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%; 
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+            display: flex !important; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: move;
+            z-index: 999999999 !important; 
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;
+            visibility: visible !important;
+            opacity: 1 !important;">
+    <span style="font-size: 2.2rem; 
+                 filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                 pointer-events: none;">📱</span>
+</div>
 
-    <!-- Подсказка -->
-    <div id="qrButtonHint" 
-         style="position: fixed;
-                bottom: 110px;
-                right: 30px;
-                background: #003D7A;
-                color: white;
-                padding: 10px 15px;
-                border-radius: 10px;
-                font-size: 0.85rem;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                z-index: 9999;
-                display: none;
-                max-width: 200px;
-                text-align: center;
-                animation: fadeIn 0.3s ease;">
-        💡 Удерживайте для перемещения
-        <div style="position: absolute;
-                    bottom: -8px;
-                    right: 20px;
-                    width: 0;
-                    height: 0;
-                    border-left: 8px solid transparent;
-                    border-right: 8px solid transparent;
-                    border-top: 8px solid #003D7A;"></div>
-    </div>
-
-    <!-- Модальное окно QR-кода -->
-    <div id="qrModalWindow" 
-         style="display: none; 
-                position: fixed; 
-                top: 0; 
-                left: 0; 
-                width: 100%; 
-                height: 100%; 
-                background: rgba(0, 0, 0, 0.85); 
-                z-index: 99999; 
-                align-items: center; 
-                justify-content: center;
-                backdrop-filter: blur(5px);
-                animation: fadeIn 0.3s ease;
-                padding: 20px;
-                box-sizing: border-box;
+<!-- Модальное окно QR -->
+<div id="qrModalWindow" 
+     style="display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.85); 
+            z-index: 9999999999 !important; 
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;">
+    
+    <div style="background: white; 
+                padding: 30px 20px; 
+                border-radius: 20px; 
+                text-align: center; 
+                width: 100%;
+                max-width: 420px; 
+                position: relative;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                margin: auto;
+                max-height: 90vh;
                 overflow-y: auto;">
         
-        <div style="background: white; 
-                    padding: 30px 20px; 
-                    border-radius: 20px; 
-                    text-align: center; 
-                    width: 100%;
-                    max-width: 420px; 
-                    position: relative;
-                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-                    animation: slideUp 0.4s ease;
-                    margin: auto;
-                    max-height: 90vh;
-                    overflow-y: auto;">
-            
-            <button onclick="closeQRModal()" 
-                    style="position: sticky;
-                           top: 0;
-                           left: calc(100% - 45px);
-                           background: #003D7A; 
-                           border: none; 
-                           width: 38px;
-                           height: 38px;
-                           border-radius: 50%;
-                           font-size: 1.6rem; 
-                           cursor: pointer; 
-                           color: white;
-                           display: flex;
-                           align-items: center;
-                           justify-content: center;
-                           transition: all 0.3s ease;
-                           margin-bottom: 15px;
-                           margin-left: auto;
-                           z-index: 10;
-                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
-                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
-                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
-                    title="Закрыть">
-                ×
-            </button>
-            
-            <h2 style="color: #003D7A; 
-                       margin: 0 0 10px 0; 
-                       font-size: 1.4rem;
-                       font-weight: 700;
-                       line-height: 1.3;">
-                📱 QR-код сайта
-            </h2>
-            
-            <p style="color: #7F8C8D; 
-                      margin: 0 0 20px 0; 
-                      font-size: 0.9rem;
-                      line-height: 1.4;">
-                Отсканируйте камерой смартфона
-            </p>
-            
-            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-                        padding: 15px;
-                        border-radius: 15px;
-                        display: inline-block;
-                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
-                        max-width: 100%;">
-                <img src="qr-code-obzr.png.png" 
-                     alt="QR-код сайта преподавателя ОБЗР" 
-                     style="width: 100%;
-                            max-width: 240px;
-                            height: auto;
-                            aspect-ratio: 1/1;
-                            border-radius: 12px;
-                            display: block;">
-            </div>
-            
-            <div style="margin-top: 20px; 
-                        padding: 15px; 
-                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+        <button onclick="closeQRModal()" 
+                style="position: sticky;
+                       top: 0;
+                       left: calc(100% - 45px);
+                       background: #003D7A; 
+                       border: none; 
+                       width: 38px;
+                       height: 38px;
+                       border-radius: 50%;
+                       font-size: 1.6rem; 
+                       cursor: pointer; 
+                       color: white;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       transition: all 0.3s ease;
+                       margin-bottom: 15px;
+                       margin-left: auto;
+                       z-index: 10;
+                       box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                title="Закрыть">
+            ×
+        </button>
+        
+        <h2 style="color: #003D7A; 
+                   margin: 0 0 10px 0; 
+                   font-size: 1.4rem;
+                   font-weight: 700;
+                   line-height: 1.3;">
+            📱 QR-код сайта
+        </h2>
+        
+        <p style="color: #7F8C8D; 
+                  margin: 0 0 20px 0; 
+                  font-size: 0.9rem;
+                  line-height: 1.4;">
+            Отсканируйте камерой смартфона
+        </p>
+        
+        <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                    padding: 15px;
+                    border-radius: 15px;
+                    display: inline-block;
+                    box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                    max-width: 100%;">
+            <img src="qr-code-obzr.png.png" 
+                 alt="QR-код сайта преподавателя ОБЗР" 
+                 style="width: 100%;
+                        max-width: 240px;
+                        height: auto;
+                        aspect-ratio: 1/1;
                         border-radius: 12px;
-                        border-left: 3px solid #FFC107;">
-                <p style="margin: 0; 
-                          color: #856404; 
-                          font-size: 0.85rem;
-                          line-height: 1.6;
-                          text-align: left;">
-                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
-                    1. Откройте камеру<br>
-                    2. Наведите на код<br>
-                    3. Нажмите уведомление
-                </p>
-            </div>
-            
-            <p style="margin-top: 20px; 
-                      color: #95a5a6; 
-                      font-size: 0.8rem;
-                      line-height: 1.4;">
-                МБОУ СШ № 2 г. Лысково<br>
-                Преподаватель-организатор ОБЗР<br>
-                Дёмин Александр Юрьевич
+                        display: block;">
+        </div>
+        
+        <div style="margin-top: 20px; 
+                    padding: 15px; 
+                    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                    border-radius: 12px;
+                    border-left: 3px solid #FFC107;">
+            <p style="margin: 0; 
+                      color: #856404; 
+                      font-size: 0.85rem;
+                      line-height: 1.6;
+                      text-align: left;">
+                <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                1. Откройте камеру<br>
+                2. Наведите на код<br>
+                3. Нажмите уведомление
             </p>
         </div>
+        
+        <p style="margin-top: 20px; 
+                  color: #95a5a6; 
+                  font-size: 0.8rem;
+                  line-height: 1.4;">
+            МБОУ СШ № 2 г. Лысково<br>
+            Преподаватель-организатор ОБЗР<br>
+            Дёмин Александр Юрьевич
+        </p>
     </div>
+</div>
 
     <!-- Lightbox и основные скрипты -->
     <script>
@@ -1879,10 +1850,285 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 </script>
+   <script>
+// ============================================
+// ФУНКЦИИ ДЛЯ ЛАЙТБОКСА ЭМБЛЕМЫ (если есть)
+// ============================================
+function openLightbox() {
+    const lightbox = document.getElementById('emblem-lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('emblem-lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Закрытие лайтбокса по ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+        closeQRModal();
+    }
+});
+
+// ============================================
+// НАВИГАЦИОННОЕ МЕНЮ
+// ============================================
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+// ============================================
+// QR-КНОПКА: ПОЛНАЯ ВЕРСИЯ С DRAG & DROP
+// ============================================
+
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+let isDragging = false;
+let hasMoved = false;
+let clickStartTime = 0;
+let clickStartX = 0;
+let clickStartY = 0;
+let currentX = 0;
+let currentY = 0;
+let initialX = 0;
+let initialY = 0;
+let xOffset = 0;
+let yOffset = 0;
+
+// Восстановление позиции из localStorage
+function restoreQRButtonPosition() {
+    if (!qrButton) return;
     
+    const savedPosition = localStorage.getItem('qrButtonPosition');
+    if (savedPosition) {
+        try {
+            const position = JSON.parse(savedPosition);
+            qrButton.style.bottom = 'auto';
+            qrButton.style.right = 'auto';
+            qrButton.style.left = position.x + 'px';
+            qrButton.style.top = position.y + 'px';
+            xOffset = position.x;
+            yOffset = position.y;
+        } catch (e) {
+            console.error('Ошибка восстановления позиции QR-кнопки:', e);
+        }
+    }
+}
+
+// Сохранение позиции в localStorage
+function saveQRButtonPosition(x, y) {
+    try {
+        localStorage.setItem('qrButtonPosition', JSON.stringify({ x: x, y: y }));
+    } catch (e) {
+        console.error('Ошибка сохранения позиции QR-кнопки:', e);
+    }
+}
+
+// Начало перетаскивания
+function startDragging(clientX, clientY) {
+    clickStartTime = Date.now();
+    clickStartX = clientX;
+    clickStartY = clientY;
+    hasMoved = false;
+    isDragging = true;
+    
+    const rect = qrButton.getBoundingClientRect();
+    initialX = clientX - rect.left;
+    initialY = clientY - rect.top;
+    
+    qrButton.style.cursor = 'grabbing';
+}
+
+// Перемещение кнопки
+function moveButton(clientX, clientY) {
+    if (!isDragging) return;
+    
+    hasMoved = true;
+    
+    currentX = clientX - initialX;
+    currentY = clientY - initialY;
+    
+    // Ограничиваем позицию в пределах экрана
+    const maxX = window.innerWidth - qrButton.offsetWidth;
+    const maxY = window.innerHeight - qrButton.offsetHeight;
+    
+    currentX = Math.max(0, Math.min(currentX, maxX));
+    currentY = Math.max(0, Math.min(currentY, maxY));
+    
+    xOffset = currentX;
+    yOffset = currentY;
+    
+    qrButton.style.left = currentX + 'px';
+    qrButton.style.top = currentY + 'px';
+    qrButton.style.bottom = 'auto';
+    qrButton.style.right = 'auto';
+}
+
+// Завершение перетаскивания
+function stopDragging() {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    qrButton.style.cursor = 'move';
+    
+    // Сохраняем позицию только если была перемещена
+    if (hasMoved) {
+        saveQRButtonPosition(currentX, currentY);
+    }
+}
+
+// Открытие модального окна
+function openQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Закрытие модального окна
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Инициализация QR-кнопки
+if (qrButton && qrModal) {
+    // Восстановление позиции при загрузке
+    restoreQRButtonPosition();
+    
+    // КРИТИЧЕСКИ ВАЖНО: Принудительное отображение кнопки после загрузки hCaptcha
+    // hCaptcha иногда скрывает элементы с position: fixed, поэтому принудительно показываем
+    function forceShowQRButton() {
+        if (qrButton) {
+            qrButton.style.display = 'flex';
+            qrButton.style.visibility = 'visible';
+            qrButton.style.opacity = '1';
+            qrButton.style.zIndex = '999999999';
+            qrButton.style.position = 'fixed';
+        }
+    }
+    
+    // Показываем кнопку сразу
+    forceShowQRButton();
+    
+    // Показываем кнопку через 1 секунду (после загрузки hCaptcha)
+    setTimeout(forceShowQRButton, 1000);
+    
+    // Показываем кнопку через 3 секунды (для медленного интернета)
+    setTimeout(forceShowQRButton, 3000);
+    
+    // === MOUSE EVENTS ===
+    qrButton.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        startDragging(e.clientX, e.clientY);
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            moveButton(e.clientX, e.clientY);
+        }
+    });
+    
+    document.addEventListener('mouseup', function(e) {
+        if (isDragging) {
+            const clickEndTime = Date.now();
+            const timeDiff = clickEndTime - clickStartTime;
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - clickStartX, 2) + 
+                Math.pow(e.clientY - clickStartY, 2)
+            );
+            
+            // Открываем модалку только если это был клик без перетаскивания
+            if (timeDiff < 300 && distance < 10) {
+                openQRModal();
+            }
+            
+            stopDragging();
+        }
+    });
+    
+    // === TOUCH EVENTS ===
+    qrButton.addEventListener('touchstart', function(e) {
+        const touch = e.touches[0];
+        startDragging(touch.clientX, touch.clientY);
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            moveButton(touch.clientX, touch.clientY);
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (isDragging) {
+            const touch = e.changedTouches[0];
+            const clickEndTime = Date.now();
+            const timeDiff = clickEndTime - clickStartTime;
+            const distance = Math.sqrt(
+                Math.pow(touch.clientX - clickStartX, 2) + 
+                Math.pow(touch.clientY - clickStartY, 2)
+            );
+            
+            // Открываем модалку только если это был тап без перетаскивания
+            if (timeDiff < 300 && distance < 10) {
+                openQRModal();
+            }
+            
+            stopDragging();
+        }
+    });
+    
+    // Закрытие модального окна при клике вне его
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
+        }
+    });
+}
+
+// ============================================
+// ОСТАЛЬНОЙ КОД ВАШЕЙ СТРАНИЦЫ
+// (например, обработка форм, EmailJS и т.д.)
+// ============================================
+
+// Если у вас есть форма с hCaptcha, код для неё идёт здесь
+// Например:
+// function onCaptchaSuccess() { ... }
+// emailjs.init("..."); 
+// и т.д.
+
+</script> 
 </body>
 </html>
         
+
 
 
 
