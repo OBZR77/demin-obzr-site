@@ -531,14 +531,6 @@ nav {
     position: relative;
 }
 
-/* Стрелка для выпадающего меню */
-.nav-menu > li.has-submenu > a::after {
-    content: ' ▼';
-    font-size: 0.7rem;
-    margin-left: 0.3rem;
-    opacity: 0.8;
-}
-
 .nav-menu > li.has-submenu > a:hover {
     background-color: var(--color-primary-hover);
 }
@@ -547,17 +539,19 @@ nav {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #E53935;  /* ← КРАСНЫЙ ФОН! */
+    background-color: white;  /* БЕЛЫЙ ФОН */
     min-width: 280px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 0 0 8px 8px;
     list-style: none;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     margin: 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transition-delay: 0s;
+    border-top: 3px solid var(--color-danger);  /* Красная граница сверху */
     z-index: 1000;
 }
 
@@ -573,36 +567,40 @@ nav {
 }
 
 .submenu a {
-    color: #003D7A;  /* ← СИНИЙ ТЕКСТ! */
+    color: var(--color-text-primary);  /* СИНИЙ/темный текст (#2C3E50) */
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    display: block;
-    transition: all 0.3s ease;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
     font-size: 0.95rem;
-    font-weight: 500;
-    border-left: 0;
-    background-color: transparent;
+    line-height: 1.4;
+    font-weight: 400;  /* Обычный вес */
+}
+
+/* Жирный шрифт для "Обратная связь" */
+.submenu a[href="feedback.html"] {
+    font-weight: 700;  /* ЖИРНЫЙ */
 }
 
 .submenu a:hover {
-    background-color: #C62828;  /* ← ТЕМНО-КРАСНЫЙ при hover */
-    color: white;  /* ← Белый текст при hover */
-    padding-left: 1.5rem;
+    background-color: var(--color-surface);  /* Светло-серый при hover (#F5F7FA) */
+    color: var(--color-primary);  /* Синий текст при hover */
+    padding-left: 2rem;  /* СМЕЩЕНИЕ ВПРАВО при hover */
 }
 
-/* Стрелка для первого пункта */
-.submenu li:first-child a::before {
-    content: '→ ';
-    margin-right: 0.5rem;
+/* Красная стрелка появляется только при hover */
+.submenu a::before {
+    content: '→';
+    margin-right: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: var(--color-danger);  /* КРАСНАЯ стрелка */
     font-weight: bold;
-    opacity: 0.7;
 }
 
-/* Активный пункт в submenu */
-.submenu a.active {
-    background-color: #B71C1C;  /* ← ЕЩЁ ТЕМНЕЕ для активного */
-    color: white;
-    font-weight: 600;
+.submenu a:hover::before {
+    opacity: 1;  /* Стрелка появляется при hover */
 }
 
 @media (max-width: 768px) {
