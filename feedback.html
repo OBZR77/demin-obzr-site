@@ -527,9 +527,16 @@ nav {
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
-
 .nav-menu > li.has-submenu {
     position: relative;
+}
+
+/* Стрелка для выпадающего меню */
+.nav-menu > li.has-submenu > a::after {
+    content: ' ▼';
+    font-size: 0.7rem;
+    margin-left: 0.3rem;
+    opacity: 0.8;
 }
 
 .nav-menu > li.has-submenu > a:hover {
@@ -540,7 +547,7 @@ nav {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--color-primary);
+    background-color: #E53935;  /* ← КРАСНЫЙ ФОН! */
     min-width: 280px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     border-radius: 0 0 8px 8px;
@@ -554,14 +561,6 @@ nav {
     z-index: 1000;
 }
 
-
-.nav-menu > li.has-submenu > a.active + .submenu a::before {
-   
-}
-
-.nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
-    color: var(--color-danger);
-}
 .nav-menu > li.has-submenu:hover .submenu {
     opacity: 1;
     visibility: visible;
@@ -574,78 +573,38 @@ nav {
 }
 
 .submenu a {
-    color: white;
+    color: #003D7A;  /* ← СИНИЙ ТЕКСТ! */
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     display: block;
     transition: all 0.3s ease;
     font-size: 0.95rem;
-    border-left: 3px solid transparent;
+    font-weight: 500;
+    border-left: 0;
+    background-color: transparent;
 }
 
 .submenu a:hover {
-    background-color: var(--color-primary-hover);
-    border-left-color: var(--color-danger);
-    padding-left: 2rem;
+    background-color: #C62828;  /* ← ТЕМНО-КРАСНЫЙ при hover */
+    color: white;  /* ← Белый текст при hover */
+    padding-left: 1.5rem;
 }
 
-.submenu a::before {
-    content: '→';
-    margin-right: 0.75rem;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    color: white;
+/* Стрелка для первого пункта */
+.submenu li:first-child a::before {
+    content: '→ ';
+    margin-right: 0.5rem;
     font-weight: bold;
+    opacity: 0.7;
 }
 
-.submenu a:hover::before {
-    opacity: 1;
-    color: var(--color-danger);
-}
-.nav-menu > li.has-submenu {
-    position: relative;
-}
-
-.submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--color-primary);
-    min-width: 280px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 0 0 8px 8px;
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.nav-menu > li.has-submenu:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0.35s;
-}
-
-.submenu a {
+/* Активный пункт в submenu */
+.submenu a.active {
+    background-color: #B71C1C;  /* ← ЕЩЁ ТЕМНЕЕ для активного */
     color: white;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    display: block;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    border-left: 3px solid transparent;
+    font-weight: 600;
 }
 
-.submenu a:hover {
-    background-color: var(--color-primary-hover);
-    border-left-color: var(--color-danger);
-    padding-left: 2rem;
-}
 @media (max-width: 768px) {
     .submenu {
         position: static;
@@ -675,6 +634,7 @@ nav {
         padding-left: 2.5rem;
     }
 }
+
 </style>
 
 <script>
