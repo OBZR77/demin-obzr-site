@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Политика конфиденциальности и обработки персональных данных на сайте преподавателя-организатора ОБЗР Дёмина А.Ю. в соответствии с ФЗ-152.">
+    <title>Политика конфиденциальности | Дёмин А.Ю.</title>
+
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-warning: #FFC107;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        
+        /* ============================================
+           HEADER (ИДЕНТИЧНЫЙ ДРУГИМ СТРАНИЦАМ)
+           ============================================ */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-menu > li > a.active:hover {
+            background-color: var(--color-danger) !important;
+            cursor: default;
+        }
+
+        .nav-menu:has(a.active) > li > a:not(.active):hover {
+            background-color: var(--color-primary-hover);
+        }
+        
+        /* ВЫПАДАЮЩИЕ ПОДМЕНЮ */
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .nav-menu > li.has-submenu > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transition-delay: 0s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu li {
+            background-color: #E53935;
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a {
+            color: var(--color-primary);
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover {
+            background-color: white;
+            color: var(--color-primary);
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a::before {
+            color: white;
+        }
+
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
+            color: var(--color-danger);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu li {
+            background-color: white;
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+            color: var(--color-text-primary);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+            color: var(--color-danger);
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .submenu a:hover {
+            background-color: white;
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: white;
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+            color: var(--color-danger);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu {
+            background-color: white;
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a {
+            color: var(--color-text-primary);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a::before {
+            color: var(--color-danger);
+        }
+
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                border-top: none;
+                border-left: 3px solid var(--color-danger);
+                max-height: 0;
+                overflow: hidden;
+                padding: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+            }
+            
+            .nav-menu > li.has-submenu.open .submenu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+            
+            .nav-menu > li.has-submenu.open > a::after {
+                content: ' ↗';
+                font-size: 0.8rem;
+                margin-left: 0.3rem;
+                opacity: 0.7;
+            }
+            
+            .submenu a {
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                padding-left: 2.5rem;
+            }
+            
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* ============================================
+           MAIN CONTENT - ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+           ============================================ */
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+
+        .privacy-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .privacy-header h2 {
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .privacy-header .last-updated {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .privacy-section {
+            margin-bottom: 35px;
+        }
+
+        .privacy-section h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--color-danger);
+        }
+
+        .privacy-section h4 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .privacy-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .privacy-section ul,
+        .privacy-section ol {
+            margin: 15px 0 15px 30px;
+            line-height: 1.8;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+        }
+
+        .privacy-section strong {
+            color: var(--color-primary);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+            margin: 25px 0;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #1565C0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-warning);
+            margin: 25px 0;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #856404;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-success);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-box h4 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-box p {
+            margin: 8px 0;
+            font-size: 1rem;
+        }
+
+        .contact-box a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table th {
+            background: var(--color-primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover {
+            background-color: var(--color-surface);
+        }
+        
+        /* ============================================
+           FOOTER (ИДЕНТИЧНЫЙ ДРУГИМ СТРАНИЦАМ)
+           ============================================ */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* ============================================
+           QR-КНОПКА (ИДЕНТИЧНАЯ ДРУГИМ СТРАНИЦАМ)
+           ============================================ */
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .privacy-container {
+                padding: 25px 20px;
+            }
+
+            .privacy-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .privacy-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .privacy-section h4 {
+                font-size: 1.1rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            table th,
+            table td {
+                padding: 10px;
+            }
+
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER (ИДЕНТИЧНЫЙ ДРУГИМ СТРАНИЦАМ)
+         ============================================ -->
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <!-- Эмблема с lightbox -->
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+                    <!-- Lightbox overlay -->
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie">Образование</a></li>
+                            <li><a href="perepodgotovka">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost">Методическая активность</a></li>
+                            <li><a href="dokumenty">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov">Конспекты уроков по модулям</a></li>
+                            <li><a href="prezentacii-testy">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="metodicheskie-rekomendacii">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-projects.html#ai-poleznye-resursy">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya">Юнармия</a></li>
+                            <li><a href="yuid">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica">Зарница 2.0</a></li>
+                            <li><a href="olimpiady">Олимпиады по ОБЗР</a></li>
+                            <li><a href="uchebno-polevye-sbory">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь с учителем</a></li>
+                            <li><a href="grading">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="feedback.html">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+                </ul>                        
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         MAIN CONTENT - ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+         ============================================ -->
+    <main>
+        <div class="privacy-container">
+            <div class="privacy-header">
+                <h2>📋 Политика конфиденциальности</h2>
+                <p class="last-updated">Последнее обновление: 03 февраля 2026 г.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>📌 Важная информация</strong>
+                Настоящая Политика конфиденциальности разработана в соответствии с Федеральным законом РФ от 27.07.2006 г. № 152-ФЗ «О персональных данных» и регулирует порядок обработки и защиты персональных данных посетителей сайта.
+            </div>
+
+            <!-- 1. ОБЩИЕ ПОЛОЖЕНИЯ -->
+            <div class="privacy-section">
+                <h3>1. Общие положения</h3>
+                <p>
+                    Настоящая Политика конфиденциальности персональных данных (далее — Политика) действует в отношении всей информации, которую персональный сайт преподавателя-организатора ОБЗР МБОУ СШ № 2 г. Лысково <strong>Дёмина Александра Юрьевича</strong> (далее — Администрация сайта) может получить о Пользователе во время использования сайта.
+                </p>
+                <p>
+                    Использование сайта означает безоговорочное согласие Пользователя с настоящей Политикой и указанными в ней условиями обработки его персональной информации.
+                </p>
+                <p>
+                    <strong>В случае несогласия с этими условиями Пользователь должен воздержаться от использования функций сайта, требующих предоставления персональных данных.</strong>
+                </p>
+            </div>
+
+            <!-- 2. ОСНОВНЫЕ ПОНЯТИЯ -->
+            <div class="privacy-section">
+                <h3>2. Основные понятия, используемые в Политике</h3>
+                <ul>
+                    <li><strong>Персональные данные</strong> — любая информация, относящаяся к прямо или косвенно определённому или определяемому физическому лицу (субъекту персональных данных).</li>
+                    <li><strong>Обработка персональных данных</strong> — любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными.</li>
+                    <li><strong>Оператор персональных данных</strong> — государственный орган, муниципальный орган, юридическое или физическое лицо, самостоятельно или совместно с другими лицами организующие и (или) осуществляющие обработку персональных данных.</li>
+                    <li><strong>Пользователь</strong> — любой посетитель сайта.</li>
+                    <li><strong>Администрация сайта</strong> — Дёмин Александр Юрьевич, преподаватель-организатор ОБЗР МБОУ СШ № 2 г. Лысково.</li>
+                </ul>
+            </div>
+
+            <!-- 3. КАКИЕ ПЕРСОНАЛЬНЫЕ ДАННЫЕ МЫ СОБИРАЕМ -->
+            <div class="privacy-section">
+                <h3>3. Какие персональные данные мы собираем</h3>
+                <h4>3.1. Данные, предоставляемые добровольно</h4>
+                <p>Пользователь предоставляет следующие персональные данные при использовании формы обратной связи:</p>
+                <ul>
+                    <li>Имя</li>
+                    <li>Фамилия</li>
+                    <li>Адрес электронной почты (email) — необязательное поле</li>
+                    <li>Текст отзыва / сообщения</li>
+                </ul>
+
+                <h4>3.2. Данные, собираемые автоматически</h4>
+                <p>При посещении сайта автоматически собирается следующая информация:</p>
+                <ul>
+                    <li>IP-адрес</li>
+                    <li>Информация из cookies</li>
+                    <li>Информация о браузере (тип, версия, язык)</li>
+                    <li>Информация об устройстве (операционная система, разрешение экрана)</li>
+                    <li>Дата и время посещения</li>
+                    <li>Посещённые страницы</li>
+                    <li>Реферер (адрес страницы, с которой пришёл Пользователь)</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>⚠️ Важно</strong>
+                    Сайт <strong>НЕ собирает</strong> персональные данные несовершеннолетних без согласия родителей или законных представителей. Все публикуемые достижения учащихся обезличены (например, "Иван К., 10 класс").
+                </div>
+            </div>
+
+            <!-- 4. ЦЕЛИ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ -->
+            <div class="privacy-section">
+                <h3>4. Цели обработки персональных данных</h3>
+                <p>Администрация сайта обрабатывает персональные данные Пользователя в следующих целях:</p>
+                <ol>
+                    <li><strong>Обратная связь</strong> — для ответа на запросы и обращения через форму обратной связи</li>
+                    <li><strong>Улучшение качества сайта</strong> — анализ статистики посещений для улучшения структуры и контента</li>
+                    <li><strong>Обеспечение безопасности</strong> — предотвращение мошенничества и спама</li>
+                    <li><strong>Исполнение законодательства</strong> — соблюдение требований ФЗ-152 "О персональных данных"</li>
+                </ol>
+
+                <p>
+                    <strong>Персональные данные НЕ используются</strong> для:
+                </p>
+                <ul>
+                    <li>Продажи или передачи третьим лицам в коммерческих целях</li>
+                    <li>Рассылки рекламы без согласия Пользователя</li>
+                    <li>Политической агитации</li>
+                    <li>Любых целей, не указанных в настоящей Политике</li>
+                </ul>
+            </div>
+
+            <!-- 5. ПРАВОВЫЕ ОСНОВАНИЯ ОБРАБОТКИ -->
+            <div class="privacy-section">
+                <h3>5. Правовые основания обработки персональных данных</h3>
+                <p>Обработка персональных данных осуществляется на основании:</p>
+                <ul>
+                    <li>Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных»</li>
+                    <li>Федерального закона от 27.07.2006 г. № 149-ФЗ «Об информации, информационных технологиях и о защите информации»</li>
+                    <li>Согласия Пользователя на обработку персональных данных (при заполнении формы обратной связи)</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>✅ Согласие на обработку персональных данных</strong>
+                    Отправка формы обратной связи с установленной галочкой "Я согласен(а) на обработку персональных данных" является явным согласием Пользователя на обработку его персональных данных в соответствии с настоящей Политикой.
+                </div>
+            </div>
+
+            <!-- 6. СРОКИ ХРАНЕНИЯ -->
+            <div class="privacy-section">
+                <h3>6. Сроки хранения персональных данных</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Тип данных</th>
+                                <th>Срок хранения</th>
+                                <th>Основание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Данные из формы обратной связи</td>
+                                <td>1 год с момента отправки</td>
+                                <td>Необходимость ответа на обращение</td>
+                            </tr>
+                            <tr>
+                                <td>Cookies</td>
+                                <td>До 1 года</td>
+                                <td>Улучшение работы сайта</td>
+                            </tr>
+                            <tr>
+                                <td>Статистика Yandex.Metrika</td>
+                                <td>Обезличенные данные — бессрочно</td>
+                                <td>Анализ посещаемости</td>
+                            </tr>
+                            <tr>
+                                <td>Локальное хранилище браузера (localStorage)</td>
+                                <td>До очистки браузера Пользователем</td>
+                                <td>Сохранение настроек пользователя</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    По истечении срока хранения персональные данные удаляются автоматически или по запросу Пользователя.
+                </p>
+            </div>
+
+            <!-- 7. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ -->
+            <div class="privacy-section">
+                <h3>7. Передача персональных данных третьим лицам</h3>
+                <p>
+                    Администрация сайта <strong>НЕ продаёт, не обменивает и не передаёт</strong> персональные данные Пользователей третьим лицам, за исключением следующих случаев:
+                </p>
+                <ul>
+                    <li><strong>Технические сервисы:</strong>
+                        <ul>
+                            <li><strong>Yandex.Metrika</strong> — для анализа статистики посещений (IP-адреса обезличены)</li>
+                            <li><strong>EmailJS</strong> — для отправки сообщений из формы обратной связи на email преподавателя</li>
+                            <li><strong>hCaptcha</strong> — для защиты от спама (обрабатывает только данные капчи, не персональные данные)</li>
+                        </ul>
+                    </li>
+                    <li><strong>По требованию закона:</strong> если передача данных требуется по решению суда, правоохранительных органов или иных уполномоченных государственных органов</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>🔒 Защита данных при передаче третьим лицам</strong>
+                    Все указанные технические сервисы обязаны соблюдать конфиденциальность персональных данных и используют их только для указанных целей. Администрация сайта заключает с ними соглашения о защите данных.
+                </div>
+            </div>
+
+            <!-- 8. МЕРЫ ЗАЩИТЫ -->
+            <div class="privacy-section">
+                <h3>8. Меры по защите персональных данных</h3>
+                <p>Администрация сайта принимает следующие организационные и технические меры для защиты персональных данных:</p>
+                <ul>
+                    <li><strong>HTTPS-шифрование</strong> — все данные передаются по защищённому протоколу</li>
+                    <li><strong>Защита от несанкционированного доступа</strong> — доступ к персональным данным имеет только Администратор сайта</li>
+                    <li><strong>Антиспам-защита</strong> — использование hCaptcha для предотвращения автоматических отправок</li>
+                    <li><strong>Регулярное обновление системы безопасности</strong></li>
+                    <li><strong>Обезличивание данных</strong> — статистические данные обрабатываются в обезличенном виде</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💡 Honeypot-защита</strong>
+                    На сайте используется скрытое поле (honeypot), невидимое для обычных пользователей, но заполняемое ботами. Это позволяет автоматически блокировать спам без обработки данных из таких форм.
+                </div>
+            </div>
+
+            <!-- 9. ПРАВА ПОЛЬЗОВАТЕЛЯ -->
+            <div class="privacy-section">
+                <h3>9. Права Пользователя в отношении персональных данных</h3>
+                <p>В соответствии с ФЗ-152 Пользователь имеет следующие права:</p>
+                <ol>
+                    <li><strong>Право на доступ</strong> — получить подтверждение факта обработки персональных данных и доступ к ним</li>
+                    <li><strong>Право на уточнение</strong> — потребовать исправления неточных или неполных персональных данных</li>
+                    <li><strong>Право на удаление</strong> — потребовать удаления персональных данных ("право быть забытым")</li>
+                    <li><strong>Право на ограничение обработки</strong> — запросить приостановку обработки данных</li>
+                    <li><strong>Право на отзыв согласия</strong> — в любой момент отозвать согласие на обработку персональных данных</li>
+                    <li><strong>Право на возражение</strong> — возразить против обработки персональных данных</li>
+                    <li><strong>Право на жалобу</strong> — обратиться в Роскомнадзор с жалобой на нарушение прав</li>
+                </ol>
+
+                <div class="contact-box">
+                    <h4>📧 Как реализовать свои права?</h4>
+                    <p>Для реализации указанных прав направьте запрос на email:</p>
+                    <p><a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></p>
+                    <p>Укажите в запросе:</p>
+                    <ul style="text-align: left; display: inline-block; margin-top: 10px;">
+                        <li>ФИО</li>
+                        <li>Желаемое действие (просмотр, удаление, исправление данных)</li>
+                        <li>Контактные данные для ответа</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Срок рассмотрения запроса: не более 10 рабочих дней</strong></p>
+                </div>
+            </div>
+
+            <!-- 10. COOKIES И ДРУГИЕ ТЕХНОЛОГИИ -->
+            <div class="privacy-section">
+                <h3>10. Использование cookies и аналогичных технологий</h3>
+                <p>Сайт использует следующие технологии для улучшения пользовательского опыта:</p>
+
+                <h4>10.1. Cookies</h4>
+                <p>
+                    <strong>Cookies</strong> — это небольшие текстовые файлы, которые сохраняются на вашем устройстве при посещении сайта. Мы используем cookies для:
+                </p>
+                <ul>
+                    <li>Сохранения языковых настроек</li>
+                    <li>Анализа посещаемости (через Yandex.Metrika)</li>
+                    <li>Запоминания факта прохождения капчи</li>
+                </ul>
+
+                <h4>10.2. LocalStorage</h4>
+                <p>
+                    LocalStorage используется для хранения в браузере Пользователя следующих данных:
+                </p>
+                <ul>
+                    <li>Позиция плавающей QR-кнопки</li>
+                    <li>Видимость минимизированного аудиоплеера</li>
+                    <li>Локальные копии отзывов (если email-отправка не настроена)</li>
+                </ul>
+
+                <h4>10.3. Yandex.Metrika</h4>
+                <p>
+                    Сайт использует сервис <strong>Yandex.Metrika</strong> для сбора статистики посещений. Yandex.Metrika собирает следующие данные:
+                </p>
+                <ul>
+                    <li>Количество посещений и уникальных посетителей</li>
+                    <li>Время пребывания на сайте</li>
+                    <li>Переходы между страницами</li>
+                    <li>Источники трафика (откуда пришли пользователи)</li>
+                    <li>Обезличенные IP-адреса (последний октет заменён на 0)</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>🍪 Как управлять cookies?</strong>
+                    Вы можете отключить cookies в настройках вашего браузера, однако это может ограничить функциональность сайта. Для отключения cookies в популярных браузерах:
+                    <ul style="margin-top: 10px;">
+                        <li><strong>Google Chrome:</strong> Настройки → Конфиденциальность и безопасность → Файлы cookie</li>
+                        <li><strong>Mozilla Firefox:</strong> Настройки → Приватность и защита → Куки и данные сайтов</li>
+                        <li><strong>Safari:</strong> Настройки → Конфиденциальность → Блокировать все куки</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 11. ОБРАБОТКА ДАННЫХ НЕСОВЕРШЕННОЛЕТНИХ -->
+            <div class="privacy-section">
+                <h3>11. Обработка персональных данных несовершеннолетних</h3>
+                <p>
+                    Сайт <strong>НЕ предназначен для сбора персональных данных лиц младше 18 лет</strong> без согласия родителей или законных представителей.
+                </p>
+                <p>
+                    Если Пользователю менее 18 лет, использование формы обратной связи возможно только с согласия родителей или законных представителей.
+                </p>
+
+                <div class="warning-box">
+                    <strong>⚠️ Защита данных учащихся</strong>
+                    Все публикуемые на сайте достижения учащихся обезличены в соответствии с ФЗ-152:
+                    <ul style="margin-top: 10px;">
+                        <li>Используется формат "Иван К., 10 класс" (без полных ФИО)</li>
+                        <li>Фотографии групповые, лица размыты или не распознаются</li>
+                        <li>Статистика успеваемости представлена в агрегированном виде без привязки к конкретным ученикам</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 12. ИЗМЕНЕНИЯ ПОЛИТИКИ -->
+            <div class="privacy-section">
+                <h3>12. Изменения Политики конфиденциальности</h3>
+                <p>
+                    Администрация сайта оставляет за собой право вносить изменения в настоящую Политику конфиденциальности. При внесении изменений в актуальной редакции указывается дата последнего обновления.
+                </p>
+                <p>
+                    <strong>Новая редакция Политики вступает в силу с момента её размещения на сайте</strong>, если иное не предусмотрено новой редакцией Политики.
+                </p>
+                <p>
+                    Рекомендуем Пользователям регулярно проверять данную страницу на наличие изменений.
+                </p>
+            </div>
+
+            <!-- 13. КОНТАКТНАЯ ИНФОРМАЦИЯ -->
+            <div class="privacy-section">
+                <h3>13. Контактная информация оператора персональных данных</h3>
+                
+                <div class="contact-box">
+                    <h4>📬 Контакты для связи</h4>
+                    <p><strong>Оператор персональных данных:</strong></p>
+                    <p>Дёмин Александр Юрьевич</p>
+                    <p>Преподаватель-организатор ОБЗР</p>
+                    <p>МБОУ СШ № 2 г. Лысково, Нижегородская область</p>
+                    <p style="margin-top: 15px;"><strong>Email:</strong> <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></p>
+                    <p><strong>Адрес сайта:</strong> <a href="https://obzr77.github.io/demin-obzr-site/">obzr77.github.io/demin-obzr-site</a></p>
+                </div>
+
+                <p style="margin-top: 25px;">
+                    По всем вопросам, связанным с обработкой персональных данных, Пользователь может обращаться:
+                </p>
+                <ul>
+                    <li>По email: <a href="mailto:ademin1977@vk.com" style="color: var(--color-primary); font-weight: 600;">ademin1977@vk.com</a></li>
+                    <li>Через <a href="feedback.html" style="color: var(--color-primary); font-weight: 600;">форму обратной связи</a> на сайте</li>
+                    <li>Лично по адресу школы (по предварительной договорённости)</li>
+                </ul>
+            </div>
+
+            <!-- 14. ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+            <div class="privacy-section">
+                <h3>14. Дополнительная информация</h3>
+                
+                <h4>14.1. Использование ИИ-инструментов</h4>
+                <p>
+                    При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.). Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.
+                </p>
+                <p>
+                    <strong>ИИ-инструменты НЕ имеют доступа к персональным данным Пользователей</strong> и используются только для генерации образовательного контента.
+                </p>
+
+                <h4>14.2. Ссылки на сторонние сайты</h4>
+                <p>
+                    Сайт может содержать ссылки на сторонние ресурсы. Администрация сайта не несёт ответственности за политику конфиденциальности и содержание этих ресурсов.
+                </p>
+
+                <h4>14.3. Законодательство</h4>
+                <p>
+                    К настоящей Политике и отношениям между Пользователем и Администрацией сайта применяется законодательство Российской Федерации.
+                </p>
+            </div>
+
+            <!-- ИТОГОВЫЙ БЛОК -->
+            <div class="info-box" style="margin-top: 40px;">
+                <strong>✅ Итоговые положения</strong>
+                <p style="margin-top: 10px;">
+                    Администрация сайта обязуется соблюдать все требования Федерального закона № 152-ФЗ «О персональных данных» и обеспечивать защиту персональных данных Пользователей.
+                </p>
+                <p style="margin-top: 10px;">
+                    Использование сайта означает полное и безоговорочное согласие Пользователя с настоящей Политикой конфиденциальности.
+                </p>
+                <p style="margin-top: 15px; text-align: center;">
+                    <strong>Спасибо за доверие! 🛡️</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================
+         FOOTER (ИДЕНТИЧНЫЙ ДРУГИМ СТРАНИЦАМ)
+         ============================================ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>   
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="metodika.html">Методическая копилка</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+
+<!-- Плавающая кнопка QR -->
+<div id="qrFloatingButton" 
+     style="position: fixed !important; 
+            bottom: 30px; 
+            right: 30px; 
+            width: 65px; 
+            height: 65px; 
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%; 
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+            display: flex !important; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: move;
+            z-index: 999999999 !important; 
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;
+            visibility: visible !important;
+            opacity: 1 !important;">
+    <span style="font-size: 2.2rem; 
+                 filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                 pointer-events: none;">📱</span>
+</div>
+
+<!-- Модальное окно QR -->
+<div id="qrModalWindow" 
+     style="display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.85); 
+            z-index: 9999999999 !important; 
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;">
+    
+    <div style="background: white; 
+                padding: 30px 20px; 
+                border-radius: 20px; 
+                text-align: center; 
+                width: 100%;
+                max-width: 420px; 
+                position: relative;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                margin: auto;
+                max-height: 90vh;
+                overflow-y: auto;">
+        
+        <button onclick="closeQRModal()" 
+                style="position: sticky;
+                       top: 0;
+                       left: calc(100% - 45px);
+                       background: #003D7A; 
+                       border: none; 
+                       width: 38px;
+                       height: 38px;
+                       border-radius: 50%;
+                       font-size: 1.6rem; 
+                       cursor: pointer; 
+                       color: white;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       transition: all 0.3s ease;
+                       margin-bottom: 15px;
+                       margin-left: auto;
+                       z-index: 10;
+                       box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                title="Закрыть">
+            ×
+        </button>
+        
+        <h2 style="color: #003D7A; 
+                   margin: 0 0 10px 0; 
+                   font-size: 1.4rem;
+                   font-weight: 700;
+                   line-height: 1.3;">
+            📱 QR-код сайта
+        </h2>
+        
+        <p style="color: #7F8C8D; 
+                  margin: 0 0 20px 0; 
+                  font-size: 0.9rem;
+                  line-height: 1.4;">
+            Отсканируйте камерой смартфона
+        </p>
+        
+        <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                    padding: 15px;
+                    border-radius: 15px;
+                    display: inline-block;
+                    box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                    max-width: 100%;">
+            <img src="qr-code-obzr.png.png" 
+                 alt="QR-код сайта преподавателя ОБЗР" 
+                 style="width: 100%;
+                        max-width: 240px;
+                        height: auto;
+                        aspect-ratio: 1/1;
+                        border-radius: 12px;
+                        display: block;">
+        </div>
+        
+        <div style="margin-top: 20px; 
+                    padding: 15px; 
+                    background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                    border-radius: 12px;
+                    border-left: 3px solid #FFC107;">
+            <p style="margin: 0; 
+                      color: #856404; 
+                      font-size: 0.85rem;
+                      line-height: 1.6;
+                      text-align: left;">
+                <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                1. Откройте камеру<br>
+                2. Наведите на код<br>
+                3. Нажмите уведомление
+            </p>
+        </div>
+        
+        <p style="margin-top: 20px; 
+                  color: #95a5a6; 
+                  font-size: 0.8rem;
+                  line-height: 1.4;">
+            МБОУ СШ № 2 г. Лысково<br>
+            Преподаватель-организатор ОБЗР<br>
+            Дёмин Александр Юрьевич
+        </p>
+    </div>
+</div>
+
+    <!-- Lightbox и основные скрипты -->
+    <script>
+        // Lightbox для эмблемы
+        function openLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+            }
+        });
+
+        // ===========================================
+        // QR-КОД МОДАЛЬНОЕ ОКНО
+        // ===========================================
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+        
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Мобильное меню
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function handleSubmenuClick(event, element) {
+            if (window.innerWidth <= 768) {
+                event.preventDefault();
+                const parent = element.parentElement;
+                parent.classList.toggle('open');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <script src="script.js"></script>
+
+    <!-- Минимизированный плавающий плейер -->
+    <div id="floatingMiniPlayer" 
+         style="position: fixed;
+                bottom: 30px;
+                left: 30px;
+                width: 300px;
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                color: white;
+                padding: 12px 15px;
+                border-radius: 12px;
+                box-shadow: 0 6px 20px rgba(0, 61, 122, 0.5);
+                z-index: 10000;
+                display: none;
+                animation: slideInLeft 0.4s ease;">
+        
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <button id="miniPlayPauseBtn" 
+                    onclick="toggleMiniMusicPlayPause()"
+                    style="background: white;
+                           color: #003D7A;
+                           border: none;
+                           width: 40px;
+                           height: 40px;
+                           border-radius: 50%;
+                           cursor: pointer;
+                           font-size: 1.2rem;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           flex-shrink: 0;">
+                ▶️
+            </button>
+            
+            <div style="flex: 1; min-width: 0;">
+                <div id="miniPlayerTitle" 
+                     style="font-size: 0.9rem;
+                            font-weight: 600;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;">
+                    Нет трека
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                    <div id="miniProgressBar" 
+                         style="flex: 1;
+                                height: 3px;
+                                background: rgba(255,255,255,0.3);
+                                border-radius: 2px;
+                                cursor: pointer;
+                                position: relative;">
+                        <div id="miniProgressFill" 
+                             style="height: 100%;
+                                    background: white;
+                                    border-radius: 2px;
+                                    width: 0%;
+                                    transition: width 0.1s linear;"></div>
+                    </div>
+                    <span id="miniCurrentTime" style="font-size: 0.75rem; opacity: 0.8;">0:00</span>
+                </div>
+            </div>
+            
+            <button onclick="hideMiniPlayer()"
+                    style="background: rgba(255,255,255,0.2);
+                           border: none;
+                           color: white;
+                           width: 28px;
+                           height: 28px;
+                           border-radius: 50%;
+                           cursor: pointer;
+                           font-size: 1.2rem;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           flex-shrink: 0;">×</button>
+        </div>
+    </div>
+
+    <!-- Уведомление "Продолжить воспроизведение" -->
+    <div id="continuePlaybackPrompt" 
+         style="position: fixed;
+                top: 80px;
+                right: 30px;
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+                z-index: 10001;
+                display: none;
+                max-width: 320px;
+                animation: slideInRight 0.4s ease;
+                border-left: 4px solid #003D7A;">
+        
+        <div style="display: flex; align-items: start; gap: 15px;">
+            <span style="font-size: 2.5rem;">🎵</span>
+            <div style="flex: 1;">
+                <div style="font-weight: 600; 
+                            color: #2C3E50; 
+                            margin-bottom: 6px;
+                            font-size: 1.05rem;">
+                    Продолжить воспроизведение?
+                </div>
+                <div id="continueTrackName" 
+                     style="color: #7F8C8D; 
+                            font-size: 0.9rem;
+                            margin-bottom: 12px;
+                            line-height: 1.4;"></div>
+                
+                <div style="display: flex; gap: 8px;">
+                    <button onclick="resumePlayback()" 
+                            style="flex: 1;
+                                   padding: 10px;
+                                   background: #003D7A;
+                                   color: white;
+                                   border: none;
+                                   border-radius: 6px;
+                                   cursor: pointer;
+                                   font-weight: 600;
+                                   font-size: 0.9rem;">
+                        ▶️ Продолжить
+                    </button>
+                    <button onclick="dismissPlaybackPrompt()" 
+                            style="padding: 10px 15px;
+                                   background: #F5F7FA;
+                                   color: #7F8C8D;
+                                   border: none;
+                                   border-radius: 6px;
+                                   cursor: pointer;
+                                   font-size: 0.9rem;">
+                        ✕
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes slideInLeft {
+            from { transform: translateX(-400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutLeft {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-400px); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            #floatingMiniPlayer {
+                width: 260px;
+                left: 15px;
+                bottom: 90px;
+                padding: 10px 12px;
+            }
+            
+            #miniPlayPauseBtn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            
+            #miniPlayerTitle {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
+    <script>
+// ============================================
+// МИНИМИЗИРОВАННЫЙ ПЛЕЙЕР (для других страниц)
+// ============================================
+
+const miniAudio = document.createElement('audio');
+miniAudio.id = 'miniAudioPlayer';
+document.body.appendChild(miniAudio);
+
+const floatingMiniPlayer = document.getElementById('floatingMiniPlayer');
+const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
+const miniPlayerTitle = document.getElementById('miniPlayerTitle');
+const miniProgressBar = document.getElementById('miniProgressBar');
+const miniProgressFill = document.getElementById('miniProgressFill');
+const miniCurrentTime = document.getElementById('miniCurrentTime');
+
+let miniIsPlaying = false;
+
+// Форматирование времени
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Показать мини-плейер
+function showMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.display = 'block';
+    }
+}
+
+// Скрыть мини-плейер
+function hideMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.animation = 'slideOutLeft 0.3s ease';
+        setTimeout(() => {
+            floatingMiniPlayer.style.display = 'none';
+            floatingMiniPlayer.style.animation = 'slideInLeft 0.4s ease';
+        }, 300);
+        localStorage.setItem('miniPlayerVisible', 'false');
+    }
+}
+
+// Play/Pause мини-плейера
+function toggleMiniMusicPlayPause() {
+    if (miniIsPlaying) {
+        miniAudio.pause();
+        miniPlayPauseBtn.textContent = '▶️';
+        miniIsPlaying = false;
+    } else {
+        miniAudio.play();
+        miniPlayPauseBtn.textContent = '⏸';
+        miniIsPlaying = true;
+    }
+    
+    // Обновляем состояние в localStorage
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (savedState) {
+        try {
+            const state = JSON.parse(savedState);
+            state.isPlaying = miniIsPlaying;
+            state.currentTime = miniAudio.currentTime;
+            localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        } catch (e) {}
+    }
+}
+
+// Обновление мини-плейера
+function updateMiniPlayer() {
+    if (!miniAudio.duration) return;
+    
+    const progress = (miniAudio.currentTime / miniAudio.duration) * 100;
+    if (miniProgressFill) miniProgressFill.style.width = `${progress}%`;
+    if (miniCurrentTime) miniCurrentTime.textContent = formatTime(miniAudio.currentTime);
+}
+
+// Клик по прогресс-бару
+if (miniProgressBar) {
+    miniProgressBar.addEventListener('click', (e) => {
+        const rect = miniProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        miniAudio.currentTime = percent * miniAudio.duration;
+    });
+}
+
+miniAudio.addEventListener('timeupdate', updateMiniPlayer);
+
+// Восстановление состояния
+function restoreMiniPlayer() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    const miniPlayerVisible = localStorage.getItem('miniPlayerVisible');
+    
+    if (!savedState || miniPlayerVisible === 'false') return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        // Проверка актуальности
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        // Загружаем трек
+        miniAudio.src = `audio/${state.filename || '01-nashey-shcolye-55!.mp3'}`;
+        miniAudio.volume = state.volume || 0.7;
+        
+        miniAudio.addEventListener('loadedmetadata', function() {
+            miniAudio.currentTime = state.currentTime || 0;
+            
+            if (miniPlayerTitle) {
+                miniPlayerTitle.textContent = state.trackTitle || 'Трек';
+            }
+            
+            if (state.isPlaying) {
+                showMiniPlayer();
+            }
+        }, { once: true });
+        
+    } catch (e) {
+        console.error('Ошибка восстановления мини-плейера:', e);
+    }
+}
+
+// Показать промпт продолжения
+function showContinuePrompt() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        if (state.isPlaying) {
+            const prompt = document.getElementById('continuePlaybackPrompt');
+            const trackName = document.getElementById('continueTrackName');
+            
+            if (prompt && trackName) {
+                trackName.textContent = `${state.trackTitle || 'Музыка'} • ${formatTime(state.currentTime)}`;
+                prompt.style.display = 'block';
+            }
+        }
+    } catch (e) {}
+}
+
+// Продолжить воспроизведение
+function resumePlayback() {
+    restoreMiniPlayer();
+    
+    setTimeout(() => {
+        if (miniAudio.src) {
+            miniAudio.play();
+            miniIsPlaying = true;
+            if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = '⏸';
+            showMiniPlayer();
+        }
+    }, 500);
+    
+    dismissPlaybackPrompt();
+}
+
+// Закрыть промпт
+function dismissPlaybackPrompt() {
+    const prompt = document.getElementById('continuePlaybackPrompt');
+    if (prompt) {
+        prompt.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            prompt.style.display = 'none';
+            prompt.style.animation = 'slideInRight 0.4s ease';
+        }, 300);
+    }
+}
+
+// Инициализация
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        restoreMiniPlayer();
+        showContinuePrompt();
+    }, 1000);
+});
+    </script>
+
+    <script>
+// ============================================
+// ФУНКЦИИ ДЛЯ ЛАЙТБОКСА ЭМБЛЕМЫ (если есть)
+// ============================================
+function openLightbox() {
+    const lightbox = document.getElementById('emblem-lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('emblem-lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Закрытие лайтбокса по ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeLightbox();
+        closeQRModal();
+    }
+});
+
+// ============================================
+// НАВИГАЦИОННОЕ МЕНЮ
+// ============================================
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault();
+        const parent = element.parentElement;
+        parent.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+// ============================================
+// QR-КНОПКА: ПОЛНАЯ ВЕРСИЯ С DRAG & DROP
+// ============================================
+
+const qrButton = document.getElementById('qrFloatingButton');
+const qrModal = document.getElementById('qrModalWindow');
+
+let isDragging = false;
+let hasMoved = false;
+let clickStartTime = 0;
+let clickStartX = 0;
+let clickStartY = 0;
+let currentX = 0;
+let currentY = 0;
+let initialX = 0;
+let initialY = 0;
+let xOffset = 0;
+let yOffset = 0;
+
+// Восстановление позиции из localStorage
+function restoreQRButtonPosition() {
+    if (!qrButton) return;
+    
+    const savedPosition = localStorage.getItem('qrButtonPosition');
+    if (savedPosition) {
+        try {
+            const position = JSON.parse(savedPosition);
+            qrButton.style.bottom = 'auto';
+            qrButton.style.right = 'auto';
+            qrButton.style.left = position.x + 'px';
+            qrButton.style.top = position.y + 'px';
+            xOffset = position.x;
+            yOffset = position.y;
+        } catch (e) {
+            console.error('Ошибка восстановления позиции QR-кнопки:', e);
+        }
+    }
+}
+
+// Сохранение позиции в localStorage
+function saveQRButtonPosition(x, y) {
+    try {
+        localStorage.setItem('qrButtonPosition', JSON.stringify({ x: x, y: y }));
+    } catch (e) {
+        console.error('Ошибка сохранения позиции QR-кнопки:', e);
+    }
+}
+
+// Начало перетаскивания
+function startDragging(clientX, clientY) {
+    clickStartTime = Date.now();
+    clickStartX = clientX;
+    clickStartY = clientY;
+    hasMoved = false;
+    isDragging = true;
+    
+    const rect = qrButton.getBoundingClientRect();
+    initialX = clientX - rect.left;
+    initialY = clientY - rect.top;
+    
+    qrButton.style.cursor = 'grabbing';
+}
+
+// Перемещение кнопки
+function moveButton(clientX, clientY) {
+    if (!isDragging) return;
+    
+    hasMoved = true;
+    
+    currentX = clientX - initialX;
+    currentY = clientY - initialY;
+    
+    // Ограничиваем позицию в пределах экрана
+    const maxX = window.innerWidth - qrButton.offsetWidth;
+    const maxY = window.innerHeight - qrButton.offsetHeight;
+    
+    currentX = Math.max(0, Math.min(currentX, maxX));
+    currentY = Math.max(0, Math.min(currentY, maxY));
+    
+    xOffset = currentX;
+    yOffset = currentY;
+    
+    qrButton.style.left = currentX + 'px';
+    qrButton.style.top = currentY + 'px';
+    qrButton.style.bottom = 'auto';
+    qrButton.style.right = 'auto';
+}
+
+// Завершение перетаскивания
+function stopDragging() {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    qrButton.style.cursor = 'move';
+    
+    // Сохраняем позицию только если была перемещена
+    if (hasMoved) {
+        saveQRButtonPosition(currentX, currentY);
+    }
+}
+
+// Открытие модального окна
+function openQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Закрытие модального окна
+function closeQRModal() {
+    if (qrModal) {
+        qrModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Инициализация QR-кнопки
+if (qrButton && qrModal) {
+    // Восстановление позиции при загрузке
+    restoreQRButtonPosition();
+    
+    // КРИТИЧЕСКИ ВАЖНО: Принудительное отображение кнопки после загрузки
+    function forceShowQRButton() {
+        if (qrButton) {
+            qrButton.style.display = 'flex';
+            qrButton.style.visibility = 'visible';
+            qrButton.style.opacity = '1';
+            qrButton.style.zIndex = '999999999';
+            qrButton.style.position = 'fixed';
+        }
+    }
+    
+    // Показываем кнопку сразу
+    forceShowQRButton();
+    
+    // Показываем кнопку через 1 секунду
+    setTimeout(forceShowQRButton, 1000);
+    
+    // === MOUSE EVENTS ===
+    qrButton.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        startDragging(e.clientX, e.clientY);
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            moveButton(e.clientX, e.clientY);
+        }
+    });
+    
+    document.addEventListener('mouseup', function(e) {
+        if (isDragging) {
+            const clickEndTime = Date.now();
+            const timeDiff = clickEndTime - clickStartTime;
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - clickStartX, 2) + 
+                Math.pow(e.clientY - clickStartY, 2)
+            );
+            
+            // Открываем модалку только если это был клик без перетаскивания
+            if (timeDiff < 300 && distance < 10) {
+                openQRModal();
+            }
+            
+            stopDragging();
+        }
+    });
+    
+    // === TOUCH EVENTS ===
+    qrButton.addEventListener('touchstart', function(e) {
+        const touch = e.touches[0];
+        startDragging(touch.clientX, touch.clientY);
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            moveButton(touch.clientX, touch.clientY);
+        }
+    }, { passive: false });
+    
+    document.addEventListener('touchend', function(e) {
+        if (isDragging) {
+            const touch = e.changedTouches[0];
+            const clickEndTime = Date.now();
+            const timeDiff = clickEndTime - clickStartTime;
+            const distance = Math.sqrt(
+                Math.pow(touch.clientX - clickStartX, 2) + 
+                Math.pow(touch.clientY - clickStartY, 2)
+            );
+            
+            // Открываем модалку только если это был тап без перетаскивания
+            if (timeDiff < 300 && distance < 10) {
+                openQRModal();
+            }
+            
+            stopDragging();
+        }
+    });
+    
+    // Закрытие модального окна при клике вне его
+    qrModal.addEventListener('click', function(e) {
+        if (e.target === qrModal) {
+            closeQRModal();
+        }
+    });
+}
+    </script>
+</body>
+</html>
