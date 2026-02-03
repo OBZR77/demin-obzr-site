@@ -1240,25 +1240,52 @@
             }
         });
 
-        // ===========================================
-        // hCAPTCHA CALLBACK
-        // ===========================================
-        let captchaToken = null;
+// ===========================================
+// hCAPTCHA CALLBACK
+// ===========================================
+let captchaToken = null;
+let captchaCompleted = false; // ✅ ДОБАВЛЕНО: Флаг прохождения капчи
 
-        function onCaptchaSuccess(token) {
-            captchaToken = token;
-            document.getElementById('submitButton').disabled = false;
-            console.log('✅ Капча пройдена успешно');
-        }
+function onCaptchaSuccess(token) {
+    captchaToken = token;
+    captchaCompleted = true; // ✅ ДОБАВЛЕНО
+    checkFormReadiness(); // ✅ ДОБАВЛЕНО: Проверяем готовность формы
+    console.log('✅ Капча пройдена успешно');
+}
 
-        // Сброс капчи при ошибке
-        function resetCaptcha() {
-            if (typeof hcaptcha !== 'undefined') {
-                hcaptcha.reset();
-                captchaToken = null;
-                document.getElementById('submitButton').disabled = true;
-            }
-        }
+// ✅ ДОБАВЛЕНО: Функция проверки готовности формы
+function checkFormReadiness() {
+    const submitBtn = document.getElementById('submitButton');
+    const consentCheckbox = document.getElementById('consent');
+    
+    if (!submitBtn || !consentCheckbox) return;
+    
+    // Кнопка активна только если капча пройдена И галочка стоит
+    if (captchaCompleted && consentCheckbox.checked) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+}
+
+// ✅ ДОБАВЛЕНО: Слушатель на изменение чекбокса
+document.addEventListener('DOMContentLoaded', function() {
+    const consentCheckbox = document.getElementById('consent');
+    if (consentCheckbox) {
+        consentCheckbox.addEventListener('change', checkFormReadiness);
+    }
+});
+
+// Сброс капчи при ошибке
+function resetCaptcha() {
+    if (typeof hcaptcha !== 'undefined') {
+        hcaptcha.reset();
+        captchaToken = null;
+        captchaCompleted = false; // ✅ ДОБАВЛЕНО: Сбрасываем флаг
+        document.getElementById('submitButton').disabled = true;
+    }
+}
+        
         // ===========================================
         // НАСТРОЙКИ EMAILJS
         // ===========================================
@@ -2191,6 +2218,7 @@ if (qrButton && qrModal) {
 </body>
 </html>
         
+
 
 
 
