@@ -1026,34 +1026,36 @@ if (qrButton && qrModal) {
 // ФОРМА ОБРАТНОЙ СВЯЗИ + CAPTCHA
 // ============================================
 
-// Разблокировка кнопки после капчи
-function onCaptchaSuccess() {
-    checkFormReadiness(); // Теперь проверяем и капчу, и чекбокс
-}
+let captchaCompleted = false; // Флаг прохождения капчи
 
-// Слушатель на изменение чекбокса согласия
-document.addEventListener('DOMContentLoaded', function() {
-    const consentCheckbox = document.getElementById('consentCheckbox');
-    if (consentCheckbox) {
-        consentCheckbox.addEventListener('change', function() {
-            checkFormReadiness(); // При изменении чекбокса проверяем готовность формы
-        });
-    }
-});
-        
-// Новая функция: разблокирует кнопку только если капча И чекбокс готовы
+// Функция проверки готовности формы
 function checkFormReadiness() {
     const submitBtn = document.getElementById('submitBtn');
     const consentCheckbox = document.getElementById('consentCheckbox');
-    const captchaCompleted = hcaptcha.getResponse().length > 0;
+    
+    if (!submitBtn || !consentCheckbox) return;
     
     // Кнопка активна только если капча пройдена И галочка стоит
-    if (captchaCompleted && consentCheckbox && consentCheckbox.checked) {
+    if (captchaCompleted && consentCheckbox.checked) {
         submitBtn.disabled = false;
     } else {
         submitBtn.disabled = true;
     }
 }
+
+// Разблокировка кнопки после капчи
+function onCaptchaSuccess() {
+    captchaCompleted = true; // Устанавливаем флаг
+    checkFormReadiness();
+}
+
+// Слушатель на изменение чекбокса
+document.addEventListener('DOMContentLoaded', function() {
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    if (consentCheckbox) {
+        consentCheckbox.addEventListener('change', checkFormReadiness);
+    }
+});
 
 // Инициализация EmailJS
 (function() {
@@ -1068,12 +1070,13 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const formStatus = document.getElementById('formStatus');
     const honeypot = document.querySelector('input[name="honeypot"]');
     
+    // Проверка honeypot
     if (honeypot && honeypot.value) {
         console.log('Спам-бот обнаружен');
         return false;
     }
-
- // ✅ ДОБАВИТЬ ПРОВЕРКУ ЧЕКБОКСА ЗДЕСЬ:
+    
+    // ✅ ПРОВЕРКА ЧЕКБОКСА СОГЛАСИЯ
     const consentCheckbox = document.getElementById('consentCheckbox');
     if (!consentCheckbox || !consentCheckbox.checked) {
         if (formStatus) {
@@ -1088,27 +1091,9 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         }
         return false;
     }
-    // ✅ КОНЕЦ ДОБАВЛЕНИЯ
     
- // ✅ ДОБАВИТЬ ЭТУ ПРОВЕРКУ:
-    const consentCheckbox = document.getElementById('consentCheckbox');
-    if (consentCheckbox && !consentCheckbox.checked) {
-        if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
-            formStatus.style.borderLeft = '4px solid #E53935';
-            formStatus.style.color = '#C62828';
-            formStatus.style.padding = '1rem';
-            formStatus.style.borderRadius = '8px';
-            formStatus.style.marginBottom = '1rem';
-            formStatus.innerHTML = '❌ Необходимо согласие на обработку персональных данных';
-        }
-        return false;
-    }
-    // ✅ КОНЕЦ ДОБАВЛЕНИЯ
-    
-    const hcaptchaResponse = hcaptcha.getResponse();
-    if (!hcaptchaResponse) {
+    // Проверка капчи через флаг
+    if (!captchaCompleted) {
         if (formStatus) {
             formStatus.style.display = 'block';
             formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
@@ -1148,7 +1133,10 @@ document.getElementById('contactForm').addEventListener('submit', function(event
             formStatus.innerHTML = '✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.';
         }
         document.getElementById('contactForm').reset();
-        hcaptcha.reset();
+        if (typeof hcaptcha !== 'undefined') {
+            hcaptcha.reset();
+        }
+        captchaCompleted = false; // Сбрасываем флаг
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Отправить сообщение';
         setTimeout(function() {
