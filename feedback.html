@@ -1048,6 +1048,23 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         console.log('Спам-бот обнаружен');
         return false;
     }
+
+ // ✅ ДОБАВИТЬ ЭТУ ПРОВЕРКУ:
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    if (consentCheckbox && !consentCheckbox.checked) {
+        if (formStatus) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+            formStatus.style.borderLeft = '4px solid #E53935';
+            formStatus.style.color = '#C62828';
+            formStatus.style.padding = '1rem';
+            formStatus.style.borderRadius = '8px';
+            formStatus.style.marginBottom = '1rem';
+            formStatus.innerHTML = '❌ Необходимо согласие на обработку персональных данных';
+        }
+        return false;
+    }
+    // ✅ КОНЕЦ ДОБАВЛЕНИЯ
     
     const hcaptchaResponse = hcaptcha.getResponse();
     if (!hcaptchaResponse) {
