@@ -1028,7 +1028,31 @@ if (qrButton && qrModal) {
 
 // Разблокировка кнопки после капчи
 function onCaptchaSuccess() {
-    document.getElementById('submitBtn').disabled = false;
+    checkFormReadiness(); // Теперь проверяем и капчу, и чекбокс
+}
+
+// Слушатель на изменение чекбокса согласия
+document.addEventListener('DOMContentLoaded', function() {
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    if (consentCheckbox) {
+        consentCheckbox.addEventListener('change', function() {
+            checkFormReadiness(); // При изменении чекбокса проверяем готовность формы
+        });
+    }
+});
+        
+// Новая функция: разблокирует кнопку только если капча И чекбокс готовы
+function checkFormReadiness() {
+    const submitBtn = document.getElementById('submitBtn');
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    const captchaCompleted = hcaptcha.getResponse().length > 0;
+    
+    // Кнопка активна только если капча пройдена И галочка стоит
+    if (captchaCompleted && consentCheckbox && consentCheckbox.checked) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
 }
 
 // Инициализация EmailJS
@@ -1049,6 +1073,23 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         return false;
     }
 
+ // ✅ ДОБАВИТЬ ПРОВЕРКУ ЧЕКБОКСА ЗДЕСЬ:
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    if (!consentCheckbox || !consentCheckbox.checked) {
+        if (formStatus) {
+            formStatus.style.display = 'block';
+            formStatus.style.background = 'linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%)';
+            formStatus.style.borderLeft = '4px solid #E53935';
+            formStatus.style.color = '#C62828';
+            formStatus.style.padding = '1rem';
+            formStatus.style.borderRadius = '8px';
+            formStatus.style.marginBottom = '1rem';
+            formStatus.innerHTML = '❌ Необходимо дать согласие на обработку персональных данных';
+        }
+        return false;
+    }
+    // ✅ КОНЕЦ ДОБАВЛЕНИЯ
+    
  // ✅ ДОБАВИТЬ ЭТУ ПРОВЕРКУ:
     const consentCheckbox = document.getElementById('consentCheckbox');
     if (consentCheckbox && !consentCheckbox.checked) {
