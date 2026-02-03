@@ -1300,6 +1300,14 @@
                 return;
             }
 
+// ✅ ДОБАВИТЬ ЭТУ ПРОВЕРКУ:
+    const consentCheckbox = document.getElementById('consent');
+    if (!consentCheckbox || !consentCheckbox.checked) {
+        alert('⚠️ Необходимо согласие на обработку персональных данных');
+        return;
+    }
+    // ✅ КОНЕЦ ДОБАВЛЕНИЯ
+           
             const submitButton = document.getElementById('submitButton');
             const loadingOverlay = document.getElementById('loadingOverlay');
             const successMessage = document.getElementById('successMessage');
@@ -2183,6 +2191,7 @@ if (qrButton && qrModal) {
 </body>
 </html>
         
+
 
 
 
