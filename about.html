@@ -468,18 +468,7 @@ nav {
     transform: translateY(0);
     transition-delay: 0.35s;
 }
-/* ✅ СКРЫВАЕМ ПОДМЕНЮ АКТИВНОЙ СТРАНИЦЫ */
-.nav-menu > li.has-submenu > a.active + .submenu {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
 
-.nav-menu > li.has-submenu:hover > a.active + .submenu {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-}
 /* Стили пунктов подменю - БЕЛЫЙ ТЕКСТ */
 .submenu li {
     margin: 0;
@@ -571,7 +560,7 @@ nav {
     .submenu a:hover {
         padding-left: 2.5rem;
     }
-}
+} 
     </style>
 </head>
 <body>
@@ -1523,6 +1512,7 @@ window.addEventListener('load', () => {
     
 </body>
 </html>
+
 
 
 
