@@ -1134,7 +1134,7 @@
                             <li><a href="yunarmiya.html">Юнармия</a></li>
                             <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
                             <li><a href="zarnica.html">Зарница 2.0</a></li>
-                            <li><a href="olimpiady-obzr.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
                             <li><a href="sbory.html">Учебно-полевые сборы</a></li>
                             <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
                     </li>
@@ -1956,12 +1956,20 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Gamma App, DALL-E 3, Kandinsky 3.0 и др.)<br>
-            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
-        </div>
-    </footer>
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ============================================
