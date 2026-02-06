@@ -19,6 +19,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Методические рекомендации для коллег-преподавателей ОБЗР: создание сайта, планирование уроков, использование ИИ, подготовка к аттестации">
     <title>Методические рекомендации для коллег | Дёмин А.Ю.</title>
+    <!-- Фавиконки для всех устройств -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -1019,8 +1025,8 @@
                             <li><a href="yunarmiya.html">Юнармия</a></li>
                             <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
                             <li><a href="zarnica.html">Зарница 2.0</a></li>
-                            <li><a href="olimpiady-obzr.html">Олимпиады по ОБЗР</a></li>
-                            <li><a href="uchebno-polevye-sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
                             <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
                         </ul>
                     </li>
@@ -1566,12 +1572,20 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.)<br>
-            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
-        </div>
-    </footer>
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 
     <script>
         // ============================================
