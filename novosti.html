@@ -806,7 +806,7 @@
                         <a href="index.html" class="active" onclick="return handleSubmenuClick(event, this)">Главная</a>
                         <ul class="submenu">
                             <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
-                            <li><a href="novosti.html" class="active">Последние новости</a></li>
+                            <li><a href="novosti.html" style="font-weight: 700; color: var(--color-primary);">Последние новости</a></li>
                         </ul>
                     </li>
 
@@ -1308,13 +1308,21 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта.<br>
-            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
-        </div>
-    </footer>
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
 
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+       
     <!-- QR-кнопка и остальной JS код из оригинального файла сохранены -->
     <!-- (для экономии места не дублирую весь код QR-кнопки и плеера) -->
 
