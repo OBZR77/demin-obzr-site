@@ -178,27 +178,6 @@
             z-index: 1000;
         }
 
-        .nav-menu > li.has-submenu > a.active + .submenu li {
-            background-color: #E53935;
-        }
-
-        .nav-menu > li.has-submenu > a.active + .submenu a {
-            color: var(--color-primary);
-        }
-
-        .nav-menu > li.has-submenu > a.active + .submenu a:hover {
-            background-color: white;
-            color: var(--color-primary);
-        }
-
-        .nav-menu > li.has-submenu > a.active + .submenu a::before {
-            color: white;
-        }
-
-        .nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
-            color: var(--color-danger);
-        }
-
         .nav-menu > li.has-submenu > a:not(.active) + .submenu li {
             background-color: white;
         }
@@ -228,7 +207,7 @@
         }
 
         .submenu a {
-            color: white;
+            color: var(--color-text-primary);
             text-decoration: none;
             padding: 0.65rem 1.5rem;
             display: flex;
@@ -713,10 +692,10 @@
                     <li class="has-submenu">
                         <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
                         <ul class="submenu">
-                            <li><a href="rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
-                            <li><a href="dostizheniya-uchenikov">Достижения учащихся</a></li>
-                            <li><a href="metodicheskaya-aktivnost">Методическая активность</a></li>
-                            <li><a href="documents">Документы портфолио</a></li>
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
                         </ul>
                     </li>
 
@@ -770,7 +749,7 @@
                             <li><a href="feedback.html">Форма обратной связи</a></li>
                             <li><a href="contacts.html#about-school">О школе</a></li>
                             <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
-                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                            <li><a href="privacy-policy.html" style="font-weight: 700; color: var(--color-primary);">Политика конфиденциальности</a></li>
                         </ul>
                     </li>
 
@@ -2009,4 +1988,5 @@ if (qrButton && qrModal) {
 </body>
 
 </html>
+
 
