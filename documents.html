@@ -194,28 +194,6 @@
     z-index: 1000;
 }
 
-/* КРАСНЫЙ ФОН ДЛЯ АКТИВНОЙ СТРАНИЦЫ - НА ПУНКТАХ МЕНЮ */
-.nav-menu > li.has-submenu > a.active + .submenu li {
-    background-color: #E53935;  /* КРАСНЫЙ ФОН НА <li> */
-}
-
-.nav-menu > li.has-submenu > a.active + .submenu a {
-    color: var(--color-primary);  /* СИНИЙ ТЕКСТ */
-}
-
-.nav-menu > li.has-submenu > a.active + .submenu a:hover {
-    background-color: white;  /* БЕЛЫЙ ФОН ПРИ HOVER */
-    color: var(--color-primary);  /* СИНИЙ ТЕКСТ */
-}
-
-.nav-menu > li.has-submenu > a.active + .submenu a::before {
-    color: white;  /* БЕЛАЯ СТРЕЛКА */
-}
-
-.nav-menu > li.has-submenu > a.active + .submenu a:hover::before {
-    color: var(--color-danger);  /* КРАСНАЯ СТРЕЛКА ПРИ HOVER */
-}
-
 /* БЕЛОЕ ПОДМЕНЮ ДЛЯ НЕАКТИВНЫХ СТРАНИЦ */
 .nav-menu > li.has-submenu > a:not(.active) + .submenu li {
     background-color: white;  /* БЕЛЫЙ ФОН */
@@ -248,7 +226,7 @@
 }
 
 .submenu a {
-    color: white;  /* БЕЛЫЙ ТЕКСТ */
+    color: var(--color-text-primary);
     text-decoration: none;
     padding: 0.65rem 1.5rem;
     display: flex;
