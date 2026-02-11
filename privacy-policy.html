@@ -716,7 +716,7 @@
                             <li><a href="rezultaty-obucheniya">Результаты освоения ОБЗР обучающимися</a></li>
                             <li><a href="dostizheniya-uchenikov">Достижения учащихся</a></li>
                             <li><a href="metodicheskaya-aktivnost">Методическая активность</a></li>
-                            <li><a href="dokumenty">Документы портфолио</a></li>
+                            <li><a href="documents">Документы портфолио</a></li>
                         </ul>
                     </li>
 
@@ -1185,12 +1185,20 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 Дёмин Александр Юрьевич. Все права защищены.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
-            Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
-        </div>
-    </footer>
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 
 <!-- Плавающая кнопка QR -->
 <div id="qrFloatingButton" 
@@ -2001,3 +2009,4 @@ if (qrButton && qrModal) {
 </body>
 
 </html>
+
