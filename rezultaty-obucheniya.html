@@ -1624,17 +1624,25 @@
                     button.style.bottom = 'auto';
                 }
             }
-
-            function onEnd(e) {
-                if (!isDragging) return;
-                isDragging = false;
-                button.classList.remove('dragging');
-                
-                if (!hasMoved) {
-                    openQRModal();
-                }
-            }
-
+function onEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    button.classList.remove('dragging');
+    
+    if (!hasMoved) {
+        openQRModal();
+    } else {
+        // Сохраняем позицию после перетаскивания
+        var rect = button.getBoundingClientRect();
+        try {
+            localStorage.setItem('qrBtnPos', JSON.stringify({
+                x: rect.left,
+                y: rect.top
+            }));
+        } catch(e) {}
+    }
+}
+         
             button.addEventListener('mousedown', onStart);
             document.addEventListener('mousemove', onMove);
             document.addEventListener('mouseup', onEnd);
@@ -1645,7 +1653,23 @@
         })();
 
         // Инициализация при загрузке
-        window.addEventListener('load', initCharts);
+    // Восстановление позиции QR-кнопки
+window.addEventListener('load', function() {
+    initCharts();
+    try {
+        var s = localStorage.getItem('qrBtnPos');
+        if (s) {
+            var p = JSON.parse(s);
+            var btn = document.getElementById('qrFloatingButton');
+            var maxX = window.innerWidth  - btn.offsetWidth;
+            var maxY = window.innerHeight - btn.offsetHeight;
+            btn.style.right  = 'auto';
+            btn.style.bottom = 'auto';
+            btn.style.left   = Math.max(0, Math.min(maxX, p.x)) + 'px';
+            btn.style.top    = Math.max(0, Math.min(maxY, p.y)) + 'px';
+        }
+    } catch(e) {}
+});
     </script>
 
 <!-- Минимизированный плавающий плейер -->
