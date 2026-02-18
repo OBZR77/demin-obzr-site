@@ -414,8 +414,9 @@
                 captchaCompleted = false;
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = "Отправить сообщение";
-                setTimeout(function() { formStatus.style.display = "none"; }, 10000);
-                            formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#FFEBEE,#FFCDD2);border-left:4px solid #E53935;color:#C62828;padding:1rem;border-radius:8px;margin-bottom:1rem;";
+               setTimeout(function() { formStatus.style.display = "none"; }, 10000);
+            }, function() {
+                formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#FFEBEE,#FFCDD2);border-left:4px solid #E53935;color:#C62828;padding:1rem;border-radius:8px;margin-bottom:1rem;";
                 formStatus.innerHTML = "❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com";
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = "Отправить сообщение";
