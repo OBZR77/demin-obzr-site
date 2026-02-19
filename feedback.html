@@ -457,6 +457,278 @@
         if (window.innerWidth <= 768) { event.preventDefault(); element.parentElement.classList.toggle('open'); return false; }
         return true;
     }
-    </script>
+   </script>
+
+<!-- Плавающая кнопка (ПЕРЕТАСКИВАЕМАЯ) -->
+<div id="qrFloatingButton" 
+     style="position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            width: 65px; 
+            height: 65px; 
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%; 
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: move;
+            z-index: 10000; 
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;">
+    <span style="font-size: 2.2rem; 
+                 filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                 pointer-events: none;">📱</span>
+</div>
+
+<!-- Подсказка (появляется при первом посещении) -->
+<div id="qrButtonHint" 
+     style="position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: #003D7A;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            display: none;
+            max-width: 200px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;">
+    💡 Удерживайте для перемещения
+    <div style="position: absolute;
+                bottom: -8px;
+                right: 20px;
+                width: 0;
+                height: 0;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 8px solid #003D7A;"></div>
+</div>
+
+<!-- Всплывающее окно с QR-кодом -->
+<div id="qrModalWindow" 
+     style="display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.85); 
+            z-index: 99999; 
+            align-items: center; 
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;">
+    <div style="background: white; 
+                padding: 30px 20px; 
+                border-radius: 20px; 
+                text-align: center; 
+                width: 100%;
+                max-width: 420px; 
+                position: relative;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                animation: slideUp 0.4s ease;
+                margin: auto;
+                max-height: 90vh;
+                overflow-y: auto;">
+        <button onclick="closeQRModal()" 
+                style="position: sticky;
+                       top: 0;
+                       left: calc(100% - 45px);
+                       background: #003D7A; 
+                       border: none; 
+                       width: 38px;
+                       height: 38px;
+                       border-radius: 50%;
+                       font-size: 1.6rem; 
+                       cursor: pointer; 
+                       color: white;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       transition: all 0.3s ease;
+                       margin-bottom: 15px;
+                       margin-left: auto;
+                       z-index: 10;
+                       box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                title="Закрыть">
+            ×
+        </button>
+        <h2 style="color: #003D7A; margin: 0 0 10px 0; font-size: 1.4rem; font-weight: 700; line-height: 1.3;">
+            📱 QR-код сайта
+        </h2>
+        <p style="color: #7F8C8D; margin: 0 0 20px 0; font-size: 0.9rem; line-height: 1.4;">
+            Отсканируйте камерой смартфона
+        </p>
+        <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                    padding: 15px;
+                    border-radius: 15px;
+                    display: inline-block;
+                    box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                    max-width: 100%;">
+            <img src="qr-code-obzr.png.png" 
+                 alt="QR-код сайта преподавателя ОБЗР" 
+                 style="width: 100%; max-width: 240px; height: auto; aspect-ratio: 1/1; border-radius: 12px; display: block;">
+        </div>
+        <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); border-radius: 12px; border-left: 3px solid #FFC107;">
+            <p style="margin: 0; color: #856404; font-size: 0.85rem; line-height: 1.6; text-align: left;">
+                <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                1. Откройте камеру<br>
+                2. Наведите на код<br>
+                3. Нажмите уведомление
+            </p>
+        </div>
+        <p style="margin-top: 20px; color: #95a5a6; font-size: 0.8rem; line-height: 1.4;">
+            МБОУ СШ № 2 г. Лысково<br>
+            Преподаватель-организатор ОБЗР<br>
+            Дёмин Александр Юрьевич
+        </p>
+    </div>
+</div>
+
+<style>
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+        50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    #qrFloatingButton.dragging {
+        animation: none;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #qrFloatingButton:hover { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6); }
+    }
+    @media (max-width: 768px) {
+        #qrFloatingButton { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+        #qrFloatingButton span { font-size: 1.8rem; }
+        #qrButtonHint { bottom: 90px; right: 20px; font-size: 0.8rem; padding: 8px 12px; max-width: 160px; }
+        #qrModalWindow { padding: 10px; }
+        #qrModalWindow > div { padding: 20px 15px; border-radius: 15px; max-height: 95vh; }
+        #qrModalWindow h2 { font-size: 1.2rem !important; }
+        #qrModalWindow img { max-width: 200px !important; }
+        #qrModalWindow button { width: 35px !important; height: 35px !important; font-size: 1.4rem !important; left: calc(100% - 40px) !important; }
+    }
+    @media (max-width: 380px) { #qrModalWindow img { max-width: 180px !important; } }
+    body.modal-open { overflow: hidden; height: 100vh; }
+</style>
+
+<script>
+    const qrFloatingButton = document.getElementById('qrFloatingButton');
+    const qrModalWindow = document.getElementById('qrModalWindow');
+    const qrButtonHint = document.getElementById('qrButtonHint');
+    let isDragging = false;
+    let startX, startY, currentX, currentY, offsetX = 0, offsetY = 0;
+    let dragStartTime = 0, hasMoved = false;
+
+    function loadButtonPosition() {
+        const savedPos = localStorage.getItem('qrButtonPosition');
+        if (savedPos) {
+            const pos = JSON.parse(savedPos);
+            qrFloatingButton.style.left = pos.x + 'px';
+            qrFloatingButton.style.top = pos.y + 'px';
+            qrFloatingButton.style.right = 'auto';
+            qrFloatingButton.style.bottom = 'auto';
+        }
+    }
+    function saveButtonPosition(x, y) { localStorage.setItem('qrButtonPosition', JSON.stringify({ x, y })); }
+
+    qrFloatingButton.addEventListener('mousedown', function(e) { startDragging(e.clientX, e.clientY); });
+    qrFloatingButton.addEventListener('touchstart', function(e) {
+        const touch = e.touches[0]; startDragging(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    function startDragging(clientX, clientY) {
+        dragStartTime = Date.now(); hasMoved = false; isDragging = true;
+        const rect = qrFloatingButton.getBoundingClientRect();
+        offsetX = clientX - rect.left; offsetY = clientY - rect.top;
+        qrFloatingButton.classList.add('dragging');
+        qrButtonHint.style.display = 'none';
+    }
+
+    document.addEventListener('mousemove', function(e) { if (isDragging) { e.preventDefault(); moveButton(e.clientX, e.clientY); } });
+    document.addEventListener('touchmove', function(e) { if (isDragging) { const touch = e.touches[0]; moveButton(touch.clientX, touch.clientY); } }, { passive: false });
+
+    function moveButton(clientX, clientY) {
+        hasMoved = true;
+        currentX = clientX - offsetX; currentY = clientY - offsetY;
+        const maxX = window.innerWidth - qrFloatingButton.offsetWidth;
+        const maxY = window.innerHeight - qrFloatingButton.offsetHeight;
+        currentX = Math.max(0, Math.min(currentX, maxX));
+        currentY = Math.max(0, Math.min(currentY, maxY));
+        qrFloatingButton.style.left = currentX + 'px';
+        qrFloatingButton.style.top = currentY + 'px';
+        qrFloatingButton.style.right = 'auto';
+        qrFloatingButton.style.bottom = 'auto';
+    }
+
+    document.addEventListener('mouseup', function() { endDragging(); });
+    document.addEventListener('touchend', function() { endDragging(); });
+
+    function endDragging() {
+        if (isDragging) {
+            qrFloatingButton.classList.remove('dragging');
+            const dragDuration = Date.now() - dragStartTime;
+            if (!hasMoved || dragDuration < 200) { openQRModal(); }
+            else { saveButtonPosition(currentX, currentY); }
+            isDragging = false;
+        }
+    }
+
+    function openQRModal() { qrModalWindow.style.display = 'flex'; document.body.classList.add('modal-open'); qrModalWindow.scrollTop = 0; }
+    function closeQRModal() { qrModalWindow.style.display = 'none'; document.body.classList.remove('modal-open'); }
+
+    qrModalWindow.addEventListener('click', function(event) { if (event.target === qrModalWindow) { closeQRModal(); } });
+    document.addEventListener('keydown', function(event) { if (event.key === 'Escape' && qrModalWindow.style.display === 'flex') { closeQRModal(); } });
+
+    function showHintIfNeeded() {
+        const hintShown = localStorage.getItem('qrButtonHintShown');
+        if (!hintShown) {
+            setTimeout(() => {
+                qrButtonHint.style.display = 'block';
+                setTimeout(() => {
+                    qrButtonHint.style.opacity = '0';
+                    qrButtonHint.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => { qrButtonHint.style.display = 'none'; }, 500);
+                }, 5000);
+                localStorage.setItem('qrButtonHintShown', 'true');
+            }, 2000);
+        }
+    }
+
+    window.addEventListener('load', function() {
+        loadButtonPosition();
+        showHintIfNeeded();
+        setTimeout(function() {
+            qrFloatingButton.style.opacity = '0';
+            qrFloatingButton.style.transform = 'scale(0)';
+            setTimeout(function() {
+                qrFloatingButton.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                qrFloatingButton.style.opacity = '1';
+                qrFloatingButton.style.transform = 'scale(1)';
+            }, 100);
+        }, 500);
+    });
+
+    qrFloatingButton.addEventListener('click', function(e) { e.stopPropagation(); });
+</script>
+
 </body>
-</html>
+</html> 
