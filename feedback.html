@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,"script","https://mc.yandex.ru/metrika/tag.js?id=106461008", "ym");
+    ym(106461008, "init", {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь | Дёмин А.Ю.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary); background: var(--color-background); }
+
+        header { background-color: var(--color-primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-top { background-color: var(--color-primary-active); padding: 0.5rem 0; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-title { display: flex; align-items: center; gap: 1rem; }
+        .header-title h1 { font-size: 1.5rem; font-weight: 700; }
+        .header-subtitle { font-size: 0.9rem; opacity: 0.9; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        nav { background-color: var(--color-primary); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .nav-menu { list-style: none; display: flex; gap: 0; }
+        .nav-menu > li { position: relative; }
+        .nav-menu > li > a { color: white; text-decoration: none; padding: 1rem; display: block; transition: background-color 0.3s ease; }
+        .nav-menu > li > a:hover { background-color: var(--color-primary-hover); }
+        .nav-menu > li > a.active { background-color: var(--color-danger); border-radius: 8px 8px 0 0; }
+        .nav-menu > li > a.active:hover { background-color: var(--color-danger) !important; cursor: default; }
+        .submenu { position: absolute; top: 100%; left: 0; background-color: white; min-width: 280px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); border-radius: 0 0 8px 8px; list-style: none; padding: 0.75rem 0; margin: 0; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; transition-delay: 0s; border-top: 3px solid var(--color-danger); z-index: 1000; }
+        .nav-menu > li.has-submenu:hover .submenu { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0.35s; }
+        .submenu li { margin: 0; }
+        .submenu a { color: var(--color-text-primary); text-decoration: none; padding: 0.65rem 1.5rem; display: flex; align-items: center; transition: all 0.2s ease; font-size: 0.95rem; }
+        .submenu a:hover { background-color: var(--color-surface); color: var(--color-primary); padding-left: 2rem; }
+        .submenu a::before { content: "→"; margin-right: 0.75rem; opacity: 0; transition: opacity 0.2s ease; color: var(--color-danger); font-weight: bold; }
+        .submenu a:hover::before { opacity: 1; }
+
+        main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem 4rem; }
+        .page-title { font-size: 2rem; color: var(--color-primary); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 3px solid var(--color-danger); }
+
+        .intro-block {
+            background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 2.5rem;
+        }
+        .intro-block p:first-child { font-weight: 600; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .intro-block p { color: var(--color-text-secondary); line-height: 1.7; }
+
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--color-primary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .contact-card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .contact-card h3 { color: var(--color-primary); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .card-desc { color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
+        .card-detail {
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .card-detail a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+        .card-detail a:hover { text-decoration: underline; }
+        .card-note {
+            background: #FFFBEB;
+            border-left: 3px solid #F59E0B;
+            border-radius: 0 8px 8px 0;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.85rem;
+            color: #92400E;
+            margin-top: 0.5rem;
+        }
+        .card-note strong { display: block; color: #B45309; margin-bottom: 2px; }
+
+        .when-to-use { margin-bottom: 3rem; }
+        .when-to-use h2 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: 1.25rem; }
+        .when-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+        .when-card { border-radius: 10px; padding: 1.25rem 1.5rem; border-top: 4px solid; }
+        .when-card.urgent { background: #FEF2F2; border-color: var(--color-danger); }
+        .when-card.planned { background: #EFF6FF; border-color: var(--color-primary); }
+        .when-card.private { background: #F5F3FF; border-color: #7C3AED; }
+        .when-card h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+        .when-card.urgent h3 { color: #B91C1C; }
+        .when-card.planned h3 { color: var(--color-primary); }
+        .when-card.private h3 { color: #5B21B6; }
+        .when-card ul { list-style: none; }
+        .when-card ul li { padding: 0.3rem 0 0.3rem 1.4rem; font-size: 0.9rem; color: var(--color-text-primary); position: relative; }
+        .when-card ul li::before { content: "✓"; position: absolute; left: 0; font-weight: bold; }
+        .when-card.urgent ul li::before { color: var(--color-danger); }
+        .when-card.planned ul li::before { color: var(--color-primary); }
+        .when-card.private ul li::before { color: #7C3AED; }
+
+        .form-redirect-block {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,61,122,0.25);
+            margin-bottom: 3rem;
+        }
+        .form-redirect-block h2 { color: white; font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .form-redirect-block p { color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.7; }
+        .form-redirect-btn {
+            display: inline-block;
+            background: white;
+            color: var(--color-primary);
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .form-redirect-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+        .schedule-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+        .schedule-section h2 { font-size: 1.5rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .schedule-section > p { color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+        .schedule-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+        .schedule-table th { background: var(--color-primary); color: white; padding: 0.75rem 1rem; text-align: left; font-size: 0.95rem; }
+        .schedule-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); font-size: 0.95rem; }
+        .schedule-table tr:last-child td { border-bottom: none; }
+        .schedule-table tr:hover td { background: var(--color-surface); }
+        .how-to-sign {
+            background: #F0FDF4;
+            border-left: 4px solid var(--color-success);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+        }
+        .how-to-sign strong { color: #166534; display: block; margin-bottom: 0.3rem; }
+        .how-to-sign a { color: var(--color-primary); font-weight: 600; }
+
+        .faq-cta {
+            background: linear-gradient(135deg, #F3E8FF 0%, #EDE9FE 100%);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .faq-cta h2 { font-size: 1.5rem; color: #5B21B6; margin-bottom: 0.75rem; }
+        .faq-cta p { color: #6D28D9; margin-bottom: 1.5rem; font-size: 1rem; }
+        .faq-btn {
+            display: inline-block;
+            background: white;
+            color: #5B21B6;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #7C3AED;
+            transition: all 0.3s ease;
+        }
+        .faq-btn:hover { background: #7C3AED; color: white; transform: translateY(-2px); }
+
+        footer { background-color: var(--color-primary); color: white; padding: 2rem 1rem; margin-top: 2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; font-size: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .footer-section a { color: white; text-decoration: none; opacity: 0.9; transition: opacity 0.2s; }
+        .footer-section a:hover { opacity: 1; text-decoration: underline; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 0.85rem; opacity: 0.8; }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; width: 100%; background-color: var(--color-primary); }
+            .nav-menu.active { display: flex; }
+            .nav-menu > li > a { padding: 0.75rem 1rem; }
+            .nav-menu > li.has-submenu.open > a { background-color: var(--color-primary-active); }
+            .submenu { position: static; box-shadow: none; border-radius: 0; border-top: none; border-left: 3px solid var(--color-danger); max-height: 0; overflow: hidden; padding: 0; opacity: 1; visibility: visible; transform: none; transition: max-height 0.3s ease, padding 0.3s ease; }
+            .nav-menu > li.has-submenu.open .submenu { max-height: 500px; padding: 0.5rem 0; }
+            .submenu a { padding-left: 2rem; }
+            .contact-cards-grid { grid-template-columns: 1fr; }
+            .when-grid { grid-template-columns: 1fr; }
+            .schedule-table th, .schedule-table td { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+            .intro-block { padding: 1.25rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .header-title h1 { font-size: 1.2rem; }
+            .page-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25));">
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu"><a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a><ul class="submenu"><li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li><li><a href="novosti.html">Последние новости</a></li></ul></li>
+                    <li class="has-submenu"><a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a><ul class="submenu"><li><a href="obrazovanie.html">Образование</a></li><li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li><li><a href="nagrady.html">Награды и достижения</a></li></ul></li>
+                    <li class="has-submenu"><a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a><ul class="submenu"><li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li><li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li><li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li><li><a href="documents.html">Документы портфолио</a></li></ul></li>
+                    <li class="has-submenu"><a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a><ul class="submenu"><li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li><li><a href="konspekty-urokov.html">Конспекты уроков по модулям</a></li><li><a href="prezentacii-testy.html">Презентации, наглядные материалы, тесты и контрольные</a></li><li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li></ul></li>
+                    <li class="has-submenu"><a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a><ul class="submenu"><li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li><li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li><li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li><li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li></ul></li>
+                    <li class="has-submenu"><a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a><ul class="submenu"><li><a href="yunarmiya.html">Юнармия</a></li><li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li><li><a href="zarnica.html">Зарница 2.0</a></li><li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li><li><a href="sbory.html">Учебно-полевые сборы</a></li><li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li></ul></li>
+                    <li class="has-submenu"><a href="parents.html" class="active" onclick="return handleSubmenuClick(event, this)">Родителям</a><ul class="submenu"><li><a href="help-at-home.html">Как помочь ребёнку дома</a></li><li><a href="training-camps.html">Готовимся к учебным сборам</a></li><li><a href="safety-dialogue.html">Диалоги о безопасности</a></li><li><a href="feedback.html">Обратная связь</a></li><li><a href="grading.html">Как оценивается ОБЗР</a></li><li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li></ul></li>
+                    <li class="has-submenu"><a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a><ul class="submenu"><li><a href="contacts.html#feedback-form">Форма обратной связи</a></li><li><a href="contacts.html#about-school">О школе</a></li><li><a href="contacts.html#useful-links">Полезные ссылки</a></li><li><a href="privacy-policy.html">Политика конфиденциальности</a></li></ul></li>
+                    <li class="has-submenu"><a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a><ul class="submenu"><li><a href="interactive.html">Оставить отзыв о работе сайта</a></li></ul></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">📞 Обратная связь</h1>
+
+        <!-- Вводный блок -->
+        <div class="intro-block">
+            <p>Открытое общение — основа успешного образовательного процесса.</p>
+            <p>Я всегда готов ответить на ваши вопросы, обсудить успехи ребёнка или вместе найти решение возникших сложностей. Выберите удобный для вас способ связи!</p>
+        </div>
+
+        <!-- Карточки каналов связи -->
+        <div class="contact-cards-grid">
+            <div class="contact-card">
+                <span class="contact-card-icon">📧</span>
+                <h3>Электронная почта</h3>
+                <p class="card-desc">Для официальных обращений, документов, подробных вопросов</p>
+                <div class="card-detail"><a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></div>
+                <div class="card-note">
+                    <strong>Время ответа:</strong>
+                    В течение 24-48 часов (рабочие дни)
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span class="contact-card-icon">🏫</span>
+                <h3>Личная встреча в школе</h3>
+                <p class="card-desc">Для конфиденциальных бесед, детального обсуждения успеваемости</p>
+                <div class="card-detail">Кабинет ОБЖ (по предварительной записи)</div>
+                <div class="card-note">
+                    <strong>Запись:</strong>
+                    По email или через администрацию школы
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span class="contact-card-icon">☎️</span>
+                <h3>Телефон школы</h3>
+                <p class="card-desc">Для срочных вопросов, согласования встреч</p>
+                <div class="card-detail"><a href="tel:+78314954449">+78314954449 (администрация)</a></div>
+                <div class="card-note">
+                    <strong>Часы работы:</strong>
+                    Пн-Пт: 8:00-17:00
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span class="contact-card-icon">👥</span>
+                <h3>Родительские собрания</h3>
+                <p class="card-desc">Для общих вопросов, знакомства с программой ОБЗР</p>
+                <div class="card-detail">Общешкольные и классные собрания</div>
+                <div class="card-note">
+                    <strong>График:</strong>
+                    По расписанию школы
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span class="contact-card-icon">💻</span>
+                <h3>Онлайн-консультации</h3>
+                <p class="card-desc">Видео-звонки для дистанционного общения (по согласованию)</p>
+                <div class="card-detail">Платформа: по договорённости</div>
+                <div class="card-note">
+                    <strong>Запись:</strong>
+                    За 2-3 дня по email
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <span class="contact-card-icon">✉️</span>
+                <h3>Форма обратной связи</h3>
+                <p class="card-desc">Быстрая отправка вопроса прямо с этой страницы</p>
+                <div class="card-detail"><a href="contacts.html#feedback-form">Заполните форму ниже ↓</a></div>
+                <div class="card-note">
+                    <strong>Ответ:</strong>
+                    На указанный email в течение 24-48 часов
+                </div>
+            </div>
+        </div>
+
+        <!-- Когда какой канал использовать -->
+        <div class="when-to-use">
+            <h2>🎯 Когда какой канал использовать?</h2>
+            <div class="when-grid">
+                <div class="when-card urgent">
+                    <h3>🚨 Срочные ситуации</h3>
+                    <ul>
+                        <li>Ребёнок не пришёл на урок → Телефон школы</li>
+                        <li>Срочный вопрос по учебным сборам → Телефон школы</li>
+                        <li>Проблема, требующая немедленного решения → Звонок в администрацию</li>
+                    </ul>
+                </div>
+                <div class="when-card planned">
+                    <h3>📅 Плановые вопросы</h3>
+                    <ul>
+                        <li>Обсуждение успеваемости → Email или личная встреча</li>
+                        <li>Вопросы по программе модуля № 2 (военная подготовка) → Email</li>
+                        <li>Запись на консультацию → Email или форма</li>
+                        <li>Уточнение домашнего задания → Email или мессенджеры</li>
+                    </ul>
+                </div>
+                <div class="when-card private">
+                    <h3>🔒 Конфиденциальные темы</h3>
+                    <ul>
+                        <li>Сложности ребёнка с освоением материала → Личная встреча</li>
+                        <li>Вопросы психологической атмосферы в классе → Личная встреча</li>
+                        <li>Чувствительные семейные обстоятельства → Личная встреча или звонок</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка перехода к форме (вместо самой формы) -->
+        <div class="form-redirect-block">
+            <h2>✉️ Написать напрямую</h2>
+            <p>Форма обратной связи находится в разделе «Контакты».<br>
+            Там же вы найдёте мессенджеры и все другие способы связи.</p>
+            <a href="contacts.html#feedback-form" class="form-redirect-btn">
+                📝 Перейти к форме обратной связи →
+            </a>
+        </div>
+
+        <!-- График консультаций -->
+        <div class="schedule-section">
+            <h2>📅 График консультаций</h2>
+            <p>Вы можете записаться на личную встречу в следующие дни:</p>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>День недели</th>
+                        <th>Время</th>
+                        <th>Формат</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Вторник</td>
+                        <td>14:30 - 16:00</td>
+                        <td>Личная встреча в школе (по записи)</td>
+                    </tr>
+                    <tr>
+                        <td>Четверг</td>
+                        <td>15:00 - 16:30</td>
+                        <td>Личная встреча в школе (по записи)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="how-to-sign">
+                <strong>📋 Как записаться:</strong>
+                Отправьте запрос по email (<a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a>) или заполните форму обратной связи на этой странице, указав удобное для вас время. Я подтвержу встречу ответным письмом.
+            </div>
+        </div>
+
+        <!-- FAQ CTA -->
+        <div class="faq-cta">
+            <h2>❓ Часто задаваемые вопросы</h2>
+            <p>Возможно, ответ на ваш вопрос уже есть в разделе FAQ</p>
+            <a href="faq.html" class="faq-btn">Перейти в раздел FAQ →</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>Все материалы проверены и адаптированы в соответствии с требованиями ФГОС.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 768) { event.preventDefault(); element.parentElement.classList.toggle('open'); return false; }
+        return true;
+    }
+    </script>
+</body>
+</html>
