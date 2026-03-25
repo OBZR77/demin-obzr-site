@@ -1,0 +1,286 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════════╗
+ * ║         landscape-fix.css  v3 — Дёмин А.Ю., ОБЗР сайт          ║
+ * ║   Подключить ко ВСЕМ страницам в <head> ПОСЛЕ <meta viewport>:  ║
+ * ║   <link rel="stylesheet" href="landscape-fix.css">              ║
+ * ╚══════════════════════════════════════════════════════════════════╝
+ *
+ * ИСПРАВЛЯЕТ:
+ *   ✅ Белая полоса справа при повороте телефона
+ *   ✅ Выпадающее меню на ПК работает корректно
+ *   ✅ Мобильное меню работает корректно
+ *   ✅ Горизонтальная ориентация телефона
+ */
+
+
+/* ================================================================
+   БЛОК 1 — КОРЕНЬ: запрет горизонтальной прокрутки (белой полосы)
+   Работает на ВСЕХ устройствах, не трогает меню
+   ================================================================ */
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hero и основной контент не вылезают за экран */
+.hero,
+main,
+footer {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Убираем фиксированную высоту карточек */
+.info-block {
+    min-height: auto;
+}
+
+/* НЕ трогаем header, nav, submenu здесь —
+   они работают через position:absolute и должны выходить за пределы */
+
+
+/* ================================================================
+   БЛОК 2 — ТОЛЬКО МОБИЛЬНЫЕ В ПОРТРЕТЕ (≤768px, portrait)
+   Меню скрыто, показывается гамбургером — submenu статичное
+   ================================================================ */
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+
+    /* Гамбургер-кнопка видна */
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+
+    /* Меню скрыто по умолчанию, открывается JS-классом .active */
+    .nav-menu {
+        display: none !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        background-color: var(--color-primary, #003D7A) !important;
+        overflow-x: hidden !important;
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+    }
+
+    /* Подменю: статичное, без absolute-позиционирования */
+    .submenu {
+        position: static !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border-top: none !important;
+        border-left: 3px solid var(--color-danger, #E53935) !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: max-height 0.3s ease !important;
+        width: 100% !important;
+        min-width: unset !important;
+        background-color: rgba(0, 41, 82, 0.95) !important;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 600px !important;
+    }
+
+    .submenu a {
+        padding-left: 2rem !important;
+        color: white !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Шапка */
+    .header-title h1 { font-size: 1.1rem; }
+    .header-subtitle { font-size: 0.75rem; }
+    .header-title img, .header-photo { width: 50px !important; height: 50px !important; }
+
+    /* Hero */
+    .hero { padding: 2.5rem 1rem; }
+    .hero h2 { font-size: 1.6rem; }
+    .hero p { font-size: 0.95rem; }
+    .hero-buttons { flex-direction: column; align-items: center; gap: 0.75rem; }
+    .btn { width: 100%; max-width: 280px; text-align: center; }
+
+    /* Разделы */
+    section h2 { font-size: 1.6rem; }
+    .obzr-stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .info-blocks-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .info-block { min-height: auto !important; }
+    .news-summary { padding: 1.5rem; }
+    .news-summary h3 { font-size: 1.5rem; }
+    .news-summary-item { flex-direction: column; }
+
+    /* Плавающие кнопки */
+    #qrFloatingButton { width: 55px !important; height: 55px !important; bottom: 20px !important; right: 15px !important; }
+    #floatingMiniPlayer { width: 260px !important; bottom: 85px !important; left: 15px !important; }
+
+    /* Footer */
+    .footer-content { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+
+/* ================================================================
+   БЛОК 3 — ТОЛЬКО МОБИЛЬНЫЕ В LANDSCAPE (высота ≤500px, landscape)
+   Телефон повернули — компактный вид, меню тоже через гамбургер
+   ================================================================ */
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    /* Защита от белой полосы — повторяем с !important */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+
+    /* Гамбургер-кнопка видна */
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+
+    /* Меню скрыто, открывается гамбургером */
+    .nav-menu {
+        display: none !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        background-color: var(--color-primary, #003D7A) !important;
+        overflow-x: hidden !important;
+        max-height: 60vh !important;
+        overflow-y: auto !important;
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+    }
+
+    /* Подменю: статичное */
+    .submenu {
+        position: static !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border-top: none !important;
+        border-left: 3px solid var(--color-danger, #E53935) !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: max-height 0.3s ease !important;
+        width: 100% !important;
+        min-width: unset !important;
+        background-color: rgba(0, 41, 82, 0.95) !important;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 300px !important;
+        overflow-y: auto !important;
+    }
+
+    .submenu a {
+        padding: 0.35rem 0.5rem 0.35rem 1.75rem !important;
+        font-size: 0.8rem !important;
+        color: white !important;
+    }
+
+    /* Шапка: максимально компактная */
+    .header-top { padding: 0.2rem 0; }
+    .header-title h1 { font-size: 1rem; }
+    .header-subtitle { display: none; }
+    .header-title img, .header-photo { width: 36px !important; height: 36px !important; }
+    .nav-menu > li > a { padding: 0.45rem 0.75rem; font-size: 0.85rem; }
+
+    /* Hero: минимальные отступы */
+    .hero { padding: 1rem; }
+    .hero h2 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+    .hero p { font-size: 0.85rem; margin-bottom: 0.6rem; line-height: 1.4; }
+    .hero-buttons { flex-direction: row; justify-content: center; gap: 0.6rem; }
+    .btn { padding: 0.45rem 1rem; font-size: 0.82rem; }
+
+    /* Разделы */
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; }
+    main { padding-top: 0.5rem; }
+
+    /* Синий блок ОБЗР */
+    .obzr-blue-box { padding: 1rem; margin-bottom: 1rem; }
+    .obzr-blue-box h3 { font-size: 1.1rem; }
+    .obzr-blue-box p, .obzr-blue-box li { font-size: 0.88rem; line-height: 1.4; }
+    .obzr-blue-box img { width: 32px !important; height: 32px !important; }
+
+    /* Статистика: 4 в строку */
+    .obzr-stats { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+    .stat-card { padding: 0.6rem 0.4rem; }
+    .stat-icon { font-size: 1.4rem; margin-bottom: 0.2rem; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-label { font-size: 0.7rem; line-height: 1.2; }
+    .stat-sublabel { font-size: 0.65rem; }
+
+    /* Карточки "Для кого": 3 в ряд */
+    .info-blocks-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .info-block { min-height: auto !important; padding: 1rem; }
+    .info-block-icon { font-size: 1.75rem; margin-bottom: 0.4rem; }
+    .info-block h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .info-block p { font-size: 0.82rem; margin-bottom: 0.5rem; line-height: 1.4; }
+    .info-block li { font-size: 0.78rem; margin-bottom: 0.25rem; }
+    .info-block-button { padding: 0.45rem 0.85rem; font-size: 0.78rem; }
+
+    /* Новости */
+    .news-summary { padding: 1rem; }
+    .news-summary h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .news-summary h3::before { font-size: 2rem; }
+    .news-summary-title { font-size: 0.95rem; }
+    .news-summary-excerpt { font-size: 0.82rem; }
+    .news-summary-icon { font-size: 1.3rem; }
+
+    /* Плавающие кнопки */
+    #qrFloatingButton { width: 44px !important; height: 44px !important; bottom: 10px !important; right: 10px !important; animation: none !important; }
+    #qrFloatingButton span { font-size: 1.3rem !important; }
+    #floatingMiniPlayer { width: 200px !important; bottom: 10px !important; left: 10px !important; padding: 7px 9px !important; }
+    #miniPlayPauseBtn { width: 30px !important; height: 30px !important; }
+
+    /* QR модалка */
+    #qrModalWindow > div { max-width: 480px !important; padding: 10px 14px !important; max-height: 88vh !important; overflow-y: auto !important; }
+    #qrModalWindow img { max-width: 130px !important; width: 130px !important; }
+
+    /* Footer */
+    footer { margin-top: 1.5rem; padding: 1.25rem 1rem; }
+    .footer-content { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .footer-section h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .footer-section li { font-size: 0.8rem; margin-bottom: 0.25rem; }
+    .footer-bottom { font-size: 0.75rem; margin-top: 0.75rem; padding-top: 0.75rem; }
+
+    /* Другие страницы */
+    .about-grid, .education-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+    .portfolio-grid, .achievements-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+    .contacts-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .ai-cards-grid, .tools-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 0.65rem !important; }
+    .activities-grid, .events-grid, .parents-grid, .faq-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.65rem !important; }
+    .accordion-header { padding: 0.55rem 0.9rem !important; font-size: 0.85rem !important; }
+}
+
+
+/* ================================================================
+   БЛОК 4 — ПЛАНШЕТЫ (600–1024px, любая ориентация)
+   ================================================================ */
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .obzr-stats { grid-template-columns: repeat(2, 1fr); }
+    .info-blocks-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-content { grid-template-columns: repeat(2, 1fr); }
+    .hero h2 { font-size: 2rem; }
+    .ai-cards-grid, .tools-grid, .activities-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
