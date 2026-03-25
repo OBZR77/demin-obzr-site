@@ -1087,7 +1087,233 @@ section h2 {
 #o-predmete-obzr h2 {
     margin-top: 0;
     padding-top: 20px;
-}       
+}  
+/* ============================================
+   ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   (landscape mode для телефонов)
+   ============================================ */
+
+/* Телефоны в горизонтальном положении */
+@media (max-width: 900px) and (orientation: landscape) {
+    
+    /* HERO: уменьшаем отступы, чтобы вмещалось на экран */
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .hero-buttons {
+        flex-direction: row; /* кнопки в ряд, а не в колонку */
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    /* ШАПКА: компактнее */
+    .header-top .header-content {
+        padding: 0.3rem 1rem;
+    }
+    
+    .header-title h1 {
+        font-size: 1.1rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.75rem;
+    }
+    
+    .header-title img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    /* НАВИГАЦИЯ: меньше высота пунктов */
+    .nav-menu > li > a {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    /* СТАТИСТИКА: 4 блока в одну строку */
+    .obzr-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .stat-card {
+        padding: 1rem 0.75rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* КАРТОЧКИ "ДЛЯ КОГО": убираем минимальную высоту */
+    .info-block {
+        min-height: auto; /* УБИРАЕМ фиксированную высоту 420px */
+        padding: 1.5rem;
+    }
+    
+    .info-blocks-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 в ряд */
+        gap: 1rem;
+    }
+    
+    /* СИНИЙ БЛОК "ЧТО ТАКОЕ ОБЗР?" */
+    .obzr-blue-box {
+        padding: 1.5rem;
+    }
+    
+    .obzr-blue-box h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* НОВОСТИ */
+    .news-summary {
+        padding: 1.5rem;
+    }
+    
+    .news-summary h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* ЗАГОЛОВКИ РАЗДЕЛОВ */
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    section {
+        margin-bottom: 2rem;
+    }
+    
+    /* ПЛАВАЮЩИЕ КНОПКИ: перемещаем, чтобы не перекрывали контент */
+    #qrFloatingButton {
+        width: 50px !important;
+        height: 50px !important;
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    
+    #qrFloatingButton span {
+        font-size: 1.6rem !important;
+    }
+    
+    #floatingMiniPlayer {
+        width: 230px !important;
+        bottom: 15px !important;
+        left: 15px !important;
+    }
+    
+    /* МОДАЛЬНОЕ ОКНО QR: адаптируем под горизонтальный экран */
+    #qrModalWindow > div {
+        max-width: 340px !important;
+        padding: 15px !important;
+        max-height: 85vh !important;
+    }
+    
+    #qrModalWindow img {
+        max-width: 160px !important;
+    }
+}
+
+/* ============================================
+   ИСПРАВЛЕНИЕ ПОЛОМАННОГО МЕДИА-ЗАПРОСА 768px
+   (заменяет незакрытый блок в оригинале)
+   ============================================ */
+@media (max-width: 768px) {
+    
+    /* Мобильное подменю (вертикальный список) */
+    .submenu {
+        position: static !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border-top: none !important;
+        border-left: 3px solid var(--color-danger) !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: max-height 0.3s ease, padding 0.3s ease !important;
+        background-color: rgba(0, 41, 82, 0.95) !important;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    .submenu a {
+        padding-left: 2rem !important;
+        color: white !important;
+    }
+    
+    /* Hero для портретной ориентации */
+    .hero h2 {
+        font-size: 1.75rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Статистика: 2 колонки в портрете */
+    .obzr-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Карточки для кого: 1 колонка в портрете */
+    .info-blocks-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-block {
+        min-height: auto;
+    }
+    
+    /* Новости */
+    .news-summary {
+        padding: 2rem;
+    }
+    
+    .news-summary h3 {
+        font-size: 1.8rem;
+        padding-right: 1rem;
+    }
+    
+    .news-summary-item {
+        flex-direction: column;
+    }
+    
+    .news-summary-icon {
+        font-size: 1.5rem;
+    }
+}
+        
     </style>
 </head>
 <body>
