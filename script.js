@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function handleSubmenuClick(event, element) {
     // Проверяем, мобильное ли устройство
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
         const parentLi = element.parentElement;
         
         // Если подменю УЖЕ открыто — разрешаем переход
