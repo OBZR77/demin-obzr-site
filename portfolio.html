@@ -308,23 +308,24 @@
     }
     
     /* КОМПАКТНОЕ МЕНЮ: выезжает справа, не на весь экран */
- .nav-menu {
+.nav-menu {
     display: none;
     flex-direction: column;
     width: 72%;
     max-width: 320px;
     position: fixed;
-    top: 90px;           /* ← высота шапки, меню начинается ПОД ней */
+    top: 0;
     right: 0;
-    height: calc(100vh - 90px);  /* ← высота за вычетом шапки */
+    height: 100vh;
     background-color: var(--color-primary);
     overflow-y: auto;
-    z-index: 999;        /* ← ниже чем header (z-index: 1000) */
-    padding-top: 0.5rem;
+    z-index: 1001;           /* ← ВЫШЕ шапки (1000), чтобы меню было поверх */
+    padding-top: 0px;
     box-shadow: -6px 0 20px rgba(0,0,0,0.4);
     transform: translateX(100%);
     transition: transform 0.3s ease;
 }
+    
     .nav-menu.active {
         display: flex;
         transform: translateX(0);     /* ← выезжает при открытии */
@@ -337,7 +338,7 @@
         top: 0; left: 0;
         width: 100%; height: 100%;
         background: rgba(0,0,0,0.5);
-        z-index: 1999;
+        z-index: 1000;
     }
     
     .nav-overlay.active {
@@ -397,20 +398,20 @@
             }
         }   
      /* Горизонтальная ориентация телефона */
-@media (max-width: 900px) and (orientation: landscape) {
+ @media (max-width: 900px) and (orientation: landscape) {
     .nav-menu {
         display: none;
         flex-direction: column;
         width: 55%;
         max-width: 320px;
         position: fixed;
-        top: 70px;
+        top: 0;              /* ← тоже от нуля */
         right: 0;
-        height: calc(100vh - 70px);
+        height: 100vh;
         background-color: var(--color-primary);
         overflow-y: auto;
-        z-index: 999;
-        padding-top: 0.5rem;
+        z-index: 1001;
+        padding-top: 0px;
         box-shadow: -6px 0 20px rgba(0,0,0,0.4);
         transform: translateX(100%);
         transition: transform 0.3s ease;
@@ -430,7 +431,6 @@
         display: block;
     }
 }
-      
         /* ============================================
            MAIN CONTENT (МОЖНО РЕДАКТИРОВАТЬ)
            ============================================ */
