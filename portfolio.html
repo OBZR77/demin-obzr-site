@@ -1076,7 +1076,54 @@
 <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
- 
+<script>
+    // Переключение мобильного меню
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        const headerHeight = headerTop ? headerTop.getBoundingClientRect().height : 70;
+        
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        }
+        
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Обработка подменю на мобильных
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) {
+                return true;
+            }
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    // Закрытие подменю при клике вне меню
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    });
+</script> 
     <!-- Плавающая кнопка QR (НЕ ТРОГАТЬ!) -->
     <div id="qrFloatingButton" 
          style="position: fixed; 
