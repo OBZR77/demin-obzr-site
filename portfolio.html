@@ -302,46 +302,78 @@
                 opacity: 1;
             }
         }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu > li > a {
-                padding: 0.75rem 1rem;
-            }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-            }
-            
-            .nav-menu > li.has-submenu.open .submenu {
-                max-height: 500px;
-                padding: 0.5rem 0;
-            }
-            
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* КОМПАКТНОЕ МЕНЮ: выезжает справа, не на весь экран */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 72%;           /* ← ширина панели (70-75% экрана) */
+        max-width: 320px;     /* ← максимум 320px на больших телефонах */
+        position: fixed;      /* ← фиксированное поверх страницы */
+        top: 0;
+        right: 0;
+        height: 100vh;        /* ← на всю высоту экрана */
+        background-color: var(--color-primary);
+        overflow-y: auto;     /* ← прокрутка если пунктов много */
+        z-index: 2000;
+        padding-top: 70px;    /* ← отступ сверху под шапку */
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);   /* ← изначально за экраном */
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);     /* ← выезжает при открытии */
+    }
+    
+    /* Затемнение фона при открытом меню */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1999;
+    }
+    
+    .nav-overlay.active {
+        display: block;
+    }
+    
+    .nav-menu > li > a {
+        padding: 0.65rem 1rem;
+        font-size: 0.95rem;  /* ← чуть мельче текст */
+    }
+    
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15); /* ← лёгкое затемнение подменю */
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+    
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+      
             .nav-menu > li.has-submenu.open > a::after {
                 content: ' ↗';
                 font-size: 0.8rem;
@@ -722,6 +754,7 @@
         </div>
         
         <nav>
+            <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
             <div class="nav-container">
                 <ul class="nav-menu" id="navMenu">
                     <li class="has-submenu">
