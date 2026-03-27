@@ -8,10 +8,15 @@
 // ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ МОБИЛЬНОГО МЕНЮ
 // ============================================
 function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    if (navMenu) {
-        navMenu.classList.toggle('active');
-    }
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    
+    // Блокируем прокрутку страницы когда меню открыто
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+}
 }
 
 // ============================================
