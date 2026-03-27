@@ -308,24 +308,23 @@
     }
     
     /* КОМПАКТНОЕ МЕНЮ: выезжает справа, не на весь экран */
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 72%;           /* ← ширина панели (70-75% экрана) */
-        max-width: 320px;     /* ← максимум 320px на больших телефонах */
-        position: fixed;      /* ← фиксированное поверх страницы */
-        top: 0;
-        right: 0;
-        height: 100vh;        /* ← на всю высоту экрана */
-        background-color: var(--color-primary);
-        overflow-y: auto;     /* ← прокрутка если пунктов много */
-        z-index: 2000;
-        padding-top: 70px;    /* ← отступ сверху под шапку */
-        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
-        transform: translateX(100%);   /* ← изначально за экраном */
-        transition: transform 0.3s ease;
-    }
-    
+ .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 90px;           /* ← высота шапки, меню начинается ПОД ней */
+    right: 0;
+    height: calc(100vh - 90px);  /* ← высота за вычетом шапки */
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    z-index: 999;        /* ← ниже чем header (z-index: 1000) */
+    padding-top: 0.5rem;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
     .nav-menu.active {
         display: flex;
         transform: translateX(0);     /* ← выезжает при открытии */
@@ -397,7 +396,40 @@
                 font-size: 0.8rem;
             }
         }   
-     
+     /* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 70px;
+        right: 0;
+        height: calc(100vh - 70px);
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        z-index: 999;
+        padding-top: 0.5rem;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+    
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
       
         /* ============================================
            MAIN CONTENT (МОЖНО РЕДАКТИРОВАТЬ)
