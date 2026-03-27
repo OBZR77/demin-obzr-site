@@ -10,14 +10,23 @@
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
     const overlay = document.getElementById('navOverlay');
+    const header = document.querySelector('header');
+    
+    // Измеряем точную высоту шапки и устанавливаем top меню
+    if (header && window.innerWidth <= 1024) {
+        const headerHeight = header.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        }
+    }
     
     menu.classList.toggle('active');
     if (overlay) overlay.classList.toggle('active');
-    
-    // Блокируем прокрутку страницы когда меню открыто
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
 }
-
 // ============================================
 // АВТОМАТИЧЕСКОЕ ВЫДЕЛЕНИЕ АКТИВНОГО ПУНКТА МЕНЮ
 // ============================================
