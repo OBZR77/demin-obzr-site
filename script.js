@@ -17,7 +17,7 @@ function toggleMenu() {
     // Блокируем прокрутку страницы когда меню открыто
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
 }
-}
+
 
 // ============================================
 // АВТОМАТИЧЕСКОЕ ВЫДЕЛЕНИЕ АКТИВНОГО ПУНКТА МЕНЮ
