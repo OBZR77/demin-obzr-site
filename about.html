@@ -1239,38 +1239,6 @@ document.addEventListener('keydown', function(event) {
     
 <script src="script.js"></script>
   <script src="landscape-fix.js"></script>  
- <script>
-function handleSubmenuClick(event, element) {
-    // На мобильных устройствах
-    if (window.innerWidth <= 768) {
-        const parentLi = element.parentElement;
-        if (parentLi.classList.contains('has-submenu')) {
-            // Если подменю уже открыто - переходим по ссылке
-            if (parentLi.classList.contains('open')) {
-                return true; // Разрешаем переход
-            }
-            // Если подменю закрыто - открываем его
-            event.preventDefault();
-            
-            // Закрываем все другие подменю
-            document.querySelectorAll('.nav-menu > li.has-submenu').forEach(li => {
-                if (li !== parentLi) {
-                    li.classList.remove('open');
-                }
-            });
-            
-            parentLi.classList.add('open');
-            return false;
-        }
-    }
-    // На десктопе - обычная навигация
-    return true;
-}
-
-function toggleMenu() {
-    document.getElementById('navMenu').classList.toggle('active');
-}
-</script>
 <!-- Минимизированный плавающий плейер -->
 <div id="floatingMiniPlayer" 
      style="position: fixed;
