@@ -2079,26 +2079,6 @@ document.addEventListener('keydown', function(event) {
 });
 
 // ============================================
-// НАВИГАЦИОННОЕ МЕНЮ
-// ============================================
-function toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
-function handleSubmenuClick(event, element) {
-    if (window.innerWidth <= 768) {
-        event.preventDefault();
-        const parent = element.parentElement;
-        parent.classList.toggle('open');
-        return false;
-    }
-    return true;
-}
-
-// ============================================
 // QR-КНОПКА: ПОЛНАЯ ВЕРСИЯ С DRAG & DROP
 // ============================================
 
