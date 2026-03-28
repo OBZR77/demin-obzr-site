@@ -22,7 +22,7 @@ function toggleMenu() {
             overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
         }
     }
-    
+
     menu.classList.toggle('active');
     if (overlay) overlay.classList.toggle('active');
    if (menu.classList.contains('active')) {
