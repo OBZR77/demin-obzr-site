@@ -1442,16 +1442,41 @@
         }
 
         // Мобильное меню
-
+function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            const overlay = document.getElementById('navOverlay');
+            const scrollY = window.scrollY;
+            if (typeof updateMenuPosition === 'function') updateMenuPosition();
+            menu.classList.toggle('active');
+            if (overlay) overlay.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                document.body.style.top = '-' + scrollY + 'px';
+            } else {
+                const savedScroll = parseInt(document.body.style.top || '0') * -1;
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.body.style.top = '';
+                window.scrollTo(0, savedScroll);
+            }
+        }
         function handleSubmenuClick(event, element) {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+                const parentLi = element.parentElement;
+                if (parentLi.classList.contains('open')) return true;
                 event.preventDefault();
-                const parent = element.parentElement;
-                parent.classList.toggle('open');
+                document.querySelectorAll('.has-submenu.open').forEach(item => {
+                    if (item !== parentLi) item.classList.remove('open');
+                });
+                parentLi.classList.toggle('open');
                 return false;
             }
             return true;
         }
+       
     </script>
 
     <script src="script.js"></script>
@@ -1837,26 +1862,6 @@ document.addEventListener('keydown', function(event) {
         closeQRModal();
     }
 });
-
-// ============================================
-// НАВИГАЦИОННОЕ МЕНЮ
-// ============================================
-function toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
-function handleSubmenuClick(event, element) {
-    if (window.innerWidth <= 768) {
-        event.preventDefault();
-        const parent = element.parentElement;
-        parent.classList.toggle('open');
-        return false;
-    }
-    return true;
-}
 
 // ============================================
 // QR-КНОПКА: ПОЛНАЯ ВЕРСИЯ С DRAG & DROP
