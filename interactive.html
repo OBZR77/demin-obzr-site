@@ -1677,7 +1677,24 @@ document.addEventListener('keydown', function(event) {
 // Мобильное меню
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const scrollY = window.scrollY;
+    if (typeof updateMenuPosition === 'function') updateMenuPosition();
     menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = '-' + scrollY + 'px';
+    } else {
+        const savedScroll = parseInt(document.body.style.top || '0') * -1;
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, savedScroll);
+    }
 }
 function handleSubmenuClick(event, element) {
     if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
@@ -1692,7 +1709,6 @@ function handleSubmenuClick(event, element) {
     }
     return true;
 }
-
  </script>
 
 <script src="script.js"></script>
@@ -2292,17 +2308,6 @@ if (qrButton && qrModal) {
         }
     });
 }
-
-// ============================================
-// ОСТАЛЬНОЙ КОД ВАШЕЙ СТРАНИЦЫ
-// (например, обработка форм, EmailJS и т.д.)
-// ============================================
-
-// Если у вас есть форма с hCaptcha, код для неё идёт здесь
-// Например:
-// function onCaptchaSuccess() { ... }
-// emailjs.init("..."); 
-// и т.д.
 
 </script> 
 </body>
