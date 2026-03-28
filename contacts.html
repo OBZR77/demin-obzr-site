@@ -479,10 +479,19 @@
     function closeLightbox() { document.getElementById("emblem-lightbox").style.display = "none"; document.body.style.overflow = "auto"; }
     document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLightbox(); });
 
-    function handleSubmenuClick(event, element) {
-        if (window.innerWidth <= 768) { event.preventDefault(); element.parentElement.classList.toggle("open"); return false; }
-        return true;
+   function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
     }
+    return true;
+}
 
     // Форма обратной связи
     let captchaCompleted = false;
