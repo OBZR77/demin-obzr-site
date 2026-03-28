@@ -615,8 +615,7 @@
             .nav-menu > li > a {
                 padding: 0.75rem 1rem;
             }
-            
-          .submenu {
+ .submenu {
     position: static;
     box-shadow: none;
     border-radius: 0;
@@ -629,11 +628,12 @@
     visibility: visible;
     transform: none;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(255,255,255,0.1);   /* ← белый полупрозрачный */
     min-width: unset;
     max-width: unset;
     width: 100%;
-}
+}           
+
 
 .nav-menu > li.has-submenu.open .submenu {
     max-height: 500px;
@@ -753,7 +753,7 @@
         visibility: visible;
         transform: none;
         transition: max-height 0.3s ease, padding 0.3s ease;
-        background-color: rgba(0,0,0,0.15);
+        background-color: rgba(255,255,255,0.1);
         min-width: unset;
         max-width: unset;
         width: 100%;
