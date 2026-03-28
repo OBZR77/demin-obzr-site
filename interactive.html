@@ -1679,16 +1679,20 @@ function toggleMenu() {
     const menu = document.getElementById('navMenu');
     menu.classList.toggle('active');
 }
-
 function handleSubmenuClick(event, element) {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
         event.preventDefault();
-        const parent = element.parentElement;
-        parent.classList.toggle('open');
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
         return false;
     }
     return true;
 }
+
  </script>
 
 <script src="script.js"></script>
