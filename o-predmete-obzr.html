@@ -537,7 +537,7 @@
     visibility: visible;
     transform: none;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    background-color: rgba(0,0,0,0.15);
+    background-color: white; 
     min-width: 0 !important;      /* ← сбрасываем min-width принудительно */
     max-width: 100% !important;   /* ← не шире родителя */
     width: 100%;
@@ -551,6 +551,8 @@
             
             .submenu a {
                 padding-left: 2rem;
+               padding-left: 2rem;
+    color: var(--color-text-primary);    /* ← тёмный текст */ 
             }
             
             .submenu a:hover {
