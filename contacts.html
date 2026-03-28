@@ -149,7 +149,7 @@
     visibility: visible;
     transform: none;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    background-color: rgba(0,0,0,0.15);
+    background-color: white; 
     min-width: unset;
     max-width: unset;
     width: 100%;
@@ -160,7 +160,10 @@
     padding: 0.5rem 0;
 }
 
-            .submenu a { padding-left: 2rem; }
+           .submenu a {
+    padding-left: 2rem;
+    color: var(--color-text-primary);    /* ← тёмный текст */
+}
             .submenu a:hover { padding-left: 2.5rem; }
             .contacts-grid { grid-template-columns: 1fr; }
             .messengers-grid { gap: 1rem; }
