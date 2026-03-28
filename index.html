@@ -894,12 +894,29 @@ section h2 {
         text-fill-color: initial;
     }
     
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: var(--color-primary);
-    }
+    css.nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+} 
     
     .news-summary {
         padding: 2rem;
@@ -915,10 +932,6 @@ section h2 {
         font-size: 1.5rem;
     }
     
-    .nav-menu.active {
-        display: flex;
-    }
-    
     .nav-menu > li > a {
         padding: 0.75rem 1rem;
     }
@@ -930,25 +943,29 @@ section h2 {
     }
 }  /* ← закрывающая скобка медиа-
 
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-            }
+      css.submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
 
-            .nav-menu > li.has-submenu.open .submenu {
-                max-height: 500px;
-                padding: 0.5rem 0;
-            }
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}  
 
             .submenu a {
                 padding-left: 2rem;
@@ -1001,7 +1018,65 @@ section h2 {
                 text-fill-color: initial;
             }
         }
+css/* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
 
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}    
         @media (max-width: 480px) {
             .header-title h1 {
                 font-size: 1.2rem;
@@ -1602,11 +1677,6 @@ section h2 {
             }
         });
 
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-        }
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -1768,7 +1838,7 @@ section h2 {
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(-400px); opacity: 0; }
     }
-     css.nav-overlay {
+    .nav-overlay {
     display: none;
     position: fixed;
     top: 0; left: 0;
