@@ -668,6 +668,10 @@ nav {
 
     .submenu a {
         padding-left: 2rem;
+        color: var(--color-text-primary);
+    word-break: break-word;     /* ← перенос длинных слов */
+    white-space: normal;        /* ← разрешаем перенос строк */
+    overflow-wrap: break-word;  /* ← дополнительно для длинных слов */
     }
 
     .submenu a:hover {
