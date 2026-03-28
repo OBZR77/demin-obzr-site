@@ -1097,9 +1097,24 @@
     function toggleMenu() {
         const menu = document.getElementById('navMenu');
         const overlay = document.getElementById('navOverlay');
-        const headerTop = document.querySelector('.header-top');
-        const headerHeight = headerTop ? headerTop.getBoundingClientRect().height : 70;
         
+        updateMenuPosition();
+        
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
+
+    // Функция расчёта позиции меню
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        
+        const headerHeight = headerTop.getBoundingClientRect().height;
         menu.style.top = headerHeight + 'px';
         menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
         menu.style.overflowY = 'auto';
@@ -1108,11 +1123,25 @@
             overlay.style.top = headerHeight + 'px';
             overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
         }
-        
-        menu.classList.toggle('active');
-        if (overlay) overlay.classList.toggle('active');
-        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
+
+    // Пересчёт при повороте экрана
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) {
+                updateMenuPosition();
+            }
+        }, 300); // небольшая задержка — браузер успевает перестроить layout
+    });
+
+    // Пересчёт при изменении размера окна (для надёжности)
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) {
+            updateMenuPosition();
+        }
+    });
 
     // Обработка подменю на мобильных
     function handleSubmenuClick(event, element) {
@@ -1139,7 +1168,8 @@
             });
         }
     });
-</script> 
+</script>
+    
     <!-- Плавающая кнопка QR (НЕ ТРОГАТЬ!) -->
     <div id="qrFloatingButton" 
          style="position: fixed; 
