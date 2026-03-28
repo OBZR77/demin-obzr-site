@@ -1102,7 +1102,15 @@
         
         menu.classList.toggle('active');
         if (overlay) overlay.classList.toggle('active');
-        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      if (menu.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';      // ← фиксируем body
+    document.body.style.width = '100%';           // ← чтобы не сужалась страница
+} else {
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+}
         menu.style.overflowY = 'auto';
         menu.style.webkitOverflowScrolling = 'touch';
     }
