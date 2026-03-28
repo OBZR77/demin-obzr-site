@@ -3,38 +3,51 @@
 // Файл: script.js
 // Автор: Дёмин А.Ю.
 // ============================================
-
-// ============================================
-// ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ МОБИЛЬНОГО МЕНЮ
-// ============================================
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
     const overlay = document.getElementById('navOverlay');
-    const header = document.querySelector('header');
-    
-    // Измеряем точную высоту шапки и устанавливаем top меню
-    if (header && window.innerWidth <= 1024) {
-        const headerHeight = header.getBoundingClientRect().height;
-        menu.style.top = headerHeight + 'px';
-        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        if (overlay) {
-            overlay.style.top = headerHeight + 'px';
-            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        }
-    }
+    const scrollY = window.scrollY;
+
+    updateMenuPosition();
 
     menu.classList.toggle('active');
     if (overlay) overlay.classList.toggle('active');
-   if (menu.classList.contains('active')) {
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';      // ← фиксируем body
-    document.body.style.width = '100%';           // ← чтобы не сужалась страница
-} else {
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
+
+    if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = '-' + scrollY + 'px';
+    } else {
+        const savedScroll = parseInt(document.body.style.top || '0') * -1;
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, savedScroll);
+    }
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
 }
+
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    menu.style.overflowY = 'auto';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    }
 }
+// ============================================
+// ФУНКЦИЯ ПЕРЕКЛЮЧЕНИЯ МОБИЛЬНОГО МЕНЮ
+// ============================================
+
 // ============================================
 // АВТОМАТИЧЕСКОЕ ВЫДЕЛЕНИЕ АКТИВНОГО ПУНКТА МЕНЮ
 // ============================================
@@ -136,6 +149,36 @@ document.addEventListener('click', function(event) {
         document.querySelectorAll('.has-submenu.open').forEach(item => {
             item.classList.remove('open');
         });
+    }
+});
+
+// ============================================
+// ПЕРЕСЧЁТ МЕНЮ ПРИ ПОВОРОТЕ ЭКРАНА
+// ============================================
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 100);
+
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 500);
+
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 1000);
+});
+
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) {
+        clearTimeout(window._resizeTimer);
+        window._resizeTimer = setTimeout(function() {
+            updateMenuPosition();
+        }, 150);
     }
 });
 
