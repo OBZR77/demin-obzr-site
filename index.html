@@ -887,138 +887,137 @@ section h2 {
         }
 
         /* Адаптивность */
-    @media (max-width: 768px) {
+
+       @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
         -webkit-text-fill-color: initial;
         text-fill-color: initial;
     }
-    
-    css.nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 72%;
-    max-width: 320px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    background-color: var(--color-primary);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    z-index: 1001;
-    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
 
-.nav-menu.active {
-    display: flex;
-    transform: translateX(0);
-} 
-    
-    .news-summary {
-        padding: 2rem;
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 72%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
     }
-    
-    /* ИСПРАВЛЕНИЕ 1: Отступ заголовка от правого края */
-    .news-summary h3 {
-        font-size: 1.8rem;
-        padding-right: 1rem;    /* ← ДОБАВИЛИ */
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
     }
-    
-    .news-summary-icon {
-        font-size: 1.5rem;
+
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
     }
-    
+
+    .nav-overlay.active {
+        display: block;
+    }
+
     .nav-menu > li > a {
         padding: 0.75rem 1rem;
     }
-    
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+
+    .submenu a {
+        padding-left: 2rem;
+    }
+
+    .submenu a:hover {
+        padding-left: 2.5rem;
+    }
+
     .info-block-icon {
         -webkit-text-fill-color: initial !important;
         text-fill-color: initial !important;
         filter: none !important;
     }
-}  /* ← закрывающая скобка медиа-
 
-      css.submenu {
-    position: static;
-    box-shadow: none;
-    border-radius: 0;
-    border-top: none;
-    border-left: 3px solid var(--color-danger);
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    background-color: rgba(0,0,0,0.15);
-    min-width: unset;
-    max-width: unset;
-    width: 100%;
+    .news-summary {
+        padding: 2rem;
+    }
+
+    .news-summary h3 {
+        font-size: 1.8rem;
+        padding-right: 1rem;
+    }
+
+    .news-summary-icon {
+        font-size: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .obzr-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .news-summary h3 {
+        font-size: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .news-summary h3::before {
+        font-size: 3rem;
+    }
+
+    .news-summary-item {
+        flex-direction: column;
+    }
 }
 
-.nav-menu > li.has-submenu.open .submenu {
-    max-height: 500px;
-    padding: 0.5rem 0;
-}  
-
-            .submenu a {
-                padding-left: 2rem;
-            }
-
-            .submenu a:hover {
-                padding-left: 2.5rem;
-            }
-
-            .hero h2 {
-                font-size: 1.75rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .obzr-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .news-summary {
-                padding: 2rem;
-            }
-
-            .news-summary h3 {
-                font-size: 2rem;
-                flex-wrap: wrap;
-            }
-
-            .news-summary h3::before {
-                font-size: 3rem;
-            }
-
-            .news-summary-item {
-                flex-direction: column;
-            }
-
-            .news-summary-icon {
-                font-size: 1.5rem;
-            }
-
-            /* ИСПРАВЛЕНИЕ ДЛЯ ЭМОДЗИ В МОБИЛЬНОЙ ВЕРСИИ */
-            .info-block-icon {
-                -webkit-text-fill-color: initial;
-                text-fill-color: initial;
-            }
-        }
-css/* Горизонтальная ориентация телефона */
+/* Горизонтальная ориентация телефона */
 @media (max-width: 900px) and (orientation: landscape) {
     .mobile-menu-toggle {
         display: block;
@@ -1076,7 +1075,7 @@ css/* Горизонтальная ориентация телефона */
         max-height: 500px;
         padding: 0.5rem 0;
     }
-}    
+} 
         @media (max-width: 480px) {
             .header-title h1 {
                 font-size: 1.2rem;
