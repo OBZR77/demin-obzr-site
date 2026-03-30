@@ -582,124 +582,15 @@
 .nav-overlay.active {
     display: block;
 }
-        /* Адаптивность */
+    
+/* Адаптивность — портрет */
 @media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-    .nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 72%;
-    max-width: 320px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    background-color: var(--color-primary);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    z-index: 1001;
-    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
-
-.nav-menu.active {
-    display: flex;
-    transform: translateX(0);
-}
-
-    .nav-menu > li > a {
-        border-radius: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    /* Стрелка подменю */
-    .submenu-toggle {
-        display: inline-block;
-        margin-left: auto;
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        opacity: 0.7;
-        transition: transform 0.3s ease;
-    }
-    
-    .nav-menu > li.has-submenu.open .submenu-toggle {
-        transform: rotate(180deg);
-    }
-
-    /* ИСПРАВЛЕННОЕ ПОДМЕНЮ */
-    .submenu {
-    position: static;
-    box-shadow: none;
-    border-radius: 0;
-    border-top: none;
-    border-left: 3px solid var(--color-danger);
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    background-color: rgba(0,0,0,0.15);
-    min-width: unset;
-    max-width: unset;
-    width: 100%;
-}
-
-.nav-menu > li.has-submenu.open .submenu {
-    max-height: 500px;
-    padding: 0.5rem 0;
-}
-
-    .nav-menu > li.has-submenu:hover .submenu {
-        max-height: 0;
-    }
-
-    .nav-menu > li.has-submenu.open .submenu {
-        max-height: 500px;
-        padding: 0.5rem 0;
-    }
-
-    .submenu a {
-        color: var(--color-text-primary) !important;
-        background-color: white !important;
-        padding-left: 2rem;
-    }
-    
-    .submenu a:hover {
-        background-color: var(--color-surface) !important;
-        color: var(--color-primary) !important;
-        padding-left: 2.5rem;
-    }
-
-    .page-title {
-        font-size: 1.8rem;
-        margin-top: 1.5rem;
-    }
-
-    .page-subtitle {
-        font-size: 1rem;
-    }
-
-    main {
-        padding: 0 1rem 2rem 1rem;
-    }
-/* Горизонтальная ориентация телефона */
-@media (max-width: 900px) and (orientation: landscape) {
-    .mobile-menu-toggle {
-        display: block;
-    }
+    .mobile-menu-toggle { display: block; }
 
     .nav-menu {
         display: none;
         flex-direction: column;
-        width: 55%;
+        width: 72%;
         max-width: 320px;
         position: fixed;
         top: 0;
@@ -714,17 +605,13 @@
         transform: translateX(100%);
         transition: transform 0.3s ease;
     }
-
     .nav-menu.active {
         display: flex;
         transform: translateX(0);
     }
-
     .nav-menu > li > a {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+        border-radius: 0;
     }
-
     .submenu {
         position: static;
         box-shadow: none;
@@ -743,88 +630,95 @@
         max-width: unset;
         width: 100%;
     }
-
     .nav-menu > li.has-submenu.open .submenu {
         max-height: 500px;
         padding: 0.5rem 0;
     }
-
-    /* Навигация вкладок */
-    .tabs-nav {
-        flex-direction: column;
-        gap: 0.5rem;
+    .nav-menu > li.has-submenu:hover .submenu { max-height: 0; }
+    .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
+        padding-left: 2rem;
+    }
+    .submenu a:hover {
+        background-color: var(--color-surface) !important;
+        color: var(--color-primary) !important;
+        padding-left: 2.5rem;
     }
 
-    .tab-button {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
-    }
+    /* Контент */
+    .page-title { font-size: 1.8rem; margin-top: 1.5rem; }
+    .page-subtitle { font-size: 1rem; }
+    main { padding: 0 1rem 2rem 1rem; }
+    .tabs-nav { flex-direction: column; gap: 0.5rem; }
+    .tab-button { width: 100%; font-size: 0.9rem; padding: 0.6rem 1rem; }
+    .chart-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .canvas-wrapper { height: 280px; }
+    .chart-container { padding: 1rem; }
+    .chart-title { font-size: 1.3rem; }
+    .chart-item { padding: 0.75rem; }
+    .chart-item h3 { font-size: 1.1rem; }
+    .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .conclusions { padding: 1.5rem; }
+    .conclusions h2 { font-size: 1.3rem; }
+    #qrFloatingButton { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+    .footer-bottom { font-size: 0.75rem; padding: 1rem; }
+    .footer-bottom p { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
+    .footer-bottom br { display: none; }
+}
 
-    /* Графики */
-    .chart-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .canvas-wrapper {
-        height: 300px;
-    }
-
-    .chart-container {
-        padding: 1rem;
-    }
-
-    .chart-title {
-        font-size: 1.3rem;
-    }
-
-    .chart-item h3 {
-        font-size: 1.1rem;
-    }
-
-    /* Статистика */
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    /* Выводы */
-    .conclusions {
-        padding: 1.5rem;
-    }
-
-    .conclusions h2 {
-        font-size: 1.3rem;
-    }
-
-    /* QR-кнопка */
-    #qrFloatingButton {
-        width: 55px;
-        height: 55px;
-        bottom: 20px;
-        right: 20px;
-    }
-
-    #qrFloatingButton span {
-        font-size: 1.8rem;
-    }
-
-    /* Футер */
-    .footer-bottom {
-        font-size: 0.75rem;
-        padding: 1rem;
-    }
-    
-    .footer-bottom p {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    .footer-bottom br {
+/* Адаптивность — ландшафт */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle { display: block; }
+    .nav-menu {
         display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
     }
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+    .nav-menu > li > a { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+    .nav-menu > li.has-submenu.open .submenu { max-height: 500px; padding: 0.5rem 0; }
+    .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
+        padding-left: 2rem;
+    }
+    .chart-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .canvas-wrapper { height: 220px; }
 }
     </style>
 </head>
@@ -1652,6 +1546,54 @@
     menu.style.overflowY = 'auto';
     menu.style.webkitOverflowScrolling = 'touch';
 }
+
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    }
+}
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 300);
+});
+
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) updateMenuPosition();
+});
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    }
+});
         // ПЕРЕТАСКИВАНИЕ QR-КНОПКИ
         (function() {
             const button = document.getElementById('qrFloatingButton');
