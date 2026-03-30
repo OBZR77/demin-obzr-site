@@ -1635,79 +1635,23 @@
         });
 
         // Мобильное меню
-  function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const scrollY = window.scrollY;
-        updateMenuPosition();
-        menu.classList.toggle('active');
-        if (overlay) overlay.classList.toggle('active');
-        if (menu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.top = '-' + scrollY + 'px';
-        } else {
-            const savedScroll = parseInt(document.body.style.top || '0') * -1;
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            document.body.style.top = '';
-            window.scrollTo(0, savedScroll);
-        }
-        menu.style.overflowY = 'auto';
-        menu.style.webkitOverflowScrolling = 'touch';
+ function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    updateMenuPosition();
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        const savedScroll = parseInt(document.body.dataset.scrollY || '0');
+        window.scrollTo(0, savedScroll);
     }
-
-    function updateMenuPosition() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const headerTop = document.querySelector('.header-top');
-        if (!menu || !headerTop) return;
-        const headerHeight = headerTop.getBoundingClientRect().height;
-        menu.style.top = headerHeight + 'px';
-        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        menu.style.overflowY = 'auto';
-        if (overlay) {
-            overlay.style.top = headerHeight + 'px';
-            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        }
-    }
-
-    window.addEventListener('orientationchange', function() {
-        setTimeout(function() {
-            const menu = document.getElementById('navMenu');
-            if (menu && menu.classList.contains('active')) updateMenuPosition();
-        }, 300);
-    });
-
-    window.addEventListener('resize', function() {
-        const menu = document.getElementById('navMenu');
-        if (menu && menu.classList.contains('active')) updateMenuPosition();
-    });
-
-    function handleSubmenuClick(event, element) {
-        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
-            const parentLi = element.parentElement;
-            if (parentLi.classList.contains('open')) return true;
-            event.preventDefault();
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                if (item !== parentLi) item.classList.remove('open');
-            });
-            parentLi.classList.toggle('open');
-            return false;
-        }
-        return true;
-    }
-
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                item.classList.remove('open');
-            });
-        }
-    });
-
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
+}
         // ПЕРЕТАСКИВАНИЕ QR-КНОПКИ
         (function() {
             const button = document.getElementById('qrFloatingButton');
