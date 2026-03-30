@@ -451,7 +451,20 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
-        
+         .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
         /* ============================================
            АДАПТИВНОСТЬ
            ============================================ */
@@ -461,16 +474,29 @@
                 display: block;
             }
             
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--color-primary);
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
+          .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
             
             .nav-menu > li {
                 width: 100%;
@@ -479,27 +505,30 @@
             .nav-menu > li > a {
                 padding: 0.75rem 1rem;
             }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-                background-color: white !important;
-            }
-            
-            .submenu li {
-                background-color: white !important;
-            }
-            
+             .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+     
             .nav-menu > li.has-submenu.open .submenu {
                 max-height: 500px;
                 padding: 0.5rem 0;
@@ -534,6 +563,66 @@
                 height: 200px;
             }
         }
+
+    /* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}    
  /* ========================================== */
     /* СТИЛИ ДЛЯ СЛАЙДЕРА */
     /* ========================================== */
@@ -670,92 +759,108 @@
         <nav>
             <div class="nav-container">
                 <ul class="nav-menu" id="navMenu">
-                    <!-- МЕНЮ - скопируйте из основного шаблона -->
+    <li class="has-submenu">
+        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+        <ul class="submenu">
+            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+            <li><a href="novosti.html">Последние новости</a></li>
+        </ul>
+    </li>
                     <li class="has-submenu">
-                        <a href="index.html">Главная</a>
-                        <ul class="submenu">
-                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
-                            <li><a href="novosti.html">Последние новости</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="about.html" class="active">О себе</a>
+                      <a href="about.html" class="active" onclick="return handleSubmenuClick(event, this)">О себе</a>
                         <ul class="submenu">
                             <li><a href="obrazovanie.html" class="active">Образование</a></li>
                             <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
                             <li><a href="nagrady.html" style="font-weight: 700; color: var(--color-primary);">Награды и достижения</a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu">
-                        <a href="portfolio.html">Портфолио</a>
-                        <ul class="submenu">
-                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР</a></li>
-                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
-                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
-                            <li><a href="documents.html">Документы портфолио</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="metodika.html">Методика</a>
-                        <ul class="submenu">
-                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
-                            <li><a href="konspekty-urokov.html">Конспекты уроков</a></li>
-                            <li><a href="prezentacii-testy.html">Презентации и тесты</a></li>
-                            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="ai-projects.html">ИИ в образовании</a>
-                        <ul class="submenu">
-                            <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
-                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
-                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
-                            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ вобразовании</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="vneurochnaya.html">Активности</a>
-                        <ul class="submenu">
-                            <li><a href="yunarmiya.html">Юнармия</a></li>
-                            <li><a href="yuid.html">ЮИД</a></li>
-                            <li><a href="zarnica.html">Зарница 2.0</a></li>
-                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
-                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
-                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="parents.html">Родителям</a>
-                        <ul class="submenu">
-                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
-                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
-                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
-                            <li><a href="feedback.html">Обратная связь</a></li>
-                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="contacts.html">Контакты</a>
-                        <ul class="submenu">
-                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
-                            <li><a href="contacts.html#about-school">О школе</a></li>
-                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
-                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
-                        </ul>
-                    </li>
+                  <li class="has-submenu">
+        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+        <ul class="submenu">
+            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР</a></li>
+            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+            <li><a href="documents.html">Документы портфолио</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+        <ul class="submenu">
+            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+            <li><a href="konspekty-urokov.html">Конспекты уроков</a></li>
+            <li><a href="prezentacii-testy.html">Презентации и тесты</a></li>
+            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+        <ul class="submenu">
+            <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
+            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
+            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+        <ul class="submenu">
+            <li><a href="yunarmiya.html">Юнармия</a></li>
+            <li><a href="yuid.html">ЮИД</a></li>
+            <li><a href="zarnica.html">Зарница 2.0</a></li>
+            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
+            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+        <ul class="submenu">
+            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+        <ul class="submenu">
+            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+            <li><a href="contacts.html#about-school">О школе</a></li>
+            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+        <ul class="submenu">
+            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li>
+        </ul>
+    </li>
+</ul>
+Как применить: найдите в файле obrazovanie.html открывающий тег <ul class="nav-menu" id="navMenu"> и замените весь блок до закрывающего </ul> на код выше.
+После этого подменю будут корректно раскрываться при нажатии на мобильном — и в портретной, и в горизонтальной ориентации.Но на десктопе у меня подменю на этой странице есть. Эти изменения не затронут версию для ПК, не сломают меню в десктопе?8:24 PMОтличный вопрос! Нет, не сломают. Вот почему:
+Функция handleSubmenuClick написана так, что проверяет ширину экрана перед тем, как что-то делать:
+javascriptfunction handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        // Только здесь блокируется переход и открывается подменю
+        event.preventDefault();
+        ...
+        return false;
+    }
+    return true; // На десктопе — просто переходит по ссылке как обычно
+}
+То есть логика такая:
 
-                     <li class="has-submenu">
-                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
-                        <ul class="submenu">   
-                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
-                        </ul>  
-                    </li>
-                </ul>
+Мобильный (ширина ≤ 1024px или высота ≤ 500px) → функция перехватывает клик, открывает подменю, переход по ссылке блокируется
+Десктоп (ширина > 1024px) → функция возвращает true и браузер выполняет обычный переход по ссылке. Подменю на десктопе открывается через CSS :hover, и onclick в этом вообще не участвует.
+
+Так что добавление onclick="return handleSubmenuClick(event, this)" — это безопасное изменение, которое на десктопе абсолютно незаметно. Смело применяйте! 
             </div>
         </nav>
     </header>
-
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
         <!-- ============================================
              ЗАГОЛОВОК СТРАНИЦЫ (измените текст)
@@ -872,29 +977,78 @@
 
     <script>
         // Мобильное меню
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+      function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const scrollY = window.scrollY;
+        updateMenuPosition();
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = '-' + scrollY + 'px';
+        } else {
+            const savedScroll = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
         }
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
 
-        function handleSubmenuClick(event, element) {
-            if (window.innerWidth <= 768) {
-                const parentLi = element.parentElement;
-                const isOpen = parentLi.classList.contains('open');
-                if (isOpen) {
-                    return true;
-                }
-                event.preventDefault();
-                document.querySelectorAll('.has-submenu.open').forEach(item => {
-                    if (item !== parentLi) {
-                        item.classList.remove('open');
-                    }
-                });
-                parentLi.classList.add('open');
-                return false;
-            }
-            return true;
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        const headerHeight = headerTop.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
         }
+    }
 
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) updateMenuPosition();
+        }, 300);
+    });
+
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    });
+
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) return true;
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    }); 
         // LIGHTBOX для фотографий
         function openLightbox(imageSrc, caption) {
             document.getElementById('lightbox-image').src = imageSrc;
