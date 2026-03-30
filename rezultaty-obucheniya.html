@@ -712,14 +712,26 @@
         width: 100%;
     }
     .nav-menu > li.has-submenu.open .submenu { max-height: 500px; padding: 0.5rem 0; }
-    .submenu a {
-        color: var(--color-text-primary) !important;
-        background-color: white !important;
+ .submenu a {
+        color: white !important;
+        background-color: transparent !important;
         padding-left: 2rem;
     }
+    .submenu a:hover {
+        background-color: rgba(255,255,255,0.15) !important;
+        color: white !important;
+        padding-left: 2.5rem;
+    } 
     .chart-grid { grid-template-columns: 1fr; gap: 1rem; }
     .canvas-wrapper { height: 220px; }
 }
+ canvas {
+        max-width: 100% !important;
+    }
+    .chart-item {
+        min-width: 0;
+        overflow: hidden;
+    }        
     </style>
 </head>
 <body>
@@ -1573,6 +1585,16 @@ window.addEventListener('resize', function() {
     if (menu && menu.classList.contains('active')) updateMenuPosition();
 });
 
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        if (quality2024Chart) quality2024Chart.resize();
+        if (quality2025Chart) quality2025Chart.resize();
+        if (grades2024Chart) grades2024Chart.resize();
+        if (grades2025Chart) grades2025Chart.resize();
+        if (comparisonChart) comparisonChart.resize();
+    }, 400);
+});
+
 function handleSubmenuClick(event, element) {
     if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
         const parentLi = element.parentElement;
@@ -1826,7 +1848,7 @@ window.addEventListener('load', function() {
                                border-radius: 6px;
                                cursor: pointer;
                                font-size: 0.9rem;">
-                    ✕
+                
                 </button>
             </div>
         </div>
