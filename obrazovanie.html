@@ -449,23 +449,48 @@
         /* ============================================
            АДАПТИВНОСТЬ
            ============================================ */
-        
+        .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
             }
             
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--color-primary);
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
+             .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
             .nav-menu > li {
                 width: 100%;
             }
@@ -473,27 +498,30 @@
             .nav-menu > li > a {
                 padding: 0.75rem 1rem;
             }
-            
-            .submenu {
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                border-top: none;
-                border-left: 3px solid var(--color-danger);
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                transition: max-height 0.3s ease, padding 0.3s ease;
-                background-color: white !important;
-            }
-            
-            .submenu li {
-                background-color: white !important;
-            }
-            
+             .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+           
             .nav-menu > li.has-submenu.open .submenu {
                 max-height: 500px;
                 padding: 0.5rem 0;
@@ -528,6 +556,66 @@
                 height: 200px;
             }
         }
+/* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}
+        
  /* ========================================== */
     /* СТИЛИ ДЛЯ СЛАЙДЕРА */
     /* ========================================== */
@@ -749,7 +837,7 @@
             </div>
         </nav>
     </header>
-
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
         <!-- ============================================
              ЗАГОЛОВОК СТРАНИЦЫ (измените текст)
@@ -873,28 +961,78 @@
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Мобильное меню
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
+      function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const scrollY = window.scrollY;
+        updateMenuPosition();
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = '-' + scrollY + 'px';
+        } else {
+            const savedScroll = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
         }
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
 
-        function handleSubmenuClick(event, element) {
-            if (window.innerWidth <= 768) {
-                const parentLi = element.parentElement;
-                const isOpen = parentLi.classList.contains('open');
-                if (isOpen) {
-                    return true;
-                }
-                event.preventDefault();
-                document.querySelectorAll('.has-submenu.open').forEach(item => {
-                    if (item !== parentLi) {
-                        item.classList.remove('open');
-                    }
-                });
-                parentLi.classList.add('open');
-                return false;
-            }
-            return true;
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        const headerHeight = headerTop.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
         }
+    }
+
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) updateMenuPosition();
+        }, 300);
+    });
+
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    });
+
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) return true;
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    });
 
         // LIGHTBOX для фотографий
         function openLightbox(imageSrc, caption) {
