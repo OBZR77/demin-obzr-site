@@ -1032,15 +1032,15 @@
         padding: 0.5rem 0;
     }
 
-    .submenu a {
-        color: var(--color-text-primary);
-        background-color: white;
+   .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
         padding-left: 2rem;
     }
     
     .submenu a:hover {
-        background-color: var(--color-surface);
-        color: var(--color-primary);
+        background-color: var(--color-surface) !important;
+        color: var(--color-primary) !important;
         padding-left: 2.5rem;
     }
 
@@ -2184,11 +2184,9 @@
             <iframe class="lightbox-iframe" id="lightboxIframe" src=""></iframe>
         </div>
     </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js">
-<script src="landscape-fix.js"></script>    
-    </script>
-    
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="landscape-fix.js"></script>
+ 
     <script>
         // Lightbox для эмблемы
         function openLightbox() {
@@ -2213,22 +2211,71 @@
         }
 
         // Мобильное меню
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    updateMenuPosition();
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        const savedScroll = parseInt(document.body.dataset.scrollY || '0');
+        window.scrollTo(0, savedScroll);
+    }
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
+}
 
-     function handleSubmenuClick(event, element) {
-    if (window.innerWidth <= 768) {
-        // Проверяем, кликнули ли по стрелке
-        if (event.target.classList.contains('submenu-toggle')) {
-            event.preventDefault();
-            event.stopPropagation();
-            const parent = element.parentElement;
-            parent.classList.toggle('open');
-            return false;
-        }
-        // Если клик НЕ по стрелке — разрешаем переход
-        return true;
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    }
+}
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
     }
     return true;
-} 
+}
+
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    }
+});
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 300);
+});
+
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) updateMenuPosition();
+});
 
         // Аккордеон
         function toggleAccordion(header) {
