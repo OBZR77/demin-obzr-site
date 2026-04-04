@@ -622,6 +622,13 @@ nav {
     .grade-table td {
         padding: 0.75rem 0.5rem;
     }
+    .criteria-content {
+        overflow-x: auto;
+    }
+    
+    .grade-table {
+        min-width: 500px;
+    }        
 }  
    /* Горизонтальная ориентация телефона */
 @media (max-width: 900px) and (orientation: landscape) {
@@ -819,11 +826,15 @@ nav {
     padding: 0.5rem 0;
 }
 
-    .submenu a {
+ .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
         padding-left: 2rem;
     }
 
     .submenu a:hover {
+        background-color: var(--color-surface) !important;
+        color: var(--color-primary) !important;
         padding-left: 2.5rem;
     }
 }
