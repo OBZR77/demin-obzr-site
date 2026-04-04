@@ -440,15 +440,21 @@ nav {
             }
         }
 
-      @media (max-width: 900px) and (orientation: landscape) {
+    @media (max-width: 900px) and (orientation: landscape) {
     .accordion-header {
-        padding-left: 5rem;
+        padding-left: 2rem;
+        padding-right: 3rem;
     }
     
     .accordion-header::before {
-        left: 2rem;
+        display: none;
     }
-}  
+    
+    .accordion-header::after {
+        position: absolute;
+        right: 1rem;
+    }
+}
     </style>
 </head>
 <body>
