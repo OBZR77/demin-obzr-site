@@ -270,7 +270,17 @@
     max-height: 500px;
     padding: 0.5rem 0;
 }
-            .submenu a { padding-left: 2rem; }
+            .submenu a {
+                color: var(--color-text-primary) !important;
+                background-color: white !important;
+                padding-left: 2rem;
+            }
+
+            .submenu a:hover {
+                background-color: var(--color-surface) !important;
+                color: var(--color-primary) !important;
+                padding-left: 2.5rem;
+            }
             .contact-cards-grid { grid-template-columns: 1fr; }
             .when-grid { grid-template-columns: 1fr; }
             .schedule-table th, .schedule-table td { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
