@@ -338,7 +338,7 @@ nav {
         .mobile-menu-toggle { 
         display: block; }
 
-  .nav-menu 
+  .nav-menu {  
     display: none;
     flex-direction: column;
     width: 72%;
@@ -439,6 +439,16 @@ nav {
                 grid-template-columns: 1fr;
             }
         }
+
+      @media (max-width: 900px) and (orientation: landscape) {
+    .accordion-header {
+        padding-left: 5rem;
+    }
+    
+    .accordion-header::before {
+        left: 2rem;
+    }
+}  
     </style>
 </head>
 <body>
@@ -624,13 +634,17 @@ nav {
     max-height: 500px;
     padding: 0.5rem 0;
 }
-    .submenu a {
+ .submenu a {
+        color: var(--color-text-primary) !important;
+        background-color: white !important;
         padding-left: 2rem;
     }
 
     .submenu a:hover {
+        background-color: var(--color-surface) !important;
+        color: var(--color-primary) !important;
         padding-left: 2.5rem;
-    }
+    } 
 }
 /* Горизонтальная ориентация телефона */
 @media (max-width: 900px) and (orientation: landscape) {
@@ -1319,21 +1333,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Мобильное меню
-function toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    menu.classList.toggle('active');
-}
-
-function handleSubmenuClick(event, element) {
-    if (window.innerWidth <= 768) {
-        event.preventDefault();
-        const parent = element.parentElement;
-        parent.classList.toggle('open');
-        return false;
-    }
-    return true;
-}
 // ============================================
 // QR-КНОПКА: перетаскивание + модальное окно
 // ============================================
