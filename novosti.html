@@ -260,28 +260,306 @@
             box-shadow: 0 8px 24px rgba(0, 61, 122, 0.2);
         }
 
-        .news-card-image {
-            width: 280px;
-            min-height: 200px;
-            background: var(--color-surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
+/* ============================================
+   СЛАЙДЕР ФОТОГРАФИЙ В КАРТОЧКЕ НОВОСТИ
+   ============================================ */
 
-        .news-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.news-card-image {
+    width: 280px;
+    min-height: 200px;
+    background: var(--color-surface);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
 
-        .news-card-placeholder {
-            font-size: 4rem;
-            opacity: 0.3;
-        }
+/* Если нет фото — показываем иконку по-старому */
+.news-card-placeholder {
+    font-size: 4rem;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+}
 
+/* Обёртка слайдера */
+.news-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+/* Лента слайдов */
+.news-slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* Один слайд */
+.news-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+/* Кнопки prev/next */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 61, 122, 0.75);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.news-card-image:hover .slider-btn,
+.news-card-image:focus-within .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn:hover {
+    background: var(--color-danger);
+}
+
+.slider-btn-prev { left: 6px; }
+.slider-btn-next { right: 6px; }
+
+/* Счётчик фото */
+.slider-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    z-index: 10;
+    pointer-events: none;
+    font-weight: 600;
+}
+
+/* Точки-индикаторы */
+.slider-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    padding: 0;
+}
+
+.slider-dot.active {
+    background: white;
+    transform: scale(1.3);
+}
+
+/* Иконка увеличения */
+.slider-zoom-hint {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 61, 122, 0.7);
+    color: white;
+    border-radius: 6px;
+    padding: 3px 7px;
+    font-size: 0.75rem;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.news-card-image:hover .slider-zoom-hint {
+    opacity: 1;
+}
+
+/* ============================================
+   ЛАЙТБОКС ФОТОГАЛЕРЕИ
+   ============================================ */
+
+#photoLightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99998;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+}
+
+#photoLightbox.active {
+    display: flex;
+}
+
+.lightbox-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img-wrap {
+    max-width: 92vw;
+    max-height: 88vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img-wrap img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.7);
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    background: rgba(0,61,122,0.85);
+    color: white;
+    border: none;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    background: var(--color-danger);
+    transform: rotate(90deg);
+}
+
+.lightbox-btn {
+    position: fixed;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(0, 61, 122, 0.75);
+    color: white;
+    border: none;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lightbox-btn:hover { background: var(--color-danger); }
+.lightbox-btn-prev { left: 16px; }
+.lightbox-btn-next { right: 16px; }
+
+.lightbox-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    z-index: 99999;
+    background: rgba(0,0,0,0.45);
+    padding: 4px 14px;
+    border-radius: 12px;
+}
+
+.lightbox-title {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+    z-index: 99999;
+    background: rgba(0,0,0,0.45);
+    padding: 4px 14px;
+    border-radius: 12px;
+    max-width: 70vw;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Адаптив: на мобильном слайдер занимает всю ширину карточки */
+@media (max-width: 768px) {
+    .news-card-image {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .slider-btn { opacity: 1; }
+
+    .lightbox-btn {
+        width: 38px; height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .lightbox-btn-prev { left: 6px; }
+    .lightbox-btn-next { right: 6px; }
+}
+        
         .news-card-content {
             padding: 1.5rem;
             flex-grow: 1;
@@ -1007,9 +1285,33 @@
 
             <!-- Новость 1 -->
             <article class="news-card" data-category="achievement">
-                <div class="news-card-image">
-                    <span class="news-card-placeholder">🏆</span>
-                </div>
+              <div class="news-card-image">
+    <div class="news-slider">
+        <div class="news-slider-track">
+            <div class="news-slide">
+                <img src="images/news/zarnitza-2026-1.jpg" 
+                     alt="Дивизионный этап Зарницы 2.0 — команда Вымпел">
+            </div>
+            <div class="news-slide">
+                <img src="images/news/zarnitza-2026-2.jpg" 
+                     alt="Тактическая игра на местности">
+            </div>
+            <div class="news-slide">
+                <img src="images/news/zarnitza-2026-3.jpg" 
+                     alt="Состязание медиков">
+            </div>
+        </div>
+        <button class="slider-btn slider-btn-prev">‹</button>
+        <button class="slider-btn slider-btn-next">›</button>
+        <div class="slider-dots">
+            <button class="slider-dot active"></button>
+            <button class="slider-dot"></button>
+            <button class="slider-dot"></button>
+        </div>
+        <div class="slider-counter">1 / 3</div>
+        <div class="slider-zoom-hint">🔍 увеличить</div>
+    </div>
+</div>
                 <div class="news-card-content">
                     <div class="news-card-meta">
                         <span class="news-card-date">📅 19 апреля 2026</span>
@@ -2052,5 +2354,175 @@
         });
     </script>
    <script src="landscape-fix.js"></script> 
+   <!-- ============================================
+     ЛАЙТБОКС ФОТОГАЛЕРЕИ
+     ============================================ -->
+<div id="photoLightbox" onclick="lightboxOverlayClick(event)">
+    <div class="lightbox-inner">
+        <span id="lightboxTitle" class="lightbox-title"></span>
+        <button class="lightbox-close" onclick="closeLightbox()" title="Закрыть">×</button>
+        <button class="lightbox-btn lightbox-btn-prev" onclick="lightboxNav(-1)">‹</button>
+        <div class="lightbox-img-wrap">
+            <img id="lightboxImg" src="" alt="">
+        </div>
+        <button class="lightbox-btn lightbox-btn-next" onclick="lightboxNav(1)">›</button>
+        <div id="lightboxCounter" class="lightbox-counter"></div>
+    </div>
+</div>
+
+<script>
+/* ============================================
+   СЛАЙДЕР + ЛАЙТБОКС ФОТОГАЛЕРЕИ
+   ============================================ */
+
+// Глобальное состояние лайтбокса
+let lb = { images: [], index: 0, title: '' };
+
+// ---- Инициализация всех слайдеров на странице ----
+function initSliders() {
+    document.querySelectorAll('.news-slider').forEach(slider => {
+        const track = slider.querySelector('.news-slider-track');
+        const slides = slider.querySelectorAll('.news-slide');
+        const total = slides.length;
+        if (total === 0) return;
+
+        let current = 0;
+        let startX = 0;
+        let isDragging = false;
+        let startTranslate = 0;
+
+        // Обновить позицию ленты
+        function goTo(idx) {
+            current = (idx + total) % total;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            // Обновить точки
+            slider.querySelectorAll('.slider-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === current);
+            });
+            // Обновить счётчик
+            const counter = slider.querySelector('.slider-counter');
+            if (counter) counter.textContent = `${current + 1} / ${total}`;
+        }
+
+        // Кнопки
+        slider.querySelector('.slider-btn-prev')?.addEventListener('click', e => {
+            e.stopPropagation();
+            goTo(current - 1);
+        });
+        slider.querySelector('.slider-btn-next')?.addEventListener('click', e => {
+            e.stopPropagation();
+            goTo(current + 1);
+        });
+
+        // Точки
+        slider.querySelectorAll('.slider-dot').forEach((dot, i) => {
+            dot.addEventListener('click', e => {
+                e.stopPropagation();
+                goTo(i);
+            });
+        });
+
+        // Колесо мыши (десктоп)
+        slider.addEventListener('wheel', e => {
+            e.preventDefault();
+            if (e.deltaY > 0 || e.deltaX > 0) goTo(current + 1);
+            else goTo(current - 1);
+        }, { passive: false });
+
+        // Свайп (мобильный / тач)
+        slider.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', e => {
+            if (!isDragging) return;
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+                goTo(diff > 0 ? current + 1 : current - 1);
+            }
+            isDragging = false;
+        }, { passive: true });
+
+        // Клик → открыть лайтбокс на текущем фото
+        slider.addEventListener('click', () => {
+            const images = Array.from(slides).map(s => ({
+                src: s.querySelector('img')?.src || '',
+                alt: s.querySelector('img')?.alt || ''
+            })).filter(i => i.src);
+
+            const title = slider.closest('.news-card')
+                ?.querySelector('.news-card-title')?.textContent || '';
+
+            openLightbox(images, current, title);
+        });
+
+        // Инициализация
+        goTo(0);
+    });
+}
+
+// ---- Лайтбокс ----
+function openLightbox(images, startIndex, title) {
+    lb.images = images;
+    lb.index = startIndex;
+    lb.title = title;
+    renderLightbox();
+    document.getElementById('photoLightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lightboxTitle').textContent = title;
+}
+
+function renderLightbox() {
+    const img = document.getElementById('lightboxImg');
+    const counter = document.getElementById('lightboxCounter');
+    if (!lb.images.length) return;
+    img.src = lb.images[lb.index].src;
+    img.alt = lb.images[lb.index].alt || '';
+    counter.textContent = `${lb.index + 1} / ${lb.images.length}`;
+}
+
+function lightboxNav(dir) {
+    lb.index = (lb.index + dir + lb.images.length) % lb.images.length;
+    renderLightbox();
+}
+
+function closeLightbox() {
+    document.getElementById('photoLightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function lightboxOverlayClick(e) {
+    if (e.target === document.getElementById('photoLightbox')) closeLightbox();
+}
+
+// Колесо мыши в лайтбоксе
+document.getElementById('photoLightbox').addEventListener('wheel', e => {
+    e.preventDefault();
+    lightboxNav(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
+
+// Свайп в лайтбоксе
+let lbTouchX = 0;
+document.getElementById('photoLightbox').addEventListener('touchstart', e => {
+    lbTouchX = e.touches[0].clientX;
+}, { passive: true });
+document.getElementById('photoLightbox').addEventListener('touchend', e => {
+    const diff = lbTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) lightboxNav(diff > 0 ? 1 : -1);
+}, { passive: true });
+
+// Клавиатура
+document.addEventListener('keydown', e => {
+    const lb_el = document.getElementById('photoLightbox');
+    if (!lb_el.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'Escape') closeLightbox();
+});
+
+// Запуск
+document.addEventListener('DOMContentLoaded', initSliders);
+</script> 
 </body>
 </html>
