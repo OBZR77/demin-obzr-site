@@ -252,6 +252,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: row;
+            align-items: stretch; 
             border-left: 4px solid var(--color-primary);
         }
 
@@ -275,8 +276,9 @@
 }
 
 .news-card.expanded .news-card-image {
-    height: 100%;
-    min-height: 280px;
+    height: auto;
+    min-height: 100%;
+    align-self: stretch;
 }
 
 /* Если нет фото — показываем иконку по-старому */
