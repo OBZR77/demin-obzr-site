@@ -244,14 +244,14 @@
         /* ============================================
            ГАЛЕРЕЯ ФОТОГРАФИЙ
            ============================================ */
-        .gallery-grid {
+   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));  /* Шире карточки */
-    column-gap: 3rem;  /* Больше горизонтальный отступ */
-    row-gap: 2.5rem;   /* Больше вертикальный отступ */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    column-gap: 3rem;
+    row-gap: 2.5rem;
     margin-top: 2rem;
-}
-        
+    align-items: start;
+}  
         
         /* Карточка фотографии */
         .gallery-item {
@@ -629,11 +629,11 @@
    
 .gallery-slider {
     position: relative;
-    aspect-ratio: 16/9;  /* ← меньше высота, кнопки видны */
-    max-height: 400px;   /* ← ограничение по высоте */
+    aspect-ratio: 3/4;
     background: var(--color-surface);
     overflow: hidden;
     border-radius: 8px 8px 0 0;
+    cursor: pointer;
 }
     .slider-wrapper {
         width: 100%;
@@ -1045,13 +1045,62 @@
         }
     }); 
         // LIGHTBOX для фотографий
-        function openLightbox(imageSrc, caption) {
-            document.getElementById('lightbox-image').src = imageSrc;
-            document.getElementById('lightbox-caption').textContent = caption;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+let lightboxImages = [];
+let lightboxIndex = 0;
 
+function openLightbox(imageSrc, caption) {
+    // Находим слайдер из которого открыли
+    const activeSliders = document.querySelectorAll('.gallery-slider');
+    lightboxImages = [];
+    activeSliders.forEach(slider => {
+        const imgs = slider.querySelectorAll('.slider-image');
+        imgs.forEach(img => {
+            if (img.src === imageSrc) {
+                // Это наш слайдер — собираем все его фото
+                imgs.forEach(i => lightboxImages.push(i.src));
+                lightboxIndex = Array.from(imgs).findIndex(i => i.src === imageSrc);
+            }
+        });
+    });
+    if (lightboxImages.length === 0) {
+        lightboxImages = [imageSrc];
+        lightboxIndex = 0;
+    }
+
+    document.getElementById('lightbox-image').src = lightboxImages[lightboxIndex];
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    lightboxImages = [];
+}
+
+// Навигация в лайтбоксе
+function lightboxNav(dir) {
+    if (lightboxImages.length <= 1) return;
+    lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+    document.getElementById('lightbox-image').src = lightboxImages[lightboxIndex];
+}
+
+// Колесо мыши в лайтбоксе
+document.getElementById('lightbox').addEventListener('wheel', (e) => {
+    e.preventDefault();
+    lightboxNav(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
+
+// Свайп в лайтбоксе
+let lbTouchX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', (e) => {
+    lbTouchX = e.touches[0].clientX;
+}, { passive: true });
+document.getElementById('lightbox').addEventListener('touchend', (e) => {
+    const diff = lbTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) lightboxNav(diff > 0 ? 1 : -1);
+}, { passive: true });
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -1516,29 +1565,29 @@
     }
 
     // Свайп для мобильных
-    document.querySelectorAll('.gallery-slider').forEach(slider => {
-        let startX = 0;
-        
-        slider.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        
-        slider.addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > 50) {
-                const nextBtn = slider.querySelector('.slider-btn.next');
-                const prevBtn = slider.querySelector('.slider-btn.prev');
-                
-                if (diff > 0) {
-                    changeSlide(nextBtn, 1);
-                } else {
-                    changeSlide(prevBtn, -1);
-                }
-            }
-        });
-    }); 
+ document.querySelectorAll('.gallery-slider').forEach(slider => {
+    let startX = 0;
+
+    // Свайп на мобильных
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            const btn = slider.querySelector(diff > 0 ? '.slider-btn.next' : '.slider-btn.prev');
+            if (btn) changeSlide(btn, diff > 0 ? 1 : -1);
+        }
+    }, { passive: true });
+
+    // Колесо мыши на десктопе
+    slider.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const btn = slider.querySelector(e.deltaY > 0 ? '.slider-btn.next' : '.slider-btn.prev');
+        if (btn) changeSlide(btn, e.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
+});
 
 // ========================================
 // ФУНКЦИЯ ДЛЯ ЭМБЛЕМЫ
