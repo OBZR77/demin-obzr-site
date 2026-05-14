@@ -858,17 +858,30 @@
              Копируйте блок .gallery-item для добавления
              ============================================ -->
         <div class="gallery-grid">
-   
- <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/blagodarnost-gvardeets-2023.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/blagodarnost-gvardeets-2023.jpg" alt="Краткое описание">
-                </div>
-                <div class="gallery-item-content">
-                    <h3 class="gallery-item-title">Благодарственное письмо</h3>
-                    <p class="gallery-item-description">За активное участие в проведении военных сборов в УЦ "Гвардеец"</p>
-                    <p class="gallery-item-date">📅 2023 год</p>
-                </div>
-            </div>
+   <div class="gallery-item">
+    <div class="gallery-slider" onclick="openLightbox(this.querySelector('.slider-image.active').src, 'Благодарственные письма')">
+        <div class="slider-wrapper">
+            <img class="slider-image active" 
+                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2023.jpg" 
+                 alt="Благодарственное письмо 2023">
+            <img class="slider-image" 
+                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2026.jpg" 
+                 alt="Благодарственное письмо 2026">
+        </div>
+        <button class="slider-btn prev" onclick="event.stopPropagation(); changeSlide(this, -1)">‹</button>
+        <button class="slider-btn next" onclick="event.stopPropagation(); changeSlide(this, 1)">›</button>
+        <div class="slider-dots">
+            <span class="dot active" onclick="event.stopPropagation(); goToSlide(this, 0)"></span>
+            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 1)"></span>
+        </div>
+    </div>
+    <div class="gallery-item-content">
+        <h3 class="gallery-item-title">Благодарственные письма</h3>
+        <p class="gallery-item-description">За активное участие в проведении военных сборов в УЦ "Гвардеец"</p>
+        <p class="gallery-item-date">📅 2023, 2026 годы</p>
+    </div>
+</div>
+
 
  <div class="gallery-item">
                 <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/gramota-upravlenie-obrazovaniya.jpg', 'Описание для lightbox')">
@@ -1471,6 +1484,18 @@
     // ========================================
     // ФУНКЦИИ ДЛЯ СЛАЙДЕРА
     // ========================================
+    function goToSlide(dot, index) {
+    const slider = dot.closest('.gallery-slider');
+    const images = slider.querySelectorAll('.slider-image');
+    const dots = slider.querySelectorAll('.dot');
+    
+    images.forEach(img => img.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    
+    images[index].classList.add('active');
+    dots[index].classList.add('active');
+}
+    
     function changeSlide(button, direction) {
         const slider = button.closest('.gallery-slider');
         const images = slider.querySelectorAll('.slider-image');
