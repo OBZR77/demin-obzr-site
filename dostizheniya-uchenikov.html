@@ -1971,6 +1971,29 @@ function navigateLightbox(direction) {
     
     showLightboxImage(newIndex);
 }
+// Свайп в lightbox для мобильных
+(function() {
+    const lb = document.getElementById('lightbox');
+    let lbTouchStartX = 0;
+    let lbTouchStartY = 0;
+
+    lb.addEventListener('touchstart', function(e) {
+        lbTouchStartX = e.touches[0].clientX;
+        lbTouchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    lb.addEventListener('touchend', function(e) {
+        if (!lb.classList.contains('active')) return;
+        const dx = lbTouchStartX - e.changedTouches[0].clientX;
+        const dy = lbTouchStartY - e.changedTouches[0].clientY;
+
+        // Реагируем только на горизонтальный свайп (чтобы не мешать вертикальной прокрутке)
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            navigateLightbox(dx > 0 ? 1 : -1);
+        }
+    }, { passive: true });
+})();
+    
 // Прокрутка колесиком в lightbox
 document.getElementById('lightbox').addEventListener('wheel', function(e) {
     if (!this.classList.contains('active')) return;
