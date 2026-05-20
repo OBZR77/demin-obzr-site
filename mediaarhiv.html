@@ -1121,7 +1121,7 @@
         <div class="media-gallery" id="mediaGallery">
           <!-- ФОТО 1: Учебные сборы -->
 <div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
-    <img src="images/gallery/sbory-2023-1.jpg" alt="Сборы в УЦ "Гвардеец" 2023 год">
+    <img src="images/gallery/sbory-2023-1.jpg" alt="Сборы в УЦ "Гвардеец" 2023 год" loading="lazy">
     <div class="media-item-overlay">
         📅 Декабрь 2023 • Учебно-полевые сборы в УЦ "Гвардеец"
     </div>
@@ -1129,17 +1129,19 @@
 
 <!-- ФОТО 2: Учебные сборы -->
 <div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
-   <img src="images/gallery/antey-2024-1.jpg" alt="Стрелковый клуб "Антей" 2024 год">
+   <img src="images/gallery/antey-2024-1.jpg" alt="Стрелковый клуб "Антей" 2024 год" loading="lazy">
     <div class="media-item-overlay">
         📅 Декабрь 2024 • Огневая подготовка в трелковом клубе "Антей"
     </div>
 </div>
 
 <!-- ВИДЕО 1: Учебные сборы -->
-<div class="media-item" data-type="video" data-event="sbory" onclick="openLightboxByElement(this)">
-   <video src="video/gallery/sbory-2023-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
-    <div class="media-item-overlay">
+   <div class="media-item" data-type="video" data-event="sbory">
+    <video src="video/gallery/sbory-2023-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg"></video>
+    <div class="media-video-badge" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;">▶ ВИДЕО</div>
+    <div class="media-item-overlay" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;"> 
         📅 Декабрь 2023 • Учебно-полевые сборы в УЦ "Гвардеец"
     </div>
 </div>
@@ -1400,14 +1402,18 @@
             });
         }
     });
- // ============================================
+
+// ============================================
 // МЕДИАГАЛЕРЕЯ И LIGHTBOX
 // ============================================
 let currentMediaIndex = 0;
 let visibleMediaItems = [];
 
+// Touch/swipe переменные
+let touchStartX = 0;
+let touchStartY = 0;
+
 function updateVisibleItems() {
-    // Получаем только видимые элементы
     visibleMediaItems = Array.from(document.querySelectorAll('.media-item')).filter(item => {
         return window.getComputedStyle(item).display !== 'none';
     });
@@ -1415,81 +1421,111 @@ function updateVisibleItems() {
 
 function openLightboxByElement(element) {
     updateVisibleItems();
-    
-    // Находим индекс кликнутого элемента среди ВИДИМЫХ элементов
     currentMediaIndex = visibleMediaItems.indexOf(element);
-    
-    if (currentMediaIndex === -1) {
-        console.error('Элемент не найден среди видимых');
-        return;
-    }
-    
+    if (currentMediaIndex === -1) return;
     showMedia(currentMediaIndex);
     document.getElementById('lightbox').classList.add('active');
     document.body.classList.add('modal-open');
 }
 
 function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
     document.body.classList.remove('modal-open');
-    
-    // Останавливаем видео при закрытии
+    // Останавливаем видео
     const video = document.querySelector('#lightboxContent video');
-    if (video) {
-        video.pause();
-    }
+    if (video) video.pause();
 }
 
 function showMedia(index) {
-    if (visibleMediaItems.length === 0) {
-        console.error('Нет видимых элементов');
-        return;
-    }
-    
+    if (visibleMediaItems.length === 0) return;
     const item = visibleMediaItems[index];
     const lightboxContent = document.getElementById('lightboxContent');
     const lightboxCounter = document.getElementById('lightboxCounter');
-    
     const mediaType = item.dataset.type;
-    const placeholder = item.querySelector('.media-placeholder');
-    const overlayText = item.querySelector('.media-item-overlay').textContent.trim();
-    
+    const overlayEl = item.querySelector('.media-item-overlay');
+    const overlayText = overlayEl ? overlayEl.textContent.trim() : '';
+
+    // Останавливаем предыдущее видео
+    const prevVideo = lightboxContent.querySelector('video');
+    if (prevVideo) prevVideo.pause();
+
     if (mediaType === 'photo') {
+        const img = item.querySelector('img');
+        const src = img ? img.src : '';
+        const alt = img ? img.alt : '';
         lightboxContent.innerHTML = `
-            <div style="text-align: center; color: white;">
-                <div style="font-size: 8rem; margin-bottom: 1rem;">${placeholder.textContent}</div>
-                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">${overlayText}</p>
-                <p style="font-size: 0.9rem; opacity: 0.7;">Placeholder: здесь будет реальное фото</p>
+            <div style="text-align:center;">
+                <img src="${src}" alt="${alt}"
+                     style="max-width:100%; max-height:85vh; border-radius:8px;
+                            box-shadow:0 20px 60px rgba(0,0,0,0.5); display:block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div style="display:none; color:white; padding:2rem; font-size:1.1rem;">
+                    ⚠️ Изображение не загружено
+                </div>
+                ${overlayText ? `<p style="color:rgba(255,255,255,0.8); margin-top:0.75rem; font-size:0.95rem;">${overlayText}</p>` : ''}
             </div>
         `;
     } else {
+        // Видео — открываем в лайтбоксе с нативными контролами
+        const videoEl = item.querySelector('video');
+        const src = videoEl ? videoEl.src : '';
+        const poster = videoEl ? videoEl.getAttribute('poster') : '';
         lightboxContent.innerHTML = `
-            <div style="text-align: center; color: white;">
-                <div style="font-size: 8rem; margin-bottom: 1rem;">${placeholder.textContent}</div>
-                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">${overlayText}</p>
-                <p style="font-size: 0.9rem; opacity: 0.7;">Placeholder: здесь будет реальное видео</p>
+            <div style="text-align:center; width:min(90vw, 960px);">
+                <video controls autoplay
+                       style="width:100%; max-height:80vh; border-radius:8px;
+                              box-shadow:0 20px 60px rgba(0,0,0,0.5); display:block;"
+                       ${poster ? `poster="${poster}"` : ''}>
+                    <source src="${src}">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                ${overlayText ? `<p style="color:rgba(255,255,255,0.8); margin-top:0.75rem; font-size:0.95rem;">${overlayText}</p>` : ''}
             </div>
         `;
     }
-    
-    // Обновляем счётчик
     lightboxCounter.textContent = `${index + 1} / ${visibleMediaItems.length}`;
 }
 
 function navigateMedia(direction) {
     if (visibleMediaItems.length === 0) return;
-    
-    currentMediaIndex += direction;
-    
-    // Зацикливаем навигацию
-    if (currentMediaIndex < 0) {
-        currentMediaIndex = visibleMediaItems.length - 1;
-    } else if (currentMediaIndex >= visibleMediaItems.length) {
-        currentMediaIndex = 0;
-    }
-    
+    // Останавливаем видео при переключении
+    const video = document.querySelector('#lightboxContent video');
+    if (video) video.pause();
+    currentMediaIndex = (currentMediaIndex + direction + visibleMediaItems.length) % visibleMediaItems.length;
     showMedia(currentMediaIndex);
-}    
+}
+
+// Навигация колесом мыши (десктоп)
+document.getElementById('lightbox').addEventListener('wheel', function(e) {
+    e.preventDefault();
+    navigateMedia(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
+
+// Свайп (мобильные)
+document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.getElementById('lightbox').addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    // Свайп только если горизонтальный (dx > 50px и больше вертикального)
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        navigateMedia(dx < 0 ? 1 : -1);
+    }
+}, { passive: true });
+
+// Клавиши Escape и стрелки
+document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') navigateMedia(1);
+    if (e.key === 'ArrowLeft') navigateMedia(-1);
+});
+
 // ============================================
 // ФИЛЬТРАЦИЯ
 // ============================================
@@ -1497,71 +1533,32 @@ let currentMediaTypeFilter = 'all';
 let currentEventFilter = 'all';
 
 function filterMediaType(type, button) {
-    console.log('filterMediaType вызвана:', type, button); // Отладка
-    
     currentMediaTypeFilter = type;
     applyFilters();
-    
-    // Убираем active у ВСЕХ кнопок в родительском контейнере
-    const allButtons = button.parentElement.querySelectorAll('.filter-btn');
-    allButtons.forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Добавляем active к нажатой кнопке
+    button.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
-    
-    console.log('Активная кнопка тип медиа:', button.textContent); // Отладка
 }
 
 function filterEvent(eventType, button) {
-    console.log('filterEvent вызвана:', eventType, button); // Отладка
-    
     currentEventFilter = eventType;
     applyFilters();
-    
-    // Убираем active у ВСЕХ кнопок в родительском контейнере
-    const allButtons = button.parentElement.querySelectorAll('.filter-btn');
-    console.log('Найдено кнопок в контейнере:', allButtons.length); // Отладка
-    
-    allButtons.forEach(btn => {
-        console.log('Убираем active у:', btn.textContent); // Отладка
-        btn.classList.remove('active');
-    });
-    
-    // Добавляем active к нажатой кнопке
+    button.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
-    
-    console.log('Активная кнопка события:', button.textContent); // Отладка
 }
 
 function applyFilters() {
     const items = document.querySelectorAll('.media-item');
     let visibleCount = 0;
-    
     items.forEach(item => {
         const matchesType = currentMediaTypeFilter === 'all' || item.dataset.type === currentMediaTypeFilter;
         const matchesEvent = currentEventFilter === 'all' || item.dataset.event === currentEventFilter;
-        
-        if (matchesType && matchesEvent) {
-            item.style.display = 'block';
-            visibleCount++;
-        } else {
-            item.style.display = 'none';
-        }
+        item.style.display = (matchesType && matchesEvent) ? 'block' : 'none';
+        if (matchesType && matchesEvent) visibleCount++;
     });
-    
-    // Показываем/скрываем пустое состояние
     const emptyState = document.getElementById('emptyState');
     const gallery = document.getElementById('mediaGallery');
-    
-    if (visibleCount === 0) {
-        emptyState.style.display = 'block';
-        gallery.style.display = 'none';
-    } else {
-        emptyState.style.display = 'none';
-        gallery.style.display = 'grid';
-    }
+    emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    gallery.style.display = visibleCount === 0 ? 'none' : 'grid';
 }
         
         // ============================================
