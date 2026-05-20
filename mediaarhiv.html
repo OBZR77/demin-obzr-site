@@ -1156,24 +1156,26 @@
 
 <!-- ФОТО 4: Зарница -->
 <div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
-    <img src="images/gallery/zarnica-2024-5.jpg" alt="Нижегородская зарница 2024 год"> 
+    <img src="images/gallery/zarnica-2024-5.jpg" alt="Нижегородская зарница 2024 год" loading="lazy"> 
     <div class="media-item-overlay">
         📅 Март 2024 • Нижегородская зарница - региональный этап
     </div>
 </div>
 
 <!-- ВИДЕО 2: Антей -->
-<div class="media-item" data-type="video" data-event="sbory" onclick="openLightboxByElement(this)">
-    <video src="video/gallery/antey-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
-    <div class="media-item-overlay">
+<div class="media-item" data-type="video" data-event="sbory">
+    <video src="video/gallery/antey-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg"></video>
+     <div class="media-video-badge" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;">▶ ВИДЕО</div>
+    <div class="media-item-overlay" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;"> 
         📅 Сентябрь 2025 • Стрелковый клуб "Антей"
     </div>
 </div>
 
 <!-- ФОТО 5: Экскурсия -->
 <div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
-  <img src="images/gallery/vch-kstovo-2024-1.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год">  
+  <img src="images/gallery/vch-kstovo-2024-1.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год" loading="lazy">  
     <div class="media-item-overlay">
         📅 Декабрь 2024 • Экскурсия в воинскую часть г.Кстово 
     </div>
@@ -1181,7 +1183,7 @@
 
 <!-- ФОТО 6: Экскурсия -->
 <div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
-  <img src="images/gallery/vch-kstovo-2024-2.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год">  
+  <img src="images/gallery/vch-kstovo-2024-2.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год" loading="lazy">  
     <div class="media-item-overlay">
         📅 Декабрь 2024 • Экскурсия в воинскую часть г.Кстово
     </div>
@@ -1189,7 +1191,7 @@
 
 <!-- ФОТО 7: Соревнования -->
 <div class="media-item" data-type="photo" data-event="competition" onclick="openLightboxByElement(this)">
-   <img src="images/gallery/sorevnovaniya-po-stryelbye-2024-1.jpg" alt="Соревнования по стрельбе 2024 год">   
+   <img src="images/gallery/sorevnovaniya-po-stryelbye-2024-1.jpg" alt="Соревнования по стрельбе 2024 год" loading="lazy">   
     <div class="media-item-overlay">
         📅 Февраль 2024 • Соревнования по стрельбе из электронного оружия
     </div>
@@ -1197,7 +1199,7 @@
 
 <!-- ФОТО 8: Юнармия -->
 <div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
-   <img src="images/gallery/yunarmiya-9-maya-2025-1.jpg" alt="Чествование ветерана 9 мая 2025 год">    
+   <img src="images/gallery/yunarmiya-9-maya-2025-1.jpg" alt="Чествование ветерана 9 мая 2025 год" loading="lazy">    
     <div class="media-item-overlay">
         📅 Май 2025 • Чествование ветерана в День Победы
     </div>
@@ -1205,7 +1207,7 @@
 
 <!-- ФОТО 9: Юнармия -->
 <div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
- <img src="images/gallery/yunarmiya-1-09-2025.jpg" alt="Вынос знамени 1 сентября 2025 год">    
+ <img src="images/gallery/yunarmiya-1-09-2025.jpg" alt="Вынос знамени 1 сентября 2025 год" loading="lazy">    
     <div class="media-item-overlay">
         📅 Сентябрь 2025 • Торжественный вынос знамени на линейке в "День знаний"
     </div>
@@ -1213,7 +1215,7 @@
             
 <!-- ФОТО 10: ЮИД -->
 <div class="media-item" data-type="photo" data-event="yuid" onclick="openLightboxByElement(this)">
- <img src="images/gallery/yuid-2024-1.jpg" alt="Профилактика ДТТ 2024 год">    
+ <img src="images/gallery/yuid-2024-1.jpg" alt="Профилактика ДТТ 2024 год" loading="lazy">    
     <div class="media-item-overlay">
         📅 Ноябрь 2024 • Профилактика дорожно-транспортного травматизма 
     </div>
@@ -1229,17 +1231,19 @@
 
  <!-- ФОТО 12: День призывника -->
 <div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
- <img src="images/gallery/urok-po-pb-2025-1.jpg" alt="Урок пожарной безопасности 2025 год">    
+ <img src="images/gallery/urok-po-pb-2025-1.jpg" alt="Урок пожарной безопасности 2025 год" loading="lazy">    
     <div class="media-item-overlay">
         📅 Октябрь 2025 • Урок пожарной безопасности 
     </div>
 </div>  
 
 <!-- ВИДЕО 3: Повышение квалификации в УЦ "Гвардеец" -->
-<div class="media-item" data-type="video" data-event="drugiye" onclick="openLightboxByElement(this)">
-    <video src="video/gallery/kursy-obzr-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
-    <div class="media-item-overlay">
+<div class="media-item" data-type="video" data-event="drugiye">
+    <video src="video/gallery/kursy-obzr-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg"></video>
+    <div class="media-video-badge" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;">▶ ВИДЕО</div>
+    <div class="media-item-overlay" onclick="openLightboxByElement(this.closest('.media-item'))" 
+         style="cursor:pointer;"> 
         📅 Сентябрь 2025 • Курсы повышения квалификации в УЦ "Гвардеец"
     </div>
 </div>   
