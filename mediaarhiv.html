@@ -1626,6 +1626,21 @@ function showMedia(index) {
     const lightboxContent = document.getElementById('lightboxContent');
     const lightboxCounter = document.getElementById('lightboxCounter');
     const mediaType = item.dataset.type;
+
+    // Если это VK-карточка — закрываем лайтбокс и прокручиваем к карточке
+    if (item.classList.contains('video-embed-item')) {
+        closeLightbox();
+        setTimeout(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Подсвечиваем карточку чтобы пользователь понял куда смотреть
+            item.style.boxShadow = '0 0 0 4px var(--color-danger), 0 8px 24px rgba(0,61,122,0.3)';
+            setTimeout(() => {
+                item.style.boxShadow = '';
+            }, 2000);
+        }, 300);
+        return;
+    }
+
     const overlayEl = item.querySelector('.media-item-overlay');
     const overlayText = overlayEl ? overlayEl.textContent.trim() : '';
 
@@ -1650,9 +1665,8 @@ function showMedia(index) {
             </div>
         `;
     } else {
-        // Видео — открываем в лайтбоксе с нативными контролами
         const videoEl = item.querySelector('video');
-        const src = videoEl ? videoEl.src : '';
+        const src = videoEl ? videoEl.querySelector('source')?.src || videoEl.src : '';
         const poster = videoEl ? videoEl.getAttribute('poster') : '';
         lightboxContent.innerHTML = `
             <div style="text-align:center; width:min(90vw, 960px);">
