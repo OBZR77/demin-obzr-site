@@ -328,7 +328,50 @@
             gap: 0.4rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
+/* Видео-карточки с iframe VK */
+.video-embed-item {
+    cursor: default;
+}
 
+.video-embed-item:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-embed-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-embed-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    z-index: 3;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.video-embed-item .media-video-badge {
+    z-index: 4;
+    pointer-events: none;
+}
+        
         .media-placeholder {
             width: 100%;
             height: 100%;
@@ -1131,16 +1174,7 @@
 <div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
    <img src="images/gallery/antey-2024-1.jpg" alt="Стрелковый клуб "Антей" 2024 год" loading="lazy">
     <div class="media-item-overlay">
-        📅 Декабрь 2024 • Огневая подготовка в трелковом клубе "Антей"
-    </div>
-</div>
-
-<!-- ВИДЕО 1: Учебные сборы -->
-<div class="media-item" data-type="video" data-event="sbory" onclick="openLightboxByElement(this)">
-   <video src="video/gallery/sbory-2023-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
-    <div class="media-item-overlay">
-        📅 Декабрь 2023 • Учебно-полевые сборы в УЦ "Гвардеец"
+        📅 Декабрь 2024 • Огневая подготовка в стрелковом клубе "Антей"
     </div>
 </div>
 
@@ -1157,15 +1191,6 @@
     <img src="images/gallery/zarnica-2024-5.jpg" alt="Нижегородская зарница 2024 год" loading="lazy"> 
     <div class="media-item-overlay">
         📅 Март 2024 • Нижегородская зарница - региональный этап
-    </div>
-</div>
-
-<!-- ВИДЕО 2: Антей -->
-<div class="media-item" data-type="video" data-event="sbory" onclick="openLightboxByElement(this)">
-    <video src="video/gallery/antey-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
-    <div class="media-item-overlay">
-        📅 Сентябрь 2025 • Стрелковый клуб "Антей"
     </div>
 </div>
 
@@ -1225,22 +1250,179 @@
     </div>
 </div> 
 
- <!-- ФОТО 12: День призывника -->
+ <!-- ФОТО 12: Урок пожарной безопасности -->
 <div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
  <img src="images/gallery/urok-po-pb-2025-1.jpg" alt="Урок пожарной безопасности 2025 год" loading="lazy">    
     <div class="media-item-overlay">
         📅 Октябрь 2025 • Урок пожарной безопасности 
     </div>
 </div>  
-<!-- ВИДЕО 3: Повышение квалификации в УЦ "Гвардеец" -->
-<div class="media-item" data-type="video" data-event="drugiye" onclick="openLightboxByElement(this)">
-    <video src="video/gallery/kursy-obzr-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
-    <div class="media-video-badge">▶ ВИДЕО</div>
+            <!-- ФОТО 13: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/antey-2025-1.jpg" alt="Стрелковый клуб "Антей" 2025 год" loading="lazy">
     <div class="media-item-overlay">
-        📅 Сентябрь 2025 • Курсы повышения квалификации в УЦ "Гвардеец"
+        📅 Сентябрь 2025 • Огневая подготовка в стрелковом клубе "Антей"
+    </div>
+</div>
+
+<!-- ФОТО 14: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/antey-2025-1.jpg" alt="Стрелковый клуб "Антей" 2025 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Учебные сборы в стрелковом клубе "Антей"
     </div>
 </div>   
 
+<!-- ФОТО 15: Экскурсия -->
+<div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
+  <img src="images/gallery/zveno-2024-2.jpg" alt="Экскурсия в Военное училище в г.Кстово 2025 год" loading="lazy">  
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Экскурсия в Военное училище в г.Кстово
+    </div>
+</div>
+
+ <!-- ФОТО 16: День призывника -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/dyen-prizyvnika-2025-2.jpg" alt="День призывника в РДК 2025 год">    
+    <div class="media-item-overlay">
+        📅 Октябрь 2025 • День призывника в РДК 
+    </div>
+</div>             
+         <!-- ФОТО 17: День призывника -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/kabinet-obzr-2025-1.jpg" alt="Аттестация кабинета ОБЗР  2025 год">    
+    <div class="media-item-overlay">
+        📅 Октябрь 2025 • Аттестация кабинета ОБЗР 
+    </div>
+</div>       
+
+        <!-- ФОТО 18: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-1.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+            
+       <!-- ФОТО 19: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-2.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+             <!-- ФОТО 20: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-3.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+           <!-- ФОТО 21: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-4.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>  
+            
+<!-- ФОТО 22: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-1.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Март 2026 • ВПИ Зарница 2.0 - муниципальный этап
+    </div>
+</div>
+          <!-- ФОТО 23: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-2.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Март 2026 • ВПИ Зарница 2.0 - муниципальный этап
+    </div>
+</div> 
+
+             <!-- ФОТО 24: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-3.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div> 
+
+             <!-- ФОТО 25: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-4.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div> 
+
+           <!-- ФОТО 26: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-5.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div>  
+
+            <!-- ФОТО 27: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/7-maya-2026-1.jpg" alt="Торжественный вынос знамени на митинге ко Дню Победы 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Торжественный вынос знамени на митинге ко Дню Победы
+    </div>
+</div>
+             <!-- ФОТО 28: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/7-maya-2026-2.jpg" alt="Участие в митинге ко Дню Победы 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Участие в митинге ко Дню Победы
+    </div>
+</div>
+           <!-- ФОТО 29: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-1.jpg" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+            <!-- ФОТО 30: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-2.jpg" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+             <!-- ФОТО 31: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-3.jpg" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+            
+<!-- ВИДЕО 1: Живая память о Победе (VK) -->
+<div class="media-item video-embed-item" data-type="video" data-event="yunarmiya">
+    <div class="video-embed-wrapper">
+        <iframe 
+            src="https://vk.com/video_ext.php?oid=-238911106&id=456239017&hd=2"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            loading="lazy">
+        </iframe>
+    </div>
+    <div class="media-video-badge">▶ ВИДЕО</div>
+    <div class="video-caption">📅 Май 2026 • Живая память о Победе!</div>
+</div>
+            
+            <!-- ФОТО 32: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/19-maya-2026-1.jpg" alt="Знаменная группа на День пионерии 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Знаменная группа на День пионерии
+    </div>
+</div>  
         </div>
 
         <!-- Пустое состояние (если нет результатов фильтрации) -->
@@ -1418,6 +1600,9 @@ function updateVisibleItems() {
 }
 
 function openLightboxByElement(element) {
+    // Видео с VK iframe — лайтбокс не нужен, плеер работает в карточке
+    if (element.classList.contains('video-embed-item')) return;
+    
     updateVisibleItems();
     currentMediaIndex = visibleMediaItems.indexOf(element);
     if (currentMediaIndex === -1) return;
