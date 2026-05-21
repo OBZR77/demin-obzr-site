@@ -2049,6 +2049,132 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 </script>
+
+    <!-- Плавающая кнопка ВКонтакте -->
+<div id="vkFloatingButton"
+     style="position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 65px;
+            height: 65px;
+            background: #0077FF;
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            touch-action: none;
+            user-select: none;
+            text-decoration: none;">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white" 
+         style="pointer-events: none; flex-shrink: 0;">
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+</div>
+
+<style>
+    #vkFloatingButton.dragging {
+        box-shadow: 0 10px 30px rgba(0, 119, 255, 0.7);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #vkFloatingButton:hover {
+            box-shadow: 0 8px 25px rgba(0, 119, 255, 0.6);
+        }
+    }
+    @media (max-width: 768px) {
+        #vkFloatingButton {
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            right: 90px;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('vkFloatingButton');
+    var VK_URL = 'https://vk.com/club238911106';
+    var isDragging = false;
+    var hasMoved = false;
+    var offsetX, offsetY, curX, curY, dragStartTime;
+    var STORAGE_KEY = 'vkButtonPosition';
+
+    function loadPos() {
+        var s = localStorage.getItem(STORAGE_KEY);
+        if (s) {
+            var p = JSON.parse(s);
+            btn.style.left = p.x + 'px';
+            btn.style.top = p.y + 'px';
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+        }
+    }
+
+    function startDrag(cx, cy) {
+        dragStartTime = Date.now();
+        hasMoved = false;
+        isDragging = true;
+        var r = btn.getBoundingClientRect();
+        offsetX = cx - r.left;
+        offsetY = cy - r.top;
+        btn.classList.add('dragging');
+    }
+
+    function moveDrag(cx, cy) {
+        hasMoved = true;
+        curX = Math.max(0, Math.min(cx - offsetX, window.innerWidth - btn.offsetWidth));
+        curY = Math.max(0, Math.min(cy - offsetY, window.innerHeight - btn.offsetHeight));
+        btn.style.left = curX + 'px';
+        btn.style.top = curY + 'px';
+        btn.style.right = 'auto';
+        btn.style.bottom = 'auto';
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        btn.classList.remove('dragging');
+        var elapsed = Date.now() - dragStartTime;
+        // Если не тащили или тащили меньше 150ms — считаем кликом → открываем ВК
+        if (!hasMoved || elapsed < 150) {
+            window.open(VK_URL, '_blank');
+        } else {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({x: curX, y: curY}));
+        }
+        isDragging = false;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+        startDrag(e.clientX, e.clientY);
+        e.preventDefault();
+    });
+    btn.addEventListener('touchstart', function(e) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.clientX, e.clientY); }
+    });
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive: false});
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // Восстанавливаем позицию при загрузке
+    window.addEventListener('load', function() {
+        loadPos();
+    });
+})();
+</script>
+    
 </body>
 
 </html>
