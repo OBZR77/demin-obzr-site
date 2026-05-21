@@ -1161,12 +1161,10 @@
 </div>
 
 <!-- ВИДЕО 2: Антей -->
-<div class="media-item" data-type="video" data-event="sbory">
-    <video src="video/gallery/antey-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg"></video>
-     <div class="media-video-badge" onclick="openLightboxByElement(this.closest('.media-item'))" 
-         style="cursor:pointer;">▶ ВИДЕО</div>
-    <div class="media-item-overlay" onclick="openLightboxByElement(this.closest('.media-item'))" 
-         style="cursor:pointer;"> 
+<div class="media-item" data-type="video" data-event="sbory" onclick="openLightboxByElement(this)">
+    <video src="video/gallery/antey-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
+    <div class="media-video-badge">▶ ВИДЕО</div>
+    <div class="media-item-overlay">
         📅 Сентябрь 2025 • Стрелковый клуб "Антей"
     </div>
 </div>
@@ -1234,17 +1232,15 @@
         📅 Октябрь 2025 • Урок пожарной безопасности 
     </div>
 </div>  
-
 <!-- ВИДЕО 3: Повышение квалификации в УЦ "Гвардеец" -->
-<div class="media-item" data-type="video" data-event="drugiye">
-    <video src="video/gallery/kursy-obzr-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg"></video>
-    <div class="media-video-badge" onclick="openLightboxByElement(this.closest('.media-item'))" 
-         style="cursor:pointer;">▶ ВИДЕО</div>
-    <div class="media-item-overlay" onclick="openLightboxByElement(this.closest('.media-item'))" 
-         style="cursor:pointer;"> 
+<div class="media-item" data-type="video" data-event="drugiye" onclick="openLightboxByElement(this)">
+    <video src="video/gallery/kursy-obzr-2025-1.mp4" poster="images/gallery/sbory-2023-1-thumbnail.jpg" controls></video>
+    <div class="media-video-badge">▶ ВИДЕО</div>
+    <div class="media-item-overlay">
         📅 Сентябрь 2025 • Курсы повышения квалификации в УЦ "Гвардеец"
     </div>
 </div>   
+
         </div>
 
         <!-- Пустое состояние (если нет результатов фильтрации) -->
