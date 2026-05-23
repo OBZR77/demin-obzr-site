@@ -1713,8 +1713,2512 @@
         <!-- ФОТОГАЛЕРЕЯ -->
         <div class="gallery-section">
             <h3 class="section-title">📸 Фотогалерея Зарницы 2.0</h3>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
 
-            <div class="gallery-grid" id="galleryGrid">
+    ym(106461008, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landscape-fix.css">
+    <meta name="description" content="Зарница 2.0 — военно-спортивная игра. МБОУ СШ № 2 г. Лысково">
+    <title>Зарница 2.0 | Дёмин А.Ю.</title>
+    <!-- Фавиконки для всех устройств -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-zarnitsa-main: #FF6B35;      /* Зарница - оранжево-красный */
+            --color-zarnitsa-dark: #E85A2B;      /* Зарница - тёмный оранжево-красный */
+            --color-zarnitsa-accent: #FF6B35;    /* Акцент - тот же цвет */
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-warning: #FFA500;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            overflow-x: hidden;
+        }
+        
+        /* HEADER */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-zarnitsa-main);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            border-top: 3px solid var(--color-zarnitsa-accent);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-zarnitsa-accent);
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-top: 2.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-zarnitsa-accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        /* HERO БЛОК */
+        .hero-section {
+            background: linear-gradient(135deg, var(--color-zarnitsa-main) 0%, var(--color-zarnitsa-dark) 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* О ЗАРНИЦЕ */
+        .about-movement {
+            margin-bottom: 3rem;
+        }
+
+        .about-movement-title {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-zarnitsa-accent);
+            font-weight: 700;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-left: 4px solid var(--color-zarnitsa-main);
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
+            transform: translateY(-5px);
+            border-left-color: var(--color-zarnitsa-dark);
+        }
+
+        .about-card h3 {
+            color: var(--color-zarnitsa-main);
+            font-size: 1.3rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-card li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .about-card li::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            font-size: 1.2rem;
+        }
+
+        .about-card li strong {
+            color: var(--color-text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* НАПРАВЛЕНИЯ ПОДГОТОВКИ */
+        .training-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-zarnitsa-accent);
+            font-weight: 700;
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .training-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-zarnitsa-main) 0%, var(--color-zarnitsa-dark) 100%);
+        }
+
+        .training-card:hover {
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+            transform: translateY(-8px);
+            border-color: var(--color-zarnitsa-main);
+        }
+
+        .training-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .training-card h4 {
+            font-size: 1.25rem;
+            color: var(--color-zarnitsa-main);
+            margin-bottom: 1rem;
+        }
+
+        .training-card p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ТАБЛИЦА ЭТАПОВ И РЕЗУЛЬТАТОВ */
+        .events-section {
+            margin-bottom: 3rem;
+        }
+
+        .events-table-container {
+            overflow-x: auto;
+        }
+
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .events-table thead {
+            background: linear-gradient(135deg, var(--color-zarnitsa-main) 0%, var(--color-zarnitsa-dark) 100%);
+            color: white;
+        }
+
+        .events-table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .events-table td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .events-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .events-table tbody tr:hover {
+            background-color: #FFE8DC;
+        }
+
+        .events-table tbody tr:nth-child(even) {
+            background-color: var(--color-surface);
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .result-badge.first {
+            background-color: #FFD700;
+            color: #1a1a1a;
+        }
+
+        .result-badge.second {
+            background-color: #C0C0C0;
+            color: #1a1a1a;
+        }
+
+        .result-badge.third {
+            background-color: #CD7F32;
+            color: white;
+        }
+
+        .result-badge.participation {
+            background-color: #90CAF9;
+            color: #1a1a1a;
+        }
+
+        /* ФОТОГАЛЕРЕЯ */
+        .gallery-section {
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            display: none;
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #FFE8DC 0%, #FFD4C4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image::after {
+            content: 'Фото будет добавлено';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-caption h4 {
+            color: var(--color-zarnitsa-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* LIGHTBOX для галереи */
+        .photo-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        .lightbox-placeholder {
+            width: 800px;
+            height: 600px;
+            background: linear-gradient(135deg, #FFE8DC 0%, #FFD4C4 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .lightbox-placeholder .icon {
+            font-size: 8rem;
+        }
+
+        .lightbox-placeholder p {
+            font-size: 1.5rem;
+            color: var(--color-text-secondary);
+            margin-top: 1rem;
+        }
+
+        .lightbox-caption {
+            color: white;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-zarnitsa-accent);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--color-zarnitsa-main);
+        }
+
+        .lightbox-nav.prev {
+            left: 30px;
+        }
+
+        .lightbox-nav.next {
+            right: 30px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+        }
+
+        /* ДОКУМЕНТЫ И РЕСУРСЫ */
+        .resources-section {
+            margin-bottom: 3rem;
+        }
+
+        .resources-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .resource-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .resource-item:hover {
+            border-color: var(--color-zarnitsa-main);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .resource-item div {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            font-weight: 500;
+            text-align: left;
+        }
+
+        /* МОДАЛЬНОЕ ОКНО ДОКУМЕНТА */
+        .document-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .document-modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .document-modal-header {
+            background: linear-gradient(135deg, var(--color-zarnitsa-main) 0%, var(--color-zarnitsa-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .document-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .document-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .document-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .document-modal-title {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .document-preview {
+            padding: 2rem;
+        }
+
+        .document-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .document-info {
+            background: var(--color-surface);
+            border-left: 4px solid var(--color-zarnitsa-main);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .document-info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .document-info strong {
+            color: var(--color-zarnitsa-main);
+        }
+
+        .document-modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 0 2rem 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background-color: var(--color-zarnitsa-main);
+            color: white;
+        }
+
+        .modal-btn.primary:hover {
+            background-color: var(--color-zarnitsa-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal-btn.primary:disabled {
+            background-color: var(--color-border);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .modal-btn.secondary {
+            background-color: var(--color-surface);
+            color: var(--color-text-primary);
+            border: 2px solid var(--color-border);
+        }
+
+        .modal-btn.secondary:hover {
+            background-color: white;
+            border-color: var(--color-zarnitsa-main);
+        }
+
+        /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background: #FFE8DC;
+            border: 2px solid var(--color-zarnitsa-main);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .additional-info h3 {
+            color: var(--color-zarnitsa-main);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.5rem 0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .additional-info li::before {
+            content: '📌 ';
+            margin-right: 0.5rem;
+        }
+
+        .additional-info a {
+            color: var(--color-zarnitsa-main);
+            text-decoration: underline;
+        }
+
+        .additional-info a:hover {
+            color: var(--color-zarnitsa-dark);
+        }
+
+        /* КНОПКА СВЯЗИ */
+        .contact-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-button {
+            background-color: var(--color-zarnitsa-main);
+            color: white;
+            padding: 0.85rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-button:hover {
+            background-color: var(--color-zarnitsa-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* БЛОК ЗАПИСИ НА ПОДГОТОВКУ (КАК НА ОЛИМПИАДАХ) */
+        .signup-section {
+            background: white;
+            border: 3px solid var(--color-zarnitsa-main);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .signup-title {
+            color: var(--color-zarnitsa-main);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .signup-conditions,
+        .signup-contacts {
+            margin-bottom: 2rem;
+        }
+
+        .signup-conditions h4,
+        .signup-contacts h4 {
+            color: var(--color-text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .signup-conditions ul,
+        .signup-contacts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .signup-conditions li,
+        .signup-contacts li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+        }
+
+        .signup-conditions li::before {
+            content: '●';
+            color: var(--color-zarnitsa-main);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .signup-contacts li::before {
+            content: '';
+            display: none;
+        }
+
+        .signup-contacts a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .signup-contacts a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-button {
+            display: block;
+            width: fit-content;
+            margin: 2rem 0 0 0;
+            background-color: var(--color-zarnitsa-main);
+            color: white;
+            padding: 0.85rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .signup-button:hover {
+            background-color: var(--color-zarnitsa-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+          .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+            
+        .submenu a {
+                color: var(--color-text-primary) !important;
+                background-color: white !important;
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                background-color: var(--color-surface) !important;
+                color: var(--color-primary) !important;
+                padding-left: 2.5rem;
+            }
+            
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .training-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-table-container {
+                overflow-x: auto;
+            }
+
+            .events-table {
+                min-width: 600px;
+            }
+
+            .lightbox-placeholder {
+                width: 90vw;
+                max-width: 100%;
+                height: 60vh;
+                max-height: 500px;
+            }
+
+            .lightbox-placeholder .icon {
+                font-size: 5rem;
+            }
+
+            .lightbox-placeholder p {
+                font-size: 1.1rem;
+            }
+
+            .lightbox-nav {
+                width: 45px;
+                height: 45px;
+            }
+
+            .lightbox-nav.prev {
+                left: 15px;
+            }
+
+            .lightbox-nav.next {
+                right: 15px;
+            }
+        }
+
+        /* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}
+        /* АНИМАЦИИ */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка QR -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно QR -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#FFA500'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" 
+                         alt="Эмблема ОБЗР СШ 2 Лысково" 
+                         onclick="openLightbox()" 
+                         style="width: 80px; 
+                                height: 80px; 
+                                margin-right: 1rem; 
+                                object-fit: contain; 
+                                filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); 
+                                cursor: pointer; 
+                                transition: transform 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.05)'" 
+                         onmouseout="this.style.transform='scale(1)'">
+
+                    <div id="emblem-lightbox" 
+                         style="display: none; 
+                                position: fixed; 
+                                top: 0; 
+                                left: 0; 
+                                width: 100%; 
+                                height: 100%; 
+                                background: rgba(0,0,0,0.95); 
+                                z-index: 99999; 
+                                justify-content: center; 
+                                align-items: center;
+                                animation: fadeIn 0.3s ease;" 
+                         onclick="closeLightbox()">
+                        <span style="position: absolute; 
+                                     top: 20px; 
+                                     right: 40px; 
+                                     color: white; 
+                                     font-size: 40px; 
+                                     font-weight: bold; 
+                                     cursor: pointer; 
+                                     transition: color 0.3s;" 
+                              onmouseover="this.style.color='#FFA500'" 
+                              onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" 
+                             alt="Эмблема ОБЗР СШ 2 Лысково" 
+                             style="max-width: 80%; 
+                                    max-height: 80%; 
+                                    object-fit: contain; 
+                                    animation: zoomIn 0.3s ease;" 
+                             onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie.html">Образование</a></li>
+                            <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady.html">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov.html">Конспекты уроков по модулям</a></li>
+                            <li><a href="prezentacii-testy.html">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" class="active" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya.html">Юнармия</a></li>
+                            <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnitsa.html" style="font-weight: 700; color: var(--color-primary);">Зарница 2.0</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь</a></li>
+                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+                </ul>                        
+            </div>
+        </nav>
+    </header>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+    <main>
+        <h2 class="page-title">
+            💥 Зарница 2.0 — Военно-патриотическая игра
+        </h2>
+        <p class="page-subtitle">
+            Всероссийская военно-патриотическая игра для школьников, объединяющая физическую подготовку, военно-прикладные навыки и интеллектуальное развитие
+        </p>
+
+        <!-- HERO -->
+        <div class="hero-section">
+            <h2>Традиции патриотизма и современные вызовы</h2>
+            <p>
+                «Зарница 2.0» — это современная версия легендарной военно-спортивной игры, которая воспитывает поколения защитников Отечества с 1967 года. Участвуя в соревнованиях, школьники развивают физическую выносливость, приобретают военно-прикладные навыки, учатся работать в команде и принимать ответственные решения в экстремальных ситуациях.
+            </p>
+        </div>
+
+        <!-- О ЗАРНИЦЕ 2.0 -->
+        <div class="about-movement">
+            <h3 class="about-movement-title">📖 О военно-патриотической игре "Зарница 2.0"</h3>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🏛️ Основные сведения</h3>
+                    <ul>
+                        <li><strong>Организатор:</strong> Министерство просвещения Российской Федерации, региональные органы образования</li>
+                        <li><strong>Этапы:</strong> Школьный → Муниципальный → Региональный → Всероссийский</li>
+                        <li><strong>Возрастные категории:</strong> Младшая (2-4 классы), Средняя (5-7 классы), Старшая (8-10 классы)</li>
+                        <li><strong>Формат:</strong> Командные соревнования (8-12 человек в команде)</li>
+                        <li><strong>Длительность:</strong> 1 день (школьный/муниципальный), 2-3 дня (региональный/всероссийский)</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h3>🎖️ Структура соревнований</h3>
+                    <ul>
+                        <li><strong>Военно-прикладные дисциплины:</strong> Строевая подготовка, разборка-сборка АК (учебного), стрельба из пневматической винтовки</li>
+                        <li><strong>Медицинская подготовка:</strong> Оказание первой помощи, транспортировка пострадавших, наложение шин</li>
+                        <li><strong>Физическая подготовка:</strong> Полоса препятствий, кросс, метание гранаты</li>
+                        <li><strong>Интеллектуальные задания:</strong> Викторина по истории ВОВ и ВС РФ, решение тактических задач</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h3>📊 Система оценивания</h3>
+                    <ul>
+                        <li><strong>Командный зачёт:</strong> Сумма баллов всех участников команды по всем дисциплинам</li>
+                        <li><strong>Личный зачёт:</strong> Индивидуальные результаты в отдельных видах (стрельба, кросс)</li>
+                        <li><strong>Бонусные баллы:</strong> За дисциплину, внешний вид, слаженность команды</li>
+                        <li><strong>Победители:</strong> Определяются в каждой возрастной категории отдельно</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- НАПРАВЛЕНИЯ ПОДГОТОВКИ -->
+        <div class="training-section">
+            <h3 class="section-title">📚 Направления подготовки к Зарнице 2.0</h3>
+            <div class="training-grid">
+                <div class="training-card">
+                    <span class="training-icon">🎖️</span>
+                    <h4>Строевая подготовка</h4>
+                    <p>Отработка строевых приёмов, повороты на месте и в движении, перестроения, прохождение торжественным маршем с песней.</p>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-icon">🎯</span>
+                    <h4>Стрелковая подготовка</h4>
+                    <p>Стрельба из пневматической винтовки по мишеням, изучение основ меткой стрельбы, правильное дыхание, изготовка.</p>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-icon">🚑</span>
+                    <h4>Медицинская подготовка</h4>
+                    <p>Практика оказания первой помощи: остановка кровотечений, наложение повязок и шин, иммобилизация, транспортировка пострадавших.</p>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-icon">💪</span>
+                    <h4>Физическая подготовка</h4>
+                    <p>Тренировки на полосе препятствий, кроссы на выносливость, метание гранаты, подтягивания, отжимания, силовые упражнения.</p>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-icon">🧠</span>
+                    <h4>Интеллектуальная подготовка</h4>
+                    <p>Изучение истории Великой Отечественной войны, структуры Вооружённых Сил РФ, воинских званий, основ тактики.</p>
+                </div>
+
+                <div class="training-card">
+                    <span class="training-icon">🤝</span>
+                    <h4>Командообразование</h4>
+                    <p>Тренинги на сплочённость команды, тактические игры, совместное преодоление препятствий, развитие взаимовыручки.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЭТАПЫ ЗАРНИЦЫ И НАШИ РЕЗУЛЬТАТЫ -->
+        <div class="events-section">
+            <h3 class="section-title">🏆 Этапы Зарницы 2.0 и наши результаты</h3>
+            <div class="events-table-container">
+                <table class="events-table">
+                    <thead>
+                        <tr>
+                            <th>Период</th>
+                            <th>Этап</th>
+                            <th>Результат</th>
+                            <th>Состав команды</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Март 2025</td>
+                            <td>Муниципальный этап</td>
+                            <td><span class="result-badge first">🥈 2 место</span></td>
+                            <td>10 участников (4 класс - младшая группа)</td>
+                        </tr>
+                        <tr>
+                            <td>Март 2025</td>
+                            <td>Муниципальный этап</td>
+                            <td><span class="result-badge second">🥈 2 место</span></td>
+                            <td>10 участников (8 класс - старшая группа)</td>
+                        </tr>
+                        <tr>
+                            <td>Март 2024</td>
+                            <td>Муниципальный этап</td>
+                            <td><span class="result-badge first">🥈 2 место</span></td>
+                            <td>10 участников (7 класс - средняя группа)</td>
+                        </tr>
+                        <tr>
+                            <td>Март 2024</td>
+                            <td>Муниципальный этап</td>
+                            <td><span class="result-badge participation">🥈 2 место</span></td>
+                            <td>10 участников (9 класс - старшая группа)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ФОТОГАЛЕРЕЯ -->
+        <div class="gallery-section">
+            <h3 class="section-title">📸 Фотогалерея Зарницы 2.0</h3>
+<!-- Баннер VK — перед галереей -->
+<a href="https://vk.com/club238911106" target="_blank"
+   style="display: flex;
+          align-items: center;
+          gap: 1rem;
+          background: linear-gradient(135deg, #0077FF 0%, #005BCC 100%);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          text-decoration: none;
+          margin-bottom: 1.5rem;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 4px 15px rgba(0,119,255,0.3);"
+   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,119,255,0.4)'"
+   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,119,255,0.3)'">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+    <div>
+        <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem;">
+            Больше фото и видео — в нашем сообществе ВКонтакте
+        </div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">
+            Дёмин А.Ю. | ОБЗР | СШ №2 Лысково — актуальные репортажи с мероприятий
+        </div>
+    </div>
+    <div style="margin-left: auto; font-size: 1.5rem; flex-shrink:0;">→</div>
+</a>
+
+    <div class="gallery-grid">
+          
+                <!-- Строевая подготовка -->
+                <div class="gallery-item active" data-category="stroevaya" onclick="openPhotoLightbox('stroevaya', 0)">
+                    <div class="gallery-image">🎖️</div>
+                    <div class="gallery-caption">
+                        <h4>Строевая подготовка</h4>
+                        <p>Отработка строевых приёмов и прохождение маршем</p>
+                    </div>
+                </div>
+
+                <!-- Стрелковая подготовка -->
+                <div class="gallery-item active" data-category="strelba" onclick="openPhotoLightbox('strelba', 0)">
+                    <div class="gallery-image">🎯</div>
+                    <div class="gallery-caption">
+                        <h4>Стрелковая подготовка</h4>
+                        <p>Стрельба из пневматической винтовки</p>
+                    </div>
+                </div>
+
+                <!-- Медицинская подготовка -->
+                <div class="gallery-item active" data-category="medical" onclick="openPhotoLightbox('medical', 0)">
+                    <div class="gallery-image">🚑</div>
+                    <div class="gallery-caption">
+                        <h4>Медицинская подготовка</h4>
+                        <p>Оказание первой помощи и транспортировка</p>
+                    </div>
+                </div>
+
+                <!-- Полоса препятствий -->
+                <div class="gallery-item active" data-category="polosa" onclick="openPhotoLightbox('polosa', 0)">
+                    <div class="gallery-image">💪</div>
+                    <div class="gallery-caption">
+                        <h4>Полоса препятствий</h4>
+                        <p>Преодоление препятствий и командная работа</p>
+                    </div>
+                </div>
+
+                <!-- Интеллектуальная подготовка -->
+                <div class="gallery-item active" data-category="intellekt" onclick="openPhotoLightbox('intellekt', 0)">
+                    <div class="gallery-image">🧠</div>
+                    <div class="gallery-caption">
+                        <h4>Интеллектуальная подготовка</h4>
+                        <p>Викторина по истории ВОВ и тактические задачи</p>
+                    </div>
+                </div>
+
+                <!-- Награждение -->
+                <div class="gallery-item active" data-category="nagrady" onclick="openPhotoLightbox('nagrady', 0)">
+                    <div class="gallery-image">🏆</div>
+                    <div class="gallery-caption">
+                        <h4>Награждение победителей</h4>
+                        <p>Торжественное вручение дипломов и грамот</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIGHTBOX -->
+        <div class="photo-lightbox" id="photoLightbox" onclick="closePhotoLightbox(event)">
+            <span class="lightbox-close" onclick="closePhotoLightbox(event)">&times;</span>
+            <div class="lightbox-content">
+                <div class="lightbox-placeholder">
+                    <span class="icon" id="lightboxIcon">🎖️</span>
+                    <p id="lightboxText">Фото будет добавлено</p>
+                </div>
+                <p class="lightbox-caption" id="lightboxCaption">Подпись к фото</p>
+            </div>
+            <div class="lightbox-nav prev" onclick="prevPhoto(event)">‹</div>
+            <div class="lightbox-nav next" onclick="nextPhoto(event)">›</div>
+            <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+        </div>
+
+        <!-- ДОКУМЕНТЫ И РЕСУРСЫ -->
+        <div class="resources-section">
+            <h3 class="section-title">📄 Документы и ресурсы</h3>
+            <div class="resources-list">
+                <div class="resource-item" onclick="openDocumentModal('polozhenie')">
+                    <div class="resource-icon">📋</div>
+                    <div>Положение о проведении "Зарницы 2.0"</div>
+                </div>
+
+                <div class="resource-item" onclick="openDocumentModal('schedule')">
+                    <div class="resource-icon">📅</div>
+                    <div>График подготовки команды</div>
+                </div>
+
+                <div class="resource-item" onclick="openDocumentModal('methods')">
+                    <div class="resource-icon">📖</div>
+                    <div>Методические рекомендации для участников</div>
+                </div>
+
+                <div class="resource-item" onclick="openDocumentModal('history')">
+                    <div class="resource-icon">🔗</div>
+                    <div>История военно-патриотических игр в России</div>
+                </div>
+
+                <a href="https://xn--80aatfyr8b.xn--90acagbhgpca7c8c7f.xn--p1ai/?ysclid=mj31vdiyu6193903683">
+                    <div class="resource-item">
+                        <div class="resource-icon">🔗</div>
+                        <div>Официальный сайт "Зарницы 2.0"</div>
+                    </div>
+                </a>
+
+                <a href="https://rutube.ru/plst/1264733/?ysclid=mj31xfsytm884219322">
+                    <div class="resource-item">
+                        <div class="resource-icon">🎥</div>
+                        <div>Видео с различных этапов "Зарницы 2.0"</div>
+                    </div>
+                </a>
+
+                <div class="resource-item" onclick="openDocumentModal('presentation')">
+                    <div class="resource-icon">📊</div>
+                    <div>Презентация "Готовимся к Зарнице 2.0"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СВЯЗАТЬСЯ СО МНОЙ / ЗАПИСАТЬСЯ НА ПОДГОТОВКУ -->
+        <div class="signup-section">
+            <h3 class="signup-title">🎖️ Записаться на подготовку к Зарнице 2.0</h3>
+            
+            <div class="signup-conditions">
+                <h4>Условия участия:</h4>
+                <ul>
+                    <li>Возраст: 2-10 классы (7-17 лет)</li>
+                    <li>Глубокий интерес к военно-прикладным дисциплинам, желание победить и представлять школу</li>
+                    <li>Готовность к интенсивным тренировкам (3-4 раза в неделю)</li>
+                    <li>Участие в школьном этапе Зарницы (февраль каждого учебного года)</li>
+                </ul>
+            </div>
+
+            <div class="signup-contacts">
+                <h4>Контакты для записи:</h4>
+                <ul>
+                    <li>📧 Email: <a href="/cdn-cgi/l/email-protection#503134353d393e6169676710263b7e333f3d"><span class="__cf_email__" data-cfemail="c7a6a3a2aaaea9f6fef0f087b1ace9a4a8aa">ademin1977@vk.com</span></a></li>
+                    <li>🏫 Кабинет: каб. № 215, МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию (лично или по телефону)</li>
+                </ul>
+            </div>
+
+            <a href="contacts.html" class="signup-button">Связаться со мной</a>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+        <div class="additional-info">
+            <h3>ℹ️ Дополнительная информация</h3>
+            <ul>
+                <li>Участие в "Зарнице 2.0" <strong>бесплатное</strong>, форма и снаряжение предоставляются школой</li>
+                <li>Призёры получают <strong>дипломы и грамоты</strong>, которые учитываются при поступлении в военные вузы</li>
+                <li>Для участников организуется <strong>горячее питание</strong> и медицинское сопровождение на всех этапах</li>
+                <li>Команды-победители регионального этапа получают <strong>путёвки на всероссийский этап</strong> с оплатой проезда и проживания</li>
+            </ul>
+        </div>
+
+    </main>
+    <!-- МОДАЛЬНОЕ ОКНО ДОКУМЕНТА -->
+    <div class="document-modal" id="documentModal" onclick="closeDocumentModal(event)">
+        <div class="document-modal-content" onclick="event.stopPropagation()">
+            <div class="document-modal-header">
+                <button class="document-modal-close" onclick="closeDocumentModal()">&times;</button>
+                <div class="document-icon" id="docIcon">📋</div>
+                <h2 class="document-modal-title" id="docTitle">Название документа</h2>
+            </div>
+            <div class="document-preview">
+                <p class="document-description" id="docDescription">Описание документа</p>
+                
+                <div class="document-info">
+                    <div class="document-info-grid">
+                        <strong>Название:</strong>
+                        <span id="docName">Документ</span>
+                        
+                        <strong>Тип:</strong>
+                        <span id="docType">PDF</span>
+                        
+                        <strong>Описание:</strong>
+                        <span id="docDesc">Описание</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="document-modal-footer">
+                <button class="modal-btn primary" disabled>Скачать документ</button>
+                <button class="modal-btn secondary" onclick="closeDocumentModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="/cdn-cgi/l/email-protection#45242120282c2b747c727205332e6b262a28"><span class="__cf_email__" data-cfemail="e9888d8c848087d8d0dedea99f82c78a8684"><span class="__cf_email__" data-cfemail="fe9f9a9b939790cfc7c9c9be8895d09d9193"><span class="__cf_email__" data-cfemail="1c7d78797175722d252b2b5c6a77327f7371">ademin1977@vk.com</span></span></span></a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                    <li><a href="https://yunarmy.ru" target="_blank">Юнармия</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // ============================================
+        // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
+        // ============================================
+        function openLightbox() {
+            const emblemLightbox = document.getElementById('emblem-lightbox');
+            emblemLightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const emblemLightbox = document.getElementById('emblem-lightbox');
+            emblemLightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ============================================
+        // МОБИЛЬНОЕ МЕНЮ
+        // ============================================
+     function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const scrollY = window.scrollY;
+        updateMenuPosition();
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = '-' + scrollY + 'px';
+        } else {
+            const savedScroll = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
+        }
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
+
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        const headerHeight = headerTop.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        }
+    }
+
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) updateMenuPosition();
+        }, 300);
+    });
+
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    });
+
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) return true;
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    });
+
+        // ============================================
+        // QR-КОД
+        // ============================================
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // ============================================
+        // ГАЛЕРЕЯ - LIGHTBOX (6 фото)
+        // ============================================
+        const galleryData = {
+            'stroevaya': [
+                { icon: '🎖️', caption: 'Строевая подготовка' }
+            ],
+            'strelba': [
+                { icon: '🎯', caption: 'Стрелковая подготовка' }
+            ],
+            'medical': [
+                { icon: '🚑', caption: 'Медицинская подготовка' }
+            ],
+            'polosa': [
+                { icon: '💪', caption: 'Полоса препятствий' }
+            ],
+            'intellekt': [
+                { icon: '🧠', caption: 'Интеллектуальная подготовка' }
+            ],
+            'nagrady': [
+                { icon: '🏆', caption: 'Награждение победителей' }
+            ]
+        };
+
+        let currentCategory = '';
+        let currentPhotoIndex = 0;
+
+        function openPhotoLightbox(category, photoIndex) {
+            currentCategory = category;
+            currentPhotoIndex = photoIndex;
+            updateLightboxContent();
+            document.getElementById('photoLightbox').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closePhotoLightbox(event) {
+            if (event.target.id === 'photoLightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('photoLightbox').style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function updateLightboxContent() {
+            const photos = galleryData[currentCategory];
+            const photo = photos[currentPhotoIndex];
+            
+            document.getElementById('lightboxIcon').textContent = photo.icon;
+            document.getElementById('lightboxCaption').textContent = photo.caption;
+            document.getElementById('lightboxCounter').textContent = `${currentPhotoIndex + 1} / ${photos.length}`;
+        }
+
+        function nextPhoto(event) {
+            event.stopPropagation();
+            const photos = galleryData[currentCategory];
+            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+            updateLightboxContent();
+        }
+
+        function prevPhoto(event) {
+            event.stopPropagation();
+            const photos = galleryData[currentCategory];
+            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+            updateLightboxContent();
+        }
+
+        // ============================================
+        // МОДАЛЬНОЕ ОКНО ДОКУМЕНТА
+        // ============================================
+        const documents = {
+            'polozhenie': {
+                title: 'Положение о проведении "Зарницы 2.0"',
+                icon: '📋',
+                name: 'Положение о проведении военно-спортивной игры "Зарница 2.0"',
+                type: 'PDF',
+                description: 'Официальное положение с регламентом соревнований, критериями оценки по всем дисциплинам, требованиями к участникам и организаторам'
+            },
+            'schedule': {
+                title: 'График подготовки команды',
+                icon: '📅',
+                name: 'График подготовки команды к "Зарнице 2.0"',
+                type: 'PDF',
+                description: 'Расписание тренировок по всем дисциплинам (строевая, стрелковая, медицинская, физическая подготовка), ответственные лица, места проведения'
+            },
+            'methods': {
+                title: 'Методические рекомендации для участников',
+                icon: '📖',
+                name: 'Методические рекомендации по подготовке к "Зарнице 2.0"',
+                type: 'PDF',
+                description: 'Советы по подготовке к каждому этапу соревнований, разбор типичных ошибок, лайфхаки от опытных участников и тренеров'
+            },
+            'history': {
+                title: 'История военно-патриотических игр в России',
+                icon: '🔗',
+                name: 'История военно-патриотических игр',
+                type: 'Внешняя ссылка',
+                description: 'Подробная статья об истории игры "Зарница" с 1967 года до современности, эволюция формата, трансформация в "Зарницу 2.0"'
+            },
+            'official': {
+                title: 'Официальный сайт Всероссийской "Зарницы"',
+                icon: '🔗',
+                name: 'Официальный портал "Зарница 2.0"',
+                type: 'Внешняя ссылка',
+                description: 'Федеральный портал с актуальными новостями, результатами всероссийских этапов, фото- и видеоматериалами, нормативными документами'
+            },
+            'video': {
+                title: 'Видео с регионального этапа 2024',
+                icon: '🎥',
+                name: 'Видеорепортаж "Зарница 2.0 — Региональный этап 2024"',
+                type: 'Видео (YouTube)',
+                description: 'Репортаж с регионального этапа соревнований, интервью с участниками и организаторами, яркие моменты всех дисциплин'
+            },
+            'presentation': {
+                title: 'Презентация "Готовимся к Зарнице 2.0"',
+                icon: '📊',
+                name: 'Презентация "Готовимся к Зарнице 2.0"',
+                type: 'PPTX',
+                description: 'Презентация для родителей и участников о структуре игры, этапах подготовки, необходимой форме и экипировке, календарном плане'
+            }
+        };
+
+        function openDocumentModal(docId) {
+            const doc = documents[docId];
+            if (!doc) return;
+
+            document.getElementById('docTitle').textContent = doc.title;
+            document.getElementById('docIcon').textContent = doc.icon;
+            document.getElementById('docName').textContent = doc.name;
+            document.getElementById('docDescription').textContent = doc.description;
+            document.getElementById('docType').textContent = doc.type;
+            document.getElementById('docDesc').textContent = doc.description;
+
+            document.getElementById('documentModal').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeDocumentModal(event) {
+            if (!event || event.target.id === 'documentModal' || event.target.classList.contains('document-modal-close') || event.target.classList.contains('modal-btn')) {
+                document.getElementById('documentModal').style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+                closeDocumentModal();
+                closePhotoLightbox(event);
+            }
+        });
+
+        // ============================================
+        // ПЕРЕТАСКИВАЕМАЯ КНОПКА QR
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrButton = document.getElementById('qrFloatingButton');
+            const qrHint = document.getElementById('qrButtonHint');
+            
+            const savedLeft = localStorage.getItem('qrButtonLeft');
+            const savedTop = localStorage.getItem('qrButtonTop');
+            if (savedLeft && savedTop) {
+                qrButton.style.left = savedLeft;
+                qrButton.style.top = savedTop;
+                qrButton.style.bottom = 'auto';
+                qrButton.style.right = 'auto';
+            }
+            
+            let isDragging = false;
+            let startX, startY;
+            let initialX, initialY;
+            let moveThreshold = 10;
+            let hasMoved = false;
+
+            if (!localStorage.getItem('qrHintShown')) {
+                setTimeout(() => {
+                    qrHint.style.display = 'block';
+                    setTimeout(() => {
+                        qrHint.style.display = 'none';
+                        localStorage.setItem('qrHintShown', 'true');
+                    }, 4000);
+                }, 1000);
+            }
+
+            qrButton.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+
+            qrButton.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+        });
+    </script>
+<script src="landscape-fix.js"></script>
+  <!-- Плавающая кнопка ВКонтакте -->
+<div id="vkFloatingButton"
+     style="position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;">
+   <svg width="32" height="32" viewBox="0 0 24 24" fill="white" 
+         style="pointer-events: none; flex-shrink: 0; 
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+        
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+</div>
+
+<style>
+    #vkFloatingButton.dragging {
+        animation: none;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #vkFloatingButton:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+    }
+    @media (max-width: 768px) {
+        #vkFloatingButton {
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            right: 90px;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('vkFloatingButton');
+    var VK_URL = 'https://vk.com/club238911106';
+    var isDragging = false;
+    var hasMoved = false;
+    var offsetX, offsetY, curX, curY, dragStartTime;
+    var STORAGE_KEY = 'vkButtonPosition';
+
+    function loadPos() {
+        var s = localStorage.getItem(STORAGE_KEY);
+        if (s) {
+            var p = JSON.parse(s);
+            btn.style.left = p.x + 'px';
+            btn.style.top = p.y + 'px';
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+        }
+    }
+
+    function startDrag(cx, cy) {
+        dragStartTime = Date.now();
+        hasMoved = false;
+        isDragging = true;
+        var r = btn.getBoundingClientRect();
+        offsetX = cx - r.left;
+        offsetY = cy - r.top;
+        btn.classList.add('dragging');
+    }
+
+    function moveDrag(cx, cy) {
+        hasMoved = true;
+        curX = Math.max(0, Math.min(cx - offsetX, window.innerWidth - btn.offsetWidth));
+        curY = Math.max(0, Math.min(cy - offsetY, window.innerHeight - btn.offsetHeight));
+        btn.style.left = curX + 'px';
+        btn.style.top = curY + 'px';
+        btn.style.right = 'auto';
+        btn.style.bottom = 'auto';
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        btn.classList.remove('dragging');
+        var elapsed = Date.now() - dragStartTime;
+        // Если не тащили или тащили меньше 150ms — считаем кликом → открываем ВК
+        if (!hasMoved || elapsed < 150) {
+            window.open(VK_URL, '_blank');
+        } else {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({x: curX, y: curY}));
+        }
+        isDragging = false;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+        startDrag(e.clientX, e.clientY);
+        e.preventDefault();
+    });
+    btn.addEventListener('touchstart', function(e) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.clientX, e.clientY); }
+    });
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive: false});
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // Восстанавливаем позицию при загрузке
+    window.addEventListener('load', function() {
+        loadPos();
+    });
+})();
+</script>
+    
+</body>
+</html>
+            
                 <!-- Строевая подготовка -->
                 <div class="gallery-item active" data-category="stroevaya" onclick="openPhotoLightbox('stroevaya', 0)">
                     <div class="gallery-image">🎖️</div>
