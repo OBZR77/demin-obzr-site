@@ -1744,44 +1744,68 @@
             </div>
         </div>
 
-        <!-- ТАБЛИЦА МЕРОПРИЯТИЙ -->
-        <div class="events-section">
-            <h3 class="section-title">🏆 Мероприятия и достижения прошлых лет</h3>
-            <div class="events-table-container">
-                <table class="events-table">
-                    <thead>
-                        <tr>
-                            <th>Дата</th>
-                            <th>Мероприятие</th>
-                            <th>Результат</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>16.11.2025</td>
-                            <td>Участие совместно с Лысковской госавтоинспекцией и другими школьниками округа 
-                           в информационно-пропагандистской акции, посвященной памяти погибших в ДТП</td>
-                            <td><span class="result-badge second">Профилактика ДТП</span></td>
-                        </tr>
-                        <tr>
-                            <td>17.10.2025</td>
-                            <td>Ребята из отряда ЮИД вместе с инспекторами ГАИ раздали светоотражающие элементы ученикам второй смены</td>
-                            <td><span class="result-badge second">Охвачено 180 учащихся</span></td>
-                        </tr>
-                        <tr>
-                            <td>14.10.2025</td>
-                            <td>Наш отряд ЮИД на территории ОМВД "Лысковский" принял участие в едином разводе, посвященном месячнику по БДД</td>
-                            <td><span class="result-badge diploma">Дан старт ОПМ "Засветись"</span></td>
-                        </tr>
-                        <tr>
-                            <td>30.09.2025</td>
-                            <td>Отряд ЮИД нашей школы участвует в конкурсе видеороликов "Мой безопасный маршрут"</td>
-                            <td><span class="result-badge participation">Профилактика ДДТТ</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+      <!-- ТАБЛИЦА МЕРОПРИЯТИЙ — АККОРДИОН -->
+<div class="events-section">
+    <h3 class="section-title" 
+        onclick="toggleEventsAccordion()" 
+        style="cursor: pointer; 
+               display: flex; 
+               justify-content: space-between; 
+               align-items: center;
+               user-select: none;">
+        🏆 Мероприятия и достижения прошлых лет
+        <span id="eventsAccordionIcon" 
+              style="font-size: 1.2rem; 
+                     transition: transform 0.3s ease;
+                     color: var(--color-danger);
+                     flex-shrink: 0;">▼</span>
+    </h3>
+
+    <div id="eventsAccordionBody" 
+         style="max-height: 0; 
+                overflow: hidden; 
+                transition: max-height 0.4s ease, opacity 0.3s ease;
+                opacity: 0;">
+        <div class="events-table-container">
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Мероприятие</th>
+                        <th>Результат</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Май 2024 года</td>
+                        <td>Ассамблея "Время выбрало нас"</td>
+                        <td><span class="result-badge second">1 место</span></td>
+                    </tr>
+                    <tr>
+                        <td>Март 2024 года</td>
+                        <td>Военно-спортивная игра "Зарница 2.0" (муниципальный этап)</td>
+                        <td><span class="result-badge diploma">2 место (младшая группа)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Март 2024 года</td>
+                        <td>Военно-спортивная игра "Зарница 2.0" (муниципальный этап)</td>
+                        <td><span class="result-badge diploma">2 место (средняя группа)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Март 2025 года</td>
+                        <td>Военно-спортивная игра "Зарница 2.0" (муниципальный этап)</td>
+                        <td><span class="result-badge diploma">2 место (младшая группа)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Март 2024 года</td>
+                        <td>Военно-спортивная игра "Зарница 2.0" (муниципальный этап)</td>
+                        <td><span class="result-badge diploma">2 место (старшая группа)</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
+</div> 
 
         <!-- ФОТОГАЛЕРЕЯ -->
         <div class="gallery-section">
@@ -2187,6 +2211,26 @@
 </script>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        
+        // ============================================
+// АККОРДИОН МЕРОПРИЯТИЙ
+// ============================================
+function toggleEventsAccordion() {
+    const body = document.getElementById('eventsAccordionBody');
+    const icon = document.getElementById('eventsAccordionIcon');
+    const isOpen = body.style.maxHeight !== '0px' && body.style.maxHeight !== '';
+
+    if (isOpen) {
+        body.style.maxHeight = '0';
+        body.style.opacity = '0';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.opacity = '1';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+        
         // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
         // ============================================
