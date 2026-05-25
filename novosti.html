@@ -2032,22 +2032,26 @@
     <!-- (для экономии места не дублирую весь код QR-кнопки и плеера) -->
 
     <script>
-        function openLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+     function openLightbox() {
+    var el = document.getElementById('emblem-lightbox');
+    if (el) { el.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+}
 
-        function closeLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+function closeEmblemLightbox() {
+    var el = document.getElementById('emblem-lightbox');
+    if (el) { el.style.display = 'none'; document.body.style.overflow = 'auto'; }
+} 
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeLightbox();
             }
         });
-
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeEmblemLightbox();
+    }
+});
        function toggleMenu() {
         const menu = document.getElementById('navMenu');
         const overlay = document.getElementById('navOverlay');
@@ -2532,7 +2536,7 @@
 <div id="photoLightbox" onclick="lightboxOverlayClick(event)">
     <div class="lightbox-inner">
         <span id="lightboxTitle" class="lightbox-title"></span>
-        <button class="lightbox-close" onclick="closeLightbox()" title="Закрыть">×</button>
+        <button class="lightbox-close" onclick="closeEmblemLightbox()" title="Закрыть">×</button>
         <button class="lightbox-btn lightbox-btn-prev" onclick="lightboxNav(-1)">‹</button>
         <div class="lightbox-img-wrap">
             <img id="lightboxImg" src="" alt="">
