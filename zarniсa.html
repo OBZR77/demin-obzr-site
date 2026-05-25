@@ -1667,9 +1667,10 @@
             </div>
         </div>
 
-        <!-- ЭТАПЫ ЗАРНИЦЫ И НАШИ РЕЗУЛЬТАТЫ -->
+      <!-- ЭТАПЫ ЗАРНИЦЫ И НАШИ РЕЗУЛЬТАТЫ — АККОРДИОН -->
         <div class="events-section">
             <h3 class="section-title">🏆 Этапы Зарницы 2.0 и наши результаты</h3>
+
             <div class="events-table-container">
                 <table class="events-table">
                     <thead>
@@ -1681,6 +1682,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- ВСЕГДА ВИДИМЫЕ — первые 3 строки -->
                         <tr>
                             <td>Март 2025</td>
                             <td>Муниципальный этап</td>
@@ -1699,7 +1701,9 @@
                             <td><span class="result-badge first">🥈 2 место</span></td>
                             <td>10 участников (7 класс - средняя группа)</td>
                         </tr>
-                        <tr>
+
+                        <!-- СКРЫТАЯ СТРОКА — раскрывается по клику -->
+                        <tr class="events-extra-row" style="display: none;">
                             <td>Март 2024</td>
                             <td>Муниципальный этап</td>
                             <td><span class="result-badge participation">🥈 2 место</span></td>
@@ -1708,7 +1712,30 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+
+            <!-- Кнопка раскрытия -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <button onclick="toggleExtraEvents()"
+                        id="eventsToggleBtn"
+                        style="background: white;
+                               color: var(--color-zarnitsa-main);
+                               border: 2px solid var(--color-zarnitsa-main);
+                               padding: 0.6rem 1.75rem;
+                               border-radius: 25px;
+                               font-size: 0.95rem;
+                               font-weight: 600;
+                               cursor: pointer;
+                               transition: all 0.3s ease;
+                               display: inline-flex;
+                               align-items: center;
+                               gap: 0.5rem;"
+                        onmouseover="this.style.background='var(--color-zarnitsa-main)'; this.style.color='white';"
+                        onmouseout="if(!window.eventsExpanded){this.style.background='white'; this.style.color='var(--color-zarnitsa-main)';}else{this.style.background='var(--color-zarnitsa-main)'; this.style.color='white';}">
+                    <span id="eventsToggleIcon">▼</span>
+                    <span id="eventsToggleText">Подробнее</span>
+                </button>
+            </div>
+        </div> 
 
         <!-- ФОТОГАЛЕРЕЯ -->
         <div class="gallery-section">
@@ -1980,6 +2007,42 @@
 </script>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        
+        // ============================================
+        // АККОРДИОН МЕРОПРИЯТИЙ
+        // ============================================
+        window.eventsExpanded = false;
+
+        function toggleExtraEvents() {
+            const rows = document.querySelectorAll('.events-extra-row');
+            const icon = document.getElementById('eventsToggleIcon');
+            const text = document.getElementById('eventsToggleText');
+            const btn = document.getElementById('eventsToggleBtn');
+
+            window.eventsExpanded = !window.eventsExpanded;
+
+            rows.forEach(function(row) {
+                if (window.eventsExpanded) {
+                    row.style.display = 'table-row';
+                    row.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            if (window.eventsExpanded) {
+                icon.textContent = '▲';
+                text.textContent = 'Свернуть';
+                btn.style.background = 'var(--color-zarnitsa-main)';
+                btn.style.color = 'white';
+            } else {
+                icon.textContent = '▼';
+                text.textContent = 'Подробнее';
+                btn.style.background = 'white';
+                btn.style.color = 'var(--color-zarnitsa-main)';
+            }
+        }
+        
         // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
         // ============================================
