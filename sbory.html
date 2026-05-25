@@ -1382,8 +1382,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- ЭТАПЫ И РЕЗУЛЬТАТЫ -->
+<!-- ЭТАПЫ И РЕЗУЛЬТАТЫ — АККОРДИОН -->
         <div class="results-section">
             <h3 class="section-title">🏆 Этапы и результаты сборов</h3>
             <div style="background: white; border: 2px solid var(--color-border); border-radius: 10px; overflow-x: auto; margin-top: 1.5rem;">
@@ -1398,47 +1397,98 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- ВСЕГДА ВИДИМЫЕ — первые 3 строки -->
                         <tr style="background: var(--color-surface);">
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">2023</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">10</td>
-                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания
-Приволжского федерального округа «Гвардеец»</td>
+                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания Приволжского федерального округа «Гвардеец»</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">4 человека (юноши)</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">4.5</td>
                         </tr>
                         <tr>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">2024</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">10</td>
-                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания
-Приволжского федерального округа «Гвардеец»</td>
+                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания Приволжского федерального округа «Гвардеец»</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">2 человека (юноши)</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">4.7</td>
                         </tr>
                         <tr style="background: var(--color-surface);">
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">2025</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">10</td>
-                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания
-Приволжского федерального округа «Гвардеец»</td>
+                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания Приволжского федерального округа «Гвардеец»</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">6 человек</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">4.7</td>
                         </tr>
-                        <tr style="background: var(--color-surface);">
+
+                        <!-- СКРЫТАЯ СТРОКА — раскрывается по клику -->
+                        <tr class="events-extra-row" style="display: none; background: var(--color-surface);">
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">2026</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">10</td>
-                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания
-Приволжского федерального округа «Гвардеец»</td>
+                            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);">Учебно-методический центр патриотического воспитания Приволжского федерального округа «Гвардеец»</td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);"> - </td>
                             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--color-border);"> - </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
 
+            <!-- Кнопка раскрытия -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <button onclick="toggleExtraEvents()"
+                        id="eventsToggleBtn"
+                        style="background: white;
+                               color: var(--color-sbory-main);
+                               border: 2px solid var(--color-sbory-main);
+                               padding: 0.6rem 1.75rem;
+                               border-radius: 25px;
+                               font-size: 0.95rem;
+                               font-weight: 600;
+                               cursor: pointer;
+                               transition: all 0.3s ease;
+                               display: inline-flex;
+                               align-items: center;
+                               gap: 0.5rem;"
+                        onmouseover="this.style.background='var(--color-sbory-main)'; this.style.color='white';"
+                        onmouseout="if(!window.eventsExpanded){this.style.background='white'; this.style.color='var(--color-sbory-main)';}else{this.style.background='var(--color-sbory-main)'; this.style.color='white';}">
+                    <span id="eventsToggleIcon">▼</span>
+                    <span id="eventsToggleText">Подробнее</span>
+                </button>
+            </div>
+        </div>
+       
  <!-- ФОТОГАЛЕРЕЯ - 6 КАРТОЧЕК (2 РЯДА ПО 3) -->
         <div class="gallery-section">
             <h3 class="section-title">📸 Фотогалерея сборов</h3>
-            <div class="gallery-grid">
+            <!-- Баннер VK — перед галереей -->
+<a href="https://vk.com/club238911106" target="_blank"
+   style="display: flex;
+          align-items: center;
+          gap: 1rem;
+          background: linear-gradient(135deg, #0077FF 0%, #005BCC 100%);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          text-decoration: none;
+          margin-bottom: 1.5rem;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 4px 15px rgba(0,119,255,0.3);"
+   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,119,255,0.4)'"
+   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,119,255,0.3)'">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+    <div>
+        <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem;">
+            Больше фото и видео — в нашем сообществе ВКонтакте
+        </div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">
+            Дёмин А.Ю. | ОБЗР | СШ №2 Лысково — актуальные репортажи с мероприятий
+        </div>
+    </div>
+    <div style="margin-left: auto; font-size: 1.5rem; flex-shrink:0;">→</div>
+</a>
+
+    <div class="gallery-grid">
                 <!-- Категория 1: Строевая подготовка -->
                 <div class="gallery-category" data-category="1">
                     <div class="gallery-category-header">Строевая подготовка</div>
@@ -1882,6 +1932,42 @@
 </script>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        
+       // ============================================
+        // АККОРДИОН МЕРОПРИЯТИЙ
+        // ============================================
+        window.eventsExpanded = false;
+
+        function toggleExtraEvents() {
+            const rows = document.querySelectorAll('.events-extra-row');
+            const icon = document.getElementById('eventsToggleIcon');
+            const text = document.getElementById('eventsToggleText');
+            const btn = document.getElementById('eventsToggleBtn');
+
+            window.eventsExpanded = !window.eventsExpanded;
+
+            rows.forEach(function(row) {
+                if (window.eventsExpanded) {
+                    row.style.display = 'table-row';
+                    row.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            if (window.eventsExpanded) {
+                icon.textContent = '▲';
+                text.textContent = 'Свернуть';
+                btn.style.background = 'var(--color-sbory-main)';
+                btn.style.color = 'white';
+            } else {
+                icon.textContent = '▼';
+                text.textContent = 'Подробнее';
+                btn.style.background = 'white';
+                btn.style.color = 'var(--color-sbory-main)';
+            }
+        } 
+        
         // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
         // ============================================
