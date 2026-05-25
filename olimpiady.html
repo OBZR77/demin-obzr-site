@@ -1753,10 +1753,11 @@
                 </div>
             </div>
         </div>
-
-        <!-- ЭТАПЫ И РЕЗУЛЬТАТЫ (КАК В ЮИД - ТАБЛИЦА) -->
+        
+<!-- ЭТАПЫ И РЕЗУЛЬТАТЫ — АККОРДИОН -->
         <div class="events-section">
             <h3 class="section-title">🏆 Этапы олимпиады и наши результаты</h3>
+
             <div class="events-table-container">
                 <table class="events-table">
                     <thead>
@@ -1767,6 +1768,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- ВСЕГДА ВИДИМЫЕ — первые 3 строки -->
                         <tr>
                             <td>Сентябрь 2024</td>
                             <td>Школьный этап (8-11 классы) — 45 учащихся приняли участие</td>
@@ -1782,12 +1784,14 @@
                             <td>Региональный этап — 2 учащихся</td>
                             <td><span class="result-badge participation">Участие (в процессе)</span></td>
                         </tr>
-                        <tr>
+
+                        <!-- СКРЫТЫЕ СТРОКИ — раскрываются по клику -->
+                        <tr class="events-extra-row" style="display: none;">
                             <td>2023 год</td>
                             <td>Региональный этап: Иванов А., 10 класс</td>
                             <td><span class="result-badge diploma">Призёр</span></td>
                         </tr>
-                        <tr>
+                        <tr class="events-extra-row" style="display: none;">
                             <td>2022 год</td>
                             <td>Муниципальный этап: Петрова М., 11 класс</td>
                             <td><span class="result-badge first">Победитель</span></td>
@@ -1795,9 +1799,31 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Кнопка раскрытия -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <button onclick="toggleExtraEvents()"
+                        id="eventsToggleBtn"
+                        style="background: white;
+                               color: var(--color-yuid-main);
+                               border: 2px solid var(--color-yuid-main);
+                               padding: 0.6rem 1.75rem;
+                               border-radius: 25px;
+                               font-size: 0.95rem;
+                               font-weight: 600;
+                               cursor: pointer;
+                               transition: all 0.3s ease;
+                               display: inline-flex;
+                               align-items: center;
+                               gap: 0.5rem;"
+                        onmouseover="this.style.background='var(--color-yuid-main)'; this.style.color='white';"
+                        onmouseout="if(!window.eventsExpanded){this.style.background='white'; this.style.color='var(--color-yuid-main)';}else{this.style.background='var(--color-yuid-main)'; this.style.color='white';}">
+                    <span id="eventsToggleIcon">▼</span>
+                    <span id="eventsToggleText">Подробнее</span>
+                </button>
+            </div>
         </div>
-
-
+        
         <!-- ФОТОГАЛЕРЕЯ -->
         <div class="gallery-section">
             <h3 class="section-title">📸 Фотогалерея</h3>
@@ -2209,6 +2235,42 @@
 </script>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+       
+        // ============================================
+        // АККОРДИОН МЕРОПРИЯТИЙ
+        // ============================================
+        window.eventsExpanded = false;
+
+        function toggleExtraEvents() {
+            const rows = document.querySelectorAll('.events-extra-row');
+            const icon = document.getElementById('eventsToggleIcon');
+            const text = document.getElementById('eventsToggleText');
+            const btn = document.getElementById('eventsToggleBtn');
+
+            window.eventsExpanded = !window.eventsExpanded;
+
+            rows.forEach(function(row) {
+                if (window.eventsExpanded) {
+                    row.style.display = 'table-row';
+                    row.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            if (window.eventsExpanded) {
+                icon.textContent = '▲';
+                text.textContent = 'Свернуть';
+                btn.style.background = 'var(--color-yuid-main)';
+                btn.style.color = 'white';
+            } else {
+                icon.textContent = '▼';
+                text.textContent = 'Подробнее';
+                btn.style.background = 'white';
+                btn.style.color = 'var(--color-yuid-main)';
+            }
+        }
+        
         // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
         // ============================================
@@ -2706,7 +2768,7 @@
             document.getElementById('modalIcon').textContent = doc.icon;
             document.getElementById('modalDocName').textContent = doc.name;
             document.getElementById('modalDescription').textContent = doc.description;
-ontent = doc.name;
+            document.getElementById('infoName').textContent = doc.name;
             document.getElementById('infoType').textContent = doc.type;
             document.getElementById('infoDesc').textContent = doc.description;
 
