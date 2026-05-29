@@ -2590,7 +2590,7 @@ document.addEventListener('keydown', function(event) {
 <div id="photoLightbox" onclick="lightboxOverlayClick(event)">
     <div class="lightbox-inner">
         <span id="lightboxTitle" class="lightbox-title"></span>
-        <button class="lightbox-close" onclick="closeEmblemLightbox()" title="Закрыть">×</button>
+      <button class="lightbox-close" onclick="closePhotoLightbox()" title="Закрыть">×</button> 
         <button class="lightbox-btn lightbox-btn-prev" onclick="lightboxNav(-1)">‹</button>
         <div class="lightbox-img-wrap">
             <img id="lightboxImg" src="" alt="">
@@ -2717,13 +2717,18 @@ function lightboxNav(dir) {
     renderLightbox();
 }
 
-function closeLightbox() {
+function closePhotoLightbox() {
     document.getElementById('photoLightbox').classList.remove('active');
     document.body.style.overflow = '';
 }
 
+// псевдоним для обратной совместимости
+function closeLightbox() {
+    closePhotoLightbox();
+}
+
 function lightboxOverlayClick(e) {
-    if (e.target === document.getElementById('photoLightbox')) closeLightbox();
+    if (e.target === document.getElementById('photoLightbox')) closePhotoLightbox();
 }
 
 // Колесо мыши в лайтбоксе
@@ -2748,7 +2753,7 @@ document.addEventListener('keydown', e => {
     if (!lb_el.classList.contains('active')) return;
     if (e.key === 'ArrowRight') lightboxNav(1);
     if (e.key === 'ArrowLeft') lightboxNav(-1);
-    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Escape') closePhotoLightbox();
 });
 
 // Запуск
