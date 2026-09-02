@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landscape-fix.css">
+    <meta name="description" content="Медиаархив - фото и видео с мероприятий, учебных сборов, экскурсий и соревнований по ОБЗР">
+    <title>Медиаархив | Дёмин А.Ю.</title>
+    <!-- Фавиконки для всех устройств -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-warning: #FFA500;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        
+        /* HEADER */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transition-delay: 0s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-danger);
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        /* ФИЛЬТРЫ */
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+
+        .filter-label {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-filters {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--color-surface);
+            color: var(--color-text-primary);
+            border: 2px solid var(--color-border);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+       .filter-btn.active {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+}
+
+        /* МЕДИАГАЛЕРЕЯ */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .media-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            background: var(--color-surface);
+        }
+        
+        .media-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 61, 122, 0.2);
+        }
+        
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .media-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 1rem;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .media-item:hover .media-item-overlay {
+            opacity: 1;
+        }
+        
+        .media-video-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--color-danger);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+/* Видео-карточки с iframe VK */
+.video-embed-item {
+    cursor: default;
+}
+
+.video-embed-item:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-embed-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-embed-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    z-index: 3;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.video-embed-item .media-video-badge {
+    z-index: 4;
+    pointer-events: none;
+}
+        
+        .media-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            opacity: 0.3;
+            background: linear-gradient(135deg, var(--color-surface) 0%, #e8eef5 100%);
+        }
+        
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .lightbox-close:hover {
+            color: var(--color-danger);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 2rem;
+            border: none;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .lightbox-nav.prev {
+            left: 20px;
+        }
+        
+        .lightbox-nav.next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            z-index: 10001;
+        }
+
+        /* ПУСТОЕ СОСТОЯНИЕ */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 5rem;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state-subtext {
+            font-size: 0.95rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* АНИМАЦИИ */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+        }
+
+        .media-item {
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        .media-item:nth-child(1) { animation-delay: 0.1s; }
+        .media-item:nth-child(2) { animation-delay: 0.15s; }
+        .media-item:nth-child(3) { animation-delay: 0.2s; }
+        .media-item:nth-child(4) { animation-delay: 0.25s; }
+        .media-item:nth-child(5) { animation-delay: 0.3s; }
+        .media-item:nth-child(6) { animation-delay: 0.35s; }
+
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+       .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}   
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+    .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+ .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: white;
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}           
+
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+           .submenu a {
+    padding-left: 2rem;
+    color: var(--color-text-primary);
+}
+          .submenu a:hover {
+    padding-left: 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+}  
+         
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .media-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-nav.prev {
+                left: 10px;
+            }
+
+            .lightbox-nav.next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+/* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(255,255,255,0.1);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+.submenu a {
+    color: white;   /* ← должен быть white, не тёмный */
+}
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}
+        
+    </style>
+</head>
+<body>
+
+    <!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openEmblemLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeEmblemLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" class="active" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html" style="font-weight: 700; color: var(--color-primary);">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie.html">Образование</a></li>
+                            <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady.html">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+                            <li><a href="metodicheskaya-kopilka.html">Методическая копилка по модулям</a></li>
+                            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya.html">Юнармия</a></li>
+                            <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica.html">Зарница 2.0</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь</a></li>
+                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+                </ul>                        
+            </div>
+        </nav>
+    </header>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+    <main>
+     <div style="display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);">
+    
+    <h2 style="font-size: 2rem; color: var(--color-primary); margin: 0; padding: 0; border: none;">
+        📸 Медиаархив
+    </h2>
+
+    <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+        <span style="font-size: 0.85rem; color: var(--color-text-secondary); font-weight: 600;">
+            📁 Архив:
+        </span>
+        <a href="arhiv-media-2025-2026.html" 
+           style="padding: 0.35rem 0.9rem;
+                  background: var(--color-primary);
+                  color: white;
+                  border-radius: 20px;
+                  text-decoration: none;
+                  font-size: 0.85rem;
+                  font-weight: 600;
+                  transition: background 0.2s ease;"
+           onmouseover="this.style.background='var(--color-danger)'"
+           onmouseout="this.style.background='var(--color-primary)'">
+            2025–2026
+        </a>
+    </div>
+</div>
+        
+        <p style="font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 2.5rem; line-height: 1.7;">
+            Фото и видео с мероприятий, учебных сборов, экскурсий, соревнований и других событий по ОБЗР.
+        </p>
+
+        <!-- Баннер VK -->
+<a href="https://vk.com/club238911106" target="_blank"
+   style="display: flex;
+          align-items: center;
+          gap: 1rem;
+          background: linear-gradient(135deg, #0077FF 0%, #005BCC 100%);
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 12px;
+          text-decoration: none;
+          margin-bottom: 2rem;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 4px 15px rgba(0,119,255,0.3);"
+   onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,119,255,0.4)'"
+   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,119,255,0.3)'">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+    <div>
+        <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.2rem;">
+            Больше фото и видео — в нашем сообществе ВКонтакте
+        </div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">
+            Дёмин А.Ю. | ОБЗР | СШ №2 Лысково — актуальные репортажи с мероприятий
+        </div>
+    </div>
+    <div style="margin-left: auto; font-size: 1.5rem; flex-shrink:0;">→</div>
+</a>
+
+<!-- Фильтр по типу медиа -->
+
+<!-- Фильтр по типу медиа -->
+<div class="filter-section">
+    <div class="filter-label">📂 Тип медиа</div>
+    <div class="news-filters">
+        <button class="filter-btn active" onclick="filterMediaType('all', this)">Все</button>
+        <button class="filter-btn" onclick="filterMediaType('photo', this)">📷 Фото</button>
+        <button class="filter-btn" onclick="filterMediaType('video', this)">🎬 Видео</button>
+    </div>
+</div>
+
+<!-- Фильтр по событиям -->
+<div class="filter-section">
+    <div class="filter-label">🎯 События</div>
+    <div class="news-filters">
+        <button class="filter-btn active" onclick="filterEvent('all', this)">Все события</button>
+        <button class="filter-btn" onclick="filterEvent('sbory', this)">Учебные сборы</button>
+        <button class="filter-btn" onclick="filterEvent('zarnica', this)">Зарница 2.0</button>
+        <button class="filter-btn" onclick="filterEvent('excursion', this)">Экскурсии</button>
+        <button class="filter-btn" onclick="filterEvent('competition', this)">Соревнования</button>
+        <button class="filter-btn" onclick="filterEvent('yunarmiya', this)">Юнармия</button>
+        <button class="filter-btn" onclick="filterEvent('yuid', this)">ЮИД</button>
+        <button class="filter-btn" onclick="filterEvent('drugiye', this)">Другие события</button>
+    </div>
+</div>
+
+        <!-- Медиагалерея -->
+        <div class="media-gallery" id="mediaGallery">
+          <!-- ФОТО 1: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2023-1.jpg" alt="Сборы в УЦ "Гвардеец" 2023 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Декабрь 2023 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+
+<!-- ФОТО 2: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/antey-2024-1.jpg" alt="Стрелковый клуб "Антей" 2024 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Декабрь 2024 • Огневая подготовка в стрелковом клубе "Антей"
+    </div>
+</div>
+
+<!-- ФОТО 3: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/zarnica-2024-1.jpg" alt="Нижегородская зарница 2024 год">
+    <div class="media-item-overlay">
+        📅 Март 2024 • Нижегородская зарница - региональный этап
+    </div>
+</div>
+
+<!-- ФОТО 4: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2024-5.jpg" alt="Нижегородская зарница 2024 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Март 2024 • Нижегородская зарница - региональный этап
+    </div>
+</div>
+
+<!-- ФОТО 5: Экскурсия -->
+<div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
+  <img src="images/gallery/vch-kstovo-2024-1.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год" loading="lazy">  
+    <div class="media-item-overlay">
+        📅 Декабрь 2024 • Экскурсия в воинскую часть г.Кстово 
+    </div>
+</div>
+
+<!-- ФОТО 6: Экскурсия -->
+<div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
+  <img src="images/gallery/vch-kstovo-2024-2.jpg" alt="Экскурсия в военную часть г.Кстово 2024 год" loading="lazy">  
+    <div class="media-item-overlay">
+        📅 Декабрь 2024 • Экскурсия в воинскую часть г.Кстово
+    </div>
+</div>
+
+<!-- ФОТО 7: Соревнования -->
+<div class="media-item" data-type="photo" data-event="competition" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/sorevnovaniya-po-stryelbye-2024-1.jpg" alt="Соревнования по стрельбе 2024 год" loading="lazy">   
+    <div class="media-item-overlay">
+        📅 Февраль 2024 • Соревнования по стрельбе из электронного оружия
+    </div>
+</div>
+
+<!-- ФОТО 8: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/yunarmiya-9-maya-2025-1.jpg" alt="Чествование ветерана 9 мая 2025 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2025 • Чествование ветерана в День Победы
+    </div>
+</div>
+
+<!-- ФОТО 9: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/yunarmiya-1-09-2025.jpg" alt="Вынос знамени 1 сентября 2025 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Торжественный вынос знамени на линейке в "День знаний"
+    </div>
+</div>
+            
+<!-- ФОТО 10: ЮИД -->
+<div class="media-item" data-type="photo" data-event="yuid" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/yuid-2024-1.jpg" alt="Профилактика ДТТ 2024 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Ноябрь 2024 • Профилактика дорожно-транспортного травматизма 
+    </div>
+</div>
+
+ <!-- ФОТО 11: День призывника -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/dyen-prizyvnika-2024-1.jpg" alt="День призывника в РДК 2024 год">    
+    <div class="media-item-overlay">
+        📅 Апрель 2024 • День призывника в РДК 
+    </div>
+</div> 
+
+ <!-- ФОТО 12: Урок пожарной безопасности -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/urok-po-pb-2025-1.jpg" alt="Урок пожарной безопасности 2025 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Октябрь 2025 • Урок пожарной безопасности 
+    </div>
+</div>  
+            <!-- ФОТО 13: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/antey-2025-1.jpg" alt="Стрелковый клуб "Антей" 2025 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Огневая подготовка в стрелковом клубе "Антей"
+    </div>
+</div>
+
+<!-- ФОТО 14: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+   <img src="images/gallery/antey-2025-2.jpg" alt="Стрелковый клуб "Антей" 2025 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Учебные сборы в стрелковом клубе "Антей"
+    </div>
+</div>   
+
+<!-- ФОТО 15: Экскурсия -->
+<div class="media-item" data-type="photo" data-event="excursion" onclick="openLightboxByElement(this)">
+  <img src="images/gallery/zveno-2025-1.jpg" alt="Экскурсия в Военное училище в г.Кстово 2025 год" loading="lazy">  
+    <div class="media-item-overlay">
+        📅 Сентябрь 2025 • Экскурсия в Военное училище в г.Кстово
+    </div>
+</div>
+
+ <!-- ФОТО 16: День призывника -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/dyen-prizyvnika-2025-2.jpg" alt="День призывника в РДК 2025 год">    
+    <div class="media-item-overlay">
+        📅 Октябрь 2025 • День призывника в РДК 
+    </div>
+</div>             
+         <!-- ФОТО 17: День призывника -->
+<div class="media-item" data-type="photo" data-event="drugiye" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/kabinet-obzr-2025-1.jpg" alt="Аттестация кабинета ОБЗР  2025 год">    
+    <div class="media-item-overlay">
+        📅 Октябрь 2025 • Аттестация кабинета ОБЗР 
+    </div>
+</div>       
+
+        <!-- ФОТО 18: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-1.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+            
+       <!-- ФОТО 19: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-2.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+             <!-- ФОТО 20: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-3.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>
+           <!-- ФОТО 21: Учебные сборы -->
+<div class="media-item" data-type="photo" data-event="sbory" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/sbory-2026-4.jpg" alt="Сборы в УЦ "Гвардеец" 2026 год" loading="lazy">
+    <div class="media-item-overlay">
+        📅 Март 2026 • Учебно-полевые сборы в УЦ "Гвардеец"
+    </div>
+</div>  
+            
+<!-- ФОТО 22: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-1.png" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Март 2026 • ВПИ Зарница 2.0 - муниципальный этап
+    </div>
+</div>
+          <!-- ФОТО 23: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-2.png" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Март 2026 • ВПИ Зарница 2.0 - муниципальный этап
+    </div>
+</div> 
+
+             <!-- ФОТО 24: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-3.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div> 
+
+             <!-- ФОТО 25: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-4.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div> 
+
+           <!-- ФОТО 26: Зарница -->
+<div class="media-item" data-type="photo" data-event="zarnica" onclick="openLightboxByElement(this)">
+    <img src="images/gallery/zarnica-2026-5.jpg" alt="ВПИ Зарница 2.0 2026 год" loading="lazy"> 
+    <div class="media-item-overlay">
+        📅 Апрель 2026 • ВПИ Зарница 2.0 - дивизионный этап
+    </div>
+</div>  
+
+            <!-- ФОТО 27: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/7-maya-2026-1.jpg" alt="Торжественный вынос знамени на митинге ко Дню Победы 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Торжественный вынос знамени на митинге ко Дню Победы
+    </div>
+</div>
+             <!-- ФОТО 28: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/7-maya-2026-2.jpg" alt="Участие в митинге ко Дню Победы 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Участие в митинге ко Дню Победы
+    </div>
+</div>
+           <!-- ФОТО 29: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-1.jpg" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+            <!-- ФОТО 30: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-2.png" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+             <!-- ФОТО 31: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/9-maya-2026-3.png" alt="Почетный караул у Вечного огня 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Почетный караул у Вечного огня
+    </div>
+</div> 
+            
+<!-- ВИДЕО 1: Живая память о Победе (VK) -->
+<div class="media-item video-embed-item" data-type="video" data-event="yunarmiya">
+    <div class="video-embed-wrapper">
+        <iframe 
+            src="https://vk.com/video_ext.php?oid=-238911106&id=456239017&hd=2"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            loading="lazy">
+        </iframe>
+    </div>
+    <div class="media-video-badge">▶ ВИДЕО</div>
+    <div class="video-caption">📅 Май 2026 • Живая память о Победе!</div>
+</div>
+            
+            <!-- ФОТО 32: Юнармия -->
+<div class="media-item" data-type="photo" data-event="yunarmiya" onclick="openLightboxByElement(this)">
+ <img src="images/gallery/19-maya-2026-3.png" alt="Знаменная группа на День пионерии 2026 год" loading="lazy">    
+    <div class="media-item-overlay">
+        📅 Май 2026 • Знаменная группа на День пионерии
+    </div>
+</div>  
+
+<!-- ВИДЕО 2: Последний звонок: юнармейцы открыли праздник (VK) -->
+<div class="media-item video-embed-item" data-type="video" data-event="yunarmiya">
+    <div class="video-embed-wrapper">
+        <iframe 
+            src="https://vk.com/video_ext.php?oid=-238911106&id=456239028&hd=2"
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            loading="lazy">
+        </iframe>
+    </div>
+    <div class="media-video-badge">▶ ВИДЕО</div>
+    <div class="video-caption">📅 Май 2026 • Последний звонок!</div>
+</div> 
+        </div>
+
+        <!-- Пустое состояние (если нет результатов фильтрации) -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-state-icon">📭</div>
+            <div class="empty-state-text">Медиафайлы не найдены</div>
+            <div class="empty-state-subtext">Попробуйте изменить фильтры</div>
+        </div>
+
+    </main>
+
+    <!-- Lightbox для просмотра -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav prev" onclick="navigateMedia(-1); event.stopPropagation();">‹</button>
+        <div class="lightbox-content" id="lightboxContent" onclick="event.stopPropagation()">
+            <!-- Контент загружается динамически -->
+        </div>
+        <button class="lightbox-nav next" onclick="navigateMedia(1); event.stopPropagation();">›</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <script>
+        // ============================================
+        // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
+        // ============================================
+        function openEmblemLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEmblemLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ============================================
+        // МОБИЛЬНОЕ МЕНЮ
+        // ============================================
+     function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const scrollY = window.scrollY;
+        updateMenuPosition();
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = '-' + scrollY + 'px';
+        } else {
+            const savedScroll = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
+        }
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
+
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        const headerHeight = headerTop.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        }
+    }
+
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) updateMenuPosition();
+        }, 300);
+    });
+
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    });
+
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) return true;
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    });
+
+// ============================================
+// МЕДИАГАЛЕРЕЯ И LIGHTBOX
+// ============================================
+let currentMediaIndex = 0;
+let visibleMediaItems = [];
+
+// Touch/swipe переменные
+let touchStartX = 0;
+let touchStartY = 0;
+
+function updateVisibleItems() {
+    visibleMediaItems = Array.from(document.querySelectorAll('.media-item')).filter(item => {
+        return window.getComputedStyle(item).display !== 'none';
+    });
+}
+
+function openLightboxByElement(element) {
+    // Видео с VK iframe — лайтбокс не нужен, плеер работает в карточке
+    if (element.classList.contains('video-embed-item')) return;
+    
+    updateVisibleItems();
+    currentMediaIndex = visibleMediaItems.indexOf(element);
+    if (currentMediaIndex === -1) return;
+    showMedia(currentMediaIndex);
+    document.getElementById('lightbox').classList.add('active');
+    document.body.classList.add('modal-open');
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    // Останавливаем видео
+    const video = document.querySelector('#lightboxContent video');
+    if (video) video.pause();
+}
+
+function showMedia(index) {
+    if (visibleMediaItems.length === 0) return;
+    const item = visibleMediaItems[index];
+    const lightboxContent = document.getElementById('lightboxContent');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const mediaType = item.dataset.type;
+
+    // Если это VK-карточка — закрываем лайтбокс и прокручиваем к карточке
+    if (item.classList.contains('video-embed-item')) {
+        closeLightbox();
+        setTimeout(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Подсвечиваем карточку чтобы пользователь понял куда смотреть
+            item.style.boxShadow = '0 0 0 4px var(--color-danger), 0 8px 24px rgba(0,61,122,0.3)';
+            setTimeout(() => {
+                item.style.boxShadow = '';
+            }, 2000);
+        }, 300);
+        return;
+    }
+
+    const overlayEl = item.querySelector('.media-item-overlay');
+    const overlayText = overlayEl ? overlayEl.textContent.trim() : '';
+
+    // Останавливаем предыдущее видео
+    const prevVideo = lightboxContent.querySelector('video');
+    if (prevVideo) prevVideo.pause();
+
+    if (mediaType === 'photo') {
+        const img = item.querySelector('img');
+        const src = img ? img.src : '';
+        const alt = img ? img.alt : '';
+        lightboxContent.innerHTML = `
+            <div style="text-align:center;">
+                <img src="${src}" alt="${alt}"
+                     style="max-width:100%; max-height:85vh; border-radius:8px;
+                            box-shadow:0 20px 60px rgba(0,0,0,0.5); display:block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div style="display:none; color:white; padding:2rem; font-size:1.1rem;">
+                    ⚠️ Изображение не загружено
+                </div>
+                ${overlayText ? `<p style="color:rgba(255,255,255,0.8); margin-top:0.75rem; font-size:0.95rem;">${overlayText}</p>` : ''}
+            </div>
+        `;
+    } else {
+        const videoEl = item.querySelector('video');
+        const src = videoEl ? videoEl.querySelector('source')?.src || videoEl.src : '';
+        const poster = videoEl ? videoEl.getAttribute('poster') : '';
+        lightboxContent.innerHTML = `
+            <div style="text-align:center; width:min(90vw, 960px);">
+                <video controls autoplay
+                       style="width:100%; max-height:80vh; border-radius:8px;
+                              box-shadow:0 20px 60px rgba(0,0,0,0.5); display:block;"
+                       ${poster ? `poster="${poster}"` : ''}>
+                    <source src="${src}">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                ${overlayText ? `<p style="color:rgba(255,255,255,0.8); margin-top:0.75rem; font-size:0.95rem;">${overlayText}</p>` : ''}
+            </div>
+        `;
+    }
+    lightboxCounter.textContent = `${index + 1} / ${visibleMediaItems.length}`;
+}
+
+function navigateMedia(direction) {
+    if (visibleMediaItems.length === 0) return;
+    // Останавливаем видео при переключении
+    const video = document.querySelector('#lightboxContent video');
+    if (video) video.pause();
+    currentMediaIndex = (currentMediaIndex + direction + visibleMediaItems.length) % visibleMediaItems.length;
+    showMedia(currentMediaIndex);
+}
+
+// Навигация колесом мыши (десктоп)
+document.getElementById('lightbox').addEventListener('wheel', function(e) {
+    e.preventDefault();
+    navigateMedia(e.deltaY > 0 ? 1 : -1);
+}, { passive: false });
+
+// Свайп (мобильные)
+document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.getElementById('lightbox').addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    // Свайп только если горизонтальный (dx > 50px и больше вертикального)
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        navigateMedia(dx < 0 ? 1 : -1);
+    }
+}, { passive: true });
+
+// Клавиши Escape и стрелки
+document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') navigateMedia(1);
+    if (e.key === 'ArrowLeft') navigateMedia(-1);
+});
+
+// ============================================
+// ФИЛЬТРАЦИЯ
+// ============================================
+let currentMediaTypeFilter = 'all';
+let currentEventFilter = 'all';
+
+function filterMediaType(type, button) {
+    currentMediaTypeFilter = type;
+    applyFilters();
+    button.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+}
+
+function filterEvent(eventType, button) {
+    currentEventFilter = eventType;
+    applyFilters();
+    button.parentElement.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+}
+
+function applyFilters() {
+    const items = document.querySelectorAll('.media-item');
+    let visibleCount = 0;
+    items.forEach(item => {
+        const matchesType = currentMediaTypeFilter === 'all' || item.dataset.type === currentMediaTypeFilter;
+        const matchesEvent = currentEventFilter === 'all' || item.dataset.event === currentEventFilter;
+        item.style.display = (matchesType && matchesEvent) ? 'block' : 'none';
+        if (matchesType && matchesEvent) visibleCount++;
+    });
+    const emptyState = document.getElementById('emptyState');
+    const gallery = document.getElementById('mediaGallery');
+    emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    gallery.style.display = visibleCount === 0 ? 'none' : 'grid';
+}
+        
+        // ============================================
+        // QR-КНОПКА
+        // ============================================
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrButton = document.getElementById('qrFloatingButton');
+            const qrHint = document.getElementById('qrButtonHint');
+            
+            const savedLeft = localStorage.getItem('qrButtonLeft');
+            const savedTop = localStorage.getItem('qrButtonTop');
+            if (savedLeft && savedTop) {
+                qrButton.style.left = savedLeft;
+                qrButton.style.top = savedTop;
+                qrButton.style.bottom = 'auto';
+                qrButton.style.right = 'auto';
+            }
+            
+            let isDragging = false;
+            let startX, startY;
+            let initialX, initialY;
+            let moveThreshold = 10;
+            let hasMoved = false;
+
+            if (!localStorage.getItem('qrHintShown')) {
+                setTimeout(() => {
+                    qrHint.style.display = 'block';
+                    setTimeout(() => {
+                        qrHint.style.display = 'none';
+                        localStorage.setItem('qrHintShown', 'true');
+                    }, 4000);
+                }, 1000);
+            }
+
+            qrButton.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+
+            qrButton.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+        });
+
+    </script>
+   <!-- Минимизированный плавающий плейер -->
+<div id="floatingMiniPlayer" 
+     style="position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 300px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.5);
+            z-index: 10000;
+            display: none;
+            animation: slideInLeft 0.4s ease;">
+    
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="miniPlayPauseBtn" 
+                onclick="toggleMiniMusicPlayPause()"
+                style="background: white;
+                       color: #003D7A;
+                       border: none;
+                       width: 40px;
+                       height: 40px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">
+            ▶️
+        </button>
+        
+        <div style="flex: 1; min-width: 0;">
+            <div id="miniPlayerTitle" 
+                 style="font-size: 0.9rem;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;">
+                Нет трека
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                <div id="miniProgressBar" 
+                     style="flex: 1;
+                            height: 3px;
+                            background: rgba(255,255,255,0.3);
+                            border-radius: 2px;
+                            cursor: pointer;
+                            position: relative;">
+                    <div id="miniProgressFill" 
+                         style="height: 100%;
+                                background: white;
+                                border-radius: 2px;
+                                width: 0%;
+                                transition: width 0.1s linear;"></div>
+                </div>
+                <span id="miniCurrentTime" style="font-size: 0.75rem; opacity: 0.8;">0:00</span>
+            </div>
+        </div>
+        
+        <button onclick="hideMiniPlayer()"
+                style="background: rgba(255,255,255,0.2);
+                       border: none;
+                       color: white;
+                       width: 28px;
+                       height: 28px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">×</button>
+    </div>
+</div>
+
+<!-- Уведомление "Продолжить воспроизведение" -->
+<div id="continuePlaybackPrompt" 
+     style="position: fixed;
+            top: 80px;
+            right: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            display: none;
+            max-width: 320px;
+            animation: slideInRight 0.4s ease;
+            border-left: 4px solid #003D7A;">
+    
+    <div style="display: flex; align-items: start; gap: 15px;">
+        <span style="font-size: 2.5rem;">🎵</span>
+        <div style="flex: 1;">
+            <div style="font-weight: 600; 
+                        color: #2C3E50; 
+                        margin-bottom: 6px;
+                        font-size: 1.05rem;">
+                Продолжить воспроизведение?
+            </div>
+            <div id="continueTrackName" 
+                 style="color: #7F8C8D; 
+                        font-size: 0.9rem;
+                        margin-bottom: 12px;
+                        line-height: 1.4;"></div>
+            
+            <div style="display: flex; gap: 8px;">
+                <button onclick="resumePlayback()" 
+                        style="flex: 1;
+                               padding: 10px;
+                               background: #003D7A;
+                               color: white;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-weight: 600;
+                               font-size: 0.9rem;">
+                    ▶️ Продолжить
+                </button>
+                <button onclick="dismissPlaybackPrompt()" 
+                        style="padding: 10px 15px;
+                               background: #F5F7FA;
+                               color: #7F8C8D;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-size: 0.9rem;">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes slideInLeft {
+        from { transform: translateX(-400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOutLeft {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-400px); opacity: 0; }
+    }
+    
+    @media (max-width: 768px) {
+        #floatingMiniPlayer {
+            width: 260px;
+            left: 15px;
+            bottom: 90px;
+            padding: 10px 12px;
+        }
+        
+        #miniPlayPauseBtn {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+        
+        #miniPlayerTitle {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<script>
+// ============================================
+// МИНИМИЗИРОВАННЫЙ ПЛЕЙЕР (для других страниц)
+// ============================================
+
+const miniAudio = document.createElement('audio');
+miniAudio.id = 'miniAudioPlayer';
+document.body.appendChild(miniAudio);
+
+const floatingMiniPlayer = document.getElementById('floatingMiniPlayer');
+const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
+const miniPlayerTitle = document.getElementById('miniPlayerTitle');
+const miniProgressBar = document.getElementById('miniProgressBar');
+const miniProgressFill = document.getElementById('miniProgressFill');
+const miniCurrentTime = document.getElementById('miniCurrentTime');
+
+let miniIsPlaying = false;
+
+// Форматирование времени
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Показать мини-плейер
+function showMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.display = 'block';
+    }
+}
+
+// Скрыть мини-плейер
+function hideMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.animation = 'slideOutLeft 0.3s ease';
+        setTimeout(() => {
+            floatingMiniPlayer.style.display = 'none';
+            floatingMiniPlayer.style.animation = 'slideInLeft 0.4s ease';
+        }, 300);
+        localStorage.setItem('miniPlayerVisible', 'false');
+    }
+}
+
+// Play/Pause мини-плейера
+function toggleMiniMusicPlayPause() {
+    if (miniIsPlaying) {
+        miniAudio.pause();
+        miniPlayPauseBtn.textContent = '▶️';
+        miniIsPlaying = false;
+    } else {
+        miniAudio.play();
+        miniPlayPauseBtn.textContent = '⏸';
+        miniIsPlaying = true;
+    }
+    
+    // Обновляем состояние в localStorage
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (savedState) {
+        try {
+            const state = JSON.parse(savedState);
+            state.isPlaying = miniIsPlaying;
+            state.currentTime = miniAudio.currentTime;
+            localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        } catch (e) {}
+    }
+}
+
+// Обновление мини-плейера
+function updateMiniPlayer() {
+    if (!miniAudio.duration) return;
+    
+    const progress = (miniAudio.currentTime / miniAudio.duration) * 100;
+    if (miniProgressFill) miniProgressFill.style.width = `${progress}%`;
+    if (miniCurrentTime) miniCurrentTime.textContent = formatTime(miniAudio.currentTime);
+}
+
+// Клик по прогресс-бару
+if (miniProgressBar) {
+    miniProgressBar.addEventListener('click', (e) => {
+        const rect = miniProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        miniAudio.currentTime = percent * miniAudio.duration;
+    });
+}
+
+miniAudio.addEventListener('timeupdate', updateMiniPlayer);
+
+// Восстановление состояния
+function restoreMiniPlayer() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    const miniPlayerVisible = localStorage.getItem('miniPlayerVisible');
+    
+    if (!savedState || miniPlayerVisible === 'false') return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        // Проверка актуальности
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        // Загружаем трек
+        miniAudio.src = `audio/${state.filename || '01-nashey-shcolye-55!.mp3'}`;
+        miniAudio.volume = state.volume || 0.7;
+        
+        miniAudio.addEventListener('loadedmetadata', function() {
+            miniAudio.currentTime = state.currentTime || 0;
+            
+            if (miniPlayerTitle) {
+                miniPlayerTitle.textContent = state.trackTitle || 'Трек';
+            }
+            
+            if (state.isPlaying) {
+                showMiniPlayer();
+            }
+        }, { once: true });
+        
+    } catch (e) {
+        console.error('Ошибка восстановления мини-плейера:', e);
+    }
+}
+
+// Показать промпт продолжения
+function showContinuePrompt() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        if (state.isPlaying) {
+            const prompt = document.getElementById('continuePlaybackPrompt');
+            const trackName = document.getElementById('continueTrackName');
+            
+            if (prompt && trackName) {
+                trackName.textContent = `${state.trackTitle || 'Музыка'} • ${formatTime(state.currentTime)}`;
+                prompt.style.display = 'block';
+            }
+        }
+    } catch (e) {}
+}
+
+// Продолжить воспроизведение
+function resumePlayback() {
+    restoreMiniPlayer();
+    
+    setTimeout(() => {
+        if (miniAudio.src) {
+            miniAudio.play();
+            miniIsPlaying = true;
+            if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = '⏸';
+            showMiniPlayer();
+        }
+    }, 500);
+    
+    dismissPlaybackPrompt();
+}
+
+// Закрыть промпт
+function dismissPlaybackPrompt() {
+    const prompt = document.getElementById('continuePlaybackPrompt');
+    if (prompt) {
+        prompt.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            prompt.style.display = 'none';
+            prompt.style.animation = 'slideInRight 0.4s ease';
+        }, 300);
+    }
+}
+
+// Инициализация
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        restoreMiniPlayer();
+        showContinuePrompt();
+    }, 1000);
+});
+</script> 
+ <script src="landscape-fix.js"></script>
+
+  <!-- Плавающая кнопка ВКонтакте -->
+<div id="vkFloatingButton"
+     style="position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;">
+   <svg width="32" height="32" viewBox="0 0 24 24" fill="white" 
+         style="pointer-events: none; flex-shrink: 0; 
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+        
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+</div>
+
+<style>
+    #vkFloatingButton.dragging {
+        animation: none;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #vkFloatingButton:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+    }
+    @media (max-width: 768px) {
+        #vkFloatingButton {
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            right: 90px;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('vkFloatingButton');
+    var VK_URL = 'https://vk.com/club238911106';
+    var isDragging = false;
+    var hasMoved = false;
+    var offsetX, offsetY, curX, curY, dragStartTime;
+    var STORAGE_KEY = 'vkButtonPosition';
+
+    function loadPos() {
+        var s = localStorage.getItem(STORAGE_KEY);
+        if (s) {
+            var p = JSON.parse(s);
+            btn.style.left = p.x + 'px';
+            btn.style.top = p.y + 'px';
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+        }
+    }
+
+    function startDrag(cx, cy) {
+        dragStartTime = Date.now();
+        hasMoved = false;
+        isDragging = true;
+        var r = btn.getBoundingClientRect();
+        offsetX = cx - r.left;
+        offsetY = cy - r.top;
+        btn.classList.add('dragging');
+    }
+
+    function moveDrag(cx, cy) {
+        hasMoved = true;
+        curX = Math.max(0, Math.min(cx - offsetX, window.innerWidth - btn.offsetWidth));
+        curY = Math.max(0, Math.min(cy - offsetY, window.innerHeight - btn.offsetHeight));
+        btn.style.left = curX + 'px';
+        btn.style.top = curY + 'px';
+        btn.style.right = 'auto';
+        btn.style.bottom = 'auto';
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        btn.classList.remove('dragging');
+        var elapsed = Date.now() - dragStartTime;
+        // Если не тащили или тащили меньше 150ms — считаем кликом → открываем ВК
+        if (!hasMoved || elapsed < 150) {
+            window.open(VK_URL, '_blank');
+        } else {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({x: curX, y: curY}));
+        }
+        isDragging = false;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+        startDrag(e.clientX, e.clientY);
+        e.preventDefault();
+    });
+    btn.addEventListener('touchstart', function(e) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.clientX, e.clientY); }
+    });
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive: false});
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // Восстанавливаем позицию при загрузке
+    window.addEventListener('load', function() {
+        loadPos();
+    });
+})();
+</script>   
+</body>
+</html>
