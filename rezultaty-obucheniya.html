@@ -452,11 +452,11 @@
             line-height: 1.6;
         }
 
-        .conclusions li span:first-child {
+             .conclusions li > span:first-child {
             margin-right: 0.5rem;
             font-size: 1.2rem;
             flex-shrink: 0;
-        }
+        } 
 
         footer {
             background-color: var(--color-primary);
@@ -958,15 +958,6 @@
             <div class="chart-container">
                 <h2 class="chart-title">Распределение оценок</h2>
                 <div class="chart-grid">
-                    <div class="chart-item">
-                        <h3>2024 год</h3>
-                        <div class="canvas-wrapper">
-                            <canvas id="grades2024Chart"></canvas>
-                        </div>
-                        <p style="text-align: center; font-size: 1.1rem; font-weight: 600; margin-top: 1rem;">
-                            Всего учащихся: <span id="total2024">0</span>
-                        </p>
-                    </div>
                     <div class="chart-item">
                         <h3>2023–2024 уч. год</h3>
                         <div class="canvas-wrapper">
