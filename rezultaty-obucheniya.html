@@ -341,7 +341,7 @@
 
         .chart-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -918,25 +918,6 @@
     Комплексный анализ успеваемости и качества знаний обучающихся по предмету ОБЗР
 </p>
 
-<!-- ПЕРЕКЛЮЧАТЕЛЬ УЧЕБНЫХ ГОДОВ -->
-<div style="display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;">
-    <span style="font-weight: 700; 
-                 color: var(--color-text-secondary); 
-                 font-size: 0.95rem;">
-        📅 Учебный год:
-    </span>
-    <button class="year-btn active" onclick="switchYear('2024-2025', this)">2024–2025</button>
-    <button class="year-btn" onclick="switchYear('2025-2026', this)">2025–2026</button>
-</div> 
-
-        <!-- Пояснение для нового года -->
-<div class="year-note" id="note-2025-2026">
-    📊 Данные за 2025–2026 учебный год будут внесены по итогам года (август 2026).
-</div>
         <!-- Навигация по вкладкам -->
         <div class="tabs-nav">
             <button class="tab-button active" onclick="showTab('quality')">Качество обучения</button>
@@ -950,15 +931,21 @@
                 <h2 class="chart-title">Уровень качества обучения по классам (%)</h2>
                 <div class="chart-grid">
                     <div class="chart-item">
-                        <h3>2024 год</h3>
+                        <h3>2023–2024 уч. год</h3>
                         <div class="canvas-wrapper">
                             <canvas id="quality2024Chart"></canvas>
                         </div>
                     </div>
                     <div class="chart-item">
-                        <h3>2025 год</h3>
+                        <h3>2024–2025 уч. год</h3>
                         <div class="canvas-wrapper">
                             <canvas id="quality2025Chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-item">
+                        <h3>2025–2026 уч. год</h3>
+                        <div class="canvas-wrapper">
+                            <canvas id="quality2026Chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -966,6 +953,7 @@
         </div>
 
         <!-- Вкладка 2: Распределение оценок -->
+                
         <div id="grades-tab" class="tab-content">
             <div class="chart-container">
                 <h2 class="chart-title">Распределение оценок</h2>
@@ -980,7 +968,16 @@
                         </p>
                     </div>
                     <div class="chart-item">
-                        <h3>2025 год</h3>
+                        <h3>2023–2024 уч. год</h3>
+                        <div class="canvas-wrapper">
+                            <canvas id="grades2024Chart"></canvas>
+                        </div>
+                        <p style="text-align: center; font-size: 1.1rem; font-weight: 600; margin-top: 1rem;">
+                            Всего учащихся: <span id="total2024">0</span>
+                        </p>
+                    </div>
+                    <div class="chart-item">
+                        <h3>2024–2025 уч. год</h3>
                         <div class="canvas-wrapper">
                             <canvas id="grades2025Chart"></canvas>
                         </div>
@@ -988,11 +985,21 @@
                             Всего учащихся: <span id="total2025">0</span>
                         </p>
                     </div>
+                    <div class="chart-item">
+                        <h3>2025–2026 уч. год</h3>
+                        <div class="canvas-wrapper">
+                            <canvas id="grades2026Chart"></canvas>
+                        </div>
+                        <p style="text-align: center; font-size: 1.1rem; font-weight: 600; margin-top: 1rem;">
+                            Всего учащихся: <span id="total2026">0</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Вкладка 3: Сравнение по годам -->
+                    
         <div id="comparison-tab" class="tab-content">
             <div class="chart-container">
                 <h2 class="chart-title">Динамика показателей по годам</h2>
@@ -1002,23 +1009,24 @@
                     </div>
                 </div>
                 
-                <div class="stats-grid">
+                          <div class="stats-grid">
                     <div class="stat-card stat-green">
-                        <h3>2024 год</h3>
+                        <h3>2023–2024 уч. год</h3>
                         <p class="stat-value" id="avg2024">0%</p>
                         <p class="stat-label">Качество обучения</p>
                         <p class="stat-label" style="margin-top: 0.5rem;">Учащихся: <span id="students2024">0</span></p>
                     </div>
                     <div class="stat-card stat-blue">
-                        <h3>2025 год</h3>
+                        <h3>2024–2025 уч. год</h3>
                         <p class="stat-value" id="avg2025">0%</p>
                         <p class="stat-label">Качество обучения</p>
                         <p class="stat-label" style="margin-top: 0.5rem;">Учащихся: <span id="students2025">0</span></p>
                     </div>
                     <div class="stat-card stat-purple">
-                        <h3>Изменение</h3>
-                        <p class="stat-value" id="change">0%</p>
-                        <p class="stat-label" id="changeLabel">—</p>
+                        <h3>2025–2026 уч. год</h3>
+                        <p class="stat-value" id="avg2026">0%</p>
+                        <p class="stat-label">Качество обучения</p>
+                        <p class="stat-label" style="margin-top: 0.5rem;">Учащихся: <span id="students2026">0</span></p>
                     </div>
                 </div>
             </div>
@@ -1027,21 +1035,21 @@
         <!-- Ключевые выводы -->
         <div class="conclusions">
             <h2>Ключевые выводы</h2>
-            <ul>
+                      <ul>
                 <li>
-                   <span>✅</span>
-                    <span>Успеваемость остается стабильной на уровне 100% в течение последних двух лет</span>
+                    <span>✅</span>
+                    <span>Успеваемость остаётся стабильной на уровне 100% на протяжении последних трёх учебных лет</span>
                 </li>
                 <li>
-                    <span style="color: #2196F3;">📊</span>
-                    <span>Среднее качество обучения: 2024 — <span id="conclusion2024">0</span>%, 2025 — <span id="conclusion2025">0</span>%</span>
+                    <span>📊</span>
+                    <span>Среднее качество обучения: 2023–2024 — <span id="conclusion2024">0</span>%, 2024–2025 — <span id="conclusion2025">0</span>%, 2025–2026 — <span id="conclusion2026">0</span>%</span>
                 </li>
                 <li>
-                    <span style="color: #9C27B0;">👥</span>
-                    <span>Общее количество учащихся: 2024 — <span id="conclusionStudents2024">0</span>, 2025 — <span id="conclusionStudents2025">0</span></span>
+                    <span>👥</span>
+                    <span>Общее количество учащихся: 2023–2024 — <span id="conclusionStudents2024">0</span>, 2024–2025 — <span id="conclusionStudents2025">0</span>, 2025–2026 — <span id="conclusionStudents2026">0</span></span>
                 </li>
                 <li>
-                    <span style="color: #FF9800;">🎯</span>
+                    <span>🎯</span>
                     <span>Отсутствие неудовлетворительных оценок свидетельствует о высоком уровне преподавания</span>
                 </li>
             </ul>
@@ -1288,12 +1296,24 @@
             { class: '10', total: 15, grade5: 15, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
             { class: '11', total: 16, grade5: 16, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 }
         ];
-
-        // Средние показатели
+ const data2026 = [
+            { class: '8А', total: 26, grade5: 16, grade4: 8, grade3: 2, grade2: 0, quality: 92.31, success: 100.00 },
+            { class: '8Б', total: 25, grade5: 19, grade4: 6, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
+            { class: '8В', total: 29, grade5: 21, grade4: 8, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
+            { class: '9А', total: 24, grade5: 15, grade4: 8, grade3: 1, grade2: 0, quality: 95.83, success: 100.00 },
+            { class: '9Б', total: 30, grade5: 20, grade4: 9, grade3: 1, grade2: 0, quality: 96.67, success: 100.00 },
+            { class: '9В', total: 26, grade5: 13, grade4: 12, grade3: 1, grade2: 0, quality: 96.15, success: 100.00 },
+            { class: '10', total: 15, grade5: 15, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
+            { class: '11', total: 15, grade5: 15, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 }
+        ];
+        
+             // Средние показатели
         const avg2024 = (data2024.reduce((sum, item) => sum + item.quality, 0) / data2024.length).toFixed(2);
         const avg2025 = (data2025.reduce((sum, item) => sum + item.quality, 0) / data2025.length).toFixed(2);
+        const avg2026 = (data2026.reduce((sum, item) => sum + item.quality, 0) / data2026.length).toFixed(2);
         const total2024 = data2024.reduce((sum, item) => sum + item.total, 0);
         const total2025 = data2025.reduce((sum, item) => sum + item.total, 0);
+        const total2026 = data2026.reduce((sum, item) => sum + item.total, 0);
 
         // Распределение оценок
         const grades2024 = {
@@ -1308,8 +1328,14 @@
             grade3: data2025.reduce((sum, item) => sum + item.grade3, 0)
         };
 
+        const grades2026 = {
+            grade5: data2026.reduce((sum, item) => sum + item.grade5, 0),
+            grade4: data2026.reduce((sum, item) => sum + item.grade4, 0),
+            grade3: data2026.reduce((sum, item) => sum + item.grade3, 0)
+        };
+
         // Инициализация графиков
-        let quality2024Chart, quality2025Chart, grades2024Chart, grades2025Chart, comparisonChart;
+            let quality2024Chart, quality2025Chart, quality2026Chart, grades2024Chart, grades2025Chart, grades2026Chart, comparisonChart;
 
         function initCharts() {
             // График качества 2024
@@ -1366,6 +1392,49 @@
                         data: data2025.map(d => d.quality),
                         backgroundColor: '#2196F3',
                         borderColor: '#1976D2',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+                // График качества 2026
+            const ctx2026 = document.getElementById('quality2026Chart').getContext('2d');
+            quality2026Chart = new Chart(ctx2026, {
+                type: 'bar',
+                data: {
+                    labels: data2026.map(d => d.class),
+                    datasets: [{
+                        label: 'Качество обучения (%)',
+                        data: data2026.map(d => d.quality),
+                        backgroundColor: '#FF9800',
+                        borderColor: '#F57C00',
                         borderWidth: 1
                     }]
                 },
@@ -1466,16 +1535,50 @@
                 }
             });
 
+                    // График распределения 2026
+            const ctx2026g = document.getElementById('grades2026Chart').getContext('2d');
+            grades2026Chart = new Chart(ctx2026g, {
+                type: 'pie',
+                data: {
+                    labels: ['Отлично (5)', 'Хорошо (4)', 'Удовлетворительно (3)'],
+                    datasets: [{
+                        data: [grades2026.grade5, grades2026.grade4, grades2026.grade3],
+                        backgroundColor: ['#EF4444', '#4CAF50', '#2196F3'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const value = context.parsed;
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return context.label + ': ' + value + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
             // График сравнения
             const ctx5 = document.getElementById('comparisonChart').getContext('2d');
             comparisonChart = new Chart(ctx5, {
                 type: 'line',
-                data: {
-                    labels: ['2024', '2025'],
+                              data: {
+                    labels: ['2023–2024', '2024–2025', '2025–2026'],
                     datasets: [
                         {
                             label: 'Среднее качество обучения (%)',
-                            data: [avg2024, avg2025],
+                            data: [avg2024, avg2025, avg2026],
                             borderColor: '#4CAF50',
                             backgroundColor: 'rgba(76, 175, 80, 0.1)',
                             borderWidth: 3,
@@ -1485,7 +1588,7 @@
                         },
                         {
                             label: 'Успеваемость (%)',
-                            data: [100, 100],
+                            data: [100, 100, 100],
                             borderColor: '#2196F3',
                             backgroundColor: 'rgba(33, 150, 243, 0.1)',
                             borderWidth: 3,
@@ -1525,24 +1628,25 @@
                 }
             });
 
-            // Заполнение статистики
+                     // Заполнение статистики
             document.getElementById('total2024').textContent = grades2024.grade5 + grades2024.grade4 + grades2024.grade3;
             document.getElementById('total2025').textContent = grades2025.grade5 + grades2025.grade4 + grades2025.grade3;
+            document.getElementById('total2026').textContent = grades2026.grade5 + grades2026.grade4 + grades2026.grade3;
             
             document.getElementById('avg2024').textContent = avg2024 + '%';
             document.getElementById('avg2025').textContent = avg2025 + '%';
+            document.getElementById('avg2026').textContent = avg2026 + '%';
             document.getElementById('students2024').textContent = total2024;
             document.getElementById('students2025').textContent = total2025;
-            
-            const change = (avg2025 - avg2024).toFixed(2);
-            document.getElementById('change').textContent = change + '%';
-            document.getElementById('changeLabel').textContent = change > 0 ? '📈 Рост' : '📉 Снижение';
+            document.getElementById('students2026').textContent = total2026;
             
             // Выводы
             document.getElementById('conclusion2024').textContent = avg2024;
             document.getElementById('conclusion2025').textContent = avg2025;
+            document.getElementById('conclusion2026').textContent = avg2026;
             document.getElementById('conclusionStudents2024').textContent = total2024;
             document.getElementById('conclusionStudents2025').textContent = total2025;
+            document.getElementById('conclusionStudents2026').textContent = total2026;
         }
 
         // Переключение вкладок
@@ -1772,81 +1876,6 @@ window.addEventListener('load', function() {
         }
     } catch(e) {}
 });
-
-// ============================================
-// ПЕРЕКЛЮЧЕНИЕ УЧЕБНЫХ ГОДОВ
-// ============================================
-
-const data2026 = [
-    { class: '8А', total: 0, grade5: 0, grade4: 0, grade3: 0, grade2: 0, quality: 0, success: 0 },
-];
-
-function switchYear(year, btn) {
-    document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    document.querySelectorAll('.year-note').forEach(n => n.classList.remove('active'));
-    const note = document.getElementById('note-' + year);
-    if (note) note.classList.add('active');
-
-    if (year === '2024-2025') {
-        updateCharts(data2024, data2025, '2024', '2025');
-    } else if (year === '2025-2026') {
-        updateCharts(data2025, data2026, '2025', '2026');
-    }
-}
-
-function updateCharts(dataA, dataB, labelA, labelB) {
-    quality2024Chart.data.labels = dataA.map(d => d.class);
-    quality2024Chart.data.datasets[0].data = dataA.map(d => d.quality);
-    quality2024Chart.data.datasets[0].label = 'Качество обучения ' + labelA + ' (%)';
-    quality2024Chart.update();
-
-    quality2025Chart.data.labels = dataB.map(d => d.class);
-    quality2025Chart.data.datasets[0].data = dataB.map(d => d.quality);
-    quality2025Chart.data.datasets[0].label = 'Качество обучения ' + labelB + ' (%)';
-    quality2025Chart.update();
-
-    const grA = {
-        grade5: dataA.reduce((s, i) => s + i.grade5, 0),
-        grade4: dataA.reduce((s, i) => s + i.grade4, 0),
-        grade3: dataA.reduce((s, i) => s + i.grade3, 0)
-    };
-    const grB = {
-        grade5: dataB.reduce((s, i) => s + i.grade5, 0),
-        grade4: dataB.reduce((s, i) => s + i.grade4, 0),
-        grade3: dataB.reduce((s, i) => s + i.grade3, 0)
-    };
-
-    grades2024Chart.data.datasets[0].data = [grA.grade5, grA.grade4, grA.grade3];
-    grades2024Chart.update();
-    grades2025Chart.data.datasets[0].data = [grB.grade5, grB.grade4, grB.grade3];
-    grades2025Chart.update();
-
-    document.getElementById('total2024').textContent = grA.grade5 + grA.grade4 + grA.grade3;
-    document.getElementById('total2025').textContent = grB.grade5 + grB.grade4 + grB.grade3;
-
-    const avgA = dataA.length ? (dataA.reduce((s, i) => s + i.quality, 0) / dataA.length).toFixed(2) : 0;
-    const avgB = dataB.length ? (dataB.reduce((s, i) => s + i.quality, 0) / dataB.length).toFixed(2) : 0;
-
-    comparisonChart.data.labels = [labelA, labelB];
-    comparisonChart.data.datasets[0].data = [avgA, avgB];
-    comparisonChart.update();
-
-    document.getElementById('avg2024').textContent = avgA + '%';
-    document.getElementById('avg2025').textContent = avgB + '%';
-    document.getElementById('students2024').textContent = dataA.reduce((s, i) => s + i.total, 0);
-    document.getElementById('students2025').textContent = dataB.reduce((s, i) => s + i.total, 0);
-
-    const change = (avgB - avgA).toFixed(2);
-    document.getElementById('change').textContent = (change > 0 ? '+' : '') + change + '%';
-    document.getElementById('changeLabel').textContent = change > 0 ? '📈 Рост' : change < 0 ? '📉 Снижение' : '➡️ Без изменений';
-
-    document.getElementById('conclusion2024').textContent = avgA;
-    document.getElementById('conclusion2025').textContent = avgB;
-    document.getElementById('conclusionStudents2024').textContent = dataA.reduce((s, i) => s + i.total, 0);
-    document.getElementById('conclusionStudents2025').textContent = dataB.reduce((s, i) => s + i.total, 0);
-}
 
     </script>   
 
