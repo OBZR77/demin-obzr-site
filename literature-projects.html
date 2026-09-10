@@ -435,33 +435,61 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 2rem;
-            align-items: center;
+            align-items: stretch;
         }
 
-        .book-cover-wrapper {
-            text-align: center;
-        }
+       .book-cover-wrapper {
+    text-align: left;
+    background: linear-gradient(165deg, #0a0e27 0%, #12213f 55%, #163a4a 100%);
+    border-radius: 16px;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.9rem;
+}
 
-        .book-cover-wrapper img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.book-cover-wrapper img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.book-cover-badges {
+    color: #5CE1E6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: 0.2px;
+}
+
+.book-cover-badges div {
+    margin-bottom: 5px;
+}
+
+.book-cover-hashtags {
+    color: #5CE1E6;
+    font-size: 0.58rem;
+    font-weight: 700;
+    line-height: 1.55;
+}
 
         .book-cover-wrapper img:hover {
             transform: scale(1.05);
             box-shadow: 0 12px 24px rgba(0,0,0,0.3);
         }
 
-        .book-cover-hint {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--color-text-secondary);
-            font-style: italic;
-        }
+       .book-cover-hint {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #5CE1E6;
+    font-style: italic;
+    opacity: 0.75;
+}
 
         .book-details h3 {
             color: var(--color-primary);
@@ -1541,12 +1569,28 @@ window.addEventListener('load', () => {
             <div class="book-info-card">
                 <div class="book-grid">
                     <!-- Обложка -->
-                    <div class="book-cover-wrapper">
-                        <img src="files/books/book1-cover.png" 
-                             alt="Обложка книги — кликните для увеличения" 
-                             onclick="openCoverModal()">
-                        <p class="book-cover-hint">Кликните для полноэкранного просмотра</p>
-                    </div>
+                   <div class="book-cover-wrapper">
+    <div class="book-cover-badges">
+        <div>◆ 20 глав, 20 табуированных тем</div>
+        <div>◆ Захватывающий детектив с настоящими героями</div>
+        <div>◆ Практические знания о безопасности</div>
+        <div>◆ Ответы на вопросы, которые стыдно задать</div>
+    </div>
+
+    <img src="files/books/book1-cover.png" 
+         alt="Обложка книги — кликните для увеличения" 
+         onclick="openCoverModal()">
+
+    <div class="book-cover-hashtags">
+        #ЦифроваяБезопасность<br>
+        #ПодростковыйДетектив<br>
+        #КибербуллингСтоп<br>
+        #БезопасныйИнтернет<br>
+        #ОбразовательнаяФикция
+    </div>
+
+    <p class="book-cover-hint">Кликните для полноэкранного просмотра</p>
+</div> 
                     
                     <!-- Детали книги -->
                     <div class="book-details">
