@@ -330,20 +330,24 @@
         }
 
         /* Обложка книги */
-        .library-card-cover {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-            background: var(--color-surface);
-        }
+       .library-card-cover {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(165deg, #0a0e27 0%, #12213f 55%, #163a4a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .library-card-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+.library-card-cover img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
 
         .library-card:hover .library-card-cover img {
             transform: scale(1.05);
@@ -476,6 +480,7 @@
     font-size: 0.58rem;
     font-weight: 700;
     line-height: 1.55;
+     text-align: right;
 }
 
         .book-cover-wrapper img:hover {
