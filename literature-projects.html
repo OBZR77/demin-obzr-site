@@ -523,9 +523,14 @@
 .b3d-fs-btn { background: rgba(92,225,230,.15); color: #5CE1E6; border: 1px solid #5CE1E6; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.65rem; font-weight: 700; cursor: pointer; }
 .b3d-fs-btn:hover { background: rgba(92,225,230,.3); }
 
-.b3d-overlay { display: none; position: fixed; inset: 0; background: rgba(5,8,14,.96); z-index: 99999; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; }
+.b3d-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(5,8,14,.96); z-index: 99999;
+    align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem;
+    --b3d-w: min(70vw, calc(78vh * 0.558), 420px);
+    --b3d-h: calc(var(--b3d-w) / 0.558);
+    --b3d-d: calc(var(--b3d-w) * 0.193);
+}
 .b3d-overlay.b3d-active { display: flex; }
-.b3d-overlay .b3d-scene { height: min(78vh,780px); width: calc(min(78vh,780px) * 0.558); }
 .b3d-close-btn { position: absolute; top: 20px; right: 28px; background: none; border: none; color: #fff; font-size: 2.4rem; line-height: 1; cursor: pointer; }
         .book-details h3 {
             color: var(--color-primary);
@@ -4451,19 +4456,26 @@ ________________________________________
   function applyRotation(){ book.style.transform = 'rotateX('+rotX+'deg) rotateY('+rotY+'deg)'; }
   applyRotation();
 
+  var justDragged = false;
+
   scene.addEventListener('pointerdown', function(e){
     dragging = true; book.classList.add('b3d-dragging');
     lastX = e.clientX; lastY = e.clientY;
+    if (scene.setPointerCapture) { try { scene.setPointerCapture(e.pointerId); } catch(err){} }
   });
   scene.addEventListener('pointermove', function(e){
     if (!dragging) return;
     var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    if (Math.abs(dx) > 2 || Math.abs(dy) > 2) justDragged = true;
     lastX = e.clientX; lastY = e.clientY;
     rotY += dx * 0.4; rotX = Math.max(-45, Math.min(45, rotX - dy * 0.4));
     applyRotation();
   });
   ['pointerup','pointercancel','pointerleave'].forEach(function(evt){
-    scene.addEventListener(evt, function(){ dragging = false; book.classList.remove('b3d-dragging'); });
+    scene.addEventListener(evt, function(){
+      dragging = false; book.classList.remove('b3d-dragging');
+      setTimeout(function(){ justDragged = false; }, 50);
+    });
   });
 
   var overlay = document.getElementById('b3dOverlay');
@@ -4478,7 +4490,7 @@ ________________________________________
     overlay.classList.remove('b3d-active');
     document.body.style.overflow = '';
   };
-  overlay.addEventListener('click', function(e){ if (e.target === overlay) window.b3dCloseFullscreen(); });
+  overlay.addEventListener('click', function(e){ if (e.target === overlay && !justDragged) window.b3dCloseFullscreen(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') window.b3dCloseFullscreen(); });
 })();
 </script>
