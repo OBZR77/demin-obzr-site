@@ -495,7 +495,38 @@
     font-style: italic;
     opacity: 0.75;
 }
+:root {
+    --b3d-w: 200px;
+    --b3d-h: 358px;
+    --b3d-d: 40px;
+}
 
+.b3d-scene { width: var(--b3d-w); height: var(--b3d-h); perspective: 1200px; touch-action: none; cursor: grab; margin: 0.5rem auto; }
+.b3d-scene:active { cursor: grabbing; }
+.b3d-book { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(-8deg) rotateY(-30deg); transition: transform .12s ease-out; will-change: transform; }
+.b3d-book.b3d-dragging { transition: none; }
+.b3d-face { position: absolute; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); background: #0a0a14; }
+.b3d-face img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
+.b3d-front { width: var(--b3d-w); height: var(--b3d-h); left: 0; top: 0; transform: translateZ(calc(var(--b3d-d)/2)); border-radius: 2px 3px 3px 2px; }
+.b3d-front::after { content: ''; position: absolute; top: 0; left: 14px; width: 3px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,.4), rgba(0,0,0,0)); }
+.b3d-back { width: var(--b3d-w); height: var(--b3d-h); left: 0; top: 0; transform: rotateY(180deg) translateZ(calc(var(--b3d-d)/2)); border-radius: 3px 2px 2px 3px; }
+.b3d-back::after { content: ''; position: absolute; top: 0; right: 14px; width: 3px; height: 100%; background: linear-gradient(to left, rgba(0,0,0,.4), rgba(0,0,0,0)); }
+.b3d-spine { width: var(--b3d-d); height: var(--b3d-h); left: calc((var(--b3d-w) - var(--b3d-d))/2); top: 0; transform: rotateY(-90deg) translateZ(calc(var(--b3d-w)/2)); }
+.b3d-spine::before, .b3d-spine::after { content: ''; position: absolute; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(90deg,#eef0f2 0 3px,#0a2a4a 3px 6px); }
+.b3d-spine::before { top: 0; }
+.b3d-spine::after { bottom: 0; }
+.b3d-pages { width: calc(var(--b3d-d) - 3px); height: var(--b3d-h); left: calc((var(--b3d-w) - var(--b3d-d))/2 + 3px); top: 0; transform: rotateY(90deg) translateZ(calc((var(--b3d-w) - 3px)/2)); background: repeating-linear-gradient(to bottom,#efe7d8 0,#efe7d8 2px,#d9cfba 3px,#efe7d8 4px); box-shadow: inset 4px 0 6px rgba(0,0,0,.15); }
+.b3d-top { width: var(--b3d-w); height: var(--b3d-d); left: 0; top: calc((var(--b3d-h) - var(--b3d-d))/2); transform: rotateX(90deg) translateZ(calc(var(--b3d-h)/2)); background: linear-gradient(#f2ecdd,#d9cfba); }
+.b3d-bottom { width: var(--b3d-w); height: var(--b3d-d); left: 0; top: calc((var(--b3d-h) - var(--b3d-d))/2); transform: rotateX(-90deg) translateZ(calc(var(--b3d-h)/2)); background: linear-gradient(#d9cfba,#c9bda2); }
+
+.b3d-controls { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.65rem; color: #5CE1E6; flex-wrap: wrap; opacity: 0.85; margin-top: 0.25rem; }
+.b3d-fs-btn { background: rgba(92,225,230,.15); color: #5CE1E6; border: 1px solid #5CE1E6; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.65rem; font-weight: 700; cursor: pointer; }
+.b3d-fs-btn:hover { background: rgba(92,225,230,.3); }
+
+.b3d-overlay { display: none; position: fixed; inset: 0; background: rgba(5,8,14,.96); z-index: 99999; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; }
+.b3d-overlay.b3d-active { display: flex; }
+.b3d-overlay .b3d-scene { height: min(78vh,780px); width: calc(min(78vh,780px) * 0.558); }
+.b3d-close-btn { position: absolute; top: 20px; right: 28px; background: none; border: none; color: #fff; font-size: 2.4rem; line-height: 1; cursor: pointer; }
         .book-details h3 {
             color: var(--color-primary);
             font-size: 2rem;
@@ -1574,7 +1605,9 @@ window.addEventListener('load', () => {
             <div class="book-info-card">
                 <div class="book-grid">
                     <!-- Обложка -->
-                   <div class="book-cover-wrapper">
+                   
+
+   <div class="book-cover-wrapper">
     <div class="book-cover-badges">
         <div>◆ 20 глав, 20 табуированных тем</div>
         <div>◆ Захватывающий детектив с настоящими героями</div>
@@ -1582,9 +1615,11 @@ window.addEventListener('load', () => {
         <div>◆ Ответы на вопросы, которые стыдно задать</div>
     </div>
 
-    <img src="files/books/book1-cover.png" 
-         alt="Обложка книги — кликните для увеличения" 
-         onclick="openCoverModal()">
+    <div id="b3dSceneAnchor"></div>
+    <div class="b3d-controls">
+        <span>🖱️ мышью / 👆 свайпом</span>
+        <button type="button" class="b3d-fs-btn" onclick="b3dOpenFullscreen()">⛶ Во весь экран</button>
+    </div>
 
     <div class="book-cover-hashtags">
         #ЦифроваяБезопасность<br>
@@ -1594,8 +1629,8 @@ window.addEventListener('load', () => {
         #ОбразовательнаяФикция
     </div>
 
-    <p class="book-cover-hint">Кликните для полноэкранного просмотра</p>
-</div> 
+    <p class="book-cover-hint">Крутите книгу и разверните на весь экран</p>
+</div>
                     
                     <!-- Детали книги -->
                     <div class="book-details">
@@ -3612,7 +3647,9 @@ ________________________________________
             </div>
 
     </main>
-
+<div class="b3d-overlay" id="b3dOverlay">
+    <button type="button" class="b3d-close-btn" onclick="b3dCloseFullscreen()">&times;</button>
+</div>
     <!-- Модальное окно для обложки -->
     <div id="coverModal" onclick="closeCoverModal()">
         <span class="close-btn" onclick="closeCoverModal()">&times;</span>
@@ -4387,7 +4424,57 @@ ________________________________________
     });
 })();
 </script>
-    
+ <script>
+(function(){
+  var scene = document.createElement('div');
+  scene.className = 'b3d-scene';
+  scene.innerHTML =
+    '<div class="b3d-book" id="b3dBook">' +
+      '<div class="b3d-face b3d-front"><img src="files/books/book1-front.jpg" alt="Обложка книги «Цифровой фантом»"></div>' +
+      '<div class="b3d-face b3d-back"><img src="files/books/book1-back.jpg" alt="Задняя сторона обложки книги «Цифровой фантом»"></div>' +
+      '<div class="b3d-face b3d-spine"><img src="files/books/book1-spine.jpg" alt="Корешок книги «Цифровой фантом»"></div>' +
+      '<div class="b3d-face b3d-pages"></div>' +
+      '<div class="b3d-face b3d-top"></div>' +
+      '<div class="b3d-face b3d-bottom"></div>' +
+    '</div>';
+  document.getElementById('b3dSceneAnchor').appendChild(scene);
+
+  var book = scene.querySelector('#b3dBook');
+  var rotX = -8, rotY = -30, dragging = false, lastX = 0, lastY = 0;
+  function applyRotation(){ book.style.transform = 'rotateX('+rotX+'deg) rotateY('+rotY+'deg)'; }
+  applyRotation();
+
+  scene.addEventListener('pointerdown', function(e){
+    dragging = true; book.classList.add('b3d-dragging');
+    lastX = e.clientX; lastY = e.clientY;
+  });
+  scene.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    rotY += dx * 0.4; rotX = Math.max(-45, Math.min(45, rotX - dy * 0.4));
+    applyRotation();
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(evt){
+    scene.addEventListener(evt, function(){ dragging = false; book.classList.remove('b3d-dragging'); });
+  });
+
+  var overlay = document.getElementById('b3dOverlay');
+  var anchor = document.getElementById('b3dSceneAnchor');
+  window.b3dOpenFullscreen = function(){
+    overlay.insertBefore(scene, overlay.firstChild);
+    overlay.classList.add('b3d-active');
+    document.body.style.overflow = 'hidden';
+  };
+  window.b3dCloseFullscreen = function(){
+    anchor.appendChild(scene);
+    overlay.classList.remove('b3d-active');
+    document.body.style.overflow = '';
+  };
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) window.b3dCloseFullscreen(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') window.b3dCloseFullscreen(); });
+})();
+</script>
 </body>
 
 </html>
