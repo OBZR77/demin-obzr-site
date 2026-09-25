@@ -433,13 +433,20 @@
         }
 
         /* БЛОК С КНИГАМИ */
-        .books-highlight {
+               .books-highlight {
             background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
             color: white;
             padding: 3rem 2.5rem;
             border-radius: 16px;
             margin-top: 3rem;
+            margin-bottom: 2rem;
             box-shadow: 0 8px 24px rgba(123, 104, 238, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .books-highlight:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(123, 104, 238, 0.45);
         }
 
         .books-highlight h3 {
