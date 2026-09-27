@@ -40,13 +40,21 @@
         .nav-menu > li > a.active:hover { background-color: var(--color-danger) !important; cursor: default; }
         .nav-menu > li.has-submenu { position: relative; }
         .nav-menu > li.has-submenu > a:hover { background-color: var(--color-primary-hover); }
-        .submenu { position: absolute; top: 100%; left: 0; background-color: white; min-width: 320px; max-width: 400px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); border-radius: 0 0 8px 8px; list-style: none; padding: 0.75rem 0; margin: 0; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; transition-delay: 0s; border-top: 3px solid var(--color-danger); z-index: 1000; }
+              .submenu { position: absolute; top: 100%; left: 0; background-color: white; min-width: 320px; max-width: 400px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); border-radius: 0 0 8px 8px; list-style: none; padding: 0.75rem 0; margin: 0; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; transition-delay: 0s; border-top: 3px solid var(--color-danger); z-index: 1000; }
         .nav-menu > li.has-submenu:hover .submenu { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0.35s; }
         .submenu li { margin: 0; }
-        .submenu a { color: var(--color-text-primary); text-decoration: none; padding: 0.65rem 1.5rem; display: flex; align-items: center; transition: all 0.2s ease; font-size: 0.95rem; line-height: 1.4; }
-        .submenu a:hover { background-color: var(--color-surface); color: var(--color-primary); padding-left: 2rem; }
-        .submenu a::before { content: "→"; margin-right: 0.75rem; opacity: 0; transition: opacity 0.2s ease; color: var(--color-danger); font-weight: bold; }
-        .submenu a:hover::before { opacity: 1; }
+        /* КРАСНЫЙ ФОН ДЛЯ АКТИВНОЙ СТРАНИЦЫ - НА ПУНКТАХ МЕНЮ */
+        .nav-menu > li.has-submenu > a.active + .submenu li { background-color: #E53935; }
+        .nav-menu > li.has-submenu > a.active + .submenu a { color: var(--color-primary); text-decoration: none; padding: 0.65rem 1.5rem; display: flex; align-items: center; transition: all 0.2s ease; font-size: 0.95rem; line-height: 1.4; }
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover { background-color: white; color: var(--color-primary); padding-left: 2rem; }
+        .nav-menu > li.has-submenu > a.active + .submenu a::before { content: "→"; margin-right: 0.75rem; opacity: 0; transition: opacity 0.2s ease; color: white; font-weight: bold; }
+        .nav-menu > li.has-submenu > a.active + .submenu a:hover::before { opacity: 1; color: var(--color-danger); }
+        /* БЕЛОЕ ПОДМЕНЮ ДЛЯ НЕАКТИВНЫХ СТРАНИЦ */
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu li { background-color: white; }
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a { color: var(--color-text-primary); text-decoration: none; padding: 0.65rem 1.5rem; display: flex; align-items: center; transition: all 0.2s ease; font-size: 0.95rem; line-height: 1.4; }
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover { background-color: var(--color-surface); color: var(--color-primary); padding-left: 2rem; }
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a::before { content: "→"; margin-right: 0.75rem; opacity: 0; transition: opacity 0.2s ease; color: var(--color-danger); font-weight: bold; }
+        .nav-menu > li.has-submenu > a:not(.active) + .submenu a:hover::before { opacity: 1; }
 
         main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem 2rem; }
         .page-title { font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--color-danger); }
