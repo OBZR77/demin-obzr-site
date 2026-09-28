@@ -18,8 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-    <meta name="description" content="Практические материалы для родителей: памятки, инфографика и рекомендации по безопасности, созданные с помощью ИИ">
-    <title>Для родителей - практические материалы | Дёмин А.Ю.</title>
+<meta name="description" content="Раздел для учеников: электронный учебник по НВП, тренажёры, задания, ситуационные задачи и обратная связь с учителем ОБЗР">
+    <title>Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -48,8 +48,6 @@
             line-height: 1.6;
             color: var(--color-text-primary);
             background-color: var(--color-background);
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
         }
         
         /* HEADER */
@@ -268,8 +266,8 @@
             font-size: 1.2rem;
         }
         
-        /* ПОИСК */
-        .search-container {
+        /* ФИЛЬТРЫ */
+        .filters-container {
             background: white;
             border: 2px solid var(--color-border);
             border-radius: 10px;
@@ -278,7 +276,19 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .search-container label {
+        .filters-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
             display: block;
             font-weight: 600;
             color: var(--color-text-primary);
@@ -299,6 +309,35 @@
             outline: none;
             border-color: var(--color-primary);
             box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+        }
+
+        .class-filters, .type-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid var(--color-border);
+            background: white;
+            color: var(--color-text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            background: var(--color-surface);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
         }
 
         /* АККОРДЕОН */
@@ -417,9 +456,25 @@
             transform: translateY(-3px);
         }
 
-        .material-icon {
+        .material-card.type-presentation {
+            border-left: 4px solid #2196F3;
+        }
+
+        .material-card.type-visual {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .material-card.type-test {
+            border-left: 4px solid #FF9800;
+        }
+
+        .material-card.type-control {
+            border-left: 4px solid #9C27B0;
+        }
+
+        .material-preview {
             width: 100%;
-            height: 140px;
+            height: 180px;
             background: linear-gradient(135deg, var(--color-surface) 0%, #E8EEF5 100%);
             display: flex;
             align-items: center;
@@ -430,6 +485,35 @@
 
         .material-content {
             padding: 1.25rem;
+        }
+
+        .material-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-presentation {
+            background: #E3F2FD;
+            color: #1976D2;
+        }
+
+        .badge-visual {
+            background: #E8F5E9;
+            color: #388E3C;
+        }
+
+        .badge-test {
+            background: #FFF3E0;
+            color: #F57C00;
+        }
+
+        .badge-control {
+            background: #F3E5F5;
+            color: #7B1FA2;
         }
 
         .material-title {
@@ -455,34 +539,10 @@
             gap: 0.5rem;
         }
 
-        .material-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-            color: var(--color-text-primary);
-        }
-
-        .material-list li {
-            padding: 0.4rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .material-list li::before {
-            content: '•';
-            color: var(--color-primary);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
         .material-buttons {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            margin-top: 1rem;
         }
 
         .material-btn {
@@ -509,6 +569,17 @@
             background: var(--color-primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+        }
+
+        .material-btn-secondary {
+            background: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .material-btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
         }
 
         .material-btn-disabled {
@@ -593,12 +664,6 @@
             font-size: 1.4rem;
         }
 
-        .additional-info h4 {
-            color: var(--color-primary);
-            margin: 1.5rem 0 0.75rem 0;
-            font-size: 1.1rem;
-        }
-
         .additional-info ul {
             list-style: none;
             padding: 0;
@@ -681,7 +746,7 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
- .nav-overlay {
+.nav-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -702,7 +767,7 @@
                 display: block;
             }
             
-            .nav-menu {
+           .nav-menu {
     display: none;
     flex-direction: column;
     width: 72%;
@@ -724,7 +789,7 @@
 .nav-menu.active {
     display: flex;
     transform: translateX(0);
-}
+} 
             
             .nav-menu > li > a {
                 padding: 0.75rem 1rem;
@@ -764,7 +829,7 @@
                 background-color: var(--color-surface) !important;
                 color: var(--color-primary) !important;
                 padding-left: 2.5rem;
-            } 
+            }
             
             .header-title h1 {
                 font-size: 1.2rem;
@@ -782,6 +847,14 @@
                 font-size: 1rem;
             }
 
+            .filters-row {
+                flex-direction: column;
+            }
+
+            .class-filters, .type-filters {
+                flex-wrap: wrap;
+            }
+
             .accordion-title {
                 font-size: 1.1rem;
             }
@@ -794,18 +867,8 @@
             .materials-grid {
                 grid-template-columns: 1fr;
             }
-
-            .material-buttons {
-                flex-direction: column;
-            }
-
-            #qrFloatingButton {
-                animation: none !important;
-                transform: translateZ(0);
-            }
         }
-
-       /* Горизонтальная ориентация телефона */
+/* Горизонтальная ориентация телефона */
 @media (max-width: 900px) and (orientation: landscape) {
     .mobile-menu-toggle {
         display: block;
@@ -863,7 +926,9 @@
         max-height: 500px;
         padding: 0.5rem 0;
     }
-} 
+}
+
+        
         /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
         @keyframes pulse {
             0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
@@ -920,6 +985,58 @@
             height: 100vh;
         }
     </style>
+    <style id="uch-styles">
+        .uch-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; }
+        .uch-lead { margin: 0 0 1.5rem; color: var(--color-text-secondary); font-size: 1.05rem; }
+        .uch-h { font-size: 1.35rem; color: var(--color-primary); margin: 2rem 0 0.9rem; }
+        .uch-now { display: grid; grid-template-columns: minmax(230px, 1fr) 2fr; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--color-border); border-radius: 12px; background: #fff; }
+        .uch-now-label { font-weight: 600; margin-bottom: 0.6rem; display: block; }
+        .uch-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .uch-f { border: 2px solid var(--color-primary); background: #fff; color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; }
+        .uch-f:hover { background: #EEF3FA; }
+        .uch-f.is-on { background: var(--color-primary); color: #fff; }
+        .uch-f:focus-visible, .uch-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .uch-result { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; min-height: 6rem; }
+        .uch-result p { margin: 0 0 0.4rem; }
+        .uch-tag { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 20px; background: var(--color-primary); color: #fff; margin-right: 0.4rem; }
+        .uch-tag-bj { background: #8A4B08; }
+        .uch-topic { font-weight: 700; font-size: 1.1rem; color: var(--color-text-primary); }
+        .uch-meta { font-size: 0.9rem; color: var(--color-text-secondary); }
+        .uch-next { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid rgba(0,0,0,0.12); font-size: 0.95rem; }
+        .uch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .uch-card { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.25rem; border-radius: 12px; border: 2px solid var(--color-border); background: #fff; }
+        .uch-card-wide { grid-column: span 2; }
+        .uch-card.uch-ready { border-color: var(--color-primary); box-shadow: 0 4px 14px rgba(0,61,122,0.12); }
+        .uch-card.uch-soon { background: var(--color-surface); }
+        .uch-ico { font-size: 2rem; line-height: 1; }
+        .uch-card h3 { margin: 0; font-size: 1.15rem; color: var(--color-primary); }
+        .uch-card.uch-soon h3 { color: var(--color-text-secondary); }
+        .uch-card p { margin: 0; color: var(--color-text-primary); flex: 1; }
+        .uch-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
+        .uch-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: 0.55rem 1.1rem; border-radius: 8px; font-weight: 600; }
+        .uch-btn:hover { background: var(--color-primary-hover); }
+        .uch-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); padding: calc(0.55rem - 2px) calc(1.1rem - 2px); }
+        .uch-btn-alt:hover { background: #EEF3FA; }
+        .uch-badge { font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+        .uch-badge-soon { background: #E2E7ED; color: #43505C; }
+        .uch-badge-ok { background: #E8F5E9; color: var(--color-success); }
+        .uch-task { border: 2px dashed #8A99A8; border-radius: 12px; padding: 1.25rem; background: #fff; }
+        .uch-task h3 { margin: 0 0 0.4rem; color: var(--color-primary); }
+        .uch-task p { margin: 0 0 0.5rem; }
+        .uch-book { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 1.25rem; padding: 1.5rem; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); }
+        .uch-book .uch-ico { font-size: 2.6rem; }
+        .uch-book-text { flex: 1; min-width: 220px; }
+        .uch-book h3 { margin: 0 0 0.3rem; font-size: 1.3rem; color: #fff; }
+        .uch-book p { margin: 0; color: #fff; }
+        .uch-book .uch-btn { background: #fff; color: var(--color-primary); }
+        .uch-book .uch-btn:hover { background: #EEF3FA; }
+        .uch-book .uch-btn:focus-visible { outline-color: #FFD24D; }
+        .uch-note { margin-top: 1.5rem; padding: 0.8rem 1rem; border-left: 4px solid var(--color-danger); background: #FFF5F5; border-radius: 6px; font-size: 0.95rem; }
+        .uch-note a { color: var(--color-primary); font-weight: 600; }
+        @media (max-width: 1000px) { .uch-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 760px) { .uch-now { grid-template-columns: 1fr; } }
+        @media (max-width: 560px) { .uch-grid { grid-template-columns: 1fr; } .uch-card-wide { grid-column: auto; } }
+</style>
 </head>
 <body>
 
@@ -1136,12 +1253,12 @@
                             <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
                             <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
                             <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
-                            <li><a href="dokumenty-portfolio.html">Документы портфолио</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
                         </ul>
                     </li>
 
                     <li class="has-submenu">
-                        <a href="uchenikam.html" onclick="return handleSubmenuClick(event, this)">Ученикам</a>
+                        <a href="uchenikam.html" class="active" onclick="return handleSubmenuClick(event, this)">Ученикам</a>
                         <ul class="submenu">
                             <li><a href="uchebnik-nvp.html">Учебник НВП</a></li>
                         </ul>
@@ -1164,16 +1281,16 @@
                         <ul class="submenu">
                             <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
                             <li><a href="konspekty-urokov.html">Конспекты уроков по курсам</a></li>
-                            <li><a href="prezentacii-testy.html">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="prezentacii-testy.html" style="font-weight: 700; color: var(--color-primary);">Презентации, наглядные материалы, тесты и контрольные</a></li>
                             <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li>
                         </ul>
                     </li>
 
                     <li class="has-submenu">
-                        <a href="ai-projects.html" class="active" onclick="return handleSubmenuClick(event, this)">ИИ-проекты</a>
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ-проекты</a>
                         <ul class="submenu">
                             <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
-                            <li><a href="ai-dlya-roditelej.html" style="font-weight: 700; color: var(--color-primary);">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
                             <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
                             <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
                         </ul>
@@ -1188,7 +1305,7 @@
                             <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
                             <li><a href="sbory.html">Учебно-полевые сборы</a></li>
                             <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
-                        </ul>
+                    </ul>
                     </li>
 
                     <li class="has-submenu">
@@ -1214,525 +1331,100 @@
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
-        <h2 class="page-title">👨‍👩‍👧‍👦 Для родителей — практические материалы</h2>
-        
-        <p class="page-subtitle">
-            Созданные с помощью ИИ памятки, инфографика и рекомендации по безопасности для семьи
-        </p>
+        <!-- ============================================================
+             ГЛАВНАЯ РАЗДЕЛА «УЧЕНИКАМ». Как включить готовую страницу:
+             в нужной карточке замените содержимое блока <div class="uch-actions">…</div> на
+                 <a class="uch-btn" href="ФАЙЛ.html">Открыть</a>
+             и замените в теге <article> класс  uch-soon  на  uch-ready.
+             Как показать параграф в блоке «Что изучаем сейчас»: в скрипте внизу страницы найдите
+             READY = { … } и добавьте строку вида  '10-6': 'nvp-10-06.html'  (класс-номер урока).
+             ============================================================ -->
+        <h2 class="page-title">🎓 Ученикам</h2>
+        <p class="page-subtitle">Материалы для подготовки к урокам ОБЗР, самопроверки и обратной связи с учителем</p>
 
-        <!-- ИНФОРМАЦИОННЫЙ БЛОК -->
-        <div class="info-box">
-            <h3>💡 Зачем родителям использовать ИИ в обучении детей ОБЗР?</h3>
-            <p>Искусственный интеллект помогает родителям стать активными участниками образовательного процесса:</p>
-            <ul>
-                <li><strong>Помочь ребёнку</strong> с домашним заданием интерактивно и понятно</li>
-                <li><strong>Создать персонализированные памятки</strong> по безопасности для вашего дома</li>
-                <li><strong>Объяснить сложные темы</strong> простым языком, адаптированным для возраста ребёнка</li>
-                <li><strong>Проверить знания</strong> через игровые и интерактивные форматы</li>
-                <li><strong>Подготовить ребёнка</strong> к учебным сборам (10-11 классы) психологически и практически</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-weight: 600; color: var(--color-danger);">⚠️ Важно: Все материалы, созданные с помощью ИИ, должны быть проверены ВАМИ перед использованием детьми. ИИ — это инструмент помощи, а не замена родительского контроля.</p>
-        </div>
+        <div class="uch-scope">
 
-        <!-- ПОИСК -->
-        <div class="search-container">
-            <label for="searchInput">🔍 Поиск по материалам</label>
-            <input type="text" 
-                   id="searchInput" 
-                   class="search-input" 
-                   placeholder="Введите название материала..."
-                   oninput="filterMaterials()">
-        </div>
-
-        <!-- АККОРДЕОН КАТЕГОРИЙ -->
-        <div class="accordion" id="categoriesAccordion">
-
-           <!-- КАТЕГОРИЯ 0 — УМК «ЦИФРОВОЙ ФАНТОМ» -->
-<div class="accordion-item featured active" data-category="0" id="cifrovoy-fantom">
-    <div class="accordion-header" onclick="toggleAccordion(this)">
-        <div class="accordion-title-wrapper">
-            <div class="accordion-title">📖 УМК «Цифровой Фантом»: памятка для родителей</div>
-            <div class="accordion-meta">
-                <span>✅ Материал готов</span>
-                <span>📦 1 материал</span>
-            </div>
-        </div>
-        <div class="accordion-icon">▶</div>
-    </div>
-    <div class="accordion-content">
-        <p style="margin-bottom: 1.25rem; line-height: 1.7; color: var(--color-text-primary);">
-            «<a href="literature-projects.html" style="color: var(--color-primary); font-weight: 700;">Цифровой фантом</a>» — учебно-методический комплекс о цифровой безопасности для читателей 12–15 лет. Памятка ниже адресована не только родителю, который ещё не сталкивался с проблемой, но и тому, кто уже отреагировал резко — накричал или забрал телефон. Методические материалы для педагогов — на странице <a href="ai-dlya-kolleg.html" style="color: var(--color-primary); font-weight: 700;">«Для коллег»</a>.
-        </p>
-        <div class="materials-grid">
-
-            <!-- Материал 1 -->
-            <div class="material-card" data-title="Памятка для родителей Цифровой фантом">
-                <div class="material-icon">💬</div>
-                <div class="material-content">
-                    <div class="material-title">Памятка: как говорить с ребёнком о цифровой безопасности</div>
-                    <div class="material-info">
-                        <div class="material-info-item">🎯 Для: родителей — после прочтения книги и не только</div>
-                        <div class="material-info-item">🤖 ИИ: Claude — помощь в структурировании и оформлении</div>
-                    </div>
-                    <ul class="material-list">
-                        <li>Как заговорить о прочитанном — через героев книги, а не напрямую</li>
-                        <li>Что делать, если узнали не от ребёнка или уже отреагировали не лучшим образом</li>
-                        <li>9 коротких алгоритмов на конкретный случай (шантаж, травля, переписка с незнакомцем, потеря денег, вирус, игровая зависимость и др.)</li>
-                        <li>Совместный аудит гаджетов (15–20 минут) — с проверкой родительских приложений тоже</li>
-                        <li>Актуальные телефоны служб помощи</li>
-                    </ul>
-                    <div class="material-buttons">
-                        <a href="files/books/cifrovoy-fantom-pamyatka-roditelyam.pdf" download class="material-btn material-btn-primary">📥 Скачать (PDF)</a>
-                        <a href="files/books/cifrovoy-fantom-pamyatka-roditelyam.pdf" target="_blank" class="material-btn material-btn-primary">📄 Открыть PDF</a>
-                    </div>
+        <h2 class="uch-h" style="margin-top:0.5rem;">Что изучаем сейчас</h2>
+        <div class="uch-now">
+            <div>
+                <span class="uch-now-label" id="uchClassLbl">Выбери свой класс</span>
+                <div class="uch-btns" id="uchClassBtns" role="group" aria-labelledby="uchClassLbl">
+                    <button type="button" class="uch-f" data-cl="8" aria-pressed="false">8 класс</button>
+                    <button type="button" class="uch-f" data-cl="9" aria-pressed="false">9 класс</button>
+                    <button type="button" class="uch-f" data-cl="10" aria-pressed="false">10 класс</button>
+                    <button type="button" class="uch-f" data-cl="11" aria-pressed="false">11 класс</button>
                 </div>
             </div>
-
-        </div>
-    </div>
-</div> 
-            
-            <!-- КАТЕГОРИЯ 1 ⭐ FEATURED -->
-            <div class="accordion-item featured" data-category="1">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title-wrapper">
-                        <div class="accordion-title">🛡️ Памятки по безопасности для дома</div>
-                        <div class="accordion-meta">
-                            <span>📦 5 материалов</span>
-                        </div>
-                    </div>
-                    <div class="accordion-icon">▶</div>
-                </div>
-                <div class="accordion-content">
-                    <div class="materials-grid">
-                        
-                        <!-- Материал 1 -->
-                        <div class="material-card" data-title="Семейный план эвакуации при пожаре">
-                            <div class="material-icon">🚨</div>
-                            <div class="material-content">
-                                <div class="material-title">Семейный план эвакуации при пожаре</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Для: всей семьи</div>
-                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude, ChatGPT</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Схема квартиры с маршрутами эвакуации</li>
-                                    <li>Точка сбора семьи</li>
-                                    <li>Номера экстренных служб</li>
-                                    <li>Инструкции для каждого члена семьи</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать пример (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 2 -->
-                        <div class="material-card" data-title="Инфографика Что делать при ЧС">
-                            <div class="material-icon">🖼️</div>
-                            <div class="material-content">
-                                <div class="material-title">Инфографика "Что делать при ЧС" для детей</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: DALL-E 3, Kandinsky</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Красочный постер с правилами при пожаре</li>
-                                    <li>Действия при ЧС в доме</li>
-                                    <li>Визуальные пиктограммы для быстрого запоминания</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Примеры постеров (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>💬 Готовые промпты (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 3 -->
-                        <div class="material-card" data-title="Чек-лист проверки домашней аптечки">
-                            <div class="material-icon">💊</div>
-                            <div class="material-content">
-                                <div class="material-title">Чек-лист проверки домашней аптечки</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Для: всей семьи</div>
-                                    <div class="material-info-item">⏱️ Время создания: 5 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Список необходимых медикаментов</li>
-                                    <li>Средства первой помощи</li>
-                                    <li>Сроки годности и периодичность проверки</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>✅ Скачать чек-лист (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📝 Персонализировать (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 4 -->
-                        <div class="material-card" data-title="Плакат Правила безопасности на кухне">
-                            <div class="material-icon">🍳</div>
-                            <div class="material-content">
-                                <div class="material-title">Плакат "Правила безопасности на кухне"</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Для: всей семьи</div>
-                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: DALL-E 3</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Яркий плакат для размещения дома</li>
-                                    <li>Правила работы с плитой, электроприборами</li>
-                                    <li>Что делать при порезах и ожогах</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Примеры плакатов (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>💬 Готовые промпты (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 5 -->
-                        <div class="material-card" data-title="Инструкция по использованию огнетушителя">
-                            <div class="material-icon">🧯</div>
-                            <div class="material-content">
-                                <div class="material-title">Инструкция по использованию огнетушителя</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Для: всей семьи</div>
-                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Canva + ИИ для иконок</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Пошаговая визуальная инструкция</li>
-                                    <li>Типы огнетушителей для дома</li>
-                                    <li>Когда можно тушить самостоятельно, а когда — эвакуироваться</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инструкцию (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>🎨 Шаблон Canva (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <div class="uch-result" id="uchResult" aria-live="polite">
+                <p>Выбери класс, и здесь появится тема ближайшего урока и ссылка на параграф.</p>
             </div>
-
-            <!-- КАТЕГОРИЯ 2 -->
-            <div class="accordion-item" data-category="2">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title-wrapper">
-                        <div class="accordion-title">📋 Рекомендации по домашней подготовке</div>
-                        <div class="accordion-meta">
-                            <span>📦 4 материала</span>
-                        </div>
-                    </div>
-                    <div class="accordion-icon">▶</div>
-                </div>
-                <div class="accordion-content">
-                    <div class="materials-grid">
-                        
-                        <!-- Материал 1 -->
-                        <div class="material-card" data-title="Помощь с домашними заданиями по ОБЗР">
-                            <div class="material-icon">📚</div>
-                            <div class="material-content">
-                                <div class="material-title">Помощь с домашними заданиями по ОБЗР</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время: 2-3 минуты на вопрос</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude, ChatGPT, YandexGPT</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Объяснение сложных тем простым языком</li>
-                                    <li>30 готовых промптов для родителей</li>
-                                    <li>Примеры ответов ИИ с комментариями</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📝 30 готовых промптов (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>🎓 Примеры ответов (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 2 -->
-                        <div class="material-card" data-title="Интерактивные карточки для запоминания">
-                            <div class="material-icon">🎴</div>
-                            <div class="material-content">
-                                <div class="material-title">Интерактивные карточки для запоминания</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude + Quizlet</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Флеш-карточки с вопросами и ответами</li>
-                                    <li>По обоим курсам ОБЗР</li>
-                                    <li>Режимы обучения: заучивание, тест, игра</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>🎴 Примеры карточек (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 3 -->
-                        <div class="material-card" data-title="Список вещей для учебно-полевых сборов">
-                            <div class="material-icon">🎒</div>
-                            <div class="material-content">
-                                <div class="material-title">Список вещей для учебно-полевых сборов</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 10-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 5 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Персонализированный список с учётом погоды</li>
-                                    <li>Обязательные и рекомендуемые вещи</li>
-                                    <li>Что брать НЕ нужно</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>✅ Универсальный список (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📝 Персонализировать (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 4 -->
-                        <div class="material-card" data-title="Психологическая подготовка ребёнка к сборам">
-                            <div class="material-icon">🧠</div>
-                            <div class="material-content">
-                                <div class="material-title">Психологическая подготовка ребёнка к сборам</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 10 класс (первые сборы)</div>
-                                    <div class="material-info-item">⏱️ Время: 5 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: ChatGPT, Claude</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Как морально подготовить ребёнка</li>
-                                    <li>Типичные страхи и как с ними работать</li>
-                                    <li>Рекомендации психологов</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать гайд (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>💬 Промпты для диалога (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- КАТЕГОРИЯ 3 -->
-            <div class="accordion-item" data-category="3">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title-wrapper">
-                        <div class="accordion-title">🧠 Инфографика по цифровой безопасности подростков</div>
-                        <div class="accordion-meta">
-                            <span>📦 4 материала</span>
-                        </div>
-                    </div>
-                    <div class="accordion-icon">▶</div>
-                </div>
-                <div class="accordion-content">
-                    <div class="materials-grid">
-                        
-                        <!-- Материал 1 -->
-                        <div class="material-card" data-title="Защита персональных данных в интернете">
-                            <div class="material-icon">🔒</div>
-                            <div class="material-content">
-                                <div class="material-title">Защита персональных данных в интернете</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Canva + DALL-E</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Какие данные нельзя публиковать в соцсетях</li>
-                                    <li>Настройки приватности ВКонтакте, Telegram</li>
-                                    <li>Как распознать фишинг и мошенничество</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инфографику (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>🎨 Шаблон Canva (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 2 -->
-                        <div class="material-card" data-title="Противодействие кибербуллингу">
-                            <div class="material-icon">🛡️</div>
-                            <div class="material-content">
-                                <div class="material-title">Противодействие кибербуллингу</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude + Canva</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Что такое кибербуллинг и его формы</li>
-                                    <li>Как защитить ребёнка</li>
-                                    <li>Куда обращаться за помощью</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать памятку (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>💬 Сценарии разговора (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 3 -->
-                        <div class="material-card" data-title="Безопасное использование смартфона">
-                            <div class="material-icon">📱</div>
-                            <div class="material-content">
-                                <div class="material-title">Безопасное использование смартфона</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-9 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 10 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: DALL-E 3 + Canva</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Правила установки приложений</li>
-                                    <li>Родительский контроль (настройка)</li>
-                                    <li>Баланс экранного времени</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📥 Скачать инфографику (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>⚙️ Гайд по настройкам (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 4 -->
-                        <div class="material-card" data-title="Распознавание опасного контента">
-                            <div class="material-icon">⚠️</div>
-                            <div class="material-content">
-                                <div class="material-title">Распознавание опасного контента в интернете</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 10-11 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude + Canva</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Признаки деструктивных сообществ</li>
-                                    <li>Как говорить с ребёнком о рисках</li>
-                                    <li>Алгоритм действий при обнаружении угрозы</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>📖 Скачать чек-лист (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📞 Контакты служб (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- КАТЕГОРИЯ 4 -->
-            <div class="accordion-item" data-category="4">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <div class="accordion-title-wrapper">
-                        <div class="accordion-title">🎮 Игровые форматы проверки знаний</div>
-                        <div class="accordion-meta">
-                            <span>📦 2 материала</span>
-                        </div>
-                    </div>
-                    <div class="accordion-icon">▶</div>
-                </div>
-                <div class="accordion-content">
-                    <div class="materials-grid">
-                        
-                        <!-- Материал 1 -->
-                        <div class="material-card" data-title="Семейная викторина по ОБЗР">
-                            <div class="material-icon">🎮</div>
-                            <div class="material-content">
-                                <div class="material-title">Создание семейной викторины по ОБЗР</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Для: всей семьи</div>
-                                    <div class="material-info-item">⏱️ Время создания: 15 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: Claude (React)</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Интерактивная викторина на 10-15 вопросов</li>
-                                    <li>Темы: пожарная безопасность, первая помощь, ПДД</li>
-                                    <li>Подсчёт баллов и награждение победителя</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>🎮 Пример викторины (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>📝 Промпт для создания (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Материал 2 -->
-                        <div class="material-card" data-title="Настольная игра Безопасный дом">
-                            <div class="material-icon">🎲</div>
-                            <div class="material-content">
-                                <div class="material-title">Настольная игра "Безопасный дом"</div>
-                                <div class="material-info">
-                                    <div class="material-info-item">🎯 Возраст: 8-9 классы</div>
-                                    <div class="material-info-item">⏱️ Время создания: 30 минут</div>
-                                    <div class="material-info-item">🤖 ИИ: DALL-E + Canva</div>
-                                </div>
-                                <ul class="material-list">
-                                    <li>Игровое поле для печати</li>
-                                    <li>Карточки с заданиями и вопросами</li>
-                                    <li>Правила игры для 2-4 игроков</li>
-                                </ul>
-                                <div class="material-buttons">
-                                    <button class="material-btn material-btn-disabled" disabled>🎲 Скачать игру PDF (скоро)</button>
-                                    <button class="material-btn material-btn-disabled" disabled>🖼️ Промпты для иллюстраций (скоро)</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <!-- СООБЩЕНИЕ "НЕТ РЕЗУЛЬТАТОВ" -->
-        <div class="no-results" id="noResults">
-            <div class="no-results-icon">🔍</div>
-            <h3>Ничего не найдено</h3>
-            <p>Попробуйте изменить запрос в поиске</p>
+        <h2 class="uch-h">Разделы для учёбы</h2>
+        <div class="uch-grid">
+            <article class="uch-card uch-ready uch-card-wide">
+                <span class="uch-ico" aria-hidden="true">📖</span>
+                <h3>Учебник НВП</h3>
+                <p>Параграф к каждому уроку курса «Начальная военная подготовка» для 8–11 классов: прочитай, проверь себя, выполни задание к уроку.</p>
+                <div class="uch-actions"><a class="uch-btn" href="uchebnik-nvp.html">Открыть учебник</a></div>
+            </article>
+            <article class="uch-card uch-soon">
+                <span class="uch-ico" aria-hidden="true">🧭</span>
+                <h3>БЖ: к уроку</h3>
+                <p>Путеводитель по курсу «Безопасность жизнедеятельности»: урок → параграф учебника → тренажёр или задача.</p>
+                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · январь–февраль</span></div>
+            </article>
+            <article class="uch-card uch-soon">
+                <span class="uch-ico" aria-hidden="true">📝</span>
+                <h3>Домашние задания</h3>
+                <p>Задания по классам с фильтром и сроками сдачи. Сдача через форму.</p>
+                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · ноябрь–декабрь</span></div>
+            </article>
+            <article class="uch-card uch-soon">
+                <span class="uch-ico" aria-hidden="true">🎯</span>
+                <h3>Тренажёры и самопроверка</h3>
+                <p>Интерактивные тренажёры по обоим курсам и подготовка к контрольным работам. Проверка прямо на странице.</p>
+                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · ноябрь–декабрь</span></div>
+            </article>
+            <article class="uch-card uch-soon">
+                <span class="uch-ico" aria-hidden="true">🧩</span>
+                <h3>Ситуационные задачи</h3>
+                <p>Задача к каждому тематическому блоку и архив разборов лучших решений.</p>
+                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · октябрь</span></div>
+            </article>
+            <article class="uch-card uch-soon">
+                <span class="uch-ico" aria-hidden="true">🤖</span>
+                <h3>ИИ для учёбы</h3>
+                <p>Правила честного использования ИИ, готовые запросы для подготовки к урокам, практикум «Поймай ошибку ИИ».</p>
+                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · ноябрь–декабрь</span></div>
+            </article>
+            <article class="uch-card uch-ready">
+                <span class="uch-ico" aria-hidden="true">💬</span>
+                <h3>Обратная связь</h3>
+                <p>Вопрос учителю, анкета полезности, рубрика «Вы спросили — отвечаем».</p>
+                <div class="uch-actions"><a class="uch-btn" href="https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/" target="_blank" rel="noopener">Задать вопрос учителю</a><span class="uch-badge uch-badge-soon">Страница раздела скоро</span></div>
+            </article>
         </div>
 
-        <!-- HIGHLIGHT BOX -->
-        <div class="highlight-box">
-            <h3>💡 Важно для родителей!</h3>
-            <p>
-                Все материалы, созданные с помощью ИИ, должны быть <strong>проверены ВАМИ</strong> перед использованием детьми.<br>
-             ИИ — это инструмент помощи, а не замена родительского контроля и ответственности.
-            </p>
-            <p style="margin-top: 1.5rem;">
-                ❓ Есть вопросы по использованию ИИ-инструментов? Напишите мне через раздел <a href="contacts.html">«Контакты»</a> или <a href="contacts.html#feedback-form">форму обратной связи</a>.
-            </p>
+        <h2 class="uch-h">Ситуационная задача</h2>
+        <!-- Когда появится актуальная задача: замените содержимое блока ниже на её название, условие и кнопку со ссылкой на форму. -->
+        <div class="uch-task">
+            <h3>🧩 Актуальная ситуационная задача</h3>
+            <p>Задача к очередному тематическому блоку курса появится здесь. Ответ отправляется через форму, а разбор лучших решений публикуется без фамилий.</p>
+            <span class="uch-badge uch-badge-soon">⏳ Скоро</span>
         </div>
 
-        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
-        <div class="additional-info">
-            <h3>ℹ️ Рекомендуемые ИИ-инструменты для родителей</h3>
-            
-           <div class="highlight-box">
-    <h3>🤖 Полезные ресурсы по ИИ в образовании</h3>
-    <p>
-        Полный каталог бесплатных и платных ИИ-инструментов для учителей, учеников и родителей (Claude, ChatGPT, Gamma App, DALL-E 3, Kandinsky, Suno и др.) доступен в разделе <a href="ai-resursy.html">«Полезные ресурсы по ИИ в образовании»</a>.
-    </p>
-</div>
+        <section class="uch-book" aria-labelledby="uchBookH">
+            <span class="uch-ico" aria-hidden="true">📚</span>
+            <div class="uch-book-text">
+                <h3 id="uchBookH">Читаем «Цифровой Фантом»</h3>
+                <p>Роман о безопасности в цифровой среде. Читай главы онлайн.</p>
+            </div>
+            <a class="uch-btn" href="literature-projects.html">Читать онлайн</a>
+        </section>
 
-            <h4>📚 Дополнительные ресурсы:</h4>
-            <ul>
-                <li>Методические рекомендации по использованию ИИ доступны в разделе <a href="metodicheskie-rekomendacii.html">«Методика → Методические рекомендации для коллег»</a></li>
-                <li>Примеры промптов и готовые материалы — в разделе <a href="ai-dlya-kolleg.html">«ИИ в образовании → Для коллег»</a></li>
-                <li>Все инструменты бесплатны для базового использования</li>
-            </ul>
+        <p class="uch-note"><strong>Важно:</strong> в формах не пиши фамилию и имя. Достаточно кода: класс и номер, например 8А-07. Подробнее в <a href="privacy-policy.html">политике конфиденциальности</a>.</p>
+
         </div>
     </main>
 
@@ -1770,7 +1462,7 @@
             </div>
         </div>
 
-       <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
     <div class="footer-bottom">
         <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
         <p style="margin-top: 0.5rem; font-size: 0.85rem;">
@@ -1783,97 +1475,83 @@
 <!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
 <script>
     document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>   
+</script>
 
     <script>
         // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
         // ============================================
-        function openLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+     function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
 
-        function closeLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // ============================================
-        // МОБИЛЬНОЕ МЕНЮ
-        // ============================================
-      function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const scrollY = window.scrollY;
-        updateMenuPosition();
-        menu.classList.toggle('active');
-        if (overlay) overlay.classList.toggle('active');
-        if (menu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.top = '-' + scrollY + 'px';
-        } else {
-            const savedScroll = parseInt(document.body.style.top || '0') * -1;
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            document.body.style.top = '';
-            window.scrollTo(0, savedScroll);
-        }
-        menu.style.overflowY = 'auto';
-        menu.style.webkitOverflowScrolling = 'touch';
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    updateMenuPosition();
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        const savedScroll = parseInt(document.body.dataset.scrollY || '0');
+        window.scrollTo(0, savedScroll);
     }
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
+}
 
-    function updateMenuPosition() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const headerTop = document.querySelector('.header-top');
-        if (!menu || !headerTop) return;
-        const headerHeight = headerTop.getBoundingClientRect().height;
-        menu.style.top = headerHeight + 'px';
-        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        menu.style.overflowY = 'auto';
-        if (overlay) {
-            overlay.style.top = headerHeight + 'px';
-            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        }
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    menu.style.overflowY = 'auto';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
     }
+}
 
-    window.addEventListener('orientationchange', function() {
-        setTimeout(function() {
-            const menu = document.getElementById('navMenu');
-            if (menu && menu.classList.contains('active')) updateMenuPosition();
-        }, 300);
-    });
-
-    window.addEventListener('resize', function() {
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
         const menu = document.getElementById('navMenu');
         if (menu && menu.classList.contains('active')) updateMenuPosition();
-    });
+    }, 300);
+});
 
-    function handleSubmenuClick(event, element) {
-        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
-            const parentLi = element.parentElement;
-            if (parentLi.classList.contains('open')) return true;
-            event.preventDefault();
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                if (item !== parentLi) item.classList.remove('open');
-            });
-            parentLi.classList.toggle('open');
-            return false;
-        }
-        return true;
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) updateMenuPosition();
+});
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
     }
+    return true;
+}
 
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                item.classList.remove('open');
-            });
-        }
-    });
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    }
+});
         // ============================================
         // QR-КОД
         // ============================================
@@ -2035,68 +1713,87 @@
             });
         });
 
-        // ============================================
-        // АККОРДЕОН
-        // ============================================
-        function toggleAccordion(header) {
-            const item = header.parentElement;
-            const wasActive = item.classList.contains('active');
-            
-            document.querySelectorAll('.accordion-item').forEach(i => {
-                i.classList.remove('active');
-            });
-            
-            if (!wasActive) {
-                item.classList.add('active');
-            }
-        }
-
-        // ============================================
-        // ПОИСК И ФИЛЬТРАЦИЯ
-        // ============================================
-        let currentSearchQuery = '';
-
-        function filterMaterials() {
-            currentSearchQuery = document.getElementById('searchInput').value.toLowerCase();
-            
-            let visibleCount = 0;
-            
-            document.querySelectorAll('.material-card').forEach(card => {
-                const cardTitle = card.getAttribute('data-title').toLowerCase();
-                const matchesSearch = currentSearchQuery === '' || cardTitle.includes(currentSearchQuery);
-                
-                if (matchesSearch) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                const visibleCards = item.querySelectorAll('.material-card[style="display: block;"]').length;
-                
-                if (visibleCards === 0) {
-                    item.style.display = 'none';
-                } else {
-                    item.style.display = 'block';
-                }
-            });
-            
-            const noResults = document.getElementById('noResults');
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            filterMaterials();
-        });
     </script>
+<script id="uch-script">
+
+(function () {
+    'use strict';
+    // Готовые параграфы: ключ «класс-номер урока» → файл. Добавляйте строки по мере появления параграфов.
+    var READY = { '8-6': 'nvp-8-06.html' };
+    var LESSONS = {"8":[{"c":"НВП","n":1,"t":"Роль безопасности в жизни личности, общества и государства","s":"2026-09-02","e":"2026-09-07"},{"c":"НВП","n":2,"t":"Исторический опыт организации начальной военной подготовки в России","s":"2026-09-09","e":"2026-09-14"},{"c":"НВП","n":3,"t":"Защита Отечества как долг и обязанность гражданина Российской Федерации","s":"2026-09-16","e":"2026-09-21"},{"c":"НВП","n":4,"t":"Вооруженные Силы Российской Федерации","s":"2026-09-23","e":"2026-09-28"},{"c":"НВП","n":5,"t":"Боевые традиции Вооруженных Сил Российской Федерации","s":"2026-09-30","e":"2026-10-05"},{"c":"НВП","n":6,"t":"Состав и назначение Вооруженных Сил Российской Федерации","s":"2026-10-07","e":"2026-10-12"},{"c":"НВП","n":7,"t":"Основные образцы вооружения и военной техники Вооруженных Сил Российской Федерации","s":"2026-10-14","e":"2026-10-19"},{"c":"НВП","n":8,"t":"Основные образцы вооружения и военной техники Вооруженных Сил Российской Федерации","s":"2026-10-21","e":"2026-11-09"},{"c":"НВП","n":9,"t":"Организационно-штатная структура мотострелкового отделения (взвода)","s":"2026-11-05","e":"2026-11-16"},{"c":"НВП","n":10,"t":"Организационно-штатная структура мотострелкового отделения (взвода)","s":"2026-11-12","e":"2026-11-23"},{"c":"НВП","n":11,"t":"Виды, назначение и тактико-технические характеристики стрелкового оружия Вооруженных Сил Российской Федерации","s":"2026-11-19","e":"2026-11-30"},{"c":"НВП","n":12,"t":"Виды, назначение и тактико-технические характеристики ручных гранат Вооруженных Сил Российской Федерации","s":"2026-11-26","e":"2026-12-07"},{"c":"НВП","n":13,"t":"Правила безопасного обращения с оружием","s":"2026-12-03","e":"2026-12-14"},{"c":"НВП","n":14,"t":"Правила поведения при обнаружении самодельных взрывных устройств, мин-ловушек","s":"2026-12-10","e":"2026-12-21"},{"c":"НВП","n":15,"t":"Правила поведения в зоне вооруженного конфликта","s":"2026-12-17","e":"2026-12-28"},{"c":"НВП","n":16,"t":"Строевые приемы и движение без оружия (строевая подготовка)","s":"2026-12-24","e":"2027-01-18"},{"c":"НВП","n":17,"t":"Строевые приемы и движение без оружия (строевая подготовка)","s":"2027-01-13","e":"2027-01-25"},{"c":"НВП","n":18,"t":"Основы оказания первой помощи","s":"2027-01-20","e":"2027-02-01"},{"c":"НВП","n":19,"t":"Первая помощь при неотложных состояниях","s":"2027-01-27","e":"2027-02-08"},{"c":"НВП","n":20,"t":"Практикум по отработке практических навыков оказания первой помощи (моделирование ситуаций)","s":"2027-02-03","e":"2027-02-15"},{"c":"НВП","n":21,"t":"Практикум по отработке практических навыков оказания первой помощи (моделирование ситуаций)","s":"2027-02-10","e":"2027-03-01"},{"c":"БЖ","n":22,"t":"Основы безопасности жизнедеятельности. Правила поведения в опасных и чрезвычайных ситуациях","s":"2027-02-17","e":"2027-03-15"},{"c":"БЖ","n":23,"t":"Опасные ситуации в быту, предупреждение и защита от них","s":"2027-02-24","e":"2027-04-05"},{"c":"БЖ","n":24,"t":"Правила безопасного использования бытовой техники и меры противопожарной защиты в быту","s":"2027-03-03","e":"2027-04-05"},{"c":"БЖ","n":25,"t":"Безопасные действия при авариях на системах жизнеобеспечения","s":"2027-03-10","e":"2027-04-12"},{"c":"БЖ","n":26,"t":"Предупреждение ситуаций криминального характера","s":"2027-03-17","e":"2027-04-12"},{"c":"БЖ","n":27,"t":"Правила дорожного движения. Безопасность участников дорожного движения","s":"2027-04-01","e":"2027-04-19"},{"c":"БЖ","n":28,"t":"Безопасные действия при дорожно-транспортных происшествиях","s":"2027-04-08","e":"2027-04-19"},{"c":"БЖ","n":29,"t":"Безопасность пассажиров на различных видах транспорта","s":"2027-04-15","e":"2027-04-26"},{"c":"БЖ","n":30,"t":"Первая помощь при чрезвычайных ситуациях на транспорте","s":"2027-04-22","e":"2027-04-28"},{"c":"БЖ","n":31,"t":"Основные опасности в общественных местах, их причины и правила безопасного поведения","s":"2027-04-29","e":"2027-05-17"},{"c":"БЖ","n":32,"t":"Правила безопасного поведения при посещении массовых мероприятий","s":"2027-05-06","e":"2027-05-17"},{"c":"БЖ","n":33,"t":"Пожарная безопасность в общественных местах","s":"2027-05-13","e":"2027-05-24"},{"c":"БЖ","n":34,"t":"Безопасные действия в ситуациях с проявлением деструктивного и антиобщественного поведения","s":"2027-05-20","e":"2027-05-26"}],"9":[{"c":"БЖ","n":1,"t":"Правила безопасного поведения в природной среде","s":"2026-09-02","e":"2026-09-08"},{"c":"БЖ","n":2,"t":"Пожарная безопасность в природной среде","s":"2026-09-09","e":"2026-09-15"},{"c":"БЖ","n":3,"t":"Безопасное поведение в горах","s":"2026-09-16","e":"2026-09-22"},{"c":"БЖ","n":4,"t":"Безопасное поведение на водоемах","s":"2026-09-23","e":"2026-09-29"},{"c":"БЖ","n":5,"t":"Безопасные действия при наводнении, цунами","s":"2026-09-30","e":"2026-10-06"},{"c":"БЖ","n":6,"t":"Безопасные действия при урагане, смерче, грозе","s":"2026-10-07","e":"2026-10-13"},{"c":"БЖ","n":7,"t":"Безопасные действия при землетрясении, извержении вулкана","s":"2026-10-14","e":"2026-10-20"},{"c":"БЖ","n":8,"t":"Правила поведения в опасных ситуациях с домашними и дикими животными","s":"2026-10-21","e":"2026-11-10"},{"c":"БЖ","n":9,"t":"Экология и ее значение для устойчивого развития общества","s":"2026-11-05","e":"2026-11-17"},{"c":"БЖ","n":10,"t":"Опасные увлечения молодежи","s":"2026-11-12","e":"2026-11-24"},{"c":"БЖ","n":11,"t":"Опасности и риски в цифровой среде","s":"2026-11-19","e":"2026-12-01"},{"c":"БЖ","n":12,"t":"Правила безопасного поведения в цифровой среде","s":"2026-11-26","e":"2026-12-08"},{"c":"БЖ","n":13,"t":"Общие представления о здоровье, психическое здоровье и психологическое благополучие","s":"2026-12-03","e":"2026-12-15"},{"c":"БЖ","n":14,"t":"Предупреждение и защита от инфекционных заболеваний","s":"2026-12-10","e":"2026-12-22"},{"c":"БЖ","n":15,"t":"Профилактика неинфекционных заболеваний","s":"2026-12-17","e":"2026-12-29"},{"c":"БЖ","n":16,"t":"Сущность понятий «терроризм» и «экстремизм»","s":"2026-12-24","e":"2027-01-12"},{"c":"БЖ","n":17,"t":"Основы противодействия экстремизму и терроризму","s":"2027-01-13","e":"2027-01-19"},{"c":"БЖ","n":18,"t":"Опасности вовлечения в экстремистскую и террористическую деятельность, меры защиты","s":"2027-01-20","e":"2027-01-26"},{"c":"БЖ","n":19,"t":"Правила безопасного поведения при угрозе и совершении террористического акта","s":"2027-01-27","e":"2027-02-02"},{"c":"БЖ","n":20,"t":"Действия в опасных и чрезвычайных ситуациях характерных для региона проживания","s":"2027-02-03","e":"2027-02-09"},{"c":"БЖ","n":21,"t":"Действия в опасных и чрезвычайных ситуациях характерных для региона проживания","s":"2027-02-10","e":"2027-02-16"},{"c":"НВП","n":22,"t":"Общевоинские уставы - закон жизни Вооруженных Сил Российской Федерации","s":"2027-02-17","e":"2027-03-02"},{"c":"НВП","n":23,"t":"Военнослужащие и взаимоотношения между ними","s":"2027-02-24","e":"2027-03-09"},{"c":"НВП","n":24,"t":"Военнослужащие и взаимоотношения между ними","s":"2027-03-03","e":"2027-03-16"},{"c":"НВП","n":25,"t":"Воинская дисциплина, ее сущность и значение","s":"2027-03-10","e":"2027-04-06"},{"c":"НВП","n":26,"t":"Воинская дисциплина, ее сущность и значение","s":"2027-03-17","e":"2027-04-13"},{"c":"НВП","n":27,"t":"Обязательная и добровольная подготовка граждан к военной службе","s":"2027-04-01","e":"2027-04-20"},{"c":"НВП","n":28,"t":"Автономное существование в природной среде","s":"2027-04-08","e":"2027-04-27"},{"c":"НВП","n":29,"t":"Сооружение временных укрытий, обеспечение водой и питанием","s":"2027-04-15","e":"2027-05-04"},{"c":"НВП","n":30,"t":"Защита от перегрева и переохлаждения, первая помощь","s":"2027-04-22","e":"2027-05-11"},{"c":"НВП","n":31,"t":"Ориентирование на местности без карты","s":"2027-04-29","e":"2027-05-18"},{"c":"НВП","n":32,"t":"Карты, традиционные и современные средства навигации","s":"2027-05-06","e":"2027-05-18"},{"c":"НВП","n":33,"t":"Ориентирование на местности по карте","s":"2027-05-13","e":"2027-05-25"},{"c":"НВП","n":34,"t":"Практикум по выживанию в природной среде","s":"2027-05-20","e":"2027-05-26"}],"10":[{"c":"НВП","n":1,"t":"Основы обеспечения национальной безопасности Российской Федерации","s":"2026-09-07","e":"2026-09-07"},{"c":"НВП","n":2,"t":"Государственная и общественная безопасность. Оборона страны","s":"2026-09-14","e":"2026-09-14"},{"c":"НВП","n":3,"t":"Организация, вооружение и тактика действий иностранных армий","s":"2026-09-21","e":"2026-09-21"},{"c":"НВП","n":4,"t":"Размещение и быт военнослужащих","s":"2026-09-28","e":"2026-09-28"},{"c":"НВП","n":5,"t":"Строевые приемы и движения с оружием","s":"2026-10-05","e":"2026-10-05"},{"c":"НВП","n":6,"t":"Основные виды тактических действий войск","s":"2026-10-12","e":"2026-10-12"},{"c":"НВП","n":7,"t":"Основные виды тактических действий войск","s":"2026-10-19","e":"2026-10-19"},{"c":"НВП","n":8,"t":"Требования безопасности при обращении с оружием и боеприпасами","s":"2026-11-09","e":"2026-11-09"},{"c":"НВП","n":9,"t":"Общее устройство и принцип работы автоматов Калашникова АК-74 и АК-12","s":"2026-11-16","e":"2026-11-16"},{"c":"НВП","n":10,"t":"Правила ведения огня из стрелкового оружия","s":"2026-11-23","e":"2026-11-23"},{"c":"НВП","n":11,"t":"Боевые робототехнические комплексы и системы","s":"2026-11-30","e":"2026-11-30"},{"c":"НВП","n":12,"t":"Беспилотные летательные аппараты","s":"2026-12-07","e":"2026-12-07"},{"c":"НВП","n":13,"t":"Беспилотные летательные аппараты","s":"2026-12-14","e":"2026-12-14"},{"c":"НВП","n":14,"t":"Правила поведения при ракетной опасности, угрозе применения БПЛА","s":"2026-12-21","e":"2026-12-21"},{"c":"НВП","n":15,"t":"Предназначение, общее устройство и тактико-технические характеристики переносных радиостанций","s":"2026-12-28","e":"2026-12-28"},{"c":"НВП","n":16,"t":"Свойства местности и их применение в военном деле","s":"2027-01-18","e":"2027-01-18"},{"c":"НВП","n":17,"t":"Фортификационное оборудование позиции отделения. Виды укрытий и убежищ","s":"2027-01-25","e":"2027-01-25"},{"c":"НВП","n":18,"t":"Минно-взрывные инженерные заграждения и инженерная разведка местности","s":"2027-02-01","e":"2027-02-01"},{"c":"НВП","n":19,"t":"Оружие массового поражения","s":"2027-02-08","e":"2027-02-08"},{"c":"НВП","n":20,"t":"Средства индивидуальной и коллективной защиты","s":"2027-02-15","e":"2027-02-15"},{"c":"НВП","n":21,"t":"Основы ведения радиационного, химического и биологического наблюдения и разведки","s":"2027-03-01","e":"2027-03-01"},{"c":"НВП","n":22,"t":"Первая помощь на поле боя (тактическая медицина)","s":"2027-03-15","e":"2027-03-15"},{"c":"НВП","n":23,"t":"Первая помощь на поле боя (тактическая медицина)","s":"2027-04-05","e":"2027-04-05"},{"c":"НВП","n":24,"t":"Практикум по отработке навыков первой помощи на поле боя","s":"2027-04-05","e":"2027-04-05"},{"c":"БЖ","n":25,"t":"Культура безопасного поведения","s":"2027-04-12","e":"2027-04-12"},{"c":"БЖ","n":26,"t":"Безопасность в быту. Предупреждение травм и отравлений, первая помощь","s":"2027-04-12","e":"2027-04-12"},{"c":"БЖ","n":27,"t":"Пожарная безопасность в быту","s":"2027-04-19","e":"2027-04-19"},{"c":"БЖ","n":28,"t":"Безопасное поведение в общественных местах","s":"2027-04-19","e":"2027-04-19"},{"c":"БЖ","n":29,"t":"Безопасность дорожного движения","s":"2027-04-26","e":"2027-04-26"},{"c":"БЖ","n":30,"t":"Безопасное поведение на разных видах транспорта","s":"2027-04-26","e":"2027-04-26"},{"c":"БЖ","n":31,"t":"Порядок действий при дорожно-транспортных происшествиях","s":"2027-05-17","e":"2027-05-17"},{"c":"БЖ","n":32,"t":"Безопасность в местах массового пребывания людей","s":"2027-05-17","e":"2027-05-17"},{"c":"БЖ","n":33,"t":"Опасности криминального характера, меры защиты от них","s":"2027-05-24","e":"2027-05-24"},{"c":"БЖ","n":34,"t":"Практикум «Пожарная безопасность»","s":"2027-05-24","e":"2027-05-24"}],"11":[{"c":"БЖ","n":1,"t":"Безопасность в природной среде: тактика действий","s":"2026-09-07","e":"2026-09-07"},{"c":"БЖ","n":2,"t":"Безопасный отдых и туризм","s":"2026-09-14","e":"2026-09-14"},{"c":"БЖ","n":3,"t":"Выживание в автономных условиях","s":"2026-09-21","e":"2026-09-21"},{"c":"БЖ","n":4,"t":"Природные пожары","s":"2026-09-28","e":"2026-09-28"},{"c":"БЖ","n":5,"t":"Опасные геологические явления и процессы: землетрясения, извержение вулканов, оползни, сели, камнепады","s":"2026-10-05","e":"2026-10-05"},{"c":"БЖ","n":6,"t":"Опасные гидрологические явления и процессы: наводнения, паводки, половодья, цунами, сели, лавины","s":"2026-10-12","e":"2026-10-12"},{"c":"БЖ","n":7,"t":"Опасные метеорологические явления и процессы: ливни, град, мороз, жара","s":"2026-10-19","e":"2026-10-19"},{"c":"БЖ","n":8,"t":"Экологическая грамотность и рациональное природопользование","s":"2026-11-09","e":"2026-11-09"},{"c":"БЖ","n":9,"t":"Риски возникновения чрезвычайных ситуаций характерных для региона проживания","s":"2026-11-16","e":"2026-11-16"},{"c":"БЖ","n":10,"t":"Безопасность в цифровой среде. Защита прав в цифровом пространстве","s":"2026-11-23","e":"2026-11-23"},{"c":"БЖ","n":11,"t":"Опасности, связанные с использованием программного обеспечения","s":"2026-11-30","e":"2026-11-30"},{"c":"БЖ","n":12,"t":"Опасности, связанные с коммуникацией в цифровой среде","s":"2026-12-07","e":"2026-12-07"},{"c":"БЖ","n":13,"t":"Достоверность информации в цифровой среде","s":"2026-12-14","e":"2026-12-14"},{"c":"БЖ","n":14,"t":"Основы межличностного общения","s":"2026-12-21","e":"2026-12-21"},{"c":"БЖ","n":15,"t":"Экстремизм и терроризм как угроза устойчивого развития общества","s":"2026-12-28","e":"2026-12-28"},{"c":"БЖ","n":16,"t":"Правила безопасного поведения при обнаружении бесхозного предмета","s":"2027-01-18","e":"2027-01-18"},{"c":"БЖ","n":17,"t":"Действия при угрозе или совершении террористического акта","s":"2027-01-25","e":"2027-01-25"},{"c":"БЖ","n":18,"t":"Действия при пожаре, обрушении конструкций в результате совершения террористического акта","s":"2027-02-01","e":"2027-02-01"},{"c":"БЖ","n":19,"t":"Правила поведения при массовых заболеваниях людей, животных и растений","s":"2027-02-08","e":"2027-02-08"},{"c":"БЖ","n":20,"t":"Первая помощь пострадавшему при травмах головы и глаз","s":"2027-02-15","e":"2027-02-15"},{"c":"БЖ","n":21,"t":"Первая помощь пострадавшему при «сложных» кровотечениях и сочетанных травм","s":"2027-03-01","e":"2027-03-01"},{"c":"БЖ","n":22,"t":"Первая помощь пострадавшему с использование подручных средств","s":"2027-03-15","e":"2027-03-15"},{"c":"БЖ","n":23,"t":"Первая помощь при наличии нескольких пострадавших","s":"2027-04-05","e":"2027-04-05"},{"c":"БЖ","n":24,"t":"Практикум «Действия при угрозе и совершении террористического акта»","s":"2027-04-05","e":"2027-04-05"},{"c":"НВП","n":25,"t":"Основные мероприятия по обеспечению безопасности военной службы","s":"2027-04-12","e":"2027-04-12"},{"c":"НВП","n":26,"t":"Особенности прохождения военной службы по призыву и по контракту","s":"2027-04-12","e":"2027-04-12"},{"c":"НВП","n":27,"t":"Подготовка граждан по военно-учетным специальностям","s":"2027-04-19","e":"2027-04-19"},{"c":"НВП","n":28,"t":"Военно-учебные заведения и военно-учебные центры","s":"2027-04-19","e":"2027-04-19"},{"c":"НВП","n":29,"t":"Социальные гарантии и меры социальной поддержки военнослужащих","s":"2027-04-26","e":"2027-04-26"},{"c":"НВП","n":30,"t":"Особенности взаимоотношений в воинском коллективе","s":"2027-04-26","e":"2027-04-26"},{"c":"НВП","n":31,"t":"История развития гражданской обороны","s":"2027-05-17","e":"2027-05-17"},{"c":"НВП","n":32,"t":"Мероприятия по оповещению и защите населения при чрезвычайных ситуациях и возникновении угроз военного характера","s":"2027-05-17","e":"2027-05-17"},{"c":"НВП","n":33,"t":"Эвакуация населения в условиях чрезвычайных ситуаций и вооруженных конфликтов","s":"2027-05-24","e":"2027-05-24"},{"c":"НВП","n":34,"t":"Международное гуманитарное право в период вооруженных конфликтов","s":"2027-05-24","e":"2027-05-24"}]};
+    var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    var KEY = 'uchClass';
+
+    function byId(id) { return document.getElementById(id); }
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
+    function parts(s) { var p = s.split('-'); return { y: +p[0], m: +p[1], d: +p[2] }; }
+    function fmt(a, b) {
+        var x = parts(a), y = parts(b);
+        if (a === b) { return x.d + ' ' + MON[x.m - 1]; }
+        if (x.m === y.m) { return x.d + '–' + y.d + ' ' + MON[x.m - 1]; }
+        return x.d + ' ' + MON[x.m - 1] + ' – ' + y.d + ' ' + MON[y.m - 1];
+    }
+    function todayIso() {
+        var t = new Date();
+        return t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+    }
+    function line(r, cls) {
+        var p = el('p', cls);
+        p.appendChild(el('span', 'uch-tag' + (r.c === 'БЖ' ? ' uch-tag-bj' : ''), r.c));
+        p.appendChild(el('span', 'uch-topic', 'Урок ' + r.n + '. ' + r.t));
+        return p;
+    }
+
+    var res = byId('uchResult'), btns = Array.prototype.slice.call(document.querySelectorAll('#uchClassBtns .uch-f'));
+
+    function show(cl) {
+        var list = LESSONS[cl] || [], today = todayIso(), i, idx = -1;
+        res.innerHTML = '';
+        for (i = 0; i < list.length; i++) { if (list[i].e >= today) { idx = i; break; } }
+        if (idx === -1) {
+            res.appendChild(el('p', 'uch-topic', 'Уроки по календарному плану завершены. Хорошего отдыха!'));
+            return;
+        }
+        var cur = list[idx], nxt = list[idx + 1], running = cur.s <= today;
+        res.appendChild(el('p', 'uch-meta', (running ? 'Сейчас идёт: ' : 'Ближайший урок: ') + cl + ' класс'));
+        res.appendChild(line(cur));
+        res.appendChild(el('p', 'uch-meta', '📅 Урок в классе: ' + fmt(cur.s, cur.e)));
+        var href = READY[cl + '-' + cur.n];
+        if (cur.c === 'НВП') {
+            if (href) {
+                var a = el('a', 'uch-btn', 'Открыть параграф'); a.href = href; res.appendChild(a);
+            } else {
+                res.appendChild(el('p', 'uch-meta', '⏳ Параграф к этому уроку готовится.'));
+            }
+        } else {
+            res.appendChild(el('p', 'uch-meta', 'Курс БЖ: готовься по действующему учебнику. Путеводитель по курсу появится в январе–феврале 2027.'));
+        }
+        if (nxt) {
+            var box = el('div', 'uch-next');
+            box.appendChild(el('span', 'uch-meta', 'Дальше: '));
+            var s = el('span', '', 'Урок ' + nxt.n + '. ' + nxt.t + ' (' + fmt(nxt.s, nxt.e) + ')');
+            box.appendChild(s);
+            res.appendChild(box);
+        }
+    }
+
+    function pick(cl, save) {
+        btns.forEach(function (b) {
+            var on = b.getAttribute('data-cl') === cl;
+            b.classList.toggle('is-on', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        show(cl);
+        if (save) { try { localStorage.setItem(KEY, cl); } catch (e) { /* без сохранения */ } }
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-cl'), true); }); });
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }
+    if (saved && LESSONS[saved]) { pick(saved, false); }
+})();
+</script>
 <script src="landscape-fix.js"></script>
-  <!-- Плавающая кнопка ВКонтакте -->
+ <!-- Плавающая кнопка ВКонтакте -->
 <div id="vkFloatingButton"
      style="position: fixed;
             bottom: 30px;

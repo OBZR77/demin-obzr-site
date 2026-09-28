@@ -357,6 +357,24 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <!-- ========== УЧЕНИКАМ ========== -->
+
+    <!-- Ученикам (главная раздела) -->
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/uchenikam.html</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Учебник НВП -->
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/uchebnik-nvp.html</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
 </urlset>
 
     

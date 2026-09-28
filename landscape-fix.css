@@ -186,3 +186,27 @@
     .footer-content         { grid-template-columns: repeat(2, 1fr); }
     .hero h2                { font-size: 2rem; }
 }
+
+/* ============================================================
+   Главное меню из 10 пунктов (пункт «Ученикам»): выпадающие списки
+   последних пунктов не выходят за правый край экрана, а сами пункты
+   умещаются в одну строку на ноутбуках. На телефоне (меню-гамбургер)
+   не действует.
+   ============================================================ */
+.nav-menu > li:nth-last-child(-n+2) .submenu {
+    left: auto;
+    right: 0;
+}
+@media (min-width: 901px) and (max-width: 1320px) {
+    .nav-menu > li > a {
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+    }
+}
+@media (min-width: 901px) and (max-width: 1120px) {
+    .nav-menu > li > a {
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+        font-size: 0.9rem;
+    }
+}
