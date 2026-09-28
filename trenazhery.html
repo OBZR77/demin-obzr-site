@@ -18,8 +18,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-    <meta name="description" content="Нормативная документация по ОБЗР - рабочие программы и календарно-тематическое планирование для 8-11 классов в соответствии с ФГОС">
-    <title>Нормативная документация | Дёмин А.Ю.</title>
+<meta name="description" content="Тренажёры и самопроверка: страница раздела «Ученикам» готовится к открытию (ноябрь–декабрь 2026)">
+    <title>Тренажёры и самопроверка | Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -41,7 +41,7 @@
             --color-text-secondary: #7F8C8D;
             --color-border: #E0E6ED;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 16px;
@@ -141,10 +141,6 @@
             position: relative;
         }
 
-        .nav-menu > li.has-submenu > a:hover {
-            background-color: var(--color-primary-hover);
-        }
-
         .submenu {
             position: absolute;
             top: 100%;
@@ -161,7 +157,6 @@
             visibility: hidden;
             transform: translateY(-15px);
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-            transition-delay: 0s;
             border-top: 3px solid var(--color-danger);
             z-index: 1000;
         }
@@ -173,25 +168,19 @@
             transition-delay: 0.35s;
         }
 
-        .submenu li {
-            margin: 0;
-        }
-
         .submenu a {
-            color: var(--color-text-primary);!important; 
-             background-color: white !important;
+            color: var(--color-text-primary);
             text-decoration: none;
             padding: 0.65rem 1.5rem;
             display: flex;
             align-items: center;
             transition: all 0.2s ease;
             font-size: 0.95rem;
-            line-height: 1.4;
         }
 
         .submenu a:hover {
-            background-color: var(--color-surface);!important;
-            color: var(--color-primary);!important;
+            background-color: var(--color-surface);
+            color: var(--color-primary);
             padding-left: 2rem;
         }
 
@@ -220,141 +209,490 @@
             padding: 0 1rem 2rem;
         }
         
-        .section {
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-top: 2.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        /* ИНФОРМАЦИОННЫЙ БЛОК */
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 2px solid var(--color-primary);
+            border-left: 5px solid var(--color-primary);
+            padding: 2rem;
+            border-radius: 10px;
             margin-bottom: 3rem;
         }
         
-        .section-title {
-            font-size: 2rem;
+        .info-box h3 {
             color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--color-danger);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
         }
         
-        /* БЛОКИ С ДОКУМЕНТАМИ */
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 2rem;
+        .info-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .info-box li::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* ФИЛЬТРЫ */
+        .filters-container {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+        }
+
+        .class-filters, .type-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid var(--color-border);
+            background: white;
+            color: var(--color-text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            background: var(--color-surface);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* АККОРДЕОН */
+        .accordion {
             margin-top: 2rem;
         }
-        
-        .document-block {
-            background-color: white;
+
+        .accordion-item {
+            background: white;
             border: 2px solid var(--color-border);
-            border-left: 4px solid var(--color-primary);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            border-left: 5px solid var(--color-primary);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        
-        .document-block:hover {
-            box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 61, 122, 0.1);
+        }
+
+        .accordion-item.featured {
             border-left-color: var(--color-danger);
         }
-        
-        .document-block h3 {
-            color: var(--color-primary);
+
+        .accordion-header {
+            padding: 1.5rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: var(--color-surface);
+        }
+
+        .accordion-item.active .accordion-header {
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.05) 0%, rgba(0, 81, 138, 0.02) 100%);
+        }
+
+        .accordion-item.featured.active .accordion-header {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.05) 0%, rgba(229, 57, 53, 0.02) 100%);
+        }
+
+        .accordion-title-wrapper {
+            flex: 1;
+        }
+
+        .accordion-title {
             font-size: 1.3rem;
-            margin-bottom: 1.25rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion-item.featured .accordion-title {
+            color: var(--color-danger);
+        }
+
+        .accordion-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .accordion-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.75rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 10000px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* КАРТОЧКИ МАТЕРИАЛОВ */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .material-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .material-card.type-presentation {
+            border-left: 4px solid #2196F3;
+        }
+
+        .material-card.type-visual {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .material-card.type-test {
+            border-left: 4px solid #FF9800;
+        }
+
+        .material-card.type-control {
+            border-left: 4px solid #9C27B0;
+        }
+
+        .material-preview {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--color-surface) 0%, #E8EEF5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .material-content {
+            padding: 1.25rem;
+        }
+
+        .material-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-presentation {
+            background: #E3F2FD;
+            color: #1976D2;
+        }
+
+        .badge-visual {
+            background: #E8F5E9;
+            color: #388E3C;
+        }
+
+        .badge-test {
+            background: #FFF3E0;
+            color: #F57C00;
+        }
+
+        .badge-control {
+            background: #F3E5F5;
+            color: #7B1FA2;
+        }
+
+        .material-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .material-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .material-info-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
-        .document-item {
-            background-color: var(--color-surface);
-            padding: 1rem 1.25rem;
-            margin-bottom: 0.75rem;
-            border-radius: 6px;
+
+        .material-buttons {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-        
-        .document-item:hover {
-            background-color: #e8eef5;
-            transform: translateX(5px);
-        }
-        
-        .document-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .document-info {
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 0.75rem;
-            flex: 1;
         }
-        
-        .document-icon {
-            font-size: 1.8rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-        
-        .document-title {
-            font-weight: 600;
-            color: var(--color-text-primary);
-            font-size: 0.95rem;
-        }
-        
-        .download-link {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 0.5rem 1rem;
+
+        .material-btn {
+            padding: 0.65rem 1rem;
+            border: none;
             border-radius: 6px;
-            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
-            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 0.4rem;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
         }
-        
-        .download-link:hover {
-            background-color: var(--color-primary-hover);
-            transform: scale(1.05);
+
+        .material-btn-primary {
+            background: var(--color-primary);
+            color: white;
         }
-        
-        /* INFO BOX */
-        .info-box {
-            background-color: #E3F2FD;
-            border-left: 4px solid #1976D2;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 6px;
+
+        .material-btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
         }
-        
-        .info-box p {
+
+        .material-btn-secondary {
+            background: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .material-btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .material-btn-disabled {
+            background: var(--color-surface);
+            color: var(--color-text-secondary);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .material-btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* NO RESULTS */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--color-text-secondary);
+            display: none;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
             color: var(--color-text-primary);
             margin-bottom: 0.5rem;
         }
-        
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-        
+
         /* HIGHLIGHT BOX */
         .highlight-box {
-            background-color: #F0F7FF;
-            border: 2px solid var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 1.75rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            border: 2px solid #FFC107;
+            border-left: 5px solid #FF9800;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
         }
         
         .highlight-box h3 {
             color: var(--color-primary);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
         
         .highlight-box p {
-            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
+        }
+
+        /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background-color: #F0F7FF;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .additional-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.75rem 0;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .additional-info li::before {
+            content: '📌';
+            flex-shrink: 0;
+        }
+
+        .additional-info a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        .additional-info a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
         }
         
         /* FOOTER */
@@ -408,7 +746,7 @@
             font-size: 0.9rem;
             opacity: 0.9;
         }
- .nav-overlay {
+.nav-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -429,7 +767,7 @@
                 display: block;
             }
             
-            .nav-menu {
+           .nav-menu {
     display: none;
     flex-direction: column;
     width: 72%;
@@ -451,13 +789,13 @@
 .nav-menu.active {
     display: flex;
     transform: translateX(0);
-}
+} 
             
             .nav-menu > li > a {
                 padding: 0.75rem 1rem;
             }
             
-          .submenu {
+            .submenu {
     position: static;
     box-shadow: none;
     border-radius: 0;
@@ -479,13 +817,17 @@
 .nav-menu > li.has-submenu.open .submenu {
     max-height: 500px;
     padding: 0.5rem 0;
-} 
+}
             
-            .submenu a {
+          .submenu a {
+                color: var(--color-text-primary) !important;
+                background-color: white !important;
                 padding-left: 2rem;
             }
             
             .submenu a:hover {
+                background-color: var(--color-surface) !important;
+                color: var(--color-primary) !important;
                 padding-left: 2.5rem;
             }
             
@@ -497,22 +839,33 @@
                 font-size: 0.8rem;
             }
             
-            .section-title {
+            .page-title {
                 font-size: 1.5rem;
             }
-            
-            .documents-grid {
-                grid-template-columns: 1fr;
+
+            .page-subtitle {
+                font-size: 1rem;
             }
-            
-            .document-item {
+
+            .filters-row {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
             }
-      .download-link {
-                width: 100%;
-                justify-content: center;
+
+            .class-filters, .type-filters {
+                flex-wrap: wrap;
+            }
+
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+
+            .accordion-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
             }
         }
 /* Горизонтальная ориентация телефона */
@@ -569,25 +922,14 @@
         width: 100%;
     }
 
- .nav-menu > li.has-submenu.open .submenu {
+    .nav-menu > li.has-submenu.open .submenu {
         max-height: 500px;
         padding: 0.5rem 0;
     }
-
-    .submenu a {
-        color: white !important;
-        background-color: transparent !important;
-        padding-left: 2rem;
-    }
-
-    .submenu a:hover {
-        background-color: rgba(255,255,255,0.15) !important;
-        color: white !important;
-        padding-left: 2.5rem;
-    }
 }
+
         
-               /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
+        /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
         @keyframes pulse {
             0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
             50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
@@ -643,8 +985,21 @@
             height: 100vh;
         }
     </style>
+    <meta name="robots" content="noindex, follow">
+    <style>
+        .ph-scope { --color-text-secondary: #5F6B75; }
+        .ph-back { margin-bottom: .75rem; }
+        .ph-back a { color: var(--color-primary); font-weight: 600; }
+        .ph-box { background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-left: 6px solid var(--color-warning); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .ph-box h3 { margin: 0 0 .5rem; }
+        .ph-badge { display: inline-block; background: #FFF4DB; color: #6B4700; border: 1px solid #F0C36B; padding: .25rem .7rem; border-radius: 999px; font-weight: 600; font-size: .95rem; margin-top: .5rem; }
+        .ph-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .6rem 1.2rem; border-radius: 8px; font-weight: 600; margin: .3rem .5rem .3rem 0; }
+        .ph-btn:hover { background: var(--color-primary-hover); }
+        .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .ph-list { margin: .5rem 0 0 1.2rem; }
+</style>
 </head>
-<body>      
+<body>
 
     <!-- Плавающая кнопка QR-код -->
     <div id="qrFloatingButton" 
@@ -864,7 +1219,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="uchenikam.html" onclick="return handleSubmenuClick(event, this)">Ученикам</a>
+                        <a href="uchenikam.html" class="active" onclick="return handleSubmenuClick(event, this)">Ученикам</a>
                         <ul class="submenu">
                             <li><a href="uchebnik-nvp.html">Учебник НВП</a></li>
                             <li><a href="bzh-k-uroku.html">БЖ: к уроку</a></li>
@@ -889,11 +1244,11 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="metodika.html" class="active" onclick="return handleSubmenuClick(event, this)">Коллегам</a>
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Коллегам</a>
                         <ul class="submenu">
-                            <li><a href="normativnaya-dokumentaciya.html" style="font-weight: 700; color: var(--color-primary);">Нормативная документация</a></li>
-                            <li><a href="konspekty-urokov.html">Конспекты уроков по модулям</a></li>
-                            <li><a href="prezentacii-testy.html">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov.html">Конспекты уроков по курсам</a></li>
+                            <li><a href="prezentacii-testy.html" style="font-weight: 700; color: var(--color-primary);">Презентации, наглядные материалы, тесты и контрольные</a></li>
                             <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li>
                         </ul>
                     </li>
@@ -917,7 +1272,7 @@
                             <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
                             <li><a href="sbory.html">Учебно-полевые сборы</a></li>
                             <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
-                        </ul>
+                    </ul>
                     </li>
 
                     <li class="has-submenu">
@@ -937,128 +1292,24 @@
                         </ul>  
                     </li>
 
-                    
                 </ul>                        
             </div>
         </nav>
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
-        <div class="section">
-            <h2 class="section-title">Нормативная документация</h2>
-            
-            <div class="info-box">
-                <p><strong>Здесь представлены рабочие программы и календарно-тематические планирования по ОБЗР на 2025-2026 учебный год в соответствии с ФГОС и ФРП.</strong></p>
-                <p>Все документы разработаны на основе Федеральной рабочей программы по основам безопасности и защиты Родины для образовательных организаций.</p>
-            </div>
-
-            <div class="documents-grid">
-                <!-- БЛОК 1: РАБОЧИЕ ПРОГРАММЫ -->
-                <div class="document-block">
-                    <h3>📄 Рабочие программы</h3>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📘</span>
-                            <span class="document-title">Рабочая программа ОБЗР 8-9 классы</span>
-                        </div>
-                        <a href="documents/rp-obzr-8-9.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📕</span>
-                            <span class="document-title">Рабочая программа OBZR 10-11 классы</span>
-                        </div>
-                        <a href="documents/rp-obzr-10-11.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
- <!-- РАЗДЕЛИТЕЛЬ -->
-                    <div style="margin: 2rem 0 1.5rem 0; border-top: 2px solid var(--color-border);"></div>
-                    
-                    <!-- ДОПОЛНИТЕЛЬНЫЕ ПРОГРАММЫ -->
-                    <h4 style="color: var(--color-primary); 
-                               font-size: 1.3rem; 
-                               margin-bottom: 1.25rem; 
-                               display: flex; 
-                               align-items: center; 
-                               gap: 0.5rem;">
-                        📚 Дополнительные программы
-                    </h4>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">⭐</span>
-                            <span class="document-title">Дополнительная общеобразовательная общеразвивающая программа "Юнармия"</span>
-                        </div>
-                        <a href="documents/doop-yunarmiya-2025.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- БЛОК 2: КТП -->
-                <div class="document-block">
-                    <h3>📅 Календарно-тематическое планирование</h3>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📋</span>
-                            <span class="document-title">КТП 8 класс</span>
-                        </div>
-                        <a href="documents/ktp-8-klass.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📋</span>
-                            <span class="document-title">КТП 9 класс</span>
-                        </div>
-                        <a href="documents/ktp-9-klass.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📋</span>
-                            <span class="document-title">КТП 10 класс</span>
-                        </div>
-                        <a href="documents/ktp-10-klass.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                    
-                    <div class="document-item">
-                        <div class="document-info">
-                            <span class="document-icon">📋</span>
-                            <span class="document-title">КТП 11 класс</span>
-                        </div>
-                        <a href="documents/ktp-11-klass.pdf.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="highlight-box" style="margin-top: 2.5rem;">
-                <h3>ℹ️ Информация о документах</h3>
-                <p><strong>Федеральная рабочая программа ОБЗР</strong> утверждена приказом Минпросвещения России от 18 мая 2023 г. № 371.</p>
-                <p>Рабочие программы разработаны в соответствии с ФГОС ООО и ФГОС СОО, с учётом Концепции преподавания учебного предмета «Основы безопасности и защиты Родины».</p>
-                <p><strong>Календарно-тематическое планирование</strong> составлено с учётом 34 учебных недель (1 час в неделю).</p>
-            </div>
+        <div class="ph-scope">
+        <p class="ph-back"><a href="uchenikam.html">← Ученикам</a></p>
+        <h2 class="page-title">🎯 Тренажёры и самопроверка</h2>
+        <p class="page-subtitle">Раздел «Ученикам»</p>
+        <div class="ph-box">
+            <h3>Страница в разработке</h3>
+            <p>Интерактивные тренажёры по курсам НВП и БЖ и подготовка к контрольным работам. Проверка выполняется прямо на странице, результат нигде не сохраняется.</p>
+            <p>Здесь будет:</p>
+            <ul class="ph-list"><li>тренажёры по темам курса</li><li>тесты для подготовки к контрольной</li><li>разбор типичных ошибок</li></ul>
+            <span class="ph-badge">⏳ Откроется: ноябрь–декабрь 2026</span>
+        </div>
+        <p><a class="ph-btn" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="ph-btn" href="uchebnik-nvp.html">Открыть учебник НВП</a></p>
         </div>
     </main>
 
@@ -1089,6 +1340,7 @@
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="about.html">О себе</a></li>
                     <li><a href="uchenikam.html">Ученикам</a></li>
+                    <li><a href="metodika.html">Коллегам</a></li>
                     <li><a href="ai-projects.html">ИИ-проекты</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
@@ -1111,100 +1363,82 @@
 </script>
 
     <script>
+        // ============================================
         // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
-        function openLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+        // ============================================
+     function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
 
-        function closeLightbox() {
-            document.getElementById('emblem-lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Закрытие по Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-
-        // МОБИЛЬНОЕ МЕНЮ
-    function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const scrollY = window.scrollY;
-        updateMenuPosition();
-        menu.classList.toggle('active');
-        if (overlay) overlay.classList.toggle('active');
-        if (menu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.top = '-' + scrollY + 'px';
-        } else {
-            const savedScroll = parseInt(document.body.style.top || '0') * -1;
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            document.body.style.top = '';
-            window.scrollTo(0, savedScroll);
-        }
-        menu.style.overflowY = 'auto';
-        menu.style.webkitOverflowScrolling = 'touch';
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    updateMenuPosition();
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        const savedScroll = parseInt(document.body.dataset.scrollY || '0');
+        window.scrollTo(0, savedScroll);
     }
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
+}
 
-    function updateMenuPosition() {
-        const menu = document.getElementById('navMenu');
-        const overlay = document.getElementById('navOverlay');
-        const headerTop = document.querySelector('.header-top');
-        if (!menu || !headerTop) return;
-        const headerHeight = headerTop.getBoundingClientRect().height;
-        menu.style.top = headerHeight + 'px';
-        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        menu.style.overflowY = 'auto';
-        if (overlay) {
-            overlay.style.top = headerHeight + 'px';
-            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
-        }
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    menu.style.overflowY = 'auto';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
     }
+}
 
-    window.addEventListener('orientationchange', function() {
-        setTimeout(function() {
-            const menu = document.getElementById('navMenu');
-            if (menu && menu.classList.contains('active')) updateMenuPosition();
-        }, 300);
-    });
-
-    window.addEventListener('resize', function() {
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
         const menu = document.getElementById('navMenu');
         if (menu && menu.classList.contains('active')) updateMenuPosition();
-    });
+    }, 300);
+});
 
-    function handleSubmenuClick(event, element) {
-        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
-            const parentLi = element.parentElement;
-            if (parentLi.classList.contains('open')) return true;
-            event.preventDefault();
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                if (item !== parentLi) item.classList.remove('open');
-            });
-            parentLi.classList.toggle('open');
-            return false;
-        }
-        return true;
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) updateMenuPosition();
+});
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
     }
+    return true;
+}
 
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
-            document.querySelectorAll('.has-submenu.open').forEach(item => {
-                item.classList.remove('open');
-            });
-        }
-    });
-
-// ============================================
-        // QR-КОД: ФУНКЦИИ
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    }
+});
+        // ============================================
+        // QR-КОД
         // ============================================
         function openQRModal() {
             document.getElementById('qrModalWindow').style.display = 'flex';
@@ -1215,6 +1449,14 @@
             document.getElementById('qrModalWindow').style.display = 'none';
             document.body.classList.remove('modal-open');
         }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+            }
+        });
 
         // ============================================
         // ПЕРЕТАСКИВАЕМАЯ КНОПКА QR
@@ -1357,363 +1599,8 @@
         });
 
     </script>
-
-   <!-- Минимизированный плавающий плейер -->
-<div id="floatingMiniPlayer" 
-     style="position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 300px;
-            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
-            color: white;
-            padding: 12px 15px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.5);
-            z-index: 10000;
-            display: none;
-            animation: slideInLeft 0.4s ease;">
-    
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <button id="miniPlayPauseBtn" 
-                onclick="toggleMiniMusicPlayPause()"
-                style="background: white;
-                       color: #003D7A;
-                       border: none;
-                       width: 40px;
-                       height: 40px;
-                       border-radius: 50%;
-                       cursor: pointer;
-                       font-size: 1.2rem;
-                       display: flex;
-                       align-items: center;
-                       justify-content: center;
-                       flex-shrink: 0;">
-            ▶️
-        </button>
-        
-        <div style="flex: 1; min-width: 0;">
-            <div id="miniPlayerTitle" 
-                 style="font-size: 0.9rem;
-                        font-weight: 600;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;">
-                Нет трека
-            </div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
-                <div id="miniProgressBar" 
-                     style="flex: 1;
-                            height: 3px;
-                            background: rgba(255,255,255,0.3);
-                            border-radius: 2px;
-                            cursor: pointer;
-                            position: relative;">
-                    <div id="miniProgressFill" 
-                         style="height: 100%;
-                                background: white;
-                                border-radius: 2px;
-                                width: 0%;
-                                transition: width 0.1s linear;"></div>
-                </div>
-                <span id="miniCurrentTime" style="font-size: 0.75rem; opacity: 0.8;">0:00</span>
-            </div>
-        </div>
-        
-        <button onclick="hideMiniPlayer()"
-                style="background: rgba(255,255,255,0.2);
-                       border: none;
-                       color: white;
-                       width: 28px;
-                       height: 28px;
-                       border-radius: 50%;
-                       cursor: pointer;
-                       font-size: 1.2rem;
-                       display: flex;
-                       align-items: center;
-                       justify-content: center;
-                       flex-shrink: 0;">×</button>
-    </div>
-</div>
-
-<!-- Уведомление "Продолжить воспроизведение" -->
-<div id="continuePlaybackPrompt" 
-     style="position: fixed;
-            top: 80px;
-            right: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            z-index: 10001;
-            display: none;
-            max-width: 320px;
-            animation: slideInRight 0.4s ease;
-            border-left: 4px solid #003D7A;">
-    
-    <div style="display: flex; align-items: start; gap: 15px;">
-        <span style="font-size: 2.5rem;">🎵</span>
-        <div style="flex: 1;">
-            <div style="font-weight: 600; 
-                        color: #2C3E50; 
-                        margin-bottom: 6px;
-                        font-size: 1.05rem;">
-                Продолжить воспроизведение?
-            </div>
-            <div id="continueTrackName" 
-                 style="color: #7F8C8D; 
-                        font-size: 0.9rem;
-                        margin-bottom: 12px;
-                        line-height: 1.4;"></div>
-            
-            <div style="display: flex; gap: 8px;">
-                <button onclick="resumePlayback()" 
-                        style="flex: 1;
-                               padding: 10px;
-                               background: #003D7A;
-                               color: white;
-                               border: none;
-                               border-radius: 6px;
-                               cursor: pointer;
-                               font-weight: 600;
-                               font-size: 0.9rem;">
-                    ▶️ Продолжить
-                </button>
-                <button onclick="dismissPlaybackPrompt()" 
-                        style="padding: 10px 15px;
-                               background: #F5F7FA;
-                               color: #7F8C8D;
-                               border: none;
-                               border-radius: 6px;
-                               cursor: pointer;
-                               font-size: 0.9rem;">
-                    ✕
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-    @keyframes slideInLeft {
-        from { transform: translateX(-400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes slideOutLeft {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(-400px); opacity: 0; }
-    }
-    
-    @media (max-width: 768px) {
-        #floatingMiniPlayer {
-            width: 260px;
-            left: 15px;
-            bottom: 90px;
-            padding: 10px 12px;
-        }
-        
-        #miniPlayPauseBtn {
-            width: 36px;
-            height: 36px;
-            font-size: 1rem;
-        }
-        
-        #miniPlayerTitle {
-            font-size: 0.85rem;
-        }
-    }
-</style>
-
-<script>
-// ============================================
-// МИНИМИЗИРОВАННЫЙ ПЛЕЙЕР (для других страниц)
-// ============================================
-
-const miniAudio = document.createElement('audio');
-miniAudio.id = 'miniAudioPlayer';
-document.body.appendChild(miniAudio);
-
-const floatingMiniPlayer = document.getElementById('floatingMiniPlayer');
-const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
-const miniPlayerTitle = document.getElementById('miniPlayerTitle');
-const miniProgressBar = document.getElementById('miniProgressBar');
-const miniProgressFill = document.getElementById('miniProgressFill');
-const miniCurrentTime = document.getElementById('miniCurrentTime');
-
-let miniIsPlaying = false;
-
-// Форматирование времени
-function formatTime(seconds) {
-    if (isNaN(seconds)) return '0:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
-
-// Показать мини-плейер
-function showMiniPlayer() {
-    if (floatingMiniPlayer) {
-        floatingMiniPlayer.style.display = 'block';
-    }
-}
-
-// Скрыть мини-плейер
-function hideMiniPlayer() {
-    if (floatingMiniPlayer) {
-        floatingMiniPlayer.style.animation = 'slideOutLeft 0.3s ease';
-        setTimeout(() => {
-            floatingMiniPlayer.style.display = 'none';
-            floatingMiniPlayer.style.animation = 'slideInLeft 0.4s ease';
-        }, 300);
-        localStorage.setItem('miniPlayerVisible', 'false');
-    }
-}
-
-// Play/Pause мини-плейера
-function toggleMiniMusicPlayPause() {
-    if (miniIsPlaying) {
-        miniAudio.pause();
-        miniPlayPauseBtn.textContent = '▶️';
-        miniIsPlaying = false;
-    } else {
-        miniAudio.play();
-        miniPlayPauseBtn.textContent = '⏸';
-        miniIsPlaying = true;
-    }
-    
-    // Обновляем состояние в localStorage
-    const savedState = localStorage.getItem('musicPlayerState');
-    if (savedState) {
-        try {
-            const state = JSON.parse(savedState);
-            state.isPlaying = miniIsPlaying;
-            state.currentTime = miniAudio.currentTime;
-            localStorage.setItem('musicPlayerState', JSON.stringify(state));
-        } catch (e) {}
-    }
-}
-
-// Обновление мини-плейера
-function updateMiniPlayer() {
-    if (!miniAudio.duration) return;
-    
-    const progress = (miniAudio.currentTime / miniAudio.duration) * 100;
-    if (miniProgressFill) miniProgressFill.style.width = `${progress}%`;
-    if (miniCurrentTime) miniCurrentTime.textContent = formatTime(miniAudio.currentTime);
-}
-
-// Клик по прогресс-бару
-if (miniProgressBar) {
-    miniProgressBar.addEventListener('click', (e) => {
-        const rect = miniProgressBar.getBoundingClientRect();
-        const percent = (e.clientX - rect.left) / rect.width;
-        miniAudio.currentTime = percent * miniAudio.duration;
-    });
-}
-
-miniAudio.addEventListener('timeupdate', updateMiniPlayer);
-
-// Восстановление состояния
-function restoreMiniPlayer() {
-    const savedState = localStorage.getItem('musicPlayerState');
-    const miniPlayerVisible = localStorage.getItem('miniPlayerVisible');
-    
-    if (!savedState || miniPlayerVisible === 'false') return;
-    
-    try {
-        const state = JSON.parse(savedState);
-        
-        // Проверка актуальности
-        if (Date.now() - state.timestamp > 3600000) {
-            localStorage.removeItem('musicPlayerState');
-            return;
-        }
-        
-        // Загружаем трек
-        miniAudio.src = `audio/${state.filename || '01-nashey-shcolye-55!.mp3'}`;
-        miniAudio.volume = state.volume || 0.7;
-        
-        miniAudio.addEventListener('loadedmetadata', function() {
-            miniAudio.currentTime = state.currentTime || 0;
-            
-            if (miniPlayerTitle) {
-                miniPlayerTitle.textContent = state.trackTitle || 'Трек';
-            }
-            
-            if (state.isPlaying) {
-                showMiniPlayer();
-            }
-        }, { once: true });
-        
-    } catch (e) {
-        console.error('Ошибка восстановления мини-плейера:', e);
-    }
-}
-
-// Показать промпт продолжения
-function showContinuePrompt() {
-    const savedState = localStorage.getItem('musicPlayerState');
-    if (!savedState) return;
-    
-    try {
-        const state = JSON.parse(savedState);
-        
-        if (Date.now() - state.timestamp > 3600000) {
-            localStorage.removeItem('musicPlayerState');
-            return;
-        }
-        
-        if (state.isPlaying) {
-            const prompt = document.getElementById('continuePlaybackPrompt');
-            const trackName = document.getElementById('continueTrackName');
-            
-            if (prompt && trackName) {
-                trackName.textContent = `${state.trackTitle || 'Музыка'} • ${formatTime(state.currentTime)}`;
-                prompt.style.display = 'block';
-            }
-        }
-    } catch (e) {}
-}
-
-// Продолжить воспроизведение
-function resumePlayback() {
-    restoreMiniPlayer();
-    
-    setTimeout(() => {
-        if (miniAudio.src) {
-            miniAudio.play();
-            miniIsPlaying = true;
-            if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = '⏸';
-            showMiniPlayer();
-        }
-    }, 500);
-    
-    dismissPlaybackPrompt();
-}
-
-// Закрыть промпт
-function dismissPlaybackPrompt() {
-    const prompt = document.getElementById('continuePlaybackPrompt');
-    if (prompt) {
-        prompt.style.animation = 'slideOutRight 0.3s ease';
-        setTimeout(() => {
-            prompt.style.display = 'none';
-            prompt.style.animation = 'slideInRight 0.4s ease';
-        }, 300);
-    }
-}
-
-// Инициализация
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        restoreMiniPlayer();
-        showContinuePrompt();
-    }, 1000);
-});
-</script> 
-<script src="landscape-fix.js"></script>  
-
-   <!-- Плавающая кнопка ВКонтакте -->
+<script src="landscape-fix.js"></script>
+ <!-- Плавающая кнопка ВКонтакте -->
 <div id="vkFloatingButton"
      style="position: fixed;
             bottom: 30px;
@@ -1839,6 +1726,7 @@ window.addEventListener('load', () => {
         loadPos();
     });
 })();
-</script>  
+</script>
+    
 </body>
 </html>
