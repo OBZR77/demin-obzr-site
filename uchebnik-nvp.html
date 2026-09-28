@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landscape-fix.css">
+<meta name="description" content="Электронное пособие по курсу «Начальная военная подготовка» для 8–11 классов: параграф к каждому уроку, самопроверка и задание к уроку">
+    <title>Учебник НВП | Ученикам | Дёмин А.Ю.</title>
+    <!-- Фавиконки для всех устройств -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        
+        /* HEADER */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-danger);
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        /* MAIN CONTENT */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-top: 2.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        /* ИНФОРМАЦИОННЫЙ БЛОК */
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 2px solid var(--color-primary);
+            border-left: 5px solid var(--color-primary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .info-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+        
+        .info-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .info-box li::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+        
+        /* ФИЛЬТРЫ */
+        .filters-container {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
+        }
+
+        .class-filters, .type-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid var(--color-border);
+            background: white;
+            color: var(--color-text-primary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            background: var(--color-surface);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* АККОРДЕОН */
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-left: 5px solid var(--color-primary);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 61, 122, 0.1);
+        }
+
+        .accordion-item.featured {
+            border-left-color: var(--color-danger);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background: var(--color-surface);
+        }
+
+        .accordion-item.active .accordion-header {
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.05) 0%, rgba(0, 81, 138, 0.02) 100%);
+        }
+
+        .accordion-item.featured.active .accordion-header {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.05) 0%, rgba(229, 57, 53, 0.02) 100%);
+        }
+
+        .accordion-title-wrapper {
+            flex: 1;
+        }
+
+        .accordion-title {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .accordion-item.featured .accordion-title {
+            color: var(--color-danger);
+        }
+
+        .accordion-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .accordion-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.75rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 10000px;
+            padding: 0 1.75rem 1.5rem;
+        }
+
+        /* КАРТОЧКИ МАТЕРИАЛОВ */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .material-card {
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .material-card.type-presentation {
+            border-left: 4px solid #2196F3;
+        }
+
+        .material-card.type-visual {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .material-card.type-test {
+            border-left: 4px solid #FF9800;
+        }
+
+        .material-card.type-control {
+            border-left: 4px solid #9C27B0;
+        }
+
+        .material-preview {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--color-surface) 0%, #E8EEF5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .material-content {
+            padding: 1.25rem;
+        }
+
+        .material-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-presentation {
+            background: #E3F2FD;
+            color: #1976D2;
+        }
+
+        .badge-visual {
+            background: #E8F5E9;
+            color: #388E3C;
+        }
+
+        .badge-test {
+            background: #FFF3E0;
+            color: #F57C00;
+        }
+
+        .badge-control {
+            background: #F3E5F5;
+            color: #7B1FA2;
+        }
+
+        .material-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .material-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+        }
+
+        .material-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .material-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .material-btn {
+            padding: 0.65rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .material-btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .material-btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+        }
+
+        .material-btn-secondary {
+            background: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .material-btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .material-btn-disabled {
+            background: var(--color-surface);
+            color: var(--color-text-secondary);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .material-btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* NO RESULTS */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--color-text-secondary);
+            display: none;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            border: 2px solid #FFC107;
+            border-left: 5px solid #FF9800;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .highlight-box p {
+            color: var(--color-text-primary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
+        }
+
+        /* ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ */
+        .additional-info {
+            background-color: #F0F7FF;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .additional-info h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            padding: 0.75rem 0;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .additional-info li::before {
+            content: '📌';
+            flex-shrink: 0;
+        }
+
+        .additional-info a {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        .additional-info a:hover {
+            color: var(--color-danger);
+            border-bottom-color: var(--color-danger);
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+}
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+           .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+} 
+            
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+            
+          .submenu a {
+                color: var(--color-text-primary) !important;
+                background-color: white !important;
+                padding-left: 2rem;
+            }
+            
+            .submenu a:hover {
+                background-color: var(--color-surface) !important;
+                color: var(--color-primary) !important;
+                padding-left: 2.5rem;
+            }
+            
+            .header-title h1 {
+                font-size: 1.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .filters-row {
+                flex-direction: column;
+            }
+
+            .class-filters, .type-filters {
+                flex-wrap: wrap;
+            }
+
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+
+            .accordion-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+/* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}
+
+        
+        /* АНИМАЦИИ ДЛЯ QR-КНОПКИ */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+    <style id="nvp-hub-styles">
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvph-intro { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 1.25rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 1.5rem; }
+        .nvph-intro ol { margin: 0.6rem 0 0 1.2rem; }
+        .nvph-course { font-size: 1.35rem; color: var(--color-primary); margin: 1.5rem 0 0.75rem; }
+        .nvph-group { margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvph-acc { width: 100%; text-align: left; border: none; cursor: pointer; background: var(--color-surface); border-left: 4px solid var(--color-primary);
+                    padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font: inherit; color: var(--color-primary); }
+        .nvph-acc:hover { background: #E8EDF2; }
+        .nvph-acc:focus-visible { outline: 3px solid var(--color-warning); outline-offset: -3px; }
+        .nvph-acc-title { font-size: 1.15rem; font-weight: 700; }
+        .nvph-acc-sub { display: block; font-size: 0.85rem; font-weight: 400; color: var(--color-text-secondary); }
+        .nvph-arrow { transition: transform 0.3s; flex-shrink: 0; }
+        .nvph-acc[aria-expanded="true"] .nvph-arrow { transform: rotate(180deg); }
+        .nvph-panel { padding: 0.75rem; background: #fff; }
+        .nvph-panel[hidden] { display: none; }
+        .nvph-list { list-style: none; padding: 0; }
+        .nvph-row { display: flex; align-items: center; gap: 0.9rem; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--color-surface); border-radius: 8px; border-left: 4px solid #C8D1DC; }
+        .nvph-row.nvph-ready { border-left-color: var(--color-success); background: #F1F8F2; }
+        .nvph-num { flex-shrink: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvph-info { flex: 1; min-width: 0; }
+        .nvph-topic { font-weight: 600; margin: 0; }
+        .nvph-meta { font-size: 0.85rem; color: var(--color-text-secondary); margin: 0; }
+        .nvph-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
+        .nvph-actions .nvp-btn { padding: 0.45rem 1rem; font-size: 0.9rem; }
+        .nvph-badge { font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+        .nvph-badge-ok { background: #E8F5E9; color: var(--color-success); }
+        .nvph-badge-soon { background: #ECEFF3; color: var(--color-text-secondary); }
+        @media (max-width: 700px) { .nvph-row { flex-wrap: wrap; } .nvph-actions { width: 100%; justify-content: flex-start; } }
+
+        .nvph-row[hidden], .nvph-group[hidden] { display: none; }
+        .nvph-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--color-border); border-radius: 12px; margin-bottom: 1rem; background: #fff; }
+        .nvph-tool { display: flex; flex-direction: column; gap: 0.5rem; }
+        .nvph-tool-search { grid-column: 1 / -1; }
+        .nvph-tool label, .nvph-tool .nvph-lbl { font-weight: 600; color: var(--color-text-primary); }
+        .nvph-tool input[type="search"] { width: 100%; padding: 0.7rem 0.9rem; border: 2px solid var(--color-border); border-radius: 8px; font: inherit; }
+        .nvph-tool input[type="search"]:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 1px; border-color: var(--color-primary); }
+        .nvph-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvph-f { border: 2px solid var(--color-primary); background: #fff; color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; }
+        .nvph-f:hover { background: #EEF3FA; }
+        .nvph-f.is-on { background: var(--color-primary); color: #fff; }
+        .nvph-f:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvph-found { min-height: 1.5rem; margin: 0 0 0.75rem; font-weight: 600; color: var(--color-primary); }
+        .nvph-coursebox { border: 2px solid var(--color-border); border-left: 4px solid var(--color-danger); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; background: #fff; }
+        .nvph-course-h { margin: 0; }
+        .nvph-course-acc { width: 100%; text-align: left; border: none; background: #fff; cursor: pointer; padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font: inherit; }
+        .nvph-course-acc:hover { background: #FAFBFC; }
+        .nvph-course-acc:focus-visible { outline: 3px solid var(--color-warning); outline-offset: -3px; }
+        .nvph-course-title { display: block; font-size: 1.35rem; font-weight: 700; color: var(--color-danger); }
+        .nvph-course-acc[aria-expanded="true"] .nvph-arrow-r { transform: rotate(90deg); }
+        .nvph-arrow-r { color: var(--color-primary); transition: transform 0.3s; flex-shrink: 0; }
+        .nvph-course-body { padding: 0.75rem; border-top: 1px solid var(--color-border); }
+        .nvph-course-body[hidden] { display: none; }
+        .nvph-coursebox-soon { border-left-color: #8A99A8; background: var(--color-surface); }
+        .nvph-coursebox-soon .nvph-course-title { color: var(--color-text-secondary); }
+        .nvph-coursebox-soon .nvph-course-static { padding: 1.1rem 1.25rem; }
+        @media (max-width: 700px) { .nvph-tools { grid-template-columns: 1fr; } }
+
+        .nvph-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; }
+</style>
+</head>
+<body>
+
+    <!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie.html">Образование</a></li>
+                            <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady.html">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" class="active" onclick="return handleSubmenuClick(event, this)">Методика</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov.html">Конспекты уроков по курсам</a></li>
+                            <li><a href="prezentacii-testy.html" style="font-weight: 700; color: var(--color-primary);">Презентации, наглядные материалы, тесты и контрольные</a></li>
+                            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации для коллег</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" onclick="return handleSubmenuClick(event, this)">ИИ в образовании</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov.html">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya.html">Юнармия</a></li>
+                            <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica.html">Зарница 2.0</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+                    </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь</a></li>
+                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+                  
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </li>
+
+                     <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+                </ul>                        
+            </div>
+        </nav>
+    </header>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+    <main>
+        <div class="nvph-scope">
+
+        <!-- ============================================================
+             СТРАНИЦА «УЧЕБНИК НВП» — оглавление электронного пособия.
+             Как открыть урок, когда параграф готов: в нужной строке <li id="lesson-КЛАСС-НОМЕР">
+             замените содержимое блока <div class="nvph-actions">…</div> на:
+               <span class="nvph-badge nvph-badge-ok">✅ Доступен</span>
+               <a class="nvp-btn" href="ФАЙЛ.html">Открыть</a>
+               <a class="nvp-btn nvp-btn-alt" href="ФАЙЛ.html" target="_blank" rel="noopener">В новой вкладке</a>
+             и добавьте к <li> класс nvph-ready:  class="nvph-row nvph-ready"
+             Счётчик «Готово параграфов» пересчитается сам.
+             ============================================================ -->
+        <h2 class="page-title">Учебник по начальной военной подготовке</h1>
+
+        <div class="nvph-intro">
+            <strong>Как пользоваться.</strong> Единого учебника по НВП пока нет, поэтому здесь собраны параграфы к каждому уроку.
+            <ol>
+                <li>Найди свой класс и урок по календарю: рядом с каждым уроком указаны даты.</li>
+                <li>Прочитай параграф (до 15 минут) и проверь себя на странице.</li>
+                <li>Выполни задание к уроку и отправь его через форму, указав только код класса и номер, без фамилии.</li>
+            </ol>
+        </div>
+
+        <div class="nvph-tools">
+            <div class="nvph-tool nvph-tool-search">
+                <label for="nvphSearch">🔍 Поиск по названию</label>
+                <input id="nvphSearch" type="search" placeholder="Введите тему урока…" autocomplete="off">
+            </div>
+            <div class="nvph-tool">
+                <span class="nvph-lbl" id="nvphClassLbl">📚 Фильтр по классам</span>
+                <div class="nvph-btns" id="nvphClassBtns" role="group" aria-labelledby="nvphClassLbl">
+                    <button type="button" class="nvph-f is-on" data-cl="all" aria-pressed="true">Все</button>
+                    <button type="button" class="nvph-f" data-cl="8" aria-pressed="false">8 класс</button>
+                    <button type="button" class="nvph-f" data-cl="9" aria-pressed="false">9 класс</button>
+                    <button type="button" class="nvph-f" data-cl="10" aria-pressed="false">10 класс</button>
+                    <button type="button" class="nvph-f" data-cl="11" aria-pressed="false">11 класс</button>
+                </div>
+            </div>
+            <div class="nvph-tool">
+                <span class="nvph-lbl" id="nvphStatusLbl">🎯 Статус параграфа</span>
+                <div class="nvph-btns" id="nvphStatusBtns" role="group" aria-labelledby="nvphStatusLbl">
+                    <button type="button" class="nvph-f is-on" data-st="all" aria-pressed="true">Все</button>
+                    <button type="button" class="nvph-f" data-st="ready" aria-pressed="false">Только доступные</button>
+                </div>
+            </div>
+        </div>
+        <p class="nvph-found" id="nvphFound" aria-live="polite"></p>
+
+        <section class="nvph-coursebox">
+            <h2 class="nvph-course-h">
+                <button type="button" class="nvph-course-acc" id="nvphCourseBtn" aria-expanded="true" aria-controls="nvph-course-1">
+                    <span><span class="nvph-course-title">КУРС 1 ⭐: Начальная военная подготовка</span>
+                    <span class="nvph-acc-sub">📚 8–11 классы · 📄 68 уроков · <span id="nvphCourseCount"></span></span></span>
+                    <span class="nvph-arrow-r" aria-hidden="true">▶</span>
+                </button>
+            </h2>
+            <div class="nvph-course-body" id="nvph-course-1">
+
+            <section class="nvph-group" aria-labelledby="nvph-h-8">
+                <h3 id="nvph-h-8" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="true" aria-controls="nvph-panel-8">
+                        <span><span class="nvph-acc-title">8 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–21 (21) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-8">
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="lesson-8-1" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Роль безопасности в жизни личности, общества и государства</p><p class="nvph-meta">📅 Урок в классе: 2–7 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-2" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Исторический опыт организации начальной военной подготовки в России</p><p class="nvph-meta">📅 Урок в классе: 9–14 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-3" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Защита Отечества как долг и обязанность гражданина Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 16–21 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-4" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Вооруженные Силы Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 23–28 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-5" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Боевые традиции Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 30 сентября – 5 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row nvph-ready" id="lesson-8-6" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Состав и назначение Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 7–12 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-ok">✅ Доступен</span><a class="nvp-btn" href="nvp-8-06.html">Открыть</a><a class="nvp-btn nvp-btn-alt" href="nvp-8-06.html" target="_blank" rel="noopener">В новой вкладке</a></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-7" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные образцы вооружения и военной техники Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 14–19 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-8" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные образцы вооружения и военной техники Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 21 октября – 9 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-9" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Организационно-штатная структура мотострелкового отделения (взвода)</p><p class="nvph-meta">📅 Урок в классе: 5–16 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-10" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Организационно-штатная структура мотострелкового отделения (взвода)</p><p class="nvph-meta">📅 Урок в классе: 12–23 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-11" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">11</span>
+                            <div class="nvph-info"><p class="nvph-topic">Виды, назначение и тактико-технические характеристики стрелкового оружия Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 19–30 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-12" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">12</span>
+                            <div class="nvph-info"><p class="nvph-topic">Виды, назначение и тактико-технические характеристики ручных гранат Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 26 ноября – 7 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-13" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">13</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного обращения с оружием</p><p class="nvph-meta">📅 Урок в классе: 3–14 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-14" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">14</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила поведения при обнаружении самодельных взрывных устройств, мин-ловушек</p><p class="nvph-meta">📅 Урок в классе: 10–21 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-15" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">15</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила поведения в зоне вооруженного конфликта</p><p class="nvph-meta">📅 Урок в классе: 17–28 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-16" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">16</span>
+                            <div class="nvph-info"><p class="nvph-topic">Строевые приемы и движение без оружия (строевая подготовка)</p><p class="nvph-meta">📅 Урок в классе: 24 декабря – 18 января</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-17" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">17</span>
+                            <div class="nvph-info"><p class="nvph-topic">Строевые приемы и движение без оружия (строевая подготовка)</p><p class="nvph-meta">📅 Урок в классе: 13–25 января</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-18" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">18</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы оказания первой помощи</p><p class="nvph-meta">📅 Урок в классе: 20 января – 1 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-19" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">19</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь при неотложных состояниях</p><p class="nvph-meta">📅 Урок в классе: 27 января – 8 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-20" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">20</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум по отработке практических навыков оказания первой помощи (моделирование ситуаций)</p><p class="nvph-meta">📅 Урок в классе: 3–15 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-8-21" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">21</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум по отработке практических навыков оказания первой помощи (моделирование ситуаций)</p><p class="nvph-meta">📅 Урок в классе: 10 февраля – 1 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-9">
+                <h3 id="nvph-h-9" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-9">
+                        <span><span class="nvph-acc-title">9 класс</span>
+                        <span class="nvph-acc-sub">Уроки 22–34 (13) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-9" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="lesson-9-22" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">22</span>
+                            <div class="nvph-info"><p class="nvph-topic">Общевоинские уставы - закон жизни Вооруженных Сил Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 17 февраля – 2 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-23" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">23</span>
+                            <div class="nvph-info"><p class="nvph-topic">Военнослужащие и взаимоотношения между ними</p><p class="nvph-meta">📅 Урок в классе: 24 февраля – 9 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-24" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">24</span>
+                            <div class="nvph-info"><p class="nvph-topic">Военнослужащие и взаимоотношения между ними</p><p class="nvph-meta">📅 Урок в классе: 3–16 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-25" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">25</span>
+                            <div class="nvph-info"><p class="nvph-topic">Воинская дисциплина, ее сущность и значение</p><p class="nvph-meta">📅 Урок в классе: 10 марта – 6 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-26" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">26</span>
+                            <div class="nvph-info"><p class="nvph-topic">Воинская дисциплина, ее сущность и значение</p><p class="nvph-meta">📅 Урок в классе: 17 марта – 13 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-27" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">27</span>
+                            <div class="nvph-info"><p class="nvph-topic">Обязательная и добровольная подготовка граждан к военной службе</p><p class="nvph-meta">📅 Урок в классе: 1–20 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-28" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">28</span>
+                            <div class="nvph-info"><p class="nvph-topic">Автономное существование в природной среде</p><p class="nvph-meta">📅 Урок в классе: 8–27 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-29" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">29</span>
+                            <div class="nvph-info"><p class="nvph-topic">Сооружение временных укрытий, обеспечение водой и питанием</p><p class="nvph-meta">📅 Урок в классе: 15 апреля – 4 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-30" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">30</span>
+                            <div class="nvph-info"><p class="nvph-topic">Защита от перегрева и переохлаждения, первая помощь</p><p class="nvph-meta">📅 Урок в классе: 22 апреля – 11 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-31" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">31</span>
+                            <div class="nvph-info"><p class="nvph-topic">Ориентирование на местности без карты</p><p class="nvph-meta">📅 Урок в классе: 29 апреля – 18 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-32" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">32</span>
+                            <div class="nvph-info"><p class="nvph-topic">Карты, традиционные и современные средства навигации</p><p class="nvph-meta">📅 Урок в классе: 6–18 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-33" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">33</span>
+                            <div class="nvph-info"><p class="nvph-topic">Ориентирование на местности по карте</p><p class="nvph-meta">📅 Урок в классе: 13–25 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-9-34" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">34</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум по выживанию в природной среде</p><p class="nvph-meta">📅 Урок в классе: 20–26 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-10">
+                <h3 id="nvph-h-10" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="true" aria-controls="nvph-panel-10">
+                        <span><span class="nvph-acc-title">10 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–24 (24) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-10">
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="lesson-10-1" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы обеспечения национальной безопасности Российской Федерации</p><p class="nvph-meta">📅 Урок в классе: 7 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-2" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Государственная и общественная безопасность. Оборона страны</p><p class="nvph-meta">📅 Урок в классе: 14 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-3" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Организация, вооружение и тактика действий иностранных армий</p><p class="nvph-meta">📅 Урок в классе: 21 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-4" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Размещение и быт военнослужащих</p><p class="nvph-meta">📅 Урок в классе: 28 сентября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-5" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Строевые приемы и движения с оружием</p><p class="nvph-meta">📅 Урок в классе: 5 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-6" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные виды тактических действий войск</p><p class="nvph-meta">📅 Урок в классе: 12 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-7" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные виды тактических действий войск</p><p class="nvph-meta">📅 Урок в классе: 19 октября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-8" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Требования безопасности при обращении с оружием и боеприпасами</p><p class="nvph-meta">📅 Урок в классе: 9 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-9" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Общее устройство и принцип работы автоматов Калашникова АК-74 и АК-12</p><p class="nvph-meta">📅 Урок в классе: 16 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-10" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила ведения огня из стрелкового оружия</p><p class="nvph-meta">📅 Урок в классе: 23 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-11" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">11</span>
+                            <div class="nvph-info"><p class="nvph-topic">Боевые робототехнические комплексы и системы</p><p class="nvph-meta">📅 Урок в классе: 30 ноября</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-12" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">12</span>
+                            <div class="nvph-info"><p class="nvph-topic">Беспилотные летательные аппараты</p><p class="nvph-meta">📅 Урок в классе: 7 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-13" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">13</span>
+                            <div class="nvph-info"><p class="nvph-topic">Беспилотные летательные аппараты</p><p class="nvph-meta">📅 Урок в классе: 14 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-14" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">14</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила поведения при ракетной опасности, угрозе применения БПЛА</p><p class="nvph-meta">📅 Урок в классе: 21 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-15" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">15</span>
+                            <div class="nvph-info"><p class="nvph-topic">Предназначение, общее устройство и тактико-технические характеристики переносных радиостанций</p><p class="nvph-meta">📅 Урок в классе: 28 декабря</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-16" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">16</span>
+                            <div class="nvph-info"><p class="nvph-topic">Свойства местности и их применение в военном деле</p><p class="nvph-meta">📅 Урок в классе: 18 января</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-17" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">17</span>
+                            <div class="nvph-info"><p class="nvph-topic">Фортификационное оборудование позиции отделения. Виды укрытий и убежищ</p><p class="nvph-meta">📅 Урок в классе: 25 января</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-18" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">18</span>
+                            <div class="nvph-info"><p class="nvph-topic">Минно-взрывные инженерные заграждения и инженерная разведка местности</p><p class="nvph-meta">📅 Урок в классе: 1 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-19" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">19</span>
+                            <div class="nvph-info"><p class="nvph-topic">Оружие массового поражения</p><p class="nvph-meta">📅 Урок в классе: 8 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-20" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">20</span>
+                            <div class="nvph-info"><p class="nvph-topic">Средства индивидуальной и коллективной защиты</p><p class="nvph-meta">📅 Урок в классе: 15 февраля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-21" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">21</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы ведения радиационного, химического и биологического наблюдения и разведки</p><p class="nvph-meta">📅 Урок в классе: 1 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-22" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">22</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь на поле боя (тактическая медицина)</p><p class="nvph-meta">📅 Урок в классе: 15 марта</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-23" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">23</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь на поле боя (тактическая медицина)</p><p class="nvph-meta">📅 Урок в классе: 5 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-10-24" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">24</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум по отработке навыков первой помощи на поле боя</p><p class="nvph-meta">📅 Урок в классе: 5 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-11">
+                <h3 id="nvph-h-11" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-11">
+                        <span><span class="nvph-acc-title">11 класс</span>
+                        <span class="nvph-acc-sub">Уроки 25–34 (10) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-11" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="lesson-11-25" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">25</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные мероприятия по обеспечению безопасности военной службы</p><p class="nvph-meta">📅 Урок в классе: 12 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-26" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">26</span>
+                            <div class="nvph-info"><p class="nvph-topic">Особенности прохождения военной службы по призыву и по контракту</p><p class="nvph-meta">📅 Урок в классе: 12 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-27" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">27</span>
+                            <div class="nvph-info"><p class="nvph-topic">Подготовка граждан по военно-учетным специальностям</p><p class="nvph-meta">📅 Урок в классе: 19 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-28" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">28</span>
+                            <div class="nvph-info"><p class="nvph-topic">Военно-учебные заведения и военно-учебные центры</p><p class="nvph-meta">📅 Урок в классе: 19 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-29" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">29</span>
+                            <div class="nvph-info"><p class="nvph-topic">Социальные гарантии и меры социальной поддержки военнослужащих</p><p class="nvph-meta">📅 Урок в классе: 26 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-30" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">30</span>
+                            <div class="nvph-info"><p class="nvph-topic">Особенности взаимоотношений в воинском коллективе</p><p class="nvph-meta">📅 Урок в классе: 26 апреля</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-31" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">31</span>
+                            <div class="nvph-info"><p class="nvph-topic">История развития гражданской обороны</p><p class="nvph-meta">📅 Урок в классе: 17 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-32" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">32</span>
+                            <div class="nvph-info"><p class="nvph-topic">Мероприятия по оповещению и защите населения при чрезвычайных ситуациях и возникновении угроз военного характера</p><p class="nvph-meta">📅 Урок в классе: 17 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-33" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">33</span>
+                            <div class="nvph-info"><p class="nvph-topic">Эвакуация населения в условиях чрезвычайных ситуаций и вооруженных конфликтов</p><p class="nvph-meta">📅 Урок в классе: 24 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="lesson-11-34" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">34</span>
+                            <div class="nvph-info"><p class="nvph-topic">Международное гуманитарное право в период вооруженных конфликтов</p><p class="nvph-meta">📅 Урок в классе: 24 мая</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+        </section>
+
+        <div class="nvph-coursebox nvph-coursebox-soon">
+            <div class="nvph-course-static">
+                <span class="nvph-course-title">КУРС 2: Безопасность жизнедеятельности</span>
+                <span class="nvph-acc-sub">⏳ Путеводитель «урок → параграф учебника → тренажёр» появится позже</span>
+            </div>
+        </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="metodika.html">Методика</a></li>
+                    <li><a href="ai-projects.html">ИИ в образовании</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+    <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    <script>
+        // ============================================
+        // LIGHTBOX ДЛЯ ЭМБЛЕМЫ
+        // ============================================
+     function closeLightbox() {
+    document.getElementById('emblem-lightbox').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    updateMenuPosition();
+    menu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    if (menu.classList.contains('active')) {
+        document.body.dataset.scrollY = window.scrollY;
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        const savedScroll = parseInt(document.body.dataset.scrollY || '0');
+        window.scrollTo(0, savedScroll);
+    }
+    menu.style.overflowY = 'auto';
+    menu.style.webkitOverflowScrolling = 'touch';
+}
+
+function updateMenuPosition() {
+    const menu = document.getElementById('navMenu');
+    const overlay = document.getElementById('navOverlay');
+    const headerTop = document.querySelector('.header-top');
+    if (!menu || !headerTop) return;
+    const headerHeight = headerTop.getBoundingClientRect().height;
+    menu.style.top = headerHeight + 'px';
+    menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    menu.style.overflowY = 'auto';
+    if (overlay) {
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+    }
+}
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    }, 300);
+});
+
+window.addEventListener('resize', function() {
+    const menu = document.getElementById('navMenu');
+    if (menu && menu.classList.contains('active')) updateMenuPosition();
+});
+
+function handleSubmenuClick(event, element) {
+    if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+        const parentLi = element.parentElement;
+        if (parentLi.classList.contains('open')) return true;
+        event.preventDefault();
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== parentLi) item.classList.remove('open');
+        });
+        parentLi.classList.toggle('open');
+        return false;
+    }
+    return true;
+}
+
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+        document.querySelectorAll('.has-submenu.open').forEach(item => {
+            item.classList.remove('open');
+        });
+    }
+});
+        // ============================================
+        // QR-КОД
+        // ============================================
+        function openQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qrModalWindow').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+                closeQRModal();
+            }
+        });
+
+        // ============================================
+        // ПЕРЕТАСКИВАЕМАЯ КНОПКА QR
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const qrButton = document.getElementById('qrFloatingButton');
+            const qrHint = document.getElementById('qrButtonHint');
+            
+            const savedLeft = localStorage.getItem('qrButtonLeft');
+            const savedTop = localStorage.getItem('qrButtonTop');
+            if (savedLeft && savedTop) {
+                qrButton.style.left = savedLeft;
+                qrButton.style.top = savedTop;
+                qrButton.style.bottom = 'auto';
+                qrButton.style.right = 'auto';
+            }
+            
+            let isDragging = false;
+            let startX, startY;
+            let initialX, initialY;
+            let moveThreshold = 10;
+            let hasMoved = false;
+
+            if (!localStorage.getItem('qrHintShown')) {
+                setTimeout(() => {
+                    qrHint.style.display = 'block';
+                    setTimeout(() => {
+                        qrHint.style.display = 'none';
+                        localStorage.setItem('qrHintShown', 'true');
+                    }, 4000);
+                }, 1000);
+            }
+
+            qrButton.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+
+            qrButton.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                hasMoved = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                const rect = qrButton.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                qrButton.classList.add('dragging');
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+                
+                if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+                    hasMoved = true;
+                }
+                
+                if (hasMoved) {
+                    const newX = initialX + deltaX;
+                    const newY = initialY + deltaY;
+                    
+                    const maxX = window.innerWidth - qrButton.offsetWidth;
+                    const maxY = window.innerHeight - qrButton.offsetHeight;
+                    
+                    const boundedX = Math.max(0, Math.min(newX, maxX));
+                    const boundedY = Math.max(0, Math.min(newY, maxY));
+                    
+                    qrButton.style.left = boundedX + 'px';
+                    qrButton.style.top = boundedY + 'px';
+                    qrButton.style.bottom = 'auto';
+                    qrButton.style.right = 'auto';
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    qrButton.classList.remove('dragging');
+                    if (hasMoved) {
+                        localStorage.setItem('qrButtonLeft', qrButton.style.left);
+                        localStorage.setItem('qrButtonTop', qrButton.style.top);
+                    }
+                    if (!hasMoved) {
+                        openQRModal();
+                    }
+                    isDragging = false;
+                }
+            });
+        });
+
+    </script>
+<script id="nvph-script">
+
+(function () {
+    'use strict';
+    function byId(id) { return document.getElementById(id); }
+    function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    var rows = all('.nvph-row'), groups = all('.nvph-group'), accs = all('.nvph-acc');
+    var courseBtn = byId('nvphCourseBtn'), courseBody = byId('nvph-course-1');
+    var defaults = accs.map(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
+    var state = { cl: 'all', q: '', st: 'all' };
+
+    function setOpen(btn, open) {
+        var panel = byId(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        panel.hidden = !open;
+    }
+
+    // Счётчики «Готово параграфов»
+    accs.forEach(function (btn) {
+        var panel = byId(btn.getAttribute('aria-controls'));
+        btn.querySelector('.nvph-count').textContent = 'Готово параграфов: ' +
+            panel.querySelectorAll('.nvph-ready').length + ' из ' + panel.querySelectorAll('.nvph-row').length;
+        btn.addEventListener('click', function () { setOpen(btn, btn.getAttribute('aria-expanded') !== 'true'); });
+    });
+    byId('nvphCourseCount').textContent = 'Готово параграфов: ' + all('.nvph-ready').length + ' из ' + rows.length;
+    courseBtn.addEventListener('click', function () { setOpen(courseBtn, courseBtn.getAttribute('aria-expanded') !== 'true'); });
+
+    function apply() {
+        var q = state.q.replace(/^\s+|\s+$/g, '').toLowerCase();
+        var active = state.cl !== 'all' || q !== '' || state.st !== 'all';
+        var shown = 0;
+        rows.forEach(function (r) {
+            var text = r.querySelector('.nvph-topic').textContent.toLowerCase();
+            var ok = (state.cl === 'all' || r.getAttribute('data-cl') === state.cl) &&
+                     (q === '' || text.indexOf(q) !== -1) &&
+                     (state.st === 'all' || r.classList.contains('nvph-ready'));
+            r.hidden = !ok;
+            if (ok) { shown++; }
+        });
+        groups.forEach(function (g, i) {
+            var vis = g.querySelectorAll('.nvph-row:not([hidden])').length;
+            g.hidden = vis === 0;
+            setOpen(accs[i], active ? vis > 0 : defaults[i]);
+        });
+        if (active) { setOpen(courseBtn, true); }
+        byId('nvphFound').textContent = !active ? '' :
+            (shown ? 'Найдено уроков: ' + shown : 'Ничего не найдено. Измените запрос или фильтры.');
+    }
+
+    function bindGroup(groupSel, key, attr) {
+        var btns = all(groupSel + ' .nvph-f');
+        btns.forEach(function (b) {
+            b.addEventListener('click', function () {
+                state[key] = b.getAttribute(attr);
+                btns.forEach(function (x) {
+                    var on = x === b;
+                    x.classList.toggle('is-on', on);
+                    x.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+                apply();
+            });
+        });
+    }
+    bindGroup('#nvphClassBtns', 'cl', 'data-cl');
+    bindGroup('#nvphStatusBtns', 'st', 'data-st');
+    byId('nvphSearch').addEventListener('input', function (e) { state.q = e.target.value; apply(); });
+})();
+</script>
+<script src="landscape-fix.js"></script>
+ <!-- Плавающая кнопка ВКонтакте -->
+<div id="vkFloatingButton"
+     style="position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;">
+   <svg width="32" height="32" viewBox="0 0 24 24" fill="white" 
+         style="pointer-events: none; flex-shrink: 0; 
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+        
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+</div>
+
+<style>
+    #vkFloatingButton.dragging {
+        animation: none;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #vkFloatingButton:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+    }
+    @media (max-width: 768px) {
+        #vkFloatingButton {
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            right: 90px;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('vkFloatingButton');
+    var VK_URL = 'https://vk.com/club238911106';
+    var isDragging = false;
+    var hasMoved = false;
+    var offsetX, offsetY, curX, curY, dragStartTime;
+    var STORAGE_KEY = 'vkButtonPosition';
+
+    function loadPos() {
+        var s = localStorage.getItem(STORAGE_KEY);
+        if (s) {
+            var p = JSON.parse(s);
+            btn.style.left = p.x + 'px';
+            btn.style.top = p.y + 'px';
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+        }
+    }
+
+    function startDrag(cx, cy) {
+        dragStartTime = Date.now();
+        hasMoved = false;
+        isDragging = true;
+        var r = btn.getBoundingClientRect();
+        offsetX = cx - r.left;
+        offsetY = cy - r.top;
+        btn.classList.add('dragging');
+    }
+
+    function moveDrag(cx, cy) {
+        hasMoved = true;
+        curX = Math.max(0, Math.min(cx - offsetX, window.innerWidth - btn.offsetWidth));
+        curY = Math.max(0, Math.min(cy - offsetY, window.innerHeight - btn.offsetHeight));
+        btn.style.left = curX + 'px';
+        btn.style.top = curY + 'px';
+        btn.style.right = 'auto';
+        btn.style.bottom = 'auto';
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        btn.classList.remove('dragging');
+        var elapsed = Date.now() - dragStartTime;
+        // Если не тащили или тащили меньше 150ms — считаем кликом → открываем ВК
+        if (!hasMoved || elapsed < 150) {
+            window.open(VK_URL, '_blank');
+        } else {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({x: curX, y: curY}));
+        }
+        isDragging = false;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+        startDrag(e.clientX, e.clientY);
+        e.preventDefault();
+    });
+    btn.addEventListener('touchstart', function(e) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.clientX, e.clientY); }
+    });
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive: false});
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // Восстанавливаем позицию при загрузке
+    window.addEventListener('load', function() {
+        loadPos();
+    });
+})();
+</script>
+    
+</body>
+</html>
