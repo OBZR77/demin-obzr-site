@@ -108,6 +108,59 @@ nav {
     border-bottom: 3px solid var(--color-danger);  
 }
 
+/* ===== Блок «Цифровой Фантом» (sd-) ===== */
+.sd-fantom {
+    background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
+    color: white;
+    padding: 1.75rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 6px 18px rgba(123, 104, 238, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.sd-fantom-icon {
+    font-size: 2.75rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+.sd-fantom-text { flex: 1; }
+.sd-fantom h2 {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+    color: white;
+}
+.sd-fantom p {
+    margin: 0;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+.sd-fantom-button {
+    flex-shrink: 0;
+    background: white;
+    color: #6A5ACD;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+.sd-fantom-button:hover {
+    background: var(--color-danger);
+    color: white;
+    transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+    .sd-fantom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+}
+        
 /* Вводный блок */
 .intro-section {
     background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
@@ -972,6 +1025,17 @@ document.addEventListener('keydown', function(event) {
             <p>Правильно построенный диалог помогает подростку понять, что <strong>безопасность — это не ограничения, а свобода</strong> делать осознанный выбор.</p>
         </div>
 
+                <!-- Памятка к книге «Цифровой Фантом» -->
+        <div class="sd-fantom">
+            <div class="sd-fantom-icon">📚</div>
+            <div class="sd-fantom-text">
+                <h2>Памятка к книге «Цифровой Фантом»</h2>
+                <p>
+                    Авторская книга о цифровой безопасности для подростков 12–15 лет: мошенничество, шантаж, переписка с незнакомцами. К ней подготовлена памятка для родителей — как обсудить прочитанное с ребёнком и какие вопросы задать.
+                </p>
+            </div>
+            <a href="ai-dlya-roditelej.html#cifrovoy-fantom" class="sd-fantom-button">Открыть памятку →</a>
+        </div>
         <div class="accordion-container">
             <!-- Принцип 1 -->
             <div class="accordion-item">
@@ -1278,9 +1342,9 @@ document.addEventListener('keydown', function(event) {
                               <div class="dialogue-note">
                     <strong>Что здесь хорошо:</strong> Родитель объясняет механизм мошенничества, даёт чёткое правило, убирает страх перед признанием ошибки ("без ругани").
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">
-                    📖 Похожие ситуации — мошенничество, шантаж, переписка с незнакомцем — подробно разобраны в книге «<a href="ai-dlya-roditelej.html#cifrovoy-fantom" style="color: var(--color-primary); font-weight: 600;">Цифровой Фантом</a>» и памятке для родителей к ней.
-                </p>
+                              <p style="margin-top: 1rem; font-size: 0.95rem;">
+                    📖 Похожие ситуации — мошенничество, шантаж, переписка с незнакомцем — подробно разобраны в книге «<a href="literature-projects.html" style="color: var(--color-primary); font-weight: 600;">Цифровой Фантом</a>» и <a href="ai-dlya-roditelej.html#cifrovoy-fantom" style="color: var(--color-primary); font-weight: 600;">памятке для родителей</a> к ней.
+                </p> 
             </div>
         </div>
 
@@ -1292,8 +1356,8 @@ document.addEventListener('keydown', function(event) {
                 <div class="resource-card">
                     <div class="resource-icon">📖</div>
                     <h3>УМК «Цифровой Фантом»</h3>
-                    <p>Авторская книга о цифровой безопасности для читателей 12–15 лет и памятка — как обсудить прочитанное с ребёнком</p>
-                    <a href="ai-dlya-roditelej.html#cifrovoy-fantom" class="resource-link">Скачать памятку →</a>
+                 <p>Авторский детективный роман о цифровой безопасности для читателей 12–15 лет — можно прочитать вместе с ребёнком прямо на сайте</p>
+                    <a href="literature-projects.html" class="resource-link">Читать книгу →</a>
                 </div>
 
                 <div class="resource-card">
