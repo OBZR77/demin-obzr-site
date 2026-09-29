@@ -249,11 +249,11 @@
             <div class="nvp-task">
                 <p><strong>Выбери один вид Вооружённых Сил или один род войск и объясни своими словами (2–3 предложения): какую задачу он решает и почему стране нужны разные виды и рода войск.</strong></p>
                 <p>Пиши сам, не копируй текст параграфа. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
-                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Укажи только код: класс и номер, например <strong>8А-07</strong> (свой номер тебе назовёт учитель).</div>
+                 <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс из списка и введи <strong>личный код — 5 цифр с твоей карточки</strong>. Никому не сообщай свой код.</div>
                 <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
                 <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
-                <p class="nvp-task-note">В форме будет ещё два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
-                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+                <p class="nvp-task-note">Задание не оценивается отметкой. В форме будет ещё несколько коротких вопросов: результат «Проверь себя», пользовался ли ты ИИ, насколько полезен был параграф и что осталось непонятным. Честные ответы помогают сделать учебник лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю — анонимно</a>.</span></p>
             </div>
         </section>
 
@@ -398,7 +398,10 @@
         else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
         score.innerHTML = '';
         score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
-        score.appendChild(document.createTextNode(msg));
+          score.appendChild(document.createTextNode(msg));
+        var errs = n - right;
+        var formOpt = errs === 0 ? 'Без ошибок' : (errs <= 2 ? '1-2 ошибки' : '3 и более ошибок');
+        score.appendChild(make('p', 'nvp-task-note', 'В форме задания в вопросе «Результат «Проверь себя»» выбери: «' + formOpt + '».'));
         score.hidden = false;
         goal('nvp_quiz_done');
     }
