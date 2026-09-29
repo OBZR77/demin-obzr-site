@@ -381,6 +381,12 @@
         videoBox.hidden = false;
     }
 
+        // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
     // Проверь себя
     var root = byId('nvpQuiz');
     if (!root || !NVP_QUIZ.length) { return; }
