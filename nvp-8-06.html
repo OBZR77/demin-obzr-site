@@ -296,7 +296,8 @@
         // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
         questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
         // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
-              videoUrl: 'https://rutube.ru/play/embed/9151bc6ddb63f232ea33350db9ac001d'
+                  videoUrl: 'https://rutube.ru/play/embed/9151bc6ddb63f232ea33350db9ac001d',
+        videoPage: 'https://rutube.ru/video/9151bc6ddb63f232ea33350db9ac001d/'  
     };
 
     // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
@@ -376,9 +377,21 @@
         fr.src = NVP_CONFIG.videoUrl;
         fr.title = 'Видеофрагмент к уроку';
         fr.loading = 'lazy';
-            fr.allowFullscreen = true;
+                 fr.allowFullscreen = true;
         fr.setAttribute('allow', 'clipboard-write; autoplay; fullscreen; picture-in-picture');
-        byId('nvpVideoFrame').appendChild(fr);
+        fr.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');  
+        fr.setAttribute('allow', 'clipboard-write; autoplay; fullscreen; picture-in-picture');
+               if (isHttps(NVP_CONFIG.videoPage)) {
+            var vp = document.createElement('p');
+            vp.style.margin = '8px 0 0';
+            var va = document.createElement('a');
+            va.href = NVP_CONFIG.videoPage;
+            va.target = '_blank';
+            va.rel = 'noopener';
+            va.textContent = 'Не воспроизводится? Смотреть на Rutube';
+            vp.appendChild(va);
+            byId('nvpVideoFrame').parentNode.appendChild(vp);
+        }
         videoBox.hidden = false;
     }
 
