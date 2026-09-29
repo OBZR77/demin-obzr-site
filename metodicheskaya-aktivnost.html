@@ -492,7 +492,113 @@
         .books-button:hover::after {
             margin-left: 1rem;
         }
-        
+
+                /* ===== ДВЕ ГЛАВНЫЕ РАЗРАБОТКИ (ma-) ===== */
+        .ma-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1rem 0 2.5rem;
+        }
+        .ma-card {
+            color: white;
+            padding: 2.25rem 2rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ma-card:hover { transform: translateY(-3px); }
+        .ma-card--nvp {
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            box-shadow: 0 8px 24px rgba(0, 61, 122, 0.3);
+        }
+        .ma-card--nvp:hover { box-shadow: 0 12px 32px rgba(0, 61, 122, 0.45); }
+        .ma-card--fantom {
+            background: linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%);
+            box-shadow: 0 8px 24px rgba(123, 104, 238, 0.3);
+        }
+        .ma-card--fantom:hover { box-shadow: 0 12px 32px rgba(123, 104, 238, 0.45); }
+        .ma-icon {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+        .ma-card h3 {
+            font-size: 1.6rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        .ma-card p {
+            font-size: 1.02rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            margin-bottom: 1.25rem;
+        }
+        .ma-card p.ma-note {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+        .ma-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.25rem;
+        }
+        .ma-list li {
+            position: relative;
+            padding: 0.4rem 0 0.4rem 1.75rem;
+            line-height: 1.5;
+        }
+        .ma-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0.4rem;
+            color: #FFD54F;
+            font-weight: bold;
+        }
+        .ma-actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.9rem;
+        }
+        .ma-button {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            background: white;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        .ma-card--nvp .ma-button { color: #003D7A; }
+        .ma-card--fantom .ma-button { color: #6A5ACD; }
+        .ma-button:hover {
+            background: var(--color-danger);
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+        .ma-button::after { content: ' →'; }
+        .ma-links {
+            font-size: 0.92rem;
+            opacity: 0.9;
+        }
+        .ma-links a {
+            color: white;
+            text-decoration: underline;
+        }
+        .ma-links a:hover { opacity: 0.8; }
+        @media (max-width: 768px) {
+            .ma-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .ma-card { padding: 1.75rem 1.5rem; }
+            .ma-card h3 { font-size: 1.35rem; }
+        }
         /* FOOTER */
         footer {
             background-color: var(--color-primary);
@@ -842,25 +948,57 @@
             Участие в профессиональных мероприятиях, обмен опытом с коллегами и публикация авторских методических материалов
         </p>
 
-        <!-- БЛОК С КНИГАМИ -->
-        <div class="books-highlight">
-            <h3>
-                <span style="font-size: 3rem; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));">📚</span>
-                УМК «Цифровой Фантом»: книга и методические материалы, созданные с ИИ
-            </h3>
-            <p>
-                Разработан и представлен на сайте авторский учебно-методический комплекс о цифровой безопасности:<br> 
-                - детективный роман для читателей 12–15 лет,<br> 
-                - методическое приложение для педагога с девятью готовыми занятиями и раздаточными материалами с ключами,<br> 
-                - памятка для родителей.
-            </p>
-            <p>
-                Методические материалы могут свободно использоваться коллегами-учителями: готовые сценарии занятий, протокол работы с трудными темами и шаблон письма родителям избавляют от необходимости разрабатывать урок с нуля.
-            </p>
-            <p style="opacity: 0.85; font-size: 0.95rem;">
-                Проект расширяется — готовится книга для младших школьников, другого формата: для чтения вместе с родителем, с небольшими заданиями. Сама книга «Цифровой Фантом» и остальные проекты серии — в разделе <a href="literature-projects.html" style="color: white; text-decoration: underline;">«Литературные проекты»</a>.
-            </p>
-            <a href="ai-dlya-kolleg.html" class="books-button">Смотреть методические материалы</a>
+               <!-- ДВЕ ГЛАВНЫЕ РАЗРАБОТКИ -->
+        <div class="ma-grid">
+
+            <!-- Электронный учебник НВП -->
+            <div class="ma-card ma-card--nvp">
+                <div class="ma-icon">📘</div>
+                <h3>Электронный учебник НВП</h3>
+                <p>
+                    Авторское электронное учебное пособие по курсу «Начальная военная подготовка» для 8–11 классов, созданное в условиях отсутствия единого учебника. Построено по поурочному планированию федеральной рабочей программы 2026/2027 учебного года.
+                </p>
+                <ul class="ma-list">
+                    <li>Учебный материал к каждому уроку курса НВП</li>
+                    <li>Самопроверка и задание к уроку</li>
+                    <li>Обратная связь с обучающимися через Яндекс Формы</li>
+                    <li>Модель «перевёрнутого класса»: теория дома, практика на уроке</li>
+                </ul>
+                <p class="ma-note">
+                    Пособие наполняется в течение 2026/2027 учебного года, в первую очередь для 8 и 10 классов.
+                </p>
+                <div class="ma-actions">
+                    <a href="uchebnik-nvp.html" class="ma-button">Открыть учебник</a>
+                    <span class="ma-links">
+                        Для коллег: <a href="konspekty-urokov.html">конспекты уроков</a> · <a href="prezentacii-testy.html">презентации и тесты</a>
+                    </span>
+                </div>
+            </div>
+
+            <!-- УМК «Цифровой Фантом» -->
+            <div class="ma-card ma-card--fantom">
+                <div class="ma-icon">📚</div>
+                <h3>УМК «Цифровой Фантом»</h3>
+                <p>
+                    Авторский учебно-методический комплекс о цифровой безопасности, созданный с применением ИИ. Материалы свободно доступны коллегам-учителям.
+                </p>
+                <ul class="ma-list">
+                    <li>Детективный роман для читателей 12–15 лет</li>
+                    <li>Методическое приложение: 9 готовых занятий</li>
+                    <li>Раздаточные материалы с ключами</li>
+                    <li>Памятка для родителей</li>
+                </ul>
+                <p class="ma-note">
+                    Проект расширяется: готовится книга для младших школьников для чтения вместе с родителями.
+                </p>
+                <div class="ma-actions">
+                    <a href="ai-dlya-kolleg.html#cifrovoy-fantom" class="ma-button">Методические материалы</a>
+                    <span class="ma-links">
+                        <a href="literature-projects.html">Читать книгу «Цифровой Фантом»</a>
+                    </span>
+                </div>
+            </div>
+
         </div>
 
         <!-- ММО учителей ОБЗР -->
