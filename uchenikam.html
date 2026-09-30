@@ -1374,11 +1374,11 @@
                 <p>Параграф к каждому уроку курса «Начальная военная подготовка» для 8–11 классов: прочитай, проверь себя, выполни задание к уроку.</p>
                 <div class="uch-actions"><a class="uch-btn" href="uchebnik-nvp.html">Открыть учебник</a></div>
             </article>
-            <article class="uch-card uch-soon">
+            <article class="uch-card uch-ready">
                 <span class="uch-ico" aria-hidden="true">🧭</span>
                 <h3>БЖ: к уроку</h3>
                 <p>Путеводитель по курсу «Безопасность жизнедеятельности»: урок → параграф учебника → тренажёр или задача.</p>
-                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · январь–февраль</span></div>
+                <div class="uch-actions"><a class="uch-btn" href="bzh-k-uroku.html">Открыть путеводитель</a></div>
             </article>
             <article class="uch-card uch-soon">
                 <span class="uch-ico" aria-hidden="true">📝</span>
@@ -1766,7 +1766,7 @@ document.addEventListener('click', function(event) {
                 res.appendChild(el('p', 'uch-meta', '⏳ Параграф к этому уроку готовится.'));
             }
         } else {
-            res.appendChild(el('p', 'uch-meta', 'Курс БЖ: готовься по действующему учебнику. Путеводитель по курсу появится в январе–феврале 2027.'));
+            var g = el('p', 'uch-meta', 'Курс БЖ: готовься по действующему учебнику. '); var ga = el('a', '', 'Путеводитель «БЖ: к уроку»'); ga.href = 'bzh-k-uroku.html'; g.appendChild(ga); res.appendChild(g);
             var f = null, k;
             for (k = 0; k < list.length; k++) { if (list[k].c === 'НВП') { f = list[k]; break; } }
             if (f && f.s > today) {

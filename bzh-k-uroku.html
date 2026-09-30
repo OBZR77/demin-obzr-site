@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-<meta name="description" content="БЖ: к уроку: страница раздела «Ученикам» готовится к открытию (январь–февраль 2027)">
+<meta name="description" content="Путеводитель по курсу «Безопасность жизнедеятельности» для 8–11 классов: уроки по датам, параграфы учебника, тренажёры и задачи">
     <title>БЖ: к уроку | Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -985,18 +985,134 @@
             height: 100vh;
         }
     </style>
-    <meta name="robots" content="noindex, follow">
     <style>
-        .ph-scope { --color-text-secondary: #5F6B75; }
-        .ph-back { margin-bottom: .75rem; }
-        .ph-back a { color: var(--color-primary); font-weight: 600; }
-        .ph-box { background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-left: 6px solid var(--color-warning); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
-        .ph-box h3 { margin: 0 0 .5rem; }
-        .ph-badge { display: inline-block; background: #FFF4DB; color: #6B4700; border: 1px solid #F0C36B; padding: .25rem .7rem; border-radius: 999px; font-weight: 600; font-size: .95rem; margin-top: .5rem; }
-        .ph-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .6rem 1.2rem; border-radius: 8px; font-weight: 600; margin: .3rem .5rem .3rem 0; }
-        .ph-btn:hover { background: var(--color-primary-hover); }
-        .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
-        .ph-list { margin: .5rem 0 0 1.2rem; }
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvph-intro { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 1.25rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 1.5rem; }
+        .nvph-intro ol { margin: 0.6rem 0 0 1.2rem; }
+        .nvph-course { font-size: 1.35rem; color: var(--color-primary); margin: 1.5rem 0 0.75rem; }
+        .nvph-group { margin-bottom: 1rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvph-acc { width: 100%; text-align: left; border: none; cursor: pointer; background: var(--color-surface); border-left: 4px solid var(--color-primary);
+                    padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font: inherit; color: var(--color-primary); }
+        .nvph-acc:hover { background: #E8EDF2; }
+        .nvph-acc:focus-visible { outline: 3px solid var(--color-warning); outline-offset: -3px; }
+        .nvph-acc-title { font-size: 1.15rem; font-weight: 700; }
+        .nvph-acc-sub { display: block; font-size: 0.85rem; font-weight: 400; color: var(--color-text-secondary); }
+        .nvph-arrow { transition: transform 0.3s; flex-shrink: 0; }
+        .nvph-acc[aria-expanded="true"] .nvph-arrow { transform: rotate(180deg); }
+        .nvph-panel { padding: 0.75rem; background: #fff; }
+        .nvph-panel[hidden] { display: none; }
+        .nvph-list { list-style: none; padding: 0; }
+        .nvph-row { display: flex; align-items: center; gap: 0.9rem; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--color-surface); border-radius: 8px; border-left: 4px solid #C8D1DC; }
+        .nvph-row.nvph-ready { border-left-color: var(--color-success); background: #F1F8F2; }
+        .nvph-num { flex-shrink: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvph-info { flex: 1; min-width: 0; }
+        .nvph-topic { font-weight: 600; margin: 0; }
+        .nvph-meta { font-size: 0.85rem; color: var(--color-text-secondary); margin: 0; }
+        .nvph-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
+        .nvph-actions .nvp-btn { padding: 0.45rem 1rem; font-size: 0.9rem; }
+        .nvph-badge { font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+        .nvph-badge-ok { background: #E8F5E9; color: var(--color-success); }
+        .nvph-badge-soon { background: #ECEFF3; color: var(--color-text-secondary); }
+        @media (max-width: 700px) { .nvph-row { flex-wrap: wrap; } .nvph-actions { width: 100%; justify-content: flex-start; } }
+
+        .nvph-row[hidden], .nvph-group[hidden] { display: none; }
+        .nvph-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--color-border); border-radius: 12px; margin-bottom: 1rem; background: #fff; }
+        .nvph-tool { display: flex; flex-direction: column; gap: 0.5rem; }
+        .nvph-tool-search { grid-column: 1 / -1; }
+        .nvph-tool label, .nvph-tool .nvph-lbl { font-weight: 600; color: var(--color-text-primary); }
+        .nvph-tool input[type="search"] { width: 100%; padding: 0.7rem 0.9rem; border: 2px solid var(--color-border); border-radius: 8px; font: inherit; }
+        .nvph-tool input[type="search"]:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 1px; border-color: var(--color-primary); }
+        .nvph-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvph-f { border: 2px solid var(--color-primary); background: #fff; color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; }
+        .nvph-f:hover { background: #EEF3FA; }
+        .nvph-f.is-on { background: var(--color-primary); color: #fff; }
+        .nvph-f:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvph-found { min-height: 1.5rem; margin: 0 0 0.75rem; font-weight: 600; color: var(--color-primary); }
+        .nvph-coursebox { border: 2px solid var(--color-border); border-left: 4px solid var(--color-danger); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; background: #fff; }
+        .nvph-course-h { margin: 0; }
+        .nvph-course-acc { width: 100%; text-align: left; border: none; background: #fff; cursor: pointer; padding: 1.1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font: inherit; }
+        .nvph-course-acc:hover { background: #FAFBFC; }
+        .nvph-course-acc:focus-visible { outline: 3px solid var(--color-warning); outline-offset: -3px; }
+        .nvph-course-title { display: block; font-size: 1.35rem; font-weight: 700; color: var(--color-danger); }
+        .nvph-course-acc[aria-expanded="true"] .nvph-arrow-r { transform: rotate(90deg); }
+        .nvph-arrow-r { color: var(--color-primary); transition: transform 0.3s; flex-shrink: 0; }
+        .nvph-course-body { padding: 0.75rem; border-top: 1px solid var(--color-border); }
+        .nvph-course-body[hidden] { display: none; }
+        .nvph-coursebox-soon { border-left-color: #8A99A8; background: var(--color-surface); }
+        .nvph-coursebox-soon .nvph-course-title { color: var(--color-text-secondary); }
+        .nvph-coursebox-soon .nvph-course-static { padding: 1.1rem 1.25rem; }
+        @media (max-width: 700px) { .nvph-tools { grid-template-columns: 1fr; } }
+
+        .nvph-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; }
 </style>
 </head>
 <body>
@@ -1298,18 +1414,454 @@
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
-        <div class="ph-scope">
-        <p class="ph-back"><a href="uchenikam.html">← Ученикам</a></p>
+        <!-- ============================================================
+             ПУТЕВОДИТЕЛЬ «БЖ: К УРОКУ». Строки собираются из календарно-тематического планирования.
+             Номера параграфов и ссылки на тренажёры вносятся в таблицу bzh_data.xlsx, страница пересобирается.
+             ============================================================ -->
+        <div class="nvph-scope">
+        <p style="margin-bottom:0.75rem;"><a href="uchenikam.html" style="color:var(--color-primary);font-weight:600;">← Ученикам</a></p>
         <h2 class="page-title">🧭 БЖ: к уроку</h2>
-        <p class="page-subtitle">Раздел «Ученикам»</p>
-        <div class="ph-box">
-            <h3>Страница в разработке</h3>
-            <p>Путеводитель по курсу «Безопасность жизнедеятельности»: для каждого урока — тема, ссылка на параграф учебника и тренажёр или задача для закрепления.</p>
-            <p>Здесь будет:</p>
-            <ul class="ph-list"><li>тема и дата урока по классам</li><li>параграф к уроку</li><li>тренажёр или ситуационная задача</li></ul>
-            <span class="ph-badge">⏳ Откроется: январь–февраль 2027</span>
+        <p class="page-subtitle">Путеводитель по курсу «Безопасность жизнедеятельности»: урок → параграф учебника → тренажёр или задача</p>
+
+        <div class="nvph-intro">
+            <strong>Как пользоваться.</strong> Тексты учебников на сайте не публикуются: здесь указано, где читать, и что сделать для закрепления.
+            <ol>
+                <li>Выбери свой класс и найди урок по дате.</li>
+                <li>Прочитай указанный параграф в учебнике.</li>
+                <li>Закрепи тему: реши тренажёр или задачу, когда они появятся рядом с уроком.</li>
+            </ol>
         </div>
-        <p><a class="ph-btn" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="ph-btn" href="uchebnik-nvp.html">Открыть учебник НВП</a></p>
+
+        <div class="nvph-tools">
+            <div class="nvph-tool nvph-tool-search">
+                <label for="nvphSearch">🔍 Поиск по названию</label>
+                <input id="nvphSearch" type="search" placeholder="Введите тему урока…" autocomplete="off">
+            </div>
+            <div class="nvph-tool">
+                <span class="nvph-lbl" id="nvphClassLbl">📚 Фильтр по классам</span>
+                <div class="nvph-btns" id="nvphClassBtns" role="group" aria-labelledby="nvphClassLbl">
+                    <button type="button" class="nvph-f is-on" data-cl="all" aria-pressed="true">Все</button>
+                    <button type="button" class="nvph-f" data-cl="8" aria-pressed="false">8 класс</button>
+                    <button type="button" class="nvph-f" data-cl="9" aria-pressed="false">9 класс</button>
+                    <button type="button" class="nvph-f" data-cl="10" aria-pressed="false">10 класс</button>
+                    <button type="button" class="nvph-f" data-cl="11" aria-pressed="false">11 класс</button>
+                </div>
+            </div>
+            <div class="nvph-tool">
+                <span class="nvph-lbl" id="nvphStatusLbl">🎯 Параграф учебника</span>
+                <div class="nvph-btns" id="nvphStatusBtns" role="group" aria-labelledby="nvphStatusLbl">
+                    <button type="button" class="nvph-f is-on" data-st="all" aria-pressed="true">Все уроки</button>
+                    <button type="button" class="nvph-f" data-st="ready" aria-pressed="false">Только с указанным параграфом</button>
+                </div>
+            </div>
+        </div>
+        <p class="nvph-found" id="nvphFound" aria-live="polite"></p>
+
+        <section class="nvph-coursebox">
+            <h2 class="nvph-course-h">
+                <button type="button" class="nvph-course-acc" id="nvphCourseBtn" aria-expanded="true" aria-controls="nvph-course-1">
+                    <span><span class="nvph-course-title">Безопасность жизнедеятельности</span>
+                    <span class="nvph-acc-sub">📚 8–11 классы · 📄 68 уроков · <span id="nvphCourseCount"></span></span></span>
+                    <span class="nvph-arrow-r" aria-hidden="true">▶</span>
+                </button>
+            </h2>
+            <div class="nvph-course-body" id="nvph-course-1">
+
+            <section class="nvph-group" aria-labelledby="nvph-h-8">
+                <h3 id="nvph-h-8" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-8">
+                        <span><span class="nvph-acc-title">8 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–13 (13) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-8" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="bzh-8-1" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы безопасности жизнедеятельности. Правила поведения в опасных и чрезвычайных ситуациях</p><p class="nvph-meta">📅 Урок в классе: 2–7 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-2" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасные ситуации в быту, предупреждение и защита от них</p><p class="nvph-meta">📅 Урок в классе: 9–14 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-3" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного использования бытовой техники и меры противопожарной защиты в быту</p><p class="nvph-meta">📅 Урок в классе: 16–21 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-4" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия при авариях на системах жизнеобеспечения</p><p class="nvph-meta">📅 Урок в классе: 23–28 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-5" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Предупреждение ситуаций криминального характера</p><p class="nvph-meta">📅 Урок в классе: 30 сентября – 5 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-6" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила дорожного движения. Безопасность участников дорожного движения</p><p class="nvph-meta">📅 Урок в классе: 7–12 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-7" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия при дорожно-транспортных происшествиях</p><p class="nvph-meta">📅 Урок в классе: 14–19 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-8" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность пассажиров на различных видах транспорта</p><p class="nvph-meta">📅 Урок в классе: 21 октября – 9 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-9" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь при чрезвычайных ситуациях на транспорте</p><p class="nvph-meta">📅 Урок в классе: 5–16 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-10" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основные опасности в общественных местах, их причины и правила безопасного поведения</p><p class="nvph-meta">📅 Урок в классе: 12–23 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-11" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">11</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного поведения при посещении массовых мероприятий</p><p class="nvph-meta">📅 Урок в классе: 19–30 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-12" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">12</span>
+                            <div class="nvph-info"><p class="nvph-topic">Пожарная безопасность в общественных местах</p><p class="nvph-meta">📅 Урок в классе: 26 ноября – 7 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-8-13" data-cl="8">
+                            <span class="nvph-num" aria-hidden="true">13</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия в ситуациях с проявлением деструктивного и антиобщественного поведения</p><p class="nvph-meta">📅 Урок в классе: 3–14 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-9">
+                <h3 id="nvph-h-9" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-9">
+                        <span><span class="nvph-acc-title">9 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–21 (21) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-9" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="bzh-9-1" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного поведения в природной среде</p><p class="nvph-meta">📅 Урок в классе: 2–8 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-2" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Пожарная безопасность в природной среде</p><p class="nvph-meta">📅 Урок в классе: 9–15 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-3" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасное поведение в горах</p><p class="nvph-meta">📅 Урок в классе: 16–22 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-4" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасное поведение на водоемах</p><p class="nvph-meta">📅 Урок в классе: 23–29 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-5" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия при наводнении, цунами</p><p class="nvph-meta">📅 Урок в классе: 30 сентября – 6 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-6" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия при урагане, смерче, грозе</p><p class="nvph-meta">📅 Урок в классе: 7–13 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-7" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасные действия при землетрясении, извержении вулкана</p><p class="nvph-meta">📅 Урок в классе: 14–20 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-8" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила поведения в опасных ситуациях с домашними и дикими животными</p><p class="nvph-meta">📅 Урок в классе: 21 октября – 10 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-9" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Экология и ее значение для устойчивого развития общества</p><p class="nvph-meta">📅 Урок в классе: 5–17 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-10" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасные увлечения молодежи</p><p class="nvph-meta">📅 Урок в классе: 12–24 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-11" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">11</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасности и риски в цифровой среде</p><p class="nvph-meta">📅 Урок в классе: 19 ноября – 1 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-12" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">12</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного поведения в цифровой среде</p><p class="nvph-meta">📅 Урок в классе: 26 ноября – 8 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-13" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">13</span>
+                            <div class="nvph-info"><p class="nvph-topic">Общие представления о здоровье, психическое здоровье и психологическое благополучие</p><p class="nvph-meta">📅 Урок в классе: 3–15 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-14" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">14</span>
+                            <div class="nvph-info"><p class="nvph-topic">Предупреждение и защита от инфекционных заболеваний</p><p class="nvph-meta">📅 Урок в классе: 10–22 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-15" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">15</span>
+                            <div class="nvph-info"><p class="nvph-topic">Профилактика неинфекционных заболеваний</p><p class="nvph-meta">📅 Урок в классе: 17–29 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-16" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">16</span>
+                            <div class="nvph-info"><p class="nvph-topic">Сущность понятий «терроризм» и «экстремизм»</p><p class="nvph-meta">📅 Урок в классе: 24 декабря – 12 января</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-17" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">17</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы противодействия экстремизму и терроризму</p><p class="nvph-meta">📅 Урок в классе: 13–19 января</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-18" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">18</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасности вовлечения в экстремистскую и террористическую деятельность, меры защиты</p><p class="nvph-meta">📅 Урок в классе: 20–26 января</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-19" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">19</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного поведения при угрозе и совершении террористического акта</p><p class="nvph-meta">📅 Урок в классе: 27 января – 2 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-20" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">20</span>
+                            <div class="nvph-info"><p class="nvph-topic">Действия в опасных и чрезвычайных ситуациях характерных для региона проживания</p><p class="nvph-meta">📅 Урок в классе: 3–9 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-9-21" data-cl="9">
+                            <span class="nvph-num" aria-hidden="true">21</span>
+                            <div class="nvph-info"><p class="nvph-topic">Действия в опасных и чрезвычайных ситуациях характерных для региона проживания</p><p class="nvph-meta">📅 Урок в классе: 10–16 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-10">
+                <h3 id="nvph-h-10" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-10">
+                        <span><span class="nvph-acc-title">10 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–10 (10) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-10" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="bzh-10-1" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Культура безопасного поведения</p><p class="nvph-meta">📅 Урок в классе: 7 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-2" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность в быту. Предупреждение травм и отравлений, первая помощь</p><p class="nvph-meta">📅 Урок в классе: 14 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-3" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Пожарная безопасность в быту</p><p class="nvph-meta">📅 Урок в классе: 21 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-4" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасное поведение в общественных местах</p><p class="nvph-meta">📅 Урок в классе: 28 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-5" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность дорожного движения</p><p class="nvph-meta">📅 Урок в классе: 5 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-6" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасное поведение на разных видах транспорта</p><p class="nvph-meta">📅 Урок в классе: 12 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-7" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Порядок действий при дорожно-транспортных происшествиях</p><p class="nvph-meta">📅 Урок в классе: 19 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-8" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность в местах массового пребывания людей</p><p class="nvph-meta">📅 Урок в классе: 9 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-9" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасности криминального характера, меры защиты от них</p><p class="nvph-meta">📅 Урок в классе: 16 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-10-10" data-cl="10">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум «Пожарная безопасность»</p><p class="nvph-meta">📅 Урок в классе: 23 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="nvph-group" aria-labelledby="nvph-h-11">
+                <h3 id="nvph-h-11" style="margin:0;">
+                    <button type="button" class="nvph-acc" aria-expanded="false" aria-controls="nvph-panel-11">
+                        <span><span class="nvph-acc-title">11 класс</span>
+                        <span class="nvph-acc-sub">Уроки 1–24 (24) · <span class="nvph-count"></span></span></span>
+                        <span class="nvph-arrow" aria-hidden="true">▼</span>
+                    </button>
+                </h3>
+                <div class="nvph-panel" id="nvph-panel-11" hidden>
+                    <ul class="nvph-list">
+                        <li class="nvph-row" id="bzh-11-1" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">1</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность в природной среде: тактика действий</p><p class="nvph-meta">📅 Урок в классе: 7 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-2" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">2</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасный отдых и туризм</p><p class="nvph-meta">📅 Урок в классе: 14 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-3" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">3</span>
+                            <div class="nvph-info"><p class="nvph-topic">Выживание в автономных условиях</p><p class="nvph-meta">📅 Урок в классе: 21 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-4" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">4</span>
+                            <div class="nvph-info"><p class="nvph-topic">Природные пожары</p><p class="nvph-meta">📅 Урок в классе: 28 сентября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-5" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">5</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасные геологические явления и процессы: землетрясения, извержение вулканов, оползни, сели, камнепады</p><p class="nvph-meta">📅 Урок в классе: 5 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-6" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">6</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасные гидрологические явления и процессы: наводнения, паводки, половодья, цунами, сели, лавины</p><p class="nvph-meta">📅 Урок в классе: 12 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-7" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">7</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасные метеорологические явления и процессы: ливни, град, мороз, жара</p><p class="nvph-meta">📅 Урок в классе: 19 октября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-8" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">8</span>
+                            <div class="nvph-info"><p class="nvph-topic">Экологическая грамотность и рациональное природопользование</p><p class="nvph-meta">📅 Урок в классе: 9 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-9" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">9</span>
+                            <div class="nvph-info"><p class="nvph-topic">Риски возникновения чрезвычайных ситуаций характерных для региона проживания</p><p class="nvph-meta">📅 Урок в классе: 16 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-10" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">10</span>
+                            <div class="nvph-info"><p class="nvph-topic">Безопасность в цифровой среде. Защита прав в цифровом пространстве</p><p class="nvph-meta">📅 Урок в классе: 23 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-11" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">11</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасности, связанные с использованием программного обеспечения</p><p class="nvph-meta">📅 Урок в классе: 30 ноября</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-12" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">12</span>
+                            <div class="nvph-info"><p class="nvph-topic">Опасности, связанные с коммуникацией в цифровой среде</p><p class="nvph-meta">📅 Урок в классе: 7 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-13" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">13</span>
+                            <div class="nvph-info"><p class="nvph-topic">Достоверность информации в цифровой среде</p><p class="nvph-meta">📅 Урок в классе: 14 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-14" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">14</span>
+                            <div class="nvph-info"><p class="nvph-topic">Основы межличностного общения</p><p class="nvph-meta">📅 Урок в классе: 21 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-15" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">15</span>
+                            <div class="nvph-info"><p class="nvph-topic">Экстремизм и терроризм как угроза устойчивого развития общества</p><p class="nvph-meta">📅 Урок в классе: 28 декабря</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-16" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">16</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила безопасного поведения при обнаружении бесхозного предмета</p><p class="nvph-meta">📅 Урок в классе: 18 января</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-17" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">17</span>
+                            <div class="nvph-info"><p class="nvph-topic">Действия при угрозе или совершении террористического акта</p><p class="nvph-meta">📅 Урок в классе: 25 января</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-18" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">18</span>
+                            <div class="nvph-info"><p class="nvph-topic">Действия при пожаре, обрушении конструкций в результате совершения террористического акта</p><p class="nvph-meta">📅 Урок в классе: 1 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-19" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">19</span>
+                            <div class="nvph-info"><p class="nvph-topic">Правила поведения при массовых заболеваниях людей, животных и растений</p><p class="nvph-meta">📅 Урок в классе: 8 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-20" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">20</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь пострадавшему при травмах головы и глаз</p><p class="nvph-meta">📅 Урок в классе: 15 февраля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-21" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">21</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь пострадавшему при «сложных» кровотечениях и сочетанных травм</p><p class="nvph-meta">📅 Урок в классе: 1 марта</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-22" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">22</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь пострадавшему с использование подручных средств</p><p class="nvph-meta">📅 Урок в классе: 15 марта</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-23" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">23</span>
+                            <div class="nvph-info"><p class="nvph-topic">Первая помощь при наличии нескольких пострадавших</p><p class="nvph-meta">📅 Урок в классе: 5 апреля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                        <li class="nvph-row" id="bzh-11-24" data-cl="11">
+                            <span class="nvph-num" aria-hidden="true">24</span>
+                            <div class="nvph-info"><p class="nvph-topic">Практикум «Действия при угрозе и совершении террористического акта»</p><p class="nvph-meta">📅 Урок в классе: 5 апреля</p><p class="nvph-meta">📖 Параграф учебника: уточняется</p></div>
+                            <div class="nvph-actions"><span class="nvph-badge nvph-badge-soon">⏳ Скоро</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+        </section>
+        <p style="margin-top:1rem;">Курс «Начальная военная подготовка» смотри в <a href="uchebnik-nvp.html" style="color:var(--color-primary);font-weight:600;">учебнике НВП</a>.</p>
         </div>
     </main>
 
@@ -1599,6 +2151,75 @@ document.addEventListener('click', function(event) {
         });
 
     </script>
+<script>
+
+(function () {
+    'use strict';
+    function byId(id) { return document.getElementById(id); }
+    function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    var rows = all('.nvph-row'), groups = all('.nvph-group'), accs = all('.nvph-acc');
+    var courseBtn = byId('nvphCourseBtn'), courseBody = byId('nvph-course-1');
+    var defaults = accs.map(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
+    var state = { cl: 'all', q: '', st: 'all' };
+
+    function setOpen(btn, open) {
+        var panel = byId(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        panel.hidden = !open;
+    }
+
+    // Счётчики «Готово параграфов»
+    accs.forEach(function (btn) {
+        var panel = byId(btn.getAttribute('aria-controls'));
+        btn.querySelector('.nvph-count').textContent = 'Параграф указан: ' +
+            panel.querySelectorAll('.nvph-ready').length + ' из ' + panel.querySelectorAll('.nvph-row').length;
+        btn.addEventListener('click', function () { setOpen(btn, btn.getAttribute('aria-expanded') !== 'true'); });
+    });
+    byId('nvphCourseCount').textContent = 'Параграф указан: ' + all('.nvph-ready').length + ' из ' + rows.length;
+    courseBtn.addEventListener('click', function () { setOpen(courseBtn, courseBtn.getAttribute('aria-expanded') !== 'true'); });
+
+    function apply() {
+        var q = state.q.replace(/^\s+|\s+$/g, '').toLowerCase();
+        var active = state.cl !== 'all' || q !== '' || state.st !== 'all';
+        var shown = 0;
+        rows.forEach(function (r) {
+            var text = r.querySelector('.nvph-topic').textContent.toLowerCase();
+            var ok = (state.cl === 'all' || r.getAttribute('data-cl') === state.cl) &&
+                     (q === '' || text.indexOf(q) !== -1) &&
+                     (state.st === 'all' || r.classList.contains('nvph-ready'));
+            r.hidden = !ok;
+            if (ok) { shown++; }
+        });
+        groups.forEach(function (g, i) {
+            var vis = g.querySelectorAll('.nvph-row:not([hidden])').length;
+            g.hidden = vis === 0;
+            setOpen(accs[i], active ? vis > 0 : defaults[i]);
+        });
+        if (active) { setOpen(courseBtn, true); }
+        byId('nvphFound').textContent = !active ? '' :
+            (shown ? 'Найдено уроков: ' + shown : 'Ничего не найдено. Измените запрос или фильтры.');
+    }
+
+    function bindGroup(groupSel, key, attr) {
+        var btns = all(groupSel + ' .nvph-f');
+        btns.forEach(function (b) {
+            b.addEventListener('click', function () {
+                state[key] = b.getAttribute(attr);
+                btns.forEach(function (x) {
+                    var on = x === b;
+                    x.classList.toggle('is-on', on);
+                    x.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+                apply();
+            });
+        });
+    }
+    bindGroup('#nvphClassBtns', 'cl', 'data-cl');
+    bindGroup('#nvphStatusBtns', 'st', 'data-st');
+    byId('nvphSearch').addEventListener('input', function (e) { state.q = e.target.value; apply(); });
+})();
+</script>
 <script src="landscape-fix.js"></script>
  <!-- Плавающая кнопка ВКонтакте -->
 <div id="vkFloatingButton"
