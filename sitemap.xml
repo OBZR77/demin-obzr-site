@@ -380,6 +380,12 @@
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/domashnie-zadaniya.html</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
 </urlset>
 

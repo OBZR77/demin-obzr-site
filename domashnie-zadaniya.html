@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-<meta name="description" content="Домашние задания: страница раздела «Ученикам» готовится к открытию (ноябрь–декабрь 2026)">
+<meta name="description" content="Домашние задания для 8–11 классов по курсам НВП и БЖ: задания, сроки сдачи и ссылки на форму">
     <title>Домашние задания | Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -985,18 +985,45 @@
             height: 100vh;
         }
     </style>
-    <meta name="robots" content="noindex, follow">
     <style>
-        .ph-scope { --color-text-secondary: #5F6B75; }
-        .ph-back { margin-bottom: .75rem; }
-        .ph-back a { color: var(--color-primary); font-weight: 600; }
-        .ph-box { background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-left: 6px solid var(--color-warning); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
-        .ph-box h3 { margin: 0 0 .5rem; }
-        .ph-badge { display: inline-block; background: #FFF4DB; color: #6B4700; border: 1px solid #F0C36B; padding: .25rem .7rem; border-radius: 999px; font-weight: 600; font-size: .95rem; margin-top: .5rem; }
-        .ph-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .6rem 1.2rem; border-radius: 8px; font-weight: 600; margin: .3rem .5rem .3rem 0; }
-        .ph-btn:hover { background: var(--color-primary-hover); }
-        .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
-        .ph-list { margin: .5rem 0 0 1.2rem; }
+        .dz-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; }
+        .dz-back { margin-bottom: .75rem; }
+        .dz-back a { color: var(--color-primary); font-weight: 600; }
+        .dz-intro { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 1.25rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 1.25rem; }
+        .dz-intro ol { margin: .6rem 0 0 1.2rem; }
+        .dz-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--color-border); border-radius: 12px; margin-bottom: 1rem; background: #fff; }
+        .dz-tool { display: flex; flex-direction: column; gap: .5rem; }
+        .dz-lbl { font-weight: 600; color: var(--color-text-primary); }
+        .dz-btns { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .dz-f { border: 2px solid var(--color-primary); background: #fff; color: var(--color-primary); padding: .5rem 1rem; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; }
+        .dz-f:hover { background: #EEF3FA; }
+        .dz-f.is-on { background: var(--color-primary); color: #fff; }
+        .dz-f:focus-visible, .dz-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .dz-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+        .dz-list[hidden], .dz-card[hidden], .dz-empty[hidden], .dz-tools[hidden] { display: none; }
+        .dz-card { background: #fff; border: 2px solid var(--color-border); border-left: 6px solid var(--color-primary); border-radius: 12px; padding: 1.1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .dz-card.is-soon { border-left-color: var(--color-warning); }
+        .dz-card.is-late { border-left-color: #8A99A8; background: var(--color-surface); }
+        .dz-head { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+        .dz-cl { font-weight: 700; color: var(--color-primary); }
+        .dz-tag { font-size: .8rem; font-weight: 700; padding: .15rem .6rem; border-radius: 20px; background: var(--color-primary); color: #fff; }
+        .dz-tag-bj { background: #8A4B08; }
+        .dz-state { margin-left: auto; font-size: .85rem; font-weight: 700; padding: .2rem .7rem; border-radius: 20px; background: #E8F5E9; color: var(--color-success); }
+        .dz-card.is-soon .dz-state { background: #FFF4DB; color: #6B4700; }
+        .dz-card.is-late .dz-state { background: #ECEFF3; color: var(--color-text-secondary); }
+        .dz-card h3 { margin: 0 0 .4rem; font-size: 1.2rem; color: var(--color-primary); }
+        .dz-text { margin: 0 0 .5rem; }
+        .dz-due { margin: 0 0 .75rem; color: var(--color-text-primary); }
+        .dz-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .dz-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .55rem 1.1rem; border-radius: 8px; font-weight: 600; border: 2px solid var(--color-primary); transition: all .3s ease; }
+        .dz-btn-alt { background: #fff; color: var(--color-primary); }
+        .dz-btn:hover, .dz-btn:active { background: var(--color-danger); border-color: var(--color-danger); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229,57,53,.4); }
+        .dz-found { min-height: 1.5rem; margin: 0 0 .75rem; font-weight: 600; color: var(--color-primary); }
+        .dz-empty { background: var(--color-surface); border: 2px dashed #B9C4D0; border-radius: 12px; padding: 1.5rem; }
+        .dz-empty h3 { margin: 0 0 .4rem; color: var(--color-primary); }
+        .dz-note { margin-top: 1.5rem; padding: .8rem 1rem; border-left: 4px solid var(--color-danger); background: #FFF5F5; border-radius: 6px; font-size: .95rem; }
+        .dz-note a, .dz-empty a { color: var(--color-primary); font-weight: 600; }
+        @media (max-width: 700px) { .dz-tools { grid-template-columns: 1fr; } .dz-state { margin-left: 0; } }
 </style>
 </head>
 <body>
@@ -1298,19 +1325,59 @@
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
-        <div class="ph-scope">
-        <p class="ph-back"><a href="uchenikam.html">← Ученикам</a></p>
+        <!-- ============================================================
+             «ДОМАШНИЕ ЗАДАНИЯ». Задания добавляются в файле dz-zadaniya.js (одна строка — одно задание).
+             Эту страницу менять не нужно. Статус («осталось N дней», «срок истёк») считается по сегодняшней дате.
+             ============================================================ -->
+        <div class="dz-scope">
+        <p class="dz-back"><a href="uchenikam.html">← Ученикам</a></p>
         <h2 class="page-title">📝 Домашние задания</h2>
-        <p class="page-subtitle">Раздел «Ученикам»</p>
-        <div class="ph-box">
-            <h3>Страница в разработке</h3>
-            <p>Задания по классам с фильтром и сроками сдачи. Ответы отправляются через форму, в которой указывается только личный код (5 цифр с карточки), без фамилии.</p>
-            <p>Здесь будет:</p>
-            <ul class="ph-list"><li>фильтр по классу и курсу</li><li>срок сдачи каждого задания</li><li>ссылка на форму сдачи</li></ul>
-            <span class="ph-badge">⏳ Откроется: ноябрь–декабрь 2026</span>
+        <p class="page-subtitle">Задания по классам со сроками сдачи. Ответ отправляется через форму</p>
+
+        <div class="dz-intro">
+            <strong>Как сдать задание.</strong>
+            <ol>
+                <li>Выбери свой класс и найди задание. Рядом указан срок сдачи.</li>
+                <li>Выполни задание сам, своими словами. Если пользовался ИИ-помощником, отметь это в форме.</li>
+                <li>Нажми «Сдать задание». В форме выбери свой класс и укажи личный код: 5 цифр с твоей карточки. Фамилию и имя писать не нужно.</li>
+            </ol>
         </div>
-        <p><a class="ph-btn" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="ph-btn" href="uchebnik-nvp.html">Открыть учебник НВП</a></p>
+
+        <div class="dz-tools" id="dzTools">
+            <div class="dz-tool">
+                <span class="dz-lbl" id="dzClassLbl">📚 Класс</span>
+                <div class="dz-btns" id="dzClassBtns" role="group" aria-labelledby="dzClassLbl">
+                    <button type="button" class="dz-f is-on" data-cl="all" aria-pressed="true">Все</button>
+                    <button type="button" class="dz-f" data-cl="8" aria-pressed="false">8 класс</button>
+                    <button type="button" class="dz-f" data-cl="9" aria-pressed="false">9 класс</button>
+                    <button type="button" class="dz-f" data-cl="10" aria-pressed="false">10 класс</button>
+                    <button type="button" class="dz-f" data-cl="11" aria-pressed="false">11 класс</button>
+                </div>
+            </div>
+            <div class="dz-tool">
+                <span class="dz-lbl" id="dzStatusLbl">⏰ Срок</span>
+                <div class="dz-btns" id="dzStatusBtns" role="group" aria-labelledby="dzStatusLbl">
+                    <button type="button" class="dz-f is-on" data-st="now" aria-pressed="true">Актуальные</button>
+                    <button type="button" class="dz-f" data-st="late" aria-pressed="false">Срок истёк</button>
+                    <button type="button" class="dz-f" data-st="all" aria-pressed="false">Все</button>
+                </div>
+            </div>
         </div>
+        <p class="dz-found" id="dzFound" aria-live="polite"></p>
+
+        <div class="dz-empty" id="dzEmptyAll" hidden>
+            <h3>Пока заданий нет</h3>
+            <p>Новые задания появятся здесь вместе со сроком сдачи. Задание к уроку НВП всегда находится в конце параграфа в <a href="uchebnik-nvp.html">учебнике НВП</a>.</p>
+        </div>
+        <ul class="dz-list" id="dzList"></ul>
+        <div class="dz-empty" id="dzFilterEmpty" hidden>
+            <h3>Ничего не найдено</h3>
+            <p>Для выбранного класса и срока заданий нет. Попробуй выбрать другой класс или показать все задания.</p>
+        </div>
+
+        <p class="dz-note"><strong>Важно:</strong> в форме не пиши фамилию и имя: достаточно личного кода, 5 цифр с карточки. Есть вопрос по заданию? <a href="https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/" target="_blank" rel="noopener">Задай его учителю</a>. Подробнее в <a href="privacy-policy.html">политике конфиденциальности</a>.</p>
+        </div>
+        <script src="dz-zadaniya.js"></script>
     </main>
 
     <footer>
@@ -1599,6 +1666,81 @@ document.addEventListener('click', function(event) {
         });
 
     </script>
+<script>
+
+(function () {
+    'use strict';
+    var FORM = 'https://forms.yandex.ru/u/6abaca9650569060a527b159/';
+    var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    function byId(id) { return document.getElementById(id); }
+    function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
+    var t = new Date(), today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+    function parseDate(s) { var m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || '')); return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null; }
+    function plural(n) { var a = n % 10, b = n % 100; return (a === 1 && b !== 11) ? 'день' : ((a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'дня' : 'дней'); }
+    function submitUrl(k) {
+        if (k.form) { return k.form; }
+        var q = '?grade=' + encodeURIComponent(k.cl);
+        if (k.n !== undefined && k.n !== '') { q += '&lesson=' + encodeURIComponent(k.course === 'БЖ' ? 'БЖ-' + k.n : k.n); }
+        return FORM + q;
+    }
+
+    // --- разбор заданий из файла dz-zadaniya.js
+    var raw = (window.DZ_TASKS instanceof Array) ? window.DZ_TASKS : [], tasks = [];
+    raw.forEach(function (k, i) {
+        var d = parseDate(k && k.due);
+        if (!k || !k.cl || !k.title || !d) { if (window.console) { console.warn('Задание №' + (i + 1) + ' пропущено: нужны cl, title и due (дд.мм.гггг)'); } return; }
+        k.course = k.course || 'НВП'; k.date = d; tasks.push(k);
+    });
+    // актуальные — по возрастанию срока, затем истёкшие — от свежих к старым
+    function late(k) { return k.date < today; }
+    var act = tasks.filter(function (k) { return !late(k); }).sort(function (a, b) { return a.date - b.date; });
+    var old = tasks.filter(late).sort(function (a, b) { return b.date - a.date; });
+    tasks = act.concat(old);
+
+    var list = byId('dzList'), state = { cl: 'all', st: 'now' }, cards = [];
+    tasks.forEach(function (k) {
+        var d = Math.round((k.date - today) / 86400000), c = el('li', 'dz-card'), head = el('div', 'dz-head'), st = el('span', 'dz-state');
+        c.setAttribute('data-cl', String(k.cl)); c.setAttribute('data-late', d < 0 ? '1' : '0');
+        head.appendChild(el('span', 'dz-cl', k.cl + ' класс'));
+        head.appendChild(el('span', 'dz-tag' + (k.course === 'БЖ' ? ' dz-tag-bj' : ''), k.course + ((k.n !== undefined && k.n !== '') ? ' · урок ' + k.n : '')));
+        if (d < 0) { c.classList.add('is-late'); st.textContent = 'Срок истёк'; }
+        else if (d === 0) { c.classList.add('is-soon'); st.textContent = 'Сегодня последний день'; }
+        else { if (d <= 3) { c.classList.add('is-soon'); } st.textContent = 'Осталось ' + d + ' ' + plural(d); }
+        head.appendChild(st); c.appendChild(head);
+        c.appendChild(el('h3', '', k.title));
+        if (k.text) { c.appendChild(el('p', 'dz-text', k.text)); }
+        var due = el('p', 'dz-due', '📅 Срок сдачи: '); due.appendChild(el('strong', '', k.date.getDate() + ' ' + MON[k.date.getMonth()] + ' ' + k.date.getFullYear())); c.appendChild(due);
+        var acts = el('div', 'dz-actions'), a1 = el('a', 'dz-btn', 'Сдать задание');
+        a1.href = submitUrl(k); a1.target = '_blank'; a1.rel = 'noopener'; acts.appendChild(a1);
+        if (k.mat) { var a2 = el('a', 'dz-btn dz-btn-alt', 'Открыть материал'); a2.href = k.mat; acts.appendChild(a2); }
+        c.appendChild(acts); list.appendChild(c); cards.push(c);
+    });
+
+    function apply() {
+        var n = 0;
+        cards.forEach(function (c) {
+            var isLate = c.getAttribute('data-late') === '1';
+            var ok = (state.cl === 'all' || c.getAttribute('data-cl') === state.cl) &&
+                     (state.st === 'all' || (state.st === 'now' && !isLate) || (state.st === 'late' && isLate));
+            c.hidden = !ok; if (ok) { n++; }
+        });
+        byId('dzFilterEmpty').hidden = n !== 0 || cards.length === 0;
+        byId('dzFound').textContent = (cards.length && n) ? 'Найдено заданий: ' + n : '';
+    }
+    function bind(sel, key, attr) {
+        var b = all(sel + ' .dz-f');
+        b.forEach(function (x) { x.addEventListener('click', function () {
+            state[key] = x.getAttribute(attr);
+            b.forEach(function (y) { var on = y === x; y.classList.toggle('is-on', on); y.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+            apply();
+        }); });
+    }
+    if (!cards.length) { byId('dzTools').hidden = true; byId('dzEmptyAll').hidden = false; list.hidden = true; return; }
+    bind('#dzClassBtns', 'cl', 'data-cl'); bind('#dzStatusBtns', 'st', 'data-st');
+    apply();
+})();
+</script>
 <script src="landscape-fix.js"></script>
  <!-- Плавающая кнопка ВКонтакте -->
 <div id="vkFloatingButton"
