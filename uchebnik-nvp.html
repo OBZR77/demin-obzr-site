@@ -1876,6 +1876,7 @@
         </div>
 
         </div>
+        <script src="nvp-paragrafy.js"></script>
     </main>
 
     <footer>
@@ -2170,6 +2171,19 @@ document.addEventListener('click', function(event) {
     'use strict';
     function byId(id) { return document.getElementById(id); }
     function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    // Параграфы из файла nvp-paragrafy.js включаются автоматически
+    var R = (window.NVP_READY && typeof window.NVP_READY === 'object') ? window.NVP_READY : {};
+    function mk(tag, cls, text) { var e = document.createElement(tag); e.className = cls; if (text) { e.textContent = text; } return e; }
+    all('.nvph-row').forEach(function (r) {
+        var href = R[r.id.replace('lesson-', '')];
+        if (!href) { return; }
+        r.classList.add('nvph-ready');
+        var box = r.querySelector('.nvph-actions'); box.innerHTML = '';
+        box.appendChild(mk('span', 'nvph-badge nvph-badge-ok', '✅ Доступен'));
+        var a1 = mk('a', 'nvp-btn', 'Открыть'); a1.href = href; box.appendChild(a1);
+        var a2 = mk('a', 'nvp-btn nvp-btn-alt', 'В новой вкладке'); a2.href = href; a2.target = '_blank'; a2.rel = 'noopener'; box.appendChild(a2);
+    });
 
     var rows = all('.nvph-row'), groups = all('.nvph-group'), accs = all('.nvph-acc');
     var courseBtn = byId('nvphCourseBtn'), courseBody = byId('nvph-course-1');
