@@ -1863,6 +1863,7 @@
         </section>
         <p style="margin-top:1rem;">Курс «Начальная военная подготовка» смотри в <a href="uchebnik-nvp.html" style="color:var(--color-primary);font-weight:600;">учебнике НВП</a>.</p>
         </div>
+        <script src="nvp-paragrafy.js"></script>
     </main>
 
     <footer>
@@ -2158,6 +2159,19 @@ document.addEventListener('click', function(event) {
     function byId(id) { return document.getElementById(id); }
     function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
+    // Параграфы из файла nvp-paragrafy.js включаются автоматически
+    var R = (window.BZH_READY && typeof window.BZH_READY === 'object') ? window.BZH_READY : {};
+    function mk(tag, cls, text) { var e = document.createElement(tag); e.className = cls; if (text) { e.textContent = text; } return e; }
+    all('.nvph-row').forEach(function (r) {
+        var href = R[r.id.replace('bzh-', '')];
+        if (!href) { return; }
+        r.classList.add('nvph-ready');
+        var box = r.querySelector('.nvph-actions'); Array.prototype.slice.call(box.querySelectorAll('.nvph-badge')).forEach(function (b) { b.parentNode.removeChild(b); });
+        box.insertBefore(mk('span', 'nvph-badge nvph-badge-ok', '✅ Урок на сайте'), box.firstChild);
+        var a1 = mk('a', 'nvp-btn', 'Открыть урок'); a1.href = href; box.appendChild(a1);
+        var a2 = mk('a', 'nvp-btn nvp-btn-alt', 'В новой вкладке'); a2.href = href; a2.target = '_blank'; a2.rel = 'noopener'; box.appendChild(a2);
+    });
+
     var rows = all('.nvph-row'), groups = all('.nvph-group'), accs = all('.nvph-acc');
     var courseBtn = byId('nvphCourseBtn'), courseBody = byId('nvph-course-1');
     var defaults = accs.map(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
@@ -2172,11 +2186,11 @@ document.addEventListener('click', function(event) {
     // Счётчики «Готово параграфов»
     accs.forEach(function (btn) {
         var panel = byId(btn.getAttribute('aria-controls'));
-        btn.querySelector('.nvph-count').textContent = 'Параграф указан: ' +
+        btn.querySelector('.nvph-count').textContent = 'Готово: ' +
             panel.querySelectorAll('.nvph-ready').length + ' из ' + panel.querySelectorAll('.nvph-row').length;
         btn.addEventListener('click', function () { setOpen(btn, btn.getAttribute('aria-expanded') !== 'true'); });
     });
-    byId('nvphCourseCount').textContent = 'Параграф указан: ' + all('.nvph-ready').length + ' из ' + rows.length;
+    byId('nvphCourseCount').textContent = 'Готово: ' + all('.nvph-ready').length + ' из ' + rows.length;
     courseBtn.addEventListener('click', function () { setOpen(courseBtn, courseBtn.getAttribute('aria-expanded') !== 'true'); });
 
     function apply() {
