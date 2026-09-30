@@ -40,6 +40,7 @@
         .nvp-body { padding: 1.5rem 2rem 1rem; }
         .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
         .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
         @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
 
         /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
@@ -124,7 +125,7 @@
                 <p class="nvp-hero-kicker">Учебник НВП · 8 класс · Урок 6 из 21</p>
                 <h1>🛡️ Состав и назначение Вооружённых Сил Российской Федерации</h1>
                 <p class="nvp-hero-sub">Курс «Начальная военная подготовка»</p>
-                <ul class="nvp-hero-stats"><li>⏱ Около 12 минут</li><li>❓ 7 вопросов</li><li>✅ Автопроверка</li></ul>
+                <ul class="nvp-hero-stats"><li>⏱ Около 15 минут</li><li>❓ 7 вопросов</li><li>✅ Автопроверка</li></ul>
                 <p class="nvp-hero-date">Урок в классе: 8А, 8В — 27 января, 8Б — 28 января, 8Г — 8 февраля</p>
             </header>
             <div class="nvp-body">
@@ -218,6 +219,7 @@
         <section class="nvp-section" id="nvpVideoBox" hidden aria-labelledby="nvp-h-video">
             <h2 class="nvp-h2" id="nvp-h-video"><span class="nvp-step" aria-hidden="true">4</span> Посмотри (до 5 минут)</h2>
             <div class="nvp-video" id="nvpVideoFrame"></div>
+            <p class="nvp-task-note">Видео не показалось? <a id="nvpVideoLink" href="#" target="_blank" rel="noopener">Открой его на Rutube</a>.</p>
         </section>
 
         <!-- 5. ЗАПОМНИ -->
@@ -247,12 +249,14 @@
         <section class="nvp-section" aria-labelledby="nvp-h-task">
             <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">7</span> Задание к уроку</h2>
             <div class="nvp-task">
-                <p><strong>Выбери один вид Вооружённых Сил или один род войск и объясни своими словами (2–3 предложения): какую задачу он решает и почему стране нужны разные виды и рода войск.</strong></p>
+                <p><strong>Основное задание (обязательно).</strong> Выбери один вид Вооружённых Сил или один род войск и объясни своими словами (3–5 предложений): какую задачу он решает и чем отличается от другого вида или рода войск.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Почему стране нужны разные виды и рода войск, а не одна общая армия? Приведи пример ситуации, в которой в первую очередь понадобится именно выбранный тобой вид или род войск (3–5 предложений).</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
                 <p>Пиши сам, не копируй текст параграфа. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
                 <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
                 <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
                 <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
-                <p class="nvp-task-note">В форме будет ещё два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note">В форме есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
                 <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
             </div>
         </section>
@@ -263,7 +267,6 @@
             <ul class="nvp-links">
                 <li><a href="https://structure.mil.ru/structure/forces/type.htm" target="_blank" rel="noopener">Виды Вооружённых Сил на сайте Министерства обороны РФ</a></li>
                 <li><a href="https://www.consultant.ru/document/cons_doc_LAW_10591/13b483e0dd77ca5b88e1a4f7ff551ed5b9a9f122/" target="_blank" rel="noopener">Статья 11 закона «Об обороне» — общий состав Вооружённых Сил</a></li>
-                <li><a href="https://www.rbc.ru/base/28/11/2025/6929ade89a79473dcdbbc7b8" target="_blank" rel="noopener">Справка РБК: что такое Войска беспилотных систем</a></li>
             </ul>
         </section>
 
@@ -277,9 +280,8 @@
 
             </div>
             <footer class="nvp-foot">
-                Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково ·
-                <a href="privacy-policy.html">Политика конфиденциальности</a> ·
-                <a href="index.html">Сайт учителя</a>
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
             </footer>
         </div>
     </div>
@@ -296,7 +298,7 @@
         // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
         questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
         // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
-        videoUrl: ''
+        videoUrl: 'https://rutube.ru/play/embed/9151bc6ddb63f232ea33350db9ac001d'
     };
 
     // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
@@ -378,8 +380,17 @@
         fr.loading = 'lazy';
         fr.allowFullscreen = true;
         byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
         videoBox.hidden = false;
     }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
 
     // Проверь себя
     var root = byId('nvpQuiz');
