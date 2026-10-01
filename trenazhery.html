@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-<meta name="description" content="Тренажёры и самопроверка: страница раздела «Ученикам» готовится к открытию (ноябрь–декабрь 2026)">
+<meta name="description" content="Интерактивные тренажёры и тесты для самопроверки по курсам НВП и БЖ, 8–11 классы. Результат проверяется на странице и нигде не сохраняется.">
     <title>Тренажёры и самопроверка | Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -985,19 +985,115 @@
             height: 100vh;
         }
     </style>
-    <meta name="robots" content="noindex, follow">
-    <style>
-        .ph-scope { --color-text-secondary: #5F6B75; }
-        .ph-back { margin-bottom: .75rem; }
-        .ph-back a { color: var(--color-primary); font-weight: 600; }
-        .ph-box { background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-left: 6px solid var(--color-warning); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
-        .ph-box h3 { margin: 0 0 .5rem; }
-        .ph-badge { display: inline-block; background: #FFF4DB; color: #6B4700; border: 1px solid #F0C36B; padding: .25rem .7rem; border-radius: 999px; font-weight: 600; font-size: .95rem; margin-top: .5rem; }
-        .ph-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .6rem 1.2rem; border-radius: 8px; font-weight: 600; margin: .3rem .5rem .3rem 0; }
-        .ph-btn:hover { background: var(--color-primary-hover); }
-        .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
-        .ph-list { margin: .5rem 0 0 1.2rem; }
-</style>
+    <style id="tr-styles">
+        /* ===== Стили страницы «Тренажёры» (все классы начинаются с tr-, чтобы не конфликтовать с остальным сайтом) ===== */
+        .tr-scope{
+            --tr-primary:var(--color-primary,#003D7A);
+            --tr-text:var(--color-text-primary,#2C3E50);
+            --tr-muted:#566470;
+            --tr-surface:var(--color-surface,#F5F7FA);
+            --tr-border:#D5DCE5;
+            --tr-ok:#1B5E20; --tr-ok-bg:#E8F5E9;
+            --tr-bad:#B71C1C; --tr-bad-bg:#FDECEA;
+            --tr-warn:#8A5300; --tr-warn-bg:#FFF4E0;
+            color:var(--tr-text);
+        }
+        .tr-scope .tr-back{margin:0 0 .5rem}
+        .tr-scope .tr-back a{color:var(--tr-primary);font-weight:600;text-decoration:none}
+        .tr-scope .tr-back a:hover{text-decoration:underline}
+        .tr-lead{max-width:60rem;margin:0 0 1.25rem}
+        .tr-privacy{background:var(--tr-surface);border-left:4px solid var(--tr-primary);padding:.75rem 1rem;border-radius:0 8px 8px 0;margin:0 0 1.5rem;max-width:60rem}
+
+        .tr-filters{display:grid;gap:.9rem;margin:0 0 1rem;padding:1rem;background:var(--tr-surface);border:1px solid var(--tr-border);border-radius:12px}
+        .tr-filter-group{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+        .tr-filter-label{font-weight:700;min-width:5.5rem}
+        .tr-chip{font:inherit;background:#fff;color:var(--tr-primary);border:2px solid var(--tr-primary);border-radius:999px;padding:.35rem .95rem;min-height:44px;cursor:pointer}
+        .tr-chip:hover{background:#E8EFF8}
+        .tr-chip[aria-pressed="true"]{background:var(--tr-primary);color:#fff}
+        .tr-count{margin:.25rem 0 1rem;color:var(--tr-muted)}
+
+        .tr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;align-items:start}
+        .tr-card{background:#fff;border:1px solid var(--tr-border);border-radius:12px;padding:1rem 1.1rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+        .tr-card.tr-open{grid-column:1 / -1;border-color:var(--tr-primary);box-shadow:0 2px 10px rgba(0,61,122,.15)}
+        .tr-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .5rem}
+        .tr-badge{display:inline-block;font-size:.85rem;font-weight:700;border-radius:6px;padding:.1rem .55rem}
+        .tr-badge-nvp{background:#E3EDFA;color:#003D7A}
+        .tr-badge-bzh{background:var(--tr-warn-bg);color:var(--tr-warn)}
+        .tr-badge-cl,.tr-badge-type{background:#EEF1F4;color:#37424D}
+        .tr-card h3{margin:.1rem 0 .4rem;font-size:1.15rem;line-height:1.3}
+        .tr-card p.tr-intro{margin:0 0 .8rem;color:var(--tr-muted)}
+        .tr-card p.tr-lessons{margin:-.4rem 0 .8rem;font-size:.9rem;color:var(--tr-muted)}
+        .tr-btn{font:inherit;font-weight:600;background:var(--tr-primary);color:#fff;border:2px solid var(--tr-primary);border-radius:8px;padding:.5rem 1.1rem;min-height:44px;cursor:pointer}
+        .tr-btn:hover{background:#00518A;border-color:#00518A}
+        .tr-btn-ghost{background:#fff;color:var(--tr-primary)}
+        .tr-btn-ghost:hover{background:#E8EFF8;color:var(--tr-primary)}
+        .tr-btn[disabled]{opacity:.55;cursor:not-allowed}
+        .tr-chip:focus-visible,.tr-btn:focus-visible,.tr-move:focus-visible,.tr-scope select:focus-visible,.tr-scope input:focus-visible,.tr-choice:focus-visible{outline:3px solid #FFA500;outline-offset:2px}
+
+        .tr-panel{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--tr-border)}
+        .tr-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 0}
+        .tr-result{margin:1rem 0 0;padding:.75rem 1rem;border-radius:8px;border-left:5px solid var(--tr-primary);background:var(--tr-surface)}
+        .tr-result.tr-ok{background:var(--tr-ok-bg);border-left-color:var(--tr-ok);color:var(--tr-ok)}
+        .tr-result.tr-bad{background:var(--tr-bad-bg);border-left-color:var(--tr-bad);color:var(--tr-bad)}
+        .tr-result.tr-warn{background:var(--tr-warn-bg);border-left-color:var(--tr-warn);color:var(--tr-warn)}
+        .tr-result strong{display:block;margin-bottom:.15rem}
+        .tr-result span.tr-txt{color:var(--tr-text)}
+
+        /* order */
+        .tr-order{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;counter-reset:tr-n}
+        .tr-order li{counter-increment:tr-n;display:flex;align-items:center;gap:.6rem;background:#fff;border:2px solid var(--tr-border);border-radius:10px;padding:.5rem .6rem}
+        .tr-order li::before{content:counter(tr-n);flex:0 0 auto;width:2rem;height:2rem;border-radius:50%;background:var(--tr-surface);display:flex;align-items:center;justify-content:center;font-weight:700}
+        .tr-order li.tr-ok{border-color:var(--tr-ok);background:var(--tr-ok-bg)}
+        .tr-order li.tr-bad{border-color:var(--tr-bad);background:var(--tr-bad-bg)}
+        .tr-order .tr-text{flex:1 1 auto}
+        .tr-moves{display:flex;gap:.3rem;flex:0 0 auto}
+        .tr-move{font:inherit;font-weight:700;width:44px;height:44px;border-radius:8px;border:2px solid var(--tr-primary);background:#fff;color:var(--tr-primary);cursor:pointer}
+        .tr-move:hover{background:#E8EFF8}
+        .tr-move[disabled]{opacity:.35;cursor:not-allowed}
+
+        /* match */
+        .tr-match{display:grid;gap:.6rem}
+        .tr-match-row{display:grid;grid-template-columns:1fr minmax(180px,260px);gap:.6rem;align-items:center;padding:.5rem .6rem;border:2px solid var(--tr-border);border-radius:10px;background:#fff}
+        .tr-match-row.tr-ok{border-color:var(--tr-ok);background:var(--tr-ok-bg)}
+        .tr-match-row.tr-bad{border-color:var(--tr-bad);background:var(--tr-bad-bg)}
+        .tr-match-row label{font-weight:600}
+        .tr-scope select{font:inherit;min-height:44px;padding:.3rem .5rem;border:2px solid var(--tr-border);border-radius:8px;background:#fff;color:var(--tr-text);max-width:100%}
+        .tr-note-row{grid-column:1 / -1;font-size:.95rem}
+
+        /* quiz */
+        .tr-q{border:2px solid var(--tr-border);border-radius:10px;padding:.7rem .9rem;margin:0 0 .8rem;background:#fff}
+        .tr-q legend{font-weight:700;padding:0 .3rem}
+        .tr-q.tr-ok{border-color:var(--tr-ok);background:var(--tr-ok-bg)}
+        .tr-q.tr-bad{border-color:var(--tr-bad);background:var(--tr-bad-bg)}
+        .tr-opt{display:flex;gap:.6rem;align-items:flex-start;padding:.3rem 0;min-height:44px}
+        .tr-opt input{margin-top:.35rem;width:1.15rem;height:1.15rem;flex:0 0 auto}
+        .tr-opt label{cursor:pointer}
+        .tr-why{margin:.5rem 0 0;font-size:.95rem}
+
+        /* scenario */
+        .tr-scene{background:var(--tr-surface);border-radius:10px;padding:.9rem 1rem;margin:0 0 .8rem;font-weight:600}
+        .tr-choices{display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
+        .tr-choice{font:inherit;text-align:left;width:100%;background:#fff;color:var(--tr-text);border:2px solid var(--tr-border);border-radius:10px;padding:.65rem .9rem;min-height:44px;cursor:pointer}
+        .tr-choice:hover:not([disabled]){border-color:var(--tr-primary);background:#E8EFF8}
+        .tr-choice.tr-ok{border-color:var(--tr-ok);background:var(--tr-ok-bg)}
+        .tr-choice.tr-bad{border-color:var(--tr-bad);background:var(--tr-bad-bg)}
+        .tr-choice[disabled]{cursor:default}
+        .tr-step-label{margin:0 0 .4rem;color:var(--tr-muted);font-size:.9rem}
+
+        .tr-empty,.tr-error{padding:1rem;border-radius:10px;background:var(--tr-surface)}
+        .tr-error{background:var(--tr-bad-bg);color:var(--tr-bad)}
+        .tr-ai-note{margin-top:2rem;font-size:.9rem;color:var(--tr-muted)}
+
+        @media (max-width:640px){
+            .tr-filter-label{min-width:100%}
+            .tr-match-row{grid-template-columns:1fr}
+            .tr-order li{flex-wrap:wrap}
+            .tr-moves{margin-left:auto}
+        }
+        @media (prefers-reduced-motion:no-preference){
+            .tr-card{transition:box-shadow .2s ease,border-color .2s ease}
+        }
+    </style>
 </head>
 <body>
 
@@ -1298,18 +1394,35 @@
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
-        <div class="ph-scope">
-        <p class="ph-back"><a href="uchenikam.html">← Ученикам</a></p>
-        <h2 class="page-title">🎯 Тренажёры и самопроверка</h2>
-        <p class="page-subtitle">Раздел «Ученикам»</p>
-        <div class="ph-box">
-            <h3>Страница в разработке</h3>
-            <p>Интерактивные тренажёры по курсам НВП и БЖ и подготовка к контрольным работам. Проверка выполняется прямо на странице, результат нигде не сохраняется.</p>
-            <p>Здесь будет:</p>
-            <ul class="ph-list"><li>тренажёры по темам курса</li><li>тесты для подготовки к контрольной</li><li>разбор типичных ошибок</li></ul>
-            <span class="ph-badge">⏳ Откроется: ноябрь–декабрь 2026</span>
-        </div>
-        <p><a class="ph-btn" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="ph-btn" href="uchebnik-nvp.html">Открыть учебник НВП</a></p>
+        <div class="tr-scope">
+            <p class="tr-back"><a href="uchenikam.html">← Ученикам</a></p>
+            <h2 class="page-title">🎯 Тренажёры и самопроверка</h2>
+            <p class="page-subtitle">Раздел «Ученикам»</p>
+
+            <p class="tr-lead">Выбери свой курс и класс, открой тренажёр и проверь себя. Можно пробовать сколько угодно раз: после проверки ты увидишь, где ошибся и почему.</p>
+            <p class="tr-privacy"><strong>Твои ответы никуда не отправляются.</strong> Проверка выполняется прямо на странице, а результат нигде не сохраняется: ни имя, ни баллы. Это тренировка для тебя, а не оценка.</p>
+
+            <section class="tr-filters" aria-label="Фильтры тренажёров">
+                <div class="tr-filter-group" role="group" aria-labelledby="tr-lbl-course">
+                    <span class="tr-filter-label" id="tr-lbl-course">Курс:</span>
+                    <span id="tr-f-course" class="tr-filter-group"></span>
+                </div>
+                <div class="tr-filter-group" role="group" aria-labelledby="tr-lbl-class">
+                    <span class="tr-filter-label" id="tr-lbl-class">Класс:</span>
+                    <span id="tr-f-class" class="tr-filter-group"></span>
+                </div>
+                <div class="tr-filter-group" role="group" aria-labelledby="tr-lbl-type">
+                    <span class="tr-filter-label" id="tr-lbl-type">Тип:</span>
+                    <span id="tr-f-type" class="tr-filter-group"></span>
+                </div>
+            </section>
+
+            <p class="tr-count" id="tr-count" role="status" aria-live="polite"></p>
+            <div class="tr-grid" id="tr-list"></div>
+
+            <noscript><p class="tr-error">Для работы тренажёров нужен включённый JavaScript. Включи его в настройках браузера и обнови страницу.</p></noscript>
+
+            <p class="tr-ai-note">Материалы подготовлены с использованием инструментов искусственного интеллекта и проверены преподавателем. Если заметил ошибку или неточность, напиши через раздел «Обратная связь».</p>
         </div>
     </main>
 
@@ -1598,6 +1711,428 @@ document.addEventListener('click', function(event) {
             });
         });
 
+    </script>
+<script src="trenazhery-data.js"></script>
+<script id="tr-script">
+    (function () {
+        'use strict';
+
+        var ITEMS = Array.isArray(window.TR_ITEMS) ? window.TR_ITEMS.slice() : null;
+        if (ITEMS) {
+            /* порядок: по наименьшему классу, внутри класса БЖ раньше НВП, дальше — как в файле данных */
+            var orig = ITEMS.slice();
+            var minCl = function (it) { return Math.min.apply(null, (it.cl && it.cl.length) ? it.cl : [99]); };
+            ITEMS.sort(function (x, y) {
+                var d = minCl(x) - minCl(y);
+                if (d) { return d; }
+                if (x.course !== y.course) { return x.course === 'БЖ' ? -1 : 1; }
+                return orig.indexOf(x) - orig.indexOf(y);
+            });
+        }
+        var listEl = document.getElementById('tr-list');
+        var countEl = document.getElementById('tr-count');
+        if (!listEl) { return; }
+
+        if (!ITEMS) {
+            listEl.innerHTML = '<p class="tr-error">Не удалось загрузить задания. Проверьте, что файл trenazhery-data.js лежит в одной папке со страницей, и обновите страницу.</p>';
+            return;
+        }
+
+        var TYPE_NAMES = { order: 'Расставь по порядку', match: 'Сопоставь', quiz: 'Тест', scenario: 'Ситуация «что делать?»' };
+        var state = { course: 'all', cl: 'all', type: 'all' };
+        var opened = {};          // id -> true
+        var cardEls = {};         // id -> {card, btn, panel}
+
+        /* ---------- вспомогательные функции ---------- */
+        function el(tag, cls, text) {
+            var e = document.createElement(tag);
+            if (cls) { e.className = cls; }
+            if (text !== undefined) { e.textContent = text; }
+            return e;
+        }
+        function shuffle(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = a[i]; a[i] = a[j]; a[j] = t;
+            }
+            return a;
+        }
+        function sameOrder(a, b) {
+            for (var i = 0; i < a.length; i++) { if (a[i] !== b[i]) { return false; } }
+            return true;
+        }
+        function result(kind, title, text) {
+            var box = el('div', 'tr-result tr-' + kind);
+            box.setAttribute('role', 'status');
+            var s = el('strong', null, title);
+            box.appendChild(s);
+            if (text) { box.appendChild(el('span', 'tr-txt', text)); }
+            return box;
+        }
+        function clearNode(n) { while (n.firstChild) { n.removeChild(n.firstChild); } }
+
+        /* ---------- фильтры ---------- */
+        function buildChips(containerId, key, values) {
+            var box = document.getElementById(containerId);
+            clearNode(box);
+            values.forEach(function (v) {
+                var b = el('button', 'tr-chip', v.label);
+                b.type = 'button';
+                b.setAttribute('aria-pressed', String(state[key] === v.value));
+                b.addEventListener('click', function () {
+                    state[key] = v.value;
+                    Array.prototype.forEach.call(box.querySelectorAll('.tr-chip'), function (c) { c.setAttribute('aria-pressed', 'false'); });
+                    b.setAttribute('aria-pressed', 'true');
+                    applyFilters();
+                });
+                box.appendChild(b);
+            });
+        }
+        function buildFilters() {
+            buildChips('tr-f-course', 'course', [
+                { value: 'all', label: 'Все' }, { value: 'НВП', label: 'НВП' }, { value: 'БЖ', label: 'БЖ' }
+            ]);
+            buildChips('tr-f-class', 'cl', [
+                { value: 'all', label: 'Все' }, { value: '8', label: '8' }, { value: '9', label: '9' },
+                { value: '10', label: '10' }, { value: '11', label: '11' }
+            ]);
+            var types = [{ value: 'all', label: 'Все' }];
+            Object.keys(TYPE_NAMES).forEach(function (k) { types.push({ value: k, label: TYPE_NAMES[k] }); });
+            buildChips('tr-f-type', 'type', types);
+        }
+        function matches(it) {
+            if (state.course !== 'all' && it.course !== state.course) { return false; }
+            if (state.cl !== 'all' && (it.cl || []).indexOf(Number(state.cl)) === -1) { return false; }
+            if (state.type !== 'all' && it.type !== state.type) { return false; }
+            return true;
+        }
+        function plural(n) {
+            var m10 = n % 10, m100 = n % 100;
+            if (m10 === 1 && m100 !== 11) { return 'тренажёр'; }
+            if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) { return 'тренажёра'; }
+            return 'тренажёров';
+        }
+        function applyFilters() {
+            var shown = 0;
+            ITEMS.forEach(function (it) {
+                var c = cardEls[it.id];
+                if (!c) { return; }
+                var ok = matches(it);
+                c.card.hidden = !ok;
+                if (ok) { shown++; }
+            });
+            countEl.textContent = shown ? ('Найдено: ' + shown + ' ' + plural(shown)) : 'По выбранным условиям тренажёров пока нет. Попробуй другой класс или тип.';
+        }
+
+        /* ---------- карточки ---------- */
+        function buildCards() {
+            clearNode(listEl);
+            ITEMS.forEach(function (it) {
+                var card = el('article', 'tr-card');
+                var badges = el('div', 'tr-badges');
+                badges.appendChild(el('span', 'tr-badge ' + (it.course === 'НВП' ? 'tr-badge-nvp' : 'tr-badge-bzh'), it.course));
+                badges.appendChild(el('span', 'tr-badge tr-badge-cl', (it.cl || []).join(', ') + ' кл.'));
+                badges.appendChild(el('span', 'tr-badge tr-badge-type', TYPE_NAMES[it.type] || it.type));
+                card.appendChild(badges);
+                card.appendChild(el('h3', null, it.title));
+                card.appendChild(el('p', 'tr-intro', it.intro || ''));
+                if (it.lessons) {
+                    var parts = [];
+                    (it.cl || []).forEach(function (c) { if (it.lessons[c]) { parts.push(c + ' кл. — ' + it.lessons[c]); } });
+                    if (parts.length) { card.appendChild(el('p', 'tr-lessons', 'К урокам КТП: ' + parts.join('; '))); }
+                }
+
+                var panelId = 'tr-panel-' + it.id;
+                var btn = el('button', 'tr-btn', 'Открыть тренажёр');
+                btn.type = 'button';
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-controls', panelId);
+                var panel = el('div', 'tr-panel');
+                panel.id = panelId;
+                panel.hidden = true;
+
+                btn.addEventListener('click', function () {
+                    var isOpen = !panel.hidden;
+                    if (isOpen) {
+                        panel.hidden = true;
+                        card.classList.remove('tr-open');
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.textContent = 'Открыть тренажёр';
+                        opened[it.id] = false;
+                    } else {
+                        panel.hidden = false;
+                        card.classList.add('tr-open');
+                        btn.setAttribute('aria-expanded', 'true');
+                        btn.textContent = 'Свернуть';
+                        if (!opened[it.id]) { start(it, panel); opened[it.id] = true; }
+                    }
+                });
+
+                card.appendChild(btn);
+                card.appendChild(panel);
+                listEl.appendChild(card);
+                cardEls[it.id] = { card: card, btn: btn, panel: panel };
+            });
+        }
+
+        function start(it, panel) {
+            clearNode(panel);
+            if (it.type === 'order') { renderOrder(it, panel); }
+            else if (it.type === 'match') { renderMatch(it, panel); }
+            else if (it.type === 'quiz') { renderQuiz(it, panel); }
+            else if (it.type === 'scenario') { renderScenario(it, panel); }
+            else { panel.appendChild(el('p', 'tr-error', 'Неизвестный тип тренажёра: ' + it.type)); }
+        }
+        function restartButton(it, panel) {
+            var b = el('button', 'tr-btn tr-btn-ghost', 'Начать заново');
+            b.type = 'button';
+            b.addEventListener('click', function () { start(it, panel); panel.querySelector('button, select, input') && panel.querySelector('button, select, input').focus(); });
+            return b;
+        }
+
+        /* ---------- тип: order ---------- */
+        function renderOrder(it, panel) {
+            var correct = it.steps.slice();
+            var cur = shuffle(correct);
+            var guard = 0;
+            while (sameOrder(cur, correct) && correct.length > 1 && guard++ < 20) { cur = shuffle(correct); }
+            var checked = false;
+
+            var ol = el('ol', 'tr-order');
+            var out = el('div');
+            var actions = el('div', 'tr-actions');
+            var checkBtn = el('button', 'tr-btn', 'Проверить порядок');
+            checkBtn.type = 'button';
+            var showBtn = el('button', 'tr-btn tr-btn-ghost', 'Показать правильный порядок');
+            showBtn.type = 'button';
+            showBtn.hidden = true;
+
+            function draw(focus) {
+                clearNode(ol);
+                cur.forEach(function (text, i) {
+                    var li = el('li');
+                    if (checked) { li.className = (text === correct[i]) ? 'tr-ok' : 'tr-bad'; }
+                    li.appendChild(el('span', 'tr-text', text));
+                    var mv = el('span', 'tr-moves');
+                    var up = el('button', 'tr-move', '↑'); up.type = 'button';
+                    up.setAttribute('aria-label', 'Поднять выше: ' + text);
+                    up.disabled = (i === 0);
+                    var dn = el('button', 'tr-move', '↓'); dn.type = 'button';
+                    dn.setAttribute('aria-label', 'Опустить ниже: ' + text);
+                    dn.disabled = (i === cur.length - 1);
+                    up.addEventListener('click', function () { move(i, i - 1, 'up'); });
+                    dn.addEventListener('click', function () { move(i, i + 1, 'dn'); });
+                    mv.appendChild(up); mv.appendChild(dn);
+                    li.appendChild(mv);
+                    ol.appendChild(li);
+                });
+                if (focus) {
+                    var target = ol.children[focus.idx] && ol.children[focus.idx].querySelectorAll('.tr-move')[focus.dir === 'up' ? 0 : 1];
+                    if (target && !target.disabled) { target.focus(); }
+                    else {
+                        var alt = ol.children[focus.idx] && ol.children[focus.idx].querySelector('.tr-move:not([disabled])');
+                        if (alt) { alt.focus(); }
+                    }
+                }
+            }
+            function move(from, to, dir) {
+                var t = cur[from]; cur[from] = cur[to]; cur[to] = t;
+                checked = false; clearNode(out);
+                draw({ idx: to, dir: dir });
+            }
+            checkBtn.addEventListener('click', function () {
+                checked = true;
+                var good = 0;
+                cur.forEach(function (t, i) { if (t === correct[i]) { good++; } });
+                draw();
+                clearNode(out);
+                showBtn.hidden = false;
+                if (good === correct.length) {
+                    out.appendChild(result('ok', 'Верно! Все шаги на своих местах.', it.explain || ''));
+                } else {
+                    out.appendChild(result('warn', 'На своих местах: ' + good + ' из ' + correct.length + '.', 'Красным отмечены шаги, которые стоят не на своём месте. Подумай и попробуй ещё раз.'));
+                }
+            });
+            showBtn.addEventListener('click', function () {
+                cur = correct.slice(); checked = true; draw(); clearNode(out);
+                out.appendChild(result('ok', 'Правильный порядок:', it.explain || ''));
+                showBtn.hidden = true;
+            });
+            actions.appendChild(checkBtn); actions.appendChild(showBtn); actions.appendChild(restartButton(it, panel));
+            panel.appendChild(ol); panel.appendChild(actions); panel.appendChild(out);
+            draw();
+        }
+
+        /* ---------- тип: match ---------- */
+        function renderMatch(it, panel) {
+            var rows = shuffle(it.pairs);
+            var wrap = el('div', 'tr-match');
+            var selects = [];
+            var rowEls = [];
+            rows.forEach(function (p, i) {
+                var row = el('div', 'tr-match-row');
+                var id = 'tr-m-' + it.id + '-' + i;
+                var lab = el('label', null, p.left); lab.setAttribute('for', id);
+                var sel = el('select'); sel.id = id;
+                var o0 = el('option', null, '— выбери —'); o0.value = ''; sel.appendChild(o0);
+                it.options.forEach(function (o) { var op = el('option', null, o); op.value = o; sel.appendChild(op); });
+                sel.addEventListener('change', function () { row.className = 'tr-match-row'; });
+                row.appendChild(lab); row.appendChild(sel);
+                wrap.appendChild(row); selects.push(sel); rowEls.push(row);
+            });
+            var out = el('div');
+            var actions = el('div', 'tr-actions');
+            var checkBtn = el('button', 'tr-btn', 'Проверить'); checkBtn.type = 'button';
+            var showBtn = el('button', 'tr-btn tr-btn-ghost', 'Показать ответы'); showBtn.type = 'button'; showBtn.hidden = true;
+
+            checkBtn.addEventListener('click', function () {
+                var good = 0, empty = 0;
+                rows.forEach(function (p, i) {
+                    var v = selects[i].value;
+                    if (!v) { empty++; rowEls[i].className = 'tr-match-row'; return; }
+                    if (v === p.right) { good++; rowEls[i].className = 'tr-match-row tr-ok'; }
+                    else { rowEls[i].className = 'tr-match-row tr-bad'; }
+                });
+                clearNode(out);
+                if (empty) {
+                    out.appendChild(result('warn', 'Заполни все строки.', 'Не выбран ответ в строках: ' + empty + '.'));
+                    return;
+                }
+                showBtn.hidden = false;
+                if (good === rows.length) {
+                    out.appendChild(result('ok', 'Отлично! Всё верно: ' + good + ' из ' + rows.length + '.', it.explain || ''));
+                } else {
+                    out.appendChild(result('warn', 'Верно: ' + good + ' из ' + rows.length + '.', 'Красным отмечены ошибки. Исправь и проверь ещё раз, или посмотри ответы.'));
+                }
+            });
+            showBtn.addEventListener('click', function () {
+                rows.forEach(function (p, i) { selects[i].value = p.right; rowEls[i].className = 'tr-match-row tr-ok'; });
+                clearNode(out);
+                out.appendChild(result('ok', 'Правильные ответы показаны.', it.explain || ''));
+                showBtn.hidden = true;
+            });
+            actions.appendChild(checkBtn); actions.appendChild(showBtn); actions.appendChild(restartButton(it, panel));
+            panel.appendChild(wrap); panel.appendChild(actions); panel.appendChild(out);
+        }
+
+        /* ---------- тип: quiz ---------- */
+        function renderQuiz(it, panel) {
+            var form = el('form'); form.setAttribute('novalidate', 'novalidate');
+            form.addEventListener('submit', function (e) { e.preventDefault(); });
+            var qs = it.questions.map(function (q, qi) {
+                var order = shuffle(q.options.map(function (text, idx) { return { text: text, right: idx === q.answer }; }));
+                var fs = el('fieldset', 'tr-q');
+                fs.appendChild(el('legend', null, (qi + 1) + '. ' + q.q));
+                var inputs = [];
+                order.forEach(function (o, oi) {
+                    var row = el('div', 'tr-opt');
+                    var id = 'tr-q-' + it.id + '-' + qi + '-' + oi;
+                    var inp = el('input'); inp.type = 'radio'; inp.name = 'tr-q-' + it.id + '-' + qi; inp.id = id; inp.value = String(oi);
+                    var lab = el('label', null, o.text); lab.setAttribute('for', id);
+                    row.appendChild(inp); row.appendChild(lab); fs.appendChild(row);
+                    inputs.push(inp);
+                });
+                var why = el('p', 'tr-why'); why.hidden = true;
+                fs.appendChild(why);
+                form.appendChild(fs);
+                return { fs: fs, inputs: inputs, order: order, why: why, q: q };
+            });
+            var out = el('div');
+            var actions = el('div', 'tr-actions');
+            var checkBtn = el('button', 'tr-btn', 'Проверить ответы'); checkBtn.type = 'button';
+            checkBtn.addEventListener('click', function () {
+                var firstEmpty = null;
+                qs.forEach(function (o) {
+                    var chosen = o.inputs.some(function (i) { return i.checked; });
+                    if (!chosen && !firstEmpty) { firstEmpty = o; }
+                });
+                clearNode(out);
+                if (firstEmpty) {
+                    out.appendChild(result('warn', 'Ответь на все вопросы.', 'Пропущенные вопросы нужно закрыть перед проверкой.'));
+                    firstEmpty.inputs[0].focus();
+                    return;
+                }
+                var good = 0;
+                qs.forEach(function (o) {
+                    var chosenIdx = -1;
+                    o.inputs.forEach(function (i, ix) { if (i.checked) { chosenIdx = ix; } i.disabled = true; });
+                    var ok = o.order[chosenIdx].right;
+                    if (ok) { good++; }
+                    o.fs.className = 'tr-q ' + (ok ? 'tr-ok' : 'tr-bad');
+                    o.why.hidden = false;
+                    var right = o.order.filter(function (x) { return x.right; })[0].text;
+                    o.why.textContent = (ok ? '✔ Верно. ' : '✖ Неверно. Правильный ответ: «' + right + '». ') + (o.q.why || '');
+                });
+                var pct = Math.round(good * 100 / qs.length);
+                var kind = pct >= 85 ? 'ok' : (pct >= 60 ? 'warn' : 'bad');
+                var msg = pct >= 85 ? 'Отличный результат!' : (pct >= 60 ? 'Неплохо. Повтори вопросы, где ошибся.' : 'Стоит ещё раз прочитать параграф учебника и попробовать снова.');
+                out.appendChild(result(kind, 'Результат: ' + good + ' из ' + qs.length + ' (' + pct + '%).', msg));
+                checkBtn.disabled = true;
+                out.firstChild.setAttribute('tabindex', '-1'); out.firstChild.focus();
+            });
+            actions.appendChild(checkBtn); actions.appendChild(restartButton(it, panel));
+            panel.appendChild(form); panel.appendChild(actions); panel.appendChild(out);
+        }
+
+        /* ---------- тип: scenario ---------- */
+        function renderScenario(it, panel) {
+            var mistakes = 0, stepNo = 0;
+            var stage = el('div');
+            panel.appendChild(stage);
+
+            function showNode(id) {
+                var node = it.nodes[id];
+                stepNo++;
+                clearNode(stage);
+                stage.appendChild(el('p', 'tr-step-label', 'Шаг ' + stepNo));
+                stage.appendChild(el('div', 'tr-scene', node.text));
+                var ul = el('ul', 'tr-choices');
+                var fb = el('div');
+                var nextWrap = el('div', 'tr-actions');
+                var btns = [];
+                shuffle(node.choices).forEach(function (ch) {
+                    var li = el('li');
+                    var b = el('button', 'tr-choice', ch.t); b.type = 'button';
+                    b.addEventListener('click', function () {
+                        clearNode(fb);
+                        if (ch.ok) {
+                            b.className = 'tr-choice tr-ok';
+                            btns.forEach(function (x) { x.disabled = true; });
+                            fb.appendChild(result('ok', 'Верно!', ch.why || ''));
+                            if (ch.next) {
+                                var nb = el('button', 'tr-btn', 'Дальше →'); nb.type = 'button';
+                                nb.addEventListener('click', function () { showNode(ch.next); var f = stage.querySelector('.tr-choice'); if (f) { f.focus(); } });
+                                nextWrap.appendChild(nb); nb.focus();
+                            } else {
+                                finish();
+                            }
+                        } else {
+                            mistakes++;
+                            b.className = 'tr-choice tr-bad'; b.disabled = true;
+                            fb.appendChild(result('bad', 'Не совсем.', ch.why || ''));
+                        }
+                    });
+                    li.appendChild(b); ul.appendChild(li); btns.push(b);
+                });
+                stage.appendChild(ul); stage.appendChild(fb); stage.appendChild(nextWrap);
+
+                function finish() {
+                    var res = mistakes === 0
+                        ? result('ok', 'Ситуация пройдена без ошибок!', it.takeaway || '')
+                        : result('warn', 'Ситуация пройдена. Ошибок по пути: ' + mistakes + '.', it.takeaway || '');
+                    stage.appendChild(res);
+                    var a = el('div', 'tr-actions'); a.appendChild(restartButton(it, panel)); stage.appendChild(a);
+                }
+            }
+            showNode(it.start);
+        }
+
+        /* ---------- запуск ---------- */
+        buildFilters();
+        buildCards();
+        applyFilters();
+    })();
     </script>
 <script src="landscape-fix.js"></script>
  <!-- Плавающая кнопка ВКонтакте -->
