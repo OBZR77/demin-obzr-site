@@ -119,6 +119,18 @@
         .nvp-terms + p { margin-top: 1rem; }
         .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
 </style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
     <div class="nvp-page">

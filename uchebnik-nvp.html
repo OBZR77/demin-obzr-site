@@ -1114,6 +1114,15 @@
 
         .nvph-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; }
 </style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        a.nvp-btn:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
 

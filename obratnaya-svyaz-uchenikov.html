@@ -997,6 +997,15 @@
         .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
         .ph-list { margin: .5rem 0 0 1.2rem; }
 </style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.ph-btn { transition: all 0.3s ease; }
+        a.ph-btn:hover,
+        a.ph-btn:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
 

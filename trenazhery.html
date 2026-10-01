@@ -1094,6 +1094,15 @@
             .tr-card{transition:box-shadow .2s ease,border-color .2s ease}
         }
     </style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        .tr-btn:not([disabled]) { transition: all 0.3s ease; }
+        .tr-btn:not([disabled]):hover,
+        .tr-btn:not([disabled]):active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
 

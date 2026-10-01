@@ -1041,6 +1041,15 @@
         }
         @media (prefers-reduced-motion: reduce) { .sz-btn { transition: none; } }
 </style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.sz-btn { transition: all 0.3s ease; }
+        a.sz-btn:hover,
+        a.sz-btn:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
 </head>
 <body>
 
