@@ -673,8 +673,8 @@
         .aiu-principle { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; background: #FFF5F5; border: 2px solid #F3C9C8; border-left: 6px solid var(--color-danger); border-radius: 10px; }
         .aiu-pi { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
         .aiu-jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 0.5rem; }
-        .aiu-jump a { display: inline-block; padding: 0.45rem 0.95rem; border: 2px solid var(--color-primary); border-radius: 999px; color: var(--color-primary); background: #fff; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: background 0.2s ease; }
-        .aiu-jump a:hover { background: #EEF3FA; }
+        .aiu-jump a { display: inline-block; padding: 0.45rem 0.95rem; border: 2px solid var(--color-primary); border-radius: 999px; color: var(--color-primary); background: #fff; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: all 0.3s ease; }
+        .aiu-jump a:hover, .aiu-jump a:active { background: var(--color-danger); border-color: var(--color-danger); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4); }
         .aiu-jump a:focus-visible, .aiu-btn:focus-visible, .aiu-opt:focus-visible, .aiu-input:focus-visible, .aiu-link:focus-visible { outline: 3px solid #B26A00; outline-offset: 2px; }
         .aiu-sec { scroll-margin-top: 9rem; }
         .aiu-sec > .uch-h { scroll-margin-top: 9rem; padding-top: 0.25rem; border-top: 3px solid var(--aiu-b); padding-top: 1rem; margin-top: 2.4rem; }
@@ -692,10 +692,10 @@
         .aiu-dont li::before { content: '✕'; color: var(--aiu-bad); font-weight: 800; flex-shrink: 0; }
 
         /* Кнопки */
-        .aiu-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: var(--color-primary); color: #fff; border: 2px solid var(--color-primary); padding: 0.55rem 1.1rem; border-radius: 8px; font: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-decoration: none; transition: background 0.2s ease; }
-        .aiu-btn:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+        .aiu-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: var(--color-primary); color: #fff; border: 2px solid var(--color-primary); padding: 0.55rem 1.1rem; border-radius: 8px; font: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-decoration: none; transition: all 0.3s ease; }
+        .aiu-btn:hover:not(.is-disabled):not([disabled]), .aiu-btn:active:not(.is-disabled):not([disabled]) { background: var(--color-danger); border-color: var(--color-danger); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4); }
         .aiu-btn-alt { background: #fff; color: var(--color-primary); }
-        .aiu-btn-alt:hover { background: #EEF3FA; color: var(--color-primary); border-color: var(--color-primary); }
+        
         .aiu-btn.is-disabled { background: #E2E7ED; border-color: #E2E7ED; color: #43505C; cursor: not-allowed; }
         .aiu-soon { font-weight: 500; font-size: 0.85rem; }
 
@@ -723,8 +723,12 @@
         .aiu-ai-label { display: block; font-size: 0.82rem; font-weight: 700; color: #43505C; margin-bottom: 0.3rem; }
         .aiu-ai p { margin: 0; }
         .aiu-choices { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .aiu-choice.is-picked { background: var(--color-primary); color: #fff; }
         .aiu-choice[disabled] { cursor: default; opacity: 0.85; }
+        .aiu-bar-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .aiu-btn[disabled] { background: #E2E7ED; border-color: #E2E7ED; color: #43505C; cursor: not-allowed; }
+        .aiu-choice[aria-pressed="true"] { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+        .aiu-case.is-right { border-left-color: var(--aiu-ok); }
+        .aiu-case.is-wrong { border-left-color: var(--aiu-bad); }
         .aiu-verdict:empty { display: none; }
         .aiu-verdict { padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.97rem; }
         .aiu-verdict.is-right { background: #E8F5E9; border-left: 4px solid var(--aiu-ok); }
@@ -770,9 +774,10 @@
         .aiu-survey-text h3 { margin: 0 0 0.4rem; color: #283593; }
         .aiu-survey-text p { margin: 0 0 0.4rem; }
         .aiu-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
-        .aiu-link { display: block; padding: 0.9rem 1.1rem; background: #fff; border: 2px solid var(--color-border); border-radius: 10px; color: var(--color-primary); font-weight: 700; text-decoration: none; transition: border-color 0.2s ease, background 0.2s ease; }
+        .aiu-link { display: block; padding: 0.9rem 1.1rem; background: #fff; border: 2px solid var(--color-border); border-radius: 10px; color: var(--color-primary); font-weight: 700; text-decoration: none; transition: all 0.3s ease; }
         .aiu-link span { display: block; font-weight: 400; font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.2rem; }
-        .aiu-link:hover { border-color: var(--color-primary); background: #EEF3FA; }
+        .aiu-link:hover, .aiu-link:active { background: var(--color-danger); border-color: var(--color-danger); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4); }
+        .aiu-link:hover span, .aiu-link:active span { color: #fff; }
 
         @media (max-width: 860px) { .aiu-cases, .aiu-risks, .aiu-two { grid-template-columns: 1fr; } }
         @media (max-width: 560px) { .aiu-prompts { grid-template-columns: 1fr; } .aiu-principle { flex-direction: column; gap: 0.5rem; } }
@@ -1035,112 +1040,21 @@
         <!-- ========== 3. ПОЙМАЙ ОШИБКУ ИИ ========== -->
         <section class="aiu-sec" id="aiu-catch" aria-labelledby="aiu-catch-h">
             <h2 class="uch-h" id="aiu-catch-h">🔍 Поймай ошибку ИИ</h2>
-            <p class="uch-lead">Ниже шесть ответов ИИ. В пяти есть ошибки, в одном нет. Сначала реши сам, потом нажимай кнопку и сверь свой вывод с разбором. Главное: проверь по учебнику или официальному источнику.</p>
+            <p class="uch-lead">Перед тобой пять ответов ИИ. В одних есть ошибки, другие верны, и сколько каких, заранее неизвестно. По каждому ответу отметь свой вывод, затем нажми «Проверить ответы». Разбор появится после проверки. Главное: проверяй по учебнику или официальному источнику.</p>
 
-            <div class="aiu-cases">
-                <article class="aiu-case" data-truth="error">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Пожарная безопасность</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> что делать при пожаре в многоэтажном доме?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Если загорелось в квартире, выйди из неё, закрой дверь и вызови пожарных по номеру 102. Спускайся быстрее на лифте, чтобы не задохнуться в дыму на лестнице.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Здесь две ошибки.</strong></p>
-                        <p>1. Пожарных вызывают по номеру 101 или 112. Номер 102 вызывает полицию.</p>
-                        <p>2. При пожаре нельзя пользоваться лифтом: он может отключиться между этажами, а шахта быстро заполняется дымом. Спускаться нужно по лестнице.</p>
-                    </div>
-                </article>
-
-                <article class="aiu-case" data-truth="error">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Цифровая среда</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> мне позвонили из «службы безопасности банка» и просят назвать код из СМС. Это нормально?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Да, если в аккаунте включена двухфакторная защита, сотрудник банка вправе попросить код, чтобы подтвердить, что звонишь именно ты.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Ответ неверный.</strong></p>
-                        <p>Код из СМС нельзя сообщать никому, даже тому, кто представился сотрудником банка. Настоящие сотрудники кодов не спрашивают. Двухфакторная защита работает, только пока код знаешь ты один.</p>
-                        <p>Что делать: положить трубку и самому позвонить в банк по номеру, который написан на карте.</p>
-                    </div>
-                </article>
-
-                <article class="aiu-case" data-truth="error">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-nvp">НВП</span><span class="aiu-tag">Обращение с оружием</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> можно ли направить на человека автомат, если он точно разряжен?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Можно, если ты проверил оружие и убедился, что патронов нет. Без патронов выстрела быть не может.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Ответ опасный и неверный.</strong></p>
-                        <p>Правило безопасности: оружие всегда считают заряженным, а направлять его на людей нельзя, даже если оно «точно разряжено». Ошибались и те, кто «проверял».</p>
-                        <p>Обращаться с оружием на занятиях можно только под руководством преподавателя. По таким темам ответ ИИ всегда сверяй с учебником.</p>
-                    </div>
-                </article>
-
-                <article class="aiu-case" data-truth="ok">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Экстренные службы</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> какой номер набрать в экстренной ситуации, если на счёте нет денег?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Набери 112. Это единый номер вызова экстренных служб, звонок на него бесплатный и возможен при нулевом балансе. Назови, что случилось, адрес и своё имя, и не клади трубку, пока диспетчер не разрешит.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Ошибок нет: это контрольный ответ.</strong></p>
-                        <p>ИИ иногда отвечает верно. Задача не в том, чтобы сомневаться во всём, а в том, чтобы проверять. Номер 112 стоит помнить и объяснить младшим.</p>
-                    </div>
-                </article>
-
-                <article class="aiu-case" data-truth="error">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Дипфейки</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> программа-детектор показала, что видео настоящее на 95 %. Значит, ему можно доверять?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Да, при 95 % можно считать видео подлинным и смело делиться им.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Ответ неверный.</strong></p>
-                        <p>Детекторы ошибаются, а новые генераторы их обходят. Процент это повод присмотреться, а не приговор.</p>
-                        <p>Проверь, откуда видео, кто его опубликовал, есть ли оно в надёжных источниках. И подумай, кому оно может навредить, прежде чем пересылать.</p>
-                    </div>
-                </article>
-
-                <article class="aiu-case" data-truth="error">
-                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Достоверность информации</span></div>
-                    <p class="aiu-q"><strong>Вопрос:</strong> по какому закону в России наказывают за мошенничество в интернете?</p>
-                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Ответственность предусмотрена Федеральным законом «О цифровой безопасности школьников» № 999-ФЗ, статья 12.</p></blockquote>
-                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
-                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
-                    </div>
-                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
-                    <div class="aiu-key" hidden>
-                        <p><strong>Здесь ИИ выдумал закон.</strong></p>
-                        <p>Такого закона нет: название и номер придуманы специально для этого задания. Но настоящие ИИ тоже иногда выдумывают законы, статьи и ссылки, и звучит это очень уверенно.</p>
-                        <p>Ответственность за мошенничество устанавливает Уголовный кодекс РФ: статья 159 и связанные с ней, например 159.3 и 159.6. Проверять такие ссылки нужно по официальному источнику, например на портале pravo.gov.ru. Если ссылку найти не удалось, ей нельзя верить.</p>
-                    </div>
-                </article>
-            </div>
+            <div class="aiu-cases" id="aiuCases"><noscript><p class="aiu-warn">Для практикума нужен включённый JavaScript.</p></noscript></div>
 
             <div class="aiu-scorebar">
-                <span class="aiu-score" id="aiuScore" role="status" aria-live="polite">Оцени ответы ИИ: счёт появится здесь.</span>
-                <button type="button" class="aiu-btn aiu-btn-alt" id="aiuReset" hidden>↺ Пройти заново</button>
+                <span class="aiu-score" id="aiuScore" role="status" aria-live="polite"></span>
+                <div class="aiu-bar-btns">
+                    <button type="button" class="aiu-btn" id="aiuCheck" disabled>✔ Проверить ответы</button>
+                    <button type="button" class="aiu-btn aiu-btn-alt" id="aiuNew">🔄 Другой набор</button>
+                </div>
             </div>
+            <p class="aiu-small" id="aiuPoolInfo"></p>
 
             <div class="aiu-send">
-                <p><strong>Отправь свой разбор учителю.</strong> Опиши, в чём ошибка и по какому источнику ты её проверил. В форме не пиши фамилию и имя: достаточно класса и личного кода (5 цифр с твоей карточки).</p>
+                <p><strong>Отправь результат и разбор учителю.</strong> Напиши, в каком ответе нашёл ошибку и по какому источнику её проверил. В форме не пиши фамилию и имя: достаточно класса и личного кода (5 цифр с твоей карточки).</p>
                 <a class="aiu-btn" data-aiu-form="practicum" href="#">✉️ Открыть форму</a>
             </div>
         </section>
@@ -2131,7 +2045,8 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 </script>
- <script id="aiu-script">
+ <script src="ai-oshibki.js"></script>
+<script id="aiu-script">
 (function () {
     'use strict';
 
@@ -2200,50 +2115,144 @@ window.addEventListener('load', () => {
     });
 
     // ---------- Практикум «Поймай ошибку ИИ» ----------
-    var cases = $all('.aiu-case'), done = 0, right = 0;
-    var scoreEl = $('#aiuScore'), resetBtn = $('#aiuReset');
-    var SCORE_EMPTY = 'Оцени ответы ИИ: счёт появится здесь.';
+    // Задания лежат в файле ai-oshibki.js (window.AIU_CASES). Каждый раз показывается случайный набор:
+    // верные ответы ИИ перемешаны с неверными, а разбор открывается только после проверки всех ответов.
+    var SET_SIZE = 5;
+    var casesBox = $('#aiuCases'), scoreEl = $('#aiuScore'), checkBtn = $('#aiuCheck'), newBtn = $('#aiuNew'), poolInfo = $('#aiuPoolInfo');
+    var practicumLink = $('[data-aiu-form="practicum"]');
+    var pool = (window.AIU_CASES instanceof Array) ? window.AIU_CASES.filter(function (c) {
+        return c && c.id && c.q && c.ai && (c.truth === 'ok' || c.truth === 'error') && c.key instanceof Array && c.key.length;
+    }) : [];
+    var current = [], answers = {}, checked = false;
 
-    function showScore() {
-        if (!done) { scoreEl.textContent = SCORE_EMPTY; resetBtn.hidden = true; return; }
-        var s = 'Оценено ' + done + ' из ' + cases.length + ', верно: ' + right + '.';
-        if (done === cases.length) {
-            s += right === cases.length ? ' Отличная внимательность!' : ' Перечитай разборы там, где ошибся, и проверь себя ещё раз.';
-        }
-        scoreEl.textContent = s;
-        resetBtn.hidden = false;
+    function shuffle(a) {
+        var r = a.slice(), i, j, t;
+        for (i = r.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = r[i]; r[i] = r[j]; r[j] = t; }
+        return r;
     }
 
-    cases.forEach(function (c) {
-        var btns = $all('.aiu-choice', c), verdict = $('.aiu-verdict', c), key = $('.aiu-key', c);
-        btns.forEach(function (b) {
-            b.addEventListener('click', function () {
-                if (c.getAttribute('data-done')) { return; }
-                var says = b.getAttribute('data-says'), truth = c.getAttribute('data-truth'), good = says === truth;
-                c.setAttribute('data-done', '1');
-                done += 1; if (good) { right += 1; }
-                btns.forEach(function (x) { x.disabled = true; });
-                b.classList.add('is-picked');
-                verdict.className = 'aiu-verdict ' + (good ? 'is-right' : 'is-wrong');
-                verdict.innerHTML = '';
-                verdict.appendChild(el('p', 'aiu-vh', good ? '✅ Верно!' : '❌ Не совсем.'));
-                Array.prototype.forEach.call(key.children, function (n) { verdict.appendChild(n.cloneNode(true)); });
-                showScore();
+    function take(arr, n, exclude) {
+        var fresh = shuffle(arr.filter(function (c) { return exclude.indexOf(c.id) < 0; }));
+        if (fresh.length < n) { fresh = fresh.concat(shuffle(arr.filter(function (c) { return fresh.indexOf(c) < 0; }))); }
+        return fresh.slice(0, n);
+    }
+
+    function pickSet(exclude) {
+        var oks = pool.filter(function (c) { return c.truth === 'ok'; });
+        var errs = pool.filter(function (c) { return c.truth === 'error'; });
+        var size = Math.min(SET_SIZE, pool.length);
+        var wantOk = size >= 4 ? (Math.random() < 0.5 ? 1 : 2) : Math.floor(size / 2);
+        wantOk = Math.min(wantOk, oks.length);
+        var wantErr = Math.min(size - wantOk, errs.length);
+        wantOk = Math.min(size - wantErr, oks.length);
+        return shuffle(take(oks, wantOk, exclude).concat(take(errs, wantErr, exclude)));
+    }
+
+    function answeredCount() { return Object.keys(answers).length; }
+
+    function updateState() {
+        if (checked) { return; }
+        var n = answeredCount(), total = current.length;
+        scoreEl.textContent = n < total
+            ? 'Отвечено ' + n + ' из ' + total + '. Разбор появится после проверки всех ответов.'
+            : 'Ты ответил на все. Нажми «Проверить ответы».';
+        checkBtn.disabled = n < total;
+    }
+
+    function render() {
+        casesBox.innerHTML = '';
+        answers = {}; checked = false;
+        checkBtn.hidden = false;
+        if (practicumLink) { practicumLink.hidden = false; }
+        current.forEach(function (c) {
+            var card = el('article', 'aiu-case');
+            card.setAttribute('data-id', c.id);
+            var tags = el('div', 'aiu-tags');
+            tags.appendChild(el('span', 'aiu-tag ' + (c.subj === 'НВП' ? 'aiu-tag-nvp' : 'aiu-tag-bzh'), c.subj || 'БЖ'));
+            if (c.topic) { tags.appendChild(el('span', 'aiu-tag', c.topic)); }
+            var q = el('p', 'aiu-q');
+            q.appendChild(el('strong', '', 'Вопрос:'));
+            q.appendChild(document.createTextNode(' ' + c.q));
+            var ai = el('blockquote', 'aiu-ai');
+            ai.appendChild(el('span', 'aiu-ai-label', '🤖 Ответ ИИ'));
+            ai.appendChild(el('p', '', c.ai));
+            var ch = el('div', 'aiu-choices');
+            ch.setAttribute('role', 'group'); ch.setAttribute('aria-label', 'Твой вывод');
+            var verdict = el('div', 'aiu-verdict');
+            verdict.setAttribute('role', 'status'); verdict.setAttribute('aria-live', 'polite');
+            [['error', '🔍 Есть ошибка'], ['ok', '✅ Ошибок нет']].forEach(function (o) {
+                var b = el('button', 'aiu-btn aiu-btn-alt aiu-choice', o[1]);
+                b.type = 'button'; b.setAttribute('data-says', o[0]); b.setAttribute('aria-pressed', 'false');
+                b.addEventListener('click', function () {
+                    if (checked) { return; }
+                    answers[c.id] = o[0];
+                    $all('.aiu-choice', ch).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+                    updateState();
+                });
+                ch.appendChild(b);
+            });
+            card.appendChild(tags); card.appendChild(q); card.appendChild(ai); card.appendChild(ch); card.appendChild(verdict);
+            casesBox.appendChild(card);
+        });
+        updateState();
+    }
+
+    function formUrl(right) {
+        var base = AIU_FORMS.practicum;
+        if (!base) { return ''; }
+        var ids = current.map(function (c) { return c.id; }).join(',');
+        return base + (base.indexOf('?') >= 0 ? '&' : '?') + 'score=' + right + '&total=' + current.length + '&cases=' + encodeURIComponent(ids);
+    }
+
+    function check() {
+        if (checked || answeredCount() < current.length) { return; }
+        checked = true;
+        var right = 0;
+        $all('.aiu-case', casesBox).forEach(function (card, idx) {
+            var c = current[idx], good = answers[c.id] === c.truth;
+            if (good) { right += 1; }
+            $all('.aiu-choice', card).forEach(function (x) { x.disabled = true; });
+            card.classList.add(good ? 'is-right' : 'is-wrong');
+            var v = $('.aiu-verdict', card);
+            v.className = 'aiu-verdict ' + (good ? 'is-right' : 'is-wrong');
+            v.innerHTML = '';
+            v.appendChild(el('p', 'aiu-vh', good ? '✅ Верно!' : '❌ Не совсем.'));
+            c.key.forEach(function (t, k) {
+                var p = el('p');
+                if (k === 0) { p.appendChild(el('strong', '', t)); } else { p.textContent = t; }
+                v.appendChild(p);
             });
         });
-    });
+        var msg = 'Верно: ' + right + ' из ' + current.length + '. ';
+        msg += right === current.length
+            ? 'Отличная внимательность! Среди ответов были и верные, поэтому важно проверять каждый.'
+            : 'Прочитай разборы. ИИ ошибается не всегда, но проверять нужно каждый ответ.';
+        scoreEl.textContent = msg;
+        checkBtn.hidden = true;
+        if (practicumLink && AIU_FORMS.practicum) { practicumLink.setAttribute('href', formUrl(right)); }
+        if (casesBox.scrollIntoView) { casesBox.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
 
-    resetBtn.addEventListener('click', function () {
-        done = 0; right = 0;
-        cases.forEach(function (c) {
-            c.removeAttribute('data-done');
-            $all('.aiu-choice', c).forEach(function (x) { x.disabled = false; x.classList.remove('is-picked'); });
-            var v = $('.aiu-verdict', c); v.innerHTML = ''; v.className = 'aiu-verdict';
-        });
-        showScore();
-        var first = $('.aiu-case');
-        if (first && first.scrollIntoView) { first.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-    });
+    function newSet() {
+        current = pickSet(current.map(function (c) { return c.id; }));
+        render();
+        if (casesBox.scrollIntoView) { casesBox.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+
+    if (casesBox) {
+        if (!pool.length) {
+            casesBox.appendChild(el('p', 'aiu-warn', 'Задания сейчас недоступны. Попробуй обновить страницу позже.'));
+            if (checkBtn) { checkBtn.hidden = true; }
+            if (newBtn) { newBtn.hidden = true; }
+            if (scoreEl) { scoreEl.textContent = ''; }
+        } else {
+            if (poolInfo) { poolInfo.textContent = 'В базе заданий: ' + pool.length + '. Каждый раз показывается случайный набор из ' + Math.min(SET_SIZE, pool.length) + '.'; }
+            checkBtn.addEventListener('click', check);
+            newBtn.addEventListener('click', newSet);
+            current = pickSet([]);
+            render();
+        }
+    }
 
     // ---------- Мини-тест «ИИ и безопасность» ----------
     var QUIZ = [
