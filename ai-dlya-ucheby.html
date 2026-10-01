@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landscape-fix.css">
+    <meta name="description" content="ИИ для учёбы: правила честной игры, готовые запросы для подготовки к урокам ОБЗР, практикум «Поймай ошибку ИИ» и безопасность при работе с ИИ">
+    <title>ИИ для учёбы | ИИ-проекты | Дёмин А.Ю.</title>
+    <!-- Фавиконки для всех устройств -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #E53935;
+            --color-success: #4CAF50;
+            --color-warning: #FFA500;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #7F8C8D;
+            --color-border: #E0E6ED;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+        }
+        
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--color-primary-active);
+            padding: 0.5rem 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        nav {
+            background-color: var(--color-primary);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+        }
+        
+        .nav-menu > li > a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu > li > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .nav-menu > li > a.active {
+            background-color: var(--color-danger);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .nav-menu > li > a.active:hover {
+            background-color: var(--color-danger);
+        }
+        
+        .nav-menu > li.has-submenu {
+            position: relative;
+        }
+
+        .nav-menu > li.has-submenu > a:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0.75rem 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            transition-delay: 0s;
+            border-top: 3px solid var(--color-danger);
+            z-index: 1000;
+        }
+
+        .nav-menu > li.has-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition-delay: 0.35s;
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .submenu a:hover {
+            background-color: var(--color-surface);
+            color: var(--color-primary);
+            padding-left: 2rem;
+        }
+
+        .submenu a::before {
+            content: '→';
+            margin-right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--color-danger);
+            font-weight: bold;
+        }
+
+        .submenu a:hover::before {
+            opacity: 1;
+        }
+
+        .submenu a.active {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .submenu a.active::before {
+            opacity: 1;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           КАРТОЧКИ ПРОЕКТОВ
+           ============================================ */
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 61, 122, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 61, 122, 0.35);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            flex-grow: 1;
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
+        }
+
+        .project-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .project-card-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.5rem;
+            background-color: white;
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .project-card-button:hover {
+            background-color: var(--color-danger);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(229, 57, 53, 0.4);
+        }
+
+        .project-card-button::after {
+            content: '→';
+            transition: margin-left 0.3s ease;
+        }
+
+        .project-card-button:hover::after {
+            margin-left: 0.5rem;
+        }
+
+        /* Светлая карточка */
+        .project-card.light {
+            background: white;
+            color: var(--color-text-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .project-card.light::before {
+            background: rgba(0, 61, 122, 0.03);
+        }
+
+        .project-card.light h3 {
+            color: var(--color-primary);
+        }
+
+        .project-card.light p,
+        .project-card.light li {
+            color: var(--color-text-primary);
+        }
+
+        .project-card.light .project-card-button {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .project-card.light .project-card-button:hover {
+            background-color: var(--color-danger);
+        }
+
+        /* Предупреждение об этике */
+        .ethics-notice {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
+            border-left: 4px solid var(--color-warning);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            box-shadow: 0 2px 8px rgba(255, 165, 0, 0.1);
+        }
+
+        .ethics-notice strong {
+            color: #CC8800;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .ethics-notice p {
+            color: #856404;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.nav-overlay.active {
+    display: block;
+} 
+        /* ============================================
+           АДАПТИВНОСТЬ
+           ============================================ */
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 72%;
+    max-width: 320px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: var(--color-primary);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 1001;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
+
+            .nav-menu > li {
+                width: 100%;
+            }
+
+            .nav-menu > li > a {
+                padding: 0.75rem 1rem;
+            }
+
+            .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-left: 3px solid var(--color-danger);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: rgba(0,0,0,0.15);
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+}
+
+.nav-menu > li.has-submenu.open .submenu {
+    max-height: 500px;
+    padding: 0.5rem 0;
+}
+
+            .submenu a {
+                color: var(--color-text-primary);
+                background-color: white;
+                padding-left: 2rem;
+            }
+
+            .submenu a:hover {
+                background-color: var(--color-surface);
+                padding-left: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+                min-height: auto;
+            }
+
+            .project-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-icon {
+                font-size: 3rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .breadcrumb {
+                font-size: 0.85rem;
+            }
+        }
+/* Горизонтальная ориентация телефона */
+@media (max-width: 900px) and (orientation: landscape) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 55%;
+        max-width: 320px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--color-primary);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        z-index: 1001;
+        box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-menu > li > a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .submenu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        border-left: 3px solid var(--color-danger);
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        background-color: rgba(0,0,0,0.15);
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .nav-menu > li.has-submenu.open .submenu {
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+}
+
+        
+        /* Анимации появления карточек */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card {
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: backwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+
+    <style id="aiu-styles">
+        /* ===== Страница «ИИ для учёбы» (префикс aiu-) ===== */
+        .aiu-scope { --color-text-secondary: #5F6B75; --color-success: #2E7D32; --aiu-a: #3949AB; --aiu-t: #E8EAF6; --aiu-b: #C5CAE9; --aiu-ok: #2E7D32; --aiu-bad: #C62828; }
+        .aiu-principle { display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; background: #FFF5F5; border: 2px solid #F3C9C8; border-left: 6px solid var(--color-danger); border-radius: 10px; }
+        .aiu-pi { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+        .aiu-jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 0.5rem; }
+        .aiu-jump a { display: inline-block; padding: 0.45rem 0.95rem; border: 2px solid var(--color-primary); border-radius: 999px; color: var(--color-primary); background: #fff; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: background 0.2s ease; }
+        .aiu-jump a:hover { background: #EEF3FA; }
+        .aiu-jump a:focus-visible, .aiu-btn:focus-visible, .aiu-opt:focus-visible, .aiu-input:focus-visible, .aiu-link:focus-visible { outline: 3px solid #B26A00; outline-offset: 2px; }
+        .aiu-sec { scroll-margin-top: 9rem; }
+        .aiu-sec > .uch-h { scroll-margin-top: 9rem; padding-top: 0.25rem; border-top: 3px solid var(--aiu-b); padding-top: 1rem; margin-top: 2.4rem; }
+        .aiu-small { font-size: 0.93rem; color: var(--color-text-secondary); margin-top: 0.9rem; }
+
+        /* Правила */
+        .aiu-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .aiu-do, .aiu-dont { background: #fff; border: 2px solid var(--color-border); border-radius: 12px; padding: 1.25rem; }
+        .aiu-do { border-top: 5px solid var(--aiu-ok); }
+        .aiu-dont { border-top: 5px solid var(--aiu-bad); }
+        .aiu-do h3, .aiu-dont h3 { margin: 0 0 0.7rem; font-size: 1.15rem; color: var(--color-text-primary); }
+        .aiu-do ul, .aiu-dont ul { list-style: none; padding: 0; margin: 0; }
+        .aiu-do li, .aiu-dont li { display: flex; gap: 0.6rem; padding: 0.4rem 0; line-height: 1.5; }
+        .aiu-do li::before { content: '✓'; color: var(--aiu-ok); font-weight: 800; flex-shrink: 0; }
+        .aiu-dont li::before { content: '✕'; color: var(--aiu-bad); font-weight: 800; flex-shrink: 0; }
+
+        /* Кнопки */
+        .aiu-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: var(--color-primary); color: #fff; border: 2px solid var(--color-primary); padding: 0.55rem 1.1rem; border-radius: 8px; font: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-decoration: none; transition: background 0.2s ease; }
+        .aiu-btn:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+        .aiu-btn-alt { background: #fff; color: var(--color-primary); }
+        .aiu-btn-alt:hover { background: #EEF3FA; color: var(--color-primary); border-color: var(--color-primary); }
+        .aiu-btn.is-disabled { background: #E2E7ED; border-color: #E2E7ED; color: #43505C; cursor: not-allowed; }
+        .aiu-soon { font-weight: 500; font-size: 0.85rem; }
+
+        /* ИИ-тренер */
+        .aiu-topic { background: #fff; border: 2px solid var(--color-border); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
+        .aiu-topic label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+        .aiu-input { width: 100%; padding: 0.7rem 1rem; border: 2px solid var(--color-border); border-radius: 8px; font: inherit; }
+        .aiu-input:focus { border-color: var(--color-primary); }
+        .aiu-prompts { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
+        .aiu-pcard { display: flex; flex-direction: column; gap: 0.6rem; background: #fff; border: 2px solid var(--aiu-b); border-top: 5px solid var(--aiu-a); border-radius: 12px; padding: 1.1rem; }
+        .aiu-pcard h3 { margin: 0; font-size: 1.05rem; color: var(--color-primary); }
+        .aiu-ptext { flex: 1; margin: 0; padding: 0.7rem 0.85rem; background: var(--color-surface); border-left: 4px solid var(--aiu-a); border-radius: 6px; font-size: 0.93rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+        .aiu-copied { min-height: 1.3rem; font-size: 0.88rem; color: var(--aiu-ok); font-weight: 600; }
+        .aiu-warn { margin-top: 1.1rem; padding: 0.8rem 1rem; border-left: 4px solid #C26A00; background: #FFF8EC; border-radius: 6px; font-size: 0.95rem; }
+
+        /* Поймай ошибку ИИ */
+        .aiu-cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        .aiu-case { background: #fff; border: 2px solid var(--color-border); border-left: 5px solid var(--aiu-a); border-radius: 12px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.7rem; }
+        .aiu-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .aiu-tag { font-size: 0.78rem; font-weight: 700; padding: 0.15rem 0.65rem; border-radius: 20px; background: var(--aiu-t); color: #283593; }
+        .aiu-tag-bzh { background: #F8EDE0; color: #6D3A05; }
+        .aiu-tag-nvp { background: #E6EEF8; color: #003D7A; }
+        .aiu-q { margin: 0; }
+        .aiu-ai { margin: 0; padding: 0.8rem 1rem; background: #F2F4F7; border: 1px dashed #8A99A8; border-radius: 8px; }
+        .aiu-ai-label { display: block; font-size: 0.82rem; font-weight: 700; color: #43505C; margin-bottom: 0.3rem; }
+        .aiu-ai p { margin: 0; }
+        .aiu-choices { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .aiu-choice.is-picked { background: var(--color-primary); color: #fff; }
+        .aiu-choice[disabled] { cursor: default; opacity: 0.85; }
+        .aiu-verdict:empty { display: none; }
+        .aiu-verdict { padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.97rem; }
+        .aiu-verdict.is-right { background: #E8F5E9; border-left: 4px solid var(--aiu-ok); }
+        .aiu-verdict.is-wrong { background: #FFEBEE; border-left: 4px solid var(--aiu-bad); }
+        .aiu-verdict .aiu-vh { font-weight: 800; margin: 0 0 0.35rem; }
+        .aiu-verdict p { margin: 0 0 0.4rem; }
+        .aiu-verdict p:last-child { margin-bottom: 0; }
+        .aiu-scorebar { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.1rem; padding: 0.9rem 1.1rem; background: var(--aiu-t); border-radius: 10px; }
+        .aiu-score { font-weight: 700; color: #283593; flex: 1; min-width: 220px; }
+        .aiu-send { margin-top: 1rem; padding: 1rem 1.25rem; background: #fff; border: 2px solid var(--color-border); border-radius: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+        .aiu-send p { margin: 0; flex: 1; min-width: 240px; }
+
+        /* ИИ и безопасность */
+        .aiu-risks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+        .aiu-risk { background: #fff; border: 2px solid var(--color-border); border-top: 5px solid var(--color-danger); border-radius: 12px; padding: 1.1rem 1.25rem; }
+        .aiu-risk .aiu-ico { font-size: 1.8rem; line-height: 1; }
+        .aiu-risk h3 { margin: 0.4rem 0 0.4rem; font-size: 1.1rem; color: var(--color-primary); }
+        .aiu-risk p { margin: 0 0 0.5rem; }
+        .aiu-risk ul { margin: 0; padding-left: 1.2rem; }
+        .aiu-risk li { margin-bottom: 0.25rem; }
+        .aiu-help { margin-top: 1.25rem; padding: 1rem 1.25rem; background: #E8F5E9; border: 2px solid #A5D6A7; border-radius: 12px; }
+        .aiu-help p { margin: 0 0 0.4rem; }
+        .aiu-help p:last-child { margin-bottom: 0; }
+        .aiu-quiz-h { margin: 1.8rem 0 0.8rem; font-size: 1.2rem; color: var(--color-primary); }
+        .aiu-quiz { display: flex; flex-direction: column; gap: 1rem; }
+        .aiu-qcard { background: #fff; border: 2px solid var(--color-border); border-radius: 12px; padding: 1.1rem 1.25rem; }
+        .aiu-qtext { font-weight: 700; margin: 0 0 0.7rem; }
+        .aiu-opts { display: flex; flex-direction: column; gap: 0.5rem; }
+        .aiu-opt { text-align: left; background: #fff; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: 8px; padding: 0.6rem 0.9rem; font: inherit; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
+        .aiu-opt:hover:not([disabled]) { background: #EEF3FA; border-color: var(--color-primary); }
+        .aiu-opt[disabled] { cursor: default; }
+        .aiu-opt.is-correct { background: #E8F5E9; border-color: var(--aiu-ok); }
+        .aiu-opt.is-wrong { background: #FFEBEE; border-color: var(--aiu-bad); }
+        .aiu-expl:empty { display: none; }
+        .aiu-expl { margin-top: 0.7rem; padding: 0.7rem 0.9rem; background: var(--color-surface); border-radius: 8px; font-size: 0.95rem; }
+        .aiu-final:empty { display: none; }
+        .aiu-final { padding: 1rem 1.25rem; background: var(--aiu-t); border-radius: 12px; font-weight: 700; color: #283593; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .aiu-final span { flex: 1; min-width: 220px; }
+
+        /* Мой опыт и ссылки */
+        .aiu-survey { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; padding: 1.4rem; background: var(--aiu-t); border: 2px solid var(--aiu-b); border-radius: 12px; }
+        .aiu-survey-text { flex: 1; min-width: 240px; }
+        .aiu-survey-text h3 { margin: 0 0 0.4rem; color: #283593; }
+        .aiu-survey-text p { margin: 0 0 0.4rem; }
+        .aiu-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+        .aiu-link { display: block; padding: 0.9rem 1.1rem; background: #fff; border: 2px solid var(--color-border); border-radius: 10px; color: var(--color-primary); font-weight: 700; text-decoration: none; transition: border-color 0.2s ease, background 0.2s ease; }
+        .aiu-link span { display: block; font-weight: 400; font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.2rem; }
+        .aiu-link:hover { border-color: var(--color-primary); background: #EEF3FA; }
+
+        @media (max-width: 860px) { .aiu-cases, .aiu-risks, .aiu-two { grid-template-columns: 1fr; } }
+        @media (max-width: 560px) { .aiu-prompts { grid-template-columns: 1fr; } .aiu-principle { flex-direction: column; gap: 0.5rem; } }
+        /* Общие классы страницы (как в разделе «Ученикам») */
+        .uch-lead { margin: 0 0 1.5rem; color: var(--color-text-secondary); font-size: 1.05rem; }
+        .uch-h { font-size: 1.35rem; color: var(--color-primary); margin: 2rem 0 0.9rem; }
+        .uch-note { margin-top: 1.5rem; padding: 0.8rem 1rem; border-left: 4px solid var(--color-danger); background: #FFF5F5; border-radius: 6px; font-size: 0.95rem; }
+        .uch-note a { color: var(--color-primary); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="header-content">
+                <div class="header-title">
+                    <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" onclick="openLightbox()" style="width: 80px; height: 80px; margin-right: 1rem; object-fit: contain; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.25)); cursor: pointer; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+                    <div id="emblem-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center;" onclick="closeLightbox()">
+                        <span style="position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#E53935'" onmouseout="this.style.color='white'">&times;</span>
+                        <img src="images/emblem-obzr.png.png" alt="Эмблема ОБЗР СШ 2 Лысково" style="max-width: 80%; max-height: 80%; object-fit: contain; animation: zoomIn 0.3s ease;" onclick="event.stopPropagation()">
+                    </div>
+
+                    <div>
+                        <h1>Дёмин Александр Юрьевич</h1>
+                        <p class="header-subtitle">Преподаватель-организатор ОБЗР | МБОУ СШ № 2 г. Лысково</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-menu" id="navMenu">
+                    <li class="has-submenu">
+                        <a href="index.html" onclick="return handleSubmenuClick(event, this)">Главная</a>
+                        <ul class="submenu">
+                            <li><a href="o-predmete-obzr.html">О предмете ОБЗР</a></li>
+                            <li><a href="novosti.html">Последние новости</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="about.html" onclick="return handleSubmenuClick(event, this)">О себе</a>
+                        <ul class="submenu">
+                            <li><a href="obrazovanie.html">Образование</a></li>
+                            <li><a href="perepodgotovka.html">Переподготовка и повышение квалификации</a></li>
+                            <li><a href="nagrady.html">Награды и достижения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="portfolio.html" onclick="return handleSubmenuClick(event, this)">Портфолио</a>
+                        <ul class="submenu">
+                            <li><a href="rezultaty-obucheniya.html">Результаты освоения ОБЗР обучающимися</a></li>
+                            <li><a href="dostizheniya-uchenikov.html">Достижения учащихся</a></li>
+                            <li><a href="metodicheskaya-aktivnost.html">Методическая активность</a></li>
+                            <li><a href="documents.html">Документы портфолио</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="uchenikam.html" onclick="return handleSubmenuClick(event, this)">Ученикам</a>
+                        <ul class="submenu">
+                            <li><a href="uchebnik-nvp.html">Учебник НВП</a></li>
+                            <li><a href="bzh-k-uroku.html">БЖ: к уроку</a></li>
+                            <li><a href="domashnie-zadaniya.html">Домашние задания</a></li>
+                            <li><a href="trenazhery.html">Тренажёры и самопроверка</a></li>
+                            <li><a href="situacionnye-zadachi.html">Ситуационные задачи</a></li>
+                            <li><a href="obratnaya-svyaz-uchenikov.html">Обратная связь</a></li>
+                            <li><a href="literature-projects.html">Читаем «Цифровой Фантом»</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="parents.html" onclick="return handleSubmenuClick(event, this)">Родителям</a>
+                        <ul class="submenu">
+                            <li><a href="help-at-home.html">Как помочь ребёнку дома</a></li>
+                            <li><a href="training-camps.html">Готовимся к учебным сборам</a></li>
+                            <li><a href="safety-dialogue.html">Диалоги о безопасности</a></li>
+                            <li><a href="feedback.html">Обратная связь</a></li>
+                            <li><a href="grading.html">Как оценивается ОБЗР</a></li>
+                            <li><a href="faq.html">Часто задаваемые вопросы (FAQ)</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="metodika.html" onclick="return handleSubmenuClick(event, this)">Коллегам</a>
+                        <ul class="submenu">
+                            <li><a href="normativnaya-dokumentaciya.html">Нормативная документация</a></li>
+                            <li><a href="konspekty-urokov.html">Конспекты уроков по курсам</a></li>
+                            <li><a href="prezentacii-testy.html">Презентации, наглядные материалы, тесты</a></li>
+                            <li><a href="metodicheskie-rekomendacii.html">Методические рекомендации</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="ai-projects.html" class="active" onclick="return handleSubmenuClick(event, this)">ИИ-проекты</a>
+                        <ul class="submenu">
+                            <li><a href="ai-dlya-uchenikov.html" class="active">Для учеников - творческие проекты</a></li>
+                            <li><a href="ai-dlya-roditelej.html">Для родителей - практические материалы</a></li>
+                            <li><a href="ai-dlya-kolleg.html">Для коллег - методические материалы</a></li>
+                            <li><a href="ai-resursy.html">Полезные ресурсы по ИИ в образовании</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="vneurochnaya.html" onclick="return handleSubmenuClick(event, this)">Активности</a>
+                        <ul class="submenu">
+                            <li><a href="yunarmiya.html">Юнармия</a></li>
+                            <li><a href="yuid.html">ЮИД (Юные инспекторы движения)</a></li>
+                            <li><a href="zarnica.html">Зарница 2.0</a></li>
+                            <li><a href="olimpiady.html">Олимпиады по ОБЗР</a></li>
+                            <li><a href="sbory.html">Учебно-полевые сборы</a></li>
+                            <li><a href="vzaimodejstvie.html">Взаимодействие с партнёрами</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="contacts.html" onclick="return handleSubmenuClick(event, this)">Контакты</a>
+                        <ul class="submenu">
+                            <li><a href="contacts.html#feedback-form">Форма обратной связи</a></li>
+                            <li><a href="contacts.html#about-school">О школе</a></li>
+                            <li><a href="contacts.html#useful-links">Полезные ссылки</a></li>
+                            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="interactive.html" onclick="return handleSubmenuClick(event, this)">💬 Отзыв о сайте</a>
+                        <ul class="submenu">   
+                            <li><a href="interactive.html">Оставить отзыв о работе сайта</a></li> 
+                        </ul>  
+                    </li>
+
+                    
+                </ul>             
+            </div>
+        </nav>
+    </header>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+    <main>
+        <!-- ============================================================
+             СТРАНИЦА «ИИ ДЛЯ УЧЁБЫ» (внутренняя страница раздела «Ученикам»).
+             Две формы подключаются в скрипте внизу страницы: найдите строку
+                 var AIU_FORMS = { practicum: '', survey: '' };
+             и вставьте ссылки на Яндекс Формы между кавычками. Пока ссылки пустые,
+             кнопки форм показываются серыми с подписью «откроется скоро».
+             ============================================================ -->
+        <h2 class="page-title">🤖 ИИ для учёбы</h2>
+        <p class="page-subtitle">Как использовать ИИ при подготовке к урокам ОБЗР честно, безопасно и с пользой</p>
+
+        <div class="uch-scope aiu-scope">
+
+        <div class="aiu-principle" role="note">
+            <span class="aiu-pi" aria-hidden="true">🛡️</span>
+            <div><strong>Главное правило страницы.</strong> Первая помощь, действия при чрезвычайных ситуациях и безопасное обращение с оружием: верь только учебнику и официальным алгоритмам. Ответ ИИ по этим темам всегда проверяй. ИИ помогает разобраться в теме, но не заменяет учебник и учителя.</div>
+        </div>
+
+        <div class="aiu-jump" role="navigation" aria-label="Содержание страницы">
+            <a href="#aiu-rules">⚖️ Правила честной игры</a>
+            <a href="#aiu-trainer">🏋️ ИИ-тренер</a>
+            <a href="#aiu-catch">🔍 Поймай ошибку ИИ</a>
+            <a href="#aiu-safety">🛡️ ИИ и безопасность</a>
+            <a href="#aiu-exp">💭 Мой опыт</a>
+        </div>
+
+        <!-- ========== 1. ПРАВИЛА ЧЕСТНОЙ ИГРЫ ========== -->
+        <section class="aiu-sec" id="aiu-rules" aria-labelledby="aiu-rules-h">
+            <h2 class="uch-h" id="aiu-rules-h">⚖️ Правила честной игры</h2>
+            <p class="uch-lead">ИИ похож на справочник или репетитора: он помогает понять, но работу за тебя делать не должен.</p>
+            <div class="aiu-two">
+                <div class="aiu-do">
+                    <h3>Можно поручать ИИ</h3>
+                    <ul>
+                        <li>Объяснить непонятное другими словами, проще</li>
+                        <li>Задать тебе вопросы по теме и проверить твои ответы</li>
+                        <li>Помочь составить план ответа (текст пишешь сам)</li>
+                        <li>Показать, что ты упустил в своём ответе</li>
+                        <li>Предложить ситуацию и спросить, как ты поступишь</li>
+                    </ul>
+                </div>
+                <div class="aiu-dont">
+                    <h3>Нельзя</h3>
+                    <ul>
+                        <li>Выдавать сгенерированный текст за свою работу: задание к уроку пиши сам, своими словами</li>
+                        <li>Вводить свои и чужие персональные данные: фамилию, адрес, телефон, фото, пароли, личный код с карточки</li>
+                        <li>Верить ИИ на слово, когда речь о безопасности: первая помощь, ЧС, оружие</li>
+                        <li>Скрывать, что пользовался ИИ: честность важнее красивого ответа</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="aiu-small">В форме с заданием к уроку есть вопрос про ИИ. Отвечай на него честно. У многих ИИ-сервисов есть возрастные ограничения: прочитай правила сервиса и, если тебе пока нельзя регистрироваться самому, спроси разрешения у родителей. Подойдут российские сервисы, например GigaChat или YandexGPT.</p>
+        </section>
+
+        <!-- ========== 2. ИИ-ТРЕНЕР ========== -->
+        <section class="aiu-sec" id="aiu-trainer" aria-labelledby="aiu-trainer-h">
+            <h2 class="uch-h" id="aiu-trainer-h">🏋️ ИИ-тренер</h2>
+            <p class="uch-lead">Готовые запросы для подготовки к уроку. Впиши тему, скопируй запрос и вставь его в ИИ-сервис.</p>
+
+            <div class="aiu-topic">
+                <label for="aiuTopic">Тема урока (название параграфа в «Учебнике НВП» или тема из путеводителя «БЖ: к уроку»)</label>
+                <input id="aiuTopic" class="aiu-input" type="text" maxlength="150" autocomplete="off" placeholder="Например: Состав и назначение Вооружённых Сил Российской Федерации">
+                <p class="aiu-small" style="margin-top:0.6rem;">Тему можно не вписывать, тогда в запросе останется место «[тема урока]». Здесь ничего не отправляется и не сохраняется: текст остаётся на твоём устройстве. Фамилию и другие личные данные не вписывай.</p>
+            </div>
+
+            <div class="aiu-prompts">
+                <article class="aiu-pcard">
+                    <h3>💡 Объясни проще</h3>
+                    <p class="aiu-ptext" data-tpl="Объясни простыми словами тему {T} для ученика школы. Приведи один пример из жизни. В конце задай мне один проверочный вопрос и подожди моего ответа.">Объясни простыми словами тему «[тема урока]» для ученика школы. Приведи один пример из жизни. В конце задай мне один проверочный вопрос и подожди моего ответа.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>❓ Проверь меня</h3>
+                    <p class="aiu-ptext" data-tpl="Задай мне 5 вопросов по теме {T}. Задавай по одному и жди моего ответа. После каждого ответа скажи, верно ли я ответил, и объясни ошибку. Если ты не уверен в факте, так и скажи.">Задай мне 5 вопросов по теме «[тема урока]». Задавай по одному и жди моего ответа. После каждого ответа скажи, верно ли я ответил, и объясни ошибку. Если ты не уверен в факте, так и скажи.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>🎭 Что бы я сделал</h3>
+                    <p class="aiu-ptext" data-tpl="Предложи мне жизненную ситуацию по теме {T} и спроси, как я поступлю. Не подсказывай сразу. После моего ответа разбери, что я сделал правильно, а что можно улучшить.">Предложи мне жизненную ситуацию по теме «[тема урока]» и спроси, как я поступлю. Не подсказывай сразу. После моего ответа разбери, что я сделал правильно, а что можно улучшить.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>🗂️ План ответа</h3>
+                    <p class="aiu-ptext" data-tpl="Помоги составить план ответа по теме {T}: 4–5 пунктов, без готового текста. Текст я напишу сам, своими словами.">Помоги составить план ответа по теме «[тема урока]»: 4–5 пунктов, без готового текста. Текст я напишу сам, своими словами.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>🧩 Найди пробелы</h3>
+                    <p class="aiu-ptext" data-tpl="Вот мой ответ по теме {T}: [вставь свой ответ без личных данных]. Подскажи, что я упустил и какие понятия стоит повторить. Мой ответ не переписывай.">Вот мой ответ по теме «[тема урока]»: [вставь свой ответ без личных данных]. Подскажи, что я упустил и какие понятия стоит повторить. Мой ответ не переписывай.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>📖 Мини-словарь</h3>
+                    <p class="aiu-ptext" data-tpl="Составь мини-словарь по теме {T}: 8 терминов с короткими понятными определениями. Отметь, какие определения мне нужно сверить с учебником.">Составь мини-словарь по теме «[тема урока]»: 8 терминов с короткими понятными определениями. Отметь, какие определения мне нужно сверить с учебником.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>🧠 Как запомнить</h3>
+                    <p class="aiu-ptext" data-tpl="Предложи, как мне запомнить главное по теме {T}: короткую схему, ассоциации или подсказку. Потом проверь меня по ней.">Предложи, как мне запомнить главное по теме «[тема урока]»: короткую схему, ассоциации или подсказку. Потом проверь меня по ней.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+                <article class="aiu-pcard">
+                    <h3>🔎 Что проверить</h3>
+                    <p class="aiu-ptext" data-tpl="Коротко расскажи о теме {T}, а потом перечисли, в каких местах твой ответ мог оказаться неточным и что мне нужно проверить по учебнику.">Коротко расскажи о теме «[тема урока]», а потом перечисли, в каких местах твой ответ мог оказаться неточным и что мне нужно проверить по учебнику.</p>
+                    <button type="button" class="aiu-btn aiu-copy">📋 Скопировать запрос</button>
+                    <span class="aiu-copied" role="status" aria-live="polite"></span>
+                </article>
+            </div>
+            <p class="aiu-warn"><strong>Важно.</strong> Если тема про первую помощь, чрезвычайные ситуации или оружие, используй ИИ только чтобы повторить понятия. Порядок действий сверяй с учебником и отрабатывай на практических занятиях.</p>
+        </section>
+
+        <!-- ========== 3. ПОЙМАЙ ОШИБКУ ИИ ========== -->
+        <section class="aiu-sec" id="aiu-catch" aria-labelledby="aiu-catch-h">
+            <h2 class="uch-h" id="aiu-catch-h">🔍 Поймай ошибку ИИ</h2>
+            <p class="uch-lead">Ниже шесть ответов ИИ. В пяти есть ошибки, в одном нет. Сначала реши сам, потом нажимай кнопку и сверь свой вывод с разбором. Главное: проверь по учебнику или официальному источнику.</p>
+
+            <div class="aiu-cases">
+                <article class="aiu-case" data-truth="error">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Пожарная безопасность</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> что делать при пожаре в многоэтажном доме?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Если загорелось в квартире, выйди из неё, закрой дверь и вызови пожарных по номеру 102. Спускайся быстрее на лифте, чтобы не задохнуться в дыму на лестнице.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Здесь две ошибки.</strong></p>
+                        <p>1. Пожарных вызывают по номеру 101 или 112. Номер 102 вызывает полицию.</p>
+                        <p>2. При пожаре нельзя пользоваться лифтом: он может отключиться между этажами, а шахта быстро заполняется дымом. Спускаться нужно по лестнице.</p>
+                    </div>
+                </article>
+
+                <article class="aiu-case" data-truth="error">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Цифровая среда</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> мне позвонили из «службы безопасности банка» и просят назвать код из СМС. Это нормально?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Да, если в аккаунте включена двухфакторная защита, сотрудник банка вправе попросить код, чтобы подтвердить, что звонишь именно ты.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Ответ неверный.</strong></p>
+                        <p>Код из СМС нельзя сообщать никому, даже тому, кто представился сотрудником банка. Настоящие сотрудники кодов не спрашивают. Двухфакторная защита работает, только пока код знаешь ты один.</p>
+                        <p>Что делать: положить трубку и самому позвонить в банк по номеру, который написан на карте.</p>
+                    </div>
+                </article>
+
+                <article class="aiu-case" data-truth="error">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-nvp">НВП</span><span class="aiu-tag">Обращение с оружием</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> можно ли направить на человека автомат, если он точно разряжен?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Можно, если ты проверил оружие и убедился, что патронов нет. Без патронов выстрела быть не может.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Ответ опасный и неверный.</strong></p>
+                        <p>Правило безопасности: оружие всегда считают заряженным, а направлять его на людей нельзя, даже если оно «точно разряжено». Ошибались и те, кто «проверял».</p>
+                        <p>Обращаться с оружием на занятиях можно только под руководством преподавателя. По таким темам ответ ИИ всегда сверяй с учебником.</p>
+                    </div>
+                </article>
+
+                <article class="aiu-case" data-truth="ok">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Экстренные службы</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> какой номер набрать в экстренной ситуации, если на счёте нет денег?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Набери 112. Это единый номер вызова экстренных служб, звонок на него бесплатный и возможен при нулевом балансе. Назови, что случилось, адрес и своё имя, и не клади трубку, пока диспетчер не разрешит.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Ошибок нет: это контрольный ответ.</strong></p>
+                        <p>ИИ иногда отвечает верно. Задача не в том, чтобы сомневаться во всём, а в том, чтобы проверять. Номер 112 стоит помнить и объяснить младшим.</p>
+                    </div>
+                </article>
+
+                <article class="aiu-case" data-truth="error">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Дипфейки</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> программа-детектор показала, что видео настоящее на 95 %. Значит, ему можно доверять?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Да, при 95 % можно считать видео подлинным и смело делиться им.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Ответ неверный.</strong></p>
+                        <p>Детекторы ошибаются, а новые генераторы их обходят. Процент это повод присмотреться, а не приговор.</p>
+                        <p>Проверь, откуда видео, кто его опубликовал, есть ли оно в надёжных источниках. И подумай, кому оно может навредить, прежде чем пересылать.</p>
+                    </div>
+                </article>
+
+                <article class="aiu-case" data-truth="error">
+                    <div class="aiu-tags"><span class="aiu-tag aiu-tag-bzh">БЖ</span><span class="aiu-tag">Достоверность информации</span></div>
+                    <p class="aiu-q"><strong>Вопрос:</strong> по какому закону в России наказывают за мошенничество в интернете?</p>
+                    <blockquote class="aiu-ai"><span class="aiu-ai-label">🤖 Ответ ИИ</span><p>Ответственность предусмотрена Федеральным законом «О цифровой безопасности школьников» № 999-ФЗ, статья 12.</p></blockquote>
+                    <div class="aiu-choices" role="group" aria-label="Твой вывод">
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="error">🔍 Есть ошибка</button>
+                        <button type="button" class="aiu-btn aiu-btn-alt aiu-choice" data-says="ok">✅ Ошибок нет</button>
+                    </div>
+                    <div class="aiu-verdict" role="status" aria-live="polite"></div>
+                    <div class="aiu-key" hidden>
+                        <p><strong>Здесь ИИ выдумал закон.</strong></p>
+                        <p>Такого закона нет: название и номер придуманы специально для этого задания. Но настоящие ИИ тоже иногда выдумывают законы, статьи и ссылки, и звучит это очень уверенно.</p>
+                        <p>Ответственность за мошенничество устанавливает Уголовный кодекс РФ: статья 159 и связанные с ней, например 159.3 и 159.6. Проверять такие ссылки нужно по официальному источнику, например на портале pravo.gov.ru. Если ссылку найти не удалось, ей нельзя верить.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="aiu-scorebar">
+                <span class="aiu-score" id="aiuScore" role="status" aria-live="polite">Оцени ответы ИИ: счёт появится здесь.</span>
+                <button type="button" class="aiu-btn aiu-btn-alt" id="aiuReset" hidden>↺ Пройти заново</button>
+            </div>
+
+            <div class="aiu-send">
+                <p><strong>Отправь свой разбор учителю.</strong> Опиши, в чём ошибка и по какому источнику ты её проверил. В форме не пиши фамилию и имя: достаточно класса и личного кода (5 цифр с твоей карточки).</p>
+                <a class="aiu-btn" data-aiu-form="practicum" href="#">✉️ Открыть форму</a>
+            </div>
+        </section>
+
+        <!-- ========== 4. ИИ И БЕЗОПАСНОСТЬ ========== -->
+        <section class="aiu-sec" id="aiu-safety" aria-labelledby="aiu-safety-h">
+            <h2 class="uch-h" id="aiu-safety-h">🛡️ ИИ и безопасность</h2>
+            <p class="uch-lead">Нейросети помогают не только тебе. Вот четыре риска, о которых нужно знать, и что с ними делать.</p>
+
+            <div class="aiu-risks">
+                <article class="aiu-risk">
+                    <span class="aiu-ico" aria-hidden="true">🎭</span>
+                    <h3>Дипфейки</h3>
+                    <p>Поддельные фото, видео и аудио, созданные нейросетью. У них бывают признаки подделки, но новые модели могут их не давать.</p>
+                    <ul>
+                        <li>Проверь источник и дату публикации</li>
+                        <li>Поищи то же видео в надёжных источниках</li>
+                        <li>Не пересылай, пока не проверил</li>
+                        <li>Детектор — подсказка, а не доказательство</li>
+                    </ul>
+                </article>
+                <article class="aiu-risk">
+                    <span class="aiu-ico" aria-hidden="true">📞</span>
+                    <h3>Подделка голоса</h3>
+                    <p>Мошенники могут воспроизвести знакомый голос по короткой записи и просят срочно перевести деньги.</p>
+                    <ul>
+                        <li>Положи трубку и перезвони по номеру из своих контактов</li>
+                        <li>Договорись в семье о кодовом слове</li>
+                        <li>Не переводи деньги в спешке</li>
+                    </ul>
+                </article>
+                <article class="aiu-risk">
+                    <span class="aiu-ico" aria-hidden="true">🔓</span>
+                    <h3>Утечка данных через чат-боты</h3>
+                    <p>То, что ты пишешь ИИ-сервису, может храниться и использоваться по правилам этого сервиса.</p>
+                    <ul>
+                        <li>Не вводи фамилию, адрес, телефон, школу и класс</li>
+                        <li>Не вводи пароли, коды и фото документов</li>
+                        <li>Не загружай чужие фото и переписки</li>
+                        <li>Формулируй вопрос без личных деталей</li>
+                    </ul>
+                </article>
+                <article class="aiu-risk">
+                    <span class="aiu-ico" aria-hidden="true">🤖</span>
+                    <h3>Боты-мошенники</h3>
+                    <p>«ИИ-помощник» в мессенджере обещает лёгкий доход и просит ссылку, код или данные карты.</p>
+                    <ul>
+                        <li>Не отвечай и не переходи по ссылкам</li>
+                        <li>Не сообщай данные карты и коды из СМС</li>
+                        <li>Расскажи взрослому и пожалуйся на аккаунт</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="aiu-help">
+                <p><strong>Если уже попался,</strong> скажи взрослому сразу. Это не стыдно: ошибаются и взрослые, а вместе исправить проще.</p>
+                <p>📞 112: единый номер экстренных служб. 8-800-2000-122: детский телефон доверия, звонок бесплатный.</p>
+            </div>
+
+            <h3 class="aiu-quiz-h">Проверь себя: 5 вопросов</h3>
+            <div class="aiu-quiz" id="aiuQuiz"></div>
+            <div class="aiu-final" id="aiuFinal" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- ========== 5. МОЙ ОПЫТ ========== -->
+        <section class="aiu-sec" id="aiu-exp" aria-labelledby="aiu-exp-h">
+            <h2 class="uch-h" id="aiu-exp-h">💭 Мой опыт</h2>
+            <div class="aiu-survey">
+                <div class="aiu-survey-text">
+                    <h3>Как ты используешь ИИ в учёбе?</h3>
+                    <p>Короткий анонимный опрос, который проводится раз в четверть. Он нужен, чтобы понять, чем ИИ помогает, а где мешает. Фамилию и имя вводить не нужно, результаты публикуются обезличенно, по классам.</p>
+                </div>
+                <a class="aiu-btn" data-aiu-form="survey" href="#">💬 Пройти опрос</a>
+            </div>
+        </section>
+
+        <!-- ========== СВЯЗАННЫЕ СТРАНИЦЫ ========== -->
+        <section class="aiu-sec" aria-labelledby="aiu-more-h">
+            <h2 class="uch-h" id="aiu-more-h">Где ещё посмотреть</h2>
+            <div class="aiu-links">
+                <a class="aiu-link" href="uchebnik-nvp.html">📖 Учебник НВП<span>Параграф к каждому уроку курса</span></a>
+                <a class="aiu-link" href="bzh-k-uroku.html">🧭 БЖ: к уроку<span>Урок, параграф учебника, тренажёр</span></a>
+                <a class="aiu-link" href="literature-projects.html">📚 Читаем «Цифровой Фантом»<span>Роман о безопасности в цифровой среде</span></a>
+                <a class="aiu-link" href="uchenikam.html">🎓 Ученикам<span>Все разделы для учёбы</span></a>
+            </div>
+        </section>
+
+        <p class="uch-note"><strong>Важно:</strong> в формах не пиши фамилию и имя. Достаточно личного кода: 5 цифр с твоей карточки. На странице нет чат-бота, и твои запросы к ИИ здесь не собираются. Подробнее в <a href="privacy-policy.html">политике конфиденциальности</a>.</p>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📍 МБОУ СШ № 2 г. Лысково</li>
+                    <li>📞 Консультации: по согласованию</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Полезные ссылки</h3>
+                <ul>
+                    <li><a href="https://edu.gov.ru" target="_blank">Минпросвещения России</a></li>
+                    <li><a href="https://fgos.ru" target="_blank">ФГОС</a></li>
+                    <li><a href="https://mchs.gov.ru" target="_blank">МЧС России</a></li>
+                    <li><a href="https://mil.ru" target="_blank">Минобороны России</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Разделы сайта</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О себе</a></li>
+                    <li><a href="uchenikam.html">Ученикам</a></li>
+                    <li><a href="ai-projects.html">ИИ-проекты</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+
+     <!-- ✅ АВТОМАТИЧЕСКИЙ ГОД -->
+    <div class="footer-bottom">
+        <p>&copy; 2025–<span id="currentYear"></span> Дёмин Александр Юрьевич. Все права защищены.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            При создании некоторых материалов сайта использовались инструменты искусственного интеллекта (Claude AI, Perplexity AI, Suno AI и др.).<br>
+            Все материалы проверены и адаптированы в соответствии с требованиям ФГОС.
+        </p>
+    </div>
+</footer>
+
+<!-- ✅ СКРИПТ ОБНОВЛЕНИЯ ГОДА -->
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>    
+
+    <script>
+        function openLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('emblem-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const scrollY = window.scrollY;
+        updateMenuPosition();
+        menu.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.top = '-' + scrollY + 'px';
+        } else {
+            const savedScroll = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            document.body.style.top = '';
+            window.scrollTo(0, savedScroll);
+        }
+        menu.style.overflowY = 'auto';
+        menu.style.webkitOverflowScrolling = 'touch';
+    }
+
+    function updateMenuPosition() {
+        const menu = document.getElementById('navMenu');
+        const overlay = document.getElementById('navOverlay');
+        const headerTop = document.querySelector('.header-top');
+        if (!menu || !headerTop) return;
+        const headerHeight = headerTop.getBoundingClientRect().height;
+        menu.style.top = headerHeight + 'px';
+        menu.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        menu.style.overflowY = 'auto';
+        if (overlay) {
+            overlay.style.top = headerHeight + 'px';
+            overlay.style.height = 'calc(100vh - ' + headerHeight + 'px)';
+        }
+    }
+
+    window.addEventListener('orientationchange', function() {
+        setTimeout(function() {
+            const menu = document.getElementById('navMenu');
+            if (menu && menu.classList.contains('active')) updateMenuPosition();
+        }, 300);
+    });
+
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu && menu.classList.contains('active')) updateMenuPosition();
+    });
+
+    function handleSubmenuClick(event, element) {
+        if (window.innerWidth <= 1024 || window.innerHeight <= 500) {
+            const parentLi = element.parentElement;
+            if (parentLi.classList.contains('open')) return true;
+            event.preventDefault();
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                if (item !== parentLi) item.classList.remove('open');
+            });
+            parentLi.classList.toggle('open');
+            return false;
+        }
+        return true;
+    }
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.has-submenu') && window.innerWidth <= 1024) {
+            document.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+            });
+        }
+    });
+       
+    </script>
+<!-- ========================================== -->
+    <!-- СЮДА ВСТАВЛЯЕМ ВЕСЬ КОД QR-КНОПКИ -->
+    <!-- ========================================== -->
+    
+    <!-- Плавающая кнопка QR-код -->
+    <div id="qrFloatingButton" 
+         style="position: fixed; 
+                bottom: 30px; 
+                right: 30px; 
+                width: 65px; 
+                height: 65px; 
+                background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+                border-radius: 50%; 
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                cursor: move;
+                z-index: 10000; 
+                transition: box-shadow 0.3s ease;
+                animation: pulse 2s infinite;
+                touch-action: none;
+                user-select: none;">
+        <span style="font-size: 2.2rem; 
+                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+                     pointer-events: none;">📱</span>
+    </div>
+
+    <!-- Подсказка -->
+    <div id="qrButtonHint" 
+         style="position: fixed;
+                bottom: 110px;
+                right: 30px;
+                background: #003D7A;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 9999;
+                display: none;
+                max-width: 200px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;">
+        💡 Удерживайте для перемещения
+        <div style="position: absolute;
+                    bottom: -8px;
+                    right: 20px;
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 8px solid #003D7A;"></div>
+    </div>
+
+    <!-- Модальное окно с QR-кодом -->
+    <div id="qrModalWindow" 
+         style="display: none; 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                background: rgba(0, 0, 0, 0.85); 
+                z-index: 99999; 
+                align-items: center; 
+                justify-content: center;
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+                padding: 20px;
+                box-sizing: border-box;
+                overflow-y: auto;">
+        
+        <div style="background: white; 
+                    padding: 30px 20px; 
+                    border-radius: 20px; 
+                    text-align: center; 
+                    width: 100%;
+                    max-width: 420px; 
+                    position: relative;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    animation: slideUp 0.4s ease;
+                    margin: auto;
+                    max-height: 90vh;
+                    overflow-y: auto;">
+            
+            <button onclick="closeQRModal()" 
+                    style="position: sticky;
+                           top: 0;
+                           left: calc(100% - 45px);
+                           background: #003D7A; 
+                           border: none; 
+                           width: 38px;
+                           height: 38px;
+                           border-radius: 50%;
+                           font-size: 1.6rem; 
+                           cursor: pointer; 
+                           color: white;
+                           display: flex;
+                           align-items: center;
+                           justify-content: center;
+                           transition: all 0.3s ease;
+                           margin-bottom: 15px;
+                           margin-left: auto;
+                           z-index: 10;
+                           box-shadow: 0 2px 8px rgba(0,0,0,0.2);"
+                    onmouseover="this.style.background='#E53935'; this.style.transform='rotate(90deg)';"
+                    onmouseout="this.style.background='#003D7A'; this.style.transform='rotate(0deg)';"
+                    title="Закрыть">
+                ×
+            </button>
+            
+            <h2 style="color: #003D7A; 
+                       margin: 0 0 10px 0; 
+                       font-size: 1.4rem;
+                       font-weight: 700;
+                       line-height: 1.3;">
+                📱 QR-код сайта
+            </h2>
+            
+            <p style="color: #7F8C8D; 
+                      margin: 0 0 20px 0; 
+                      font-size: 0.9rem;
+                      line-height: 1.4;">
+                Отсканируйте камерой смартфона
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+                        padding: 15px;
+                        border-radius: 15px;
+                        display: inline-block;
+                        box-shadow: 0 4px 15px rgba(0, 61, 122, 0.15);
+                        max-width: 100%;">
+                <img src="qr-code-obzr.png.png" 
+                     alt="QR-код сайта преподавателя ОБЗР" 
+                     style="width: 100%;
+                            max-width: 240px;
+                            height: auto;
+                            aspect-ratio: 1/1;
+                            border-radius: 12px;
+                            display: block;">
+            </div>
+            
+            <div style="margin-top: 20px; 
+                        padding: 15px; 
+                        background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%); 
+                        border-radius: 12px;
+                        border-left: 3px solid #FFC107;">
+                <p style="margin: 0; 
+                          color: #856404; 
+                          font-size: 0.85rem;
+                          line-height: 1.6;
+                          text-align: left;">
+                    <strong style="display: block; margin-bottom: 8px; font-size: 0.95rem;">💡 Инструкция:</strong>
+                    1. Откройте камеру<br>
+                    2. Наведите на код<br>
+                    3. Нажмите уведомление
+                </p>
+            </div>
+            
+            <p style="margin-top: 20px; 
+                      color: #95a5a6; 
+                      font-size: 0.8rem;
+                      line-height: 1.4;">
+                МБОУ СШ № 2 г. Лысково<br>
+                Преподаватель-организатор ОБЗР<br>
+                Дёмин Александр Юрьевич
+            </p>
+        </div>
+    </div>
+
+    <!-- Стили для анимаций -->
+    <style>
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.7);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        #qrFloatingButton.dragging {
+            animation: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+            transform: scale(1.1);
+            cursor: grabbing;
+            transition: none;
+        }
+        
+        @media (hover: hover) {
+            #qrFloatingButton:hover {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #qrFloatingButton {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            #qrFloatingButton span {
+                font-size: 1.8rem;
+            }
+            
+            #qrButtonHint {
+                bottom: 90px;
+                right: 20px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                max-width: 160px;
+            }
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+    </style>
+
+    <!-- JavaScript для работы кнопки -->
+    <script>
+        const qrFloatingButton = document.getElementById('qrFloatingButton');
+        const qrModalWindow = document.getElementById('qrModalWindow');
+        const qrButtonHint = document.getElementById('qrButtonHint');
+        
+        let isDragging = false;
+        let startX, startY;
+        let currentX, currentY;
+        let offsetX = 0, offsetY = 0;
+        let dragStartTime = 0;
+        let hasMoved = false;
+        
+        function loadButtonPosition() {
+            const savedPos = localStorage.getItem('qrButtonPosition');
+            if (savedPos) {
+                const pos = JSON.parse(savedPos);
+                qrFloatingButton.style.left = pos.x + 'px';
+                qrFloatingButton.style.top = pos.y + 'px';
+                qrFloatingButton.style.right = 'auto';
+                qrFloatingButton.style.bottom = 'auto';
+            }
+        }
+        
+        function saveButtonPosition(x, y) {
+            localStorage.setItem('qrButtonPosition', JSON.stringify({ x, y }));
+        }
+        
+        qrFloatingButton.addEventListener('mousedown', function(e) {
+            startDragging(e.clientX, e.clientY);
+        });
+        
+        qrFloatingButton.addEventListener('touchstart', function(e) {
+            const touch = e.touches[0];
+            startDragging(touch.clientX, touch.clientY);
+        }, { passive: true });
+        
+        function startDragging(clientX, clientY) {
+            dragStartTime = Date.now();
+            hasMoved = false;
+            isDragging = true;
+            
+            const rect = qrFloatingButton.getBoundingClientRect();
+            offsetX = clientX - rect.left;
+            offsetY = clientY - rect.top;
+            
+            qrFloatingButton.classList.add('dragging');
+            qrButtonHint.style.display = 'none';
+        }
+        
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                moveButton(e.clientX, e.clientY);
+            }
+        });
+        
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging) {
+                const touch = e.touches[0];
+                moveButton(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+        
+        function moveButton(clientX, clientY) {
+            hasMoved = true;
+            
+            currentX = clientX - offsetX;
+            currentY = clientY - offsetY;
+            
+            const maxX = window.innerWidth - qrFloatingButton.offsetWidth;
+            const maxY = window.innerHeight - qrFloatingButton.offsetHeight;
+            
+            currentX = Math.max(0, Math.min(currentX, maxX));
+            currentY = Math.max(0, Math.min(currentY, maxY));
+            
+            qrFloatingButton.style.left = currentX + 'px';
+            qrFloatingButton.style.top = currentY + 'px';
+            qrFloatingButton.style.right = 'auto';
+            qrFloatingButton.style.bottom = 'auto';
+        }
+        
+        document.addEventListener('mouseup', function() {
+            endDragging();
+        });
+        
+        document.addEventListener('touchend', function() {
+            endDragging();
+        });
+        
+        function endDragging() {
+            if (isDragging) {
+                qrFloatingButton.classList.remove('dragging');
+                
+                const dragDuration = Date.now() - dragStartTime;
+                
+                if (!hasMoved || dragDuration < 200) {
+                    openQRModal();
+                } else {
+                    saveButtonPosition(currentX, currentY);
+                }
+                
+                isDragging = false;
+            }
+        }
+        
+        function openQRModal() {
+            qrModalWindow.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            qrModalWindow.scrollTop = 0;
+        }
+        
+        function closeQRModal() {
+            qrModalWindow.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+        
+        qrModalWindow.addEventListener('click', function(event) {
+            if (event.target === qrModalWindow) {
+                closeQRModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && qrModalWindow.style.display === 'flex') {
+                closeQRModal();
+            }
+        });
+        
+        function showHintIfNeeded() {
+            const hintShown = localStorage.getItem('qrButtonHintShown');
+            if (!hintShown) {
+                setTimeout(() => {
+                    qrButtonHint.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        qrButtonHint.style.opacity = '0';
+                        qrButtonHint.style.transition = 'opacity 0.5s ease';
+                        setTimeout(() => {
+                            qrButtonHint.style.display = 'none';
+                        }, 500);
+                    }, 5000);
+                    
+                    localStorage.setItem('qrButtonHintShown', 'true');
+                }, 2000);
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            loadButtonPosition();
+            showHintIfNeeded();
+            
+            setTimeout(function() {
+                qrFloatingButton.style.opacity = '0';
+                qrFloatingButton.style.transform = 'scale(0)';
+                
+                setTimeout(function() {
+                    qrFloatingButton.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    qrFloatingButton.style.opacity = '1';
+                    qrFloatingButton.style.transform = 'scale(1)';
+                }, 100);
+            }, 500);
+        });
+        
+        qrFloatingButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+<!-- Минимизированный плавающий плейер -->
+<div id="floatingMiniPlayer" 
+     style="position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 300px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 61, 122, 0.5);
+            z-index: 10000;
+            display: none;
+            animation: slideInLeft 0.4s ease;">
+    
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="miniPlayPauseBtn" 
+                onclick="toggleMiniMusicPlayPause()"
+                style="background: white;
+                       color: #003D7A;
+                       border: none;
+                       width: 40px;
+                       height: 40px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">
+            ▶️
+        </button>
+        
+        <div style="flex: 1; min-width: 0;">
+            <div id="miniPlayerTitle" 
+                 style="font-size: 0.9rem;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;">
+                Нет трека
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                <div id="miniProgressBar" 
+                     style="flex: 1;
+                            height: 3px;
+                            background: rgba(255,255,255,0.3);
+                            border-radius: 2px;
+                            cursor: pointer;
+                            position: relative;">
+                    <div id="miniProgressFill" 
+                         style="height: 100%;
+                                background: white;
+                                border-radius: 2px;
+                                width: 0%;
+                                transition: width 0.1s linear;"></div>
+                </div>
+                <span id="miniCurrentTime" style="font-size: 0.75rem; opacity: 0.8;">0:00</span>
+            </div>
+        </div>
+        
+        <button onclick="hideMiniPlayer()"
+                style="background: rgba(255,255,255,0.2);
+                       border: none;
+                       color: white;
+                       width: 28px;
+                       height: 28px;
+                       border-radius: 50%;
+                       cursor: pointer;
+                       font-size: 1.2rem;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       flex-shrink: 0;">×</button>
+    </div>
+</div>
+
+<!-- Уведомление "Продолжить воспроизведение" -->
+<div id="continuePlaybackPrompt" 
+     style="position: fixed;
+            top: 80px;
+            right: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            display: none;
+            max-width: 320px;
+            animation: slideInRight 0.4s ease;
+            border-left: 4px solid #003D7A;">
+    
+    <div style="display: flex; align-items: start; gap: 15px;">
+        <span style="font-size: 2.5rem;">🎵</span>
+        <div style="flex: 1;">
+            <div style="font-weight: 600; 
+                        color: #2C3E50; 
+                        margin-bottom: 6px;
+                        font-size: 1.05rem;">
+                Продолжить воспроизведение?
+            </div>
+            <div id="continueTrackName" 
+                 style="color: #7F8C8D; 
+                        font-size: 0.9rem;
+                        margin-bottom: 12px;
+                        line-height: 1.4;"></div>
+            
+            <div style="display: flex; gap: 8px;">
+                <button onclick="resumePlayback()" 
+                        style="flex: 1;
+                               padding: 10px;
+                               background: #003D7A;
+                               color: white;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-weight: 600;
+                               font-size: 0.9rem;">
+                    ▶️ Продолжить
+                </button>
+                <button onclick="dismissPlaybackPrompt()" 
+                        style="padding: 10px 15px;
+                               background: #F5F7FA;
+                               color: #7F8C8D;
+                               border: none;
+                               border-radius: 6px;
+                               cursor: pointer;
+                               font-size: 0.9rem;">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes slideInLeft {
+        from { transform: translateX(-400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOutLeft {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-400px); opacity: 0; }
+    }
+    
+    @media (max-width: 768px) {
+        #floatingMiniPlayer {
+            width: 260px;
+            left: 15px;
+            bottom: 90px;
+            padding: 10px 12px;
+        }
+        
+        #miniPlayPauseBtn {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+        
+        #miniPlayerTitle {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<script>
+// ============================================
+// МИНИМИЗИРОВАННЫЙ ПЛЕЙЕР (для других страниц)
+// ============================================
+
+const miniAudio = document.createElement('audio');
+miniAudio.id = 'miniAudioPlayer';
+document.body.appendChild(miniAudio);
+
+const floatingMiniPlayer = document.getElementById('floatingMiniPlayer');
+const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
+const miniPlayerTitle = document.getElementById('miniPlayerTitle');
+const miniProgressBar = document.getElementById('miniProgressBar');
+const miniProgressFill = document.getElementById('miniProgressFill');
+const miniCurrentTime = document.getElementById('miniCurrentTime');
+
+let miniIsPlaying = false;
+
+// Форматирование времени
+function formatTime(seconds) {
+    if (isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Показать мини-плейер
+function showMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.display = 'block';
+    }
+}
+
+// Скрыть мини-плейер
+function hideMiniPlayer() {
+    if (floatingMiniPlayer) {
+        floatingMiniPlayer.style.animation = 'slideOutLeft 0.3s ease';
+        setTimeout(() => {
+            floatingMiniPlayer.style.display = 'none';
+            floatingMiniPlayer.style.animation = 'slideInLeft 0.4s ease';
+        }, 300);
+        localStorage.setItem('miniPlayerVisible', 'false');
+    }
+}
+
+// Play/Pause мини-плейера
+function toggleMiniMusicPlayPause() {
+    if (miniIsPlaying) {
+        miniAudio.pause();
+        miniPlayPauseBtn.textContent = '▶️';
+        miniIsPlaying = false;
+    } else {
+        miniAudio.play();
+        miniPlayPauseBtn.textContent = '⏸';
+        miniIsPlaying = true;
+    }
+    
+    // Обновляем состояние в localStorage
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (savedState) {
+        try {
+            const state = JSON.parse(savedState);
+            state.isPlaying = miniIsPlaying;
+            state.currentTime = miniAudio.currentTime;
+            localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        } catch (e) {}
+    }
+}
+
+// Обновление мини-плейера
+function updateMiniPlayer() {
+    if (!miniAudio.duration) return;
+    
+    const progress = (miniAudio.currentTime / miniAudio.duration) * 100;
+    if (miniProgressFill) miniProgressFill.style.width = `${progress}%`;
+    if (miniCurrentTime) miniCurrentTime.textContent = formatTime(miniAudio.currentTime);
+}
+
+// Клик по прогресс-бару
+if (miniProgressBar) {
+    miniProgressBar.addEventListener('click', (e) => {
+        const rect = miniProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        miniAudio.currentTime = percent * miniAudio.duration;
+    });
+}
+
+miniAudio.addEventListener('timeupdate', updateMiniPlayer);
+
+// Восстановление состояния
+function restoreMiniPlayer() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    const miniPlayerVisible = localStorage.getItem('miniPlayerVisible');
+    
+    if (!savedState || miniPlayerVisible === 'false') return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        // Проверка актуальности
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        // Загружаем трек
+        miniAudio.src = `audio/${state.filename || '01-nashey-shcolye-55!.mp3'}`;
+        miniAudio.volume = state.volume || 0.7;
+        
+        miniAudio.addEventListener('loadedmetadata', function() {
+            miniAudio.currentTime = state.currentTime || 0;
+            
+            if (miniPlayerTitle) {
+                miniPlayerTitle.textContent = state.trackTitle || 'Трек';
+            }
+            
+            if (state.isPlaying) {
+                showMiniPlayer();
+            }
+        }, { once: true });
+        
+    } catch (e) {
+        console.error('Ошибка восстановления мини-плейера:', e);
+    }
+}
+
+// Показать промпт продолжения
+function showContinuePrompt() {
+    const savedState = localStorage.getItem('musicPlayerState');
+    if (!savedState) return;
+    
+    try {
+        const state = JSON.parse(savedState);
+        
+        if (Date.now() - state.timestamp > 3600000) {
+            localStorage.removeItem('musicPlayerState');
+            return;
+        }
+        
+        if (state.isPlaying) {
+            const prompt = document.getElementById('continuePlaybackPrompt');
+            const trackName = document.getElementById('continueTrackName');
+            
+            if (prompt && trackName) {
+                trackName.textContent = `${state.trackTitle || 'Музыка'} • ${formatTime(state.currentTime)}`;
+                prompt.style.display = 'block';
+            }
+        }
+    } catch (e) {}
+}
+
+// Продолжить воспроизведение
+function resumePlayback() {
+    restoreMiniPlayer();
+    
+    setTimeout(() => {
+        if (miniAudio.src) {
+            miniAudio.play();
+            miniIsPlaying = true;
+            if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = '⏸';
+            showMiniPlayer();
+        }
+    }, 500);
+    
+    dismissPlaybackPrompt();
+}
+
+// Закрыть промпт
+function dismissPlaybackPrompt() {
+    const prompt = document.getElementById('continuePlaybackPrompt');
+    if (prompt) {
+        prompt.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            prompt.style.display = 'none';
+            prompt.style.animation = 'slideInRight 0.4s ease';
+        }, 300);
+    }
+}
+
+// Инициализация
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        restoreMiniPlayer();
+        showContinuePrompt();
+    }, 1000);
+});
+</script>
+ <script id="aiu-script">
+(function () {
+    'use strict';
+
+    // ============================================================
+    // НАСТРОЙКА: ссылки на Яндекс Формы.
+    //   practicum: форма для ответов на практикум «Поймай ошибку ИИ»
+    //   survey:    анонимный опрос «Как ты используешь ИИ в учёбе?»
+    // Пока строка пустая, кнопка показывается серой с подписью «откроется скоро».
+    // ============================================================
+    var AIU_FORMS = { practicum: '', survey: '' };
+
+    function $(sel, root) { return (root || document).querySelector(sel); }
+    function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
+
+    // ---------- Кнопки форм ----------
+    $all('[data-aiu-form]').forEach(function (a) {
+        var url = AIU_FORMS[a.getAttribute('data-aiu-form')];
+        if (url) {
+            a.setAttribute('href', url);
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener');
+        } else {
+            a.removeAttribute('href');
+            a.setAttribute('aria-disabled', 'true');
+            a.classList.add('is-disabled');
+            a.appendChild(el('span', 'aiu-soon', ' · откроется скоро'));
+        }
+    });
+
+    // ---------- ИИ-тренер: подстановка темы и копирование ----------
+    var topic = $('#aiuTopic'), prompts = $all('.aiu-ptext[data-tpl]');
+    function fill() {
+        var v = topic ? topic.value.replace(/\s+/g, ' ').trim() : '';
+        var t = v ? '«' + v + '»' : '«[тема урока]»';
+        prompts.forEach(function (p) { p.textContent = p.getAttribute('data-tpl').split('{T}').join(t); });
+    }
+    if (topic) { topic.addEventListener('input', fill); }
+    fill();
+
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(text); }
+        return new Promise(function (resolve, reject) {
+            try {
+                var ta = document.createElement('textarea');
+                ta.value = text; ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta); ta.select();
+                var ok = document.execCommand('copy');
+                document.body.removeChild(ta);
+                if (ok) { resolve(); } else { reject(new Error('copy failed')); }
+            } catch (e) { reject(e); }
+        });
+    }
+    $all('.aiu-copy').forEach(function (b) {
+        var timer = null;
+        b.addEventListener('click', function () {
+            var card = b.closest('.aiu-pcard'), st = $('.aiu-copied', card);
+            copyText($('.aiu-ptext', card).textContent).then(
+                function () { st.textContent = '✓ Скопировано. Вставь запрос в ИИ-сервис.'; },
+                function () { st.textContent = 'Не получилось скопировать. Выдели текст запроса и скопируй вручную.'; }
+            );
+            if (timer) { clearTimeout(timer); }
+            timer = setTimeout(function () { st.textContent = ''; }, 4000);
+        });
+    });
+
+    // ---------- Практикум «Поймай ошибку ИИ» ----------
+    var cases = $all('.aiu-case'), done = 0, right = 0;
+    var scoreEl = $('#aiuScore'), resetBtn = $('#aiuReset');
+    var SCORE_EMPTY = 'Оцени ответы ИИ: счёт появится здесь.';
+
+    function showScore() {
+        if (!done) { scoreEl.textContent = SCORE_EMPTY; resetBtn.hidden = true; return; }
+        var s = 'Оценено ' + done + ' из ' + cases.length + ', верно: ' + right + '.';
+        if (done === cases.length) {
+            s += right === cases.length ? ' Отличная внимательность!' : ' Перечитай разборы там, где ошибся, и проверь себя ещё раз.';
+        }
+        scoreEl.textContent = s;
+        resetBtn.hidden = false;
+    }
+
+    cases.forEach(function (c) {
+        var btns = $all('.aiu-choice', c), verdict = $('.aiu-verdict', c), key = $('.aiu-key', c);
+        btns.forEach(function (b) {
+            b.addEventListener('click', function () {
+                if (c.getAttribute('data-done')) { return; }
+                var says = b.getAttribute('data-says'), truth = c.getAttribute('data-truth'), good = says === truth;
+                c.setAttribute('data-done', '1');
+                done += 1; if (good) { right += 1; }
+                btns.forEach(function (x) { x.disabled = true; });
+                b.classList.add('is-picked');
+                verdict.className = 'aiu-verdict ' + (good ? 'is-right' : 'is-wrong');
+                verdict.innerHTML = '';
+                verdict.appendChild(el('p', 'aiu-vh', good ? '✅ Верно!' : '❌ Не совсем.'));
+                Array.prototype.forEach.call(key.children, function (n) { verdict.appendChild(n.cloneNode(true)); });
+                showScore();
+            });
+        });
+    });
+
+    resetBtn.addEventListener('click', function () {
+        done = 0; right = 0;
+        cases.forEach(function (c) {
+            c.removeAttribute('data-done');
+            $all('.aiu-choice', c).forEach(function (x) { x.disabled = false; x.classList.remove('is-picked'); });
+            var v = $('.aiu-verdict', c); v.innerHTML = ''; v.className = 'aiu-verdict';
+        });
+        showScore();
+        var first = $('.aiu-case');
+        if (first && first.scrollIntoView) { first.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    });
+
+    // ---------- Мини-тест «ИИ и безопасность» ----------
+    var QUIZ = [
+        { q: 'Тебе звонит «мама» её голосом и просит срочно перевести деньги незнакомому человеку. Что делать?',
+          o: ['Перевести деньги: мама же просит', 'Попросить прислать голосовое сообщение, чтобы убедиться', 'Положить трубку и перезвонить маме по номеру из своих контактов', 'Спросить у звонящего, где он находится'], a: 2,
+          e: 'Голос можно подделать, а срочность это приём мошенников. Голосовое сообщение тоже можно подделать. Надёжнее всего перезвонить по номеру из контактов. Хорошо заранее договориться в семье о кодовом слове.' },
+        { q: 'Что можно вводить в чат с ИИ-сервисом?',
+          o: ['Свою фамилию, класс и название школы', 'Фото документа, чтобы ИИ помог заполнить форму', 'Пароль от аккаунта, чтобы ИИ его проверил', 'Вопрос по теме урока без личных данных'], a: 3,
+          e: 'ИИ-сервис может хранить то, что ты пишешь. Личные данные, пароли, документы и чужие фото вводить нельзя. Вопрос по теме можно задать и без них.' },
+        { q: 'Детектор написал «вероятность подделки 92 %». Что это значит?',
+          o: ['Это повод присмотреться и проверить источник, но не приговор', 'Видео точно поддельное: детектор не ошибается', 'Видео можно спокойно пересылать друзьям, пока не доказано обратное'], a: 0,
+          e: 'Детекторы ошибаются в обе стороны, а новые генераторы их обходят. Результат это подсказка. Проверь, откуда видео, кто его опубликовал и есть ли оно в надёжных источниках.' },
+        { q: 'Бот в мессенджере предлагает «заработать на ИИ-трейдинге» и просит данные карты и код из СМС. Как поступить?',
+          o: ['Отправить данные: бот же умный', 'Не отвечать, не переходить по ссылкам, ничего не сообщать, рассказать взрослому', 'Отправить только код, а данные карты не отправлять'], a: 1,
+          e: '«Лёгкие деньги» и просьба о кодах признаки мошенничества. Ничего не отправляй, расскажи взрослому и пожалуйся на аккаунт.' },
+        { q: 'ИИ описал порядок действий при травме. Что делать дальше?',
+          o: ['Действовать по ответу: ИИ ведь знает всё', 'Проверить у другого ИИ: если ответы совпадут, значит верно', 'Сверить с учебником или официальным алгоритмом, а при сомнении спросить учителя'], a: 2,
+          e: 'Два ИИ могут одинаково ошибаться. Первая помощь, чрезвычайные ситуации и оружие: только учебник, официальные алгоритмы и практические занятия.' }
+    ];
+
+    var quizBox = $('#aiuQuiz'), finalBox = $('#aiuFinal'), qDone = 0, qRight = 0;
+
+    function quizFinal() {
+        finalBox.innerHTML = '';
+        var msg = 'Результат: ' + qRight + ' из ' + QUIZ.length + '. ';
+        msg += qRight === QUIZ.length ? 'Отлично, правила ты знаешь!' : 'Перечитай разборы и попробуй ещё раз.';
+        finalBox.appendChild(el('span', '', msg));
+        var again = el('button', 'aiu-btn aiu-btn-alt', '↺ Пройти заново');
+        again.type = 'button';
+        again.addEventListener('click', function () { buildQuiz(); quizBox.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+        finalBox.appendChild(again);
+    }
+
+    function buildQuiz() {
+        quizBox.innerHTML = ''; finalBox.innerHTML = ''; qDone = 0; qRight = 0;
+        QUIZ.forEach(function (item, qi) {
+            var card = el('div', 'aiu-qcard'), tid = 'aiuQ' + qi;
+            card.setAttribute('role', 'group'); card.setAttribute('aria-labelledby', tid);
+            var qt = el('p', 'aiu-qtext', (qi + 1) + '. ' + item.q); qt.id = tid;
+            var opts = el('div', 'aiu-opts'), expl = el('div', 'aiu-expl');
+            expl.setAttribute('role', 'status'); expl.setAttribute('aria-live', 'polite');
+            var buttons = [];
+            item.o.forEach(function (text, oi) {
+                var b = el('button', 'aiu-opt', text); b.type = 'button';
+                b.addEventListener('click', function () {
+                    buttons.forEach(function (x, xi) {
+                        x.disabled = true;
+                        if (xi === item.a) { x.classList.add('is-correct'); }
+                    });
+                    var good = oi === item.a;
+                    if (!good) { b.classList.add('is-wrong'); }
+                    expl.textContent = (good ? '✅ Верно. ' : '❌ Не совсем. ') + item.e;
+                    qDone += 1; if (good) { qRight += 1; }
+                    if (qDone === QUIZ.length) { quizFinal(); }
+                });
+                buttons.push(b); opts.appendChild(b);
+            });
+            card.appendChild(qt); card.appendChild(opts); card.appendChild(expl);
+            quizBox.appendChild(card);
+        });
+    }
+    buildQuiz();
+})();
+</script>
+<script src="landscape-fix.js"></script> 
+  <!-- Плавающая кнопка ВКонтакте -->
+<div id="vkFloatingButton"
+     style="position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #003D7A 0%, #00518A 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: move;
+            z-index: 10000;
+            transition: box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: none;
+            user-select: none;">
+   <svg width="32" height="32" viewBox="0 0 24 24" fill="white" 
+         style="pointer-events: none; flex-shrink: 0; 
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+        
+        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.745-.576.745z"/>
+    </svg>
+</div>
+
+<style>
+    #vkFloatingButton.dragging {
+        animation: none;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.8);
+        transform: scale(1.1);
+        cursor: grabbing;
+        transition: none;
+    }
+    @media (hover: hover) {
+        #vkFloatingButton:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+    }
+    @media (max-width: 768px) {
+        #vkFloatingButton {
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            right: 90px;
+        }
+    }
+</style>
+
+<script>
+(function() {
+    var btn = document.getElementById('vkFloatingButton');
+    var VK_URL = 'https://vk.com/club238911106';
+    var isDragging = false;
+    var hasMoved = false;
+    var offsetX, offsetY, curX, curY, dragStartTime;
+    var STORAGE_KEY = 'vkButtonPosition';
+
+    function loadPos() {
+        var s = localStorage.getItem(STORAGE_KEY);
+        if (s) {
+            var p = JSON.parse(s);
+            btn.style.left = p.x + 'px';
+            btn.style.top = p.y + 'px';
+            btn.style.right = 'auto';
+            btn.style.bottom = 'auto';
+        }
+    }
+
+    function startDrag(cx, cy) {
+        dragStartTime = Date.now();
+        hasMoved = false;
+        isDragging = true;
+        var r = btn.getBoundingClientRect();
+        offsetX = cx - r.left;
+        offsetY = cy - r.top;
+        btn.classList.add('dragging');
+    }
+
+    function moveDrag(cx, cy) {
+        hasMoved = true;
+        curX = Math.max(0, Math.min(cx - offsetX, window.innerWidth - btn.offsetWidth));
+        curY = Math.max(0, Math.min(cy - offsetY, window.innerHeight - btn.offsetHeight));
+        btn.style.left = curX + 'px';
+        btn.style.top = curY + 'px';
+        btn.style.right = 'auto';
+        btn.style.bottom = 'auto';
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+        btn.classList.remove('dragging');
+        var elapsed = Date.now() - dragStartTime;
+        // Если не тащили или тащили меньше 150ms — считаем кликом → открываем ВК
+        if (!hasMoved || elapsed < 150) {
+            window.open(VK_URL, '_blank');
+        } else {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({x: curX, y: curY}));
+        }
+        isDragging = false;
+    }
+
+    btn.addEventListener('mousedown', function(e) {
+        startDrag(e.clientX, e.clientY);
+        e.preventDefault();
+    });
+    btn.addEventListener('touchstart', function(e) {
+        startDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }, {passive: true});
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.clientX, e.clientY); }
+    });
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging) { e.preventDefault(); moveDrag(e.touches[0].clientX, e.touches[0].clientY); }
+    }, {passive: false});
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // Восстанавливаем позицию при загрузке
+    window.addEventListener('load', function() {
+        loadPos();
+    });
+})();
+</script>
+    
+</body>
+
+</html>
+
+
+
+
+
