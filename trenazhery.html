@@ -1094,6 +1094,18 @@
             .tr-card{transition:box-shadow .2s ease,border-color .2s ease}
         }
     </style>
+    <style id="tr-type-colors">
+        /* Цвет типа тренажёра: полоса сверху у карточки, значок типа и кнопка фильтра «Тип» */
+        .tr-t-order { --tt: #6A3FA0; --tb: #EFE8F7; --tx: #5B2F8F; }
+        .tr-t-match { --tt: #00838F; --tb: #E0F4F6; --tx: #00606B; }
+        .tr-t-quiz { --tt: #2E7D32; --tb: #E6F3E7; --tx: #1F6B24; }
+        .tr-t-scenario { --tt: #C62828; --tb: #FDECEA; --tx: #A81F1F; }
+        .tr-card[class*="tr-t-"] { border-top: 5px solid var(--tt); }
+        .tr-badge.tr-badge-type[class*="tr-t-"] { background: var(--tb); color: var(--tx); }
+        .tr-chip[class*="tr-t-"] { border-color: var(--tt); color: var(--tx); }
+        .tr-chip[class*="tr-t-"]:not([aria-pressed="true"]):hover { background: var(--tb); }
+        .tr-chip[class*="tr-t-"][aria-pressed="true"] { background: var(--tt); color: #fff; }
+    </style>
     <style id="red-nav-buttons">
         /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
         .tr-btn:not([disabled]) { transition: all 0.3s ease; }
@@ -1786,7 +1798,7 @@ document.addEventListener('click', function(event) {
             var box = document.getElementById(containerId);
             clearNode(box);
             values.forEach(function (v) {
-                var b = el('button', 'tr-chip', v.label);
+                var b = el('button', 'tr-chip' + (v.cls ? ' ' + v.cls : ''), v.label);
                 b.type = 'button';
                 b.setAttribute('aria-pressed', String(state[key] === v.value));
                 b.addEventListener('click', function () {
@@ -1807,7 +1819,7 @@ document.addEventListener('click', function(event) {
                 { value: '10', label: '10' }, { value: '11', label: '11' }
             ]);
             var types = [{ value: 'all', label: 'Все' }];
-            Object.keys(TYPE_NAMES).forEach(function (k) { types.push({ value: k, label: TYPE_NAMES[k] }); });
+            Object.keys(TYPE_NAMES).forEach(function (k) { types.push({ value: k, label: TYPE_NAMES[k], cls: 'tr-t-' + k }); });
             buildChips('tr-f-type', 'type', types);
         }
         function matches(it) {
@@ -1838,11 +1850,11 @@ document.addEventListener('click', function(event) {
         function buildCards() {
             clearNode(listEl);
             ITEMS.forEach(function (it) {
-                var card = el('article', 'tr-card');
+                var card = el('article', 'tr-card tr-t-' + it.type);
                 var badges = el('div', 'tr-badges');
                 badges.appendChild(el('span', 'tr-badge ' + (it.course === 'НВП' ? 'tr-badge-nvp' : 'tr-badge-bzh'), it.course));
                 badges.appendChild(el('span', 'tr-badge tr-badge-cl', (it.cl || []).join(', ') + ' кл.'));
-                badges.appendChild(el('span', 'tr-badge tr-badge-type', TYPE_NAMES[it.type] || it.type));
+                badges.appendChild(el('span', 'tr-badge tr-badge-type tr-t-' + it.type, TYPE_NAMES[it.type] || it.type));
                 card.appendChild(badges);
                 card.appendChild(el('h3', null, it.title));
                 card.appendChild(el('p', 'tr-intro', it.intro || ''));
