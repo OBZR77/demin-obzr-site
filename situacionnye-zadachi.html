@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-<meta name="description" content="Ситуационные задачи: страница раздела «Ученикам» готовится к открытию (октябрь 2026)">
+<meta name="description" content="Ситуационные задачи по курсу БЖ: условие, вопросы, срок сдачи, форма ответа и архив разборов лучших решений. 8–11 классы.">
     <title>Ситуационные задачи | Ученикам | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -985,18 +985,61 @@
             height: 100vh;
         }
     </style>
-    <meta name="robots" content="noindex, follow">
-    <style>
-        .ph-scope { --color-text-secondary: #5F6B75; }
-        .ph-back { margin-bottom: .75rem; }
-        .ph-back a { color: var(--color-primary); font-weight: 600; }
-        .ph-box { background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-left: 6px solid var(--color-warning); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
-        .ph-box h3 { margin: 0 0 .5rem; }
-        .ph-badge { display: inline-block; background: #FFF4DB; color: #6B4700; border: 1px solid #F0C36B; padding: .25rem .7rem; border-radius: 999px; font-weight: 600; font-size: .95rem; margin-top: .5rem; }
-        .ph-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .6rem 1.2rem; border-radius: 8px; font-weight: 600; margin: .3rem .5rem .3rem 0; }
-        .ph-btn:hover { background: var(--color-primary-hover); }
-        .ph-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
-        .ph-list { margin: .5rem 0 0 1.2rem; }
+    <style id="sz-styles">
+        .sz-scope { --color-text-secondary: #5F6B75; }
+        .sz-back { margin-bottom: .75rem; }
+        .sz-back a { color: var(--color-primary); font-weight: 600; }
+        .sz-note { background: var(--color-surface, #F5F7FA); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: .8rem 1rem; margin: 0 0 1.5rem; max-width: 70rem; }
+        .sz-h { font-size: 1.5rem; color: var(--color-primary); margin: 2rem 0 .8rem; padding-bottom: .3rem; border-bottom: 3px solid var(--color-danger); display: inline-block; }
+        .sz-h3 { font-size: 1.15rem; color: var(--color-primary); margin: 1.4rem 0 .5rem; }
+        .sz-task { border: 2px solid var(--color-primary); border-radius: 12px; padding: 1.25rem 1.4rem; background: #fff; box-shadow: 0 4px 14px rgba(0,61,122,.12); margin-bottom: 1.5rem; }
+        .sz-task > h3 { margin: .4rem 0 .6rem; font-size: 1.5rem; line-height: 1.25; color: var(--color-primary); }
+        .sz-badges { display: flex; flex-wrap: wrap; gap: .4rem; }
+        .sz-badge { display: inline-block; padding: .15rem .65rem; border-radius: 999px; font-size: .85rem; font-weight: 700; background: #E6EEF7; color: var(--color-primary); }
+        .sz-badge-bzh { background: #FFF4DB; color: #6B4700; }
+        .sz-classes { display: grid; gap: .75rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+        .sz-class { display: grid; grid-template-columns: auto 1fr auto; gap: .4rem 1rem; align-items: center; background: var(--color-surface, #F5F7FA); border: 1px solid #DDE3EA; border-radius: 10px; padding: .75rem 1rem; }
+        .sz-class-n { font-size: 1.25rem; font-weight: 800; color: var(--color-primary); white-space: nowrap; }
+        .sz-class-t { margin: 0; }
+        .sz-class-t small { display: block; color: var(--color-text-secondary); }
+        .sz-class-due { text-align: right; white-space: nowrap; }
+        .sz-state { display: block; font-size: .85rem; font-weight: 700; color: #1B5E20; }
+        .sz-state.is-soon { color: #8A4B00; }
+        .sz-state.is-late { color: #B71C1C; }
+        .sz-scene { background: #F5F9FF; border-left: 6px solid var(--color-primary); border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin: .5rem 0 0; }
+        .sz-scene p { margin: 0 0 .7rem; }
+        .sz-scene p:last-child { margin-bottom: 0; }
+        .sz-q { margin: .3rem 0 0 1.4rem; padding: 0; }
+        .sz-q li { margin-bottom: .6rem; padding-left: .2rem; }
+        .sz-hint { margin-top: 1rem; border: 1px dashed #8A99A8; border-radius: 10px; padding: .6rem 1rem; background: #fff; }
+        .sz-hint summary { cursor: pointer; font-weight: 700; color: var(--color-primary); }
+        .sz-hint summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+        .sz-hint p { margin: .6rem 0 0; }
+        .sz-list { margin: .3rem 0 0 1.2rem; padding: 0; }
+        .sz-list li { margin-bottom: .4rem; }
+        .sz-list a { color: var(--color-primary); font-weight: 600; }
+        .sz-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+        .sz-btn { display: inline-block; background: var(--color-primary); color: #fff; text-decoration: none; padding: .65rem 1.25rem; border-radius: 8px; font-weight: 700; transition: background-color .2s ease; }
+        .sz-btn:hover { background: var(--color-primary-hover); }
+        .sz-btn:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .sz-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .sz-btn-alt:hover { background: #E6EEF7; }
+        .sz-steps { margin: .3rem 0 0 1.3rem; padding: 0; }
+        .sz-steps li { margin-bottom: .4rem; }
+        .sz-empty { background: var(--color-surface, #F5F7FA); border: 1px dashed #8A99A8; border-radius: 12px; padding: 1.1rem 1.25rem; }
+        .sz-arch { border: 1px solid #DDE3EA; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .sz-arch h4 { margin: .3rem 0 .4rem; color: var(--color-primary); font-size: 1.15rem; }
+        .sz-quote { margin: .6rem 0 0; padding: .6rem 1rem; border-left: 4px solid var(--color-danger); background: #FFF7F7; border-radius: 0 8px 8px 0; }
+        .sz-error { color: #B71C1C; font-weight: 600; }
+        .sz-links .sz-btn { margin: .3rem .5rem .3rem 0; }
+        @media (max-width: 640px) {
+            .sz-class { grid-template-columns: 1fr; }
+            .sz-class-due { text-align: left; }
+            .sz-task { padding: 1rem; }
+            .sz-task > h3 { font-size: 1.3rem; }
+            .sz-h { font-size: 1.3rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .sz-btn { transition: none; } }
 </style>
 </head>
 <body>
@@ -1297,19 +1340,29 @@
         </nav>
     </header>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
-    <main>
-        <div class="ph-scope">
-        <p class="ph-back"><a href="uchenikam.html">← Ученикам</a></p>
+    <main id="main-content">
+        <div class="sz-scope">
+        <p class="sz-back"><a href="uchenikam.html">← Ученикам</a></p>
         <h2 class="page-title">🧩 Ситуационные задачи</h2>
-        <p class="page-subtitle">Раздел «Ученикам»</p>
-        <div class="ph-box">
-            <h3>Страница в разработке</h3>
-            <p>Задача к каждому тематическому блоку курса и архив разборов лучших решений (без фамилий авторов).</p>
-            <p>Здесь будет:</p>
-            <ul class="ph-list"><li>актуальная задача с условием</li><li>форма для отправки ответа</li><li>архив разборов</li></ul>
-            <span class="ph-badge">⏳ Откроется: октябрь 2026</span>
-        </div>
-        <p><a class="ph-btn" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="ph-btn" href="uchebnik-nvp.html">Открыть учебник НВП</a></p>
+        <p class="page-subtitle">Разбери реальную ситуацию и объясни, как бы ты поступил. Задача даётся к каждому тематическому блоку курса БЖ.</p>
+        <p class="sz-note"><strong>Важно:</strong> в форме не пиши фамилию и имя: достаточно личного кода, 5 цифр с твоей карточки. Разбор лучших решений публикуется без фамилий и без кодов. Подробнее в <a href="privacy-policy.html">политике конфиденциальности</a>.</p>
+
+        <h3 class="sz-h">Актуальная задача</h3>
+        <div id="szActive" aria-live="polite"><p>Загружаем задачу…</p></div>
+
+        <h3 class="sz-h">Как сдать ответ</h3>
+        <ol class="sz-steps">
+            <li>Прочитай условие и вопросы. Подсказка поможет, если не знаешь, с чего начать.</li>
+            <li>Ответь на вопросы своими словами. Отвечай именно на эту ситуацию, а не общими фразами.</li>
+            <li>Нажми кнопку «Сдать ответ» для своего класса: откроется форма.</li>
+            <li>В форме выбери класс и введи личный код (5 цифр с карточки). Фамилию и имя писать не нужно. Если пользовался ИИ-помощником, отметь это в форме.</li>
+        </ol>
+        <p>Все задания со сроками по классам собраны на странице <a href="domashnie-zadaniya.html">«Домашние задания»</a>. Есть вопрос по задаче? <a href="https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/" target="_blank" rel="noopener">Задай его учителю</a>.</p>
+
+        <h3 class="sz-h">Архив разборов</h3>
+        <div id="szArchive"><p>Загружаем архив…</p></div>
+
+        <p class="sz-links"><a class="sz-btn sz-btn-alt" href="uchenikam.html">Вернуться в раздел «Ученикам»</a> <a class="sz-btn sz-btn-alt" href="domashnie-zadaniya.html">Домашние задания</a></p>
         </div>
     </main>
 
@@ -1599,6 +1652,143 @@ document.addEventListener('click', function(event) {
         });
 
     </script>
+<script src="sz-zadachi.js"></script>
+<script id="sz-script">
+(function () {
+    'use strict';
+    var FORM = 'https://forms.yandex.ru/u/6abaca9650569060a527b159/';
+    var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
+    function clear(n) { while (n.firstChild) { n.removeChild(n.firstChild); } }
+    var t = new Date(), today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+    function parseDate(s) { var m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || '')); return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null; }
+    function dayWord(n) { var a = n % 10, b = n % 100; return (a === 1 && b !== 11) ? 'день' : ((a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'дня' : 'дней'); }
+    function dateText(d) { return d.getDate() + ' ' + MON[d.getMonth()] + ' ' + d.getFullYear(); }
+    function formUrl(z, c) { return FORM + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'); }
+    function list(tag, items, cls, start) {
+        var l = el(tag, cls);
+        if (start) { l.setAttribute('start', String(start)); }
+        items.forEach(function (x) { l.appendChild(el('li', '', x)); });
+        return l;
+    }
+
+    var ALL = (window.SZ_TASKS instanceof Array) ? window.SZ_TASKS : null;
+    var boxA = document.getElementById('szActive'), boxR = document.getElementById('szArchive');
+    if (!ALL) {
+        clear(boxA); clear(boxR);
+        boxA.appendChild(el('p', 'sz-error', 'Не удалось загрузить задачу. Обновите страницу. Если не помогло, проверьте, что файл sz-zadachi.js лежит рядом со страницей.'));
+        return;
+    }
+    var active = ALL.filter(function (z) { return z && z.status !== 'archive'; });
+    var archive = ALL.filter(function (z) { return z && z.status === 'archive'; });
+
+    function renderActive(z) {
+        var card = el('article', 'sz-task');
+        var badges = el('div', 'sz-badges');
+        badges.appendChild(el('span', 'sz-badge sz-badge-bzh', z.course || 'БЖ'));
+        if (z.block) { badges.appendChild(el('span', 'sz-badge', 'Блок: ' + z.block)); }
+        card.appendChild(badges);
+        card.appendChild(el('h3', '', '«' + z.title + '»'));
+
+        card.appendChild(el('h4', 'sz-h3', 'Классы и сроки'));
+        var cl = el('ul', 'sz-classes');
+        (z.classes || []).forEach(function (c) {
+            var d = parseDate(c.due), li = el('li', 'sz-class');
+            li.appendChild(el('span', 'sz-class-n', c.cl + ' класс'));
+            var tx = el('p', 'sz-class-t'); tx.appendChild(document.createTextNode('Что сдать: ' + (c.need || 'все вопросы')));
+            if (c.lessons) { tx.appendChild(el('small', '', 'Уроки блока: ' + c.lessons)); }
+            li.appendChild(tx);
+            var due = el('div', 'sz-class-due');
+            if (d) {
+                due.appendChild(document.createTextNode('до ' + dateText(d)));
+                var n = Math.round((d - today) / 86400000), st = el('span', 'sz-state');
+                if (n < 0) { st.className += ' is-late'; st.textContent = 'Срок истёк'; }
+                else if (n === 0) { st.className += ' is-soon'; st.textContent = 'Сегодня последний день'; }
+                else { if (n <= 3) { st.className += ' is-soon'; } st.textContent = 'Осталось ' + n + ' ' + dayWord(n); }
+                due.appendChild(st);
+            }
+            li.appendChild(due); cl.appendChild(li);
+        });
+        card.appendChild(cl);
+
+        card.appendChild(el('h4', 'sz-h3', 'Ситуация'));
+        var sc = el('div', 'sz-scene');
+        (z.scene || []).forEach(function (p) { sc.appendChild(el('p', '', p)); });
+        card.appendChild(sc);
+
+        var base = z.base || [], extra = z.extra || [];
+        card.appendChild(el('h4', 'sz-h3', 'Вопросы'));
+        card.appendChild(list('ol', base, 'sz-q'));
+        if (extra.length) {
+            card.appendChild(el('h4', 'sz-h3', 'Вопросы по желанию (повышенный уровень)'));
+            card.appendChild(list('ol', extra, 'sz-q', base.length + 1));
+        }
+        if (z.hint) {
+            var det = el('details', 'sz-hint'); det.appendChild(el('summary', '', 'Подсказка'));
+            det.appendChild(el('p', '', z.hint)); card.appendChild(det);
+        }
+        if (z.criteria && z.criteria.length) {
+            card.appendChild(el('h4', 'sz-h3', 'По чему проверяется ответ'));
+            card.appendChild(list('ul', z.criteria, 'sz-list'));
+        }
+        if (z.materials && z.materials.length) {
+            card.appendChild(el('h4', 'sz-h3', 'Чем воспользоваться'));
+            var ul = el('ul', 'sz-list');
+            z.materials.forEach(function (m) {
+                var li = el('li'), a = el('a', '', m.label); a.href = m.href;
+                if (/^https?:/.test(m.href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+                li.appendChild(a); ul.appendChild(li);
+            });
+            card.appendChild(ul);
+        }
+        var acts = el('div', 'sz-actions');
+        (z.classes || []).forEach(function (c) {
+            var a = el('a', 'sz-btn', 'Сдать ответ: ' + c.cl + ' класс');
+            a.href = formUrl(z, c); a.target = '_blank'; a.rel = 'noopener noreferrer';
+            acts.appendChild(a);
+        });
+        card.appendChild(acts);
+        return card;
+    }
+
+    clear(boxA);
+    if (!active.length) {
+        var e1 = el('div', 'sz-empty');
+        e1.appendChild(el('p', '', 'Сейчас новой задачи нет. Следующая появится к новому тематическому блоку курса. Посмотри разборы прошлых задач в архиве ниже.'));
+        boxA.appendChild(e1);
+    } else {
+        active.forEach(function (z) { boxA.appendChild(renderActive(z)); });
+    }
+
+    clear(boxR);
+    if (!archive.length) {
+        var last = null;
+        active.forEach(function (z) { (z.classes || []).forEach(function (c) { var d = parseDate(c.due); if (d && (!last || d > last)) { last = d; } }); });
+        var e2 = el('div', 'sz-empty');
+        e2.appendChild(el('p', '', last
+            ? 'Архив пока пуст. Разбор лучших решений первой задачи появится здесь после окончания срока сдачи (' + dateText(last) + '). Фамилии и личные коды в разборе не публикуются.'
+            : 'Архив пока пуст. Разбор лучших решений появится здесь после окончания срока сдачи. Фамилии и личные коды в разборе не публикуются.'));
+        boxR.appendChild(e2);
+    } else {
+        archive.forEach(function (z) {
+            var c = el('article', 'sz-arch');
+            var b = el('div', 'sz-badges');
+            b.appendChild(el('span', 'sz-badge sz-badge-bzh', z.course || 'БЖ'));
+            if (z.block) { b.appendChild(el('span', 'sz-badge', 'Блок: ' + z.block)); }
+            c.appendChild(b);
+            c.appendChild(el('h4', '', '«' + z.title + '»'));
+            var r = z.razbor;
+            if (!r) { c.appendChild(el('p', '', 'Разбор готовится.')); }
+            else {
+                if (r.intro) { c.appendChild(el('p', '', r.intro)); }
+                if (r.points && r.points.length) { c.appendChild(list('ul', r.points, 'sz-list')); }
+                (r.quotes || []).forEach(function (q) { c.appendChild(el('blockquote', 'sz-quote', q)); });
+            }
+            boxR.appendChild(c);
+        });
+    }
+})();
+</script>
 <script src="landscape-fix.js"></script>
  <!-- Плавающая кнопка ВКонтакте -->
 <div id="vkFloatingButton"

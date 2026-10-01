@@ -1022,7 +1022,8 @@
         .uch-badge-ok { background: #E8F5E9; color: var(--color-success); }
         .uch-task { border: 2px dashed #8A99A8; border-radius: 12px; padding: 1.25rem; background: #fff; }
         .uch-task h3 { margin: 0 0 0.4rem; color: var(--color-primary); }
-        .uch-task p { margin: 0 0 0.5rem; }
+        .uch-task p { margin: 0 0 0.75rem; }
+        .uch-task.uch-task-live { border: 2px solid var(--color-primary); background: var(--color-surface); box-shadow: 0 4px 14px rgba(0,61,122,0.12); }
         .uch-book { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 1.25rem; padding: 1.5rem; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); }
         .uch-book .uch-ico { font-size: 2.6rem; }
         .uch-book-text { flex: 1; min-width: 220px; }
@@ -1399,11 +1400,11 @@
                 <p>Интерактивные тренажёры по обоим курсам и подготовка к контрольным работам. Проверка прямо на странице.</p>
                 <div class="uch-actions"><a class="uch-btn" href="trenazhery.html">Открыть тренажёры</a></div>
             </article>
-            <article class="uch-card uch-soon">
+            <article class="uch-card uch-ready">
                 <span class="uch-ico" aria-hidden="true">🧩</span>
                 <h3>Ситуационные задачи</h3>
-                <p>Задача к каждому тематическому блоку и архив разборов лучших решений.</p>
-                <div class="uch-actions"><span class="uch-badge uch-badge-soon">⏳ Скоро · октябрь</span></div>
+                <p>Задача к тематическому блоку курса и архив разборов лучших решений.</p>
+                <div class="uch-actions"><a class="uch-btn" href="situacionnye-zadachi.html">Открыть задачу</a></div>
             </article>
             <article class="uch-card uch-ready uch-card-wide">
                 <span class="uch-ico" aria-hidden="true">💬</span>
@@ -1413,12 +1414,12 @@
             </article>
         </div>
 
-        <h2 class="uch-h">Ситуационная задача</h2>
-        <!-- Когда появится актуальная задача: замените содержимое блока ниже на её название, условие и кнопку со ссылкой на форму. -->
-        <div class="uch-task">
-            <h3>🧩 Актуальная ситуационная задача</h3>
-            <p>Задача к очередному тематическому блоку курса появится здесь. Ответ отправляется через форму, а разбор лучших решений публикуется без фамилий.</p>
-            <span class="uch-badge uch-badge-soon">⏳ Скоро</span>
+        <h2 class="uch-h">Актуальная ситуационная задача</h2>
+        <!-- Этот блок заполняется сам из файла sz-zadachi.js (название, блок, сроки). Править его здесь не нужно. -->
+        <div class="uch-task uch-task-live" id="uchSz">
+            <h3 id="uchSzTitle">🧩 Ситуационная задача</h3>
+            <p id="uchSzMeta">Условие, вопросы и сроки сдачи находятся на странице задачи. Разбор лучших решений публикуется без фамилий.</p>
+            <a class="uch-btn" id="uchSzBtn" href="situacionnye-zadachi.html">Читать условие</a>
         </div>
 
         <section class="uch-book" aria-labelledby="uchBookH">
@@ -1722,6 +1723,24 @@ document.addEventListener('click', function(event) {
 
     </script>
 <script src="nvp-paragrafy.js"></script>
+<script src="sz-zadachi.js"></script>
+<script id="uch-sz-script">
+(function () {
+    'use strict';
+    try {
+        var list = (window.SZ_TASKS instanceof Array) ? window.SZ_TASKS : [], z = null, i;
+        for (i = 0; i < list.length; i++) { if (list[i] && list[i].status !== 'archive') { z = list[i]; break; } }
+        var box = document.getElementById('uchSz');
+        if (!z || !box) { return; }
+        var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+        function ru(s) { var m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || '')); return m ? (+m[1]) + ' ' + MON[+m[2] - 1] : String(s || ''); }
+        document.getElementById('uchSzTitle').textContent = '🧩 «' + z.title + '»';
+        var parts = [z.course + ' · ' + z.block];
+        (z.classes || []).forEach(function (c) { parts.push(c.cl + ' класс — до ' + ru(c.due)); });
+        document.getElementById('uchSzMeta').textContent = parts.join(' · ');
+    } catch (e) { if (window.console) { console.warn('Блок ситуационной задачи: ' + e.message); } }
+})();
+</script>
 <script id="uch-script">
 
 (function () {
