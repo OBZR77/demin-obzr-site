@@ -753,15 +753,33 @@
             margin-bottom: 0.5rem;
             line-height: 1.5;
         }
+        /* Компактная сетка: на компьютере 3–4 документа в ряд, на планшете 2, на телефоне 1 */
         .gallery-grid.gallery-grid--rubric {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 560px));
-            justify-content: start;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
             margin-top: 1.25rem;
+            align-items: stretch;
         }
+        .gallery-grid--rubric .gallery-item { display: flex; flex-direction: column; }
+        .gallery-grid--rubric .gallery-item-image { background: var(--color-surface); }
+        .gallery-grid--rubric .gallery-item-image:focus-visible { outline: 3px solid var(--color-primary); outline-offset: -3px; }
+        .gallery-grid--rubric .gallery-item-image img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: contain;
+            background: var(--color-surface);
+        }
+        .gallery-grid--rubric .gallery-item:hover .gallery-item-image img { transform: scale(1.03); }
+        .gallery-grid--rubric .gallery-item-content { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
+        .gallery-grid--rubric .gallery-item-title { font-size: 1rem; line-height: 1.3; margin-bottom: 0.4rem; }
+        .gallery-grid--rubric .gallery-item-description { font-size: 0.85rem; line-height: 1.45; }
+        .gallery-grid--rubric .gallery-item-date { font-size: 0.85rem; margin-top: auto; padding-top: 0.6rem; }
+        .gallery-grid--rubric .gallery-item-description + .gallery-item-date { margin-top: 0.75rem; }
         .gallery-item-link {
             display: inline-block;
-            margin-top: 0.75rem;
-            font-size: 0.9rem;
+            margin-top: 0.6rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--color-primary);
             text-decoration: underline;
@@ -770,24 +788,66 @@
         .gallery-item-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
         @media (max-width: 768px) {
             .gallery-rubric { font-size: 1.4rem; }
-            .gallery-grid.gallery-grid--rubric { grid-template-columns: 1fr; }
+            .gallery-grid.gallery-grid--rubric { gap: 1rem; }
+            .gallery-grid--rubric .gallery-item-image img { height: 220px; }
         }
-    
-        /* Слайдер документов целиком (без обрезки вертикальных сканов) */
-        .gallery-slider.gallery-slider--contain {
-            aspect-ratio: auto;
-            height: 500px;
-            max-height: none;
+
+        /* ============================================
+           ЕДИНЫЙ ЛАЙТБОКС: все документы страницы листаются в одном окне
+           ============================================ */
+        .gl { display: none; position: fixed; inset: 0; z-index: 100000; background: rgba(0, 0, 0, 0.97);
+              flex-direction: column; align-items: center; overscroll-behavior: contain; }
+        .gl.is-open { display: flex; }
+        .gl-top { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; justify-content: space-between;
+                  align-items: center; padding: 0.75rem 1rem; pointer-events: none; }
+        .gl-top > * { pointer-events: auto; }
+        .gl-count { color: #fff; font-weight: 600; font-size: 0.95rem; background: rgba(255, 255, 255, 0.14);
+                    padding: 0.3rem 0.85rem; border-radius: 999px; }
+        .gl-close { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--color-danger); color: #fff;
+                    font-size: 1.7rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+                    transition: transform 0.3s ease; }
+        .gl-close:hover { transform: rotate(90deg); }
+        .gl-stage { position: relative; flex: 1 1 auto; min-height: 0; width: 100%; display: flex; align-items: center;
+                    justify-content: center; padding: 60px 72px 0; touch-action: pan-y pinch-zoom; }
+        .gl-img { display: block; max-width: 100%; max-height: calc(100vh - 170px); max-height: calc(100dvh - 170px);
+                  object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+                  user-select: none; -webkit-user-drag: none; }
+        .gl-img.gl-in-next { animation: gl-next 0.28s ease; }
+        .gl-img.gl-in-prev { animation: gl-prev 0.28s ease; }
+        @keyframes gl-next { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+        @keyframes gl-prev { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+        .gl-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 52px; height: 52px; border-radius: 50%;
+                  border: 2px solid rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.16); color: #fff; font-size: 2rem;
+                  line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding-bottom: 4px;
+                  transition: background 0.2s ease; }
+        .gl-nav:hover:not(:disabled) { background: var(--color-primary); }
+        .gl-nav:disabled { opacity: 0.25; cursor: default; }
+        .gl-prev { left: 12px; }
+        .gl-next { right: 12px; }
+        .gl-bar { flex: 0 0 auto; width: 100%; max-width: 960px; box-sizing: border-box; padding: 0.7rem 1rem 1rem; text-align: center; color: #fff; }
+        .gl-caption { margin: 0 0 0.35rem; font-size: 1rem; line-height: 1.4; }
+        .gl-meta { margin: 0; font-size: 0.85rem; color: #c9d6e6; }
+        .gl-orig { color: #9fd0ff; text-decoration: underline; margin-left: 0.6rem; }
+        .gl-orig:focus-visible, .gl-nav:focus-visible, .gl-close:focus-visible { outline: 3px solid #FFD24D; outline-offset: 2px; }
+        .gl-hint-desk { display: none; }
+        @media (hover: hover) and (pointer: fine) { .gl-hint-desk { display: inline; } .gl-hint-touch { display: none; } }
+        .gl.is-single .gl-nav, .gl.is-single .gl-count, .gl.is-single .gl-meta .gl-hint { display: none; }
+        @media (max-width: 768px) {
+            .gl-stage { padding: 56px 8px 0; }
+            .gl-nav { width: 40px; height: 40px; font-size: 1.6rem; background: rgba(0, 0, 0, 0.45); }
+            .gl-prev { left: 6px; }
+            .gl-next { right: 6px; }
+            .gl-img { max-height: calc(100vh - 190px); max-height: calc(100dvh - 190px); }
+            .gl-caption { font-size: 0.9rem; }
         }
-        .gallery-slider--contain .slider-image {
-            object-fit: contain;
+        @media (max-height: 480px) {
+            .gl-stage { padding-top: 8px; }
+            .gl-top { padding: 0.4rem 0.75rem; }
+            .gl-img { max-height: calc(100vh - 90px); max-height: calc(100dvh - 90px); }
+            .gl-bar { padding: 0.3rem 1rem 0.4rem; }
+            .gl-meta { display: none; }
         }
-        /* Вертикальный документ показываем целиком */
-        .gallery-item-image--portrait img {
-            height: 500px;
-            object-fit: contain;
-            background: var(--color-surface);
-        }
+        @media (prefers-reduced-motion: reduce) { .gl-img.gl-in-next, .gl-img.gl-in-prev { animation: none; } }
     </style>
 </head>
 <body>
@@ -921,7 +981,7 @@
         <h2 class="page-title">📚 Переподготовка</h2>
 
         <p class="page-subtitle">
-            Дипломы, удостоверения и документы о переподготовке, повышении квалификации и дополнительном обучении. Нажмите на изображение для увеличения.
+            Дипломы, удостоверения и документы о переподготовке, повышении квалификации и дополнительном обучении. Нажмите на документ для увеличения: все документы страницы листаются в одном окне.
         </p>
 
         <!-- ============================================
@@ -931,7 +991,7 @@
         <h3 class="gallery-rubric">Переподготовка и повышение квалификации</h3>
         <div class="gallery-grid gallery-grid--rubric">
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/diplom-impuls-2023.jpg', 'Диплом о профессиональной переподготовке, 2023')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/diplom-impuls-2023.jpg" data-gl-cap="Диплом о профессиональной переподготовке, 2023" role="button" tabindex="0" aria-label="Увеличить: Диплом о профессиональной переподготовке">
                     <img src="images/moi-dostizheniya/diplom-impuls-2023.jpg" alt="Диплом о профессиональной переподготовке" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
@@ -941,7 +1001,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024-2.jpg', 'Удостоверение о повышении квалификации, 2024')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/perepodgotovka-2024-2.jpg" data-gl-cap="Удостоверение о повышении квалификации, 2024" role="button" tabindex="0" aria-label="Увеличить: Удостоверение о повышении квалификации">
                     <img src="images/moi-dostizheniya/perepodgotovka-2024-2.jpg" alt="Удостоверение о повышении квалификации: особенности преподавания учебного предмета ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
@@ -951,17 +1011,17 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2025.jpg', 'Удостоверение о повышении квалификации НИРО, 2025')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/povyshenie-niro-2025.jpg" data-gl-cap="Удостоверение о повышении квалификации НИРО, 2025" role="button" tabindex="0" aria-label="Увеличить: Удостоверение о повышении квалификации">
                     <img src="images/moi-dostizheniya/povyshenie-niro-2025.jpg" alt="Удостоверение о повышении квалификации НИРО: практико-ориентированное обучение ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
-                    <p class="gallery-item-description">Учебный предмет "ОБЗР": практико-ориентированное обучение</p>
+                    <p class="gallery-item-description">Учебный предмет &quot;ОБЗР&quot;: практико-ориентированное обучение</p>
                     <p class="gallery-item-date">📅 2025 год</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2023.jpg', 'Удостоверение о повышении квалификации, 2023')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/perepodgotovka-2023.jpg" data-gl-cap="Удостоверение о повышении квалификации, 2023" role="button" tabindex="0" aria-label="Увеличить: Удостоверение о повышении квалификации">
                     <img src="images/moi-dostizheniya/perepodgotovka-2023.jpg" alt="Удостоверение о повышении квалификации: основы военной подготовки в школе" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
@@ -971,7 +1031,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024.jpg', 'Удостоверение о повышении квалификации, 2024')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/perepodgotovka-2024.jpg" data-gl-cap="Удостоверение о повышении квалификации, 2024" role="button" tabindex="0" aria-label="Увеличить: Удостоверение о повышении квалификации">
                     <img src="images/moi-dostizheniya/perepodgotovka-2024.jpg" alt="Удостоверение о повышении квалификации: содержание и методика преподавания предмета ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
@@ -981,7 +1041,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2024.jpg', 'Удостоверение о повышении квалификации НИРО, 2024')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/povyshenie-niro-2024.jpg" data-gl-cap="Удостоверение о повышении квалификации НИРО, 2024" role="button" tabindex="0" aria-label="Увеличить: Удостоверение о повышении квалификации">
                     <img src="images/moi-dostizheniya/povyshenie-niro-2024.jpg" alt="Удостоверение о повышении квалификации НИРО: технологии работы с детьми с ОВЗ" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
@@ -999,39 +1059,42 @@
         <p class="gallery-rubric-note">Сертификаты о прохождении коротких курсов и тестирования (2026 год)</p>
         <div class="gallery-grid gallery-grid--rubric">
             <div class="gallery-item">
-                <div class="gallery-slider gallery-slider--contain" onclick="openLightbox(this.querySelector('.slider-image.active').src, 'Сертификаты курсов подготовки «Зарница 2.0», 2026')">
-                    <div class="slider-wrapper">
-            <img class="slider-image active"
-                 src="images/moi-dostizheniya/zarnitsa-kurs-obshaya-2026.jpg"
-                 alt="Сертификат о прохождении курса общей подготовки «Зарница 2.0»" loading="lazy">
-            <img class="slider-image"
-                 src="images/moi-dostizheniya/zarnitsa-kurs-individualnaya-2026.jpg"
-                 alt="Сертификат о прохождении курса индивидуальной подготовки «Зарница 2.0»" loading="lazy">
-            <img class="slider-image"
-                 src="images/moi-dostizheniya/zarnitsa-kurs-specialnaya-2026.jpg"
-                 alt="Сертификат о прохождении курса специальной подготовки «Зарница 2.0»" loading="lazy">
-                    </div>
-                    <button class="slider-btn prev" onclick="event.stopPropagation(); changeSlide(this, -1)" aria-label="Предыдущий документ">‹</button>
-                    <button class="slider-btn next" onclick="event.stopPropagation(); changeSlide(this, 1)" aria-label="Следующий документ">›</button>
-                    <div class="slider-dots">
-            <span class="dot active" onclick="event.stopPropagation(); goToSlide(this, 0)"></span>
-            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 1)"></span>
-            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 2)"></span>
-                    </div>
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/zarnitsa-kurs-obshaya-2026.jpg" data-gl-cap="Сертификат: курс общей подготовки «Зарница 2.0», 2026" role="button" tabindex="0" aria-label="Увеличить: Курс общей подготовки «Зарница 2.0»">
+                    <img src="images/moi-dostizheniya/zarnitsa-kurs-obshaya-2026.jpg" alt="Сертификат о прохождении курса общей подготовки «Зарница 2.0»" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
-                    <h3 class="gallery-item-title">«Зарница 2.0»: курсы подготовки</h3>
-                    <p class="gallery-item-description">Курсы общей, индивидуальной и специальной подготовки (Движение Первых, ВВПОД «Юнармия», Центр «ВОИН»)</p>
+                    <h3 class="gallery-item-title">Курс общей подготовки «Зарница 2.0»</h3>
+                    <p class="gallery-item-description">Движение Первых, ВВПОД «Юнармия», Центр «ВОИН»</p>
                     <p class="gallery-item-date">📅 2026 год</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-image gallery-item-image--portrait" onclick="openLightbox('images/moi-dostizheniya/sertifikat-solnechnyj-svet-ikt-2026.jpg', 'Сертификат о тестировании по ИКТ, Международный педагогический портал «Солнечный свет», 2026')">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/zarnitsa-kurs-individualnaya-2026.jpg" data-gl-cap="Сертификат: курс индивидуальной подготовки «Зарница 2.0», 2026" role="button" tabindex="0" aria-label="Увеличить: Курс индивидуальной подготовки «Зарница 2.0»">
+                    <img src="images/moi-dostizheniya/zarnitsa-kurs-individualnaya-2026.jpg" alt="Сертификат о прохождении курса индивидуальной подготовки «Зарница 2.0»" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Курс индивидуальной подготовки «Зарница 2.0»</h3>
+                    <p class="gallery-item-description">Движение Первых, ВВПОД «Юнармия», Центр «ВОИН»</p>
+                    <p class="gallery-item-date">📅 2026 год</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/zarnitsa-kurs-specialnaya-2026.jpg" data-gl-cap="Сертификат: курс специальной подготовки «Зарница 2.0», 2026" role="button" tabindex="0" aria-label="Увеличить: Курс специальной подготовки «Зарница 2.0»">
+                    <img src="images/moi-dostizheniya/zarnitsa-kurs-specialnaya-2026.jpg" alt="Сертификат о прохождении курса специальной подготовки «Зарница 2.0»" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Курс специальной подготовки «Зарница 2.0»</h3>
+                    <p class="gallery-item-description">Движение Первых, ВВПОД «Юнармия», Центр «ВОИН»</p>
+                    <p class="gallery-item-date">📅 2026 год</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/sertifikat-solnechnyj-svet-ikt-2026.jpg" data-gl-cap="Сертификат о тестировании по ИКТ, Международный педагогический портал «Солнечный свет», 2026. Подтверждён высокий уровень профессиональной компетентности в сфере «Экология и основы безопасности жизнедеятельности: теория и методика преподавания в образовательной организации»" role="button" tabindex="0" aria-label="Увеличить: Тестирование: информационно-коммуникационные технологии">
                     <img src="images/moi-dostizheniya/sertifikat-solnechnyj-svet-ikt-2026.jpg" alt="Сертификат о прохождении тестирования по теме «Информационно-коммуникационные технологии»" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Тестирование: информационно-коммуникационные технологии</h3>
-                    <p class="gallery-item-description">Международный педагогический портал «Солнечный свет»: подтверждён высокий уровень профессиональной компетентности в сфере «Экология и основы безопасности жизнедеятельности: теория и методика преподавания в образовательной организации»</p>
+                    <p class="gallery-item-description">Международный педагогический портал «Солнечный свет»</p>
                     <p class="gallery-item-date">📅 1 октября 2026 г.</p>
                 </div>
             </div>
@@ -1039,12 +1102,13 @@
 
             <!-- ============================================
                  ШАБЛОН ДЛЯ ДОБАВЛЕНИЯ НОВЫХ ДОКУМЕНТОВ
-                 Скопируйте этот блок внутрь нужной рубрики (.gallery-grid)
+                 Скопируйте этот блок внутрь нужной рубрики (.gallery-grid).
+                 Новый документ сам появится и в общем лайтбоксе: ничего больше менять не нужно.
                  ============================================ -->
             <!--
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/ваш-файл.jpg', 'Описание для увеличенного просмотра')">
-                    <img src="images/moi-dostizheniya/ваш-файл.jpg" alt="Краткое описание">
+                <div class="gallery-item-image" data-gl-src="images/moi-dostizheniya/ваш-файл.jpg" data-gl-cap="Подпись под увеличенным документом" role="button" tabindex="0" aria-label="Увеличить документ">
+                    <img src="images/moi-dostizheniya/ваш-файл.jpg" alt="Краткое описание" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Название документа</h3>
@@ -1056,12 +1120,20 @@
 
     </main>
 
-    <!-- LIGHTBOX для увеличения фото -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <button class="lightbox-close" onclick="closeLightbox()">×</button>
-            <img id="lightbox-image" src="" alt="">
-            <p class="lightbox-caption" id="lightbox-caption"></p>
+    <!-- ЕДИНЫЙ ЛАЙТБОКС: сюда попадают все документы страницы (элементы с data-gl-src) -->
+    <div class="gl" id="gl" role="dialog" aria-modal="true" aria-label="Просмотр документов">
+        <div class="gl-top">
+            <span class="gl-count" id="glCount" aria-live="polite"></span>
+            <button type="button" class="gl-close" id="glClose" aria-label="Закрыть">×</button>
+        </div>
+        <div class="gl-stage" id="glStage">
+            <button type="button" class="gl-nav gl-prev" id="glPrev" aria-label="Предыдущий документ">‹</button>
+            <img class="gl-img" id="glImg" src="" alt="">
+            <button type="button" class="gl-nav gl-next" id="glNext" aria-label="Следующий документ">›</button>
+        </div>
+        <div class="gl-bar">
+            <p class="gl-caption" id="glCaption"></p>
+            <p class="gl-meta"><span class="gl-hint"><span class="gl-hint-desk">Листайте колесом мыши или стрелками ← →</span><span class="gl-hint-touch">Листайте свайпом влево и вправо</span></span><a class="gl-orig" id="glOrig" href="#" target="_blank" rel="noopener">Открыть оригинал ↗</a></p>
         </div>
     </div>
 
@@ -1185,26 +1257,128 @@
             });
         }
     });
-        // LIGHTBOX для фотографий
-        function openLightbox(imageSrc, caption) {
-            document.getElementById('lightbox-image').src = imageSrc;
-            document.getElementById('lightbox-caption').textContent = caption;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Закрытие по Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
-        });
     </script>
+<script id="gl-script">
+// ЕДИНЫЙ ЛАЙТБОКС. Любой элемент с атрибутами data-gl-src (картинка) и data-gl-cap (подпись) открывается в нём,
+// и все такие элементы страницы листаются подряд: колесом мыши и стрелками на компьютере, свайпом на телефоне.
+(function () {
+    'use strict';
+    var box = document.getElementById('gl'), img = document.getElementById('glImg'), cap = document.getElementById('glCaption'),
+        cnt = document.getElementById('glCount'), prev = document.getElementById('glPrev'), next = document.getElementById('glNext'),
+        orig = document.getElementById('glOrig'), stage = document.getElementById('glStage'), closeBtn = document.getElementById('glClose');
+    if (!box) { return; }
+    var items = [], cur = 0, opener = null, wheelLock = 0, wheelAcc = 0;
+
+    function collect() {
+        items = Array.prototype.map.call(document.querySelectorAll('[data-gl-src]'), function (e) {
+            return { el: e, src: e.getAttribute('data-gl-src'), cap: e.getAttribute('data-gl-cap') || '' };
+        });
+    }
+    function abs(u) { try { return new URL(u, document.baseURI).href; } catch (e) { return u; } }
+    function preload(i) { if (items[i]) { (new Image()).src = items[i].src; } }
+
+    function show(i, dir) {
+        cur = i;
+        var it = items[i];
+        img.classList.remove('gl-in-next', 'gl-in-prev');
+        img.src = it.src; img.alt = it.cap;
+        if (dir) { void img.offsetWidth; img.classList.add(dir > 0 ? 'gl-in-next' : 'gl-in-prev'); }
+        cap.textContent = it.cap;
+        orig.href = it.src;
+        cnt.textContent = (i + 1) + ' / ' + items.length;
+        prev.disabled = i === 0; next.disabled = i === items.length - 1;
+        preload(i - 1); preload(i + 1);
+    }
+    function go(d) {
+        var n = cur + d;
+        if (n < 0 || n >= items.length) { return; }
+        show(n, d);
+    }
+    function open(i, from) {
+        opener = from || document.activeElement;
+        box.classList.remove('is-single');
+        box.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        show(i, 0);
+        closeBtn.focus();
+    }
+    function close() {
+        if (!box.classList.contains('is-open')) { return; }
+        box.classList.remove('is-open');
+        document.body.style.overflow = 'auto';
+        img.removeAttribute('src');
+        if (opener && opener.focus) { try { opener.focus(); } catch (e) {} }
+    }
+
+    // Старое имя функции сохранено: его вызывает, например, эмблема в шапке сайта
+    window.openLightbox = function (src, caption) {
+        collect();
+        var a = abs(src), i = -1, k;
+        for (k = 0; k < items.length; k++) { if (abs(items[k].src) === a) { i = k; break; } }
+        if (i === -1) { items = [{ el: null, src: src, cap: caption || '' }]; i = 0; opener = document.activeElement; open(0, opener); box.classList.add('is-single'); return; }
+        open(i);
+    };
+    window.closeLightbox = close;
+
+    // Открытие по клику и по Enter / пробелу
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('[data-gl-src]') : null;
+        if (!t) { return; }
+        e.preventDefault();
+        collect();
+        for (var k = 0; k < items.length; k++) { if (items[k].el === t) { open(k, t); return; } }
+    });
+    document.addEventListener('keydown', function (e) {
+        var t = e.target;
+        if (!box.classList.contains('is-open')) {
+            if ((e.key === 'Enter' || e.key === ' ') && t && t.hasAttribute && t.hasAttribute('data-gl-src')) { e.preventDefault(); t.click(); }
+            return;
+        }
+        if (e.key === 'Escape') { close(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+        else if (e.key === 'Home') { e.preventDefault(); if (items.length > 1) { show(0, -1); } }
+        else if (e.key === 'End') { e.preventDefault(); if (items.length > 1) { show(items.length - 1, 1); } }
+        else if (e.key === 'Tab') {
+            var f = [closeBtn, prev, next, orig].filter(function (x) { return !x.disabled && x.offsetParent !== null; });
+            if (!f.length) { return; }
+            var first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            else if (f.indexOf(document.activeElement) === -1) { e.preventDefault(); first.focus(); }
+        }
+    });
+
+    closeBtn.addEventListener('click', close);
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    // Клик по тёмному фону закрывает окно
+    box.addEventListener('click', function (e) { if (e.target === box || e.target === stage || e.target.className === 'gl-bar') { close(); } });
+
+    // Колесо мыши: один «щелчок» колеса = один документ
+    box.addEventListener('wheel', function (e) {
+        if (e.ctrlKey) { return; }
+        e.preventDefault();
+        var now = Date.now();
+        if (now < wheelLock) { return; }
+        wheelAcc += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(wheelAcc) >= 40) { go(wheelAcc > 0 ? 1 : -1); wheelAcc = 0; wheelLock = now + 400; }
+    }, { passive: false });
+
+    // Свайп на телефоне (при увеличении щипком свайп не срабатывает, чтобы можно было двигать картинку)
+    var sx = 0, sy = 0, multi = false;
+    box.addEventListener('touchstart', function (e) {
+        multi = e.touches.length > 1;
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+        if (multi) { if (e.touches.length === 0) { multi = false; } return; }
+        if (window.visualViewport && window.visualViewport.scale > 1.05) { return; }
+        var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) { go(dx < 0 ? 1 : -1); }
+    }, { passive: true });
+})();
+</script>
 <!-- Плавающая кнопка QR-код -->
 <div id="qrFloatingButton" 
      style="position: fixed; 
