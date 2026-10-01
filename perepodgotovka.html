@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-    <meta name="description" content="Галерея документов и фотографий">
+    <meta name="description" content="Переподготовка, повышение квалификации и дополнительное обучение педагога: дипломы, удостоверения, сертификаты. Дёмин А.Ю., учитель ОБЗР.">
     <title>Переподготовка | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -734,6 +734,60 @@
         line-height: 1.6;
         margin-bottom: 1rem;
     }  
+    
+        /* ============================================
+           РУБРИКИ ГАЛЕРЕИ (заголовки разделов страницы)
+           ============================================ */
+        .gallery-rubric {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+            display: inline-block;
+        }
+        .gallery-rubric-note {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .gallery-grid.gallery-grid--rubric {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 560px));
+            justify-content: start;
+            margin-top: 1.25rem;
+        }
+        .gallery-item-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        .gallery-item-link:hover { color: var(--color-primary-hover); }
+        .gallery-item-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+        @media (max-width: 768px) {
+            .gallery-rubric { font-size: 1.4rem; }
+            .gallery-grid.gallery-grid--rubric { grid-template-columns: 1fr; }
+        }
+    
+        /* Слайдер документов целиком (без обрезки вертикальных сканов) */
+        .gallery-slider.gallery-slider--contain {
+            aspect-ratio: auto;
+            height: 500px;
+            max-height: none;
+        }
+        .gallery-slider--contain .slider-image {
+            object-fit: contain;
+        }
+        /* Вертикальный документ показываем целиком */
+        .gallery-item-image--portrait img {
+            height: 500px;
+            object-fit: contain;
+            background: var(--color-surface);
+        }
     </style>
 </head>
 <body>
@@ -862,23 +916,23 @@
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
         <!-- ============================================
-             ЗАГОЛОВОК СТРАНИЦЫ (измените текст)
+             ЗАГОЛОВОК СТРАНИЦЫ
              ============================================ -->
         <h2 class="page-title">📚 Переподготовка</h2>
-        
+
         <p class="page-subtitle">
-            Дипломы, удостоверения и документы о переподготовке и повышении квалификации. Нажмите на изображение для увеличения.
+            Дипломы, удостоверения и документы о переподготовке, повышении квалификации и дополнительном обучении. Нажмите на изображение для увеличения.
         </p>
 
         <!-- ============================================
-             ГАЛЕРЕЯ ФОТОГРАФИЙ
+             РУБРИКА 1. ПЕРЕПОДГОТОВКА И ПОВЫШЕНИЕ КВАЛИФИКАЦИИ
              Копируйте блок .gallery-item для добавления
              ============================================ -->
-        <div class="gallery-grid">
-
- <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/diplom-impuls-2023.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/diplom-impuls-2023.jpg" alt="Диплом о профессиональной переподготовке">
+        <h3 class="gallery-rubric">Переподготовка и повышение квалификации</h3>
+        <div class="gallery-grid gallery-grid--rubric">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/diplom-impuls-2023.jpg', 'Диплом о профессиональной переподготовке, 2023')">
+                    <img src="images/moi-dostizheniya/diplom-impuls-2023.jpg" alt="Диплом о профессиональной переподготовке" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Диплом о профессиональной переподготовке</h3>
@@ -886,10 +940,9 @@
                     <p class="gallery-item-date">📅 2023 год</p>
                 </div>
             </div>
-
- <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024-2.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/perepodgotovka-2024-2.jpg" alt="Удостоверение о повышении квалификации">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024-2.jpg', 'Удостоверение о повышении квалификации, 2024')">
+                    <img src="images/moi-dostizheniya/perepodgotovka-2024-2.jpg" alt="Удостоверение о повышении квалификации: особенности преподавания учебного предмета ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
@@ -897,10 +950,9 @@
                     <p class="gallery-item-date">📅 2024 год</p>
                 </div>
             </div>
-
- <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2025.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/povyshenie-niro-2025.jpg" alt="Удостоверение о повышении квалификации">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2025.jpg', 'Удостоверение о повышении квалификации НИРО, 2025')">
+                    <img src="images/moi-dostizheniya/povyshenie-niro-2025.jpg" alt="Удостоверение о повышении квалификации НИРО: практико-ориентированное обучение ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
@@ -908,10 +960,9 @@
                     <p class="gallery-item-date">📅 2025 год</p>
                 </div>
             </div>
-
-<div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2023.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/perepodgotovka-2023.jpg" alt="Удостоверение о повышении квалификации">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2023.jpg', 'Удостоверение о повышении квалификации, 2023')">
+                    <img src="images/moi-dostizheniya/perepodgotovka-2023.jpg" alt="Удостоверение о повышении квалификации: основы военной подготовки в школе" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
@@ -919,10 +970,9 @@
                     <p class="gallery-item-date">📅 2023 год</p>
                 </div>
             </div>
-
-<div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/perepodgotovka-2024.jpg" alt="Удостоверение о повышении квалификации">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/perepodgotovka-2024.jpg', 'Удостоверение о повышении квалификации, 2024')">
+                    <img src="images/moi-dostizheniya/perepodgotovka-2024.jpg" alt="Удостоверение о повышении квалификации: содержание и методика преподавания предмета ОБЗР" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
@@ -930,10 +980,9 @@
                     <p class="gallery-item-date">📅 2024 год</p>
                 </div>
             </div>
-
-<div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2024.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/povyshenie-niro-2024.jpg" alt="Удостоверение о повышении квалификации">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/povyshenie-niro-2024.jpg', 'Удостоверение о повышении квалификации НИРО, 2024')">
+                    <img src="images/moi-dostizheniya/povyshenie-niro-2024.jpg" alt="Удостоверение о повышении квалификации НИРО: технологии работы с детьми с ОВЗ" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Удостоверение о повышении квалификации</h3>
@@ -941,26 +990,70 @@
                     <p class="gallery-item-date">📅 2024 год</p>
                 </div>
             </div>
-</div>
+        </div>
+
+        <!-- ============================================
+             РУБРИКА 2. ДОПОЛНИТЕЛЬНОЕ ОБУЧЕНИЕ И ТЕСТИРОВАНИЕ
+             ============================================ -->
+        <h3 class="gallery-rubric">Дополнительное обучение и тестирование</h3>
+        <p class="gallery-rubric-note">Сертификаты о прохождении коротких курсов и тестирования (2026 год)</p>
+        <div class="gallery-grid gallery-grid--rubric">
+            <div class="gallery-item">
+                <div class="gallery-slider gallery-slider--contain" onclick="openLightbox(this.querySelector('.slider-image.active').src, 'Сертификаты курсов подготовки «Зарница 2.0», 2026')">
+                    <div class="slider-wrapper">
+            <img class="slider-image active"
+                 src="images/moi-dostizheniya/zarnitsa-kurs-obshaya-2026.jpg"
+                 alt="Сертификат о прохождении курса общей подготовки «Зарница 2.0»" loading="lazy">
+            <img class="slider-image"
+                 src="images/moi-dostizheniya/zarnitsa-kurs-individualnaya-2026.jpg"
+                 alt="Сертификат о прохождении курса индивидуальной подготовки «Зарница 2.0»" loading="lazy">
+            <img class="slider-image"
+                 src="images/moi-dostizheniya/zarnitsa-kurs-specialnaya-2026.jpg"
+                 alt="Сертификат о прохождении курса специальной подготовки «Зарница 2.0»" loading="lazy">
+                    </div>
+                    <button class="slider-btn prev" onclick="event.stopPropagation(); changeSlide(this, -1)" aria-label="Предыдущий документ">‹</button>
+                    <button class="slider-btn next" onclick="event.stopPropagation(); changeSlide(this, 1)" aria-label="Следующий документ">›</button>
+                    <div class="slider-dots">
+            <span class="dot active" onclick="event.stopPropagation(); goToSlide(this, 0)"></span>
+            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 1)"></span>
+            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 2)"></span>
+                    </div>
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">«Зарница 2.0»: курсы подготовки</h3>
+                    <p class="gallery-item-description">Курсы общей, индивидуальной и специальной подготовки (Движение Первых, ВВПОД «Юнармия», Центр «ВОИН»)</p>
+                    <p class="gallery-item-date">📅 2026 год</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-image gallery-item-image--portrait" onclick="openLightbox('images/moi-dostizheniya/sertifikat-solnechnyj-svet-ikt-2026.jpg', 'Сертификат о тестировании по ИКТ, Международный педагогический портал «Солнечный свет», 2026')">
+                    <img src="images/moi-dostizheniya/sertifikat-solnechnyj-svet-ikt-2026.jpg" alt="Сертификат о прохождении тестирования по теме «Информационно-коммуникационные технологии»" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Тестирование: информационно-коммуникационные технологии</h3>
+                    <p class="gallery-item-description">Международный педагогический портал «Солнечный свет»: подтверждён высокий уровень профессиональной компетентности в сфере «Экология и основы безопасности жизнедеятельности: теория и методика преподавания в образовательной организации»</p>
+                    <p class="gallery-item-date">📅 1 октября 2026 г.</p>
+                </div>
+            </div>
+        </div>
 
             <!-- ============================================
-                 ШАБЛОН ДЛЯ ДОБАВЛЕНИЯ НОВЫХ ФОТО
-                 Скопируйте этот блок и измените данные
+                 ШАБЛОН ДЛЯ ДОБАВЛЕНИЯ НОВЫХ ДОКУМЕНТОВ
+                 Скопируйте этот блок внутрь нужной рубрики (.gallery-grid)
                  ============================================ -->
             <!--
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/ваш-файл.jpg', 'Описание для lightbox')">
-                    <img src="images/ваш-файл.jpg" alt="Краткое описание">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/ваш-файл.jpg', 'Описание для увеличенного просмотра')">
+                    <img src="images/moi-dostizheniya/ваш-файл.jpg" alt="Краткое описание">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Название документа</h3>
-                    <p class="gallery-item-description">Подробное описание документа или фотографии</p>
+                    <p class="gallery-item-description">Подробное описание документа</p>
                     <p class="gallery-item-date">📅 Год</p>
                 </div>
             </div>
             -->
 
-        </div>
     </main>
 
     <!-- LIGHTBOX для увеличения фото -->

@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-    <meta name="description" content="Галерея документов и фотографий">
+    <meta name="description" content="Награды и достижения педагога: почётные грамоты, благодарственные письма, дипломы конкурсов и олимпиад. Дёмин А.Ю., учитель ОБЗР, МБОУ СШ № 2 г. Лысково.">
     <title>Награды и достижения | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -739,6 +739,44 @@
         line-height: 1.6;
         margin-bottom: 1rem;
     }  
+    
+        /* ============================================
+           РУБРИКИ ГАЛЕРЕИ (заголовки разделов страницы)
+           ============================================ */
+        .gallery-rubric {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-danger);
+            display: inline-block;
+        }
+        .gallery-rubric-note {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .gallery-grid.gallery-grid--rubric {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 560px));
+            justify-content: start;
+            margin-top: 1.25rem;
+        }
+        .gallery-item-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        .gallery-item-link:hover { color: var(--color-primary-hover); }
+        .gallery-item-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+        @media (max-width: 768px) {
+            .gallery-rubric { font-size: 1.4rem; }
+            .gallery-grid.gallery-grid--rubric { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -867,75 +905,118 @@
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <main>
         <!-- ============================================
-             ЗАГОЛОВОК СТРАНИЦЫ (измените текст)
+             ЗАГОЛОВОК СТРАНИЦЫ
              ============================================ -->
         <h2 class="page-title">🏆 Награды и достижения</h2>
-        
+
         <p class="page-subtitle">
-            Почетные грамоты и благодарственные письма. Нажмите на изображение для увеличения.
+            Почётные грамоты, благодарственные письма, дипломы конкурсов и олимпиад. Нажмите на изображение для увеличения.
         </p>
 
         <!-- ============================================
-             ГАЛЕРЕЯ ФОТОГРАФИЙ
+             РУБРИКА 1. ПОЧЁТНЫЕ ГРАМОТЫ
              Копируйте блок .gallery-item для добавления
              ============================================ -->
-        <div class="gallery-grid">
-   <div class="gallery-item">
-    <div class="gallery-slider" onclick="openLightbox(this.querySelector('.slider-image.active').src, 'Благодарственные письма')">
-        <div class="slider-wrapper">
-            <img class="slider-image active" 
-                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2023.jpg" 
-                 alt="Благодарственное письмо 2023">
-            <img class="slider-image" 
-                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2026.jpg" 
-                 alt="Благодарственное письмо 2026">
-        </div>
-        <button class="slider-btn prev" onclick="event.stopPropagation(); changeSlide(this, -1)">‹</button>
-        <button class="slider-btn next" onclick="event.stopPropagation(); changeSlide(this, 1)">›</button>
-        <div class="slider-dots">
-            <span class="dot active" onclick="event.stopPropagation(); goToSlide(this, 0)"></span>
-            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 1)"></span>
-        </div>
-    </div>
-    <div class="gallery-item-content">
-        <h3 class="gallery-item-title">Благодарственные письма</h3>
-        <p class="gallery-item-description">За активное участие в проведении военных сборов в УЦ "Гвардеец"</p>
-        <p class="gallery-item-date">📅 2023, 2026 годы</p>
-    </div>
-</div>
-
-
- <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/gramota-upravlenie-obrazovaniya.jpg', 'Описание для lightbox')">
-                    <img src="images/moi-dostizheniya/gramota-upravlenie-obrazovaniya.jpg" alt="Почетная грамота">
+        <h3 class="gallery-rubric">Почётные грамоты</h3>
+        <div class="gallery-grid gallery-grid--rubric">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/gramota-upravlenie-obrazovaniya.jpg', 'Почётная грамота Управления образования и молодёжной политики, 2025')">
+                    <img src="images/moi-dostizheniya/gramota-upravlenie-obrazovaniya.jpg" alt="Почётная грамота Управления образования и молодёжной политики администрации Лысковского муниципального округа" loading="lazy">
                 </div>
                 <div class="gallery-item-content">
-                    <h3 class="gallery-item-title">Почетная грамота</h3>
-                    <p class="gallery-item-description">За профессионализм и добросовестный труд</p>
+                    <h3 class="gallery-item-title">Почётная грамота Управления образования</h3>
+                    <p class="gallery-item-description">Управление образования и молодёжной политики администрации Лысковского муниципального округа: за профессионализм, добросовестный труд и умелую организацию образовательного процесса</p>
                     <p class="gallery-item-date">📅 2025 год</p>
                 </div>
             </div>
-   
-</div>
+        </div>
+
+        <!-- ============================================
+             РУБРИКА 2. БЛАГОДАРСТВЕННЫЕ ПИСЬМА
+             ============================================ -->
+        <h3 class="gallery-rubric">Благодарственные письма</h3>
+        <div class="gallery-grid gallery-grid--rubric">
+            <div class="gallery-item">
+                <div class="gallery-slider" onclick="openLightbox(this.querySelector('.slider-image.active').src, 'Благодарственные письма')">
+                    <div class="slider-wrapper">
+            <img class="slider-image active"
+                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2023.jpg"
+                 alt="Благодарственное письмо 2023" loading="lazy">
+            <img class="slider-image"
+                 src="images/moi-dostizheniya/blagodarnost-gvardeets-2026.jpg"
+                 alt="Благодарственное письмо 2026" loading="lazy">
+                    </div>
+                    <button class="slider-btn prev" onclick="event.stopPropagation(); changeSlide(this, -1)" aria-label="Предыдущий документ">‹</button>
+                    <button class="slider-btn next" onclick="event.stopPropagation(); changeSlide(this, 1)" aria-label="Следующий документ">›</button>
+                    <div class="slider-dots">
+            <span class="dot active" onclick="event.stopPropagation(); goToSlide(this, 0)"></span>
+            <span class="dot" onclick="event.stopPropagation(); goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Благодарственные письма</h3>
+                    <p class="gallery-item-description">За активное участие в проведении военных сборов в УЦ "Гвардеец"</p>
+                    <p class="gallery-item-date">📅 2023, 2026 годы</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/blagodarnost-infourok-2025.jpg', 'Благодарность проекта «Инфоурок», 2025')">
+                    <img src="images/moi-dostizheniya/blagodarnost-infourok-2025.jpg" alt="Благодарность проекта «Инфоурок» за вклад в методическое обеспечение учебного процесса" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Благодарность проекта «Инфоурок»</h3>
+                    <p class="gallery-item-description">За существенный вклад в методическое обеспечение учебного процесса по преподаваемой дисциплине в рамках онлайн-библиотеки методических разработок для учителей</p>
+                    <p class="gallery-item-date">📅 02.12.2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================
+             РУБРИКА 3. КОНКУРСЫ И ОЛИМПИАДЫ ДЛЯ ПЕДАГОГОВ
+             ============================================ -->
+        <h3 class="gallery-rubric">Конкурсы и олимпиады для педагогов</h3>
+        <p class="gallery-rubric-note">Международный педагогический портал «Солнечный свет» (свидетельство о регистрации СМИ Эл № ФС 77-88824)</p>
+        <div class="gallery-grid gallery-grid--rubric">
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/diplom-solnechnyj-svet-sajt-2026.jpg', 'Диплом победителя международного конкурса «Сайт (блог, страница)», 2026')">
+                    <img src="images/moi-dostizheniya/diplom-solnechnyj-svet-sajt-2026.jpg" alt="Диплом победителя (1 место) международного конкурса «Сайт (блог, страница)»" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Победитель (1 место) международного конкурса «Сайт (блог, страница)»</h3>
+                    <p class="gallery-item-description">Работа: «Персональный сайт преподавателя-организатора ОБЗР в МБОУ СШ 2 г. Лысково»</p>
+                    <p class="gallery-item-date">📅 1 октября 2026 г.</p>
+                    <a class="gallery-item-link" href="metodicheskaya-aktivnost.html#publikacii">Статья об опыте создания сайта →</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/diplom-solnechnyj-svet-olimpiada-2026.jpg', 'Диплом победителя международной интернет-олимпиады «Солнечный свет» по ОБЖ для педагогов, 2026')">
+                    <img src="images/moi-dostizheniya/diplom-solnechnyj-svet-olimpiada-2026.jpg" alt="Диплом победителя (1 место) международной интернет-олимпиады по ОБЖ для педагогов" loading="lazy">
+                </div>
+                <div class="gallery-item-content">
+                    <h3 class="gallery-item-title">Победитель (1 место) международной интернет-олимпиады по ОБЖ для педагогов</h3>
+                    <p class="gallery-item-description">Международная интернет-олимпиада «Солнечный свет»</p>
+                    <p class="gallery-item-date">📅 1 октября 2026 г.</p>
+                </div>
+            </div>
+        </div>
 
             <!-- ============================================
-                 ШАБЛОН ДЛЯ ДОБАВЛЕНИЯ НОВЫХ ФОТО
-                 Скопируйте этот блок и измените данные
+                 ШАБЛОН ДЛЯ ДОБАВЛЕНИЯ НОВЫХ ДОКУМЕНТОВ
+                 Скопируйте этот блок внутрь нужной рубрики (.gallery-grid)
                  ============================================ -->
             <!--
             <div class="gallery-item">
-                <div class="gallery-item-image" onclick="openLightbox('images/ваш-файл.jpg', 'Описание для lightbox')">
-                    <img src="images/ваш-файл.jpg" alt="Краткое описание">
+                <div class="gallery-item-image" onclick="openLightbox('images/moi-dostizheniya/ваш-файл.jpg', 'Описание для увеличенного просмотра')">
+                    <img src="images/moi-dostizheniya/ваш-файл.jpg" alt="Краткое описание">
                 </div>
                 <div class="gallery-item-content">
                     <h3 class="gallery-item-title">Название документа</h3>
-                    <p class="gallery-item-description">Подробное описание документа или фотографии</p>
+                    <p class="gallery-item-description">Подробное описание документа</p>
                     <p class="gallery-item-date">📅 Год</p>
                 </div>
             </div>
             -->
 
-        </div>
     </main>
 
     <!-- LIGHTBOX для увеличения фото -->

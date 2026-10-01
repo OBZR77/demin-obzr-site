@@ -1048,129 +1048,298 @@
         </div>
 
         <!-- Инфоурок -->
-        <div class="activity-card">
+        <div class="activity-card" id="publikacii">
             <h3><span class="activity-icon">📄</span> Публикации на цифровых образовательных платформах</h3>
             <p>
-                Размещение авторских рабочих программ, методических разработок и учебных материалов на крупнейших образовательных платформах России. 
+                Размещение авторских рабочих программ, методических разработок, учебных материалов и статей на крупнейших образовательных платформах России. 
                 Все публикации подтверждены сертификатами о размещении материалов.
             </p>
             <ul class="activity-list">
                 <li>Рабочие программы по ОБЗР для 8-9 классов в соответствии с ФГОС</li>
                 <li>Рабочие программы по ОБЗР для 10-11 классов в соответствии с ФГОС</li>
                 <li>Дополнительная программа "Юнармия" в соответствии с ФГОС</li>
+                <li>Тестовые и контрольные материалы: тестовая проверочная работа по ОБЗР, итоговая тестовая работа за 9 класс</li>
+                <li>Презентации к урокам: ОБЗР, 10 класс, тема «БПЛА»</li>
+                <li>Статья «Сайт учителя как цифровая среда предмета» в международном сетевом издании «Солнечный свет»</li>
             </ul>
             <p style="margin-top: 1rem; color: var(--color-text-secondary); font-style: italic;">
                 📜 Все публикации сопровождаются официальными сертификатами образовательной платформы «Инфоурок», подтверждающими авторство и качество материалов
             </p>
             
             <!-- ГАЛЕРЕЯ СЕРТИФИКАТОВ -->
-            <div style="margin-top: 1.5rem; 
-                        padding: 1.5rem; 
+            <div style="margin-top: 1.5rem;
+                        padding: 1.5rem;
                         background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
                         border-radius: 12px;
                         border-left: 4px solid #FFC107;">
-                <h4 style="color: #856404; 
-                           margin-bottom: 1rem; 
+                <h4 style="color: #856404;
+                           margin-bottom: 1rem;
                            font-size: 1.1rem;
                            display: flex;
                            align-items: center;
                            gap: 0.5rem;">
-                    <span style="font-size: 1.5rem;">🏆</span> Сертификаты публикаций
+                    <span style="font-size: 1.5rem;">🏆</span> Сертификаты публикаций на «Инфоурок»
                 </h4>
-                
-                <div style="display: grid; 
-                            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+
+                <div style="display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                             gap: 1rem;">
-                    
+
                     <!-- Сертификат 1 -->
-                    <div onclick="openCertificateLightbox('certificate1')" 
-                         style="cursor: pointer; 
-                                border-radius: 8px; 
-                                overflow: hidden; 
+                    <div onclick="openCertificateLightbox('certificate1')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate1');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: рабочая программа по ОБЗР для 8-9 классов"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
                                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 background: white;"
                          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
-                                            <img src="images/portfolio/infourok-cert-1.jpg" 
-                             alt="Сертификат публикации 1" 
-                             style="width: 100%; 
-                                    height: 250px; 
+                        <img src="images/portfolio/infourok-cert-1.jpg"
+                             alt="Сертификат публикации 1: рабочая программа по ОБЗР для 8-9 классов"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
                                     object-fit: contain;
                                     background-color: #f5f7fa;
                                     display: block;">
                         <div style="padding: 0.75rem; text-align: center;">
-                            <p style="margin: 0; 
-                                      font-size: 0.9rem; 
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
                                       color: var(--color-primary);
                                       font-weight: 600;">
-                                Рабочая программа по ОБЗР <br>
-                                для 8-9 классов.
+                                Рабочая программа по ОБЗР <br>для 8-9 классов.
                             </p>
                         </div>
                     </div>
-                    
+
                     <!-- Сертификат 2 -->
-                    <div onclick="openCertificateLightbox('certificate2')" 
-                         style="cursor: pointer; 
-                                border-radius: 8px; 
-                                overflow: hidden; 
+                    <div onclick="openCertificateLightbox('certificate2')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate2');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: рабочая программа по ОБЗР для 10-11 классов"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
                                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 background: white;"
                          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
-                                               <img src="images/portfolio/infourok-cert-2.jpg" 
-                             alt="Сертификат публикации 2" 
-                             style="width: 100%; 
-                                    height: 250px; 
+                        <img src="images/portfolio/infourok-cert-2.jpg"
+                             alt="Сертификат публикации 2: рабочая программа по ОБЗР для 10-11 классов"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
                                     object-fit: contain;
                                     background-color: #f5f7fa;
                                     display: block;">
                         <div style="padding: 0.75rem; text-align: center;">
-                            <p style="margin: 0; 
-                                      font-size: 0.9rem; 
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
                                       color: var(--color-primary);
                                       font-weight: 600;">
-                               Рабочая программа по ОБЗР <br> 
-                               для 10-11 классов.
+                                Рабочая программа по ОБЗР <br>для 10-11 классов.
                             </p>
                         </div>
                     </div>
-                    
+
                     <!-- Сертификат 3 -->
-                    <div onclick="openCertificateLightbox('certificate3')" 
-                         style="cursor: pointer; 
-                                border-radius: 8px; 
-                                overflow: hidden; 
+                    <div onclick="openCertificateLightbox('certificate3')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate3');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: дополнительная программа «Юнармия»"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
                                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                                 background: white;"
                          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
-                                                <img src="images/portfolio/infourok-cert-3.jpg" 
-                             alt="Сертификат публикации 3" 
-                             style="width: 100%; 
-                                    height: 250px; 
+                        <img src="images/portfolio/infourok-cert-3.jpg"
+                             alt="Сертификат публикации 3: дополнительная программа «Юнармия»"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
                                     object-fit: contain;
                                     background-color: #f5f7fa;
                                     display: block;">
                         <div style="padding: 0.75rem; text-align: center;">
-                            <p style="margin: 0; 
-                                      font-size: 0.9rem; 
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
                                       color: var(--color-primary);
                                       font-weight: 600;">
-                                  Дополнительная программа "Юнармия"
+                                Дополнительная программа "Юнармия"
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Сертификат 4 -->
+                    <div onclick="openCertificateLightbox('certificate4')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate4');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: тестовая проверочная работа по ОБЗР"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                background: white;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
+                        <img src="images/portfolio/infourok-cert-4.jpg"
+                             alt="Сертификат публикации 4: тестовая проверочная работа по ОБЗР"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
+                                    object-fit: contain;
+                                    background-color: #f5f7fa;
+                                    display: block;">
+                        <div style="padding: 0.75rem; text-align: center;">
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
+                                      color: var(--color-primary);
+                                      font-weight: 600;">
+                                Тестовая проверочная работа по ОБЗР
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Сертификат 5 -->
+                    <div onclick="openCertificateLightbox('certificate5')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate5');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: итоговая тестовая работа по ОБЗР за 9 класс"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                background: white;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
+                        <img src="images/portfolio/infourok-cert-5.jpg"
+                             alt="Сертификат публикации 5: итоговая тестовая работа по ОБЗР за 9 класс"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
+                                    object-fit: contain;
+                                    background-color: #f5f7fa;
+                                    display: block;">
+                        <div style="padding: 0.75rem; text-align: center;">
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
+                                      color: var(--color-primary);
+                                      font-weight: 600;">
+                                Итоговая тестовая работа <br>по ОБЗР за 9 класс
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Сертификат 6 -->
+                    <div onclick="openCertificateLightbox('certificate6')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate6');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: презентация по ОБЗР, 10 класс, тема БПЛА"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                background: white;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
+                        <img src="images/portfolio/infourok-cert-6.jpg"
+                             alt="Сертификат публикации 6: презентация по ОБЗР, 10 класс, тема БПЛА"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
+                                    object-fit: contain;
+                                    background-color: #f5f7fa;
+                                    display: block;">
+                        <div style="padding: 0.75rem; text-align: center;">
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
+                                      color: var(--color-primary);
+                                      font-weight: 600;">
+                                Презентация по ОБЗР, 10 класс. <br>Тема: БПЛА
                             </p>
                         </div>
                     </div>
                 </div>
-                
-                <p style="margin-top: 1rem; 
-                          font-size: 0.85rem; 
+
+                <p style="margin-top: 1rem;
+                          font-size: 0.85rem;
                           color: #856404;
                           text-align: center;">
                     💡 Нажмите на сертификат для просмотра в полном размере
+                </p>
+            </div>
+
+            <!-- СТАТЬИ В СЕТЕВЫХ ИЗДАНИЯХ -->
+            <div style="margin-top: 1.5rem;
+                        padding: 1.5rem;
+                        background: linear-gradient(135deg, #EAF3FF 0%, #D9E8FB 100%);
+                        border-radius: 12px;
+                        border-left: 4px solid var(--color-primary);">
+                <h4 style="color: var(--color-primary);
+                           margin-bottom: 0.75rem;
+                           font-size: 1.1rem;
+                           display: flex;
+                           align-items: center;
+                           gap: 0.5rem;">
+                    <span style="font-size: 1.5rem;">📰</span> Статьи в сетевых изданиях
+                </h4>
+                <p style="margin: 0 0 1rem 0; line-height: 1.6;">
+                    <strong>«Сайт учителя как цифровая среда предмета: опыт использования современных технологий в преподавании ОБЗР»</strong><br>
+                    Международное сетевое издание «Солнечный свет» (свидетельство о регистрации СМИ Эл № ФС 77-88824), 1 октября 2026 г.
+                </p>
+                <div style="display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                            gap: 1rem;
+                            margin-bottom: 1rem;">
+
+                    <!-- Сертификат 7 -->
+                    <div onclick="openCertificateLightbox('certificate7')"
+                         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCertificateLightbox('certificate7');}"
+                         role="button" tabindex="0" aria-label="Открыть сертификат: статья «Сайт учителя как цифровая среда предмета»"
+                         style="cursor: pointer;
+                                border-radius: 8px;
+                                overflow: hidden;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                background: white;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 20px rgba(0, 61, 122, 0.25)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.15)';">
+                        <img src="images/portfolio/solncesvet-statya-2026.jpg"
+                             alt="Свидетельство о публикации: статья «Сайт учителя как цифровая среда предмета»"
+                             loading="lazy"
+                             style="width: 100%;
+                                    height: 250px;
+                                    object-fit: contain;
+                                    background-color: #f5f7fa;
+                                    display: block;">
+                        <div style="padding: 0.75rem; text-align: center;">
+                            <p style="margin: 0;
+                                      font-size: 0.9rem;
+                                      color: var(--color-primary);
+                                      font-weight: 600;">
+                                Свидетельство о публикации статьи
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://solncesvet.ru/opublikovannyie-materialyi/sayt-uchitelya-kak-cifrovaya-sreda-predm.27746542232/"
+                   target="_blank" rel="noopener noreferrer"
+                   style="display: inline-block;
+                          background: var(--color-primary);
+                          color: white;
+                          padding: 0.7rem 1.4rem;
+                          border-radius: 8px;
+                          text-decoration: none;
+                          font-weight: 600;">
+                    📰 Читать статью на портале «Солнечный свет» →
+                </a>
+                <p style="margin: 1rem 0 0 0; font-size: 0.9rem;">
+                    Награда за этот сайт: <a href="nagrady.html" style="color: var(--color-primary); font-weight: 600;">диплом победителя международного конкурса «Сайт (блог, страница)»</a>
                 </p>
             </div>
         </div>
@@ -1637,10 +1806,30 @@
                 src: "images/portfolio/infourok-cert-2.jpg",
                 title: "Сертификат публикации: Рабочая программа по ОБЗР для 10-11 классов"
             },
-                       {
+            {
                 id: "certificate3",
                 src: "images/portfolio/infourok-cert-3.jpg",
                 title: "Сертификат публикации: Дополнительная программа «Юнармия»"
+            },
+            {
+                id: "certificate4",
+                src: "images/portfolio/infourok-cert-4.jpg",
+                title: "Сертификат публикации: Тестовая проверочная работа по ОБЗР"
+            },
+            {
+                id: "certificate5",
+                src: "images/portfolio/infourok-cert-5.jpg",
+                title: "Сертификат публикации: Итоговая тестовая работа по ОБЗР за 9 класс"
+            },
+            {
+                id: "certificate6",
+                src: "images/portfolio/infourok-cert-6.jpg",
+                title: "Сертификат публикации: Презентация по ОБЗР, 10 класс, тема «БПЛА»"
+            },
+            {
+                id: "certificate7",
+                src: "images/portfolio/solncesvet-statya-2026.jpg",
+                title: "Свидетельство о публикации статьи «Сайт учителя как цифровая среда предмета» (Солнечный свет)"
             }
         ];
 
