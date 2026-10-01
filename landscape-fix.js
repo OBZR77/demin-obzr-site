@@ -35,3 +35,19 @@
         }, 500);
     });
 })();
+
+// Эмблема в шапке: если на странице нет своих функций открытия/закрытия, добавляем их
+(function () {
+    if (typeof window.openLightbox !== 'function') {
+        window.openLightbox = function () {
+            var box = document.getElementById('emblem-lightbox');
+            if (box) { box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        };
+    }
+    if (typeof window.closeLightbox !== 'function') {
+        window.closeLightbox = function () {
+            var box = document.getElementById('emblem-lightbox');
+            if (box) { box.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        };
+    }
+})();
