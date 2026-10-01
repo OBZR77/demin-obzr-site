@@ -1702,7 +1702,7 @@ document.addEventListener('click', function(event) {
             if (!dt) { return; }
             tasks.push({ cl: String(c.cl), course: z.course || 'БЖ', n: c.lessons, title: 'Ситуационная задача: «' + z.title + '»',
                          text: z.dzText || 'Прочитай условие на странице задачи и сдай ответ через форму.',
-                         date: dt, last: dt, form: FORM + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'),
+                         date: dt, last: dt, form: (z.form || window.SZ_FORM || FORM) + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'),
                          mat: 'situacionnye-zadachi.html', matLabel: 'Читать условие' });
         });
     });

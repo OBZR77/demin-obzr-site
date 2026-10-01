@@ -1355,7 +1355,8 @@
             <li>Прочитай условие и вопросы. Подсказка поможет, если не знаешь, с чего начать.</li>
             <li>Ответь на вопросы своими словами. Отвечай именно на эту ситуацию, а не общими фразами.</li>
             <li>Нажми кнопку «Сдать ответ» для своего класса: откроется форма.</li>
-            <li>В форме выбери класс и введи личный код (5 цифр с карточки). Фамилию и имя писать не нужно. Если пользовался ИИ-помощником, отметь это в форме.</li>
+            <li>В форме выбери класс и введи личный код (5 цифр с карточки). Фамилию и имя писать не нужно.</li>
+            <li>Ответ на обязательные вопросы напиши в поле «Ответ на вопросы 1–3», а ответ на вопросы по желанию во второе поле. Второе поле можно оставить пустым. В конце отметь, пользовался ли ты ИИ-помощником.</li>
         </ol>
         <p>Все задания со сроками по классам собраны на странице <a href="domashnie-zadaniya.html">«Домашние задания»</a>. Есть вопрос по задаче? <a href="https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/" target="_blank" rel="noopener">Задай его учителю</a>.</p>
 
@@ -1656,7 +1657,7 @@ document.addEventListener('click', function(event) {
 <script id="sz-script">
 (function () {
     'use strict';
-    var FORM = 'https://forms.yandex.ru/u/6abaca9650569060a527b159/';
+    var FORM = window.SZ_FORM || 'https://forms.yandex.ru/u/6abea20990290290485bd749/';
     var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
     function clear(n) { while (n.firstChild) { n.removeChild(n.firstChild); } }
@@ -1664,7 +1665,7 @@ document.addEventListener('click', function(event) {
     function parseDate(s) { var m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || '')); return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null; }
     function dayWord(n) { var a = n % 10, b = n % 100; return (a === 1 && b !== 11) ? 'день' : ((a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'дня' : 'дней'); }
     function dateText(d) { return d.getDate() + ' ' + MON[d.getMonth()] + ' ' + d.getFullYear(); }
-    function formUrl(z, c) { return FORM + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'); }
+    function formUrl(z, c) { return (z.form || FORM) + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'); }
     function list(tag, items, cls, start) {
         var l = el(tag, cls);
         if (start) { l.setAttribute('start', String(start)); }
@@ -1721,6 +1722,7 @@ document.addEventListener('click', function(event) {
         card.appendChild(list('ol', base, 'sz-q'));
         if (extra.length) {
             card.appendChild(el('h4', 'sz-h3', 'Вопросы по желанию (повышенный уровень)'));
+            card.appendChild(el('p', '', 'Ответ на эти вопросы пиши во втором поле формы: «Ответ на вопросы по желанию».'));
             card.appendChild(list('ol', extra, 'sz-q', base.length + 1));
         }
         if (z.hint) {
