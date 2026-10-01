@@ -1057,6 +1057,8 @@
         .tr-match-row.tr-ok{border-color:var(--tr-ok);background:var(--tr-ok-bg)}
         .tr-match-row.tr-bad{border-color:var(--tr-bad);background:var(--tr-bad-bg)}
         .tr-match-row label{font-weight:600}
+        .tr-match-row select{min-width:0;max-width:100%;width:100%}
+        .tr-match-row > *{min-width:0}
         .tr-scope select{font:inherit;min-height:44px;padding:.3rem .5rem;border:2px solid var(--tr-border);border-radius:8px;background:#fff;color:var(--tr-text);max-width:100%}
         .tr-note-row{grid-column:1 / -1;font-size:.95rem}
 
@@ -1105,6 +1107,17 @@
         .tr-chip[class*="tr-t-"] { border-color: var(--tt); color: var(--tx); }
         .tr-chip[class*="tr-t-"]:not([aria-pressed="true"]):hover { background: var(--tb); }
         .tr-chip[class*="tr-t-"][aria-pressed="true"] { background: var(--tt); color: #fff; }
+    </style>
+    <style id="tr-level-colors">
+        /* Уровень: базовый — светлая метка, повышенный — тёмно-синяя */
+        .tr-badge.tr-l-base { background: #FFFFFF; color: #37424D; border: 1px solid #B8C2CC; }
+        .tr-badge.tr-l-adv { background: #003D7A; color: #FFFFFF; border: 1px solid #003D7A; }
+        .tr-chip.tr-l-base { border-color: #6B7782; color: #37424D; }
+        .tr-chip.tr-l-adv { border-color: #003D7A; color: #003D7A; }
+        .tr-chip.tr-l-base[aria-pressed="true"] { background: #37424D; color: #fff; }
+        .tr-chip.tr-l-adv[aria-pressed="true"] { background: #003D7A; color: #fff; }
+        .tr-note { margin: 0 0 .8rem; padding: .5rem .8rem; background: #F5F7FA; border-left: 4px solid #003D7A; border-radius: 6px; font-size: .95rem; }
+        .tr-multi-hint { display: block; font-weight: 400; font-size: .9rem; color: #37424D; }
     </style>
     <style id="red-nav-buttons">
         /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
@@ -1436,6 +1449,10 @@
                     <span class="tr-filter-label" id="tr-lbl-type">Тип:</span>
                     <span id="tr-f-type" class="tr-filter-group"></span>
                 </div>
+                <div class="tr-filter-group" role="group" aria-labelledby="tr-lbl-level">
+                    <span class="tr-filter-label" id="tr-lbl-level">Уровень:</span>
+                    <span id="tr-f-level" class="tr-filter-group"></span>
+                </div>
             </section>
 
             <p class="tr-count" id="tr-count" role="status" aria-live="polite"></p>
@@ -1760,7 +1777,9 @@ document.addEventListener('click', function(event) {
         }
 
         var TYPE_NAMES = { order: 'Расставь по порядку', match: 'Сопоставь', quiz: 'Тест', scenario: 'Ситуация «что делать?»' };
-        var state = { course: 'all', cl: 'all', type: 'all' };
+        var state = { course: 'all', cl: 'all', type: 'all', level: 'all' };
+        var LEVEL_NAMES = { base: 'Базовый', adv: 'Повышенный' };
+        function levelOf(it) { return it.level === 'adv' ? 'adv' : 'base'; }
         var opened = {};          // id -> true
         var cardEls = {};         // id -> {card, btn, panel}
 
@@ -1821,11 +1840,15 @@ document.addEventListener('click', function(event) {
             var types = [{ value: 'all', label: 'Все' }];
             Object.keys(TYPE_NAMES).forEach(function (k) { types.push({ value: k, label: TYPE_NAMES[k], cls: 'tr-t-' + k }); });
             buildChips('tr-f-type', 'type', types);
+            buildChips('tr-f-level', 'level', [
+                { value: 'all', label: 'Все' }, { value: 'base', label: 'Базовый', cls: 'tr-l-base' }, { value: 'adv', label: 'Повышенный', cls: 'tr-l-adv' }
+            ]);
         }
         function matches(it) {
             if (state.course !== 'all' && it.course !== state.course) { return false; }
             if (state.cl !== 'all' && (it.cl || []).indexOf(Number(state.cl)) === -1) { return false; }
             if (state.type !== 'all' && it.type !== state.type) { return false; }
+            if (state.level !== 'all' && levelOf(it) !== state.level) { return false; }
             return true;
         }
         function plural(n) {
@@ -1843,7 +1866,7 @@ document.addEventListener('click', function(event) {
                 c.card.hidden = !ok;
                 if (ok) { shown++; }
             });
-            countEl.textContent = shown ? ('Найдено: ' + shown + ' ' + plural(shown)) : 'По выбранным условиям тренажёров пока нет. Попробуй другой класс или тип.';
+            countEl.textContent = shown ? ('Найдено: ' + shown + ' ' + plural(shown)) : 'По выбранным условиям тренажёров пока нет. Попробуй другой класс, тип или уровень.';
         }
 
         /* ---------- карточки ---------- */
@@ -1855,6 +1878,7 @@ document.addEventListener('click', function(event) {
                 badges.appendChild(el('span', 'tr-badge ' + (it.course === 'НВП' ? 'tr-badge-nvp' : 'tr-badge-bzh'), it.course));
                 badges.appendChild(el('span', 'tr-badge tr-badge-cl', (it.cl || []).join(', ') + ' кл.'));
                 badges.appendChild(el('span', 'tr-badge tr-badge-type tr-t-' + it.type, TYPE_NAMES[it.type] || it.type));
+                badges.appendChild(el('span', 'tr-badge tr-l-' + levelOf(it), LEVEL_NAMES[levelOf(it)]));
                 card.appendChild(badges);
                 card.appendChild(el('h3', null, it.title));
                 card.appendChild(el('p', 'tr-intro', it.intro || ''));
@@ -2039,17 +2063,27 @@ document.addEventListener('click', function(event) {
 
         /* ---------- тип: quiz ---------- */
         function renderQuiz(it, panel) {
+            var bank = it.questions;
+            var pick = (it.pick && it.pick < bank.length) ? it.pick : bank.length;
+            var used = pick < bank.length ? shuffle(bank).slice(0, pick) : bank;
+            if (pick < bank.length) {
+                panel.appendChild(el('p', 'tr-note', 'В банке ' + bank.length + ' вопросов, в каждой попытке — ' + pick + ' случайных. Нажми «Начать заново», чтобы получить другой набор.'));
+            }
             var form = el('form'); form.setAttribute('novalidate', 'novalidate');
             form.addEventListener('submit', function (e) { e.preventDefault(); });
-            var qs = it.questions.map(function (q, qi) {
-                var order = shuffle(q.options.map(function (text, idx) { return { text: text, right: idx === q.answer }; }));
+            var qs = used.map(function (q, qi) {
+                var rightIdx = q.answers ? q.answers : [q.answer];
+                var multi = !!q.answers;
+                var order = shuffle(q.options.map(function (text, idx) { return { text: text, right: rightIdx.indexOf(idx) !== -1 }; }));
                 var fs = el('fieldset', 'tr-q');
-                fs.appendChild(el('legend', null, (qi + 1) + '. ' + q.q));
+                var lg = el('legend', null, (qi + 1) + '. ' + q.q);
+                if (multi) { lg.appendChild(el('span', 'tr-multi-hint', 'Выбери все верные ответы (их может быть несколько)')); }
+                fs.appendChild(lg);
                 var inputs = [];
                 order.forEach(function (o, oi) {
                     var row = el('div', 'tr-opt');
                     var id = 'tr-q-' + it.id + '-' + qi + '-' + oi;
-                    var inp = el('input'); inp.type = 'radio'; inp.name = 'tr-q-' + it.id + '-' + qi; inp.id = id; inp.value = String(oi);
+                    var inp = el('input'); inp.type = multi ? 'checkbox' : 'radio'; inp.name = 'tr-q-' + it.id + '-' + qi; inp.id = id; inp.value = String(oi);
                     var lab = el('label', null, o.text); lab.setAttribute('for', id);
                     row.appendChild(inp); row.appendChild(lab); fs.appendChild(row);
                     inputs.push(inp);
@@ -2057,7 +2091,7 @@ document.addEventListener('click', function(event) {
                 var why = el('p', 'tr-why'); why.hidden = true;
                 fs.appendChild(why);
                 form.appendChild(fs);
-                return { fs: fs, inputs: inputs, order: order, why: why, q: q };
+                return { fs: fs, inputs: inputs, order: order, why: why, q: q, multi: multi };
             });
             var out = el('div');
             var actions = el('div', 'tr-actions');
@@ -2076,14 +2110,17 @@ document.addEventListener('click', function(event) {
                 }
                 var good = 0;
                 qs.forEach(function (o) {
-                    var chosenIdx = -1;
-                    o.inputs.forEach(function (i, ix) { if (i.checked) { chosenIdx = ix; } i.disabled = true; });
-                    var ok = o.order[chosenIdx].right;
+                    var ok = true;
+                    o.inputs.forEach(function (i, ix) {
+                        if (i.checked !== o.order[ix].right) { ok = false; }
+                        i.disabled = true;
+                    });
                     if (ok) { good++; }
                     o.fs.className = 'tr-q ' + (ok ? 'tr-ok' : 'tr-bad');
                     o.why.hidden = false;
-                    var right = o.order.filter(function (x) { return x.right; })[0].text;
-                    o.why.textContent = (ok ? '✔ Верно. ' : '✖ Неверно. Правильный ответ: «' + right + '». ') + (o.q.why || '');
+                    var rights = o.order.filter(function (x) { return x.right; }).map(function (x) { return '«' + x.text + '»'; });
+                    var label = o.multi ? 'Правильные ответы: ' : 'Правильный ответ: ';
+                    o.why.textContent = (ok ? '✔ Верно. ' : '✖ Неверно. ' + label + rights.join('; ') + '. ') + (o.q.why || '');
                 });
                 var pct = Math.round(good * 100 / qs.length);
                 var kind = pct >= 85 ? 'ok' : (pct >= 60 ? 'warn' : 'bad');
