@@ -1885,6 +1885,40 @@
                 else if (event.key === "ArrowLeft") prevCertificate();
             }
         });
+
+        // Листание сертификатов колесом мыши (компьютер) и свайпом (телефон)
+        (function () {
+            const box = document.getElementById("certificateLightbox");
+            if (!box) return;
+            let wheelLock = 0, wheelAcc = 0;
+            box.addEventListener("wheel", function (e) {
+                if (e.ctrlKey) return;
+                e.preventDefault();
+                const now = Date.now();
+                if (now < wheelLock) return;
+                wheelAcc += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                if (Math.abs(wheelAcc) >= 40) {
+                    if (wheelAcc > 0) nextCertificate(); else prevCertificate();
+                    wheelAcc = 0;
+                    wheelLock = now + 400;
+                }
+            }, { passive: false });
+
+            let sx = 0, sy = 0, multi = false;
+            box.addEventListener("touchstart", function (e) {
+                multi = e.touches.length > 1;
+                sx = e.touches[0].clientX;
+                sy = e.touches[0].clientY;
+            }, { passive: true });
+            box.addEventListener("touchend", function (e) {
+                if (multi) { if (e.touches.length === 0) multi = false; return; }
+                if (window.visualViewport && window.visualViewport.scale > 1.05) return;
+                const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+                    if (dx < 0) nextCertificate(); else prevCertificate();
+                }
+            }, { passive: true });
+        })();
     </script>
 
      <!-- Плавающая кнопка ВКонтакте -->
