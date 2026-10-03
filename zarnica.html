@@ -466,95 +466,151 @@
 
         /* ФОТОГАЛЕРЕЯ */
         .gallery-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        .gallery-item {
-            display: none;
+        .gallery-category {
             background: white;
             border: 2px solid var(--color-border);
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
-        .gallery-item.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
+        .gallery-category:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        .gallery-category-header {
+            background: var(--color-zarnitsa-main);
+            color: white;
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
-        }
-
-        .gallery-image {
-            width: 100%;
+        .gallery-slider {
+            position: relative;
             height: 250px;
-            background: linear-gradient(135deg, #FFE8DC 0%, #FFD4C4 100%);
+            background: var(--color-surface);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            position: relative;
+            cursor: pointer;
             overflow: hidden;
         }
 
-        .gallery-image img {
+        .gallery-slider:hover .gallery-placeholder {
+            transform: scale(1.02);
+        }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .lightbox-img {
-            max-width: 90vw;
-            max-height: 78vh;
+        .gallery-slide.active {
+            opacity: 1;
+        }
+
+        .gallery-slide img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            background: #111;
         }
 
-        .gallery-image::after {
-            content: attr(data-count);
+        .gallery-placeholder {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .gallery-placeholder p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: var(--color-zarnitsa-main);
+            border: 2px solid var(--color-zarnitsa-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-nav:hover {
+            background: var(--color-zarnitsa-main);
+            color: white;
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+
+        .gallery-nav.prev {
+            left: 10px;
+        }
+
+        .gallery-nav.next {
+            right: 10px;
+        }
+
+        .gallery-indicators {
             position: absolute;
             bottom: 10px;
-            right: 10px;
-            font-size: 0.8rem;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
         }
 
-        .gallery-caption {
-            padding: 1rem;
-            text-align: center;
+        .gallery-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
         }
 
-        .gallery-caption h4 {
-            color: var(--color-zarnitsa-main);
-            margin-bottom: 0.5rem;
+        .gallery-indicator.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
         }
 
-        .gallery-caption p {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* LIGHTBOX для галереи */
+        /* LIGHTBOX ДЛЯ ФОТО */
         .photo-lightbox {
             display: none;
             position: fixed;
@@ -562,80 +618,85 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
             justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .photo-lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            text-align: center;
-        }
-
         .lightbox-placeholder {
-            width: 800px;
-            height: 600px;
-            background: linear-gradient(135deg, #FFE8DC 0%, #FFD4C4 100%);
+            background: white;
+            padding: 4rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 80vw;
+            max-width: 900px;
+            height: 70vh;
+            max-height: 700px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
         }
 
         .lightbox-placeholder .icon {
             font-size: 8rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
         }
 
         .lightbox-placeholder p {
-            font-size: 1.5rem;
             color: var(--color-text-secondary);
-            margin-top: 1rem;
+            font-size: 1.5rem;
+            line-height: 1.8;
         }
 
-        .lightbox-caption {
-            color: white;
-            margin-top: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            z-index: 10001;
-            transition: color 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            color: var(--color-zarnitsa-accent);
+        .photo-lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            object-fit: contain;
         }
 
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: white;
+            color: var(--color-zarnitsa-main);
+            border: 2px solid var(--color-zarnitsa-main);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 100001;
         }
 
         .lightbox-nav:hover {
             background: var(--color-zarnitsa-main);
+            color: white;
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.6);
         }
 
         .lightbox-nav.prev {
@@ -646,18 +707,32 @@
             right: 30px;
         }
 
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-zarnitsa-main);
+        }
+
         .lightbox-counter {
             position: absolute;
-            bottom: 20px;
+            bottom: -35px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1.2rem;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
+            font-size: 1rem;
         }
 
+        
         /* ДОКУМЕНТЫ И РЕСУРСЫ */
         .resources-section {
             margin-bottom: 3rem;
@@ -1922,63 +1997,132 @@
 </a>
 
     <div class="gallery-grid">
-                <div class="gallery-item active" data-category="mun2024" role="button" tabindex="0"
-                     onclick="openPhotoLightbox('mun2024', 0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('mun2024', 0);}">
-                    <div class="gallery-image" data-count="5 фото">
-                        <img src="images/gallery/zarnica-2024-1.jpg" alt="Команда СШ № 2 после награждения, муниципальный этап 2024" loading="lazy">
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Муниципальный этап — 2024</h4>
-                        <p>Нижегородская Зарница: построение команд и награждение</p>
-                    </div>
-                </div>
 
-                <div class="gallery-item active" data-category="mun2025" role="button" tabindex="0"
-                     onclick="openPhotoLightbox('mun2025', 0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('mun2025', 0);}">
-                    <div class="gallery-image" data-count="1 фото">
-                        <img src="images/gallery/zarnica-2025-1.jpg" alt="Построение команд, муниципальный этап «Зарницы 2.0», 17 марта 2025" loading="lazy">
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Муниципальный этап — март 2025</h4>
-                        <p>Зарница 2.0: построение команд</p>
-                    </div>
+        <!-- Категория 1: Муниципальный этап — 2024 -->
+        <div class="gallery-category" data-category="1">
+            <div class="gallery-category-header">Муниципальный этап — 2024</div>
+            <div class="gallery-slider" onclick="openGalleryLightbox(1, 0)">
+                <div class="gallery-slide active">
+                    <img src="images/gallery/zarnica-2024-1.jpg" alt="Команда СШ № 2 после награждения, муниципальный этап 2024" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-
-                <div class="gallery-item active" data-category="mun2026" role="button" tabindex="0"
-                     onclick="openPhotoLightbox('mun2026', 0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('mun2026', 0);}">
-                    <div class="gallery-image" data-count="2 фото">
-                        <img src="images/gallery/zarnica-2026-1.png" alt="Построение команд, муниципальный этап, 20 марта 2026" loading="lazy">
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Муниципальный этап — март 2026</h4>
-                        <p>Зарница 2.0: старт и построение</p>
-                    </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2024-2.jpg" alt="Построение команд-участниц, муниципальный этап 2024" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-
-                <div class="gallery-item active" data-category="div2026" role="button" tabindex="0"
-                     onclick="openPhotoLightbox('div2026', 0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPhotoLightbox('div2026', 0);}">
-                    <div class="gallery-image" data-count="6 фото">
-                        <img src="images/gallery/zarnica-2026-4.jpg" alt="Состязание на дивизионном этапе, 19 апреля 2026" loading="lazy">
-                    </div>
-                    <div class="gallery-caption">
-                        <h4>Дивизионный этап — апрель 2026</h4>
-                        <p>Семёнов, 19 апреля: отряд «Вымпел-СШ 2»</p>
-                    </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2024-3.jpg" alt="Команды на построении перед награждением, 2024" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2024-4.jpg" alt="Общее построение участников, 2024" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2024-5.jpg" alt="Практическое задание: средства индивидуальной защиты, 2024" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(1)" aria-label="Предыдущее фото">◀</button>
+                <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(1)" aria-label="Следующее фото">▶</button>
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(1, 0)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 1)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 2)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 3)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(1, 4)"></div>
                 </div>
             </div>
         </div>
 
-        <!-- LIGHTBOX -->
-        <div class="photo-lightbox" id="photoLightbox" onclick="closePhotoLightbox(event)">
-            <span class="lightbox-close" onclick="closePhotoLightbox(event)">&times;</span>
-            <div class="lightbox-content">
-                <img id="lightboxImage" class="lightbox-img" src="" alt="">
-                <p class="lightbox-caption" id="lightboxCaption">Подпись к фото</p>
+        <!-- Категория 2: Муниципальный этап — март 2025 -->
+        <div class="gallery-category" data-category="2">
+            <div class="gallery-category-header">Муниципальный этап — март 2025</div>
+            <div class="gallery-slider" onclick="openGalleryLightbox(2, 0)">
+                <div class="gallery-slide active">
+                    <img src="images/gallery/zarnica-2025-1.jpg" alt="Построение команд, муниципальный этап «Зарницы 2.0», 17 марта 2025" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
-            <div class="lightbox-nav prev" role="button" aria-label="Предыдущее фото" onclick="prevPhoto(event)">‹</div>
-            <div class="lightbox-nav next" role="button" aria-label="Следующее фото" onclick="nextPhoto(event)">›</div>
+        </div>
+
+        <!-- Категория 3: Муниципальный этап — март 2026 -->
+        <div class="gallery-category" data-category="3">
+            <div class="gallery-category-header">Муниципальный этап — март 2026</div>
+            <div class="gallery-slider" onclick="openGalleryLightbox(3, 0)">
+                <div class="gallery-slide active">
+                    <img src="images/gallery/zarnica-2026-1.png" alt="Построение команд, муниципальный этап, 20 марта 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2026-2.png" alt="Команда СШ № 2 в парадной форме, март 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(3)" aria-label="Предыдущее фото">◀</button>
+                <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(3)" aria-label="Следующее фото">▶</button>
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(3, 0)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(3, 1)"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Категория 4: Дивизионный этап — апрель 2026 -->
+        <div class="gallery-category" data-category="4">
+            <div class="gallery-category-header">Дивизионный этап — апрель 2026</div>
+            <div class="gallery-slider" onclick="openGalleryLightbox(4, 0)">
+                <div class="gallery-slide active">
+                    <img src="images/gallery/zarnica-2026-4.jpg" alt="Состязание на дивизионном этапе, 19 апреля 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2026-5.jpg" alt="Общее построение участников дивизионного этапа, 19 апреля 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/gallery/zarnica-2026-3.jpg" alt="Отряд «Вымпел-СШ 2» с дипломами дивизионного этапа" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/news/szarnitza-divizion-2026-1.jpg" alt="Отряд «Вымпел-СШ 2» с дипломами, Семёнов, апрель 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/news/szarnitza-divizion-2026-2.jpg" alt="Награждение участников дивизионного этапа, апрель 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-slide">
+                    <img src="images/news/szarnitza-divizion-2026-3.jpg" alt="Отряд «Вымпел-СШ 2» на построении, апрель 2026" loading="lazy"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <button class="gallery-nav prev" onclick="event.stopPropagation(); prevPhoto(4)" aria-label="Предыдущее фото">◀</button>
+                <button class="gallery-nav next" onclick="event.stopPropagation(); nextPhoto(4)" aria-label="Следующее фото">▶</button>
+                <div class="gallery-indicators">
+                    <div class="gallery-indicator active" onclick="event.stopPropagation(); goToPhoto(4, 0)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(4, 1)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(4, 2)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(4, 3)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(4, 4)"></div>
+                    <div class="gallery-indicator" onclick="event.stopPropagation(); goToPhoto(4, 5)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- LIGHTBOX ДЛЯ ФОТО -->
+    <div class="photo-lightbox" id="photoLightbox" onclick="closePhotoLightbox()">
+        <div class="photo-lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closePhotoLightbox()" aria-label="Закрыть">×</button>
+            <div id="lightboxPlaceholder" class="lightbox-placeholder" style="display: none;">
+                <div class="icon" id="lightboxPlaceholderIcon">📷</div>
+                <p id="lightboxPlaceholderText">Фото будет добавлено</p>
+            </div>
+            <img id="lightboxImage" src="" alt="Фото" style="display: none;">
+            <button class="lightbox-nav prev" onclick="prevPhotoLightbox()" aria-label="Предыдущее фото">◀</button>
+            <button class="lightbox-nav next" onclick="nextPhotoLightbox()" aria-label="Следующее фото">▶</button>
             <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
         </div>
+    </div>
 
         <!-- ДОКУМЕНТЫ И РЕСУРСЫ -->
         <div class="resources-section">
@@ -2287,76 +2431,25 @@
         }
 
         // ============================================
-        // ГАЛЕРЕЯ - LIGHTBOX (6 фото)
+        // ГАЛЕРЕЯ — карточки-карусели (лайтбокс — в конце страницы)
         // ============================================
-        const galleryData = {
-            'mun2024': [
-                { src: 'images/gallery/zarnica-2024-1.jpg', caption: 'Команда СШ № 2 после награждения, муниципальный этап 2024' },
-                { src: 'images/gallery/zarnica-2024-2.jpg', caption: 'Построение команд-участниц, муниципальный этап 2024' },
-                { src: 'images/gallery/zarnica-2024-3.jpg', caption: 'Команды на построении перед награждением, 2024' },
-                { src: 'images/gallery/zarnica-2024-4.jpg', caption: 'Общее построение участников, 2024' },
-                { src: 'images/gallery/zarnica-2024-5.jpg', caption: 'Практическое задание: средства индивидуальной защиты, 2024' }
-            ],
-            'mun2025': [
-                { src: 'images/gallery/zarnica-2025-1.jpg', caption: 'Построение команд, муниципальный этап «Зарницы 2.0», 17 марта 2025' }
-            ],
-            'mun2026': [
-                { src: 'images/gallery/zarnica-2026-1.png', caption: 'Построение команд, муниципальный этап, 20 марта 2026' },
-                { src: 'images/gallery/zarnica-2026-2.png', caption: 'Команда СШ № 2 в парадной форме, март 2026' }
-            ],
-            'div2026': [
-                { src: 'images/gallery/zarnica-2026-4.jpg', caption: 'Состязание на дивизионном этапе, 19 апреля 2026' },
-                { src: 'images/gallery/zarnica-2026-5.jpg', caption: 'Общее построение участников дивизионного этапа, 19 апреля 2026' },
-                { src: 'images/gallery/zarnica-2026-3.jpg', caption: 'Отряд «Вымпел-СШ 2» с дипломами дивизионного этапа' },
-                { src: 'images/gallery/../news/szarnitza-divizion-2026-1.jpg', caption: 'Отряд «Вымпел-СШ 2» с дипломами, Семёнов, апрель 2026' },
-                { src: 'images/gallery/../news/szarnitza-divizion-2026-2.jpg', caption: 'Награждение участников дивизионного этапа, апрель 2026' },
-                { src: 'images/gallery/../news/szarnitza-divizion-2026-3.jpg', caption: 'Отряд «Вымпел-СШ 2» на построении, апрель 2026' }
-            ]
-        };
-
-        let currentCategory = '';
-        let currentPhotoIndex = 0;
-
-        function openPhotoLightbox(category, photoIndex) {
-            currentCategory = category;
-            currentPhotoIndex = photoIndex;
-            updateLightboxContent();
-            document.getElementById('photoLightbox').style.display = 'flex';
-            document.body.classList.add('modal-open');
+        function nextPhoto(categoryId) { stepCard(categoryId, 1); }
+        function prevPhoto(categoryId) { stepCard(categoryId, -1); }
+        function goToPhoto(categoryId, photoIndex) {
+            const category = document.querySelector('.gallery-category[data-category="' + categoryId + '"]');
+            const slides = category.querySelectorAll('.gallery-slide');
+            const indicators = category.querySelectorAll('.gallery-indicator');
+            slides.forEach(function(s) { s.classList.remove('active'); });
+            indicators.forEach(function(i) { i.classList.remove('active'); });
+            slides[photoIndex].classList.add('active');
+            if (indicators[photoIndex]) indicators[photoIndex].classList.add('active');
         }
-
-        function closePhotoLightbox(event) {
-            var box = document.getElementById('photoLightbox');
-            if (!box || box.style.display !== 'flex') return;
-            var byKey = event && event.type === 'keydown';
-            if (byKey || (event && (event.target.id === 'photoLightbox' || event.target.classList.contains('lightbox-close')))) {
-                box.style.display = 'none';
-                document.body.classList.remove('modal-open');
-            }
-        }
-
-        function updateLightboxContent() {
-            const photos = galleryData[currentCategory];
-            const photo = photos[currentPhotoIndex];
-            const img = document.getElementById('lightboxImage');
-            img.src = photo.src;
-            img.alt = photo.caption;
-            document.getElementById('lightboxCaption').textContent = photo.caption;
-            document.getElementById('lightboxCounter').textContent = (currentPhotoIndex + 1) + ' / ' + photos.length;
-        }
-
-        function nextPhoto(event) {
-            event.stopPropagation();
-            const photos = galleryData[currentCategory];
-            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-            updateLightboxContent();
-        }
-
-        function prevPhoto(event) {
-            event.stopPropagation();
-            const photos = galleryData[currentCategory];
-            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
-            updateLightboxContent();
+        function stepCard(categoryId, dir) {
+            const category = document.querySelector('.gallery-category[data-category="' + categoryId + '"]');
+            const slides = category.querySelectorAll('.gallery-slide');
+            let cur = 0;
+            slides.forEach(function(s, i) { if (s.classList.contains('active')) cur = i; });
+            goToPhoto(categoryId, (cur + dir + slides.length) % slides.length);
         }
 
         // ============================================
@@ -2438,11 +2531,6 @@
 
         // Закрытие по Escape
         document.addEventListener('keydown', function(event) {
-            var lb = document.getElementById('photoLightbox');
-            if (lb && lb.style.display === 'flex') {
-                if (event.key === 'ArrowRight') nextPhoto(event);
-                if (event.key === 'ArrowLeft') prevPhoto(event);
-            }
             if (event.key === 'Escape') {
                 closeLightbox();
                 closeQRModal();
@@ -2716,6 +2804,138 @@
 })();
 </script>
     
+
+<!-- ✅ СКВОЗНОЙ ЛАЙТБОКС: все фото страницы подряд (стрелки, колесо мыши, свайп, клавиатура) -->
+<script id="lightbox-all">
+(function () {
+    var list = [], idx = 0, lastStep = 0, lastWheel = 0;
+
+    function box() { return document.getElementById('photoLightbox'); }
+    function isOpen() { var b = box(); return !!b && b.style.display === 'flex'; }
+    function allSlides() {
+        return Array.prototype.slice.call(document.querySelectorAll('.gallery-category .gallery-slide'));
+    }
+    function ensureNodes() {
+        var b = box();
+        var content = b.querySelector('.photo-lightbox-content') || b;
+        var img = document.getElementById('lightboxImage');
+        if (!img) {
+            img = document.createElement('img');
+            img.id = 'lightboxImage'; img.alt = 'Фото'; img.style.display = 'none';
+            var ph = content.querySelector('.lightbox-placeholder');
+            content.insertBefore(img, ph || content.firstChild);
+        }
+        var cap = document.getElementById('lightboxCaption');
+        if (!cap) {
+            cap = document.createElement('div');
+            cap.id = 'lightboxCaption';
+            cap.style.cssText = 'color:#fff;text-align:center;margin-top:0.75rem;padding:0 1rem;font-size:0.95rem;max-width:90vw;min-height:1.2em;';
+            var counter = document.getElementById('lightboxCounter');
+            content.insertBefore(cap, counter || null);
+            if (counter) { counter.style.position = 'static'; counter.style.transform = 'none'; counter.style.marginTop = '0.4rem'; }
+        }
+        b.style.touchAction = 'none';
+        return { img: img, cap: cap };
+    }
+    function show() {
+        var n = ensureNodes();
+        var slide = list[idx];
+        var pic = slide.querySelector('img');
+        var ph = document.getElementById('lightboxPlaceholder') || box().querySelector('.lightbox-placeholder');
+        if (pic) {
+            n.img.src = pic.currentSrc || pic.src;
+            n.img.alt = pic.alt || 'Фото';
+            n.img.style.display = 'block';
+            if (ph) ph.style.display = 'none';
+            n.cap.textContent = pic.alt || '';
+        } else {
+            n.img.style.display = 'none';
+            n.cap.textContent = '';
+            if (ph) {
+                var src = slide.querySelector('.gallery-placeholder');
+                var icon = ph.querySelector('.icon'), txt = ph.querySelector('p');
+                if (src && icon && txt) {
+                    var si = src.querySelector('.icon'), sp = src.querySelector('p');
+                    icon.textContent = si ? si.textContent : '📷';
+                    txt.innerHTML = sp ? sp.innerHTML : 'Фото будет добавлено';
+                }
+                ph.style.display = 'flex';
+            }
+        }
+        var counter = document.getElementById('lightboxCounter');
+        if (counter) counter.textContent = (idx + 1) + ' / ' + list.length;
+        // предзагрузка соседних фото
+        [1, -1].forEach(function (d) {
+            var s = list[(idx + d + list.length) % list.length], p = s && s.querySelector('img');
+            if (p) { var im = new Image(); im.src = p.currentSrc || p.src; }
+        });
+        // синхронизируем карточку в галерее с показанным фото
+        var cat = slide.closest('.gallery-category');
+        if (cat) {
+            var sl = cat.querySelectorAll('.gallery-slide'), ind = cat.querySelectorAll('.gallery-indicator');
+            sl.forEach(function (s, i) { s.classList.toggle('active', s === slide); if (ind[i]) ind[i].classList.toggle('active', s === slide); });
+        }
+    }
+    function step(dir) {
+        var now = Date.now();
+        if (now - lastStep < 80 || !list.length) return;   // защита от двойного срабатывания
+        lastStep = now;
+        idx = (idx + dir + list.length) % list.length;
+        show();
+    }
+
+    window.openGalleryLightbox = function (categoryId) {
+        list = allSlides();
+        var cat = document.querySelector('.gallery-category[data-category="' + categoryId + '"]');
+        var cur = cat ? cat.querySelector('.gallery-slide.active') || cat.querySelector('.gallery-slide') : null;
+        idx = Math.max(0, list.indexOf(cur));
+        show();
+        box().style.display = 'flex';
+        document.body.classList.add('modal-open');
+    };
+    window.closePhotoLightbox = function () {
+        var b = box(); if (!b) return;
+        b.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    };
+    window.nextPhotoLightbox = function () { step(1); };
+    window.prevPhotoLightbox = function () { step(-1); };
+    window.updateLightboxContent = function () { if (list.length) show(); };
+
+    function init() {
+        var old = box(); if (!old) return;
+        // убираем старые обработчики страницы (они листали только внутри одной карточки)
+        var b = old.cloneNode(true);
+        old.parentNode.replaceChild(b, old);
+        ensureNodes();
+        b.addEventListener('wheel', function (e) {
+            if (!isOpen()) return;
+            e.preventDefault();
+            var now = Date.now();
+            if (now - lastWheel < 350 || Math.abs(e.deltaY) < 4) return;
+            lastWheel = now;
+            step(e.deltaY > 0 ? 1 : -1);
+        }, { passive: false });
+        var sx = 0, sy = 0;
+        b.addEventListener('touchstart', function (e) {
+            sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY;
+        }, { passive: true });
+        b.addEventListener('touchend', function (e) {
+            if (!isOpen()) return;
+            var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+        }, { passive: true });
+        document.addEventListener('keydown', function (e) {
+            if (!isOpen()) return;
+            if (e.key === 'ArrowRight') step(1);
+            else if (e.key === 'ArrowLeft') step(-1);
+            else if (e.key === 'Escape') window.closePhotoLightbox();
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
 </body>
 </html>
             

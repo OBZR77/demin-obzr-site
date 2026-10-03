@@ -2905,5 +2905,137 @@ function toggleExtraEvents() {
 })();
 </script>
     
+
+<!-- ✅ СКВОЗНОЙ ЛАЙТБОКС: все фото страницы подряд (стрелки, колесо мыши, свайп, клавиатура) -->
+<script id="lightbox-all">
+(function () {
+    var list = [], idx = 0, lastStep = 0, lastWheel = 0;
+
+    function box() { return document.getElementById('photoLightbox'); }
+    function isOpen() { var b = box(); return !!b && b.style.display === 'flex'; }
+    function allSlides() {
+        return Array.prototype.slice.call(document.querySelectorAll('.gallery-category .gallery-slide'));
+    }
+    function ensureNodes() {
+        var b = box();
+        var content = b.querySelector('.photo-lightbox-content') || b;
+        var img = document.getElementById('lightboxImage');
+        if (!img) {
+            img = document.createElement('img');
+            img.id = 'lightboxImage'; img.alt = 'Фото'; img.style.display = 'none';
+            var ph = content.querySelector('.lightbox-placeholder');
+            content.insertBefore(img, ph || content.firstChild);
+        }
+        var cap = document.getElementById('lightboxCaption');
+        if (!cap) {
+            cap = document.createElement('div');
+            cap.id = 'lightboxCaption';
+            cap.style.cssText = 'color:#fff;text-align:center;margin-top:0.75rem;padding:0 1rem;font-size:0.95rem;max-width:90vw;min-height:1.2em;';
+            var counter = document.getElementById('lightboxCounter');
+            content.insertBefore(cap, counter || null);
+            if (counter) { counter.style.position = 'static'; counter.style.transform = 'none'; counter.style.marginTop = '0.4rem'; }
+        }
+        b.style.touchAction = 'none';
+        return { img: img, cap: cap };
+    }
+    function show() {
+        var n = ensureNodes();
+        var slide = list[idx];
+        var pic = slide.querySelector('img');
+        var ph = document.getElementById('lightboxPlaceholder') || box().querySelector('.lightbox-placeholder');
+        if (pic) {
+            n.img.src = pic.currentSrc || pic.src;
+            n.img.alt = pic.alt || 'Фото';
+            n.img.style.display = 'block';
+            if (ph) ph.style.display = 'none';
+            n.cap.textContent = pic.alt || '';
+        } else {
+            n.img.style.display = 'none';
+            n.cap.textContent = '';
+            if (ph) {
+                var src = slide.querySelector('.gallery-placeholder');
+                var icon = ph.querySelector('.icon'), txt = ph.querySelector('p');
+                if (src && icon && txt) {
+                    var si = src.querySelector('.icon'), sp = src.querySelector('p');
+                    icon.textContent = si ? si.textContent : '📷';
+                    txt.innerHTML = sp ? sp.innerHTML : 'Фото будет добавлено';
+                }
+                ph.style.display = 'flex';
+            }
+        }
+        var counter = document.getElementById('lightboxCounter');
+        if (counter) counter.textContent = (idx + 1) + ' / ' + list.length;
+        // предзагрузка соседних фото
+        [1, -1].forEach(function (d) {
+            var s = list[(idx + d + list.length) % list.length], p = s && s.querySelector('img');
+            if (p) { var im = new Image(); im.src = p.currentSrc || p.src; }
+        });
+        // синхронизируем карточку в галерее с показанным фото
+        var cat = slide.closest('.gallery-category');
+        if (cat) {
+            var sl = cat.querySelectorAll('.gallery-slide'), ind = cat.querySelectorAll('.gallery-indicator');
+            sl.forEach(function (s, i) { s.classList.toggle('active', s === slide); if (ind[i]) ind[i].classList.toggle('active', s === slide); });
+        }
+    }
+    function step(dir) {
+        var now = Date.now();
+        if (now - lastStep < 80 || !list.length) return;   // защита от двойного срабатывания
+        lastStep = now;
+        idx = (idx + dir + list.length) % list.length;
+        show();
+    }
+
+    window.openGalleryLightbox = function (categoryId) {
+        list = allSlides();
+        var cat = document.querySelector('.gallery-category[data-category="' + categoryId + '"]');
+        var cur = cat ? cat.querySelector('.gallery-slide.active') || cat.querySelector('.gallery-slide') : null;
+        idx = Math.max(0, list.indexOf(cur));
+        show();
+        box().style.display = 'flex';
+        document.body.classList.add('modal-open');
+    };
+    window.closePhotoLightbox = function () {
+        var b = box(); if (!b) return;
+        b.style.display = 'none';
+        document.body.classList.remove('modal-open');
+    };
+    window.nextPhotoLightbox = function () { step(1); };
+    window.prevPhotoLightbox = function () { step(-1); };
+    window.updateLightboxContent = function () { if (list.length) show(); };
+
+    function init() {
+        var old = box(); if (!old) return;
+        // убираем старые обработчики страницы (они листали только внутри одной карточки)
+        var b = old.cloneNode(true);
+        old.parentNode.replaceChild(b, old);
+        ensureNodes();
+        b.addEventListener('wheel', function (e) {
+            if (!isOpen()) return;
+            e.preventDefault();
+            var now = Date.now();
+            if (now - lastWheel < 350 || Math.abs(e.deltaY) < 4) return;
+            lastWheel = now;
+            step(e.deltaY > 0 ? 1 : -1);
+        }, { passive: false });
+        var sx = 0, sy = 0;
+        b.addEventListener('touchstart', function (e) {
+            sx = e.changedTouches[0].clientX; sy = e.changedTouches[0].clientY;
+        }, { passive: true });
+        b.addEventListener('touchend', function (e) {
+            if (!isOpen()) return;
+            var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+        }, { passive: true });
+        document.addEventListener('keydown', function (e) {
+            if (!isOpen()) return;
+            if (e.key === 'ArrowRight') step(1);
+            else if (e.key === 'ArrowLeft') step(-1);
+            else if (e.key === 'Escape') window.closePhotoLightbox();
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
 </body>
 </html>
