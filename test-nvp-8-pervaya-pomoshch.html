@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Первая помощь при неотложных состояниях | Дёмин А.Ю.</title>
+    <meta name="description" content="Интерактивный тест по первой помощи для 8 класса: 10 вопросов с автопроверкой и разбором ответов.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #C62828;
+            --color-danger-bg: #FDECEA;
+            --color-success: #2E7D32;
+            --color-success-bg: #E8F5E9;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #5F6C75;
+            --color-border: #D5DCE4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px; line-height: 1.6;
+            color: var(--color-text-primary);
+            background: var(--color-surface);
+            min-height: 100vh;
+        }
+        .topbar { background: var(--color-primary); color: #fff; padding: 14px 16px; }
+        .topbar-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .topbar a { color: #fff; text-decoration: none; font-weight: 600; }
+        .topbar a:hover { text-decoration: underline; }
+        .topbar-title { font-size: 0.95rem; opacity: 0.95; }
+        main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+        .panel { background: #fff; border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        h1 { font-size: 1.6rem; line-height: 1.25; color: var(--color-primary); margin-bottom: 8px; }
+        h2 { font-size: 1.25rem; line-height: 1.35; color: var(--color-text-primary); margin-bottom: 16px; }
+        .lead { color: var(--color-text-secondary); margin-bottom: 16px; }
+        .facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 20px; list-style: none; }
+        .facts li { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 6px 14px; font-size: 0.95rem; }
+        .note { background: #FFF8E1; border: 1px solid #F2D27A; border-radius: 8px; padding: 12px 14px; font-size: 0.95rem; margin-bottom: 20px; }
+        .btn { display: inline-block; font: inherit; font-weight: 600; cursor: pointer; border-radius: 8px; padding: 12px 24px; border: 2px solid var(--color-primary); text-decoration: none; text-align: center; }
+        .btn-primary { background: var(--color-primary); color: #fff; }
+        .btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+        .btn-primary:active { background: var(--color-primary-active); }
+        .btn-secondary { background: #fff; color: var(--color-primary); }
+        .btn-secondary:hover { background: var(--color-surface); }
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        :focus-visible { outline: 3px solid #FFA500; outline-offset: 2px; }
+        .hidden { display: none !important; }
+
+        .progress-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .timer { font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+        .timer.low { color: var(--color-danger); }
+        .bar { height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+        .bar > span { display: block; height: 100%; width: 0; background: var(--color-primary); transition: width 0.3s; }
+
+        fieldset { border: none; }
+        .options { list-style: none; display: grid; gap: 10px; }
+        .option { display: block; position: relative; }
+        .option input { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; margin: 0; }
+        .option > span { display: flex; gap: 12px; align-items: flex-start; border: 2px solid var(--color-border); border-radius: 10px; padding: 12px 14px; background: #fff; }
+        .option .mark { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--color-primary); color: var(--color-primary); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .option:hover > span { border-color: var(--color-primary); background: var(--color-surface); }
+        .option input:checked + span { border-color: var(--color-primary); background: #EAF1F9; }
+        .option input:focus-visible + span { outline: 3px solid #FFA500; outline-offset: 2px; }
+        .option.correct input + span { border-color: var(--color-success); background: var(--color-success-bg); }
+        .option.correct .mark { background: var(--color-success); border-color: var(--color-success); color: #fff; }
+        .option.wrong input + span { border-color: var(--color-danger); background: var(--color-danger-bg); }
+        .option.wrong .mark { background: var(--color-danger); border-color: var(--color-danger); color: #fff; }
+        .locked .option input { pointer-events: none; }
+        .locked .option:hover > span { background: #fff; }
+        .locked .option.correct:hover > span { background: var(--color-success-bg); }
+        .locked .option.wrong:hover > span { background: var(--color-danger-bg); }
+
+        .feedback { margin-top: 16px; padding: 14px 16px; border-radius: 10px; border-left: 6px solid; }
+        .feedback.ok { background: var(--color-success-bg); border-color: var(--color-success); }
+        .feedback.bad { background: var(--color-danger-bg); border-color: var(--color-danger); }
+        .feedback strong { display: block; margin-bottom: 4px; }
+
+        .score { text-align: center; padding: 8px 0 16px; }
+        .score-num { font-size: 3rem; font-weight: 700; color: var(--color-primary); line-height: 1.1; }
+        .score-grade { font-size: 1.15rem; margin-top: 6px; }
+        .review { margin-top: 12px; display: grid; gap: 12px; }
+        .review-item { border: 1px solid var(--color-border); border-radius: 10px; padding: 12px 14px; background: #fff; }
+        .review-item.bad { border-left: 6px solid var(--color-danger); }
+        .review-item.ok { border-left: 6px solid var(--color-success); }
+        .review-item .q { font-weight: 600; margin-bottom: 4px; }
+        .review-item .a { font-size: 0.95rem; }
+        .footer { max-width: 760px; margin: 0 auto; padding: 0 16px 32px; font-size: 0.85rem; color: var(--color-text-secondary); }
+        @media (max-width: 480px) {
+            .panel { padding: 16px; }
+            h1 { font-size: 1.35rem; }
+            .btn { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="prezentacii-testy.html">← Презентации и тесты</a>
+            <span class="topbar-title">Начальная военная подготовка · 8 класс</span>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- Стартовый экран -->
+        <section class="panel" id="screen-start" aria-labelledby="start-title">
+            <h1 id="start-title">Тест: Первая помощь при неотложных состояниях</h1>
+            <p class="lead">Проверьте, как вы знаете алгоритм первой помощи: оценка обстановки, вызов скорой, СЛР, остановка кровотечения, ожоги.</p>
+            <ul class="facts" aria-label="Параметры теста">
+                <li>🎯 Класс: 8 класс</li>
+                <li>❓ Вопросов: 10</li>
+                <li>⏱️ Время: 15 минут</li>
+                <li>📊 Автопроверка</li>
+            </ul>
+            <p>Выберите один вариант ответа в каждом вопросе. После ответа тест сразу покажет, верно ли вы ответили, и объяснит почему. В конце вы увидите результат и разбор ошибок.</p>
+            <div class="note" style="margin-top:16px;"><strong>Важно:</strong> тест проверяет знание алгоритма. Навыки первой помощи (СЛР, жгут, повязки) отрабатываются только на практических занятиях под руководством преподавателя.</div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-start" type="button">▶️ Начать тест</button>
+                <a class="btn btn-secondary" href="prezentacii-testy.html">К списку материалов</a>
+            </div>
+        </section>
+
+        <!-- Вопрос -->
+        <section class="panel hidden" id="screen-q" aria-labelledby="q-title">
+            <div class="progress-head">
+                <span id="q-counter" aria-live="polite">Вопрос 1 из 10</span>
+                <span class="timer" id="timer" role="timer" aria-label="Осталось времени">15:00</span>
+            </div>
+            <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="bar"><span id="bar-fill"></span></div>
+            <fieldset id="q-fieldset">
+                <legend><h2 id="q-title" tabindex="-1"></h2></legend>
+                <div class="options" id="options" role="radiogroup" aria-labelledby="q-title"></div>
+            </fieldset>
+            <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-check" type="button" disabled>Проверить</button>
+                <button class="btn btn-primary hidden" id="btn-next" type="button">Дальше →</button>
+            </div>
+        </section>
+
+        <!-- Результат -->
+        <section class="panel hidden" id="screen-result" aria-labelledby="res-title">
+            <h1 id="res-title" tabindex="-1">Результат</h1>
+            <div class="score">
+                <div class="score-num" id="res-score"></div>
+                <div class="score-grade" id="res-grade"></div>
+            </div>
+            <p class="lead" id="res-text"></p>
+            <h2>Разбор ответов</h2>
+            <div class="review" id="review"></div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-retry" type="button">🔄 Пройти ещё раз</button>
+                <a class="btn btn-secondary" href="prezentacii-testy.html">К списку материалов</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        Результаты теста нигде не сохраняются и не передаются: ответы остаются только на вашем устройстве. Тест подготовлен А. Ю. Дёминым с использованием ИИ-инструментов, материалы проверены и адаптированы преподавателем. Оценка носит учебный характер.
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+        var TEST = {"minutes": 15, "questions": [{"q": "Вы стали свидетелем происшествия. Что нужно сделать в первую очередь?", "options": ["Оценить обстановку, убрать угрозу и обеспечить собственную безопасность", "Сразу бежать к пострадавшему и начинать оказывать помощь", "Сфотографировать место происшествия", "Переместить пострадавшего в безопасное место, не разбираясь в ситуации"], "correct": 0, "explain": "Если помощник сам пострадает, помочь будет некому. Сначала определите опасность (транспорт, огонь, электричество, обрушение), устраните её, если это безопасно, и только потом подходите к пострадавшему."}, {"q": "Какой номер набирают для вызова экстренных служб по единому номеру?", "options": ["112", "911", "100", "123"], "correct": 0, "explain": "112 — единый номер вызова экстренных оперативных служб в России, он работает с любого телефона. Скорую помощь можно вызвать и по номеру 103. Диспетчеру сообщите: что случилось, где, сколько пострадавших и в каком они состоянии, назовите себя и не кладите трубку первым."}, {"q": "Как проверить, в сознании ли пострадавший?", "options": ["Аккуратно потормошить за плечи и громко спросить: «Что с Вами?»", "Резко ударить по щекам", "Облить лицо холодной водой", "Поднять пострадавшего и посадить"], "correct": 0, "explain": "Сознание проверяют мягко: потормошите за плечи и громко обратитесь к человеку. Грубые способы могут навредить, особенно при травме шеи или позвоночника."}, {"q": "Как правильно проверить дыхание у пострадавшего без сознания?", "options": ["Запрокинуть голову, приподнять подбородок, наклониться щекой ко рту и носу и до 10 секунд слушать, смотреть и чувствовать дыхание", "Поднести к губам зеркало и ждать минуту", "Проверить только пульс на запястье", "Нажать на живот и посмотреть на реакцию"], "correct": 0, "explain": "Проходимость дыхательных путей обеспечивает запрокидывание головы с приподнятым подбородком. Затем в течение не более 10 секунд: слушаем звуки дыхания, чувствуем щекой движение воздуха, смотрим на движение грудной клетки."}, {"q": "Пострадавший без сознания и не дышит. Что делать?", "options": ["Вызвать скорую помощь и сразу начать сердечно-лёгочную реанимацию", "Ждать скорую, не прикасаясь к пострадавшему", "Дать воды и нашатырный спирт", "Уложить на бок и наблюдать"], "correct": 0, "explain": "Без дыхания сердце вскоре остановится, а мозг без кислорода начинает погибать уже через несколько минут. Поэтому нужно сразу вызвать скорую помощь (112) и начать СЛР: чем раньше начата реанимация, тем выше шанс на спасение."}, {"q": "Какие правильные параметры сердечно-лёгочной реанимации взрослого?", "options": ["Руки на середине грудной клетки, глубина 5–6 см, 100–120 надавливаний в минуту, 30 надавливаний и 2 вдоха", "Руки на животе, глубина 1–2 см, 30 надавливаний в минуту, 2 вдоха и 30 надавливаний", "Руки на середине грудной клетки, глубина 5–6 см, 40 надавливаний в минуту, 15 надавливаний и 5 вдохов", "Руки на шее, глубина 2–3 см, 200 надавливаний в минуту, без вдохов"], "correct": 0, "explain": "Основание ладони кладут на середину грудной клетки, руки прямые. Давят на глубину 5–6 см, 100–120 раз в минуту (примерно в ритме быстрой песни). Затем делают 2 вдоха и снова 30 надавливаний. Реанимацию продолжают до приезда скорой или появления признаков жизни."}, {"q": "Из раны на руке сильно течёт кровь. Что нужно сделать в первую очередь?", "options": ["Плотно прижать рану (пальцами или ладонью), затем наложить давящую повязку", "Промыть рану и ждать, пока кровь остановится сама", "Приложить к ране лёд и поднять руку вверх, не нажимая", "Сразу наложить повязку из ваты без давления"], "correct": 0, "explain": "Главная задача — быстро остановить кровопотерю. Сначала прямое давление на рану, затем давящая повязка; если кровь продолжает течь, накладывают кровоостанавливающий жгут. Помните о защите: по возможности наденьте перчатки."}, {"q": "Как правильно наложить кровоостанавливающий жгут?", "options": ["Выше раны, поверх одежды или подложив ткань, затянуть до остановки кровотечения и записать время наложения", "Ниже раны, на голую кожу, как можно туже", "На саму рану, чтобы закрыть её", "Выше раны на голую кожу и закрыть повязкой, чтобы не было видно"], "correct": 0, "explain": "Жгут накладывают на конечность выше раны и как можно ближе к ней, на одежду или подложенную ткань, чтобы не повредить кожу. Затягивают до остановки кровотечения. Записку со временем (дата, часы, минуты) кладут под жгут: врачу важно знать срок. Держать жгут можно не более 1 часа, в холодное время срок сокращают."}, {"q": "Что нужно делать при термическом ожоге кожи (кипяток, горячий предмет)?", "options": ["Охладить обожжённое место прохладной проточной водой и закрыть чистой повязкой", "Смазать ожог маслом или кремом", "Проколоть пузыри и снять прилипшую одежду", "Приложить лёд на 30 минут без прокладки"], "correct": 0, "explain": "Охлаждение прохладной проточной водой снимает боль и уменьшает глубину повреждения. Затем рану закрывают чистой (лучше стерильной) повязкой. Нельзя прокалывать пузыри, отрывать прилипшую одежду, смазывать ожог маслом, кремом или мазью."}, {"q": "Пострадавший без сознания, но дышит. Что нужно сделать?", "options": ["Придать устойчивое боковое положение, вызвать скорую и наблюдать за дыханием", "Положить на спину и оставить без присмотра", "Посадить и дать выпить воды", "Поставить на ноги и вести к машине"], "correct": 0, "explain": "В устойчивом боковом положении язык не западает и рвотные массы не попадут в дыхательные пути. Вызовите скорую помощь (112) и всё время следите за дыханием: если оно прекратится, начинайте СЛР."}]};
+        var LETTERS = ['А', 'Б', 'В', 'Г'];
+        var $ = function (id) { return document.getElementById(id); };
+        var state = { i: 0, answers: [], order: [], locked: false, left: 0, timerId: null };
+
+        function shuffle(a) {
+            var r = a.slice();
+            for (var i = r.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = r[i]; r[i] = r[j]; r[j] = t;
+            }
+            return r;
+        }
+        function show(id) {
+            ['screen-start', 'screen-q', 'screen-result'].forEach(function (s) {
+                $(s).classList.toggle('hidden', s !== id);
+            });
+        }
+        function fmt(sec) {
+            var m = Math.floor(sec / 60), s = sec % 60;
+            return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        }
+        function startTimer() {
+            clearInterval(state.timerId);
+            state.left = TEST.minutes * 60;
+            $('timer').textContent = fmt(state.left);
+            $('timer').classList.remove('low');
+            state.timerId = setInterval(function () {
+                state.left--;
+                $('timer').textContent = fmt(Math.max(state.left, 0));
+                if (state.left <= 60) { $('timer').classList.add('low'); }
+                if (state.left <= 0) { clearInterval(state.timerId); finish(true); }
+            }, 1000);
+        }
+        function start() {
+            state.i = 0;
+            state.answers = [];
+            state.order = TEST.questions.map(function (q) { return shuffle(q.options.map(function (_, k) { return k; })); });
+            show('screen-q');
+            startTimer();
+            render();
+        }
+        function render() {
+            var q = TEST.questions[state.i], ord = state.order[state.i];
+            state.locked = false;
+            $('q-fieldset').classList.remove('locked');
+            $('q-counter').textContent = 'Вопрос ' + (state.i + 1) + ' из ' + TEST.questions.length;
+            $('bar-fill').style.width = (state.i / TEST.questions.length * 100) + '%';
+            $('bar').setAttribute('aria-valuenow', state.i);
+            $('q-title').textContent = q.q;
+            var html = '';
+            ord.forEach(function (k, pos) {
+                html += '<label class="option" data-k="' + k + '"><input type="radio" name="opt" value="' + k + '"><span><span class="mark" aria-hidden="true">' + LETTERS[pos] + '</span><span>' + q.options[k] + '</span></span></label>';
+            });
+            $('options').innerHTML = html;
+            $('feedback').className = 'feedback hidden';
+            $('feedback').innerHTML = '';
+            $('btn-check').classList.remove('hidden');
+            $('btn-check').disabled = true;
+            $('btn-next').classList.add('hidden');
+            $('btn-next').textContent = state.i === TEST.questions.length - 1 ? 'Показать результат' : 'Дальше →';
+            $('q-title').focus();
+        }
+        function check() {
+            if (state.locked) return;
+            var sel = document.querySelector('#options input:checked');
+            if (!sel) return;
+            var q = TEST.questions[state.i], k = parseInt(sel.value, 10), ok = (k === q.correct);
+            state.locked = true;
+            state.answers[state.i] = k;
+            $('q-fieldset').classList.add('locked');
+            Array.prototype.forEach.call(document.querySelectorAll('#options .option'), function (el) {
+                var kk = parseInt(el.getAttribute('data-k'), 10);
+                if (kk === q.correct) el.classList.add('correct');
+                else if (kk === k) el.classList.add('wrong');
+                el.querySelector('input').disabled = true;
+            });
+            var fb = $('feedback');
+            fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+            fb.innerHTML = '<strong>' + (ok ? 'Верно!' : 'Неверно.') + '</strong>' + (ok ? '' : 'Правильный ответ: ' + q.options[q.correct] + '. ') + q.explain;
+            $('btn-check').classList.add('hidden');
+            $('btn-next').classList.remove('hidden');
+            $('btn-next').focus();
+        }
+        function next() {
+            if (state.i < TEST.questions.length - 1) { state.i++; render(); }
+            else { finish(false); }
+        }
+        function grade(p) {
+            if (p >= 90) return { g: '5 («отлично»)', t: 'Отличный результат! Материал усвоен хорошо.' };
+            if (p >= 75) return { g: '4 («хорошо»)', t: 'Хороший результат. Посмотрите разбор ошибок и повторите спорные места.' };
+            if (p >= 50) return { g: '3 («удовлетворительно»)', t: 'Базовые знания есть, но тему стоит повторить. Изучите разбор ошибок и пройдите тест ещё раз.' };
+            return { g: '2 («неудовлетворительно»)', t: 'Тему нужно повторить: перечитайте материал урока и разбор ниже, затем пройдите тест ещё раз.' };
+        }
+        function finish(timeout) {
+            clearInterval(state.timerId);
+            var n = TEST.questions.length, right = 0, html = '';
+            TEST.questions.forEach(function (q, i) {
+                var a = state.answers[i], ok = (a === q.correct);
+                if (ok) right++;
+                html += '<div class="review-item ' + (ok ? 'ok' : 'bad') + '"><div class="q">' + (i + 1) + '. ' + q.q + '</div><div class="a">' +
+                    (a === undefined ? '<em>Ответа нет.</em> ' : (ok ? '✅ Верно. ' : '❌ Ваш ответ: ' + q.options[a] + '. ')) +
+                    (ok ? '' : 'Правильно: ' + q.options[q.correct] + '. ') + q.explain + '</div></div>';
+            });
+            var p = Math.round(right / n * 100), g = grade(p);
+            show('screen-result');
+            $('res-score').textContent = right + ' из ' + n + ' (' + p + '%)';
+            $('res-grade').textContent = 'Оценка: ' + g.g;
+            $('res-text').textContent = (timeout ? 'Время вышло. ' : '') + g.t;
+            $('review').innerHTML = html;
+            $('res-title').focus();
+            if (window.ym) { try { ym(106461008, 'reachGoal', 'test_finished'); } catch (e) {} }
+        }
+
+        $('btn-start').addEventListener('click', start);
+        $('btn-retry').addEventListener('click', function () { start(); window.scrollTo(0, 0); });
+        $('btn-check').addEventListener('click', check);
+        $('btn-next').addEventListener('click', next);
+        $('options').addEventListener('change', function () { if (!state.locked) $('btn-check').disabled = false; });
+    })();
+    </script>
+</body>
+</html>
