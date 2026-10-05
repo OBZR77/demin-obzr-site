@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+
+    ym(106461008, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Безопасное поведение в местах массового пребывания людей | Дёмин А.Ю.</title>
+    <meta name="description" content="Интерактивный тест по безопасному поведению в местах массового пребывания людей для 8 класса: 10 вопросов с автопроверкой и разбором ответов.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A;
+            --color-primary-hover: #00518A;
+            --color-primary-active: #002952;
+            --color-danger: #C62828;
+            --color-danger-bg: #FDECEA;
+            --color-success: #2E7D32;
+            --color-success-bg: #E8F5E9;
+            --color-background: #FFFFFF;
+            --color-surface: #F5F7FA;
+            --color-text-primary: #2C3E50;
+            --color-text-secondary: #5F6C75;
+            --color-border: #D5DCE4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px; line-height: 1.6;
+            color: var(--color-text-primary);
+            background: var(--color-surface);
+            min-height: 100vh;
+        }
+        .topbar { background: var(--color-primary); color: #fff; padding: 14px 16px; }
+        .topbar-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .topbar a { color: #fff; text-decoration: none; font-weight: 600; }
+        .topbar a:hover { text-decoration: underline; }
+        .topbar-title { font-size: 0.95rem; opacity: 0.95; }
+        main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+        .panel { background: #fff; border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        h1 { font-size: 1.6rem; line-height: 1.25; color: var(--color-primary); margin-bottom: 8px; }
+        h2 { font-size: 1.25rem; line-height: 1.35; color: var(--color-text-primary); margin-bottom: 16px; }
+        .lead { color: var(--color-text-secondary); margin-bottom: 16px; }
+        .facts { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 20px; list-style: none; }
+        .facts li { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 6px 14px; font-size: 0.95rem; }
+        .note { background: #FFF8E1; border: 1px solid #F2D27A; border-radius: 8px; padding: 12px 14px; font-size: 0.95rem; margin-bottom: 20px; }
+        .btn { display: inline-block; font: inherit; font-weight: 600; cursor: pointer; border-radius: 8px; padding: 12px 24px; border: 2px solid var(--color-primary); text-decoration: none; text-align: center; }
+        .btn-primary { background: var(--color-primary); color: #fff; }
+        .btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+        .btn-primary:active { background: var(--color-primary-active); }
+        .btn-secondary { background: #fff; color: var(--color-primary); }
+        .btn-secondary:hover { background: var(--color-surface); }
+        .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        :focus-visible { outline: 3px solid #FFA500; outline-offset: 2px; }
+        .hidden { display: none !important; }
+
+        .progress-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .timer { font-weight: 700; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+        .timer.low { color: var(--color-danger); }
+        .bar { height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; margin-bottom: 20px; }
+        .bar > span { display: block; height: 100%; width: 0; background: var(--color-primary); transition: width 0.3s; }
+
+        fieldset { border: none; }
+        .options { list-style: none; display: grid; gap: 10px; }
+        .option { display: block; position: relative; }
+        .option input { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; margin: 0; }
+        .option > span { display: flex; gap: 12px; align-items: flex-start; border: 2px solid var(--color-border); border-radius: 10px; padding: 12px 14px; background: #fff; }
+        .option .mark { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--color-primary); color: var(--color-primary); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .option:hover > span { border-color: var(--color-primary); background: var(--color-surface); }
+        .option input:checked + span { border-color: var(--color-primary); background: #EAF1F9; }
+        .option input:focus-visible + span { outline: 3px solid #FFA500; outline-offset: 2px; }
+        .option.correct input + span { border-color: var(--color-success); background: var(--color-success-bg); }
+        .option.correct .mark { background: var(--color-success); border-color: var(--color-success); color: #fff; }
+        .option.wrong input + span { border-color: var(--color-danger); background: var(--color-danger-bg); }
+        .option.wrong .mark { background: var(--color-danger); border-color: var(--color-danger); color: #fff; }
+        .locked .option input { pointer-events: none; }
+        .locked .option:hover > span { background: #fff; }
+        .locked .option.correct:hover > span { background: var(--color-success-bg); }
+        .locked .option.wrong:hover > span { background: var(--color-danger-bg); }
+
+        .feedback { margin-top: 16px; padding: 14px 16px; border-radius: 10px; border-left: 6px solid; }
+        .feedback.ok { background: var(--color-success-bg); border-color: var(--color-success); }
+        .feedback.bad { background: var(--color-danger-bg); border-color: var(--color-danger); }
+        .feedback strong { display: block; margin-bottom: 4px; }
+
+        .score { text-align: center; padding: 8px 0 16px; }
+        .score-num { font-size: 3rem; font-weight: 700; color: var(--color-primary); line-height: 1.1; }
+        .score-grade { font-size: 1.15rem; margin-top: 6px; }
+        .review { margin-top: 12px; display: grid; gap: 12px; }
+        .review-item { border: 1px solid var(--color-border); border-radius: 10px; padding: 12px 14px; background: #fff; }
+        .review-item.bad { border-left: 6px solid var(--color-danger); }
+        .review-item.ok { border-left: 6px solid var(--color-success); }
+        .review-item .q { font-weight: 600; margin-bottom: 4px; }
+        .review-item .a { font-size: 0.95rem; }
+        .footer { max-width: 760px; margin: 0 auto; padding: 0 16px 32px; font-size: 0.85rem; color: var(--color-text-secondary); }
+        @media (max-width: 480px) {
+            .panel { padding: 16px; }
+            h1 { font-size: 1.35rem; }
+            .btn { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-inner">
+            <a href="prezentacii-testy.html">← Презентации и тесты</a>
+            <span class="topbar-title">Безопасность жизнедеятельности · 8 класс</span>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- Стартовый экран -->
+        <section class="panel" id="screen-start" aria-labelledby="start-title">
+            <h1 id="start-title">Тест: Безопасное поведение в местах массового пребывания людей</h1>
+            <p class="lead">Проверьте, как вы знаете правила поведения в толпе, при давке и панике, при обнаружении подозрительных предметов и при эвакуации.</p>
+            <ul class="facts" aria-label="Параметры теста">
+                <li>🎯 Класс: 8 класс</li>
+                <li>❓ Вопросов: 10</li>
+                <li>⏱️ Время: 15 минут</li>
+                <li>📊 Автопроверка</li>
+            </ul>
+            <p>Выберите один вариант ответа в каждом вопросе. После ответа тест сразу покажет, верно ли вы ответили, и объяснит почему. В конце вы увидите результат и разбор ошибок.</p>
+            <div class="note" style="margin-top:16px;"><strong>Важно:</strong> тест проверяет знание правил. При реальной опасности следуйте указаниям сотрудников охраны и экстренных служб, а о подозрительных предметах сообщайте по номеру 112.</div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-start" type="button">▶️ Начать тест</button>
+                <a class="btn btn-secondary" href="prezentacii-testy.html">К списку материалов</a>
+            </div>
+        </section>
+
+        <!-- Вопрос -->
+        <section class="panel hidden" id="screen-q" aria-labelledby="q-title">
+            <div class="progress-head">
+                <span id="q-counter" aria-live="polite">Вопрос 1 из 10</span>
+                <span class="timer" id="timer" role="timer" aria-label="Осталось времени">15:00</span>
+            </div>
+            <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="bar"><span id="bar-fill"></span></div>
+            <fieldset id="q-fieldset">
+                <legend><h2 id="q-title" tabindex="-1"></h2></legend>
+                <div class="options" id="options" role="radiogroup" aria-labelledby="q-title"></div>
+            </fieldset>
+            <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-check" type="button" disabled>Проверить</button>
+                <button class="btn btn-primary hidden" id="btn-next" type="button">Дальше →</button>
+            </div>
+        </section>
+
+        <!-- Результат -->
+        <section class="panel hidden" id="screen-result" aria-labelledby="res-title">
+            <h1 id="res-title" tabindex="-1">Результат</h1>
+            <div class="score">
+                <div class="score-num" id="res-score"></div>
+                <div class="score-grade" id="res-grade"></div>
+            </div>
+            <p class="lead" id="res-text"></p>
+            <h2>Разбор ответов</h2>
+            <div class="review" id="review"></div>
+            <div class="btn-row">
+                <button class="btn btn-primary" id="btn-retry" type="button">🔄 Пройти ещё раз</button>
+                <a class="btn btn-secondary" href="prezentacii-testy.html">К списку материалов</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        Результаты теста нигде не сохраняются и не передаются: ответы остаются только на вашем устройстве. Тест подготовлен А. Ю. Дёминым с использованием ИИ-инструментов, материалы проверены и адаптированы преподавателем. Оценка носит учебный характер.
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+        var TEST = {"minutes": 15, "questions": [{"q": "Что отличает места массового пребывания людей (торговые центры, вокзалы, стадионы, концертные залы)?", "options": ["Одновременно находится много людей, поэтому выше риск давки, паники и пожара", "Там безопасно, потому что вокруг много людей, которые смогут помочь", "Опасны только во время митингов и массовых беспорядков", "Главная опасность там — только карманные кражи"], "correct": 0, "explain": "В таких местах многие люди действуют одновременно, а на выходах и в проходах быстро образуется скопление. Поэтому правила безопасного поведения нужно знать заранее, а не вспоминать в момент опасности."}, {"q": "Что стоит сделать сразу, когда вы пришли на концерт, в торговый центр или на стадион?", "options": ["Заметить, где находятся аварийные и запасные выходы, и мысленно наметить путь к ним", "Занять место в самой гуще людей, чтобы быть рядом с друзьями", "Запомнить только главный вход — через него все выходят", "Ничего: за безопасность отвечает охрана, думать об этом не нужно"], "correct": 0, "explain": "МЧС рекомендует заранее найти запасные и аварийные выходы и продумать путь к ним. Также нужно определить опасные зоны: проходы между секторами, стеклянные двери. В момент паники искать выход поздно."}, {"q": "Вы оказались в плотной толпе, которая движется. Как действовать?", "options": ["Не сопротивляться потоку, идти вместе с ним и постепенно пробираться к краю", "Двигаться навстречу потоку, расталкивая людей", "Остановиться и стоять на месте, пока толпа не пройдёт", "Забраться на ограждение или подоконник и ждать там"], "correct": 0, "explain": "Идти против потока бессмысленно и опасно: вас собьют с ног. МЧС советует позволить толпе нести вас, но стараться выбираться из неё к краю или к стенам. Двигайтесь плавно, не толкайтесь."}, {"q": "Как защитить грудную клетку от сдавливания в толпе?", "options": ["Развести согнутые в локтях руки в стороны перед грудью", "Спрятать руки в карманы, чтобы не мешали", "Скрестить руки за спиной", "Поднять руки вверх над головой"], "correct": 0, "explain": "Согнутые в локтях и разведённые в стороны руки создают пространство перед грудью, чтобы можно было дышать. Руки в карманах держать нельзя: вы не сможете защититься и удержать равновесие. Ноги ставьте на полную стопу и поднимайте высоко, не семените."}, {"q": "Началась давка. Как поступить с вещами?", "options": ["Освободиться от любой ноши, прежде всего от сумки на длинном ремне и шарфа, и ничего не поднимать, если оно упало", "Покрепче прижать сумку к себе и не отпускать её ни при каких обстоятельствах", "Остановиться и поднять упавший телефон, пока его не затоптали", "Намотать шарф потуже, чтобы согреться и защитить шею"], "correct": 0, "explain": "Ремень сумки или шарф могут зацепиться за людей и затянуться на шее. Освободитесь от них. Не наклоняйтесь за упавшими вещами: пытаясь подобрать, вы рискуете упасть сами, а на ногах в давке нужно удерживаться любой ценой."}, {"q": "Вы упали в толпе. Что нужно делать?", "options": ["Постараться быстро подняться, не опираясь на руки; если не получается — свернуться клубком и защитить голову предплечьями", "Лечь на спину и раскинуть руки, чтобы занять как можно больше места", "Ползти на четвереньках против потока людей", "Закрыть лицо ладонями и ждать, пока толпа пройдёт"], "correct": 0, "explain": "Главная задача — быстро встать на ноги, не опираясь на руки (их могут придавить). Если встать не удаётся, свернитесь клубком и закройте голову и шею предплечьями, чтобы защитить жизненно важные органы."}, {"q": "В торговом центре вы заметили забытую кем-то сумку без хозяина. Что делать?", "options": ["Ничего не трогать, не заглядывать внутрь, отойти и сообщить охране или администрации и в экстренные службы по 112", "Заглянуть внутрь, чтобы найти документы и вернуть сумку хозяину", "Взять сумку и отнести на стойку информации", "Сфотографировать сумку вблизи и выложить фото в соцсети"], "correct": 0, "explain": "Любой бесхозный предмет может оказаться опасным. МЧС категорически запрещает трогать, вскрывать и передвигать такой предмет и заглядывать внутрь. Нужно отойти, предупредить охрану или администрацию и позвонить по 112 (101)."}, {"q": "Что нельзя делать вблизи обнаруженного подозрительного предмета?", "options": ["Трогать, вскрывать, передвигать его и пользоваться рядом мобильным телефоном или рацией", "Отойти от предмета на безопасное расстояние", "Сообщить о находке охране или администрации", "Предупредить окружающих и отвести людей подальше"], "correct": 0, "explain": "По рекомендациям МЧС рядом с подозрительным предметом нельзя ничего с ним делать и нельзя пользоваться мобильной связью и рациями. Остальные три действия — правильные: отойти, сообщить, отвести людей."}, {"q": "Что нужно сообщить диспетчеру по номеру 112 (101) об обнаруженном подозрительном предмете?", "options": ["Место и время обнаружения, обстоятельства находки и характерные признаки предмета (провода, звуки, запах)", "Только то, что вам страшно, и сразу положить трубку", "Свои предположения о том, кто мог оставить предмет, но не говорить, где он лежит", "Только возраст и класс, в котором вы учитесь"], "correct": 0, "explain": "Для реагирования важны место, время, обстоятельства и признаки предмета. Эти сведения помогут специалистам быстро принять решение. Говорите чётко и отвечайте на вопросы диспетчера, трубку первым не кладите."}, {"q": "В здании, где много людей, включилась сигнализация и объявлена эвакуация. Как поступить?", "options": ["Сохранять спокойствие, идти к ближайшему безопасному выходу по указателям, лифтом не пользоваться, помогать детям и пожилым", "Бежать к главному входу и расталкивать тех, кто мешает", "Вернуться в гардероб за курткой и вещами", "Спрятаться в туалете или подсобном помещении и подождать"], "correct": 0, "explain": "При эвакуации главное — не паниковать и не создавать давку. Идите по указателям к ближайшему безопасному выходу, не пользуйтесь лифтом, не возвращайтесь за вещами. Помогайте тем, кому труднее двигаться: детям и пожилым."}]};
+        var LETTERS = ['А', 'Б', 'В', 'Г'];
+        var $ = function (id) { return document.getElementById(id); };
+        var state = { i: 0, answers: [], order: [], locked: false, left: 0, timerId: null };
+
+        function shuffle(a) {
+            var r = a.slice();
+            for (var i = r.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = r[i]; r[i] = r[j]; r[j] = t;
+            }
+            return r;
+        }
+        function show(id) {
+            ['screen-start', 'screen-q', 'screen-result'].forEach(function (s) {
+                $(s).classList.toggle('hidden', s !== id);
+            });
+        }
+        function fmt(sec) {
+            var m = Math.floor(sec / 60), s = sec % 60;
+            return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        }
+        function startTimer() {
+            clearInterval(state.timerId);
+            state.left = TEST.minutes * 60;
+            $('timer').textContent = fmt(state.left);
+            $('timer').classList.remove('low');
+            state.timerId = setInterval(function () {
+                state.left--;
+                $('timer').textContent = fmt(Math.max(state.left, 0));
+                if (state.left <= 60) { $('timer').classList.add('low'); }
+                if (state.left <= 0) { clearInterval(state.timerId); finish(true); }
+            }, 1000);
+        }
+        function start() {
+            state.i = 0;
+            state.answers = [];
+            state.order = TEST.questions.map(function (q) { return shuffle(q.options.map(function (_, k) { return k; })); });
+            show('screen-q');
+            startTimer();
+            render();
+        }
+        function render() {
+            var q = TEST.questions[state.i], ord = state.order[state.i];
+            state.locked = false;
+            $('q-fieldset').classList.remove('locked');
+            $('q-counter').textContent = 'Вопрос ' + (state.i + 1) + ' из ' + TEST.questions.length;
+            $('bar-fill').style.width = (state.i / TEST.questions.length * 100) + '%';
+            $('bar').setAttribute('aria-valuenow', state.i);
+            $('q-title').textContent = q.q;
+            var html = '';
+            ord.forEach(function (k, pos) {
+                html += '<label class="option" data-k="' + k + '"><input type="radio" name="opt" value="' + k + '"><span><span class="mark" aria-hidden="true">' + LETTERS[pos] + '</span><span>' + q.options[k] + '</span></span></label>';
+            });
+            $('options').innerHTML = html;
+            $('feedback').className = 'feedback hidden';
+            $('feedback').innerHTML = '';
+            $('btn-check').classList.remove('hidden');
+            $('btn-check').disabled = true;
+            $('btn-next').classList.add('hidden');
+            $('btn-next').textContent = state.i === TEST.questions.length - 1 ? 'Показать результат' : 'Дальше →';
+            $('q-title').focus();
+        }
+        function check() {
+            if (state.locked) return;
+            var sel = document.querySelector('#options input:checked');
+            if (!sel) return;
+            var q = TEST.questions[state.i], k = parseInt(sel.value, 10), ok = (k === q.correct);
+            state.locked = true;
+            state.answers[state.i] = k;
+            $('q-fieldset').classList.add('locked');
+            Array.prototype.forEach.call(document.querySelectorAll('#options .option'), function (el) {
+                var kk = parseInt(el.getAttribute('data-k'), 10);
+                if (kk === q.correct) el.classList.add('correct');
+                else if (kk === k) el.classList.add('wrong');
+                el.querySelector('input').disabled = true;
+            });
+            var fb = $('feedback');
+            fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+            fb.innerHTML = '<strong>' + (ok ? 'Верно!' : 'Неверно.') + '</strong>' + (ok ? '' : 'Правильный ответ: ' + q.options[q.correct] + '. ') + q.explain;
+            $('btn-check').classList.add('hidden');
+            $('btn-next').classList.remove('hidden');
+            $('btn-next').focus();
+        }
+        function next() {
+            if (state.i < TEST.questions.length - 1) { state.i++; render(); }
+            else { finish(false); }
+        }
+        function grade(p) {
+            if (p >= 90) return { g: '5 («отлично»)', t: 'Отличный результат! Материал усвоен хорошо.' };
+            if (p >= 75) return { g: '4 («хорошо»)', t: 'Хороший результат. Посмотрите разбор ошибок и повторите спорные места.' };
+            if (p >= 50) return { g: '3 («удовлетворительно»)', t: 'Базовые знания есть, но тему стоит повторить. Изучите разбор ошибок и пройдите тест ещё раз.' };
+            return { g: '2 («неудовлетворительно»)', t: 'Тему нужно повторить: перечитайте материал урока и разбор ниже, затем пройдите тест ещё раз.' };
+        }
+        function finish(timeout) {
+            clearInterval(state.timerId);
+            var n = TEST.questions.length, right = 0, html = '';
+            TEST.questions.forEach(function (q, i) {
+                var a = state.answers[i], ok = (a === q.correct);
+                if (ok) right++;
+                html += '<div class="review-item ' + (ok ? 'ok' : 'bad') + '"><div class="q">' + (i + 1) + '. ' + q.q + '</div><div class="a">' +
+                    (a === undefined ? '<em>Ответа нет.</em> ' : (ok ? '✅ Верно. ' : '❌ Ваш ответ: ' + q.options[a] + '. ')) +
+                    (ok ? '' : 'Правильно: ' + q.options[q.correct] + '. ') + q.explain + '</div></div>';
+            });
+            var p = Math.round(right / n * 100), g = grade(p);
+            show('screen-result');
+            $('res-score').textContent = right + ' из ' + n + ' (' + p + '%)';
+            $('res-grade').textContent = 'Оценка: ' + g.g;
+            $('res-text').textContent = (timeout ? 'Время вышло. ' : '') + g.t;
+            $('review').innerHTML = html;
+            $('res-title').focus();
+            if (window.ym) { try { ym(106461008, 'reachGoal', 'test_finished'); } catch (e) {} }
+        }
+
+        $('btn-start').addEventListener('click', start);
+        $('btn-retry').addEventListener('click', function () { start(); window.scrollTo(0, 0); });
+        $('btn-check').addEventListener('click', check);
+        $('btn-next').addEventListener('click', next);
+        $('options').addEventListener('change', function () { if (!state.locked) $('btn-check').disabled = false; });
+    })();
+    </script>
+</body>
+</html>
