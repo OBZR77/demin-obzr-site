@@ -24,4 +24,6 @@ window.BZH_READY = {
     '8-6': 'bzh-8-06.html',
     '9-6': 'bzh-9-06.html',
     '10-6': 'bzh-10-06.html',
+    '11-6': 'bzh-11-06.html',
+    '11-7': 'bzh-11-07.html',
 };
