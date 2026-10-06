@@ -131,6 +131,11 @@
             transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
         }
     </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
 </head>
 <body>
     <div class="nvp-page">
@@ -293,9 +298,9 @@
             </ul>
         </section>
 
-        <div class="nvp-pager">
+        <div class="nvp-pager" data-cl="8" data-n="1">
             <span>Это первый урок курса БЖ в 8 классе</span>
-            <span>Следующий урок: № 2 «Опасные ситуации в быту, предупреждение и защита от них» →</span>
+            <span data-dir="next">Следующий урок: № 2 «Опасные ситуации в быту, предупреждение и защита от них» →</span>
         </div>
 
         <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия согласованы с учебником «Основы безопасности жизнедеятельности. 8–9 классы», часть 1 (М.: Просвещение, 2022). Если вы заметили неточность, напишите учителю.</p>
@@ -477,5 +482,25 @@
     build();
 })();
     </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
 </body>
 </html>
