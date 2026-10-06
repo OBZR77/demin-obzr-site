@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасное поведение на разных видах транспорта | БЖ, 10 класс, урок 6</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор на страницах для учеников выключен) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:false, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 10 класс · Урок 6 из 10</p>
+                <h1>🚌 Безопасное поведение на разных видах транспорта</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 8 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 12 октября</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>называть участников дорожного движения и определять, кто в какой роли оказывается на дороге;</li>
+                    <li>применять правила для пешеходов: где идти, как переходить дорогу, как быть заметным в темноте;</li>
+                    <li>называть обязанности и запреты для пассажира, правила перевозки детей;</li>
+                    <li>объяснять, какие правила обязан соблюдать водитель велосипеда;</li>
+                    <li>безопасно пользоваться общественным транспортом, такси и маршрутным такси.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ (формулировки согласованы с учебником) -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Транспортная культура безопасности</dt><dd>Часть общей культуры: знания в области безопасности на транспорте, умения и навыки безопасного поведения, соблюдение правил, принятых в транспортной среде, а также самостоятельное и безопасное участие в транспортных процессах.</dd></div>
+                <div class="nvp-term"><dt>Участник дорожного движения</dt><dd>Лицо, принимающее непосредственное участие в процессе движения в качестве водителя, пешехода, пассажира транспортного средства.</dd></div>
+                <div class="nvp-term"><dt>Пешеход</dt><dd>Лицо, находящееся вне транспортного средства на дороге либо на пешеходной или велопешеходной дорожке и не производящее на них работу. К пешеходам приравниваются лица, передвигающиеся в инвалидных колясках, ведущие средство индивидуальной мобильности, велосипед, мопед, мотоцикл, везущие санки, тележку, детскую или инвалидную коляску, а также использующие для передвижения роликовые коньки, самокаты и иные аналогичные средства.</dd></div>
+                <div class="nvp-term"><dt>Пассажир</dt><dd>Лицо, находящееся, кроме водителя, в транспортном средстве (на нём), а также лицо, которое входит в транспортное средство (садится на него) или выходит из него (сходит с него).</dd></div>
+                <div class="nvp-term"><dt>Водитель</dt><dd>Лицо, управляющее каким-либо транспортным средством, погонщик, ведущий по дороге вьючных, верховых животных или стадо. К водителю приравнивается обучающий вождению.</dd></div>
+                <div class="nvp-term"><dt>Регулировщик</dt><dd>Лицо, наделённое в установленном порядке полномочиями по регулированию дорожного движения с помощью сигналов, установленных ПДД, и непосредственно осуществляющее это регулирование. Он должен быть в форменной одежде и (или) иметь специальный отличительный знак и экипировку.</dd></div>
+                <div class="nvp-term"><dt>Валидатор</dt><dd>Электронное устройство, предназначенное для проверки проездных билетов.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <h3 class="nvp-h3">Кто такие участники дорожного движения</h3>
+            <p>Транспортная безопасность личности во многом зависит от того, насколько точно <strong>пешеходы, пассажиры и водители</strong> выполняют Правила дорожного движения и правила пользования разными видами транспорта. В течение одного дня человек может побывать во всех трёх ролях: пройти пешком до остановки, проехать пассажиром и сесть за руль велосипеда.</p>
+            <p>Все участники дорожного движения должны:</p>
+            <ul class="nvp-list">
+                <li>выполнять требования ПДД, сигналов светофоров, знаков и разметки, а также команды регулировщика;</li>
+                <li>действовать так, чтобы не создавать опасность для движения и не причинять вреда другим участникам;</li>
+                <li>не повреждать светофоры, дорожные знаки и другие технические средства организации движения (упавший знак может привести к серьёзной аварии).</li>
+            </ul>
+            <div class="nvp-alert">
+                <p><strong>Обрати внимание:</strong> дорожные рабочие в куртках оранжевого цвета, которые ремонтируют покрытие или наносят разметку, <strong>не являются пешеходами</strong>: они выполняют на дороге работу. Проезжая такие места, будь особенно внимателен.</p>
+            </div>
+
+            <h3 class="nvp-h3">Правила для пешеходов</h3>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Где идти</h3>
+                    <p>По тротуарам или пешеходным дорожкам, а при их отсутствии — по обочинам.</p>
+                    <p>Если нет ни тротуара, ни дорожки, ни обочины или двигаться по ним невозможно, можно идти по велосипедной дорожке либо <strong>в один ряд по краю проезжей части навстречу движению транспорта</strong>. На дорогах с разделительной полосой — по внешнему краю проезжей части.</p>
+                    <p>Лица в инвалидных колясках без двигателя и те, кто ведёт мотоцикл, мопед, велосипед или средство индивидуальной мобильности (СИМ), в этих случаях идут <strong>по ходу</strong> движения транспорта.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Как переходить</h3>
+                    <p>По пешеходным переходам, подземным или надземным переходам, а при их отсутствии — на перекрёстках по линии тротуаров или обочин.</p>
+                    <p>На переходе выходи на проезжую часть, <strong>оценив расстояние до приближающихся машин и их скорость</strong> и убедившись, что переход безопасен.</p>
+                    <p>Вне перехода не создавай помех транспорту и не выходи из-за стоящей машины или другого препятствия, пока не убедился, что нет приближающегося транспорта.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Не успел перейти</h3>
+                    <p>Выйдя на проезжую часть, не задерживайся и не останавливайся без необходимости.</p>
+                    <p>Если не успел закончить переход, остановись <strong>на островке безопасности или на линии, разделяющей потоки</strong> противоположных направлений. Продолжай, лишь убедившись в безопасности и с учётом сигнала светофора (регулировщика).</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>В темноте</h3>
+                    <p>В тёмное время суток или при недостаточной видимости пешеходам при переходе дороги и движении по обочинам или краю проезжей части <strong>рекомендуется</strong>, а вне населённых пунктов <strong>обязательно</strong> иметь при себе предметы со световозвращающими элементами и обеспечивать их видимость для водителей.</p>
+                </div>
+            </div>
+            <p>На регулируемом перекрёстке переходить проезжую часть по диагонали (между противоположными углами) можно только при наличии разметки, обозначающей такой переход.</p>
+
+            <h3 class="nvp-h3">Светофоры: сигнал в виде силуэта и велосипеда</h3>
+            <ul class="nvp-list">
+                <li>Сигнал в виде <strong>силуэта пешехода</strong> действует только на пешеходов.</li>
+                <li>Сигнал в виде <strong>велосипеда</strong> действует на велосипедистов и водителей мопедов, движущихся по велосипедной полосе.</li>
+                <li>Лица на средствах индивидуальной мобильности при движении по тротуару или пешеходной дорожке руководствуются сигналами в виде силуэта пешехода, по велосипедной, велопешеходной дорожке или полосе для велосипедистов — сигналами в виде велосипеда. Зелёный сигнал разрешает, а красный запрещает движение пешеходов, велосипедистов и таких лиц.</li>
+                <li>Для велосипедистов и СИМ может быть и светофор с круглыми сигналами уменьшенного размера, дополненный белой прямоугольной табличкой 200 × 200 мм с чёрным велосипедом.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Правила для пассажира</h3>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Пассажир обязан</h3>
+                    <ul class="nvp-list">
+                        <li>при поездке на транспорте с ремнями безопасности быть <strong>пристёгнутым</strong>;</li>
+                        <li>садиться и выходить со стороны тротуара или обочины и <strong>только после полной остановки</strong> транспортного средства.</li>
+                    </ul>
+                    <p>Если со стороны тротуара или обочины это невозможно, посадка и высадка допускаются со стороны проезжей части, но только если это безопасно и не создаст помех другим.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Пассажиру запрещается</h3>
+                    <ul class="nvp-list">
+                        <li>отвлекать водителя от управления во время движения;</li>
+                        <li>открывать двери транспортного средства во время движения;</li>
+                        <li>на заднем сиденье мотоцикла держаться за одежду водителя (это мешает управлять; для этого есть поручень);</li>
+                        <li>сажать пассажира, даже ребёнка, впереди водителя на баке мотоцикла.</li>
+                    </ul>
+                    <p>Пассажир мотоцикла обязан ехать в <strong>застёгнутом мотошлеме</strong>.</p>
+                </div>
+            </div>
+            <div class="nvp-alert">
+                <p><strong>Дети до 12 лет.</strong> В транспорте с ремнями безопасности ребёнка перевозят с детскими удерживающими устройствами, подходящими по весу и росту (или иными средствами, позволяющими пристегнуть его ремнями), а на переднем сиденье легкового автомобиля — <strong>только</strong> с детским удерживающим устройством. Перевозить детей до 12 лет на заднем сиденье мотоцикла запрещается.</p>
+            </div>
+
+            <h3 class="nvp-h3">Водитель велосипеда</h3>
+            <p>Первым транспортным средством, которым человек начинает управлять, обычно становится велосипед. Качества культурного водителя нужно воспитывать в себе со школьной скамьи.</p>
+            <ol class="nvp-algo">
+                <li><strong>Проверь</strong> перед выездом исправность велосипеда и следи за ней в пути.</li>
+                <li>Отправляясь в поездку, <strong>надевай велошлем</strong>: он защищает голову от ударов при столкновениях и падениях. Велошлем — самое важное средство защиты велосипедиста.</li>
+                <li>При неисправной рабочей тормозной системе или рулевом управлении, а в тёмное время суток или при плохой видимости ещё и при негорящих (отсутствующих) фарах и задних габаритных огнях <strong>движение запрещено</strong>.</li>
+            </ol>
+            <p>Водителю велосипеда запрещается: управлять, не держась за руль хотя бы одной рукой; перевозить груз, который выступает более чем на 0,5 м по длине или ширине за габариты или мешает управлению; перевозить пассажиров, если это не предусмотрено конструкцией.</p>
+
+            <h3 class="nvp-h3">Общественный транспорт</h3>
+            <p>Каждый независимо от возраста может оказаться на дороге пассажиром автобуса, троллейбуса, трамвая или маршрутного такси.</p>
+            <ul class="nvp-list">
+                <li>Жди транспорт <strong>на оборудованных остановках</strong>, а где их нет — на обочинах или тротуарах, где есть указатели номеров маршрутов.</li>
+                <li>Входи и выходи только после <strong>полной остановки</strong>. Не толкайся, не создавай давку, не мешай закрыванию дверей.</li>
+                <li>Оплачивай проезд: в транспорте с валидатором используются билеты с магнитной полосой и бесконтактные смарт-карты, если билеты продаёт кондуктор, заплати ему.</li>
+                <li>Если сидячие места заняты, пройди в среднюю часть салона. Не разговаривай на весь салон, уважай других пассажиров.</li>
+                <li>При движении <strong>держись за поручни</strong>, чтобы сохранять устойчивое положение.</li>
+                <li>Для перевозки учащихся на дальние расстояния во многих регионах используются школьные автобусы с опознавательными знаками «Перевозка детей».</li>
+            </ul>
+
+            <h3 class="nvp-h3">Такси</h3>
+            <ol class="nvp-algo">
+                <li>Выбирай <strong>известную транспортную компанию</strong>. Не пользуйся услугами случайных перевозчиков.</li>
+                <li>При заказе заранее обговори с диспетчером время и место подачи, пункт назначения, стоимость и наличие габаритного багажа. Диспетчер сообщает номер заказа и номер подаваемого автомобиля.</li>
+                <li>Перед началом поездки <strong>получи у водителя подтверждение</strong> условий, согласованных с диспетчером (пункт назначения и стоимость).</li>
+                <li>Никогда не садись в автомобиль, если его вид, личность или поведение водителя кажутся подозрительными. Не садись в машину, где уже есть пассажиры, и не соглашайся брать по пути случайных попутчиков.</li>
+                <li>Всегда <strong>пристёгивайся</strong> ремнём безопасности, независимо от продолжительности поездки.</li>
+                <li>По окончании поездки, до отъезда такси, проверь, не забыл ли ты багаж, вещи, документы или деньги.</li>
+            </ol>
+            <p>В легковом такси на передней панели справа от водителя должна быть информация: наименование компании, условия оплаты, визитная карточка водителя с фотографией, наименование, адрес и телефоны органа, контролирующего перевозки. По Правилам перевозок пассажиров и багажа (постановление Правительства РФ от 1 октября 2020 г. № 1586) в такси разрешено провозить как ручную кладь вещи, которые свободно проходят в дверные проёмы, не загрязняют сиденья и не мешают водителю; багаж перевозят в багажнике так, чтобы крышка закрывалась. Запрещено возить зловонные и опасные (легковоспламеняющиеся, взрывчатые, токсичные, коррозионные и др.) вещества и предметы, загрязняющие транспорт или одежду пассажиров.</p>
+
+            <h3 class="nvp-h3">Маршрутное такси</h3>
+            <ul class="nvp-list">
+                <li>Не входи в салон, если нет свободных мест для сидения. <strong>Не езди стоя.</strong></li>
+                <li>Если обнаружил <strong>бесхозные вещи</strong>, немедленно сообщи водителю, потребуй остановить транспорт и как можно быстрее покинь его.</li>
+                <li>Заняв место, оплати проезд и получи контрольный билет, сохраняй его до конца поездки. Расчёты за проезд производи во время остановок, не отвлекай водителя разговорами.</li>
+                <li>Не провози зловонные, огнеопасные, взрывчатые, отравляющие, ядовитые и едкие вещества, габаритный багаж, закрывающий проходы, огнестрельное оружие, а также колющие и режущие предметы без чехлов и в неупакованном виде.</li>
+                <li>Не открывай окна без разрешения водителя, не высовывайся из окон, не ставь багаж на сиденья. Не пытайся выйти до полной остановки или там, где остановка запрещена.</li>
+            </ul>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li>Участники дорожного движения: <strong>водитель, пешеход, пассажир</strong>. Дорожный рабочий, который выполняет работу на дороге, пешеходом не считается.</li>
+                    <li>Пешеход идёт по тротуару или обочине, а без них — <strong>по краю проезжей части навстречу движению</strong>. Не успел перейти: остановись на островке безопасности или на линии, разделяющей потоки.</li>
+                    <li>Вне населённых пунктов в темноте световозвращающие элементы пешеходу <strong>обязательны</strong>.</li>
+                    <li>Пассажир: <strong>пристегнись</strong>, садись и выходи после полной остановки, не открывай двери на ходу, не отвлекай водителя.</li>
+                    <li>Дети до 12 лет: детские удерживающие устройства; на переднем сиденье легкового автомобиля только с ними; на заднем сиденье мотоцикла детей до 12 лет возить запрещено.</li>
+                    <li>Велосипедист: проверь велосипед, надень <strong>велошлем</strong>, держись за руль хотя бы одной рукой.</li>
+                    <li>Такси: известная компания, подтверди условия с водителем, не бери попутчиков, пристегнись. Маршрутка: не езди стоя, о бесхозных вещах сообщи водителю.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Выбери вид транспорта, которым ты пользуешься чаще всего (или который преобладает в твоём районе). Сформулируй 3–5 правил, которые тебе нужно соблюдать, и объясни, какую опасность предотвращает каждое из них.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Составь памятку «Безопасная поездка» для ученика 7 класса: как вести себя на остановке, в автобусе и в такси (6–8 пунктов, к каждому короткое «почему»). Похожее задание есть в учебнике, с. 94 (практикум, задание 1).</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст параграфа. Название улицы, номер маршрута и номер дома не указывай: опиши место общими словами. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности. 10 класс» (под редакцией С. Н. Егорова, М.: Просвещение, 2023): глава 4 «Безопасность на транспорте», § 12 «Правила безопасности для участников дорожного движения» (с. 86–95). Полный текст ПДД есть в приложении 1 учебника.</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+                <li><a href="https://www.consultant.ru/document/cons_doc_LAW_2709/1736bcf22f8e05f9d3db535f6d084651bad887a4/" target="_blank" rel="noopener">Правила дорожного движения (КонсультантПлюс)</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager">
+            <span>← Предыдущий урок: № 5 «Безопасность дорожного движения»</span>
+            <span>Следующий урок: № 7 «Порядок действий при дорожно-транспортных происшествиях» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности. 10 класс» (М.: Просвещение, 2023). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6abaca9650569060a527b159/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '10', lesson: 'БЖ-6' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Дорожный рабочий в оранжевой куртке ремонтирует проезжую часть. Является ли он пешеходом?",
+          options: ["Да, любой человек на дороге пешеход", "Нет: он выполняет на дороге работу, поэтому не считается пешеходом", "Да, но только в дневное время", "Нет, он считается пассажиром"], correct: 1,
+          explain: "Пешеход — лицо на дороге, не производящее на ней работу. Дорожные рабочие в оранжевых куртках пешеходами не являются, поэтому проезжая такие места, нужно быть особенно внимательным." },
+        { text: "Тротуара, пешеходной дорожки и обочины нет. Как должен идти пешеход?",
+          options: ["В один ряд по краю проезжей части навстречу движению транспорта", "В два ряда по краю проезжей части по ходу движения транспорта", "По середине проезжей части", "Только по разделительной полосе"], correct: 0,
+          explain: "При отсутствии тротуаров, дорожек и обочин пешеходы могут идти по велосипедной дорожке либо в один ряд по краю проезжей части навстречу движению транспортных средств." },
+        { text: "Ты не успел закончить переход, а светофор переключился. Что делать?",
+          options: ["Остановиться на островке безопасности или на линии, разделяющей потоки противоположных направлений", "Вернуться к началу перехода, не глядя на дорогу", "Остановиться и ждать там, где стоишь", "Бежать по диагонали к ближайшему тротуару"], correct: 0,
+          explain: "Не успевшие завершить переход должны остановиться на островке безопасности или на линии, разделяющей потоки, и продолжить, лишь убедившись в безопасности и с учётом сигнала светофора." },
+        { text: "Что Правилами запрещено водителю велосипеда?",
+          options: ["Надевать велошлем", "Управлять велосипедом, не держась за руль хотя бы одной рукой", "Проверять тормоза перед выездом", "Ездить, держась за руль двумя руками"], correct: 1,
+          explain: "Велосипедист должен держаться за руль хотя бы одной рукой. Кроме того, запрещено перевозить груз, выступающий более чем на 0,5 м за габариты или мешающий управлению, и перевозить пассажиров, если это не предусмотрено конструкцией." },
+        { text: "Что запрещается пассажиру?",
+          options: ["Пристёгиваться ремнём безопасности", "Садиться и выходить со стороны тротуара", "Открывать двери транспортного средства во время движения", "Держаться за поручни в салоне автобуса"], correct: 2,
+          explain: "Пассажиру запрещено отвлекать водителя во время движения и открывать двери на ходу. Пристёгиваться и пользоваться поручнями, наоборот, нужно." },
+        { text: "Ребёнок младше 12 лет едет на переднем сиденье легкового автомобиля. Как это допускается?",
+          options: ["Только с использованием детского удерживающего устройства", "Если он пристёгнут обычным ремнём безопасности", "Если на заднем сиденье едет взрослый", "Ни при каких условиях"], correct: 0,
+          explain: "Детей до 12 лет перевозят с детскими удерживающими устройствами, соответствующими весу и росту, а на переднем сиденье легкового автомобиля — только с таким устройством." },
+        { text: "Ты заказал такси через диспетчерскую службу. Что нужно сделать перед началом поездки?",
+          options: ["Сесть в машину и сразу ехать, цену обсудить по дороге", "Получить у водителя подтверждение условий, согласованных с диспетчером: пункта назначения и стоимости", "Согласиться взять попутчиков, чтобы поездка стоила дешевле", "Отключить ремень безопасности, чтобы не мешал разговаривать"], correct: 1,
+          explain: "Перед поездкой нужно получить подтверждение условий, согласованных с диспетчером. Не соглашайся брать случайных попутчиков, садись только в машину известной компании и всегда пристёгивайся." },
+        { text: "В салоне маршрутного такси ты увидел бесхозную сумку. Как поступить?",
+          options: ["Открыть сумку и посмотреть, что внутри", "Сообщить водителю, потребовать остановить транспорт и как можно быстрее покинуть салон", "Переставить сумку подальше от прохода", "Ничего не делать: сумка может принадлежать кому-то из пассажиров"], correct: 1,
+          explain: "При обнаружении бесхозных вещей нужно немедленно сообщить водителю, потребовать остановить транспортное средство и как можно быстрее покинуть его." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+</body>
+</html>
