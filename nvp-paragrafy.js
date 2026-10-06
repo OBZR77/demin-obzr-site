@@ -22,8 +22,11 @@ window.NVP_READY = {
 window.BZH_READY = {
     '8-1': 'bzh-8-01.html',
     '8-6': 'bzh-8-06.html',
+    '8-7': 'bzh-8-07.html',
     '9-6': 'bzh-9-06.html',
+    '9-7': 'bzh-9-07.html',
     '10-6': 'bzh-10-06.html',
+    '10-7': 'bzh-10-07.html',
     '11-6': 'bzh-11-06.html',
     '11-7': 'bzh-11-07.html',
 };
