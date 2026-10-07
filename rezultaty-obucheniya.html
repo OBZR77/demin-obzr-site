@@ -1015,7 +1015,9 @@
                     </div>
                 </div>
                 
-                          <div class="stats-grid">
+                          <p style="text-align: center; color: var(--color-text-secondary); font-size: 0.9rem; margin: 1rem 0 0;">Качество обучения = доля обучающихся на «4» и «5». Показатель по школе рассчитан с учётом числа учащихся в классах.</p>
+
+                <div class="stats-grid">
                     <div class="stat-card stat-green">
                         <h3>2023–2024 учебный год</h3>
                         <p class="stat-value" id="avg2024">0%</p>
@@ -1048,7 +1050,7 @@
                 </li>
                 <li>
                     <span>📊</span>
-                    <span>Среднее качество обучения: 2023–2024 — <span id="conclusion2024">0</span>%, 2024–2025 — <span id="conclusion2025">0</span>%, 2025–2026 — <span id="conclusion2026">0</span>%</span>
+                    <span>Качество обучения по школе: 2023–2024 — <span id="conclusion2024">0</span>%, 2024–2025 — <span id="conclusion2025">0</span>%, 2025–2026 — <span id="conclusion2026">0</span>%</span>
                 </li>
                 <li>
                     <span>👥</span>
@@ -1280,26 +1282,26 @@
     <script>
         // Данные
         const data2024 = [
-            { class: '8А', total: 25, grade5: 12, grade4: 10, grade3: 3, grade2: 0, quality: 86.67, success: 100.00 },
-            { class: '8Б', total: 25, grade5: 14, grade4: 8, grade3: 3, grade2: 0, quality: 92.00, success: 100.00 },
-            { class: '8В', total: 26, grade5: 16, grade4: 8, grade3: 2, grade2: 0, quality: 96.15, success: 100.00 },
-            { class: '8Г', total: 23, grade5: 11, grade4: 10, grade3: 2, grade2: 0, quality: 95.65, success: 100.00 },
-            { class: '9А', total: 23, grade5: 12, grade4: 6, grade3: 5, grade2: 0, quality: 84.05, success: 100.00 },
-            { class: '9Б', total: 25, grade5: 15, grade4: 8, grade3: 2, grade2: 0, quality: 94.67, success: 100.00 },
-            { class: '9В', total: 25, grade5: 16, grade4: 6, grade3: 3, grade2: 0, quality: 90.67, success: 100.00 },
+            { class: '8А', total: 25, grade5: 12, grade4: 10, grade3: 3, grade2: 0, quality: 88.00, success: 100.00 },
+            { class: '8Б', total: 25, grade5: 14, grade4: 8, grade3: 3, grade2: 0, quality: 88.00, success: 100.00 },
+            { class: '8В', total: 26, grade5: 16, grade4: 8, grade3: 2, grade2: 0, quality: 92.31, success: 100.00 },
+            { class: '8Г', total: 23, grade5: 11, grade4: 10, grade3: 2, grade2: 0, quality: 91.30, success: 100.00 },
+            { class: '9А', total: 23, grade5: 12, grade4: 6, grade3: 5, grade2: 0, quality: 78.26, success: 100.00 },
+            { class: '9Б', total: 25, grade5: 15, grade4: 8, grade3: 2, grade2: 0, quality: 92.00, success: 100.00 },
+            { class: '9В', total: 25, grade5: 16, grade4: 6, grade3: 3, grade2: 0, quality: 88.00, success: 100.00 },
             { class: '9Г', total: 24, grade5: 14, grade4: 9, grade3: 1, grade2: 0, quality: 95.83, success: 100.00 },
             { class: '10', total: 17, grade5: 17, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
             { class: '11', total: 25, grade5: 23, grade4: 2, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 }
         ];
 
         const data2025 = [
-            { class: '8А', total: 25, grade5: 13, grade4: 8, grade3: 4, grade2: 0, quality: 88.00, success: 100.00 },
-            { class: '8Б', total: 30, grade5: 21, grade4: 6, grade3: 3, grade2: 0, quality: 92.22, success: 100.00 },
-            { class: '8В', total: 26, grade5: 11, grade4: 9, grade3: 6, grade2: 0, quality: 82.05, success: 100.00 },
-            { class: '9А', total: 25, grade5: 17, grade4: 6, grade3: 2, grade2: 0, quality: 93.33, success: 100.00 },
+            { class: '8А', total: 25, grade5: 13, grade4: 8, grade3: 4, grade2: 0, quality: 84.00, success: 100.00 },
+            { class: '8Б', total: 30, grade5: 21, grade4: 6, grade3: 3, grade2: 0, quality: 90.00, success: 100.00 },
+            { class: '8В', total: 26, grade5: 11, grade4: 9, grade3: 6, grade2: 0, quality: 76.92, success: 100.00 },
+            { class: '9А', total: 25, grade5: 17, grade4: 6, grade3: 2, grade2: 0, quality: 92.00, success: 100.00 },
             { class: '9Б', total: 24, grade5: 17, grade4: 6, grade3: 1, grade2: 0, quality: 95.83, success: 100.00 },
-            { class: '9В', total: 26, grade5: 18, grade4: 7, grade3: 1, grade2: 0, quality: 97.43, success: 100.00 },
-            { class: '9Г', total: 22, grade5: 9, grade4: 11, grade3: 2, grade2: 0, quality: 93.90, success: 100.00 },
+            { class: '9В', total: 26, grade5: 18, grade4: 7, grade3: 1, grade2: 0, quality: 96.15, success: 100.00 },
+            { class: '9Г', total: 22, grade5: 9, grade4: 11, grade3: 2, grade2: 0, quality: 90.91, success: 100.00 },
             { class: '10', total: 15, grade5: 15, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 },
             { class: '11', total: 16, grade5: 16, grade4: 0, grade3: 0, grade2: 0, quality: 100.00, success: 100.00 }
         ];
@@ -1315,9 +1317,9 @@
         ];
         
              // Средние показатели
-        const avg2024 = (data2024.reduce((sum, item) => sum + item.quality, 0) / data2024.length).toFixed(2);
-        const avg2025 = (data2025.reduce((sum, item) => sum + item.quality, 0) / data2025.length).toFixed(2);
-        const avg2026 = (data2026.reduce((sum, item) => sum + item.quality, 0) / data2026.length).toFixed(2);
+        const avg2024 = (data2024.reduce((sum, item) => sum + item.quality * item.total, 0) / data2024.reduce((sum, item) => sum + item.total, 0)).toFixed(2);
+        const avg2025 = (data2025.reduce((sum, item) => sum + item.quality * item.total, 0) / data2025.reduce((sum, item) => sum + item.total, 0)).toFixed(2);
+        const avg2026 = (data2026.reduce((sum, item) => sum + item.quality * item.total, 0) / data2026.reduce((sum, item) => sum + item.total, 0)).toFixed(2);
         const total2024 = data2024.reduce((sum, item) => sum + item.total, 0);
         const total2025 = data2025.reduce((sum, item) => sum + item.total, 0);
         const total2026 = data2026.reduce((sum, item) => sum + item.total, 0);
@@ -1584,7 +1586,7 @@
                     labels: ['2023–2024', '2024–2025', '2025–2026'],
                     datasets: [
                         {
-                            label: 'Среднее качество обучения (%)',
+                            label: 'Качество обучения по школе (%)',
                             data: [avg2024, avg2025, avg2026],
                             borderColor: '#4CAF50',
                             backgroundColor: 'rgba(76, 175, 80, 0.1)',
@@ -1756,6 +1758,8 @@ window.addEventListener('orientationchange', function() {
         if (quality2025Chart) quality2025Chart.resize();
         if (grades2024Chart) grades2024Chart.resize();
         if (grades2025Chart) grades2025Chart.resize();
+        if (quality2026Chart) quality2026Chart.resize();
+        if (grades2026Chart) grades2026Chart.resize();
         if (comparisonChart) comparisonChart.resize();
     }, 400);
 });
@@ -2369,4 +2373,4 @@ window.addEventListener('load', () => {
 </script>
     
 </body>
-</html>
+</html>
