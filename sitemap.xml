@@ -387,6 +387,168 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Добавлено 07.10.2026 -->
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-roditelej.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-ucheby.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/arhiv-2025-2026.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/arhiv-media-2025-2026.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-10-06.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-10-07.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-11-06.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-11-07.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-01.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-06.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-07.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-9-06.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/bzh-9-07.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/mediaarhiv.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/nvp-8-06.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/obratnaya-svyaz-uchenikov.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/privacy-policy.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/situacionnye-zadachi.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/test-bzh-8-massovoe-prebyvanie.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/test-first-aid-module8.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/test-nvp-10-takticheskaya-medicina.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/test-nvp-8-pervaya-pomoshch.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://obzr77.github.io/demin-obzr-site/trenazhery.html</loc>
+        <lastmod>2026-10-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
 </urlset>
 
     
