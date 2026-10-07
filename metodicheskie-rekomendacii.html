@@ -1258,7 +1258,7 @@
                                 <li>Устаревшие материалы без указания дат</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Скачать PDF</button>
+                                <a class="material-btn material-btn-primary" href="files/metodicheskie/top-10-oshibok-sayta-uchitelya.pdf" download style="text-decoration: none;">📥 Скачать PDF</a>
                             </div>
                         </div>
 
@@ -1292,8 +1292,8 @@
                                 <li>Примеры конспектов уроков по строевой подготовке</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Скачать</button>
-                                <button class="material-btn material-btn-disabled" disabled>🔗 Примеры уроков</button>
+                                <a class="material-btn material-btn-primary" href="files/metodicheskie/nvp-metodicheskie-rekomendacii.docx" download style="text-decoration: none;">📥 Скачать</a>
+                                <a class="material-btn material-btn-secondary" href="konspekty-urokov.html" style="text-decoration: none;">🔗 Примеры уроков</a>
                             </div>
                         </div>
 
@@ -1366,8 +1366,8 @@
                                 <li>Проверка соответствия ФГОС</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📋 Копировать промпт</button>
-                                <button class="material-btn material-btn-disabled" disabled>🔗 Подробнее</button>
+                                <button type="button" class="material-btn material-btn-primary" onclick="mrCopyPrompt(this)">📋 Копировать промпт</button>
+                                <a class="material-btn material-btn-secondary" href="konspekty-urokov.html" style="text-decoration: none;">🔗 Подробнее</a>
                             </div>
                         </div>
 
@@ -1458,7 +1458,7 @@
                                 <li>Повышение квалификации и профессиональное развитие</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Чек-лист</button>
+                                <a class="material-btn material-btn-primary" href="files/metodicheskie/portfolio-chek-list.docx" download style="text-decoration: none;">📥 Чек-лист</a>
                             </div>
                         </div>
 
@@ -1547,7 +1547,7 @@
                                 <li>Согласие родителей на публикацию информации</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Памятка</button>
+                                <a class="material-btn material-btn-primary" href="files/metodicheskie/fz152-pamyatka.pdf" download style="text-decoration: none;">📥 Памятка</a>
                             </div>
                         </div>
 
@@ -1599,7 +1599,7 @@
                                 <li>Подготовка полигона и инвентаря</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Сценарий</button>
+                                <a class="material-btn material-btn-primary" href="files/metodicheskie/zarnica-scenariy-shkolnyy-etap.docx" download style="text-decoration: none;">📥 Сценарий</a>
                             </div>
                         </div>
 
@@ -1967,6 +1967,47 @@ function toggleMenu() {
             }
         }
     </script>
+<script>
+    // Копирование промпта для Claude (карточка «Как я использую Claude...»).
+    // Префикс mr — чтобы имена не конфликтовали с script.js и другими скриптами страницы.
+    var MR_PROMPT_KONSPEKT = "Ты — опытный методист и учитель ОБЗР (Основы безопасности и защиты Родины). Составь конспект урока для 8–11 классов по структуре, указанной ниже.\n\nИСХОДНЫЕ ДАННЫЕ (заполни перед отправкой):\n• Курс: [Начальная военная подготовка / Безопасность жизнедеятельности]\n• Класс: [8 / 9 / 10 / 11]\n• Тема урока: [формулировка из рабочей программы]\n• Тип урока: [изучение нового материала / практикум / комбинированный]\n• Продолжительность: 40 минут\n• Оснащение класса: [проектор, доска, макеты, раздаточные материалы — перечисли]\n• Особенности класса: [численность, уровень подготовки, что уже изучено]\n\nТРЕБОВАНИЯ К СОДЕРЖАНИЮ:\n1. Опирайся на ФГОС ООО (8–9 классы) или СОО (10–11 классы) и федеральную рабочую программу ОБЗР действующего учебного года.\n2. Не выдумывай номера приказов, даты, цифры и цитаты. Если не уверен в факте, поставь пометку [ПРОВЕРИТЬ] и не подменяй факт догадкой.\n3. Не используй персональные данные реальных людей. Примеры давай обобщённые («Иван К., 10 класс»).\n4. Если тема практическая, обязательно пропиши меры безопасности и порядок инструктажа. Для занятий с оружием используй только учебные макеты (ММГ).\n5. Тон деловой, понятный ученикам данного возраста, без лишних вводных фраз.\n\nСТРУКТУРА КОНСПЕКТА:\n1. Заголовок: курс, класс, тема, тип урока, длительность 40 минут.\n2. Цель и задачи урока (образовательная, развивающая, воспитательная).\n3. Планируемые результаты: предметные, метапредметные, личностные.\n4. Оборудование и методические материалы.\n5. Структура урока с хронометражем — таблица: этап | время (мин) | деятельность учителя | деятельность обучающихся. Сумма времени — ровно 40 минут.\n6. Ход урока по этапам: что говорит и делает учитель, вопросы классу, задания, ожидаемые ответы.\n7. Контроль усвоения: 3–5 вопросов или мини-тест с ключом ответов.\n8. Домашнее задание (необязательное и посильное).\n9. Рефлексия (1–2 приёма).\n10. Источники: только нормативные документы и официальные сайты.\n\nФОРМАТ ОТВЕТА: связный текст с заголовками разделов; таблицы — в формате Markdown, чтобы их можно было перенести в Word.\n\nЕсли у тебя есть образец своего конспекта, приложи его и добавь: «Повтори структуру и оформление приложенного образца».";
+
+    function mrFallbackCopy(text) {
+        try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.top = '0';
+            ta.style.left = '0';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            return ok;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function mrCopyPrompt(btn) {
+        var original = btn.getAttribute('data-label') || btn.textContent;
+        btn.setAttribute('data-label', original);
+        function done(ok) {
+            btn.textContent = ok ? '✅ Скопировано' : '⚠️ Не удалось скопировать';
+            setTimeout(function () { btn.textContent = original; }, 2500);
+        }
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(MR_PROMPT_KONSPEKT).then(
+                function () { done(true); },
+                function () { done(mrFallbackCopy(MR_PROMPT_KONSPEKT)); }
+            );
+        } else {
+            done(mrFallbackCopy(MR_PROMPT_KONSPEKT));
+        }
+    }
+</script>
 <script src="landscape-fix.js"></script>
 
     <!-- Плавающая кнопка ВКонтакте -->
