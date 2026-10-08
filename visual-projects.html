@@ -446,6 +446,90 @@
             opacity: 0.9;
         }
 
+        /* Серия изображений в одной карточке: стрелки и счётчик в окне просмотра */
+        .vp-nav {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            color: white;
+            font-size: 2.2rem;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 10000;
+            transition: background 0.2s ease;
+        }
+
+        .vp-nav:hover,
+        .vp-nav:active {
+            background: var(--color-danger);
+        }
+
+        .vp-nav:focus-visible {
+            outline: 3px solid var(--color-warning, #FFA500);
+            outline-offset: 2px;
+        }
+
+        .vp-prev { left: 20px; }
+        .vp-next { right: 20px; }
+
+        .vp-counter {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            z-index: 10000;
+        }
+
+        .image-modal.vp-series .vp-nav { display: flex; }
+        .image-modal.vp-series .vp-counter { display: block; }
+        .image-modal.vp-series #modalDescription { display: none; }
+
+        /* подпись не закрывает нижнюю часть картинки */
+        .image-modal img {
+            max-height: 76vh;
+            margin-bottom: 90px;
+        }
+
+        .image-modal .image-caption {
+            width: max-content;
+            max-width: min(80%, 640px);
+        }
+
+        /* значок «серия плакатов» на карточке */
+        .vp-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 61, 122, 0.92);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .vp-nav { width: 44px; height: 44px; font-size: 1.8rem; }
+            .vp-prev { left: 8px; }
+            .vp-next { right: 8px; }
+        }
+
         /* Информационный блок */
         .info-block {
             background: linear-gradient(135deg, var(--color-surface) 0%, #e8eef5 100%);
@@ -863,10 +947,7 @@
                 <!-- Инфографика 1 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper" onclick="openImageModal('images/infographic-fire-safety.png', 'Действия при пожаре', 'Визуальная схема действий при обнаружении пожара в помещении')">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-placeholder-icon">🔥</span>
-                            <span class="gallery-placeholder-text">Изображение будет добавлено</span>
-                        </div>
+                        <img src="images/infographic-fire-safety.png" alt="Инфографика «Действия при пожаре», шесть шагов: сообщить учителю, сигнал тревоги, звонок 101 или 112, организованный выход, защита от дыма, сбор в пункте сбора" loading="lazy">
                     </div>
                     <div class="gallery-info">
                         <h4>Действия при пожаре</h4>
@@ -874,7 +955,7 @@
                         <div class="gallery-meta">
                             <span class="gallery-tag">8-9 класс</span>
                             <span class="gallery-tag">Курс БЖД</span>
-                            <span class="gallery-tag ai-tool">Midjourney</span>
+                            <span class="gallery-tag ai-tool" title="Изображения: Gemini. Промпты и проверка текстов: Claude">Gemini + Claude</span>
                         </div>
                     </div>
                 </div>
@@ -882,10 +963,7 @@
                 <!-- Инфографика 2 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper" onclick="openImageModal('images/infographic-evacuation.png', 'План эвакуации', 'Как правильно эвакуироваться из здания школы')">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-placeholder-icon">🚪</span>
-                            <span class="gallery-placeholder-text">Изображение будет добавлено</span>
-                        </div>
+                        <img src="images/infographic-evacuation.png" alt="Инфографика «План эвакуации»: условная схема этажа школы с маршрутами к выходам и пункту сбора и пять правил эвакуации" loading="lazy">
                     </div>
                     <div class="gallery-info">
                         <h4>План эвакуации</h4>
@@ -893,26 +971,24 @@
                         <div class="gallery-meta">
                             <span class="gallery-tag">Все классы</span>
                             <span class="gallery-tag">Курс БЖД</span>
-                            <span class="gallery-tag ai-tool">DALL-E 3</span>
+                            <span class="gallery-tag ai-tool" title="Изображения: Gemini. Промпты и проверка текстов: Claude">Gemini + Claude</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Инфографика 3 -->
                 <div class="gallery-item">
-                    <div class="gallery-image-wrapper" onclick="openImageModal('images/infographic-first-aid.png', 'Первая помощь', 'Основы оказания первой помощи пострадавшим')">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-placeholder-icon">🩹</span>
-                            <span class="gallery-placeholder-text">Изображение будет добавлено</span>
-                        </div>
+                    <div class="gallery-image-wrapper" onclick="vpOpenSeries(['images/infographic-first-aid-1.png', 'images/infographic-first-aid-2.png', 'images/infographic-first-aid-3.png', 'images/infographic-first-aid-4.png'], 'Первая помощь', 'Алгоритм оказания первой помощи по шагам. Листайте стрелками на экране или клавишами влево и вправо.')">
+                        <img src="images/infographic-first-aid-1.png" alt="Плакат 1 из серии «Алгоритм первой помощи», шаги 1–2: оценка обстановки и проверка сознания" loading="lazy">
+                        <span class="vp-badge" aria-hidden="true">Серия: 4 плаката</span>
                     </div>
                     <div class="gallery-info">
                         <h4>Первая помощь</h4>
-                        <p>Основы оказания первой помощи пострадавшим: алгоритм действий, важные телефоны.</p>
+                        <p>Алгоритм оказания первой помощи по шагам, номера 112 и 103. Серия плакатов: нажмите на картинку и листайте.</p>
                         <div class="gallery-meta">
                             <span class="gallery-tag">10-11 класс</span>
                             <span class="gallery-tag">Курс БЖД</span>
-                            <span class="gallery-tag ai-tool">Kandinsky</span>
+                            <span class="gallery-tag ai-tool" title="Изображения: Gemini. Промпты и проверка текстов: Claude">Gemini + Claude</span>
                         </div>
                     </div>
                 </div>
@@ -935,10 +1011,7 @@
                 <!-- Плакат 1 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper" onclick="openImageModal('images/poster-cyber-safety.png', 'Кибербезопасность', 'Правила безопасного поведения в интернете')">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-placeholder-icon">💻</span>
-                            <span class="gallery-placeholder-text">Изображение будет добавлено</span>
-                        </div>
+                        <img src="images/poster-cyber-safety.png" alt="Плакат «Кибербезопасность: стоп мошенникам», пять правил: коды из СМС, ссылки, звонки мошенников, пароли, помощь взрослых" loading="lazy">
                     </div>
                     <div class="gallery-info">
                         <h4>Кибербезопасность</h4>
@@ -946,7 +1019,7 @@
                         <div class="gallery-meta">
                             <span class="gallery-tag">8-11 класс</span>
                             <span class="gallery-tag">Курс БЖД</span>
-                            <span class="gallery-tag ai-tool">Midjourney</span>
+                            <span class="gallery-tag ai-tool" title="Изображения: Gemini. Промпты и проверка текстов: Claude">Gemini + Claude</span>
                         </div>
                     </div>
                 </div>
@@ -954,10 +1027,7 @@
                 <!-- Плакат 2 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper" onclick="openImageModal('images/poster-road-safety.png', 'ПДД для школьников', 'Правила дорожного движения')">
-                        <div class="gallery-placeholder">
-                            <span class="gallery-placeholder-icon">🚦</span>
-                            <span class="gallery-placeholder-text">Изображение будет добавлено</span>
-                        </div>
+                        <img src="images/poster-road-safety.png" alt="Плакат «ПДД для школьников»: правила для пешехода и для велосипедиста" loading="lazy">
                     </div>
                     <div class="gallery-info">
                         <h4>ПДД для школьников</h4>
@@ -965,7 +1035,7 @@
                         <div class="gallery-meta">
                             <span class="gallery-tag">Все классы</span>
                             <span class="gallery-tag">Курс БЖД</span>
-                            <span class="gallery-tag ai-tool">DALL-E 3</span>
+                            <span class="gallery-tag ai-tool" title="Изображения: Gemini. Промпты и проверка текстов: Claude">Gemini + Claude</span>
                         </div>
                     </div>
                 </div>
@@ -981,12 +1051,11 @@
 
         <!-- Информационный блок -->
         <div class="info-block">
-            <h4>🤖 Инструменты для создания изображений:</h4>
+            <h4>🤖 Как созданы эти изображения:</h4>
             <ul>
-                <li><strong>Midjourney</strong> — высококачественные иллюстрации (платный)</li>
-                <li><strong>DALL-E 3</strong> — через Bing Image Creator (бесплатно)</li>
-                <li><strong>Kandinsky 3.0</strong> — российский ИИ на fusionbrain.ai (бесплатно)</li>
-                <li><strong>Stable Diffusion</strong> — open-source решение (бесплатно)</li>
+                <li><strong>Gemini</strong> (Google) — рисует иллюстрации по текстовому описанию (бесплатно)</li>
+                <li><strong>Claude</strong> (Anthropic) — помогает составлять описания (промпты) и проверять тексты на картинках</li>
+                <li><strong>Преподаватель</strong> — проверяет тексты, номера служб и порядок действий перед публикацией</li>
             </ul>
         </div>
 
@@ -995,6 +1064,9 @@
     <!-- Модальное окно для просмотра изображений -->
     <div id="imageModal" class="image-modal" onclick="closeImageModal()">
         <span class="close-btn">&times;</span>
+        <button type="button" class="vp-nav vp-prev" onclick="vpStep(-1, event)" aria-label="Предыдущий плакат">&#8249;</button>
+        <button type="button" class="vp-nav vp-next" onclick="vpStep(1, event)" aria-label="Следующий плакат">&#8250;</button>
+        <div class="vp-counter" id="vpCounter" aria-live="polite"></div>
         <img id="modalImage" src="" alt="" onclick="event.stopPropagation()">
         <div class="image-caption">
             <h4 id="modalTitle"></h4>
@@ -1141,6 +1213,7 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalDesc = document.getElementById('modalDescription');
             
+            modal.classList.remove('vp-series');
             modalImg.src = src;
             modalImg.alt = title;
             modalTitle.textContent = title;
@@ -1154,6 +1227,62 @@
             document.getElementById('imageModal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+
+        // Серия изображений в одной карточке (листание в окне просмотра).
+        // Префикс vp — чтобы имена не конфликтовали с script.js.
+        var vpSeries = { images: [], index: 0, title: '' };
+
+        function vpShow(i) {
+            var n = vpSeries.images.length;
+            vpSeries.index = (i + n) % n;
+            var img = document.getElementById('modalImage');
+            img.src = vpSeries.images[vpSeries.index];
+            img.alt = vpSeries.title + ', плакат ' + (vpSeries.index + 1) + ' из ' + n;
+            document.getElementById('modalTitle').textContent = vpSeries.title + ': плакат ' + (vpSeries.index + 1) + ' из ' + n;
+            document.getElementById('vpCounter').textContent = (vpSeries.index + 1) + ' / ' + n;
+        }
+
+        function vpOpenSeries(images, title, description) {
+            var modal = document.getElementById('imageModal');
+            vpSeries = { images: images, index: 0, title: title };
+            modal.classList.add('vp-series');
+            document.getElementById('modalDescription').textContent = description;
+            vpShow(0);
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function vpStep(delta, event) {
+            if (event) event.stopPropagation();
+            vpShow(vpSeries.index + delta);
+        }
+
+        function vpSeriesOpen() {
+            var modal = document.getElementById('imageModal');
+            return modal.style.display === 'flex' && modal.classList.contains('vp-series');
+        }
+
+        // Стрелки клавиатуры
+        document.addEventListener('keydown', function(event) {
+            if (!vpSeriesOpen()) return;
+            if (event.key === 'ArrowRight') vpStep(1);
+            if (event.key === 'ArrowLeft') vpStep(-1);
+        });
+
+        // Свайп пальцем на телефоне
+        (function() {
+            var startX = null;
+            var modal = document.getElementById('imageModal');
+            modal.addEventListener('touchstart', function(e) {
+                startX = e.changedTouches[0].clientX;
+            }, { passive: true });
+            modal.addEventListener('touchend', function(e) {
+                if (startX === null || !vpSeriesOpen()) { startX = null; return; }
+                var dx = e.changedTouches[0].clientX - startX;
+                startX = null;
+                if (Math.abs(dx) > 50) vpStep(dx < 0 ? 1 : -1);
+            }, { passive: true });
+        })();
 
         // Закрытие по ESC
         document.addEventListener('keydown', function(event) {
