@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="landscape-fix.css">
-    <meta name="description" content="Полезные ресурсы по ИИ в образовании: инструменты для учителей, учеников и родителей. Claude, ChatGPT, Gamma App, DALL-E, Kandinsky и другие бесплатные сервисы">
+    <meta name="description" content="Полезные ресурсы по ИИ в образовании: инструменты для учителей, учеников и родителей. GigaChat, Алиса, Kandinsky, Шедеврум, DeepSeek, Gamma и другие сервисы с пометками о доступности в России">
     <title>Полезные ресурсы по ИИ в образовании | Дёмин А.Ю.</title>
     <!-- Фавиконки для всех устройств -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -408,6 +408,34 @@
             color: var(--color-warning);
         }
 
+        /* МЕТКИ ДОСТУПНОСТИ В РОССИИ */
+        .tag.avail {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+
+        .tag.limited {
+            background: #FFF3E0;
+            color: #8A4B00;
+        }
+
+        .tag.nopay {
+            background: #FFEBEE;
+            color: #B71C1C;
+        }
+
+        /* СТРОКА «ЛИМИТЫ» В КАРТОЧКЕ */
+        .resource-limits {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background: var(--color-surface);
+            border-left: 3px solid var(--color-primary);
+            padding: 0.6rem 0.8rem;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 1.5rem;
+        }
+
         .resource-button {
             display: inline-flex;
             align-items: center;
@@ -753,6 +781,11 @@
     
     .resource-description {
         font-size: 0.85rem;
+    }
+
+    .resource-limits {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.6rem;
     }
     
     .tag {
@@ -1231,7 +1264,7 @@ body.modal-open {
         <h2 class="page-title">🤖 Полезные ресурсы по ИИ в образовании</h2>
         
         <p class="page-subtitle">
-            Комплексный каталог бесплатных и платных ИИ-инструментов для учителей, учеников и родителей
+            Каталог ИИ-инструментов для учителей, учеников и родителей: сначала сервисы, доступные в России, затем зарубежные с ограничениями
         </p>
 
         <!-- ИНФОРМАЦИОННЫЙ БЛОК -->
@@ -1243,7 +1276,8 @@ body.modal-open {
                 <li><strong>Для учеников</strong> — помощь с домашними заданиями, творческие проекты, исследования</li>
                 <li><strong>Для родителей</strong> — понимание сложных тем, создание игровых форматов обучения, объяснения</li>
             </ul>
-            <p style="margin-top: 1.5rem;">Все инструменты проверены на практике и активно используются в работе преподавателя-организатора ОБЗР МБОУ СШ № 2 г. Лысково.</p>
+            <p style="margin-top: 1.5rem;">Подборка составлена с учётом доступности из России: сначала идут сервисы, которые открываются у нас напрямую, затем зарубежные, доступ к которым ограничен. Условия бесплатных тарифов и лимиты меняются, поэтому перед работой проверяйте их на сайте сервиса. Сведения актуальны на октябрь 2026 года.</p>
+            <p><strong>Метки в карточках:</strong> «✅ Доступен в России» — сервис открывается без дополнительных средств; «⚠️ Ограничения» — есть оговорки по доступу, лимитам или хранению данных; «💳 Оплата из РФ невозможна» — платный тариф российской картой оформить нельзя.</p>
         </div>
 
         <!-- ДЛЯ КОГО КАКОЙ ИНСТРУМЕНТ -->
@@ -1253,31 +1287,31 @@ body.modal-open {
                 <div class="audience-card">
                     <h4>👨‍🏫 Для учителей</h4>
                     <ul>
-                        <li>Claude AI — методические разработки</li>
-                        <li>ChatGPT — тесты и вопросы</li>
-                        <li>Gamma App — презентации</li>
-                        <li>Canva — дизайн материалов</li>
-                        <li>DALL-E 3 — инфографика</li>
+                        <li>GigaChat — конспекты, тесты, презентации</li>
+                        <li>YandexGPT / Алиса — тексты на русском языке</li>
+                        <li>DeepSeek — тесты и вопросы к ним</li>
+                        <li>Kandinsky, Шедеврум — иллюстрации</li>
+                        <li>Gamma — презентации (ограниченный лимит)</li>
                     </ul>
                 </div>
                 <div class="audience-card">
                     <h4>👨‍🎓 Для учеников</h4>
                     <ul>
-                        <li>ChatGPT — помощь с ДЗ</li>
-                        <li>Perplexity — исследования</li>
-                        <li>Canva — творческие проекты</li>
-                        <li>Suno — создание музыки</li>
-                        <li>Midjourney — изображения</li>
+                        <li>Алиса / YandexGPT — объяснение тем</li>
+                        <li>GigaChat — идеи и план проекта</li>
+                        <li>Perplexity — исследования со ссылками на источники</li>
+                        <li>Kandinsky — иллюстрации для проектов</li>
+                        <li>Шедеврум — картинки по описанию</li>
                     </ul>
                 </div>
                 <div class="audience-card">
                     <h4>👪 Для родителей</h4>
                     <ul>
-                        <li>Claude AI — объяснения тем</li>
-                        <li>YandexGPT — русский контекст</li>
-                        <li>Canva — игровые материалы</li>
-                        <li>ChatGPT — идеи заданий</li>
-                        <li>DALL-E 3 — наглядные пособия</li>
+                        <li>Алиса / YandexGPT — объяснения тем</li>
+                        <li>GigaChat — идеи заданий и игр</li>
+                        <li>Шедеврум — наглядные пособия</li>
+                        <li>Kandinsky — картинки для игровых материалов</li>
+                        <li>Perplexity — поиск с источниками</li>
                     </ul>
                 </div>
             </div>
@@ -1286,71 +1320,65 @@ body.modal-open {
         <!-- КАТЕГОРИЯ 1: ТЕКСТОВЫЕ ИИ -->
         <div class="resources-section">
             <div class="section-header">
-                <h2>🤖 Текстовые ИИ-ассистенты</h2>
-                <p>Генерация текстов, конспектов, тестов, объяснений и методических материалов</p>
+                <h2>🤖 Текстовые ИИ-ассистенты и поиск</h2>
+                <p>Генерация текстов, конспектов, тестов, объяснений и поиск информации. Сервисы этого раздела открываются в России напрямую</p>
             </div>
             <div class="resources-grid">
-                
-                <!-- Claude AI -->
-                <div class="resource-card">
-                    <span class="resource-icon">🧠</span>
-                    <h3 class="resource-title">Claude AI</h3>
-                    <div class="resource-url">claude.ai</div>
-                    <div class="resource-description">
-                        Лучший ИИ для создания методических материалов, конспектов уроков, календарно-тематического планирования. Понимает сложные запросы, работает с большими текстами (200K токенов), этичен и безопасен.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
-                        <span class="tag">Учителя</span>
-                        <span class="tag">Родители</span>
-                    </div>
-                    <a href="https://claude.ai" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- ChatGPT -->
-                <div class="resource-card">
-                    <span class="resource-icon">💬</span>
-                    <h3 class="resource-title">ChatGPT</h3>
-                    <div class="resource-url">chat.openai.com</div>
-                    <div class="resource-description">
-                        Универсальный ИИ-помощник для генерации тестов, вопросов, домашних заданий, адаптации материалов под разные классы. Подходит для учеников (помощь с ДЗ) и родителей (объяснения).
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
-                        <span class="tag">Все</span>
-                    </div>
-                    <a href="https://chat.openai.com" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- YandexGPT -->
-                <div class="resource-card">
-                    <span class="resource-icon">🔵</span>
-                    <h3 class="resource-title">YandexGPT</h3>
-                    <div class="resource-url">ya.ru/ai/gpt</div>
-                    <div class="resource-description">
-                        Российский ИИ, специализирующийся на работе с русским языком и российским контекстом. Понимает ФГОС, российское законодательство, нормативные документы РФ. Отлично подходит для родителей.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
-                        <span class="tag">Учителя</span>
-                        <span class="tag">Родители</span>
-                    </div>
-                    <a href="https://ya.ru/ai/gpt" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
 
                 <!-- GigaChat -->
                 <div class="resource-card">
                     <span class="resource-icon">🟢</span>
                     <h3 class="resource-title">GigaChat (Сбер)</h3>
-                    <div class="resource-url">gigachat.fandom.com</div>
+                    <div class="resource-url">giga.chat</div>
                     <div class="resource-description">
-                        ИИ от Сбера, обучен на российских данных. Понимает специфику российского образования, ФГОС, профстандарт педагога. Требует регистрации через Сбер ID.
+                        Российская нейросеть Сбера. Хорошо работает с русским языком, подходит для конспектов, тестов, планов уроков и объяснений. Данные, по заявлению Сбера, хранятся на серверах в России. Вход через Сбер ID.
                     </div>
                     <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag">Бесплатно</span>
+                        <span class="tag">Учителя</span>
+                        <span class="tag">Ученики</span>
+                        <span class="tag">Родители</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> для обычных пользователей жёстких лимитов на текст нет; генерация видео ограничена (по обзорам — до 10 в день).</div>
+                    <a href="https://giga.chat" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
+                <!-- YandexGPT / Алиса -->
+                <div class="resource-card">
+                    <span class="resource-icon">🔵</span>
+                    <h3 class="resource-title">YandexGPT / Алиса AI</h3>
+                    <div class="resource-url">ya.ru/ai/gpt</div>
+                    <div class="resource-description">
+                        Нейросети Яндекса: модели YandexGPT и семейство Alice AI. Понимают российский контекст, встроены в поиск и Яндекс Браузер. Хороши для текстов на русском языке, объяснений и подготовки материалов.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag">Бесплатно</span>
+                        <span class="tag">Учителя</span>
+                        <span class="tag">Ученики</span>
+                        <span class="tag">Родители</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> базовый доступ бесплатный; точные суточные лимиты и набор функций уточняйте в самом сервисе.</div>
+                    <a href="https://ya.ru/ai/gpt" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
+                <!-- DeepSeek -->
+                <div class="resource-card">
+                    <span class="resource-icon">🐋</span>
+                    <h3 class="resource-title">DeepSeek</h3>
+                    <div class="resource-url">chat.deepseek.com</div>
+                    <div class="resource-description">
+                        Китайская нейросеть, которая, по обзорам, открывается из России напрямую и бесплатна. Сильна в логике и тестовых заданиях, понимает русский язык. Серверы находятся за рубежом, поэтому не вводите в неё персональные данные.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag limited">⚠️ Серверы за рубежом</span>
+                        <span class="tag">Бесплатно</span>
                         <span class="tag">Учителя</span>
                     </div>
-                    <a href="https://gigachat.fandom.com" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
+                    <div class="resource-limits"><strong>Лимиты:</strong> при высокой нагрузке сервис может отвечать медленно или временно ограничивать доступ.</div>
+                    <a href="https://chat.deepseek.com" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
                 </div>
 
                 <!-- Perplexity -->
@@ -1359,14 +1387,16 @@ body.modal-open {
                     <h3 class="resource-title">Perplexity</h3>
                     <div class="resource-url">perplexity.ai</div>
                     <div class="resource-description">
-                        ИИ-поисковик для глубоких исследований в интернете. Идеален для учеников (проектные работы) и учителей (поиск актуальной информации). Дает ссылки на источники.
+                        ИИ-поисковик: отвечает на вопросы и показывает ссылки на источники, что удобно для проектных работ и проверки фактов. Сайт открывается в России, поиск доступен без входа.
                     </div>
                     <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag limited">⚠️ Ограниченный бесплатный тариф</span>
                         <span class="tag">Ученики</span>
                         <span class="tag">Учителя</span>
                     </div>
-                    <a href="https://perplexity.ai" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
+                    <div class="resource-limits"><strong>Лимиты:</strong> расширенные функции и сильные модели доступны на платном тарифе; способы входа и оплаты из России могут быть ограничены.</div>
+                    <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
                 </div>
 
             </div>
@@ -1375,71 +1405,46 @@ body.modal-open {
         <!-- КАТЕГОРИЯ 2: ВИЗУАЛЬНЫЙ КОНТЕНТ -->
         <div class="resources-section">
             <div class="section-header">
-                <h2>🎨 Генерация изображений и визуального контента</h2>
-                <p>Создание иллюстраций, инфографики, наглядных пособий и дизайн-материалов</p>
+                <h2>🎨 Генерация изображений</h2>
+                <p>Иллюстрации, схемы и наглядные материалы по текстовому описанию на русском языке</p>
             </div>
             <div class="resources-grid">
-                
-                <!-- DALL-E 3 -->
+
+                <!-- Kandinsky -->
                 <div class="resource-card">
-                    <span class="resource-icon">🖼️</span>
-                    <h3 class="resource-title">DALL-E 3 (Bing Image Creator)</h3>
-                    <div class="resource-url">bing.com/images/create</div>
+                    <span class="resource-icon">🎭</span>
+                    <h3 class="resource-title">Kandinsky (Сбер)</h3>
+                    <div class="resource-url">fusionbrain.ai</div>
                     <div class="resource-description">
-                        Лучший бесплатный генератор изображений. Создание инфографики, иллюстраций, схем для уроков. Высокое качество, понимает сложные промпты на английском. 15-25 генераций в день бесплатно.
+                        Российская нейросеть для создания изображений. Понимает запросы на русском языке и подходит для иллюстраций, схем и творческих проектов учеников.
                     </div>
                     <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag">Бесплатно</span>
+                        <span class="tag">Учителя</span>
+                        <span class="tag">Ученики</span>
+                        <span class="tag">Родители</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> бесплатный доступ есть, но по разным данным возможен дневной лимит; проверяйте в сервисе. Текст на изображениях нейросети часто искажают — надписи лучше добавлять самим.</div>
+                    <a href="https://fusionbrain.ai" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
+                <!-- Шедеврум -->
+                <div class="resource-card">
+                    <span class="resource-icon">🖼️</span>
+                    <h3 class="resource-title">Шедеврум (Яндекс)</h3>
+                    <div class="resource-url">shedevrum.ai</div>
+                    <div class="resource-description">
+                        Сервис Яндекса для создания изображений по описанию на русском языке (на основе YandexART). Удобен для иллюстраций к урокам и наглядных пособий для родителей.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag">Бесплатно</span>
                         <span class="tag">Учителя</span>
                         <span class="tag">Родители</span>
                     </div>
-                    <a href="https://www.bing.com/images/create" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- Kandinsky 3.0 -->
-                <div class="resource-card">
-                    <span class="resource-icon">🎭</span>
-                    <h3 class="resource-title">Kandinsky 3.0</h3>
-                    <div class="resource-url">fusionbrain.ai</div>
-                    <div class="resource-description">
-                        Российский ИИ для генерации изображений по русскоязычным промптам. Бесплатно без ограничений. Качество ниже DALL-E, но отлично подходит для создания простых иллюстраций и схем.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
-                        <span class="tag">Учителя</span>
-                        <span class="tag">Ученики</span>
-                    </div>
-                    <a href="https://fusionbrain.ai" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- Midjourney -->
-                <div class="resource-card">
-                    <span class="resource-icon">✨</span>
-                    <h3 class="resource-title">Midjourney</h3>
-                    <div class="resource-url">midjourney.com</div>
-                    <div class="resource-description">
-                        Профессиональный генератор изображений с потрясающим качеством. Работает через Discord. Ограниченное количество бесплатных генераций, далее платная подписка от $10/месяц.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag paid">Ограниченно бесплатно</span>
-                        <span class="tag">Ученики</span>
-                    </div>
-                    <a href="https://midjourney.com" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- Canva -->
-                <div class="resource-card">
-                    <span class="resource-icon">🎨</span>
-                    <h3 class="resource-title">Canva (+ ИИ-дизайнер)</h3>
-                    <div class="resource-url">canva.com</div>
-                    <div class="resource-description">
-                        Платформа для дизайна с встроенным ИИ. Создание плакатов, рабочих тетрадей, буклетов, игровых материалов. Шаблоны для образовательных презентаций. Бесплатная версия с ограничениями.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно</span>
-                        <span class="tag">Все</span>
-                    </div>
-                    <a href="https://canva.com" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
+                    <div class="resource-limits"><strong>Лимиты:</strong> условия бесплатного использования и ограничения по числу генераций уточняйте в сервисе. Для работы может понадобиться мобильное приложение.</div>
+                    <a href="https://shedevrum.ai" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
                 </div>
 
             </div>
@@ -1449,79 +1454,122 @@ body.modal-open {
         <div class="resources-section">
             <div class="section-header">
                 <h2>📊 Презентации и обучающий контент</h2>
-                <p>Автоматическое создание презентаций, слайдов и учебных материалов</p>
+                <p>Автоматическое создание презентаций и слайдов из текста</p>
             </div>
             <div class="resources-grid">
-                
+
+                <!-- Презентации в GigaChat -->
+                <div class="resource-card">
+                    <span class="resource-icon">📑</span>
+                    <h3 class="resource-title">Презентации в GigaChat</h3>
+                    <div class="resource-url">giga.chat</div>
+                    <div class="resource-description">
+                        В веб-версии GigaChat есть раздел «Giga Проекты», где можно создать презентацию по теме или готовому тексту. Это российская альтернатива зарубежным конструкторам презентаций.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag">Бесплатно</span>
+                        <span class="tag">Учителя</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> по данным обзоров, создание презентаций доступно бесплатно в веб-версии; форматы скачивания проверяйте в интерфейсе. Готовую презентацию нужно проверить и поправить вручную.</div>
+                    <a href="https://giga.chat" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
                 <!-- Gamma App -->
                 <div class="resource-card">
                     <span class="resource-icon">📊</span>
                     <h3 class="resource-title">Gamma App</h3>
                     <div class="resource-url">gamma.app</div>
                     <div class="resource-description">
-                        Автоматическое создание презентаций по тексту или промпту. Загружаешь структуру — Gamma создает профессиональный дизайн. Поддержка русского языка. Бесплатно 400 AI credits (~10-15 презентаций).
+                        Автоматическое создание презентаций по тексту или промпту, есть русскоязычный интерфейс. Сайт открывается в России. Результат можно экспортировать, например, в PDF.
                     </div>
                     <div class="resource-tags">
-                        <span class="tag free">Ограниченно бесплатно</span>
+                        <span class="tag avail">✅ Доступен в России</span>
+                        <span class="tag limited">⚠️ Ограниченный бесплатный тариф</span>
+                        <span class="tag nopay">💳 Оплата из РФ невозможна</span>
                         <span class="tag">Учителя</span>
                     </div>
-                    <a href="https://gamma.app" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- Beautiful.ai -->
-                <div class="resource-card">
-                    <span class="resource-icon">🎯</span>
-                    <h3 class="resource-title">Beautiful.ai</h3>
-                    <div class="resource-url">beautiful.ai</div>
-                    <div class="resource-description">
-                        Автоматический дизайн презентаций с ИИ. Адаптивные слайды, которые сами подстраиваются под контент. Бесплатно только 1-2 презентации, далее платная подписка.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag paid">Ограниченно бесплатно</span>
-                        <span class="tag">Учителя</span>
-                    </div>
-                    <a href="https://beautiful.ai" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
+                    <div class="resource-limits"><strong>Лимиты:</strong> бесплатно даётся около 400 кредитов, одна презентация стоит порядка 40 кредитов, то есть примерно 10 презентаций. Платный тариф обычно требует зарубежной карты.</div>
+                    <a href="https://gamma.app" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
                 </div>
 
             </div>
         </div>
 
-        <!-- КАТЕГОРИЯ 4: СПЕЦИАЛИЗИРОВАННЫЕ ИНСТРУМЕНТЫ -->
+        <!-- КАТЕГОРИЯ 4: ЗАРУБЕЖНЫЕ СЕРВИСЫ С ОГРАНИЧЕННЫМ ДОСТУПОМ -->
         <div class="resources-section">
             <div class="section-header">
-                <h2>🎵 Специализированные ИИ-инструменты</h2>
-                <p>Генерация музыки, видео, код и другие узкоспециализированные задачи</p>
+                <h2>🌐 Зарубежные сервисы: доступ ограничен</h2>
+                <p>Эти сервисы могут не открываться из России, требовать зарубежную регистрацию или оплату. Приведены для информации — рассчитывать на них в работе не стоит</p>
             </div>
             <div class="resources-grid">
-                
+
+                <!-- Claude AI -->
+                <div class="resource-card">
+                    <span class="resource-icon">🧠</span>
+                    <h3 class="resource-title">Claude AI</h3>
+                    <div class="resource-url">claude.ai</div>
+                    <div class="resource-description">
+                        Сильная нейросеть для длинных текстов, методических материалов и календарно-тематического планирования. Официально в России не поддерживается: регистрация и работа доступны не всем.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag limited">⚠️ Доступ из РФ ограничен</span>
+                        <span class="tag nopay">💳 Оплата из РФ невозможна</span>
+                        <span class="tag">Учителя</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> бесплатный тариф ограничивает число сообщений в день.</div>
+                    <a href="https://claude.ai" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
+                <!-- ChatGPT -->
+                <div class="resource-card">
+                    <span class="resource-icon">💬</span>
+                    <h3 class="resource-title">ChatGPT</h3>
+                    <div class="resource-url">chatgpt.com</div>
+                    <div class="resource-description">
+                        Универсальный ИИ-помощник для тестов, вопросов и адаптации материалов. Официально в России не поддерживается: для регистрации и работы обычно нужны зарубежные средства доступа.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag limited">⚠️ Доступ из РФ ограничен</span>
+                        <span class="tag nopay">💳 Оплата из РФ невозможна</span>
+                        <span class="tag">Учителя</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> бесплатный тариф ограничивает число сообщений и доступные модели.</div>
+                    <a href="https://chatgpt.com" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
+                <!-- Midjourney -->
+                <div class="resource-card">
+                    <span class="resource-icon">✨</span>
+                    <h3 class="resource-title">Midjourney</h3>
+                    <div class="resource-url">midjourney.com</div>
+                    <div class="resource-description">
+                        Профессиональный генератор изображений с очень высоким качеством. Основной доступ платный (от 10 долларов в месяц), бесплатные генерации, если и предлагаются, сильно ограничены.
+                    </div>
+                    <div class="resource-tags">
+                        <span class="tag limited">⚠️ Доступ из РФ ограничен</span>
+                        <span class="tag nopay">💳 Оплата из РФ невозможна</span>
+                        <span class="tag">Ученики</span>
+                    </div>
+                    <div class="resource-limits"><strong>Лимиты:</strong> для школьной работы практичнее Kandinsky и Шедеврум из раздела выше.</div>
+                    <a href="https://midjourney.com" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
+                </div>
+
                 <!-- Suno -->
                 <div class="resource-card">
                     <span class="resource-icon">🎵</span>
                     <h3 class="resource-title">Suno</h3>
                     <div class="resource-url">suno.com</div>
                     <div class="resource-description">
-                        Генерация музыки по текстовому описанию. Идеально для учеников (творческие проекты) и создания фоновой музыки для видео. Бесплатно ограниченное количество треков в день.
+                        Генерация музыки по текстовому описанию: подходит для творческих проектов учеников и фоновой музыки для видео. Сайт, по обзорам, открывается из России, но российские карты платёжная система не принимает.
                     </div>
                     <div class="resource-tags">
-                        <span class="tag free">Ограниченно бесплатно</span>
+                        <span class="tag limited">⚠️ Ограниченный бесплатный тариф</span>
+                        <span class="tag nopay">💳 Оплата из РФ невозможна</span>
                         <span class="tag">Ученики</span>
                     </div>
-                    <a href="https://suno.com" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
-                </div>
-
-                <!-- GitHub Copilot -->
-                <div class="resource-card">
-                    <span class="resource-icon">💻</span>
-                    <h3 class="resource-title">GitHub Copilot</h3>
-                    <div class="resource-url">github.com/education</div>
-                    <div class="resource-description">
-                        ИИ-помощник для программирования. Автодополнение кода, генерация функций. Бесплатно для студентов и учителей через GitHub Education.
-                    </div>
-                    <div class="resource-tags">
-                        <span class="tag free">Бесплатно для учителей</span>
-                        <span class="tag">Учителя</span>
-                    </div>
-                    <a href="https://github.com/education" target="_blank" class="resource-button">🔗 Перейти на сайт</a>
+                    <div class="resource-limits"><strong>Лимиты:</strong> бесплатно доступно ограниченное число генераций в день.</div>
+                    <a href="https://suno.com" target="_blank" rel="noopener" class="resource-button">🔗 Перейти на сайт</a>
                 </div>
 
             </div>
@@ -1535,7 +1583,8 @@ body.modal-open {
                 <li><strong>Прозрачность:</strong> Всегда указывайте, если контент сгенерирован ИИ</li>
                 <li><strong>Верификация:</strong> Проверяйте факты, особенно по нормативным документам</li>
                 <li><strong>Адаптация:</strong> Не публикуйте ИИ-контент "как есть" — адаптируйте под свой стиль</li>
-                <li><strong>Персональные данные:</strong> НИКОГДА не используйте ИИ для обработки персональных данных учеников без согласия родителей (ФЗ-152)</li>
+                <li><strong>Персональные данные:</strong> НИКОГДА не вводите в ИИ-сервисы персональные данные учеников без согласия родителей (ФЗ-152). Особенно осторожно — с зарубежными сервисами: их серверы находятся за пределами России</li>
+                <li><strong>Возраст пользователей:</strong> у многих сервисов в пользовательских соглашениях есть возрастные ограничения; школьникам лучше работать с ИИ вместе с родителями или учителем</li>
                 <li><strong>Авторское право:</strong> Не используйте ИИ для создания материалов, нарушающих авторские права</li>
                 <li><strong>Педагогическая ответственность:</strong> ИИ — вспомогательный инструмент, не заменяющий педагога</li>
             </ul>
@@ -1549,7 +1598,7 @@ body.modal-open {
                 <li><strong>Методические материалы</strong> — раздел <a href="ai-dlya-kolleg.html" style="color: var(--color-primary); font-weight: 700;">«Для коллег — методические материалы»</a> с готовыми промптами и инструкциями</li>
                 <li><strong>Практические материалы для родителей</strong> — раздел <a href="ai-dlya-roditelej.html" style="color: var(--color-primary); font-weight: 700;">«Для родителей — практические материалы»</a> с памятками и играми</li>
                 <li><strong>Готовые материалы</strong> — раздел <a href="prezentacii-testy.html" style="color: var(--color-primary); font-weight: 700;">«Методика → Презентации, тесты»</a> с PDF, PPTX, созданными с помощью ИИ</li>
-                <li><strong>Курс промпт-инжиниринга</strong> — PDF "Промптмастер v.7" загружен в базу знаний проекта (доступен по запросу)</li>
+                <li><strong>Курс промпт-инжиниринга</strong> — материал «Промптмастер v.7» (PDF), доступен по запросу через раздел <a href="contacts.html" style="color: var(--color-primary); font-weight: 700;">«Контакты»</a></li>
                 <li><strong>Рекомендации Минпросвещения РФ (2024)</strong> по использованию ИИ в образовании — доступны в разделе «Методика»</li>
             </ul>
         </div>
