@@ -1,0 +1,96 @@
+/* ============================================================
+   breadcrumbs.css — «хлебные крошки» (путь к странице)
+   Подключается одной строкой в <head> каждой страницы:
+       <link rel="stylesheet" href="breadcrumbs.css">
+   Разметка (вставляется первой строкой внутри <main>):
+       <nav class="site-breadcrumbs" aria-label="Хлебные крошки">
+         <ol>
+           <li><a href="index.html">Главная</a></li>
+           <li><a href="ai-projects.html">ИИ-проекты</a></li>
+           <li><span aria-current="page">Название страницы</span></li>
+         </ol>
+       </nav>
+   Только правила для .site-breadcrumbs — на остальную страницу не влияет.
+   Цвета берутся из переменных страницы, запасные значения — на случай,
+   если переменной нет.
+   ============================================================ */
+
+.site-breadcrumbs {
+    /* на страницах сайта общий стиль «nav { background-color: синий }»
+       предназначен для главного меню — для крошек его сбрасываем */
+    background: none;
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.site-breadcrumbs ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.site-breadcrumbs li {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-primary, #2C3E50);
+}
+
+/* разделитель между пунктами */
+.site-breadcrumbs li + li::before {
+    content: "›";
+    margin: 0 0.5rem;
+    color: #5D6D7E;
+    font-weight: 700;
+}
+
+.site-breadcrumbs a {
+    color: var(--color-primary, #003D7A);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.site-breadcrumbs a:hover {
+    color: var(--color-primary-hover, #00518A);
+    text-decoration: underline;
+}
+
+.site-breadcrumbs a:focus-visible {
+    outline: 2px solid var(--color-primary, #003D7A);
+    outline-offset: 2px;
+}
+
+/* текущая страница — не ссылка */
+.site-breadcrumbs [aria-current="page"] {
+    color: var(--color-text-primary, #2C3E50);
+    font-weight: 600;
+}
+
+/* Телефон: вместо всей цепочки — одна ссылка «← на уровень выше» */
+@media (max-width: 600px) {
+    .site-breadcrumbs {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .site-breadcrumbs li {
+        display: none;
+    }
+
+    .site-breadcrumbs li:nth-last-child(2) {
+        display: inline-flex;
+    }
+
+    .site-breadcrumbs li:nth-last-child(2)::before {
+        content: "←";
+        margin: 0 0.4rem 0 0;
+        color: var(--color-primary, #003D7A);
+        font-weight: 700;
+    }
+}
