@@ -439,7 +439,7 @@
                         <option value="">-- Выберите тему --</option>
                         <option value="success">Успеваемость и результаты</option>
                         <option value="camps">Учебно-полевые сборы</option>
-                        <option value="program">Программа модулей ОБЗР</option>
+                        <option value="program">Программа курсов ОБЗР (НВП и БЖ)</option>
                         <option value="homework">Домашние задания</option>
                         <option value="activities">Внеурочная деятельность (Юнармия, ЮИД)</option>
                         <option value="consultation">Запрос на консультацию</option>
@@ -598,14 +598,18 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = "⏳ Отправка...";
             formStatus.style.display = "none";
-            emailjs.send("service_hropd5d", "template_454l35e", {
+            var sendRequest = emailjs.send("service_hropd5d", "template_454l35e", {
                 from_name: document.getElementById("name").value,
                 from_email: document.getElementById("email").value,
                 student_info: document.getElementById("student").value || "Не указано",
                 topic: document.getElementById("topic").options[document.getElementById("topic").selectedIndex].text,
                 message: document.getElementById("message").value,
                 to_email: "info@demin-obzr.ru"
-            }).then(function() {
+            });
+            var sendTimeout = new Promise(function(resolve, reject) {
+                setTimeout(function() { reject({ status: 0, text: "timeout" }); }, 20000);
+            });
+            Promise.race([sendRequest, sendTimeout]).then(function() {
                 formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-left:4px solid #4CAF50;color:#2E7D32;padding:1rem;border-radius:8px;margin-bottom:1rem;";
                 formStatus.innerHTML = "✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.";
                 contactForm.reset();
@@ -614,9 +618,20 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = "Отправить сообщение";
                setTimeout(function() { formStatus.style.display = "none"; }, 10000);
-            }, function() {
+            }, function(err) {
+                console.error("EmailJS error:", err);
+                var code = (err && typeof err.status !== "undefined") ? err.status : 0;
+                var detail = (err && err.text) ? String(err.text) : "";
+                var reason;
+                if (detail === "timeout") { reason = "превышено время ожидания ответа сервиса отправки"; }
+                else if (code === 0) { reason = "нет связи с сервисом отправки (возможно, он недоступен из вашей сети)"; }
+                else { reason = "сервис отправки вернул ошибку " + code + (detail ? ": " + detail : ""); }
                 formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#FFEBEE,#FFCDD2);border-left:4px solid #E53935;color:#C62828;padding:1rem;border-radius:8px;margin-bottom:1rem;";
-                formStatus.innerHTML = "❌ Произошла ошибка. Напишите напрямую: info@demin-obzr.ru";
+                formStatus.innerHTML = "❌ Не удалось отправить сообщение. Напишите напрямую: info@demin-obzr.ru";
+                var reasonLine = document.createElement("div");
+                reasonLine.style.cssText = "margin-top:0.5rem;font-size:0.85rem;";
+                reasonLine.textContent = "Причина: " + reason;
+                formStatus.appendChild(reasonLine);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = "Отправить сообщение";
             });
