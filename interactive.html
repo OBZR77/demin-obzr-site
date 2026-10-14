@@ -988,7 +988,7 @@
             <!-- SUCCESS MESSAGE -->
             <div class="success-message" id="successMessage">
                 <h3>✅ Спасибо за ваш отзыв!</h3>
-                <p>Ваше сообщение успешно отправлено на email: <strong><a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></strong></p>
+                <p>Ваше сообщение успешно отправлено на email: <strong><a href="mailto:info@demin-obzr.ru">info@demin-obzr.ru</a></strong></p>
                 <p style="margin-top: 10px;">Копия отправлена на ваш email (если указали)</p>
             </div>
 
@@ -1008,7 +1008,7 @@
             <!-- INFO BLOCK -->
             <div class="info-block">
                 <strong>📧 Куда отправляется ваш отзыв?</strong>
-                Сообщение будет отправлено напрямую на email преподавателя: <strong>ademin1977@vk.com</strong> 
+                Сообщение будет отправлено напрямую на email преподавателя: <strong>info@demin-obzr.ru</strong> 
                 Если вы укажете свой email, получите копию отзыва на него.
             </div>
 
@@ -1138,7 +1138,7 @@
             <div class="footer-section">
                 <h3>Контакты</h3>
                 <ul>
-                    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+                    <li>📧 Email: <a href="mailto:info@demin-obzr.ru">info@demin-obzr.ru</a></li>
                     <li>📍 МБОУ СШ № 2 г. Лысково</li>
                     <li>📞 Консультации: по согласованию</li>
                 </ul>
@@ -1496,7 +1496,7 @@ function resetCaptcha() {
                             template_id: EMAILJS_CONFIG.TEMPLATE_ID,
                             user_id: EMAILJS_CONFIG.PUBLIC_KEY,
                             template_params: {
-                                to_email: 'ademin1977@vk.com',
+                                to_email: 'info@demin-obzr.ru',
                                 from_name: `${formData.firstName} ${formData.lastName}`,
                                 from_email: formData.email,
                                 rating: formData.rating,
@@ -1514,7 +1514,7 @@ function resetCaptcha() {
                  if (response.ok) {
                         feedbackForm.style.display = 'none';
                         successMessage.classList.add('show');
-                        console.log('✅ Email отправлен успешно на ademin1977@vk.com');
+                        console.log('✅ Email отправлен успешно на info@demin-obzr.ru');
                         
                         // Сброс капчи
                         resetCaptcha();
@@ -1641,7 +1641,7 @@ function resetCaptcha() {
             console.log('%cОтзывы сохраняются только локально.', 'font-size: 13px;');
         } else {
             console.log('%c✅ EmailJS НАСТРОЕН', 'background: #4CAF50; color: white; font-size: 14px; font-weight: bold; padding: 8px;');
-            console.log('%cОтзывы отправляются на ademin1977@vk.com', 'font-size: 13px;');
+            console.log('%cОтзывы отправляются на info@demin-obzr.ru', 'font-size: 13px;');
         }
 
         console.log('%c', 'font-size: 2px;');

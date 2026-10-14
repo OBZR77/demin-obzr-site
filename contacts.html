@@ -309,7 +309,7 @@
                 <div class="contact-icon">📧</div>
                 <div class="contact-title">Email</div>
                 <div class="contact-info">
-                <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a>
+                <a href="mailto:info@demin-obzr.ru">info@demin-obzr.ru</a>
                 </div>
             </div>
 
@@ -503,7 +503,7 @@
             <div class="footer-section">
                 <h3>Контакты</h3>
                 <ul>
-    <li>📧 Email: <a href="mailto:ademin1977@vk.com">ademin1977@vk.com</a></li>
+    <li>📧 Email: <a href="mailto:info@demin-obzr.ru">info@demin-obzr.ru</a></li>
                     <li>📍 МБОУ СШ № 2 г. Лысково</li>
                     <li>📞 Консультации: по согласованию</li>
                 </ul>
@@ -604,7 +604,7 @@
                 student_info: document.getElementById("student").value || "Не указано",
                 topic: document.getElementById("topic").options[document.getElementById("topic").selectedIndex].text,
                 message: document.getElementById("message").value,
-                to_email: "ademin1977@vk.com"
+                to_email: "info@demin-obzr.ru"
             }).then(function() {
                 formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border-left:4px solid #4CAF50;color:#2E7D32;padding:1rem;border-radius:8px;margin-bottom:1rem;";
                 formStatus.innerHTML = "✅ Сообщение успешно отправлено! Я отвечу вам в течение 24-48 часов.";
@@ -616,7 +616,7 @@
                setTimeout(function() { formStatus.style.display = "none"; }, 10000);
             }, function() {
                 formStatus.style.cssText = "display:block;background:linear-gradient(135deg,#FFEBEE,#FFCDD2);border-left:4px solid #E53935;color:#C62828;padding:1rem;border-radius:8px;margin-bottom:1rem;";
-                formStatus.innerHTML = "❌ Произошла ошибка. Напишите напрямую: ademin1977@vk.com";
+                formStatus.innerHTML = "❌ Произошла ошибка. Напишите напрямую: info@demin-obzr.ru";
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = "Отправить сообщение";
             });
