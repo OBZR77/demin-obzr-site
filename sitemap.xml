@@ -17,7 +17,7 @@
 
     <!-- Главная страница (самая важная) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/index.html</loc>
+        <loc>https://demin-obzr.ru/index.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -25,7 +25,7 @@
 
     <!-- О предмете ОБЗР -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/o-predmete-obzr.html</loc>
+        <loc>https://demin-obzr.ru/o-predmete-obzr.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -33,7 +33,7 @@
 
     <!-- Последние новости -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/novosti.html</loc>
+        <loc>https://demin-obzr.ru/novosti.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -43,7 +43,7 @@
 
     <!-- О себе (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/about.html</loc>
+        <loc>https://demin-obzr.ru/about.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
@@ -51,7 +51,7 @@
 
     <!-- Образование -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/obrazovanie.html</loc>
+        <loc>https://demin-obzr.ru/obrazovanie.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -59,7 +59,7 @@
 
     <!-- Переподготовка и повышение квалификации -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/perepodgotovka.html</loc>
+        <loc>https://demin-obzr.ru/perepodgotovka.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -67,7 +67,7 @@
 
     <!-- Награды и достижения -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/nagrady.html</loc>
+        <loc>https://demin-obzr.ru/nagrady.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -77,7 +77,7 @@
 
     <!-- Портфолио (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/portfolio.html</loc>
+        <loc>https://demin-obzr.ru/portfolio.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
@@ -85,7 +85,7 @@
 
   <!-- Результаты освоения предмета обучающемися -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/rezultaty-obucheniya.html</loc>
+        <loc>https://demin-obzr.ru/rezultaty-obucheniya.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -93,7 +93,7 @@
 
   <!-- Достижения учащихся -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/dostizheniya-uchenikov.html</loc>
+        <loc>https://demin-obzr.ru/dostizheniya-uchenikov.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -101,7 +101,7 @@
 
   <!-- Методическая активность -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/metodicheskaya-aktivnost.html</loc>
+        <loc>https://demin-obzr.ru/metodicheskaya-aktivnost.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -109,7 +109,7 @@
 
   <!-- Документы портфолио -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/documents.html</loc>
+        <loc>https://demin-obzr.ru/documents.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -118,7 +118,7 @@
 
     <!-- Методика (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/metodika.html</loc>
+        <loc>https://demin-obzr.ru/metodika.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -126,7 +126,7 @@
 
    <!-- Нормативная документация -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/normativnaya-dokumentaciya.html</loc>
+        <loc>https://demin-obzr.ru/normativnaya-dokumentaciya.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -134,7 +134,7 @@
 
    <!-- Конспекты уроков по модулям ОБЗР -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/konspekty-urokov.html</loc>
+        <loc>https://demin-obzr.ru/konspekty-urokov.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -142,7 +142,7 @@
 
    <!-- Презентации, наглядные материалы, тесты и контрольные -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/prezentacii-testy.html</loc>
+        <loc>https://demin-obzr.ru/prezentacii-testy.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -150,7 +150,7 @@
 
    <!-- Методические рекомендации для коллег -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/metodicheskie-rekomendacii.html</loc>
+        <loc>https://demin-obzr.ru/metodicheskie-rekomendacii.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -160,7 +160,7 @@
 
     <!-- ИИ в образовании (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-projects.html</loc>
+        <loc>https://demin-obzr.ru/ai-projects.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -168,7 +168,7 @@
 
    <!-- Для учеников — творческие проекты -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-uchenikov.html</loc>
+        <loc>https://demin-obzr.ru/ai-dlya-uchenikov.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -176,7 +176,7 @@
 
    <!-- Литературные проекты -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/literature-projects.html</loc>
+        <loc>https://demin-obzr.ru/literature-projects.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -184,7 +184,7 @@
 
    <!-- Музыкальные проекты -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/music-projects.html</loc>
+        <loc>https://demin-obzr.ru/music-projects.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -192,23 +192,17 @@
 
    <!-- Визуальные проекты -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/visual-projects.html</loc>
+        <loc>https://demin-obzr.ru/visual-projects.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
    <!-- Для родителей — практические материалы -->
-    <url>
-        <loc>https://obzr77.github.io/ai-dlya-roditelej.html</loc>
-        <lastmod>2026-01-17</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
 
    <!-- Для коллег — методические материалы с использованием ИИ -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-kolleg.html</loc>
+        <loc>https://demin-obzr.ru/ai-dlya-kolleg.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -216,7 +210,7 @@
 
    <!-- Полезные ресурсы по ИИ в образовании -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-resursy.html</loc>
+        <loc>https://demin-obzr.ru/ai-resursy.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -226,7 +220,7 @@
 
     <!-- Активности (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/vneurochnaya.html</loc>
+        <loc>https://demin-obzr.ru/vneurochnaya.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -234,7 +228,7 @@
 
    <!-- Юнармия -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/yunarmiya.html</loc>
+        <loc>https://demin-obzr.ru/yunarmiya.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
@@ -242,7 +236,7 @@
 
    <!-- Юные инспекторы движения (ЮИД) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/yuid.html</loc>
+        <loc>https://demin-obzr.ru/yuid.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -250,7 +244,7 @@
 
    <!-- Зарница 2.0 — Военно-спортивная игра -->
     <url>
-       <loc>https://obzr77.github.io/demin-obzr-site/zarnica.html</loc>
+       <loc>https://demin-obzr.ru/zarnica.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
@@ -258,7 +252,7 @@
 
    <!-- Олимпиады по ОБЗР -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/olimpiady.html</loc>
+        <loc>https://demin-obzr.ru/olimpiady.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -266,7 +260,7 @@
 
    <!-- Военно-полевые сборы -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/sbory.html</loc>
+        <loc>https://demin-obzr.ru/sbory.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -274,7 +268,7 @@
 
    <!-- Взаимодействие с партнёрами -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/vzaimodejstvie.html</loc>
+        <loc>https://demin-obzr.ru/vzaimodejstvie.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -284,7 +278,7 @@
 
     <!-- Родителям (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/parents.html</loc>
+        <loc>https://demin-obzr.ru/parents.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
@@ -292,7 +286,7 @@
 
    <!-- Как помочь ребёнку дома -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/help-at-home.html</loc>
+        <loc>https://demin-obzr.ru/help-at-home.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -300,7 +294,7 @@
 
    <!-- Готовимся к учебным сборам -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/training-camps.html</loc>
+        <loc>https://demin-obzr.ru/training-camps.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -308,7 +302,7 @@
 
    <!-- Диалоги о безопасности -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/safety-dialogue.html</loc>
+        <loc>https://demin-obzr.ru/safety-dialogue.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -316,7 +310,7 @@
 
     <!-- Обратная связь -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/feedback.html</loc>
+        <loc>https://demin-obzr.ru/feedback.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
@@ -324,7 +318,7 @@
 
 <!-- Как оценивается ОБЗР -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/grading.html</loc>
+        <loc>https://demin-obzr.ru/grading.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -332,7 +326,7 @@
 
 <!-- Часто задаваемые вопросы (FAQ) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/faq.html</loc>
+        <loc>https://demin-obzr.ru/faq.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -342,7 +336,7 @@
 
     <!-- Контакты (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/contacts.html</loc>
+        <loc>https://demin-obzr.ru/contacts.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -352,7 +346,7 @@
 
     <!-- Отзыв о сайте (основная страница) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/interactive.html</loc>
+        <loc>https://demin-obzr.ru/interactive.html</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -361,7 +355,7 @@
 
     <!-- Ученикам (главная раздела) -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/uchenikam.html</loc>
+        <loc>https://demin-obzr.ru/uchenikam.html</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -369,19 +363,19 @@
 
     <!-- Учебник НВП -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/uchebnik-nvp.html</loc>
+        <loc>https://demin-obzr.ru/uchebnik-nvp.html</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-k-uroku.html</loc>
+        <loc>https://demin-obzr.ru/bzh-k-uroku.html</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/domashnie-zadaniya.html</loc>
+        <loc>https://demin-obzr.ru/domashnie-zadaniya.html</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -389,161 +383,161 @@
 
     <!-- Добавлено 07.10.2026 -->
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-roditelej.html</loc>
+        <loc>https://demin-obzr.ru/ai-dlya-roditelej.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/ai-dlya-ucheby.html</loc>
+        <loc>https://demin-obzr.ru/ai-dlya-ucheby.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/arhiv-2025-2026.html</loc>
+        <loc>https://demin-obzr.ru/arhiv-2025-2026.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/arhiv-media-2025-2026.html</loc>
+        <loc>https://demin-obzr.ru/arhiv-media-2025-2026.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-10-06.html</loc>
+        <loc>https://demin-obzr.ru/bzh-10-06.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-10-07.html</loc>
+        <loc>https://demin-obzr.ru/bzh-10-07.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-11-06.html</loc>
+        <loc>https://demin-obzr.ru/bzh-11-06.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-11-07.html</loc>
+        <loc>https://demin-obzr.ru/bzh-11-07.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-01.html</loc>
+        <loc>https://demin-obzr.ru/bzh-8-01.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-06.html</loc>
+        <loc>https://demin-obzr.ru/bzh-8-06.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-8-07.html</loc>
+        <loc>https://demin-obzr.ru/bzh-8-07.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-9-06.html</loc>
+        <loc>https://demin-obzr.ru/bzh-9-06.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/bzh-9-07.html</loc>
+        <loc>https://demin-obzr.ru/bzh-9-07.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/mediaarhiv.html</loc>
+        <loc>https://demin-obzr.ru/mediaarhiv.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/nvp-8-06.html</loc>
+        <loc>https://demin-obzr.ru/nvp-8-06.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/obratnaya-svyaz-uchenikov.html</loc>
+        <loc>https://demin-obzr.ru/obratnaya-svyaz-uchenikov.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/privacy-policy.html</loc>
+        <loc>https://demin-obzr.ru/privacy-policy.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/situacionnye-zadachi.html</loc>
+        <loc>https://demin-obzr.ru/situacionnye-zadachi.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/test-bzh-8-massovoe-prebyvanie.html</loc>
+        <loc>https://demin-obzr.ru/test-bzh-8-massovoe-prebyvanie.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/test-first-aid-module8.html</loc>
+        <loc>https://demin-obzr.ru/test-first-aid-module8.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/test-nvp-10-takticheskaya-medicina.html</loc>
+        <loc>https://demin-obzr.ru/test-nvp-10-takticheskaya-medicina.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/test-nvp-8-pervaya-pomoshch.html</loc>
+        <loc>https://demin-obzr.ru/test-nvp-8-pervaya-pomoshch.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <url>
-        <loc>https://obzr77.github.io/demin-obzr-site/trenazhery.html</loc>
+        <loc>https://demin-obzr.ru/trenazhery.html</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

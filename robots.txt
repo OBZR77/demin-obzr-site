@@ -36,7 +36,7 @@ User-agent: Googlebot
 Allow: /
 
 # Указываем расположение карты сайта (sitemap)
-Sitemap: https://obzr77.github.io/demin-obzr-site/sitemap.xml
+Sitemap: https://demin-obzr.ru/sitemap.xml
 
 # Время ожидания между запросами (вежливость к серверу)
 Crawl-delay: 1
