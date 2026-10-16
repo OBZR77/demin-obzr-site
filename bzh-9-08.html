@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила поведения в опасных ситуациях с домашними и дикими животными | БЖ, 9 класс, урок 8</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор на страницах для учеников выключен) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:false, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 9 класс · Урок 8 из 21</p>
+                <h1>🐻 Правила поведения в опасных ситуациях с домашними и дикими животными</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 25 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 21 октября – 10 ноября</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>называть общие правила поведения при встрече с диким животным и знать, как вести себя с волком, медведем, кабаном и лосем;</li>
+                    <li>действовать при укусе животного, змеи, паука, насекомого и клеща;</li>
+                    <li>отличать гадюку от ужа и защищаться от змей;</li>
+                    <li>помнить главное правило про незнакомые ягоды и грибы и называть ядовитые растения.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Животное, больное бешенством</dt><dd>Наибольшую опасность представляют именно такие животные. Их можно отличить по бесстрашию (не боятся человека), мутному взгляду, свалявшейся тусклой шерсти и обильному течению слюны (последнее бывает не всегда).</dd></div>
+                <div class="nvp-term"><dt>Гадюка</dt><dd>Самая опасная змея в наших широтах. Узнаётся по головке в форме сердечка и тёмной извилистой полосе на спинке. Узор в виде волнистой линии бывает очень неявным.</dd></div>
+                <div class="nvp-term"><dt>Антигистаминный (противоаллергический) препарат</dt><dd>Лекарство, которое уменьшает проявления аллергической реакции на укус (кожная сыпь, зуд, чихание, кашель, слёзы). Такие препараты всегда должны быть в групповой аптечке.</dd></div>
+                <div class="nvp-term"><dt>Клещ</dt><dd>Единственный из кусающих животных, который нападает не из самообороны. Может переносить опасные для человека заболевания: болезнь Лайма (клещевой боррелиоз) и клещевой энцефалит.</dd></div>
+                <div class="nvp-term"><dt>Правило сомнения</dt><dd>Любое сомнение в съедобности гриба, ягоды или растения означает категорический отказ употреблять их в пищу. Лучше ничего не есть, чем съесть незнакомое.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <h3 class="nvp-h3">Встреча с диким животным: главное правило</h3>
+            <p>Встреча с диким животным всегда крайне опасна, поэтому основные усилия нужно потратить на то, <strong>чтобы её избежать</strong>. Здоровое животное само старается не выходить к человеку и не нападает первым. Исключения: самка, защищающая детёнышей, очень голодный или раненый зверь, встреча у логова, водопоя или кормовой тропы.</p>
+            <ul class="nvp-list">
+                <li>Никогда не трогай детёнышей диких животных, какими бы симпатичными они ни были: <strong>их мама где-то рядом</strong>.</li>
+                <li>Знай признаки обитания зверей (следы лап, ободранная кора деревьев) и быстрее покидай такое место.</li>
+                <li>Не заглядывай в берлогу или нору.</li>
+                <li>Храни съестные припасы в стороне от лагеря, остатки пищевого мусора сжигай, консервные банки обжигай на костре.</li>
+            </ul>
+            <div class="nvp-alert">
+                <p><strong>Опаснее всего животное, больное бешенством.</strong> Оно не боится человека, у него мутный взгляд и свалявшаяся тусклая шерсть, часто (но не всегда) обильно течёт слюна. Не приближайся к такому зверю.</p>
+            </div>
+
+            <h3 class="nvp-h3">Общие правила при встрече с любым диким животным</h3>
+            <ol class="nvp-algo">
+                <li><strong>Не паникуй и не делай резких движений.</strong> Бежать нельзя: у животного может включиться инстинкт преследования. Постарайся замереть на месте.</li>
+                <li><strong>Не смотри зверю в глаза</strong>, смотри на шею или на животное в целом. Взгляд в упор звери считают признаком агрессии.</li>
+                <li>Если зверь тебя не заметил, аккуратно отойди, не выдавая своего места. <strong>Не поворачивайся к нему спиной</strong>, пока не удалишься достаточно далеко.</li>
+                <li>Если зверь заметил, но не агрессивен, замри, а потом медленно отходи назад без резких движений. Чаще всего он не будет преследовать.</li>
+            </ol>
+
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Волк</h3>
+                    <p>Не кричи и не веди себя вызывающе: говори <strong>громко и спокойно</strong> и отступай, не поворачиваясь спиной. Сытый волк, скорее всего, не бросится: он может напасть на раненого, испуганного или бегущего. Самая эффективная защита от волков — огонь. С волчьей стаей действуй так же: волки остро чувствуют страх.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Медведь</h3>
+                    <p>Уходи <strong>медленно</strong>, по диагонали. Если медведь заинтересовался тобой, шуми, зови на помощь, подними над головой рюкзак или раскинутую куртку. Главное — <strong>не убегать</strong>. Если уйти невозможно, брось рюкзак между собой и зверем и медленно отходи. Не лезь на дерево: медведи быстро бегают и хорошо лазают.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Кабан</h3>
+                    <p>Увидев кабана или самку с поросятами, <strong>отойди подальше</strong> и уступи дорогу, к детёнышам не подходи. Если кабан агрессивен, отступи (не поворачиваясь спиной) к ближайшему дереву и влезь на него. Если он бросился на тебя, отойди в сторону и спрячься за дерево: быстро свернуть он не сможет.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Лось</h3>
+                    <p>Правила те же: <strong>неподвижно застыть</strong>, не делать резких движений и ни в коем случае не убегать. Не видя в человеке опасности, лось через некоторое время просто уйдёт. Признаки его присутствия: раздвоенные следы, похожие на коровьи, обглоданная кора на деревьях.</p>
+                </div>
+            </div>
+            <p><strong>Чтобы не встретиться с медведем:</strong> передвигайся по лесу шумно, громко разговаривая, группой не менее трёх человек; храни продукты подальше от места привала (подвесь повыше на дерево или закрой в контейнерах); избегай высокой травы и зарослей; разбивай палатки на открытых участках; не ходи по лесу в сумерки и ночью.</p>
+
+            <h3 class="nvp-h3">Если тебя укусило животное</h3>
+            <p>Человека чаще всего кусают грызуны, летучие мыши и лесные хищники (лисицы, барсуки). Грызуны и летучие мыши кусаются, только если их поймать, а более крупные хищники нападают, если больны бешенством или защищают потомство. <strong>Все укусы считаются инфицированными</strong>, их лечат под наблюдением врача. Кроме того, после укуса важно пройти курс прививок от бешенства.</p>
+            <ol class="nvp-algo">
+                <li>При ранениях <strong>останови кровотечение</strong>.</li>
+                <li><strong>Промой</strong> рану и кожу вокруг неё водой с мылом.</li>
+                <li>Наложи на рану стерильные салфетки, закрепи лейкопластырем или бинтом. Повязка <strong>не должна быть герметичной</strong>.</li>
+                <li><strong>Обратись в больницу</strong>, покажи рану врачу.</li>
+            </ol>
+            <p>Постарайся запомнить покусавшую тебя собаку. Если собака домашняя, у хозяев должна быть справка о вакцинации от бешенства. Если справки нет и собака бездомная, ею должна заняться ветеринарная служба. Если дикое животное покусало тебя в населённом пункте, сообщи об этом в ветеринарную службу.</p>
+
+            <h3 class="nvp-h3">Змеи</h3>
+            <div class="nvp-alert">
+                <p><strong>Любая незнакомая змея считается ядовитой</strong>, и после её укуса нужно обратиться к врачу.</p>
+            </div>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Гадюка</h3>
+                    <p>Головка в форме <strong>сердечка</strong>, на спинке тёмная извилистая (волнистая) полоса; узор бывает очень неявным.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Уж</h3>
+                    <p>Головка <strong>конусообразная</strong> с двумя жёлтыми пятнышками, окраска равномерная. Степные удавы, полозы и ужи не ядовиты.</p>
+                </div>
+            </div>
+            <ul class="nvp-list">
+                <li>Змея, как правило, пытается уползти. Она не нападает без предупреждения: гадюка перед броском сворачивается «тарелочкой», выгибает тело зигзагом и сильно шипит. Чаще всего укус случается, если <strong>на змею наступить</strong>.</li>
+                <li><strong>Защита:</strong> закрытая обувь и одежда: высокие сапоги, толстые шерстяные носки, плотные брюки, заправленные в обувь с напуском. При сборе грибов и ягод раздвигай траву длинной палкой.</li>
+                <li><strong>Встретил змею:</strong> замри и дай ей уйти. Если она приняла угрожающую позу, медленно отступи назад. Не выставляй перед собой руки, не поворачивайся спиной, не убегай (можно наступить на другую змею). Палку держи перед собой в сторону змеи.</li>
+                <li><strong>После укуса:</strong> сохраняй спокойствие, лежи и не двигайся. Пострадавшего нужно <strong>немедленно доставить к врачу</strong>: самостоятельное передвижение недопустимо.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Пауки, скорпионы и другие ядовитые членистоногие</h3>
+            <p>Реальную угрозу здоровью несут пауки <strong>каракурт, крестовик и тарантул</strong>. В нашей стране опасные пауки встречаются в степной полосе юга России и в Крыму. Скорпионы и сколопендры тоже водятся на юге страны, это ночные животные, днём они прячутся под камнями и в укромных местах: сколопендра даже в оставленных ботинках и рюкзаках, скорпион в щелях построек, в том числе жилых.</p>
+            <ul class="nvp-list">
+                <li>Не ночуй под открытым небом там, где живут ядовитые пауки. Спальное место не должно касаться стенок палатки.</li>
+                <li>Осматривай место привала, постель, одежду, обувь и рюкзак. Перетряхивай вещи.</li>
+                <li>Ходи по земле в обуви, открытые участки тела защищай одеждой.</li>
+                <li>Если паук оказался на теле, <strong>не прижимай его и не бери в руки</strong>: сбей щелчком или стряхни.</li>
+                <li>После укуса: приложи холодный компресс (лучше лёд) и обратись к врачу, по возможности вызови скорую помощь. После укуса каракурта сократи движения до минимума и особенно поторопись, если пострадавшему меньше 16 лет или состояние быстро ухудшается.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Оса, пчела, шмель</h3>
+            <p>Эти насекомые кусают в целях самозащиты. Опаснее всего укус в лицо, губы, язык.</p>
+            <ol class="nvp-algo">
+                <li>Если в месте укуса осталось жало, осторожно удали его <strong>пинцетом или ногтями</strong>. Не выдавливай жало пальцами: так яд может распространиться.</li>
+                <li>Промой место укуса водой с мылом.</li>
+                <li>Приложи холод (лёд, обёрнутый тканью): это уменьшит отёк.</li>
+                <li>Пей обильно (тёплый чай, вода). При первых признаках аллергической реакции прими противоаллергический препарат.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Опасная аллергическая реакция.</strong> Если насекомое укусило в язык, во внутреннюю часть рта, горла или шею, и появились признаки удушья и отёка дыхательных путей, <strong>немедленно вызывай скорую медицинскую помощь</strong>. Люди с такой аллергией обычно знают о ней и носят с собой лекарства.</p>
+            </div>
+
+            <h3 class="nvp-h3">Клещи</h3>
+            <p>Клещ не лазает по деревьям и не прыгает сверху: он ждёт в высокой траве, мелком кустарнике, подлеске. Любимые места укуса: паховая область, за ушами, подмышки, складки кожи.</p>
+            <ul class="nvp-list">
+                <li><strong>Защита:</strong> избегай высокой травы и подлеска; длинные брюки с резинками или завязками, куртка с манжетами и капюшоном; специальный аэрозоль от клещей, которым обрабатывают одежду. В местах, где много клещей, останавливайся хотя бы раз в два часа и осматривай одежду и кожу. Прививку от клещевого энцефалита можно сделать после консультации с врачом.</li>
+                <li><strong>Если клещ впился:</strong> не мажь его спиртом или маслом, не посыпай солью. Не вынимай его острым пинцетом: можно оторвать тело, оставив голову и хоботок. Бери клеща за брюшко ближе к голове и плавно тяни вверх, поворачивая. Можно использовать нитку-петельку или специальную аптечную «вилочку».</li>
+                <li>Если в коже остался хоботок, не выковыривай его.</li>
+                <li>Наблюдай за местом укуса. Если розовое пятно держится больше 2–3 дней и увеличивается, нужно обязательно обратиться к инфекционисту. После возвращения домой в любом случае обратись к врачу.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Ядовитые растения, ягоды и грибы</h3>
+            <p><strong>Любое сомнение — категорический отказ.</strong> Считай ядовитым не только незнакомый гриб или растение, но и такой, в съедобности которого ты сомневаешься. Чаще всего страдают дети: их привлекает яркий цвет ягод.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Ядовитые растения</h3>
+                    <p>Вороний глаз, паслён, белладонна (красавка), волчье лыко, воронец красноплодный, <strong>ландыш майский</strong> (опасны все части, особенно плоды). Борщевик и ясенец вызывают тяжёлые ожоги кожи на свету: не трогай их.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Ядовитые грибы</h3>
+                    <p><strong>Бледная поганка</strong> (самый ядовитый гриб, отравление может привести к смерти), мухомор, ложные опята (в том числе ложноопёнок серно-жёлтый), желчный гриб, говорушка восковатая.</p>
+                </div>
+            </div>
+            <p>Первая помощь при отравлениях описана в Приложении к учебнику.</p>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li>При встрече со зверем: <strong>не паникуй, не делай резких движений, не смотри в глаза, не убегай и не поворачивайся спиной</strong>; медленно отходи.</li>
+                    <li>Не трогай детёнышей диких животных: рядом может быть их мать. Не подходи к животному, которое ведёт себя странно: оно может быть больно бешенством.</li>
+                    <li>Любой укус животного: остановить кровотечение, промыть водой с мылом, наложить негерметичную повязку и <strong>обратиться к врачу</strong>.</li>
+                    <li><strong>Любая незнакомая змея ядовита.</strong> Замри, дай ей уйти. После укуса не двигайся и сразу к врачу.</li>
+                    <li>Укус осы или пчелы: удалить жало, холод, питьё. Отёк горла и удушье: сразу скорая помощь.</li>
+                    <li>Клеща не мазать маслом и спиртом, вынимать плавно, после укуса обратиться к врачу. Незнакомые ягоды и грибы не есть.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Заполни таблицу из учебника (с. 198, задание «По материалам урока составьте таблицу») минимум для трёх случаев: укус гадюки, укус осы или пчелы, укус клеща. Столбцы: «Травма», «Как не допустить», «Первая помощь». В каждой клетке пиши по 1–2 коротких правила.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Выполни практико-ориентированное задание из учебника (с. 184): найди информацию о том, какие дикие животные водятся в нашей местности, и определи, что нужно сделать, чтобы не встретиться с ними и как вести себя, если встреча состоялась. Для поиска используй надёжные источники.</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст параграфа. Адрес и фамилии не указывай. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности. 8–9 классы», часть 1 (под научной редакцией Ю. С. Шойгу, М.: Просвещение, 2022): модуль 5, тема 3 «Встречи с дикими животными, опасными насекомыми, клещами и змеями. Распознавание растений и грибов» (с. 178–198). В учебнике тема посвящена диким животным; про домашних животных сказано в части об укусах (с. 182).</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="9" data-n="8">
+            <span data-dir="prev">← Предыдущий урок: № 7 «Безопасные действия при землетрясении, извержении вулкана»</span>
+            <span data-dir="next">Следующий урок: № 9 «Экология и ее значение для устойчивого развития общества» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности. 8–9 классы» (под научной редакцией Ю. С. Шойгу, М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6abaca9650569060a527b159/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '9', lesson: 'БЖ-8' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Дикое животное заметило тебя, но не проявляет агрессии. Как правильно поступить?",
+          options: ["Быстро убежать, чтобы оказаться как можно дальше от зверя", "Замереть, а затем медленно отходить назад, не делая резких движений", "Подойти поближе, чтобы внимательно рассмотреть животное", "Громко закричать и замахать руками, чтобы напугать зверя"], correct: 1,
+          explain: "Если животное заметило тебя, но не агрессивно, замри, а потом медленно отходи назад, не делая резких движений. Убегать нельзя: может включиться инстинкт преследования." },
+        { text: "Почему при встрече с диким зверем нельзя смотреть ему в глаза?",
+          options: ["Звери считают взгляд в упор признаком агрессии", "Звери ослепляются человеческим взглядом и теряются", "Взгляд в глаза привлекает к человеку других животных", "Взгляд в глаза мешает зверю почувствовать запах человека"], correct: 0,
+          explain: "Взгляд в упор у зверей считается признаком агрессии. Смотри на шею или на животное в целом." },
+        { text: "Как следует вести себя при встрече с медведем, если уйти нельзя?",
+          options: ["Быстро залезть на ближайшее дерево и дождаться ухода зверя", "Бежать к воде и переплыть реку на другой берег", "Бросить рюкзак между собой и зверем и медленно отходить, не поворачиваясь спиной", "Лечь на землю лицом вниз и закрыть голову руками"], correct: 2,
+          explain: "Медведь бегает очень быстро, хорошо лазает по деревьям и плавает, поэтому бегство, дерево и вода не спасут. Рюкзак может отвлечь зверя, а тебе даст время отойти." },
+        { text: "На тебя бросился дикий кабан. Что нужно сделать?",
+          options: ["Бежать прямо от кабана по тропе как можно быстрее", "Стоять неподвижно на месте и ждать, пока он остановится", "Подбежать к поросятам, чтобы кабан отвлёкся на них", "Быстро отойти в сторону и спрятаться за любое дерево"], correct: 3,
+          explain: "У кабана длинный тормозной путь и большая инерция, он не сможет быстро свернуть с линии атаки. Нужно отойти в сторону и спрятаться за любое дерево." },
+        { text: "Тебя укусила собака. Что входит в первую помощь?",
+          options: ["Прижечь рану и больше никуда не обращаться, если она небольшая", "Туго замотать рану плотной герметичной плёнкой и ждать", "Остановить кровотечение, промыть кожу водой с мылом, наложить повязку, показать рану врачу", "Подождать несколько дней, пока рана заживёт сама"], correct: 2,
+          explain: "Все укусы считаются инфицированными. Первая помощь: остановить кровотечение, промыть кожу вокруг раны водой с мылом, наложить негерметичную повязку и показать рану врачу." },
+        { text: "Как отличить гадюку от ужа?",
+          options: ["У гадюки головка-сердечко и извилистая полоса на спинке, у ужа конусообразная головка с жёлтыми пятнышками", "У ужа тёмная извилистая полоса на спинке, а у гадюки на голове два жёлтых пятнышка", "Они ничем не отличаются, обе змеи одинаково безопасны для человека", "Гадюка всегда окрашена равномерно, а уж имеет пёстрый узор по всему телу"], correct: 0,
+          explain: "Гадюка: головка в форме сердечка и тёмная извилистая полоса на спинке. Уж: головка конусообразная с двумя жёлтыми пятнышками, окраска равномерная." },
+        { text: "Перед тобой змея приняла угрожающую позу. Что делать?",
+          options: ["Выставить вперёд руки, чтобы защититься от броска змеи", "Повернуться спиной и быстро убежать подальше от змеи", "Подойти ближе и попытаться прогнать змею криком", "Не делать резких движений и медленно отступить назад"], correct: 3,
+          explain: "Если змея приняла угрожающую позу, медленно отступи назад. Нельзя выставлять перед собой руки, поворачиваться спиной и убегать (можно наступить на другую змею)." },
+        { text: "Как правильно действовать, если пчела ужалила и в коже осталось жало?",
+          options: ["Сильно выдавить жало пальцами, чтобы вышел яд", "Удалить жало пинцетом или ногтями, промыть место водой с мылом, приложить холод", "Ничего не делать: жало выйдет само через несколько дней", "Смазать место укуса маслом и плотно закрыть повязкой"], correct: 1,
+          explain: "Жало удаляют пинцетом или ногтями. Выдавливать его пальцами не рекомендуется: яд может распространиться. Затем промывают место укуса и прикладывают холод." },
+        { text: "Что нужно помнить об извлечении клеща?",
+          options: ["Клеща нужно смазать маслом или посыпать солью, чтобы он отпал", "Клеща нужно резко вырвать острым пинцетом, чтобы не мешкать", "Клеща лучше не трогать и оставить до возвращения домой", "Клеща берут за брюшко ближе к голове и плавно тянут вверх, поворачивая"], correct: 3,
+          explain: "Клеща не мажут спиртом, маслом и не посыпают солью. Острым пинцетом вынимать нельзя: можно оставить голову и хоботок в коже. После укуса нужно обратиться к врачу." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>

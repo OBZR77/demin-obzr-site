@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасность пассажиров на различных видах транспорта | БЖ, 8 класс, урок 8</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор на страницах для учеников выключен) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:false, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 8 класс · Урок 8 из 13</p>
+                <h1>🚆 Безопасность пассажиров на различных видах транспорта</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 21 октября – 9 ноября</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>объяснять, когда человек становится пассажиром, и называть обязанности пассажира общественного транспорта;</li>
+                    <li>правильно пристёгиваться ремнём безопасности и объяснять, зачем нужны детские удерживающие устройства;</li>
+                    <li>соблюдать правила безопасности в метро и рядом с железной дорогой;</li>
+                    <li>называть главные правила поведения пассажира на железнодорожном, водном и воздушном транспорте, в том числе при чрезвычайной ситуации.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Пассажир</dt><dd>Человек, который находится в транспортном средстве, входит или выходит из него.</dd></div>
+                <div class="nvp-term"><dt>Маршрутные транспортные средства (МТС)</dt><dd>Общественный транспорт: автобусы, троллейбусы, трамваи. Они осуществляют перевозки по чёткому графику, с фиксированным местом посадки и высадки пассажиров.</dd></div>
+                <div class="nvp-term"><dt>Детское удерживающее устройство</dt><dd>Автокресло. Его устанавливают в салоне для безопасной перевозки маленького ребёнка. Оно работает примерно так же, как ремень безопасности.</dd></div>
+                <div class="nvp-term"><dt>Метро (метрополитен)</dt><dd>Вид железнодорожного транспорта, пути которого проложены вне улиц, чаще всего под землёй, реже над землёй (монорельс).</dd></div>
+                <div class="nvp-term"><dt>Основные опасности на транспорте</dt><dd>Аварии (столкновения, переворачивания, травмирование пассажиров, пешеходов и других лиц), возгорания и действия преступников.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <h3 class="nvp-h3">Ты тоже участник дорожного движения</h3>
+            <p>Пассажиром человек становится <strong>не в тот момент, когда сел</strong> в транспорт, а когда принял решение ехать и начал движение к двери автомобиля или к остановке.</p>
+            <p>За исправность транспорта и соблюдение ПДД отвечает водитель. Но когда в салоне появились пассажиры, ответственность за безопасность движения из индивидуальной превращается в <strong>совместную</strong>: неправильными действиями пассажир может серьёзно усложнить водителю управление. Опасность на транспорте создают аварии, возгорания и действия преступников, а многие аварии и возгорания связаны с человеческой <strong>беспечностью</strong>.</p>
+
+            <h3 class="nvp-h3">Автобус, троллейбус, трамвай</h3>
+            <div class="nvp-cards">
+                <div class="nvp-card">
+                    <h3>Обязанности пассажира</h3>
+                    <p>Ждать транспорт у остановочного павильона или на приподнятой посадочной площадке. Входить и выходить <strong>после полной остановки</strong>, не мешая другим. Оплатить проезд и сохранять билет до конца поездки. Не мешать водителю, кондуктору и пассажирам. Сообщать о забытых и неопознанных вещах.</p>
+                </div>
+                <div class="nvp-card">
+                    <h3>Права пассажира</h3>
+                    <p>Узнать маршрут следования. Выйти на остановке «по требованию», заранее подав сигнал кнопкой звонка или сообщив кондуктору. Провозить бесплатно детей до 7 лет (нужен документ о возрасте), пару лыж в чехле, детские санки или коляску.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Запрещено</h3>
+                    <p>Приводить в действие механизмы открывания дверей и аварийную систему (кроме случаев, когда нужно предотвратить несчастный случай). Открывать окна и люки без разрешения, высовываться в окна. Проносить огнеопасные, взрывчатые, ядовитые вещества, колющие и режущие предметы без чехлов. Оставлять ручную кладь на сиденьях.</p>
+                </div>
+            </div>
+            <div class="nvp-alert">
+                <p><strong>Помни:</strong> общаться с водителем можно <strong>только во время остановки</strong>. Отвлекать его разговорами во время движения запрещено.</p>
+            </div>
+            <ul class="nvp-list">
+                <li>При входе и выходе пропускай вперёд пожилых людей, беременных женщин, пассажиров с детьми дошкольного возраста и людей с инвалидностью. Если взрослый едет с ребёнком, то <strong>входит первым ребёнок</strong>, а <strong>выходит первым взрослый</strong>.</li>
+                <li>После посадки проходи внутрь салона. Стоя, крепко держись за поручень, а рюкзак или большую сумку сними со спины и держи в руке.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Ремень безопасности и детские кресла</h3>
+            <p>Правила дорожного движения требуют использовать ремень в тех транспортных средствах, где он есть, и пристёгиваться должен даже водитель. При ДТП ремень снижает риск травмы в <strong>2–2,5 раза</strong>, а при опрокидывании автомобиля в <strong>5 раз</strong>. Он защищает от вылета из автомобиля, удара о дверь, переднее сиденье и рулевое колесо. При столкновении на скорости 45–50 км/ч пассажир без ремня получает удар, сопоставимый с падением примерно с третьего этажа.</p>
+            <p><strong>Как правильно застегнуть ремень:</strong></p>
+            <ol class="nvp-algo">
+                <li>Верхняя часть ремня проходит <strong>через плечо вдоль груди, ближе к шее</strong> (а не под рукой, как считают многие).</li>
+                <li>Нижняя часть опоясывает <strong>бёдра</strong>, а не живот.</li>
+                <li>Ремень надо <strong>натянуть и зафиксировать</strong>.</li>
+            </ol>
+            <p>Ремень больше подходит для взрослых и подростков. Для маленького ребёнка нужно <strong>детское удерживающее устройство</strong> (автокресло): краш-тесты показали, что оно в несколько раз уменьшает риск детских травм, а в большинстве случаев спасает жизнь. Учебник приводит правило: детей до 11 лет следует перевозить в таких устройствах, даже на небольшое расстояние и даже в такси.</p>
+            <p><strong>Мотоцикл.</strong> Водитель и пассажир едут только в застёгнутых мотошлемах. Основная опасность мотоцикла — низкая устойчивость. Пассажиром на нём можно быть с 12 лет и только на предназначенном для этого месте.</p>
+
+            <h3 class="nvp-h3">Метро</h3>
+            <div class="nvp-cards">
+                <div class="nvp-card">
+                    <h3>На эскалаторе и платформе</h3>
+                    <p>На эскалаторе держись за поручни, стой справа, проходи слева. На платформе держись <strong>как можно дальше от края</strong> и не заходи за ограничительную линию: идущий поезд создаёт сильный воздушный поток, который может сбить человека с ног. Избегай толпы и давки.</p>
+                </div>
+                <div class="nvp-card">
+                    <h3>В вагоне</h3>
+                    <p>Проходи в середину салона, не задерживайся у дверей. Во время движения держись за поручни, не облокачивайся на двери. При резком торможении держись за поручни и дуги спинок кресел.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Запрещено</h3>
+                    <p>Спускаться на пути. Сбрасывать или подкладывать на пути предметы. Открывать двери вагонов во время движения и остановок. Без серьёзной причины пользоваться связью «пассажир — машинист», колоннами экстренного вызова, краном выключения дверей, рукояткой остановки эскалатора.</p>
+                </div>
+            </div>
+            <ul class="nvp-list">
+                <li>Бесхозный пакет, сумка или чемодан: обратись к машинисту или работнику станции.</li>
+                <li>Чрезвычайная ситуация: свяжись с машинистом (в каждом вагоне есть кнопка связи) или с персоналом через колонну экстренной связи на станции. Если поезд остановился на перегоне, сохраняй спокойствие, а при стоянке более 10 минут выполняй рекомендации поездной бригады.</li>
+                <li>Если ты увидел, что человек упал на пути, сразу сообщи персоналу через колонну экстренного вызова. Самому спускаться на пути нельзя.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Железная дорога</h3>
+            <p>Чрезвычайные ситуации возникают из-за больших объёмов перевозок, высокой интенсивности движения, высоких скоростей (до 200–250 км/ч) и составов с опасными грузами. Основные причины травм и гибели людей — <strong>переход путей в неустановленном месте и невнимательность</strong>: внимание отвлекают наушники, капюшоны и рискованное селфи.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Переходить пути</h3>
+                    <p>Только в установленных местах и когда в обозримом пространстве нет поездов. Безопасным считается расстояние до поезда не менее 400 м. Ничто не должно загораживать обзор и снижать слышимость.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Нельзя</h3>
+                    <p>Ходить по путям, проходить под платформами и подвижным составом, между вагонами. Двигаться вдоль путей ближе 5 м от крайнего рельса. Подкладывать на рельсы предметы. Находиться на насыпи во время движения поезда. Переходить переезд при опущенном шлагбауме и включённой сигнализации.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Опасно для жизни</h3>
+                    <p>Передвигаться в зоне стрелок (нога может быть зажата), приближаться к оборванным проводам, залезать на крыши вагонов и опоры, трогать токоведущее оборудование. Детский травматизм резко вырос из-за зацеперов и руферов: для большинства из них опасное увлечение заканчивается тяжёлыми травмами и гибелью.</p>
+                </div>
+            </div>
+            <p><strong>Пассажиру поезда:</strong> занять место по билету, изучить план эвакуации и памятки, не прислоняться к дверям вагона, в нештатной ситуации слушать проводника, о забытых предметах сообщать проводнику, не принимать еду от незнакомых и не играть с ними в игры.</p>
+            <p><strong>Если в вагоне пожар:</strong></p>
+            <ol class="nvp-algo">
+                <li>Увидел дым или другие признаки пожара — <strong>немедленно сообщи проводнику</strong>. Ночью помоги оповестить пассажиров в других купе.</li>
+                <li>Сработала пожарная сигнализация (громкий сигнал) — <strong>сразу начинай эвакуацию</strong>: до остановки поезда в соседний вагон. Купе, где начался пожар, закрой, а если уходишь последним, закрой межвагонную дверь.</li>
+                <li>При сильном задымлении дыши через рукав одежды или смоченную ткань.</li>
+                <li>Если после остановки двери тамбура заблокированы или в коридоре сильное задымление, используй окна как аварийные выходы.</li>
+                <li>После эвакуации немедленно покинь железнодорожные пути.</li>
+            </ol>
+
+            <h3 class="nvp-h3">Водный транспорт</h3>
+            <p>На борту судна пассажир полностью попадает под опеку капитана и экипажа. Поэтому прослушай инструкции и изучи памятки, <strong>научись пользоваться спасательным жилетом</strong> и запомни, где он лежит, узнай, где шлюпки, выходы на палубу и кратчайший путь от каюты до шлюпок. Не бегай по палубам, не перевешивайся через ограждения и чётко выполняй указания экипажа.</p>
+            <p><strong>Если объявлена эвакуация на судне:</strong></p>
+            <ol class="nvp-algo">
+                <li>Надень спасательный жилет (зимой сначала тёплую одежду, потом жилет).</li>
+                <li>Иди кратчайшим путём к шлюпкам. Возьми только самое необходимое: деньги, документы, одеяло, спички, аптечку, еду и воду.</li>
+                <li>Пропусти к шлюпкам детей и женщин. Спускайся в шлюпку не спеша, не создавая давки.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Важно знать:</strong> главная опасность при происшествиях на воде — само нахождение в воде: тело теряет тепло в несколько раз быстрее, чем на воздухе, особенно через шею, голову, подмышки и низ живота. Даже в тёплой воде двигайся как можно меньше, а в жилете сгруппируйся: обхвати себя руками и подтяни ноги к животу.</p>
+            </div>
+            <p>Если нужно экстренно прыгнуть в воду: прижми подбородок к груди, не отклоняй голову назад, сделай глубокий вдох, одной рукой закрой нос и рот, другой держись за жилет. После прыжка вынырни с широко раскрытыми глазами и осмотрись, чтобы не попасть под винт, затем отплыви от судна как можно дальше (чтобы не попасть в воронку) и зацепись за проплывающий предмет. Жилет оснащён лампочкой, зеркалом и свистком для сигналов о помощи.</p>
+            <p>Даже на <strong>учебную тревогу</strong> бери спасательный жилет. При эвакуации никогда не иди на нижние палубы, особенно расположенные ниже уровня воды.</p>
+
+            <h3 class="nvp-h3">Самолёт</h3>
+            <p>Самолёт быстрый (1500 км менее чем за 2 часа), но чрезвычайные ситуации возможны из-за скорости, высоты, большого запаса топлива и замкнутого пространства салона. Слушай инструкции экипажа и изучи памятку, застегни ремень по размеру, при взлёте и посадке не пользуйся телефоном, без нужды не ходи по салону и точно выполняй указания бортпроводников.</p>
+            <div class="nvp-alert">
+                <p><strong>Самое основное правило:</strong> не поднимать панику, действовать быстро и чётко, согласно требованиям экипажа. Основные действия прописаны в памятке, с которой бортпроводники знакомят перед взлётом.</p>
+            </div>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>При чрезвычайной ситуации</h3>
+                    <p>Застегни ремень. Сними обувь на каблуках, серёжки, очки, убери острые и колющие предметы. Сгруппируйся: сцепи руки под коленями, голову положи на колени.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Разгерметизация и аварийная посадка</h3>
+                    <p>Кислородную маску надень сначала на себя, потом помоги соседям. К ближайшему аварийному выходу иди <strong>без ручной клади</strong>. В дыму передвигайся на коленях по световым дорожкам. Жилет (он под сиденьем) надувай <strong>только перед аварийным выходом</strong>: в салоне он будет мешать двигаться.</p>
+                </div>
+            </div>
+            <p><strong>Если в самолёте пожар:</strong> заранее запомни, где аварийные выходы, и посчитай кресла до выхода, чтобы ориентироваться на ощупь в дыму. Не стремись добраться до входа, через который заходил: помни об аварийных выходах. На эвакуацию всего 1,5–2 минуты: не задерживайся у надутого трапа, просто прыгай на него. Обувь на высоком каблуке сними и держи в руках. В сильном дыму пригнись к полу или ползи. Люки самостоятельно не открывай: это может усилить пламя.</p>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li>Ты становишься пассажиром, когда <strong>решил ехать и пошёл к транспорту</strong>. Безопасность в салоне зависит и от водителя, и от тебя.</li>
+                    <li>В общественном транспорте входи и выходи <strong>после полной остановки</strong>, держись за поручень, не отвлекай водителя разговорами во время движения.</li>
+                    <li>Ремень: верхняя часть через плечо и грудь ближе к шее, поясная часть по бёдрам. Маленькому ребёнку нужно <strong>детское удерживающее устройство</strong>.</li>
+                    <li>В метро держись дальше от края платформы, не спускайся на пути. У железной дороги переходи пути <strong>только в установленных местах</strong> и без наушников.</li>
+                    <li>На судне надень спасательный жилет и иди к шлюпкам. В самолёте не паникуй и точно выполняй указания экипажа.</li>
+                    <li>На любом транспорте при чрезвычайной ситуации <strong>слушай экипаж, проводника, машиниста</strong> и действуй по памятке.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Выбери один вид транспорта: метро, поезд, судно или самолёт. Составь для себя памятку «Я пассажир»: напиши 5–6 правил безопасного поведения. К каждому правилу добавь одно предложение: какую опасность оно предотвращает.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Сформулируй несколько правил безопасного поведения, которые общие для всех видов транспорта (учебник, с. 117, вопрос 2). Объясни, почему эти правила подходят и для автобуса, и для самолёта.</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст параграфа. Адрес и фамилии не указывай: описывай ситуацию общими словами. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности. 8–9 классы», часть 1 (под научной редакцией Ю. С. Шойгу, М.: Просвещение, 2022): модуль 3, тема 3 «Безопасность пассажира» (с. 85–90) и тема 6 «Пассажиры на различных видах транспорта» (с. 106–117).</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="8" data-n="8">
+            <span data-dir="prev">← Предыдущий урок: № 7 «Безопасные действия при дорожно-транспортных происшествиях»</span>
+            <span data-dir="next">Следующий урок: № 9 «Первая помощь при чрезвычайных ситуациях на транспорте» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности. 8–9 классы» (под научной редакцией Ю. С. Шойгу, М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6abaca9650569060a527b159/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '8', lesson: 'БЖ-8' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Когда человек становится пассажиром?",
+          options: ["Когда решил ехать и пошёл к транспорту или к остановке", "Только после оплаты проезда и посадки в салон транспорта", "Когда транспортное средство тронулось и набрало скорость", "Только если он едет на общественном транспорте, а не на личном"], correct: 0,
+          explain: "Человек становится пассажиром не в момент, когда сел в транспорт, а когда принял решение перемещаться на нём и начал движение к двери автомобиля или к остановке." },
+        { text: "Как правильно входить в автобус и выходить из него?",
+          options: ["Входить и выходить можно в любой момент, лишь бы двери были открыты", "Выходить на остановке нужно заранее, пока транспорт ещё едет, чтобы не задерживать других", "Входить и выходить после полной остановки, не мешая другим пассажирам", "Входить первым, чтобы занять хорошее место"], correct: 2,
+          explain: "Пассажир производит посадку и высадку в местах остановок после полной остановки транспортного средства и не мешает входу и выходу других пассажиров." },
+        { text: "С кем пассажир может разговаривать во время поездки в общественном транспорте?",
+          options: ["С водителем в любой момент поездки, если вопрос важный", "С водителем только во время остановки", "С водителем только на повороте", "С водителем нельзя разговаривать вообще, даже на остановке"], correct: 1,
+          explain: "Отвлекать водителя разговорами во время движения запрещено. Общаться с водителем можно только во время остановки." },
+        { text: "Как правильно застегнуть ремень безопасности?",
+          options: ["Ремень должен свободно провисать, чтобы не мешать движениям пассажира", "Верхняя часть проходит под рукой, нижняя опоясывает живот; ремень натягивают", "Верхняя часть проходит за спиной, нижняя опоясывает бёдра; ремень натягивают", "Верхняя часть идёт через плечо и грудь, нижняя по бёдрам; ремень натягивают"], correct: 3,
+          explain: "Верхняя часть ремня проходит через плечо вдоль груди ближе к шее (а не под рукой), нижняя опоясывает бёдра (а не живот). После этого ремень надо натянуть и зафиксировать." },
+        { text: "Что нужно установить в салоне для безопасной перевозки совсем маленького ребёнка?",
+          options: ["Ничего, достаточно держать ребёнка на руках", "Подушку на сиденье, чтобы ремень проходил ниже", "Детское удерживающее устройство (автокресло)", "Обычный ремень, подогнанный по росту"], correct: 2,
+          explain: "Ремень больше подходит для взрослых и подростков. Для маленького по возрасту, росту или весу ребёнка нужно установить детское удерживающее устройство." },
+        { text: "Ты ждёшь поезд метро на платформе. Как нужно себя вести?",
+          options: ["Держаться подальше от края и не заходить за ограничительную линию", "Стоять у самого края платформы, чтобы первым зайти в вагон и занять место", "Подойти к краю платформы, как только в тоннеле показались огни поезда", "Стоять у края платформы, но крепко держаться за колонну или поручень"], correct: 0,
+          explain: "Идущий поезд создаёт сильный воздушный поток, который может сбить человека с ног. На платформе нужно держаться как можно дальше от края и не заходить за ограничительную линию." },
+        { text: "Как нужно переходить железнодорожные пути?",
+          options: ["В любом удобном месте, если поезда не слышно вдалеке", "Только в установленных местах, если в обозримом пространстве нет поездов", "Только быстрым шагом, когда поезд ещё далеко от тебя", "Только в наушниках, чтобы шум поезда не отвлекал от дороги"], correct: 1,
+          explain: "Переходить пути можно только в установленных местах и только при отсутствии поездов в обозримом пространстве. Ничто не должно загораживать обзор и снижать слышимость (наушники и капюшоны мешают)." },
+        { text: "Ты увидел дым в вагоне пассажирского поезда. Что нужно сделать в первую очередь?",
+          options: ["Попробовать потушить огонь самому", "Открыть окно и ждать, пока дым выйдет", "Немедленно сообщить проводнику", "Вернуться на своё место и подождать остановки поезда"], correct: 2,
+          explain: "При обнаружении дыма или других признаков пожара нужно немедленно сообщить проводнику. Если сработала пожарная сигнализация, сразу начинай эвакуацию." },
+        { text: "Что нужно сделать при объявлении эвакуации на судне?",
+          options: ["Собрать все вещи из каюты и только потом идти к шлюпкам", "Спуститься на нижние палубы и ждать там указаний экипажа", "Остаться в каюте и ждать указаний по внутренней связи", "Надеть жилет и кратчайшим путём идти к шлюпкам, взяв необходимое"], correct: 3,
+          explain: "При эвакуации надевают спасательный жилет (зимой сначала тёплую одежду), идут к шлюпкам кратчайшим путём и берут только самое необходимое. На нижние палубы идти нельзя." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>

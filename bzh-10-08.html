@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасность в местах массового пребывания людей | БЖ, 10 класс, урок 8</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор на страницах для учеников выключен) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:false, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 10 класс · Урок 8 из 10</p>
+                <h1>🏟️ Безопасность в местах массового пребывания людей</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 9 ноября</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>объяснять, что такое место массового пребывания людей, и приводить примеры мест открытого и закрытого типа;</li>
+                    <li>называть виды толпы и причины давки;</li>
+                    <li>готовиться к массовому мероприятию: составлять личный план действий, выбирать одежду, запоминать выходы;</li>
+                    <li>действовать в толпе и при давке, при угрозе террористического акта и при обнаружении подозрительного предмета.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Общественное место</dt><dd>Территория, на которой могут находиться или находятся люди и которая не является частной собственностью граждан, используемой ими в личных целях.</dd></div>
+                <div class="nvp-term"><dt>Место массового пребывания людей</dt><dd>Территория общего пользования, на которой при определённых условиях одновременно может находиться более пятидесяти человек. По сути, это общественное место, особенностью которого является большая численность одновременно находящихся там людей.</dd></div>
+                <div class="nvp-term"><dt>Публичное мероприятие</dt><dd>По российскому законодательству — открытая, мирная, доступная каждому акция, осуществляемая по инициативе граждан, политических партий, общественных объединений. Она может иметь форму собрания, митинга, демонстрации, шествия.</dd></div>
+                <div class="nvp-term"><dt>Паническая толпа</dt><dd>Скопление людей, охваченных чувством очень сильного (гипертрофированного) страха, стремящихся избежать предполагаемой или реальной опасности.</dd></div>
+                <div class="nvp-term"><dt>Эмоциональное заражение</dt><dd>Передача настроения группы людей или даже одного человека другим людям. Если люди испытывают сильные эмоции, находясь близко друг к другу, оно действует вне зависимости от их желания.</dd></div>
+                <div class="nvp-term"><dt>Уровни террористической опасности</dt><dd>На отдельных участках территории (объектах) могут устанавливаться повышенный («синий»), высокий («жёлтый») и критический («красный») уровни. Они предусматривают дополнительные меры по обеспечению безопасности.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <div class="nvp-alert">
+                <p><strong>Важно знать о теме.</strong> В учебнике Егорова отдельного параграфа о местах массового пребывания людей нет. Урок составлен по учебнику Шойгу (8–9 классы), модуль «Безопасность в общественных местах», и по разделам учебников Егорова о поведении в толпе, угрозе теракта и публичных мероприятиях. Для 10 класса добавлены ответственность и подготовка к мероприятию.</p>
+            </div>
+
+            <h3 class="nvp-h3">Где собирается много людей</h3>
+            <p>Мы ходим в парки и кино, на выставки и спортивные матчи, в театры и концертные залы. Эти места — общественные пространства, и в них всегда много людей. Любое общественное место может стать опасным: из-за чьего-то неадекватного поведения, плохой организации мероприятия или злого умысла.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Открытого типа</h3>
+                    <p>Городские площадки, парки и скверы, остановки транспорта, подходы к вокзалам, рыночные площадки.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Закрытого типа</h3>
+                    <p>Школьные спортивные и актовые залы, театры и кинотеатры, торговые центры, церкви.</p>
+                </div>
+            </div>
+            <p>Одни места массового пребывания людей считаются такими по определению (вокзалы, торговые центры), другие становятся ими из-за предстоящего мероприятия. Перечни таких мест составляют и утверждают органы власти субъектов РФ и органы местного самоуправления. Их согласуют с правоохранительными органами, органами госбезопасности и МЧС России, потому что именно эти службы защищают людей от террористических угроз.</p>
+
+            <h3 class="nvp-h3">Какие бывают опасности</h3>
+            <ul class="nvp-list">
+                <li><strong>Давка.</strong> Одна из самых реальных угроз жизни и здоровью в общественном месте: на празднике или концерте, в подземных переходах и метро.</li>
+                <li><strong>Техногенные угрозы:</strong> пожары и взрывы, внезапное обрушение зданий и сооружений, аварии в коммунальных системах. При нарушении правил пожарной безопасности и отсутствии продуманных путей эвакуации пожар в общественном месте может обернуться большой трагедией.</li>
+                <li><strong>Криминальные угрозы:</strong> кражи, грабежи, мошенничество, хулиганство. В общественных местах, особенно при большом скоплении людей, велика вероятность встретить вора.</li>
+                <li><strong>Угроза террористического акта.</strong> Открытость и незащищённость общественного места вместе с большим числом людей делают его целью для преступников. Нападая на беззащитных людей, террористы стремятся запугать всё население.</li>
+                <li><strong>Особенности мероприятия.</strong> На авиасалоне или ралли нужно учитывать возможность аварии, на спортивном событии — вероятность массовой драки болельщиков.</li>
+            </ul>
+            <p>Есть и менее заметная опасность: любая конструкция (стадион, мост, здание) может войти в резонанс с внешним воздействием. Например, болельщики, празднуя победу, начинают подпрыгивать в такт. Колебания конструкции усиливаются, и она может разрушиться.</p>
+
+            <h3 class="nvp-h3">Толпа: виды и опасность</h3>
+            <p>Находясь в толпе, люди быстро «заражаются» эмоциями друг друга, им труднее рационально оценивать обстановку, они теряют контроль над собственным поведением. Толпы бывают пассивными (выжидающими) и активными (действующими).</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Пассивные толпы</h3>
+                    <ul class="nvp-list">
+                        <li><strong>Случайная:</strong> возникает из-за неожиданного события, привлёкшего внимание людей.</li>
+                        <li><strong>Конвенциональная:</strong> собирается на заранее объявленное мероприятие (спортивное состязание, концерт, митинг).</li>
+                        <li><strong>Экспрессивная:</strong> много людей одновременно проявляют сильные эмоции (например, скандирующие болельщики).</li>
+                    </ul>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Активные толпы</h3>
+                    <ul class="nvp-list">
+                        <li><strong>Агрессивная:</strong> стремится к разрушению и даже убийству.</li>
+                        <li><strong>Паническая:</strong> охвачена сильным страхом.</li>
+                        <li><strong>Стяжательская:</strong> борется за обладание ценностями (например, места в транспорте, товары).</li>
+                        <li><strong>Экстатическая:</strong> доводит себя до исступления совместными действиями; человек может поддаться опасным внушениям.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nvp-alert">
+                <p><strong>Любая пассивная толпа может превратиться в активную</strong> и стать реальной опасностью для жизни и здоровья.</p>
+            </div>
+            <p>Пример паники: в 2016 г. в фан-зоне в Париже во время просмотра футбольного матча неизвестный бросил в толпу петарду. Многие приняли взрыв за взрыв бомбы, тысячи людей бросились врассыпную, сметая ограждения и палатки (по данным СМИ). Пострадали несколько человек.</p>
+            <p>Причины давки чаще всего связаны с плохой организацией мероприятий и несоответствием пропускной способности общественных пространств количеству людей. Беду могут усилить резкое ухудшение погоды, слабая дисциплина участников и просто любопытство: желание узнать, что случилось рядом. Не повторяй поведения болельщиков, которые бросаются за мячом или шайбой, залетевшими на трибуну.</p>
+            <p>Учебник Шойгу приводит пример: два мероприятия в одном районе прошли без происшествий, но слабым звеном оказался подземный переход. Его пропускной способности не хватило на людей, возвращавшихся одновременно, а внезапный дождь усилил желание быстрее пройти. Причины таких трагедий обычно комплексные.</p>
+
+            <h3 class="nvp-h3">Готовимся заранее: три правила безопасной жизни</h3>
+            <p>Безопасность на мероприятии зависит от организаторов, администрации и специальных служб. Но толпа может возникнуть внезапно, поэтому каждому нужен собственный план. Он строится на трёх правилах: <strong>предвидеть опасность, предупредить опасность, при необходимости действовать</strong>.</p>
+            <ol class="nvp-algo">
+                <li><strong>Подумай, какие опасности могут подстерегать</strong> в этом месте или на этом мероприятии, и оцени, насколько они вероятны.</li>
+                <li><strong>Продумай меры,</strong> которые помогут избежать экстремальной ситуации или эффективно действовать в ней.</li>
+                <li><strong>Разработай план действий</strong> на случай экстремальной ситуации.</li>
+                <li><strong>Если потребуется, действуй по плану.</strong></li>
+            </ol>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Что учесть</h3>
+                    <ul class="nvp-list">
+                        <li>время и место проведения, характер и программу мероприятия;</li>
+                        <li>особенности здания или местности;</li>
+                        <li>другие массовые мероприятия поблизости (их одновременное окончание создаст плотный людской поток);</li>
+                        <li>погоду: резкое похолодание, ливень, ураганный ветер, жара могут стать причиной давки.</li>
+                    </ul>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Что сделать</h3>
+                    <ul class="nvp-list">
+                        <li>заранее узнать, согласовано ли мероприятие, и изучить место по схемам и картам;</li>
+                        <li>при ураганном ветре отказаться от посещения мероприятия под открытым небом;</li>
+                        <li>запомнить как минимум два ближайших выхода (основной и запасной) и мысленно пройти путь к ним;</li>
+                        <li>понять, где давка наиболее вероятна и где узкие проходы, ограждения, острые предметы, и держаться от них дальше;</li>
+                        <li>на природе заметить, где правоохранители и экипажи скорой помощи.</li>
+                    </ul>
+                </div>
+            </div>
+            <p><strong>Одежда и обувь.</strong> Главное — функциональность: защита от холода, жары, дождя и свобода движений. Обувь должна быть удобной, лёгкой и привычной. Избегай свисающих предметов: шарф в толпе может зацепиться за людей или предметы. Обувь на острых высоких каблуках не даёт устойчивости, и каблуки могут ранить других людей.</p>
+
+            <h3 class="nvp-h3">Если попал в толпу или давку</h3>
+            <p>Лучше всего вообще не попасть в такую ситуацию. Не присоединяйся к толпе, как бы ни хотелось посмотреть на происходящее. Если ты заметил, что назревает кризис или в толпе начались беспорядки, уходи на её периферию, подальше от центра событий. Не приближайся к возбуждённой толпе: обойди её.</p>
+            <ol class="nvp-algo">
+                <li><strong>Освободись от опасных вещей:</strong> сумки на длинном ремне, шарфа. Если что-то уронил, не наклоняйся за этим.</li>
+                <li><strong>Старайся удержаться на ногах.</strong> Не держи руки в карманах. Поднимай ноги выше, ставь ногу на полную стопу, не семени и не вставай на цыпочки.</li>
+                <li><strong>Защити грудную клетку:</strong> разведи согнутые в локтях руки перед собой или чуть в стороны.</li>
+                <li><strong>Держись подальше</strong> от высоких и крупных людей, людей с громоздкими предметами и большими сумками. Не прижимайся к стенам, заборам и машинам.</li>
+                <li><strong>Если упал,</strong> постарайся как можно быстрее подняться на ноги, не опираясь на руки: их могут отдавить или сломать.</li>
+                <li><strong>Если встать не удаётся,</strong> сожмись в комок, подожми ноги, защити голову предплечьями, а затылок прикрой ладонями.</li>
+                <li><strong>Не обращай внимания</strong> на мелкие травмы и потерянные вещи: главная задача — выйти из толпы.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Не поддавайся эмоциональному заражению.</strong> Увидев признаки неадекватного поведения людей, дистанцируйся от них и уйди к периферии. Старайся сохранять спокойствие и способность трезво оценивать ситуацию. Не перенимай агрессивное настроение у зачинщиков беспорядков и хулиганов.</p>
+            </div>
+            <p>Во время массовых беспорядков, которые могут сопровождаться насилием, погромами и поджогами, постарайся не оказаться в толпе ни участником, ни зрителем. Главная задача человека в такой зоне — добраться до сотрудников правоохранительных органов и попросить у них защиты. Если это невозможно, остаются две стратегии: самостоятельно выйти из зоны беспорядков или спрятаться в надёжном месте, пока опасность не будет ликвидирована.</p>
+
+            <h3 class="nvp-h3">Угроза террористического акта</h3>
+            <p>Учебник Егорова советует всегда контролировать обстановку вокруг себя, особенно на объектах транспорта, в культурно-развлекательных, спортивных и торговых центрах.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Забытая вещь, подозрительный предмет</h3>
+                    <ul class="nvp-list">
+                        <li><strong>Не трогай, не передвигай, не вскрывай</strong> предмет и не заглядывай внутрь пакета или коробки.</li>
+                        <li>Сообщи водителю (машинисту), сотрудникам объекта, охране или полиции. В подъезде сначала можно опросить соседей: возможно, вещь принадлежит им.</li>
+                        <li>Запомни время обнаружения. Постарайся, чтобы люди отошли как можно дальше.</li>
+                        <li>Дождись прибытия оперативно-следственной группы: ты очень важный очевидец.</li>
+                        <li>Не подбирай бесхозных вещей, как бы привлекательно они ни выглядели, и не пинай предметы на земле.</li>
+                    </ul>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Если ситуация обострилась</h3>
+                    <ul class="nvp-list">
+                        <li>Если началась активизация сил безопасности, не проявляй любопытства, уходи в сторону от места событий, <strong>но не бегом</strong>, чтобы тебя не приняли за противника.</li>
+                        <li>При взрыве или начале стрельбы немедленно падай на землю, лучше под прикрытие (бордюр, торговую палатку, машину), и накрой голову руками.</li>
+                        <li>Если случайно узнал о готовящемся теракте, немедленно сообщи в правоохранительные органы.</li>
+                    </ul>
+                </div>
+            </div>
+            <p>Внешний вид предмета может скрывать его настоящее назначение: для маскировки используют обычные бытовые предметы (сумки, пакеты, коробки, игрушки). Любые самостоятельные действия с подозрительными находками могут привести к взрыву, жертвам и разрушениям.</p>
+            <p><strong>Что делает государство.</strong> Среди мер при повышенном («синем») уровне террористической опасности — усиленные патрули в местах проведения публичных и массовых мероприятий и информирование населения о том, как вести себя при угрозе теракта. Для информирования людей об угрозе теракта и чрезвычайных ситуациях в местах массового пребывания людей действует система ОКСИОН, которая ведёт и мониторинг обстановки.</p>
+
+            <h3 class="nvp-h3">Вызов экстренных служб</h3>
+            <p>Единый номер вызова экстренных служб — <strong>112</strong>. Звонить можно, если обстановка позволяет и твоей личной безопасности ничто не угрожает. Расскажи чётко и кратко, что произошло, где это случилось, и назови свои фамилию, имя и отчество. Сообщи адрес или название учреждения и опиши местность. Поддерживай связь с оператором, пока он сам первым не повесит трубку.</p>
+            <p>Ложный вызов специальных служб из хулиганских или шуточных побуждений наказуем: за заведомо ложный вызов налагается административный штраф, а за ложное сообщение о теракте предусмотрена уголовная ответственность.</p>
+
+            <h3 class="nvp-h3">Ответственность и согласованные мероприятия</h3>
+            <p>Массовые мероприятия обеспечивают организаторы, местные власти и специальные службы, поэтому для их проведения требуются разрешения. Несанкционированные мероприятия опасны: у специальных служб нет возможности (времени) обеспечить высокий уровень безопасности. Участие в них может повлечь административное или даже уголовное наказание.</p>
+            <ul class="nvp-list">
+                <li>Не присоединяйся к митингующим «ради интереса». Сначала узнай, согласован ли митинг и за что агитируют выступающие.</li>
+                <li>Не посещай публичные мероприятия, не согласованные в установленном законом порядке, и не ходи на массовые мероприятия «случайным зевакой»: можно стать невольной жертвой провокаций и столкновений.</li>
+                <li>Не нарушай общественный порядок: не проявляй агрессии, не устраивай драк и провокаций. Скрывать лицо масками на публичных мероприятиях запрещено.</li>
+                <li>Заранее сообщи родителям о намерении участвовать в публичном мероприятии: они отвечают за тебя перед законом.</li>
+                <li>За организацию массового пребывания граждан в общественных местах, повлёкшую нарушение общественного порядка, предусмотрены штраф, обязательные работы или административный арест; при вреде здоровью или имуществу наказание строже (КоАП РФ, ст. 20.2.2).</li>
+            </ul>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li><strong>Место массового пребывания людей</strong> — территория общего пользования, где при определённых условиях одновременно может находиться более пятидесяти человек.</li>
+                    <li>Три правила: <strong>предвидеть опасность, предупредить опасность, при необходимости действовать.</strong> Заранее запомни как минимум два ближайших выхода, выбери удобную одежду и обувь без свисающих предметов.</li>
+                    <li>Любая пассивная толпа может стать активной. Причины давки: плохая организация и несоответствие пропускной способности числу людей.</li>
+                    <li>В толпе: освободись от опасных вещей, держись на ногах, защити грудную клетку. Упал: поднимайся, не опираясь на руки. Не получилось: сгруппируйся и закрой голову.</li>
+                    <li>Подозрительный предмет: <strong>не трогай</strong>, сообщи, отведи людей, запомни время. Не беги от места событий и при взрыве падай на землю, накрыв голову руками.</li>
+                    <li>Несогласованные мероприятия не посещай. Ложный вызов экстренных служб и ложное сообщение о теракте наказуемы.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Составь памятку (не более пяти пунктов) «Как подготовиться к массовому мероприятию, проходящему на улице» (учебник Шойгу, ч. 1, с. 139, задание 2). Опирайся на правила «предвидеть опасность, предупредить опасность, при необходимости действовать».</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Ситуация из учебника (с. 139): на выходе со стадиона друзья попали в толпу, началась давка. Один предложил протиснуться к стене и прижаться к ней, другой — опустить руки и встать спиной к спине. Оцени оба предложения и порекомендуй наиболее безопасные действия.</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в теме осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст страницы. Адрес и фамилии не указывай: описывай ситуацию общими словами. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li><strong>Отдельного параграфа по теме в учебниках нет.</strong> Урок составлен по смежным материалам: основа — учебник «Основы безопасности жизнедеятельности. 8–9 классы», часть 1 (под научной редакцией Ю. С. Шойгу, М.: Просвещение, 2022), модуль «Безопасность в общественных местах», темы 1–2 (с. 122–139): места массового пребывания людей, виды толпы, давка, подготовка к мероприятию, действия в толпе.</li>
+                <li>Учебник «Основы безопасности жизнедеятельности» под редакцией С. Н. Егорова (М.: Просвещение), издание «11 класс»: § 15 «Рекомендации по безопасному поведению при угрозе и в случае проведения террористического акта» (с. 139–142: действия при угрозе теракта, подозрительный предмет, поведение в толпе); система ОКСИОН (с. 70).</li>
+                <li>Учебник Егорова, издание «10 класс»: § 3 «Опасность вовлечения молодёжи и подростков в незаконные протестные акции» (с. 12–15: публичные мероприятия, ответственность); § 30 «Деятельность государства при реальной угрозе террористической опасности» (с. 181–183: уровни террористической опасности).</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="10" data-n="8">
+            <span data-dir="prev">← Предыдущий урок: № 7 «Порядок действий при дорожно-транспортных происшествиях»</span>
+            <span data-dir="next">Следующий урок: № 9 «Опасности криминального характера, меры защиты от них» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Отдельного параграфа по этой теме в учебнике нет: страница составлена по учебнику «Основы безопасности жизнедеятельности. 8–9 классы» (под научной редакцией Ю. С. Шойгу, М.: Просвещение) и по разделам учебника под редакцией С. Н. Егорова (М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6abaca9650569060a527b159/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '10', lesson: 'БЖ-8' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Что такое место массового пребывания людей?",
+          options: ["Любая территория, где в данный момент находятся два-три человека", "Только закрытое помещение, например театр или торговый центр", "Территория общего пользования, на которой при определённых условиях одновременно может находиться более пятидесяти человек", "Частная территория, на которой проходит семейный праздник"], correct: 2,
+          explain: "Так определяет это понятие учебник Шойгу (ч. 1, с. 123). Это общественное место, особенность которого — большая численность одновременно находящихся там людей. Мест открытого типа (площади, остановки) и закрытого (театры, торговые центры) множество." },
+        { text: "Какова наиболее частая причина давки?",
+          options: ["Плохая организация мероприятий и несоответствие пропускной способности общественных пространств количеству людей", "Громкая музыка на концерте", "Слишком короткие выступления артистов", "Привычка людей приходить заранее"], correct: 0,
+          explain: "Учебник (Шойгу, с. 127): причины давки чаще всего связаны с плохой организацией мероприятий и несоответствием пропускной способности общественных пространств количеству людей. Давку усиливают плохая погода, слабая дисциплина, любопытство." },
+        { text: "Какая толпа называется панической?",
+          options: ["Люди, собравшиеся на заранее объявленное мероприятие", "Покупатели, борющиеся за ограниченное число товаров", "Люди, стремящиеся к разрушению", "Люди, охваченные сильным страхом и стремящиеся избежать предполагаемой или реальной опасности"], correct: 3,
+          explain: "Паническая толпа — скопление людей, охваченных сильным страхом (Шойгу, с. 126). Первая толпа в списке — конвенциональная, вторая — стяжательская, третья — агрессивная." },
+        { text: "Что нужно определить, придя в помещение, где собралось много людей?",
+          options: ["Где можно встать у самой сцены", "Как минимум два ближайших выхода (основной и запасной) и пути к ним", "Кто из присутствующих самый высокий", "Где продаются напитки"], correct: 1,
+          explain: "Надо знать, где находятся как минимум два ближайших выхода, и мысленно проделать путь к ним (Шойгу, с. 131; Егоров, «11 класс», с. 142). В чрезвычайной ситуации времени на поиск выхода может не хватить." },
+        { text: "Какая одежда и обувь подходят для массового мероприятия?",
+          options: ["Красивая обувь на высоком остром каблуке", "Длинный шарф, свободно свисающий с шеи", "Функциональная одежда по сезону и погоде, позволяющая свободно двигаться, и удобная, лёгкая, привычная обувь", "Любая одежда, которая нравится, независимо от погоды"], correct: 2,
+          explain: "Главное в выборе одежды — функциональность (Шойгу, с. 136). Свисающие предметы (шарф) в толпе опасны, обувь на высоких каблуках неустойчива и может ранить других людей." },
+        { text: "Ты оказался в давке. Что следует сделать?",
+          options: ["Избавиться от опасных вещей (сумки на длинном ремне, шарфа), удерживаться на ногах и защитить грудную клетку, согнув руки в локтях", "Прижаться к ограждению или забору и стоять", "Остановиться и поднять упавшую вещь", "Опустить голову и не двигаться"], correct: 0,
+          explain: "В толпе избавляются от опасных вещей, любыми способами удерживаются на ногах, защищают грудную клетку, разводя руки в локтях. Не прижимайся к стенам и заборам и не наклоняйся за упавшей вещью." },
+        { text: "Ты упал в толпе. Как поступить?",
+          options: ["Лечь на спину и раскинуть руки", "Поднимайся, опираясь на руки, чтобы получилось быстрее", "Оставаться лежать до конца давки, закрыв лицо", "Постараться быстро подняться, не опираясь на руки; если не удалось, сжаться в комок, защитить голову предплечьями, затылок прикрыть ладонями"], correct: 3,
+          explain: "Егоров («11 класс», с. 142): не опирайся на руки, их отдавят или сломают. Если встать не удаётся, свернись клубком, защити голову предплечьями, а затылок прикрой ладонями." },
+        { text: "Ты обнаружил в общественном транспорте забытую сумку. Что делать?",
+          options: ["Открыть и посмотреть, чья она", "Не трогать, не передвигать и не вскрывать; сообщить водителю (машинисту) и отвести людей подальше", "Переставить сумку в безопасное место", "Взять сумку себе, если рядом нет хозяина"], correct: 1,
+          explain: "Егоров («11 класс», с. 140–141): не трогай, не передвигай, не вскрывай, сообщи водителю, сотрудникам объекта, охране или полиции, запомни время и постарайся, чтобы люди отошли как можно дальше. Дождись оперативно-следственной группы." },
+        { text: "Почему опасно участвовать в мероприятии, не согласованном с местными властями?",
+          options: ["Из-за плохой погоды в дни таких мероприятий", "У специальных служб нет возможности обеспечить высокий уровень безопасности, а участие может повлечь административное или даже уголовное наказание", "На таких мероприятиях всегда отменяют транспорт", "Организаторы таких мероприятий не имеют права вести переговоры"], correct: 1,
+          explain: "Шойгу (с. 135): у специальных служб и служб экстренного реагирования нет возможности (времени) обеспечить высокий уровень безопасности, а участие в незаконных мероприятиях может стать причиной административного или даже уголовного наказания." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>
