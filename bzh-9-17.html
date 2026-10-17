@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы противодействия экстремизму и терроризму | БЖ, 9 класс, урок 17</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор включён на всех страницах, в том числе для учеников: нужен для оценки самостоятельности выполнения заданий) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 9 класс · Урок 17 из 21</p>
+                <h1>🛡️ Основы контртеррористической безопасности: внимание и готовность</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 13–19 января</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>различать антитерроризм и контртерроризм;</li>
+                    <li>объяснять, почему внимание и готовность действовать важны для личной безопасности;</li>
+                    <li>знать, кому и как сообщить о подозрительных расспросах, оставленных вещах и автомобилях;</li>
+                    <li>выполнять порядок действий при получении угрозы теракта и отказываться брать чужие посылки.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Антитерроризм</dt><dd>Меры, предпринимаемые государством, обществом и гражданами для защиты от самых разных проявлений террористической деятельности. Например, это обеспечение антитеррористической защищённости мест массового пребывания людей или личная антитеррористическая позиция каждого из нас.</dd></div>
+                <div class="nvp-term"><dt>Контртерроризм (контртеррористические мероприятия)</dt><dd>Мероприятия, которые реализует государство в лице уполномоченных органов и которые направлены на <strong>активное</strong> противодействие угрозе терроризма. Это всегда наступательные действия государства, а также общества и человека.</dd></div>
+                <div class="nvp-term"><dt>Антитеррористическая личностная позиция</dt><dd>Полное и решительное неприятие идеологии террористов и совершаемых ими преступлений, готовность проявлять бдительность и сообщать о подозрительном взрослым либо правоохранительным органам.</dd></div>
+                <div class="nvp-term"><dt>Угроза теракта по телефону</dt><dd>Угроза террористического акта по телефону, осуществляемая в целях дестабилизации деятельности органов власти или воздействия на принятие ими решений, — это также терроризм.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <div class="nvp-alert">
+                <p><strong>О теме урока.</strong> Это урок о правилах личной безопасности: заметить необычное, сообщить взрослым и не рисковать. Ты не должен ничего проверять и «ловить» сам. Твоя задача: сообщить тем, кто за это отвечает. О том, как защититься от вовлечения в опасную деятельность, и о правилах поведения при теракте мы поговорим на других уроках.</p>
+            </div>
+
+            <h3 class="nvp-h3">Антитерроризм и контртерроризм: в чём разница</h3>
+            <p>Многие считают эти понятия одинаковыми, но <strong>это не так</strong>.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Антитерроризм</h3>
+                    <p>Это защита, которая уменьшает риск нападения и сужает возможности распространять человеконенавистнические идеи. Преступникам сложнее атаковать защищённые объекты, а если их идеология никого не привлекает, у них нет поддержки среди населения.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Контртерроризм</h3>
+                    <p>Это активное противодействие угрозе. Его проводят уполномоченные органы государства: изучают активность преступников в сетевом пространстве, собирают и анализируют информацию, задерживают преступников.</p>
+                </div>
+            </div>
+            <p>Контртеррористические мероприятия нужны потому, что террористы могут быть частью международной организации и получать средства из-за рубежа. Даже без поддержки большинства населения они способны нанести удар.</p>
+            <p>Школьники не работают в специальных службах и не участвуют в спецоперациях. Но общество и каждый гражданин, зная основы контртеррористической безопасности и применяя их, тоже включаются в систему противодействия терроризму. Эти основы — знание <strong>признаков подготовки теракта</strong>, порядка действий при попадании в теракт и порядка взаимодействия с правоохранительными органами.</p>
+
+            <h3 class="nvp-h3">Внимание: если посторонний расспрашивает о школе</h3>
+            <p>Преступники всегда тщательно готовятся и могут пытаться расспросить людей, чтобы понять, насколько защищён объект. Например, совершенно посторонний человек интересуется, когда будет школьный праздник, сколько классов в нём участвует и есть ли в школе охрана. Это должно тебя насторожить: такую информацию родителям и ученикам сообщают классный руководитель или другие должностные лица школы.</p>
+            <ol class="nvp-algo">
+                <li><strong>Вежливо прерви разговор,</strong> сославшись на то, что ничего не знаешь.</li>
+                <li><strong>Сообщи о случившемся</strong> классному руководителю и работнику, отвечающему за безопасность школы.</li>
+                <li>В других общественных местах (музей, театр, больница) <strong>обратись к сотруднику администрации или службы безопасности</strong> и расскажи о своих наблюдениях.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Знай место, где ты находишься.</strong> Учебник советует при посещении общественных мест внимательно изучить пути эвакуации на случай чрезвычайной ситуации и продумать своё поведение. Чем лучше ты знаешь место, тем выше шансы действовать правильно.</p>
+            </div>
+
+            <h3 class="nvp-h3">Не суди по внешности</h3>
+            <p>Учебник предупреждает: эмоции и реакции человека много о нём говорят, но <strong>никогда не могут быть абсолютно надёжным способом определения его намерений</strong>. Вероятность повстречать террориста крайне мала. Если тебе неприятно находиться рядом с человеком, просто отойди или выйди на ближайшей остановке и успокойся.</p>
+            <p>Кроме того, человеку рядом может просто стать плохо, и ему понадобится медицинская помощь. Если на массовом мероприятии (например, на школьном празднике) тебе кажется, что человеку плохо, сообщи об этом взрослым, организаторам или сотруднику полиции. Так можно спасти жизнь человека, которому нужна помощь.</p>
+
+            <h3 class="nvp-h3">Подозрительные автомобили у дома и у места праздника</h3>
+            <p>Обращай внимание на посторонние, ранее не замеченные и вызывающие подозрение грузовые автомобили, фургоны или прицепы, оставленные возле твоего дома, зданий и мест массового пребывания людей. Перед массовыми мероприятиями власти очищают пространство вокруг места проведения, поэтому грузовик или специальная техника рядом с праздником — либо чья-то халатность, либо признак подготовки теракта.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>На массовом мероприятии</h3>
+                    <p>Сразу сообщи сотрудникам полиции, службе безопасности или организаторам. На общешкольном мероприятии — классному руководителю или сотруднику службы безопасности школы.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Возле твоего дома</h3>
+                    <p>Расскажи родителям. Они смогут уточнить у знакомых соседей, либо обратятся к участковому уполномоченному полиции или в местное отделение полиции.</p>
+                </div>
+            </div>
+            <p>В целях безопасности подвалы и чердаки всегда должны быть закрыты для посторонних. Если ты заметил, что посторонние туда проникают, расскажи об этом взрослым.</p>
+            <p>Залог контртеррористической безопасности жилого дома — доверительные отношения и взаимодействие между соседями, видеонаблюдение в доме и на прилегающей территории, организация парковок на удалении от дома (концепция «двор без машин»).</p>
+
+            <h3 class="nvp-h3">Оставленные и чужие предметы</h3>
+            <p>Предметы, оставленные без присмотра, могут быть опасны. Поэтому в общественных местах (вокзал, аэропорт, торговый центр, многолюдный праздник и т. д.) действуй так:</p>
+            <ol class="nvp-algo">
+                <li><strong>Не трогай предмет</strong> и никогда не пытайся проверить, что внутри: это гораздо лучше сделают специалисты.</li>
+                <li><strong>Немедленно сообщи</strong> сотруднику полиции. Также сообщи администратору или сотруднику службы безопасности учреждения, где ты находишься.</li>
+                <li><strong>Обрати внимание взрослых.</strong> Они сообщат правоохранительным органам, а также другим людям и попросят их отойти на безопасное расстояние.</li>
+                <li><strong>Выполняй указания сотрудников.</strong> Каким должно быть безопасное расстояние, может определить только профессионал.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Правило.</strong> Никогда не поднимай с пола и не трогай даже очень красивые вещи и игрушки, которые тебе не принадлежат.</p>
+            </div>
+
+            <h3 class="nvp-h3">Просьба передать посылку</h3>
+            <p>Человек с ясной антитеррористической позицией трудно поддаётся на уговоры преступников. Но они могут использовать такие качества, как сострадание и сопереживание, и попросить доставить на поезде или самолёте небольшую посылку.</p>
+            <ul class="nvp-list">
+                <li><strong>Ни при каких обстоятельствах</strong> не принимай от незнакомых людей какие-либо передачи для доставки на личном или общественном транспорте.</li>
+                <li>Остерегайся брать посылки даже у знакомых, но не близких людей. Не бойся и не стесняйся отказать: сегодня в стране развиты государственные и частные почтовые сервисы.</li>
+                <li>Незнакомому человеку откажи в вежливой, но категорической форме и предупреди о нём сотрудников полиции на вокзале или в аэропорту (если просьба прозвучала там).</li>
+            </ul>
+            <p>Если помочь злоумышленникам, можно из законопослушного гражданина стать виновником преступления: человек, взявший неизвестный ему предмет, может оказаться доставщиком запрещённых предметов.</p>
+
+            <h3 class="nvp-h3">Если поступила угроза теракта</h3>
+            <p>Угроза теракта по телефону — это тоже терроризм. При получении информации о готовящемся теракте необходимо:</p>
+            <ol class="nvp-algo">
+                <li><strong>Реагировать на каждый звонок.</strong> Не относись к такой угрозе как к розыгрышу или к тому, что с тобой не может произойти.</li>
+                <li><strong>Сообщить в школе</strong> об угрозе классному руководителю или лицу, ответственному за безопасность школы.</li>
+                <li><strong>Если ты один,</strong> незамедлительно сообщить в правоохранительные органы (экстренный вызов: 112).</li>
+                <li><strong>Запомнить разговор дословно</strong> и зафиксировать его на бумаге, чтобы дать правоохранительным органам максимально полную информацию.</li>
+                <li>Если есть техническая возможность, <strong>записать разговор на диктофон</strong> телефона и зафиксировать время звонка и его продолжительность.</li>
+                <li>При необходимости <strong>предупредить окружающих</strong> об угрозе и быстро эвакуироваться.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Помни:</strong> заведомо ложное сообщение об акте терроризма, даже из хулиганских побуждений, — преступление, за которое наказывают по закону. Учебник отдельно это подчёркивает.</p>
+            </div>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li><strong>Антитерроризм</strong> — защита и профилактика (меры государства, общества и граждан). <strong>Контртерроризм</strong> — активное противодействие, которое проводят уполномоченные органы.</li>
+                    <li>Основы контртеррористической безопасности: знать признаки подготовки теракта, порядок действий при попадании в него и порядок взаимодействия с правоохранительными органами.</li>
+                    <li>Если посторонний расспрашивает о школе и охране, вежливо прерви разговор и сообщи классному руководителю и ответственному за безопасность.</li>
+                    <li>Оставленный предмет не трогай и не проверяй. Сообщи сотруднику полиции, администратору или охране и взрослым. Безопасное расстояние определяет только профессионал. Не поднимай чужие вещи и игрушки.</li>
+                    <li>Не принимай посылки для передачи от незнакомых людей. Откажи вежливо, но категорически, и не бойся отказать.</li>
+                    <li>Угрозу теракта не считай шуткой: сообщи ответственному в школе или в правоохранительные органы (112), запомни разговор и время звонка. Ложное сообщение о теракте — преступление.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Ответь на вопросы 1 и 4 из учебника (с. 151): в чём отличие контртерроризма от антитерроризма и каков порядок действий при получении угрозы о совершении теракта. Оформи порядок действий как памятку для школьника из 5–6 пунктов.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> По вопросу 3 из учебника (с. 151): опиши порядок действий, если ты увидел оставленную вещь в общественном месте или подозрительный автомобиль возле школы. Кому ты сообщишь и почему нельзя проверять такие предметы самому?</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст параграфа. Адрес и фамилии не указывай. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Если в задании нужна таблица, впиши её в поле ответа текстом: каждая строка с новой строки, ячейки раздели знаком « — ». Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности. 8–9 классы», часть 2 (под научной редакцией Ю. С. Шойгу, М.: Просвещение, 2022): модуль 9 «Основы противодействия экстремизму и терроризму», тема 4 «Основы контртеррористической безопасности» (с. 144–151), вопросы и задания — с. 151. Из темы взяты определения и правила сообщения о подозрительном; описания внешних признаков людей и способов совершения преступлений в урок не вошли намеренно.</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="9" data-n="17">
+            <span data-dir="prev">← Предыдущий урок: № 16 «Сущность понятий «терроризм» и «экстремизм»»</span>
+            <span data-dir="next">Следующий урок: № 18 «Опасности вовлечения в экстремистскую и террористическую деятельность, меры защиты» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности. 8–9 классы» (под научной редакцией Ю. С. Шойгу, М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://demin-obzr.ru/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://demin-obzr.ru/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6acc67bb95add51e2a487413/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '9', lesson: 'БЖ-17' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Что такое антитерроризм?",
+          options: ["Только действия спецслужб по поиску и задержанию преступников", "Полный запрет на любые массовые мероприятия в стране", "Меры государства, общества и граждан для защиты от проявлений террористической деятельности", "Любая публичная критика государственной власти"], correct: 2,
+          explain: "Антитерроризм — меры, которые предпринимают государство, общество и граждане для защиты от самых разных проявлений террористической деятельности. Они уменьшают риски нападения и сужают возможности для распространения идеологии преступников." },
+        { text: "Чем контртеррористические мероприятия отличаются от антитеррористических?",
+          options: ["Они направлены на активное противодействие угрозе и проводятся уполномоченными органами", "Это одно и то же, разница только в названии понятий", "Они проводятся только школьниками и учителями в школе", "Они касаются только защиты охраняемых объектов и зданий"], correct: 0,
+          explain: "Контртерроризм — активное, наступательное противодействие угрозе терроризма. Мероприятия реализует государство в лице уполномоченных органов. Понятия «антитерроризм» и «контртерроризм» не тождественны." },
+        { text: "Что входит в основы контртеррористической безопасности, по учебнику?",
+          options: ["Умение самостоятельно задерживать людей, которые кажутся подозрительными", "Участие школьников в специальных операциях совместно со спецслужбами", "Самостоятельная проверка и осмотр найденных бесхозных предметов", "Знание признаков подготовки теракта, порядка действий и взаимодействия с правоохранительными органами"], correct: 3,
+          explain: "Школьники не участвуют в спецоперациях, но включаются в систему противодействия терроризму, зная основы безопасности и применяя их: знание признаков подготовки теракта, порядка действий при попадании в теракт и порядка взаимодействия с правоохранительными органами." },
+        { text: "Посторонний человек расспрашивает тебя о времени школьного праздника, числе классов и наличии охраны. Как поступить?",
+          options: ["Подробно рассказать всё, что знаешь, чтобы не показаться невежливым или грубым", "Вежливо прервать разговор и сообщить о нём классному руководителю и ответственному за безопасность", "Не обратить внимания на вопросы и никому об этом не говорить", "Самому проследить за этим человеком и выяснить, кто он такой и зачем пришёл"], correct: 1,
+          explain: "Такая информация передаётся родителям и ученикам классным руководителем или другими должностными лицами школы. Нужно вежливо прервать диалог, сославшись на незнание, а затем сообщить о случившемся классному руководителю и работнику, отвечающему за безопасность школы." },
+        { text: "Ты увидел оставленный кем-то предмет в общественном месте. Что делать?",
+          options: ["Открыть и посмотреть, что внутри, чтобы убедиться, что всё в порядке", "Отодвинуть предмет подальше от людей, чтобы он никому не мешал", "Не трогать, немедленно сообщить сотруднику полиции, администратору или охране и сказать взрослым", "Подождать, пока хозяин вернётся за вещью, и никому не сообщать"], correct: 2,
+          explain: "Об оставленном предмете нужно немедленно сообщить сотруднику полиции, а также администратору или сотруднику службы безопасности. Не делай попыток проверить, что внутри: это лучше сделают специалисты." },
+        { text: "Кто может определить безопасное расстояние от подозрительного предмета?",
+          options: ["Только профессионал", "Любой прохожий", "Тот, кто первым заметил предмет", "Ребёнок, если он внимателен"], correct: 0,
+          explain: "Каким должно быть безопасное расстояние, может определить только профессионал. Поэтому нужно сообщить взрослым и выполнять указания сотрудников." },
+        { text: "Ты нашёл на лавочке яркую красивую игрушку, которая тебе не принадлежит. Как поступить?",
+          options: ["Забрать себе", "Не поднимать и не трогать, а при необходимости сообщить взрослым", "Рассмотреть поближе и потом положить на место", "Отдать первому встречному"], correct: 1,
+          explain: "Никогда не следует поднимать с пола или трогать даже очень красивые вещи и игрушки, которые тебе не принадлежат." },
+        { text: "На вокзале незнакомый человек просит довезти небольшую посылку. Что делать?",
+          options: ["Согласиться: это же всего лишь небольшая просьба о помощи", "Взять, если человек просит вежливо и производит приличное впечатление", "Согласиться, если он предложит небольшую плату за услугу", "Вежливо, но категорически отказаться и сообщить о нём сотрудникам полиции на вокзале"], correct: 3,
+          explain: "Ни при каких обстоятельствах нельзя принимать от незнакомых людей передачи для доставки. Откажи в вежливой, но категорической форме и предупреди сотрудников полиции на вокзале или в аэропорту." },
+        { text: "Ты получил по телефону угрозу теракта. Что нужно делать?",
+          options: ["Считать это розыгрышем и ничего не предпринимать, чтобы не поднимать панику", "Перезвонить на этот номер и самому выяснить подробности у звонившего", "Сообщить ответственному в школе или в правоохранительные органы, запомнить разговор и время звонка", "Выложить информацию в социальных сетях, чтобы как можно скорее предупредить других"], correct: 2,
+          explain: "Угрозу теракта по телефону нельзя считать розыгрышем. Нужно сообщить классному руководителю или ответственному за безопасность школы (если ты один — в правоохранительные органы), дословно запомнить разговор, зафиксировать время звонка и при необходимости предупредить окружающих и быстро эвакуироваться." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>

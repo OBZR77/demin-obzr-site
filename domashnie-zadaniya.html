@@ -1340,6 +1340,8 @@
                 <li>Выбери свой класс и найди задание. Рядом указан срок сдачи.</li>
                 <li>Выполни задание сам, своими словами. Если пользовался ИИ-помощником, отметь это в форме.</li>
                 <li>Нажми «Сдать задание». В форме выбери свой класс и укажи личный код: 5 цифр с твоей карточки. Фамилию и имя писать не нужно.</li>
+                <li>Если в задании нужна таблица, впиши её в поле ответа текстом: каждая строка с новой строки, ячейки раздели знаком « — ».</li>
+                <li>Задание на этой странице — то же, что в конце страницы урока. Полный текст урока открывается кнопкой «Открыть урок».</li>
             </ol>
         </div>
 
@@ -1673,6 +1675,7 @@ document.addEventListener('click', function(event) {
 (function () {
     'use strict';
     var FORM = 'https://forms.yandex.ru/u/6abaca9650569060a527b159/';
+    var FORM_BZH = 'https://forms.yandex.ru/u/6acc67bb95add51e2a487413/';   // форма «Безопасность жизнедеятельности: задание к уроку»
     var MON = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
     function byId(id) { return document.getElementById(id); }
     function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -1684,7 +1687,7 @@ document.addEventListener('click', function(event) {
         if (k.form) { return k.form; }
         var q = '?grade=' + encodeURIComponent(k.cl);
         if (k.n !== undefined && k.n !== '') { q += '&lesson=' + encodeURIComponent(k.course === 'БЖ' ? 'БЖ-' + k.n : k.n); }
-        return FORM + q;
+        return (k.course === 'БЖ' ? FORM_BZH : FORM) + q;
     }
 
     // --- задания, добавленные вручную (файл dz-zadaniya.js)
