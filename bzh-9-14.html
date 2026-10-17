@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предупреждение и защита от инфекционных заболеваний | БЖ, 9 класс, урок 14</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор на страницах для учеников выключен) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:false, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 9 класс · Урок 14 из 21</p>
+                <h1>🦠 Предупреждение и защита от инфекционных заболеваний</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 10–22 декабря</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>объяснять, что такое инфекционные болезни, и называть их источники;</li>
+                    <li>различать основные пути заражения и называть меры профилактики;</li>
+                    <li>отличать эпидемию от пандемии и объяснять, что такое биолого-социальная чрезвычайная ситуация;</li>
+                    <li>соблюдать правила поведения при эпидемии и понимать, какие меры принимают власти и медики.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Инфекционные болезни</dt><dd>Группа заболеваний, обусловленных воздействием на организм человека различных болезнетворных микроорганизмов.</dd></div>
+                <div class="nvp-term"><dt>Биолого-социальная (биосоциальная) чрезвычайная ситуация</dt><dd>Состояние, при котором из-за появления источника такой ситуации на определённой территории нарушаются нормальные условия жизни и деятельности людей, существования сельскохозяйственных животных и произрастания растений, возникает угроза жизни и здоровью людей и широкого распространения инфекционных болезней.</dd></div>
+                <div class="nvp-term"><dt>Эпидемия</dt><dd>Стремительное распространение на определённой территории инфекционной болезни, масштабы заболеваемости которой существенно превосходят показатели, обычно регистрируемые в данной местности.</dd></div>
+                <div class="nvp-term"><dt>Пандемия</dt><dd>Высшая степень развития эпидемии, характеризующаяся распространением инфекционного заболевания на страны и даже континенты.</dd></div>
+                <div class="nvp-term"><dt>Инкубационный период</dt><dd>Время активного размножения возбудителя в организме человека без видимых признаков заболевания. От заражения до появления симптомов может пройти от нескольких часов до нескольких лет.</dd></div>
+                <div class="nvp-term"><dt>Карантин</dt><dd>Система временных лечебно-профилактических, санитарно-гигиенических и противоэпидемических мероприятий, направленных на предупреждение выноса возбудителя опасного инфекционного заболевания за пределы эпидемического очага.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <h3 class="nvp-h3">Инфекционные болезни и их источники</h3>
+            <p>Все заболевания можно разделить на две большие группы: <strong>инфекционные и неинфекционные</strong>. Среди всех регистрируемых заболеваний на инфекционные приходится порядка 60%. Многие смертельно опасные вирусы побеждены, но появляются новые возбудители и новые болезни, поэтому проблема не исчезает.</p>
+            <p>Инфекционные заболевания классифицируют по многим признакам. Основные из них: <strong>место локализации инфекции</strong> (кишечник, дыхательные пути, кровь, наружные покровы) и <strong>вид возбудителя</strong> (вирусы, бактерии, грибки, простейшие).</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Источник инфекции</h3>
+                    <p>Больные люди и здоровые бактерионосители. Особенно опасны люди в активной фазе болезни. Даже болезнь в лёгкой (стёртой) форме может заразить тех, с кем человек контактирует.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Пути передачи</h3>
+                    <p>Способы, которыми возбудитель попадает в организм: через воздух, воду и пищу, кровь, бытовые предметы и другие пути (они ниже).</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Восприимчивость</h3>
+                    <p>Три условия вместе — источник инфекции, пути передачи и восприимчивость к инфекции — нужны для развития инфекционного заболевания.</p>
+                </div>
+            </div>
+            <p>Кроме людей, источниками могут быть <strong>продукты животного происхождения и животные</strong>, дикие и домашние. Некоторые грызуны переносят чуму и туляремию, а собаки и кошки могут стать источником глистной инфекции. Комары могут переносить возбудителя малярии, а клещи — боррелиоза и энцефалита.</p>
+            <p>Источником могут быть и <strong>объекты окружающей среды</strong>: почва, вода, воздух, предметы обихода. Например, непривитые люди могут заболеть столбняком, если частицы почвы попадут в открытую рану.</p>
+            <p>Несколько болезней с наиболее высокой смертностью называют <strong>особо опасными инфекциями</strong>: чума, холера, натуральная оспа, жёлтая лихорадка. Благодаря вакцинированию населения и улучшению гигиенических условий случаи таких заражений стали единичными.</p>
+            <p>В истории были страшные эпидемии. В XIV в. чума погубила более 100 млн человек, а в 1918 г. опасная разновидность гриппа «испанка» стала причиной сокращения населения мира на 2%. Из-за угрозы для большого числа людей такие болезни, как СПИД (ВИЧ-инфекция), туберкулёз, малярия и некоторые разновидности гриппа, относят к <strong>социально значимым</strong>.</p>
+
+            <h3 class="nvp-h3">Как развивается болезнь и как передаётся инфекция</h3>
+            <p>Попав в организм, возбудитель при благоприятных условиях быстро размножается и выделяет ядовитые вещества — <strong>токсины</strong>. Они разрушают ткани и нарушают нормальные процессы жизнедеятельности. Пока идёт <strong>инкубационный период</strong>, признаков болезни ещё нет.</p>
+            <p>Место проникновения микроорганизмов в организм называют <strong>входными воротами инфекции</strong>. У каждой болезни они свои: например, холерный вибрион проникает через рот и не способен проникать через кожу.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Воздушно-капельный</h3>
+                    <p>Через воздух и дыхательные пути: микроорганизмы выделяются со слизью при кашле и чихании, могут находиться в пыли. Так передаются грипп, насморк, ангина, ветряная оспа, корь, скарлатина.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Водный и пищевой</h3>
+                    <p>Через пищеварительный тракт: с немытой пищей, загрязнённой водой, из-за грязных рук. Так передаются дизентерия, сальмонеллёз, холера, брюшной тиф.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Контактно-бытовой</h3>
+                    <p>Через грязные руки, заражённые вещи, посуду, игрушки, при непосредственном контакте с кожей больного. Так передаются кишечные инфекции, вирусный гепатит.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Гемоконтактный</h3>
+                    <p>Через кровь больного человека: при переливании заражённой крови, использовании нестерильного инструмента (не только медицинского: инфекцию можно подхватить, например, при маникюре) и чужих средств гигиены (бритва, зубная щётка). Так передаются ВИЧ-инфекция, гепатит В.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Вертикальный</h3>
+                    <p>От инфицированной матери к ребёнку во время внутриутробного развития. Так передаются, например, ВИЧ-инфекция и токсоплазмоз.</p>
+                </div>
+            </div>
+            <p>Переносчиками возбудителей могут быть и насекомые.</p>
+
+            <h3 class="nvp-h3">Биолого-социальные чрезвычайные ситуации</h3>
+            <p>Источник биолого-социальной ЧС — особо опасная или широко распространённая инфекционная болезнь людей, сельскохозяйственных животных и растений. Поражающий фактор — болезнетворное (патогенное) действие микроорганизмов.</p>
+            <ul class="nvp-list">
+                <li><strong>Эпидемический процесс</strong> — механизм возникновения и распространения инфекционных заболеваний среди людей.</li>
+                <li><strong>Эпидемический очаг</strong> — место, где появляются заболевшие, и территория, в пределах которой возможно заражение других людей.</li>
+                <li>Массовое распространение болезни бывает в форме <strong>эпидемии</strong> или <strong>пандемии</strong>. Для животных используют термины «эпизоотия» и «панзоотия», для растений — «эпифитотия» и «панфитотия».</li>
+            </ul>
+
+            <h3 class="nvp-h3">Профилактика инфекционных заболеваний</h3>
+            <p>Первостепенные меры, которые снижают риск распространения инфекции и заражения ею:</p>
+            <ul class="nvp-list">
+                <li>профилактические прививки;</li>
+                <li>дератизация и дезинсекция (уничтожение потенциальных носителей и переносчиков инфекции: крыс, комаров, клопов, тараканов, вшей);</li>
+                <li>повышение сопротивляемости организма с помощью закаливания и занятий физкультурой;</li>
+                <li>карантинные мероприятия (изоляция ранее заболевших, дезинфекция помещения, выявление контактирующих с больными и т. д.);</li>
+                <li>оказание квалифицированной медицинской помощи заболевшим;</li>
+                <li>соблюдение правил личной гигиены.</li>
+            </ul>
+            <div class="nvp-alert">
+                <p><strong>Прививки.</strong> При эпидемии инфекционного заболевания вакцинация — важный, надёжный и безопасный метод профилактики. В России <strong>12 опаснейших инфекций</strong> включены в Национальный календарь прививок. Прививки по нему проводятся в установленные сроки бесплатно по программе обязательного медицинского страхования. Первая прививка (против гепатита В) делается ребёнку в первые часы жизни. Далее вакцинируют от туберкулёза, дифтерии, столбняка, коклюша, пневмококковой и гемофильной инфекций, кори, краснухи, свинки, полиомиелита, гриппа.</p>
+            </div>
+            <p>Многие инфекционные болезни приводят к смерти или инвалидности, а у некоторых бывают тяжёлые осложнения: например, свинка может стать причиной глухоты, а при полиомиелите часто возникает паралич. Именно поэтому от них прививают. Диагнозы ставит и лечение назначает только врач.</p>
+
+            <h3 class="nvp-h3">Правила поведения при эпидемии</h3>
+            <p>Когда объявлена эпидемия, избежать заражения поможет соблюдение нескольких несложных правил.</p>
+            <ol class="nvp-algo">
+                <li><strong>Мой руки.</strong> Как можно чаще (не менее пяти раз в день) с мылом, намыливая не менее 20–30 с, затем смывай проточной водой. Если воды и мыла нет, можно протирать руки специальным антибактериальным гелем или влажными антибактериальными салфетками.</li>
+                <li><strong>Не трогай лицо.</strong> Слизистые оболочки — наиболее благоприятная среда для инфекций. Не трогай руками рот, нос и глаза: вирусы попадают в организм именно этим путём.</li>
+                <li><strong>Избегай контакта с больными людьми.</strong> Держись подальше от заболевших: инфекция может попасть в организм даже на расстоянии.</li>
+                <li><strong>Веди здоровый образ жизни.</strong> Рациональное питание, ежедневные прогулки на свежем воздухе и полноценный сон укрепляют иммунитет. Полезны лыжный спорт и спортивные игры на открытом воздухе, закаливанию помогают плавание и водные процедуры.</li>
+                <li><strong>Увлажняй воздух.</strong> Центральное отопление сушит воздух, и слизистые носа, глаз и рта хуже справляются с микробами. Влажность в помещении должна быть около 50%.</li>
+            </ol>
+            <div class="nvp-alert">
+                <p><strong>Как мыть руки правильно.</strong> Недостаточно только намылить и сполоснуть. Нужно тщательно очистить места между пальцами, область ногтевой пластины и под ней, а также запястья. Загрязнения эффективно удаляются лишь обильной пеной.</p>
+            </div>
+            <ul class="nvp-list">
+                <li>При влажности более 60% возможна плесень на кухне и стенах, при влажности менее 40% организм особенно уязвим для вирусных инфекций.</li>
+                <li>В период эпидемии гриппа чаще проводи дома влажную уборку и чисти раковины на кухне и в ванной. Полотенца для рук меняй каждые три дня и стирай в горячей воде.</li>
+                <li>Регулярное проветривание помещения — необходимая мера в сезон гриппа и простуд.</li>
+                <li>Медицинская маска хорошо защищает от попадания инфекции в верхние дыхательные пути, но, когда она отсыреет, её нужно сменить.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Что делают власти и медики при угрозе биолого-социальной ЧС</h3>
+            <ol class="nvp-algo">
+                <li><strong>Регистрация и оповещение.</strong> Заболевших и тех, кто может заболеть, берут на специальный учёт. Жителей информируют, как действовать.</li>
+                <li><strong>Эпидемиологическое обследование и разведка.</strong> Каждый случай обследуют, чтобы найти предполагаемый источник заражения и не дать инфекции распространиться.</li>
+                <li><strong>Выявление, изоляция и госпитализация заболевших.</strong> Коллектив, где найден первый случай, берут под тщательное наблюдение.</li>
+                <li><strong>Карантин или обсервация.</strong> Карантин вводят при появлении больных особо опасными инфекциями или групповых заболеваний с быстрым ростом числа случаев. <strong>Обсервация</strong> — ограничение перемещения людей и сельскохозяйственных животных во всех территориальных образованиях, граничащих с зоной карантина.</li>
+                <li><strong>Экстренная профилактика.</strong> Медицинские меры для жителей опасной территории, которые проводят медики. Лекарства самостоятельно не принимают.</li>
+                <li><strong>Обеззараживание очага</strong> силами государственной санитарно-эпидемиологической службы (текущая и заключительная дезинфекция).</li>
+                <li><strong>Выявление бактерионосителей</strong> и меры, которые защищают окружающих от заражения.</li>
+                <li><strong>Санитарно-разъяснительная работа.</strong> Через радио, телевидение, печать, Интернет и социальные сети людям объясняют правила поведения. Эти рекомендации нужно строго выполнять.</li>
+            </ol>
+            <p>Карантин и обсервацию отменяют, когда пройдёт срок максимального инкубационного периода с момента изоляции последнего больного, будет проведена заключительная дезинфекция и санитарная обработка обслуживающего персонала и населения.</p>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li>Инфекция развивается, когда есть <strong>источник, путь передачи и восприимчивость</strong>. Пути: воздушно-капельный, водный и пищевой, контактно-бытовой, гемоконтактный, вертикальный.</li>
+                    <li><strong>Инкубационный период</strong> — время размножения возбудителя без видимых признаков болезни. Человек в этот период может не знать о заражении.</li>
+                    <li><strong>Эпидемия</strong> — стремительное распространение болезни на определённой территории, <strong>пандемия</strong> — на страны и континенты.</li>
+                    <li>Первостепенные меры профилактики: прививки, дератизация и дезинсекция, закаливание и физкультура, карантин, медицинская помощь и личная гигиена.</li>
+                    <li>При эпидемии: мой руки (не менее пяти раз в день, 20–30 с с мылом), не трогай лицо, избегай больных, веди здоровый образ жизни, следи за влажностью около 50% и проветривай.</li>
+                    <li>Карантин, обсервация и другие меры вводят власти и медики. Рекомендации нужно строго выполнять.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Реши ситуационную задачу из учебника (с. 21). В период эпидемии гриппа молодой человек приоткрыл окно, чтобы проветрить комнату. Сестра попросила: «Не открывай окно: отопление ещё не включили, мне холодно и больше вероятности подхватить вирус». Оцени действия брата и сестры с точки зрения профилактики инфекции. Предложи перечень мер профилактики гриппа по правилам из параграфа (5–7 пунктов).</p>
+                <p><strong>Повышенное задание (по желанию).</strong> По заданию для группы из учебника (с. 20) составь пошаговую памятку «Как правильно мыть руки» и объясни, зачем нужен каждый шаг. Или ответь на вопрос 2 из учебника (с. 22): что такое биолого-социальные ЧС? Приведи один пример.</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст параграфа. Адрес и фамилии не указывай. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности. 8–9 классы», часть 2 (под научной редакцией Ю. С. Шойгу, М.: Просвещение, 2022): модуль 6 «Здоровье и как его сохранить. Основы медицинских знаний», тема 2 «Инфекционные заболевания» (с. 15–22).</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="9" data-n="14">
+            <span data-dir="prev">← Предыдущий урок: № 13 «Общие представления о здоровье, психическое здоровье и психологическое благополучие»</span>
+            <span data-dir="next">Следующий урок: № 15 «Профилактика неинфекционных заболеваний» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности. 8–9 классы» (под научной редакцией Ю. С. Шойгу, М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://obzr77.github.io/demin-obzr-site/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://obzr77.github.io/demin-obzr-site/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6abaca9650569060a527b159/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '9', lesson: 'БЖ-14' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Что такое инфекционные болезни?",
+          options: ["Заболевания, которые развиваются из-за нездорового питания и малоподвижного образа жизни", "Заболевания, обусловленные воздействием на организм болезнетворных микроорганизмов", "Заболевания, которые передаются только по наследству", "Заболевания, вызванные только загрязнением окружающей среды"], correct: 1,
+          explain: "Инфекционные болезни обусловлены воздействием на организм человека различных болезнетворных микроорганизмов: вирусов, бактерий, грибков, простейших." },
+        { text: "Что называют инкубационным периодом?",
+          options: ["Время, когда человек находится в больнице", "Срок действия карантина", "Время активного размножения возбудителя в организме без видимых признаков заболевания", "Время, за которое после прививки вырабатывается защита"], correct: 2,
+          explain: "Инкубационный период — время активного размножения возбудителя в организме без видимых признаков болезни. От заражения до появления симптомов может пройти от нескольких часов до нескольких лет." },
+        { text: "Каким путём чаще всего передаются грипп, корь и ветряная оспа?",
+          options: ["Воздушно-капельным: через воздух и дыхательные пути", "Водным и пищевым", "Гемоконтактным: через кровь", "Вертикальным: от матери к ребёнку"], correct: 0,
+          explain: "При воздушно-капельном пути микроорганизмы выделяются во внешнюю среду со слизью при кашле и чихании и попадают через дыхательную систему. Так передаются грипп, корь, ангина, ветряная оспа и другие болезни." },
+        { text: "Через грязные руки, заражённую посуду и игрушки передаётся инфекция по пути:",
+          options: ["воздушно-капельному", "вертикальному", "гемоконтактному", "контактно-бытовому"], correct: 3,
+          explain: "Контактно-бытовое заражение происходит через грязные руки, заражённые вещи, посуду, игрушки, при непосредственном контакте с кожей больного." },
+        { text: "Что относится к первостепенным мерам профилактики инфекционных заболеваний?",
+          options: ["Отказ от прививок, чтобы организм справлялся сам", "Профилактические прививки, закаливание и физкультура, карантинные мероприятия, личная гигиена", "Отказ от прогулок на свежем воздухе в любую погоду", "Регулярное повторное использование чужих средств гигиены"], correct: 1,
+          explain: "В параграфе названы прививки, дератизация и дезинсекция, закаливание и физкультура, карантин, квалифицированная медицинская помощь и соблюдение правил личной гигиены." },
+        { text: "Как правильно мыть руки в период эпидемии?",
+          options: ["Не менее пяти раз в день с мылом, намыливая не менее 20–30 секунд и смывая проточной водой", "Один раз в день, ополоснув водой", "Только намылить и сразу сполоснуть", "Всегда протирать антибактериальным гелем и не мыть водой, даже если есть мыло"], correct: 0,
+          explain: "Руки нужно мыть не менее пяти раз в день с мылом, 20–30 с, затем смывать проточной водой. Гель или салфетки используют, если вода и мыло недоступны." },
+        { text: "Почему в период эпидемии нужно не трогать руками рот, нос и глаза?",
+          options: ["Это неприлично", "Кожа лица очень чувствительна к холоду", "Слизистые оболочки — наиболее благоприятная среда для инфекций, вирусы попадают в организм именно этим путём", "Руки после этого становятся сухими"], correct: 2,
+          explain: "Слизистые оболочки — самая благоприятная среда для инфекций. Поэтому в эпидемию нельзя трогать рот, нос и глаза руками." },
+        { text: "Какой уровень влажности воздуха в помещении советует учебник для профилактики вирусных заболеваний?",
+          options: ["Около 20%", "Около 35%", "Около 80%", "Около 50%"], correct: 3,
+          explain: "Влажность должна быть около 50%. При влажности менее 40% организм особенно уязвим для вирусных инфекций, а более 60% — возможна плесень." },
+        { text: "Чем пандемия отличается от эпидемии?",
+          options: ["Ничем: это синонимы", "Пандемия — высшая степень развития эпидемии, болезнь распространяется на страны и даже континенты", "Пандемия касается только животных, а эпидемия только людей", "Пандемия длится меньше, чем эпидемия"], correct: 1,
+          explain: "Эпидемия — стремительное распространение болезни на определённой территории. Пандемия — высшая степень развития эпидемии: болезнь распространяется на страны и даже континенты." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>
