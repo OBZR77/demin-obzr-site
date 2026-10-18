@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пожарная безопасность в быту | БЖ, 10 класс, урок 3</title>
+    <!-- Yandex.Metrika counter (тот же счётчик, что и на всём сайте; Вебвизор включён на всех страницах, в том числе для учеников: нужен для оценки самостоятельности выполнения заданий) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106461008', 'ym');
+        ym(106461008, 'init', {webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, referrer: document.referrer, url: location.href});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/106461008" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-primary: #003D7A; --color-primary-hover: #00518A; --color-primary-active: #002952;
+            --color-danger: #E53935; --color-success: #2E7D32; --color-warning: #FFA500;
+            --color-surface: #F5F7FA; --color-text-primary: #2C3E50; --color-text-secondary: #5F6B75; --color-border: #E0E6ED;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text-primary);
+               background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-attachment: fixed; min-height: 100vh; }
+        .nvp-page { max-width: 820px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+        .nvp-topbar { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+        .nvp-topbar a { color: #fff; background: rgba(0,0,0,0.3); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.95rem; font-weight: 600; }
+        .nvp-topbar a:hover { background: rgba(0,0,0,0.5); }
+        .nvp-topbar a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-sheet { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .nvp-hero { background: linear-gradient(135deg, #003D7A 0%, #00518A 100%); color: #fff; text-align: center; padding: 1.75rem 1.5rem; }
+        .nvp-hero-kicker { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.4rem; }
+        .nvp-hero h1 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .nvp-hero-sub { opacity: 0.95; margin-bottom: 0.8rem; }
+        .nvp-hero-stats { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.95rem; }
+        .nvp-hero-date { margin-top: 0.8rem; font-size: 0.9rem; opacity: 0.9; }
+        .nvp-body { padding: 1.5rem 2rem 1rem; }
+        .nvp-foot { border-top: 1px solid var(--color-border); padding: 1rem 2rem 1.5rem; font-size: 0.85rem; color: var(--color-text-secondary); text-align: center; }
+        .nvp-foot a { color: var(--color-primary); font-weight: 600; }
+        .nvp-foot p + p { margin-top: 0.4rem; }
+        @media (max-width: 600px) { .nvp-body { padding: 1.25rem 1rem 0.5rem; } .nvp-foot { padding: 1rem; } .nvp-hero h1 { font-size: 1.4rem; } }
+
+        /* ===== Стили параграфа пособия НВП (все классы с префиксом nvp-) ===== */
+        .nvp-btn[hidden], .nvp-section[hidden], .nvp-score[hidden], .nvp-feedback[hidden] { display: none !important; }
+        .nvp-crumbs { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+        .nvp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .nvp-chip { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 20px; padding: 0.25rem 0.85rem; font-size: 0.9rem; color: var(--color-text-primary); }
+        .nvp-chip strong { color: var(--color-primary); }
+        .nvp-section { margin: 1.75rem 0; }
+        .nvp-h2 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.3; }
+        .nvp-step { flex-shrink: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-size: 1rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+        .nvp-h3 { font-size: 1.1rem; color: var(--color-primary); margin: 1.25rem 0 0.5rem; }
+        .nvp-section p { margin-bottom: 0.8rem; }
+        .nvp-list { list-style: none; padding: 0; }
+        .nvp-list li { position: relative; padding: 0.35rem 0 0.35rem 1.6rem; }
+        .nvp-list li::before { content: "✓"; position: absolute; left: 0; color: var(--color-primary); font-weight: 700; }
+        .nvp-goal { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+        .nvp-term { background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.75rem 1rem; }
+        .nvp-term dt { font-weight: 700; color: var(--color-primary); }
+        .nvp-term dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+        .nvp-scheme { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+        .nvp-scheme-root { background: var(--color-primary-active); color: #fff; text-align: center; font-weight: 700; padding: 0.8rem; border-radius: 8px; }
+        .nvp-scheme-row { border-radius: 8px; padding: 0.75rem; border: 2px solid var(--color-border); }
+        .nvp-scheme-row > strong { display: block; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .nvp-scheme-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .nvp-scheme-row li { background: #fff; border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.95rem; border: 1px solid var(--color-border); }
+        .nvp-scheme-vidy { border-color: var(--color-primary); background: #EEF3FA; }
+        .nvp-scheme-vidy li { border-color: var(--color-primary); font-weight: 600; }
+        .nvp-scheme-roda { border-color: var(--color-danger); background: #FDF1F1; }
+        .nvp-scheme-roda li { border-color: var(--color-danger); font-weight: 600; }
+        .nvp-scheme-spec { border-color: #8A99A8; background: var(--color-surface); }
+        .nvp-cards { display: grid; gap: 0.9rem; }
+        .nvp-card { background: #fff; border: 1px solid var(--color-border); border-top: 4px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .nvp-card.nvp-card-rod { border-top-color: var(--color-danger); }
+        .nvp-card h3 { font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .nvp-card p { margin-bottom: 0.4rem; }
+        .nvp-badge { display: inline-block; background: var(--color-danger); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; text-transform: uppercase; }
+        .nvp-remember { background: #FFF8E1; border-left: 5px solid var(--color-warning); border-radius: 8px; padding: 1rem 1.25rem; }
+        .nvp-remember ul { padding-left: 1.2rem; }
+        .nvp-remember li { margin: 0.3rem 0; }
+        .nvp-video { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; background: #000; }
+        .nvp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .nvp-q { border: 1px solid var(--color-border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+        .nvp-q legend { font-weight: 700; padding: 0 0.4rem; color: var(--color-primary); }
+        .nvp-q-text { font-weight: 600; margin-bottom: 0.6rem; }
+        .nvp-opt { display: block; border: 2px solid var(--color-border); border-radius: 8px; padding: 0.55rem 0.8rem; margin-bottom: 0.45rem; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .nvp-opt:hover { background: var(--color-surface); }
+        .nvp-opt input { margin-right: 0.6rem; }
+        .nvp-opt:focus-within { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-q.nvp-locked .nvp-opt { cursor: default; }
+        .nvp-opt.nvp-right { border-color: var(--color-success); background: #E8F5E9; }
+        .nvp-opt.nvp-wrong { border-color: var(--color-danger); background: #FDECEA; }
+        .nvp-feedback { margin-top: 0.5rem; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.95rem; background: var(--color-surface); }
+        .nvp-feedback b { display: block; margin-bottom: 0.15rem; }
+        .nvp-score { background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; margin-top: 1rem; }
+        .nvp-progress { color: var(--color-text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .nvp-btn { display: inline-block; background: var(--color-primary); color: #fff; border: none; padding: 0.7rem 1.4rem; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+        .nvp-btn:hover { background: var(--color-primary-hover); }
+        .nvp-btn:focus-visible, .nvp-links a:focus-visible { outline: 3px solid var(--color-warning); outline-offset: 2px; }
+        .nvp-btn.nvp-btn-alt { background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .nvp-task { background: linear-gradient(135deg, #f5f7fa 0%, #e6edf6 100%); border-radius: 10px; padding: 1.25rem; border-left: 5px solid var(--color-primary); }
+        .nvp-task-note { font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 0.6rem; }
+        .nvp-privacy { background: #FFF5F5; border-left: 4px solid var(--color-danger); border-radius: 6px; padding: 0.6rem 0.9rem; margin: 0.9rem 0; font-size: 0.95rem; }
+        .nvp-links { list-style: none; padding: 0; }
+        .nvp-links li { margin: 0.4rem 0; }
+        .nvp-links a { color: var(--color-primary); font-weight: 600; }
+        .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
+        .nvp-ai-note { font-size: 0.85rem; color: var(--color-text-secondary); border-top: 1px solid var(--color-border); margin-top: 2rem; padding-top: 0.8rem; }
+        @media (max-width: 600px) { .nvp-h2 { font-size: 1.2rem; } .nvp-q { padding: 0.8rem; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+        .nvp-algo { list-style: none; counter-reset: algo; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0; }
+        .nvp-algo li { counter-increment: algo; position: relative; background: var(--color-surface); border-left: 4px solid var(--color-primary); border-radius: 8px; padding: 0.7rem 1rem 0.7rem 3.2rem; }
+        .nvp-algo li::before { content: counter(algo); position: absolute; left: 0.8rem; top: 0.65rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--color-primary); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .nvp-terms + p { margin-top: 1rem; }
+        .nvp-alert { background: #FFF5F5; border-left: 5px solid var(--color-danger); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.8rem 0; }
+</style>
+    <style id="red-nav-buttons">
+        /* Кнопки переходов: при наведении и нажатии становятся красными, как на странице «Ученикам» */
+        a.nvp-btn,
+        .nvp-topbar a { transition: all 0.3s ease; }
+        a.nvp-btn:hover,
+        .nvp-topbar a:hover,
+        a.nvp-btn:active,
+        .nvp-topbar a:active {
+            background: #E53935; border-color: #E53935; color: #fff;
+            transform: translateY(-2px); box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+    </style>
+    <style id="nvp-pager-style">
+        .nvp-pager a.nvp-pager-link { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .nvp-pager a.nvp-pager-link:hover { color: var(--color-primary-hover); }
+        .nvp-pager a.nvp-pager-link:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <div class="nvp-page">
+        <div class="nvp-topbar">
+            <a href="bzh-k-uroku.html">← К путеводителю «БЖ: к уроку»</a>
+            <a href="index.html">На сайт</a>
+        </div>
+        <div class="nvp-sheet">
+            <header class="nvp-hero">
+                <p class="nvp-hero-kicker">БЖ: к уроку · 10 класс · Урок 3 из 10</p>
+                <h1>🔥 Пожарная безопасность в быту</h1>
+                <p class="nvp-hero-sub">Курс «Безопасность жизнедеятельности»</p>
+                <ul class="nvp-hero-stats"><li>⏱ Около 20 минут</li><li>❓ 9 вопросов</li><li>✅ Автопроверка</li></ul>
+                <p class="nvp-hero-date">Урок в классе: 21 сентября</p>
+            </header>
+            <div class="nvp-body">
+
+        <!-- 1. ТЫ НАУЧИШЬСЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-goal">
+            <h2 class="nvp-h2" id="nvp-h-goal"><span class="nvp-step" aria-hidden="true">1</span> Ты научишься</h2>
+            <div class="nvp-goal">
+                <ul class="nvp-list">
+                    <li>называть причины пожара в жилище и опасные факторы пожара;</li>
+                    <li>соблюдать правила, которые предупреждают пожар, и объяснять опасность бытового газа;</li>
+                    <li>описывать порядок действий в первые минуты пожара и при выходе из задымлённой квартиры;</li>
+                    <li>называть правила электробезопасности и объяснять, что такое шаговое напряжение.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. КЛЮЧЕВЫЕ ПОНЯТИЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-terms">
+            <h2 class="nvp-h2" id="nvp-h-terms"><span class="nvp-step" aria-hidden="true">2</span> Ключевые понятия</h2>
+            <dl class="nvp-terms">
+                <div class="nvp-term"><dt>Пожар</dt><dd>Огонь, вышедший из-под контроля человека. Он сопровождается уничтожением материальных ценностей и создаёт угрозу для жизни людей.</dd></div>
+                <div class="nvp-term"><dt>Опасные факторы пожара</dt><dd>Открытый огонь и искры, повышенная температура окружающей среды, токсичные продукты горения, дым, пониженная концентрация кислорода, падающие части строительных конструкций и т. п.</dd></div>
+                <div class="nvp-term"><dt>Взрывы бытового газа</dt><dd>По учебнику, наиболее частая причина пожаров и разрушений с жертвами в России. Причиной бывают газовые баллоны, неисправные газовые приборы и трубопроводы.</dd></div>
+                <div class="nvp-term"><dt>Электробезопасность</dt><dd>Система организационных и технических мер и средств, обеспечивающих защиту людей от вредного и опасного воздействия электрического тока, электрической дуги, электромагнитного поля и статического электричества.</dd></div>
+                <div class="nvp-term"><dt>Шаговое напряжение</dt><dd>Разность потенциалов между точками земли, находящимися на расстоянии шага. Возникает, когда на землю падает оборванный провод действующей линии электропередачи.</dd></div>
+            </dl>
+        </section>
+
+        <!-- 3. ОСНОВНОЙ МАТЕРИАЛ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-main">
+            <h2 class="nvp-h2" id="nvp-h-main"><span class="nvp-step" aria-hidden="true">3</span> Основной материал</h2>
+
+            <div class="nvp-alert">
+                <p><strong>О чём этот урок.</strong> Здесь мы разбираем теорию параграфа: почему возникает пожар, чем он опасен, как его предупредить и что делать. Ситуации для самостоятельного разбора идут на отдельном практикуме по пожарной безопасности. Бытовую химию и первую помощь мы разбирали на соседнем уроке.</p>
+            </div>
+
+            <h3 class="nvp-h3">Откуда берётся пожар в доме</h3>
+            <p>Большая часть опасных ситуаций в быту возникает по неосторожности, рассеянности и легкомыслию. Они связаны с пожарами, электрическим током и взрывами газа.</p>
+            <p>Пожар в жилище может возникнуть по разным причинам:</p>
+            <ul class="nvp-list">
+                <li>замыкание или перегрузка электросети;</li>
+                <li>неисправность или неправильная эксплуатация бытовой электротехники;</li>
+                <li>нарушение непрерывности работы газовой горелки после зажигания;</li>
+                <li>использование газовых плит для обогрева или сушки белья;</li>
+                <li>невнимательность и неосторожность человека.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Чем опасен пожар</h3>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Температура среды</h3>
+                    <p>Самое опасное — вдыхание нагретого воздуха: поражение верхних дыхательных путей, удушье, смерть. Температура свыше 100 °С приводит к потере сознания и гибели через несколько минут после поражения органов дыхания. Опасны и ожоги кожи: после ожогов второй степени на 30 % поверхности тела человек надолго оказывается в больнице.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Токсичные продукты горения</h3>
+                    <p>В современных зданиях много полимерных и синтетических материалов. В продуктах горения нередко содержится 50–100 видов токсичных соединений. По мнению большинства учёных, основная причина гибели людей — отравление оксидом углерода. Он резко снижает снабжение организма кислородом: человек теряет способность рассуждать, становится равнодушным и не стремится избежать опасности.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Потеря видимости</h3>
+                    <p>Эвакуация быстрая, если люди беспрепятственно движутся и видят выходы или указатели выходов. При задымлении движение становится хаотичным, и эвакуация затрудняется или становится невозможной.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Пониженная концентрация кислорода</h3>
+                    <p>При горении кислорода в воздухе помещения становится меньше. Уже снижение на 3 % ухудшает двигательные функции. Опасной считается концентрация 14 %: теряется координация движений, ухудшается умственное сосредоточение, затрудняется эвакуация.</p>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Падающие конструкции</h3>
+                    <p>Падающие части строительных конструкций могут привести к тяжёлым травмам, а при роковом стечении обстоятельств — к смерти.</p>
+                </div>
+            </div>
+
+            <h3 class="nvp-h3">Как не допустить пожара</h3>
+            <p>Чтобы предупредить пожар, соблюдай несложные правила:</p>
+            <ul class="nvp-list">
+                <li>не перегружай электросеть: не подключай к одной розетке много потребителей;</li>
+                <li>не оставляй включённые электронагревательные приборы без присмотра;</li>
+                <li>содержи исправными выключатели, вилки, розетки и электроприборы;</li>
+                <li>не устанавливай электронагревательные приборы вблизи горючих предметов и материалов;</li>
+                <li>не храни дома значительные количества легковоспламеняющихся и горючих жидкостей, а небольшие количества держи в закрытых сосудах вдали от нагревательных приборов;</li>
+                <li>не разогревай мастики, лаки и аэрозольные баллончики на открытом огне;</li>
+                <li>не суши бельё над горячей плитой или печью.</li>
+            </ul>
+
+            <h3 class="nvp-h3">Бытовой газ: тихая опасность</h3>
+            <p>Во многих городах и в сельской местности бытовой газ используют для отопления, нагревания воды и приготовления пищи. Он поступает по трубопроводу или хранится в баллонах.</p>
+            <p><strong>Взрывы бытового газа</strong> — наиболее частая причина пожаров и разрушений с жертвами в России. Газовые баллоны, неисправные газовые приборы (плиты, обогреватели, водяные колонки) и трубопроводы часто становятся причиной взрывов, аварий, разрушений и пожаров с человеческими жертвами.</p>
+            <p>Есть и другая опасность: если газовую плиту забыли выключить, а огонь на ней по какой-то причине погас, это приводит к отравлениям людей, нередко смертельным.</p>
+
+            <h3 class="nvp-h3">Первые минуты пожара</h3>
+            <p>В борьбе с пожаром особенно важна быстрая реакция в первые минуты. Почти все пожары, кроме возникших из-за взрывов, вначале небольшие, и их можно легко затушить сразу. Главное — сохранять самообладание, быстро оценивать обстановку и не давать впасть в панику окружающим.</p>
+            <div class="nvp-cards">
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Если справиться с огнём в твоих силах</h3>
+                    <ul class="nvp-list">
+                        <li>Осмотри очаг возгорания и туши подручными средствами: водой или плотной мокрой тканью.</li>
+                        <li>Есть опасность поражения током: сначала отключи электропитание.</li>
+                        <li>Горящие легковоспламеняющиеся жидкости водой тушить неэффективно: нужен огнетушитель или плотная мокрая ткань.</li>
+                        <li>Чтобы уменьшить приток воздуха, не открывай окна и двери.</li>
+                    </ul>
+                </div>
+                <div class="nvp-card nvp-card-rod">
+                    <h3>Если быстро потушить нельзя</h3>
+                    <ul class="nvp-list">
+                        <li><strong>Вызывай пожарную охрану сразу,</strong> а не тогда, когда будет уже поздно.</li>
+                        <li>Сообщи место пожара, его причину и вероятную угрозу для людей, назови своё имя и дай номер телефона для дальнейших указаний.</li>
+                        <li>Если ликвидировать очаг своими силами невозможно, <strong>немедленно покинь квартиру,</strong> перекрыв газ, выключив электричество и прикрыв за собой дверь.</li>
+                        <li>Убедись, что соседи предупреждены о беде.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="nvp-h3">Выход через дым</h3>
+            <ul class="nvp-list">
+                <li>Для защиты от угарного газа дыши через увлажнённую ткань.</li>
+                <li>Через сильно задымлённое помещение лучше двигаться <strong>ползком или пригнувшись,</strong> придерживаясь стены, чтобы не потерять ориентировку.</li>
+                <li>Выйти по лестнице невозможно: используй балконную лестницу, а если её нет, выйди на балкон, <strong>плотно закрыв за собой дверь,</strong> и криками привлеки внимание прохожих и пожарных.</li>
+            </ul>
+            <p>Единый номер вызова экстренных служб — <strong>112</strong> (с. 163 учебника).</p>
+
+            <h3 class="nvp-h3">Электробезопасность в повседневной жизни</h3>
+            <p>Чтобы исключить поражение электрическим током:</p>
+            <ul class="nvp-list">
+                <li>автоматические выключатели и пробочные предохранители в квартирной сети должны быть всегда исправны; не пользуйся так называемыми «жучками»;</li>
+                <li>не ремонтируй и не заменяй под напряжением повреждённые выключатели, розетки, ламповые патроны, приборы и светильники: такие работы выполняют только после отключения сети;</li>
+                <li>следи за исправным состоянием изоляции проводки, электроприборов и шнуров;</li>
+                <li>соблюдай порядок включения электроприбора: сначала шнур подключают к прибору, а затем к сети; отключают в обратном порядке;</li>
+                <li>не пользуйся неисправными электроприборами, оголёнными концами провода вместо штепсельных вилок и самодельными электропечами и нагревателями.</li>
+            </ul>
+            <h3 class="nvp-h3">Чем коварен электрический ток</h3>
+            <ul class="nvp-list">
+                <li>Без специальных приборов человек не может обнаружить ток: он невидим, не имеет запаха и цвета.</li>
+                <li>Ток поражает внезапно, когда человек оказывается включён в цепь: одной стороной касается неизолированного провода, проводки с нарушенной изоляцией, металлического корпуса или предмета, случайно оказавшегося под напряжением, а другой — земли, заземлённых предметов, труб и т. п.</li>
+                <li>Опасная ситуация обнаруживается слишком поздно, когда предотвратить поражение практически невозможно.</li>
+                <li>Ток повреждает ткани не только в месте приложения, но и на всём пути через тело.</li>
+                <li>Поражение возможно и без касания, при приближении на недопустимо близкое расстояние к проводу действующей электроустановки или воздушной линии электропередачи. В сырую погоду опасность на расстоянии значительно возрастает.</li>
+            </ul>
+            <div class="nvp-alert">
+                <p><strong>Оборванный провод и шаговое напряжение.</strong> Если на землю упал провод действующей линии, ток растекается по земле. Поражение происходит, когда ноги человека касаются двух точек земли с разными потенциалами. Чем шире шаг, тем больше разница потенциалов. Вокруг провода образуется опасная зона радиусом 5–8 м. Никогда не подходи к линиям электропередачи и оборванным проводам, удались от него более чем на 8 м и сообщи о находке встречным прохожим и специалистам.</p>
+            </div>
+        </section>
+
+        <!-- 4. ЗАПОМНИ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-mem">
+            <h2 class="nvp-h2" id="nvp-h-mem"><span class="nvp-step" aria-hidden="true">4</span> Запомни</h2>
+            <div class="nvp-remember">
+                <ul>
+                    <li>Пожар — огонь, вышедший из-под контроля человека. Главная причина гибели при пожаре — отравление оксидом углерода; опасны также температура свыше 100 °С, дым, нехватка кислорода (опасно 14 %) и падающие конструкции.</li>
+                    <li>Причины пожара в жилище: перегрузка электросети, неисправная техника, газовая горелка без присмотра, сушка белья и обогрев газовой плитой.</li>
+                    <li>Взрывы бытового газа — наиболее частая причина пожаров и разрушений с жертвами. Забытая плита с погасшим огнём приводит к отравлениям.</li>
+                    <li>Огонь небольшой: туши водой или плотной мокрой тканью, горящие жидкости водой не туши, окна и двери не открывай. Быстро не потушить: <strong>вызывай пожарную охрану сразу.</strong></li>
+                    <li>Покидая квартиру: перекрой газ, выключи электричество, прикрой дверь, предупреди соседей. В дыму дыши через влажную ткань, двигайся ползком или пригнувшись.</li>
+                    <li>Электроремонт только после отключения сети. Порядок включения прибора: шнур к прибору, затем к сети. Оборванный провод: не подходи, удались более чем на 8 м.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. ПРОВЕРЬ СЕБЯ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-quiz">
+            <h2 class="nvp-h2" id="nvp-h-quiz"><span class="nvp-step" aria-hidden="true">5</span> Проверь себя</h2>
+            <p>Выбери ответ в каждом вопросе. Проверка происходит сразу. Результат теста сам никуда не отправляется: в форме ты отметишь, сколько было ошибок.</p>
+            <p class="nvp-progress" id="nvpProgress" aria-live="polite"></p>
+            <div id="nvpQuiz"><noscript>Для проверки включите JavaScript в браузере.</noscript></div>
+            <div class="nvp-score" id="nvpScore" hidden aria-live="polite"></div>
+            <p style="margin-top: 1rem;"><button type="button" class="nvp-btn nvp-btn-alt" id="nvpRestart">Пройти заново</button></p>
+        </section>
+
+        <!-- 6. ЗАДАНИЕ К УРОКУ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-task">
+            <h2 class="nvp-h2" id="nvp-h-task"><span class="nvp-step" aria-hidden="true">6</span> Задание к уроку</h2>
+            <div class="nvp-task">
+                <p><strong>Основное задание (обязательно).</strong> Разработай свои правила противопожарной безопасности для дома (учебник, издание «11 класс», с. 43, практикум, задание 4). Напиши 6–8 правил по группам: электроприборы, газ, горючие вещества, действия при возгорании.</p>
+                <p><strong>Повышенное задание (по желанию).</strong> Объясни с точки зрения физики фразу из учебника: «Электрический ток поражает внезапно, когда человек оказывается включённым в цепь прохождения тока» (с. 43, практикум, задание 2). Как можно избежать такой ситуации?</p>
+                <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
+                <p>Пиши сам, не копируй текст страницы. Адрес и фамилии не указывай: описывай ситуацию общими словами. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
+                <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
+                <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
+                <p class="nvp-task-note">В форме нужно отметить, сколько ошибок было в «Проверь себя», и сказать, пользовался ли ты ИИ-помощником. Если в задании нужна таблица, впиши её в поле ответа текстом: каждая строка с новой строки, ячейки раздели знаком « — ». Там же есть отдельные поля для повышенного задания и вопроса к учителю, а также два коротких вопроса: насколько полезен был параграф (от 1 до 5) и стало ли тебе понятнее тема. Это помогает сделать раздел лучше.</p>
+                <p class="nvp-task-note"><span>Остался вопрос по теме? <a id="nvpQuestionLink" href="#" target="_blank" rel="noopener">Задай его учителю (без фамилии, только с кодом)</a>.</span></p>
+            </div>
+        </section>
+
+        <!-- 7. ГДЕ ПОЧИТАТЬ ПОДРОБНЕЕ -->
+        <section class="nvp-section" aria-labelledby="nvp-h-more">
+            <h2 class="nvp-h2" id="nvp-h-more"><span class="nvp-step" aria-hidden="true">7</span> Где почитать подробнее</h2>
+            <ul class="nvp-links">
+                <li>Учебник «Основы безопасности жизнедеятельности» под редакцией С. Н. Егорова (М.: Просвещение), издание «11 класс»: глава 2, § 4 «Чтобы не было пожаров» (с. 37–42): причины и опасные факторы пожара, правила пожарной безопасности, взрывы бытового газа, действия при пожаре, электробезопасность, шаговое напряжение. Вопросы и практикум к параграфу — на с. 43; единый номер вызова экстренных служб — на с. 163.</li>
+                <li>Из параграфа намеренно не взяты рискованные для школьника советы: преодолевать горящее помещение, накрывшись мокрым одеялом (с. 41), и не вызывать пожарных из-за «маленького инцидента на кухне» (с. 39). Не приведены также детали самостоятельного обращения с проводкой (изоляционная лента, пробочные предохранители).</li>
+                <li><a href="bzh-k-uroku.html">Путеводитель «БЖ: к уроку»: все уроки курса и параграфы учебника</a></li>
+            </ul>
+        </section>
+
+        <div class="nvp-pager" data-cl="10" data-n="3">
+            <span data-dir="prev">← Предыдущий урок: № 2 «Безопасность в быту. Предупреждение травм и отравлений, первая помощь»</span>
+            <span data-dir="next">Следующий урок: № 4 «Безопасное поведение в общественных местах» →</span>
+        </div>
+
+        <p class="nvp-ai-note">Материал подготовлен с использованием инструментов искусственного интеллекта, проверен и адаптирован преподавателем. Основные понятия и правила согласованы с учебником «Основы безопасности жизнедеятельности» под редакцией С. Н. Егорова (М.: Просвещение). Если вы заметили неточность, напишите учителю.</p>
+
+            </div>
+            <footer class="nvp-foot">
+                <p>Дёмин А.Ю., преподаватель-организатор ОБЗР, МБОУ СШ № 2 г. Лысково</p>
+                <p class="nvp-foot-links"><a href="https://demin-obzr.ru/privacy-policy.html">Политика конфиденциальности</a> · <a href="https://demin-obzr.ru/index.html">Сайт учителя</a></p>
+            </footer>
+        </div>
+    </div>
+    <script id="nvp-script">
+(function () {
+    'use strict';
+
+    // ---------- 1. НАСТРОЙКИ ПАРАГРАФА (меняйте только здесь) ----------
+    var NVP_CONFIG = {
+        // Ссылка на Яндекс Форму «Задание к уроку + рефлексия» БЕЗ параметров (пусто = кнопка скрыта)
+        taskFormUrl: 'https://forms.yandex.ru/u/6acc67bb95add51e2a487413/',
+        // Значения для скрытых вопросов формы (идентификаторы вопросов в форме: grade и lesson)
+        formParams: { grade: '10', lesson: 'БЖ-3' },
+        // Ссылка на Яндекс Форму «Вопрос учителю» (пусто = ссылка скрыта)
+        questionFormUrl: 'https://forms.yandex.ru/u/6abad8b990fa7b52b23a631b/',
+        // Ссылка на видео для встраивания, только https (пусто = блок видео скрыт)
+        videoUrl: ''
+    };
+
+    // ---------- 2. ВОПРОСЫ «ПРОВЕРЬ СЕБЯ» ----------
+    // text — вопрос; options — варианты; correct — номер верного варианта (с нуля); explain — пояснение
+    var NVP_QUIZ = [
+        { text: "Что учебник называет причиной пожара в жилище?",
+          options: ["Замыкание или перегрузка электросети", "Регулярная проверка электропроводки", "Хранение пищи в холодильнике", "Проветривание помещения"], correct: 0,
+          explain: "Среди причин пожара в жилище учебник называет замыкание или перегрузку электросети, неисправность или неправильную эксплуатацию электротехники, нарушение непрерывности работы газовой горелки, использование газовых плит для обогрева или сушки белья и невнимательность человека (с. 37)." },
+        { text: "Какое воздействие температуры, по учебнику, приводит к потере сознания и гибели через несколько минут после поражения органов дыхания?",
+          options: ["Температура около 30 °С", "Температура около 40 °С", "Температура свыше 100 °С", "Любое повышение температуры в комнате"], correct: 2,
+          explain: "Учебник (с. 37): воздействие температуры свыше 100 °С приводит к потере сознания и гибели через несколько минут после поражения органов дыхания. Самое опасное — вдыхание нагретого воздуха." },
+        { text: "Какая концентрация кислорода в воздухе помещения при пожаре считается опасной?",
+          options: ["14 %", "3 %", "50 %", "100 %"], correct: 0,
+          explain: "Опасной считается концентрация кислорода 14 %: теряется координация движений, ухудшается умственное сосредоточение, затрудняется эвакуация (с. 38). Уже снижение на 3 % вызывает ухудшение двигательных функций." },
+        { text: "Что учебник говорит о взрывах бытового газа?",
+          options: ["Они бывают только в многоэтажных домах", "Они почти не встречаются в России", "Они возможны только зимой", "Они наиболее частая причина пожаров и разрушений с жертвами в России"], correct: 3,
+          explain: "Учебник (с. 39): взрывы бытового газа являются наиболее частой причиной пожаров и разрушений с жертвами в России. Часто причиной становятся газовые баллоны, неисправные приборы и трубопроводы." },
+        { text: "Что нужно сделать при выходе из квартиры, если ликвидировать очаг горения своими силами невозможно?",
+          options: ["Открыть окна, чтобы вышел дым", "Перекрыть газ, выключить электричество, прикрыть за собой дверь и убедиться, что соседи предупреждены", "Вернуться за документами и вещами", "Спрятаться в самой дальней комнате"], correct: 1,
+          explain: "Учебник (с. 40): если ликвидировать очаг горения своими силами невозможно, немедленно покиньте квартиру, перекрыв газ, выключив электричество, прикрыв за собой дверь, и убедитесь, что соседи предупреждены." },
+        { text: "Выйти из квартиры по лестнице невозможно. Что делать, если нет балконной лестницы?",
+          options: ["Остаться в комнате и закрыть глаза", "Выйти на балкон, плотно закрыв за собой дверь, и криками привлечь внимание прохожих и пожарных", "Открыть входную дверь и ждать в коридоре", "Спрятаться в шкафу"], correct: 1,
+          explain: "Учебник (с. 41): при невозможности эвакуироваться по лестнице используйте балконную лестницу, а если её нет, выйдите на балкон, закрыв за собой плотно дверь, и криками привлеките внимание прохожих и пожарных." },
+        { text: "Каков порядок включения электроприбора в сеть по учебнику?",
+          options: ["Сначала шнур подключают к сети, затем к прибору", "Порядок не имеет значения", "Сначала шнур подключают к прибору, а затем к сети; отключают в обратном порядке", "Прибор всегда включают, держась за металлический корпус"], correct: 2,
+          explain: "Учебник (с. 41): неукоснительно соблюдайте порядок включения электроприбора в электросеть — сначала подключается шнур к прибору, а затем к сети; отключение производится в обратном порядке." },
+        { text: "Когда можно ремонтировать или заменять повреждённые выключатели, розетки и светильники?",
+          options: ["В любое время, если быть осторожным", "Только днём при хорошем освещении", "Если надеть резиновые перчатки", "Только после отключения сети, а не под напряжением"], correct: 3,
+          explain: "Учебник (с. 41): не ремонтируйте и не заменяйте под напряжением повреждённые выключатели, розетки, ламповые патроны, приборы и светильники; выполняйте эти работы только после отключения сети." },
+        { text: "Что такое шаговое напряжение?",
+          options: ["Напряжение в бытовой розетке", "Разность потенциалов между точками земли, находящимися на расстоянии шага", "Напряжение, которое возникает при ходьбе по ковру", "Напряжение внутри электроприбора"], correct: 1,
+          explain: "Шаговым напряжением называется разность потенциалов точек земли, находящихся на расстоянии шага (с. 42). Чем шире шаг, тем больше разница потенциалов и вероятнее поражение. Вокруг лежащего на земле провода образуется опасная зона радиусом 5–8 м." }
+    ];
+
+    // ---------- 3. ДВИЖОК (не менять) ----------
+    function byId(id) { return document.getElementById(id); }
+    function make(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) { e.className = cls; }
+        if (text !== undefined) { e.textContent = text; }
+        return e;
+    }
+    function shuffle(arr) {
+        var a = arr.slice(), i, j, t;
+        for (i = a.length - 1; i > 0; i--) { j = Math.floor(Math.random() * (i + 1)); t = a[i]; a[i] = a[j]; a[j] = t; }
+        return a;
+    }
+    function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+    // Цели Яндекс.Метрики (если счётчик заблокирован или не подключён — ничего не происходит)
+    function goal(name) { try { if (typeof window.ym === 'function') { window.ym(106461008, 'reachGoal', name); } } catch (e) { /* нет счётчика */ } }
+
+    // Формы и видео
+    function withParams(base) {
+        var parts = [], k;
+        for (k in NVP_CONFIG.formParams) {
+            if (Object.prototype.hasOwnProperty.call(NVP_CONFIG.formParams, k)) {
+                parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(NVP_CONFIG.formParams[k]));
+            }
+        }
+        return parts.length ? base + (base.indexOf('?') === -1 ? '?' : '&') + parts.join('&') : base;
+    }
+    var taskBtn = byId('nvpTaskBtn'), taskNote = byId('nvpTaskNote');
+    if (taskBtn) {
+        if (isHttps(NVP_CONFIG.taskFormUrl)) {
+            taskBtn.href = withParams(NVP_CONFIG.taskFormUrl);
+            if (taskNote) { taskNote.hidden = true; }
+            taskBtn.addEventListener('click', function () { goal('nvp_task_click'); });
+        } else {
+            taskBtn.hidden = true;
+            if (taskNote) { taskNote.hidden = false; }
+        }
+    }
+    var qLink = byId('nvpQuestionLink');
+    if (qLink) {
+        if (isHttps(NVP_CONFIG.questionFormUrl)) {
+            qLink.href = withParams(NVP_CONFIG.questionFormUrl);
+            qLink.addEventListener('click', function () { goal('nvp_question_click'); });
+        } else { qLink.parentNode.hidden = true; }
+    }
+    var videoBox = byId('nvpVideoBox');
+    if (videoBox && isHttps(NVP_CONFIG.videoUrl)) {
+        var fr = document.createElement('iframe');
+        fr.src = NVP_CONFIG.videoUrl;
+        fr.title = 'Видеофрагмент к уроку';
+        fr.loading = 'lazy';
+        fr.allowFullscreen = true;
+        byId('nvpVideoFrame').appendChild(fr);
+        var vl = byId('nvpVideoLink');
+        if (vl) { vl.href = NVP_CONFIG.videoUrl.replace('/play/embed/', '/video/').replace(/\/?$/, '/'); }
+        videoBox.hidden = false;
+    }
+
+    // Нумерация шагов по порядку (с учётом скрытого блока видео)
+    var stepN = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nvp-section'), function (sec) {
+        var st = sec.querySelector('.nvp-step');
+        if (st && !sec.hidden) { st.textContent = ++stepN; }
+    });
+
+    // Проверь себя
+    var root = byId('nvpQuiz');
+    if (!root || !NVP_QUIZ.length) { return; }
+    var answered = 0, right = 0;
+    var progress = byId('nvpProgress'), score = byId('nvpScore');
+
+    function updateProgress() {
+        progress.textContent = 'Отвечено: ' + answered + ' из ' + NVP_QUIZ.length;
+    }
+
+    function finish() {
+        var n = NVP_QUIZ.length, msg;
+        if (right === n) { msg = 'Отлично! Ты готов к уроку.'; }
+        else if (right >= Math.ceil(n * 0.6)) { msg = 'Хороший результат. Перечитай пояснения к вопросам с ошибками.'; }
+        else { msg = 'Вернись к разделу «Основной материал» и попробуй ещё раз.'; }
+        score.innerHTML = '';
+        score.appendChild(make('strong', '', 'Твой результат: ' + right + ' из ' + n + '. '));
+        score.appendChild(document.createTextNode(msg));
+        score.hidden = false;
+        goal('nvp_quiz_done');
+    }
+
+    function build() {
+        root.innerHTML = '';
+        answered = 0; right = 0; score.hidden = true; updateProgress();
+        NVP_QUIZ.forEach(function (item, qi) {
+            var fs = make('fieldset', 'nvp-q');
+            fs.appendChild(make('legend', '', 'Вопрос ' + (qi + 1) + ' из ' + NVP_QUIZ.length));
+            fs.appendChild(make('p', 'nvp-q-text', item.text));
+            var opts = shuffle(item.options.map(function (t, i) { return { t: t, ok: i === item.correct }; }));
+            var fb = make('div', 'nvp-feedback');
+            fb.hidden = true;
+            fb.setAttribute('role', 'status');
+            opts.forEach(function (o, oi) {
+                var label = make('label', 'nvp-opt');
+                var inp = document.createElement('input');
+                inp.type = 'radio'; inp.name = 'nvpq' + qi; inp.value = oi;
+                label.appendChild(inp);
+                label.appendChild(document.createTextNode(o.t));
+                inp.addEventListener('change', function () {
+                    if (fs.classList.contains('nvp-locked')) { return; }
+                    fs.classList.add('nvp-locked');
+                    var labels = fs.querySelectorAll('.nvp-opt'), inputs = fs.querySelectorAll('input');
+                    Array.prototype.forEach.call(inputs, function (x) { x.disabled = true; });
+                    Array.prototype.forEach.call(labels, function (l, li) { if (opts[li].ok) { l.classList.add('nvp-right'); } });
+                    if (o.ok) { right++; fb.innerHTML = ''; fb.appendChild(make('b', '', '✓ Верно.')); }
+                    else { label.classList.add('nvp-wrong'); fb.innerHTML = ''; fb.appendChild(make('b', '', '✗ Неверно. Правильный ответ выделен зелёным.')); }
+                    fb.appendChild(document.createTextNode(item.explain));
+                    fb.hidden = false;
+                    answered++; updateProgress();
+                    if (answered === NVP_QUIZ.length) { finish(); }
+                });
+                fs.appendChild(label);
+            });
+            fs.appendChild(fb);
+            root.appendChild(fs);
+        });
+    }
+
+    byId('nvpRestart').addEventListener('click', function () { build(); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    build();
+})();
+    </script>
+<script src="nvp-paragrafy.js"></script>
+<script id="nvp-pager-script">
+/* Ссылки на соседние уроки: строка становится ссылкой, если страница урока есть в BZH_READY (nvp-paragrafy.js) */
+(function () {
+    var box = document.querySelector('.nvp-pager[data-cl]');
+    if (!box || !window.BZH_READY) { return; }
+    var cl = box.getAttribute('data-cl'), n = parseInt(box.getAttribute('data-n'), 10);
+    var spans = box.querySelectorAll('span[data-dir]');
+    for (var i = 0; i < spans.length; i++) {
+        var dir = spans[i].getAttribute('data-dir');
+        var file = window.BZH_READY[cl + '-' + (dir === 'prev' ? n - 1 : n + 1)];
+        if (!file) { continue; }
+        var a = document.createElement('a');
+        a.href = file;
+        a.className = 'nvp-pager-link';
+        a.textContent = spans[i].textContent;
+        spans[i].parentNode.replaceChild(a, spans[i]);
+    }
+})();
+</script>
+</body>
+</html>
