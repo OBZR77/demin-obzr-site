@@ -991,6 +991,8 @@
         .dz-back a { color: var(--color-primary); font-weight: 600; }
         .dz-intro { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 1.25rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--color-primary); margin-bottom: 1.25rem; }
         .dz-intro ol { margin: .6rem 0 0 1.2rem; }
+        .dz-intro p.dz-when { margin: .9rem 0 0; padding-top: .8rem; border-top: 1px solid rgba(0,61,122,.25); }
+        .dz-intro p.dz-when a { color: var(--color-primary); font-weight: 600; }
         .dz-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; padding: 1.25rem; border: 2px solid var(--color-border); border-radius: 12px; margin-bottom: 1rem; background: #fff; }
         .dz-tool { display: flex; flex-direction: column; gap: .5rem; }
         .dz-lbl { font-weight: 600; color: var(--color-text-primary); }
@@ -1343,6 +1345,7 @@
                 <li>Если в задании нужна таблица, впиши её в поле ответа текстом: каждая строка с новой строки, ячейки раздели знаком « — ».</li>
                 <li>Задание на этой странице — то же, что в конце страницы урока. Полный текст урока открывается кнопкой «Открыть урок».</li>
             </ol>
+            <p class="dz-when"><strong>Когда появляется задание.</strong> Задание к уроку (НВП и БЖ) открывается за <span class="dz-days">7 дней</span> до первого урока по этой теме в твоей параллели. Раньше его на странице нет: так сроки не путаются. Если задания пока не видно, значит, оно ещё не открыто. Подготовиться заранее можно по материалам: <a href="uchebnik-nvp.html">учебник НВП</a> и <a href="bzh-k-uroku.html">БЖ: к уроку</a>.</p>
         </div>
 
         <div class="dz-tools" id="dzTools">
@@ -1369,7 +1372,7 @@
 
         <div class="dz-empty" id="dzEmptyAll" hidden>
             <h3>Пока заданий нет</h3>
-            <p>Новые задания появятся здесь вместе со сроком сдачи. Задание к уроку НВП всегда находится в конце параграфа в <a href="uchebnik-nvp.html">учебнике НВП</a>.</p>
+            <p>Новые задания появятся здесь за <span class="dz-days">7 дней</span> до первого урока по теме в твоей параллели, вместе со сроком сдачи. Задание к уроку НВП всегда находится в конце параграфа в <a href="uchebnik-nvp.html">учебнике НВП</a>.</p>
         </div>
         <ul class="dz-list" id="dzList"></ul>
         <div class="dz-empty" id="dzFilterEmpty" hidden>
@@ -1681,6 +1684,10 @@ document.addEventListener('click', function(event) {
     function all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (text !== undefined) { e.textContent = text; } return e; }
     var t = new Date(), today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+    // Задание появляется на странице за SHOW_DAYS дней до первого урока по теме в параллели (НВП и БЖ).
+    // Чтобы изменить срок, поменяйте число ниже: подпись на странице обновится сама.
+    var SHOW_DAYS = 7;
+    function opened(start) { return (start - today) / 86400000 <= SHOW_DAYS; }
     function parseDate(s) { var m = /^\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*$/.exec(String(s || '')); return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null; }
     function plural(n) { var a = n % 10, b = n % 100; return (a === 1 && b !== 11) ? 'день' : ((a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'дня' : 'дней'); }
     function submitUrl(k) {
@@ -1690,11 +1697,15 @@ document.addEventListener('click', function(event) {
         return (k.course === 'БЖ' ? FORM_BZH : FORM) + q;
     }
 
+    all('.dz-days').forEach(function (x) { x.textContent = SHOW_DAYS + ' ' + plural(SHOW_DAYS); });
+
     // --- задания, добавленные вручную (файл dz-zadaniya.js)
+    // необязательное поле start (дд.мм.гггг) — дата первого урока в параллели; если его нет, берётся срок сдачи due
     var raw = (window.DZ_TASKS instanceof Array) ? window.DZ_TASKS : [], tasks = [];
     raw.forEach(function (k, i) {
         var d = parseDate(k && k.due);
         if (!k || !k.cl || !k.title || !d) { if (window.console) { console.warn('Задание №' + (i + 1) + ' пропущено: нужны cl, title и due (дд.мм.гггг)'); } return; }
+        if (!opened(parseDate(k.start) || d)) { return; }
         k.course = k.course || 'НВП'; k.date = d; k.last = d; tasks.push(k);
     });
     // --- ситуационные задачи: по одной строке на каждый класс, данные берутся из файла sz-zadachi.js
@@ -1703,6 +1714,8 @@ document.addEventListener('click', function(event) {
         z.classes.forEach(function (c) {
             var dt = parseDate(c && c.due);
             if (!dt) { return; }
+            // у ситуационной задачи правило недели действует, только если указан start (дата первого урока); иначе она показывается сразу
+            var st0 = parseDate(c && c.start); if (st0 && !opened(st0)) { return; }
             tasks.push({ cl: String(c.cl), course: z.course || 'БЖ', n: c.lessons, title: 'Ситуационная задача: «' + z.title + '»',
                          text: z.dzText || 'Прочитай условие на странице задачи и сдай ответ через форму.',
                          date: dt, last: dt, form: (z.form || window.SZ_FORM || FORM) + '?grade=' + encodeURIComponent(c.cl) + '&lesson=' + encodeURIComponent(z.code || 'СЗ'),
@@ -1714,6 +1727,7 @@ document.addEventListener('click', function(event) {
     function iso(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
     Object.keys(R).forEach(function (key) {
         var l = NVP[key]; if (!l) { return; }
+        if (!opened(iso(l.s))) { return; }
         tasks.push({ cl: l.cl, course: 'НВП', n: l.n, title: l.t, auto: true,
                      text: 'Задание к уроку находится в конце параграфа. Прочитай параграф, проверь себя и сдай задание через форму.',
                      date: iso(l.s), last: iso(l.e), dueText: 'до начала урока: ' + l.p, mat: R[key], matLabel: 'Открыть параграф' });
