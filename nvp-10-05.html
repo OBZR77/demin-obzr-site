@@ -111,6 +111,11 @@
         .nvp-quote { margin: 1rem 0; padding: 0.9rem 1.2rem; border-left: 4px solid var(--color-primary); background: var(--color-surface); border-radius: 0 8px 8px 0; font-style: italic; }
         .nvp-note { margin: 1rem 0; padding: 0.8rem 1.1rem; border-left: 4px solid var(--color-warning); background: #FFF8E6; border-radius: 0 8px 8px 0; }
         .nvp-note p { margin: 0; }
+        .nvp-table-wrap { overflow-x: auto; margin: 1rem 0; }
+        .nvp-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        .nvp-table caption { text-align: left; font-weight: 700; margin-bottom: 0.4rem; }
+        .nvp-table th, .nvp-table td { border: 1px solid var(--color-border); padding: 0.45rem 0.5rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+        .nvp-table th { background: var(--color-surface); }
         .nvp-hub { margin: 1.2rem 0 0; }
         .nvp-hub a { color: var(--color-primary); font-weight: 700; text-decoration: underline; }
         .nvp-pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; font-size: 0.95rem; color: var(--color-text-secondary); }
@@ -262,6 +267,7 @@
                 <p><strong>Повышенное задание (по желанию).</strong> Составь для младшего школьника короткую памятку «Правила безопасности при занятиях с макетом оружия» (5–6 пунктов). Обоснуй каждый пункт одной фразой.</p>
                 <p><strong>Вопрос к учителю (по желанию).</strong> Что в параграфе осталось непонятным? Напиши одной фразой: на уроке мы начнём с этого.</p>
                 <p>Пиши сам, не копируй текст параграфа. Если для подготовки ты пользовался ИИ-помощником, отметь это в форме.</p>
+                <p class="nvp-task-note">Ответ печатай прямо в форме. Таблицу записывай строками «понятие — значение», схему — цепочкой со стрелками (→), памятку — нумерованным списком. Рисунок в тетради можно сделать по желанию и показать на уроке.</p>
                 <div class="nvp-privacy"><strong>Важно:</strong> не пиши в форме фамилию и имя. Выбери свой класс и укажи личный код: <strong>5 цифр</strong> с твоей карточки.</div>
                 <p><a class="nvp-btn" id="nvpTaskBtn" href="#" target="_blank" rel="noopener">Открыть форму и сдать задание</a></p>
                 <p class="nvp-task-note" id="nvpTaskNote">Ссылка на форму появится позже. Учитель сообщит об этом на уроке.</p>
