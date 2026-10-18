@@ -1461,6 +1461,7 @@
                 <div class="nvph-btns" id="nvphStatusBtns" role="group" aria-labelledby="nvphStatusLbl">
                     <button type="button" class="nvph-f is-on" data-st="all" aria-pressed="true">Все</button>
                     <button type="button" class="nvph-f" data-st="current" aria-pressed="false" title="Уроки, которые ещё не прошли по расписанию">Актуальные</button>
+                    <button type="button" class="nvph-f" data-st="past" aria-pressed="false" title="Уроки, которые уже прошли по расписанию">Прошедшие</button>
                 </div>
             </div>
         </div>
@@ -2226,7 +2227,7 @@ document.addEventListener('click', function(event) {
             var text = r.querySelector('.nvph-topic').textContent.toLowerCase();
             var ok = (state.cl === 'all' || r.getAttribute('data-cl') === state.cl) &&
                      (q === '' || text.indexOf(q) !== -1) &&
-                     (state.st === 'all' || isCurrent(r));
+                     (state.st === 'all' || (state.st === 'past' ? !isCurrent(r) : isCurrent(r)));
             r.hidden = !ok;
             if (ok) { shown++; }
         });
@@ -2237,7 +2238,7 @@ document.addEventListener('click', function(event) {
         });
         if (active) { setOpen(courseBtn, true); }
         byId('nvphFound').textContent = !active ? '' :
-            (shown ? 'Найдено уроков: ' + shown + (state.st === 'current' ? '. Показаны уроки, которые ещё не прошли по расписанию.' : '') : (state.st === 'current' && state.cl === 'all' && q === '' ? 'Актуальных уроков нет: все уроки уже прошли.' : 'Ничего не найдено. Измените запрос или фильтры.'));
+            (shown ? 'Найдено уроков: ' + shown + (state.st === 'current' ? '. Показаны уроки, которые ещё не прошли по расписанию.' : state.st === 'past' ? '. Показаны уроки, которые уже прошли по расписанию.' : '') : (state.st === 'current' && state.cl === 'all' && q === '' ? 'Актуальных уроков нет: все уроки уже прошли.' : state.st === 'past' && state.cl === 'all' && q === '' ? 'Прошедших уроков пока нет.' : 'Ничего не найдено. Измените запрос или фильтры.'));
     }
 
     function bindGroup(groupSel, key, attr) {
