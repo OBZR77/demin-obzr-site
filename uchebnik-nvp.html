@@ -1463,10 +1463,10 @@
                 </div>
             </div>
             <div class="nvph-tool">
-                <span class="nvph-lbl" id="nvphStatusLbl">🎯 Статус параграфа</span>
+                <span class="nvph-lbl" id="nvphStatusLbl">🎯 Показать уроки</span>
                 <div class="nvph-btns" id="nvphStatusBtns" role="group" aria-labelledby="nvphStatusLbl">
                     <button type="button" class="nvph-f is-on" data-st="all" aria-pressed="true">Все</button>
-                    <button type="button" class="nvph-f" data-st="ready" aria-pressed="false">Только доступные</button>
+                    <button type="button" class="nvph-f" data-st="current" aria-pressed="false" title="Уроки, которые ещё не прошли по расписанию">Актуальные</button>
                 </div>
             </div>
         </div>
@@ -2207,6 +2207,22 @@ document.addEventListener('click', function(event) {
     var defaults = accs.map(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
     var state = { cl: 'all', q: '', st: 'all' };
 
+    // «Актуальные»: уроки, которые ещё не прошли по расписанию (дата берётся из строки «Урок в классе»)
+    var MONTHS = { 'января': 0, 'февраля': 1, 'марта': 2, 'апреля': 3, 'мая': 4, 'июня': 5, 'июля': 6, 'августа': 7, 'сентября': 8, 'октября': 9, 'ноября': 10, 'декабря': 11 };
+    var now = new Date(), today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var yearStart = now.getMonth() >= 7 ? now.getFullYear() : now.getFullYear() - 1;
+    function lastDate(row) {
+        var metas = row.querySelectorAll('.nvph-meta'), txt = '';
+        Array.prototype.forEach.call(metas, function (m) { if (m.textContent.indexOf('📅') !== -1) { txt = m.textContent; } });
+        var re = /(\d{1,2})\s+(января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря)/g, m, last = null;
+        while ((m = re.exec(txt)) !== null) { last = m; }
+        if (!last) { return null; }
+        var mon = MONTHS[last[2]];
+        return new Date(mon >= 8 ? yearStart : yearStart + 1, mon, +last[1]);
+    }
+    rows.forEach(function (r) { r._end = lastDate(r); });
+    function isCurrent(r) { return !r._end || r._end >= today0; }
+
     function setOpen(btn, open) {
         var panel = byId(btn.getAttribute('aria-controls'));
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -2231,7 +2247,7 @@ document.addEventListener('click', function(event) {
             var text = r.querySelector('.nvph-topic').textContent.toLowerCase();
             var ok = (state.cl === 'all' || r.getAttribute('data-cl') === state.cl) &&
                      (q === '' || text.indexOf(q) !== -1) &&
-                     (state.st === 'all' || r.classList.contains('nvph-ready'));
+                     (state.st === 'all' || isCurrent(r));
             r.hidden = !ok;
             if (ok) { shown++; }
         });
@@ -2242,7 +2258,7 @@ document.addEventListener('click', function(event) {
         });
         if (active) { setOpen(courseBtn, true); }
         byId('nvphFound').textContent = !active ? '' :
-            (shown ? 'Найдено уроков: ' + shown : 'Ничего не найдено. Измените запрос или фильтры.');
+            (shown ? 'Найдено уроков: ' + shown + (state.st === 'current' ? '. Показаны уроки, которые ещё не прошли по расписанию.' : '') : (state.st === 'current' && state.cl === 'all' && q === '' ? 'Актуальных уроков нет: все уроки уже прошли.' : 'Ничего не найдено. Измените запрос или фильтры.'));
     }
 
     function bindGroup(groupSel, key, attr) {
