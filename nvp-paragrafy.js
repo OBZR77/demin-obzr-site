@@ -14,6 +14,8 @@ window.NVP_READY = {
     '8-6': 'nvp-8-06.html',
     '8-7': 'nvp-8-07.html',
     '8-8': 'nvp-8-08.html',
+    '8-9': 'nvp-8-09.html',
+    '8-10': 'nvp-8-10.html',
     '9-1': 'nvp-9-01.html',
     '9-2': 'nvp-9-02.html',
     '9-3': 'nvp-9-03.html',
@@ -22,6 +24,8 @@ window.NVP_READY = {
     '9-6': 'nvp-9-06.html',
     '9-7': 'nvp-9-07.html',
     '9-8': 'nvp-9-08.html',
+    '9-9': 'nvp-9-09.html',
+    '9-10': 'nvp-9-10.html',
     '10-1': 'nvp-10-01.html',
     '10-2': 'nvp-10-02.html',
     '10-3': 'nvp-10-03.html',
@@ -30,6 +34,8 @@ window.NVP_READY = {
     '10-6': 'nvp-10-06.html',
     '10-7': 'nvp-10-07.html',
     '10-8': 'nvp-10-08.html',
+    '10-9': 'nvp-10-09.html',
+    '10-10': 'nvp-10-10.html',
     '11-1': 'nvp-11-01.html',
     '11-2': 'nvp-11-02.html',
     '11-3': 'nvp-11-03.html',
@@ -38,6 +44,8 @@ window.NVP_READY = {
     '11-6': 'nvp-11-06.html',
     '11-7': 'nvp-11-07.html',
     '11-8': 'nvp-11-08.html',
+    '11-9': 'nvp-11-09.html',
+    '11-10': 'nvp-11-10.html',
 };
 
 /*
