@@ -2067,7 +2067,7 @@
             <div class="resources-list">
                 <div class="resource-item" onclick="openDocumentModal('presentation')">
                     <span class="resource-icon">📄</span>
-                   Дополнительная общеобразовательная общеразвивающая программа "Юнармия" на 2025-2026 учебный год (PDF)
+                   Дополнительная общеобразовательная общеразвивающая программа "Юнармия" на 2026-2027 учебный год (PDF)
                 </div>
                 <div class="resource-item" onclick="openDocumentModal('regulations')">
                     <span class="resource-icon">📅</span>
@@ -2145,7 +2145,7 @@
                 <div class="icon" id="modalIcon">📊</div>
                 <h4 id="modalDocName">Презентация о движении Юнармия</h4>
                 <p id="modalDescription">Презентация для родительских собраний и классных часов о движении Юнармия</p>
-                <p style="font-size: 0.9rem; color: #7F8C8D;">Для просмотра PPTX документов используйте кнопку "Скачать документ" ниже</p>
+                <p id="modalHint" style="font-size: 0.9rem; color: #7F8C8D;">Для просмотра PPTX документов используйте кнопку "Скачать документ" ниже</p>
             </div>
 
             <div class="document-info">
@@ -2165,7 +2165,8 @@
             </div>
 
             <div class="document-modal-footer">
-                <button class="modal-btn modal-btn-primary" disabled>📥 Скоро</button>
+                <button class="modal-btn modal-btn-primary" id="modalDownloadBtn" disabled>📥 Скоро</button>
+                <button class="modal-btn modal-btn-secondary" id="modalOpenBtn" style="display: none;">📄 Открыть PDF</button>
                 <button class="modal-btn modal-btn-secondary" onclick="closeDocumentModal()">⨯ Закрыть</button>
             </div>
         </div>
@@ -2725,10 +2726,11 @@
         // ============================================
         const documents = {
             'presentation': {
-                title: 'Дополнительная программа "Юнармия" на 2025-2026 учебный год',
+                title: 'Дополнительная программа "Юнармия" на 2026-2027 учебный год',
                 icon: '📊',
-                name: 'Дополнительная программа "Юнармия" на 2025-2026 учебный год',
+                name: 'Дополнительная программа "Юнармия" на 2026-2027 учебный год',
                 type: 'PDF',
+                file: 'files/yunarmiya/doop-yunarmiya-2026-2027.pdf',
                description: 'Программа внеурочной деятельности военно-патриотической направленности'
             },
             'regulations': {
@@ -2772,6 +2774,34 @@
             document.getElementById('infoName').textContent = doc.name;
             document.getElementById('infoType').textContent = doc.type;
             document.getElementById('infoDesc').textContent = doc.description;
+
+            // Кнопки скачивания: активны только у документов, для которых указан file
+            const dlBtn = document.getElementById('modalDownloadBtn');
+            const openBtn = document.getElementById('modalOpenBtn');
+            const hint = document.getElementById('modalHint');
+            if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
+            if (doc.file) {
+                dlBtn.disabled = false;
+                dlBtn.textContent = '📥 Скачать документ';
+                dlBtn.onclick = function () {
+                    const a = document.createElement('a');
+                    a.href = doc.file;
+                    a.download = '';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                };
+                openBtn.style.display = '';
+                openBtn.onclick = function () { window.open(doc.file, '_blank'); };
+                if (hint) hint.textContent = 'Документ можно скачать или открыть в браузере (PDF)';
+            } else {
+                dlBtn.disabled = true;
+                dlBtn.textContent = '📥 Скоро';
+                dlBtn.onclick = null;
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = window.modalHintDefault;
+            }
 
             document.getElementById('documentModal').style.display = 'flex';
             document.body.classList.add('modal-open');
