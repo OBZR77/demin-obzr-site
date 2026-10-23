@@ -1345,6 +1345,40 @@
         <!-- Новостная лента -->
         <div class="news-feed" id="newsFeed">
 
+                        <!-- Новость: Учи.ру, олимпиада «Безопасные дороги», 20 октября 2026 -->
+            <article class="news-card" id="uchi-bezopasnye-dorogi" data-category="achievement" style="scroll-margin-top: 190px;">
+                <div class="news-card-image">
+    <div class="news-slider">
+        <div class="news-slider-track">
+            <div class="news-slide">
+                <img src="images/news/uchi-bezopasnye-dorogi-2026-1.jpg"
+                     alt="Страница олимпиады «Безопасные дороги» на Учи.ру: 10 учеников 8 «А» класса завершили первый тур, выполнено 10 из 21">
+            </div>
+        </div>
+        <div class="slider-zoom-hint">🔍 увеличить</div>
+    </div>
+</div>
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span class="news-card-date">📅 20 октября 2026 года</span>
+                        <span class="news-card-category achievement">Соревнования</span>
+                    </div>
+                    <h3 class="news-card-title">Учи.ру: 8 «А» прошёл первый тур олимпиады «Безопасные дороги»</h3>
+                    <p class="news-card-excerpt">
+    🚸 На платформе Учи.ру восьмиклассники из 8 «А» участвовали в первом туре онлайн-олимпиады «Безопасные дороги». Завершили его 10 человек из 21.
+                    </p>
+                    <div class="news-card-full-text">
+                        <p>🚸 На платформе Учи.ру в 8 «А» классе прошёл первый тур олимпиады «Безопасные дороги». Перед ним я выдал ребятам задания прошлых олимпиад для подготовки и пригласил весь класс. Первый тур завершили 10 восьмиклассников из 21.<br><br>
+🎓 Для учеников это ещё один способ проверить себя по теме безопасности на дороге в формате онлайн-олимпиады — ту же тему мы разбираем на уроках и в отряде ЮИД.<br><br>
+📈 Платформа начисляет баллы и учителю: в рейтинге «Активный учитель» у меня 1 050 баллов — первое место в школе и в муниципальном округе.
+                        </p>
+                    </div>
+                    <div class="news-card-footer">
+                         <button class="news-toggle-btn" onclick="toggleNews(this)">Подробнее ▼</button>
+                    </div>
+                </div>
+            </article>
+
             <!-- Новость 3: День призывника, 16 октября 2026 -->
             <article class="news-card" data-category="event">
               <div class="news-card-image">
@@ -1429,7 +1463,7 @@
                 </div>
             </article>
 
-            <!-- Новость 2: мастер-класс по первой помощи, 8 октября 2026 -->
+                        <!-- Новость 2: мастер-класс по первой помощи, 8 октября 2026 -->
             <article class="news-card" data-category="event">
               <div class="news-card-image">
     <div class="news-slider">
@@ -2190,6 +2224,7 @@ function initSliders() {
 
         // Колесо мыши (десктоп)
         slider.addEventListener('wheel', e => {
+            if (total < 2) return;
             e.preventDefault();
             if (e.deltaY > 0 || e.deltaX > 0) goTo(current + 1);
             else goTo(current - 1);
@@ -2246,6 +2281,10 @@ function renderLightbox() {
     img.src = lb.images[lb.index].src;
     img.alt = lb.images[lb.index].alt || '';
     counter.textContent = `${lb.index + 1} / ${lb.images.length}`;
+    // Если фото одно — стрелки и счётчик не нужны
+    const single = lb.images.length < 2;
+    document.querySelectorAll('#photoLightbox .lightbox-btn').forEach(b => b.style.display = single ? 'none' : '');
+    counter.style.display = single ? 'none' : '';
 }
 
 function lightboxNav(dir) {
