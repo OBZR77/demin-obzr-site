@@ -2071,7 +2071,7 @@
                 </div>
                 <div class="resource-item" onclick="openDocumentModal('regulations')">
                     <span class="resource-icon">📅</span>
-                    Расписание занятий отряда "Вымпел"
+                    Расписание занятий отряда "Вымпел" (PDF)
                 </div>
                 <div class="resource-item" onclick="openDocumentModal('plan')">
                     <span class="resource-icon">📋</span>
@@ -2737,15 +2737,17 @@
                 title: 'Расписание занятий отряда "Вымпел"',
                 icon: '📋',
                 name: 'Расписание занятий отряда "Вымпел"',
-                type: 'DOCX',
-                description: 'График проведения занятий и тренировок юнармейского отряда'
+                type: 'PDF',
+                file: 'files/yunarmiya/raspisanie-zanyatij-vympel-2026-2027.pdf',
+                description: 'Занятия по вторникам, 17:00–17:40 (спортивный зал и кабинет отряда «Юнармия»). В файле: режим занятий и календарный учебный график на 2026–2027 учебный год (с 08.09 по 25.05)'
             },
             'plan': {
                 title: 'Устав ВВПОД "ЮНАРМИЯ"',
                 icon: '📋',
                 name: 'Устав ВВПОД "ЮНАРМИЯ"',
                 type: 'PDF',
-                description: 'Устав Всероссийского военно-патриотического общественного движения "ЮНАРМИЯ"'
+                file: 'files/yunarmiya/ustav-vvpod-yunarmiya.pdf',
+                description: 'Устав Всероссийского детско-юношеского военно-патриотического общественного движения «ЮНАРМИЯ» (редакция от 10.12.2021, зарегистрирована Минюстом России 09.03.2022), 35 страниц'
             },
             'methods': {
                 title: 'Методические рекомендации для занятий',
@@ -2794,6 +2796,13 @@
                 openBtn.style.display = '';
                 openBtn.onclick = function () { window.open(doc.file, '_blank'); };
                 if (hint) hint.textContent = 'Документ можно скачать или открыть в браузере (PDF)';
+            } else if (doc.href) {
+                dlBtn.disabled = false;
+                dlBtn.textContent = '🌐 Открыть на сайте Юнармии';
+                dlBtn.onclick = function () { window.open(doc.href, '_blank', 'noopener'); };
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = 'Документ откроется на официальном сайте движения в новой вкладке';
             } else {
                 dlBtn.disabled = true;
                 dlBtn.textContent = '📥 Скоро';
