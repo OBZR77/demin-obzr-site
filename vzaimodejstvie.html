@@ -1918,8 +1918,8 @@
                 <div onclick="openDocumentModal('plan')" style="padding: 1.25rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 1rem; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: 10px; background: white;" onmouseover="this.style.background='#F5F3FF'; this.style.borderColor='var(--color-partners-main)'; this.style.boxShadow='0 2px 8px rgba(123, 104, 238, 0.15)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='white'; this.style.borderColor='var(--color-border)'; this.style.boxShadow='none'; this.style.transform='translateY(0)';">
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📅</span>
                     <div>
-                        <div style="font-weight: 600; margin-bottom: 0.25rem;">План совместных мероприятий на 2025-2026 учебный год</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.5 МБ • Календарный план</div>
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">План совместных мероприятий на 2026-2027 учебный год</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Календарный план</div>
                     </div>
                 </div>
 
@@ -1928,7 +1928,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📅</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">График проведения учений и тренировок</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.4 МБ • На 2025-2026 учебный год</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • На 2026-2027 учебный год</div>
                     </div>
                 </div>
 
@@ -1936,8 +1936,8 @@
                 <div onclick="openDocumentModal('report')" style="padding: 1.25rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 1rem; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: 10px; background: white;" onmouseover="this.style.background='#F5F3FF'; this.style.borderColor='var(--color-partners-main)'; this.style.boxShadow='0 2px 8px rgba(123, 104, 238, 0.15)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='white'; this.style.borderColor='var(--color-border)'; this.style.boxShadow='none'; this.style.transform='translateY(0)';">
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📊</span>
                     <div>
-                        <div style="font-weight: 600; margin-bottom: 0.25rem;">Отчёт о совместной деятельности за 2024-2025 учебный год</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 1.2 МБ • Итоги сотрудничества</div>
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">Отчёт о совместной деятельности за 2025-2026 учебный год</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Итоги сотрудничества</div>
                     </div>
                 </div>
 
@@ -1946,7 +1946,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📞</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">Контакты партнёрских организаций</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.3 МБ • Справочник</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Справочник</div>
                     </div>
                 </div>
 
@@ -2042,7 +2042,7 @@
                 <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-bottom: 2rem; border: 2px dashed var(--color-partners-main);">
                     <div id="modalDocIcon" style="font-size: 4rem; margin-bottom: 1rem; filter: drop-shadow(0 2px 8px rgba(123, 104, 238, 0.3));">📋</div>
                     <p id="modalDocName" style="font-weight: 600; color: var(--color-text-primary); margin: 0 0 0.5rem 0; font-size: 1.05rem;">Название документа</p>
-                    <p style="color: var(--color-text-secondary); margin: 0; font-size: 0.9rem;">Документ будет доступен для скачивания после загрузки на сервер</p>
+                    <p id="modalHint" style="color: var(--color-text-secondary); margin: 0; font-size: 0.9rem;">Документ можно скачать для редактирования или открыть в браузере (PDF)</p>
                 </div>
 
                 <!-- Информация о документе -->
@@ -2066,8 +2066,11 @@
 
                 <!-- Кнопки действий -->
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button disabled style="flex: 1; min-width: 200px; background: var(--color-border); color: var(--color-text-secondary); border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <span>📥</span> Скачать (скоро)
+                    <button id="modalDownloadBtn" disabled style="flex: 1; min-width: 200px; background: var(--color-border); color: var(--color-text-secondary); border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span>📥</span> Скоро
+                    </button>
+                    <button id="modalOpenBtn" style="flex: 1; min-width: 200px; background: white; color: var(--color-partners-main); border: 2px solid var(--color-partners-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span>📄</span> Открыть PDF
                     </button>
                     <button onclick="closeDocumentModal()" style="flex: 1; min-width: 200px; background: white; color: var(--color-partners-main); border: 2px solid var(--color-partners-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-partners-main)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--color-partners-main)';">
                         Закрыть
@@ -2591,47 +2594,41 @@
         // МОДАЛЬНОЕ ОКНО ДОКУМЕНТА
         // ============================================
         const documents = {
-            'mchs': {
-                title: 'Соглашение о сотрудничестве с МЧС России',
-                icon: '📋',
-                name: 'Соглашение о долгосрочном сотрудничестве с ГУ МЧС России по Нижегородской области',
-                type: 'PDF, 0.8 МБ',
-                description: 'Долгосрочное соглашение на 2024-2027 годы о сотрудничестве в области обучения учащихся основам гражданской обороны, пожарной безопасности и действиям в чрезвычайных ситуациях.'
-            },
-            'voenkomat': {
-                title: 'Соглашение с военным комиссариатом',
-                icon: '📋',
-                name: 'Соглашение о сотрудничестве с военным комиссариатом Нижегородской области',
-                type: 'PDF, 0.7 МБ',
-                description: 'Соглашение о порядке организации и проведения военно-полевых сборов, военно-профессиональной ориентации учащихся, предоставлении материально-технической базы для занятий.'
-            },
             'plan': {
-                title: 'План совместных мероприятий на 2025 год',
+                title: 'План совместных мероприятий на 2026-2027 учебный год',
                 icon: '📅',
-                name: 'План совместной работы с партнёрскими организациями на 2024-2025 учебный год',
-                type: 'PDF, 0.5 МБ',
-                description: 'Календарный план совместных мероприятий с МЧС, военкоматом, ГИБДД, медицинскими учреждениями. Включает даты проведения, ответственных лиц, целевую аудиторию.'
+                name: 'План совместных мероприятий с партнёрскими организациями на 2026-2027 учебный год',
+                type: 'DOCX + PDF',
+                file: 'files/vzaimodejstvie/plan-sovmestnyh-meropriyatij-2026-2027.pdf',
+                fileEdit: 'files/vzaimodejstvie/plan-sovmestnyh-meropriyatij-2026-2027.docx',
+                description: 'Календарный план совместных мероприятий с МЧС, военкоматом, ГАИ, медицинскими учреждениями и другими партнёрами; ответственные и порядок подготовки. Даты уточняются по приглашениям партнёров.'
             },
             'schedule': {
-                title: 'График проведения учений и тренировок',
+                title: 'График проведения учений и тренировок на 2026-2027 учебный год',
                 icon: '📅',
-                name: 'График практических занятий и учений на учебный год',
-                type: 'PDF, 0.4 МБ',
-                description: 'Подробный график проведения учебных эвакуаций, тренировок по оказанию первой помощи, занятий на полигонах и других практических мероприятий с участием партнёров.'
+                name: 'График учебных эвакуаций, тренировок и практикумов на 2026-2027 учебный год',
+                type: 'DOCX + PDF',
+                file: 'files/vzaimodejstvie/grafik-uchenij-i-trenirovok-2026-2027.pdf',
+                fileEdit: 'files/vzaimodejstvie/grafik-uchenij-i-trenirovok-2026-2027.docx',
+                description: 'График учебных эвакуаций, практикумов по первой помощи и практических занятий с партнёрами, порядок проведения эвакуации и требования безопасности.'
             },
             'report': {
-                title: 'Отчёт о совместной деятельности за 2024 год',
+                title: 'Отчёт о совместной деятельности за 2025-2026 учебный год',
                 icon: '📊',
-                name: 'Аналитический отчёт о результатах партнёрского взаимодействия',
-                type: 'PDF, 1.2 МБ',
-                description: 'Комплексный отчёт о проведённых мероприятиях, количестве участников, достигнутых результатах, статистике, выводах и рекомендациях по совершенствованию сотрудничества.'
+                name: 'Отчёт о совместной деятельности с партнёрскими организациями за 2025-2026 учебный год',
+                type: 'DOCX + PDF',
+                file: 'files/vzaimodejstvie/otchet-o-sovmestnoj-deyatelnosti-2025-2026.pdf',
+                fileEdit: 'files/vzaimodejstvie/otchet-o-sovmestnoj-deyatelnosti-2025-2026.docx',
+                description: 'Обобщение проведённых мероприятий по записям сайта: партнёры, даты, участники, итоги, анализ и задачи на 2026-2027 учебный год. Персональные данные обучающихся не включены.'
             },
             'contacts': {
                 title: 'Контакты партнёрских организаций',
                 icon: '📞',
-                name: 'Справочник контактов партнёров',
-                type: 'PDF, 0.3 МБ',
-                description: 'Актуальные контактные данные представителей партнёрских организаций: ФИО, должности, телефоны, адреса электронной почты, адреса учреждений.'
+                name: 'Справочник контактов партнёрских организаций',
+                type: 'DOCX + PDF',
+                file: 'files/vzaimodejstvie/kontakty-partnerov.pdf',
+                fileEdit: 'files/vzaimodejstvie/kontakty-partnerov.docx',
+                description: 'Контакты школы, экстренные номера, перечень партнёров и порядок взаимодействия. Личные телефоны и ФИО в открытом доступе не публикуются.'
             }
         };
 
@@ -2647,6 +2644,42 @@
             document.getElementById('infoName').textContent = doc.name;
             document.getElementById('infoType').textContent = doc.type;
             document.getElementById('infoDesc').textContent = doc.description;
+
+            // Кнопки: «Скачать» (DOCX/PPTX для редактирования) и «Открыть PDF»
+            const dlBtn = document.getElementById('modalDownloadBtn');
+            const openBtn = document.getElementById('modalOpenBtn');
+            const hint = document.getElementById('modalHint');
+            if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
+            const fileToDownload = doc.fileEdit || doc.file;
+            if (dlBtn && openBtn && fileToDownload) {
+                const ext = fileToDownload.split('.').pop().toUpperCase();
+                dlBtn.disabled = false;
+                dlBtn.style.cssText = 'flex: 1; min-width: 200px; background: var(--color-partners-main); color: white; border: 2px solid var(--color-partners-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;';
+                dlBtn.innerHTML = '<span>📥</span> Скачать ' + ext;
+                dlBtn.onclick = function () {
+                    const a = document.createElement('a');
+                    a.href = fileToDownload;
+                    a.download = '';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                };
+                if (doc.file) {
+                    openBtn.style.display = 'flex';
+                    openBtn.onclick = function () { window.open(doc.file, '_blank'); };
+                } else {
+                    openBtn.style.display = 'none';
+                    openBtn.onclick = null;
+                }
+                if (hint) hint.textContent = 'Документ можно скачать для редактирования или открыть в браузере (PDF)';
+            } else if (dlBtn && openBtn) {
+                dlBtn.disabled = true;
+                dlBtn.textContent = '📥 Скоро';
+                dlBtn.onclick = null;
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = window.modalHintDefault;
+            }
 
             document.getElementById('documentModal').style.display = 'flex';
             document.body.classList.add('modal-open');

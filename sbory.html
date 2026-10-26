@@ -1681,7 +1681,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📋</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">Положение о проведении военно-полевых сборов</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 1.2 МБ • Нормативный документ</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Нормативный документ</div>
                     </div>
                 </div>
 
@@ -1689,8 +1689,8 @@
                 <div onclick="openDocumentModal('schedule')" style="padding: 1.25rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 1rem; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: 10px; background: white;" onmouseover="this.style.background='#F0F7F5'; this.style.borderColor='var(--color-sbory-main)'; this.style.boxShadow='0 2px 8px rgba(74, 124, 89, 0.15)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='white'; this.style.borderColor='var(--color-border)'; this.style.boxShadow='none'; this.style.transform='translateY(0)';">
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📅</span>
                     <div>
-                        <div style="font-weight: 600; margin-bottom: 0.25rem;">График проведения сборов 2025</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.8 МБ • Календарный план</div>
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">График проведения сборов 2026-2027</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Календарный план</div>
                     </div>
                 </div>
 
@@ -1699,7 +1699,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📦</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">Список необходимых вещей для сборов</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.5 МБ • Что взять с собой</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Что взять с собой</div>
                     </div>
                 </div>
 
@@ -1708,7 +1708,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">🏥</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">Медицинские требования и допуск к сборам</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PDF, 0.6 МБ • Справки и противопоказания</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">DOCX + PDF • Справки и допуск</div>
                     </div>
                 </div>
 
@@ -1735,7 +1735,7 @@
                     <span style="font-size: 1.8rem; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">📊</span>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 0.25rem;">Презентация "Готовимся к военно-полевым сборам"</div>
-                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PPTX, 5.3 МБ • Для родительского собрания</div>
+                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">PPTX + PDF • Для родительского собрания</div>
                     </div>
                 </div>
             </div>
@@ -1820,7 +1820,7 @@
                 <div style="background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%); padding: 2rem; border-radius: 15px; text-align: center; margin-bottom: 2rem; border: 2px dashed var(--color-sbory-main);">
                     <div id="modalDocIcon" style="font-size: 4rem; margin-bottom: 1rem; filter: drop-shadow(0 2px 8px rgba(74, 124, 89, 0.3));">📋</div>
                     <p id="modalDocName" style="font-weight: 600; color: var(--color-text-primary); margin: 0 0 0.5rem 0; font-size: 1.05rem;">Название документа</p>
-                    <p style="color: var(--color-text-secondary); margin: 0; font-size: 0.9rem;">Документ будет доступен для скачивания после загрузки на сервер</p>
+                    <p id="modalHint" style="color: var(--color-text-secondary); margin: 0; font-size: 0.9rem;">Документ можно скачать для редактирования или открыть в браузере (PDF)</p>
                 </div>
 
                 <!-- Информация о документе -->
@@ -1844,8 +1844,11 @@
 
                 <!-- Кнопки действий -->
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button disabled style="flex: 1; min-width: 200px; background: var(--color-border); color: var(--color-text-secondary); border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                        <span>📥</span> Скачать (скоро)
+                    <button id="modalDownloadBtn" disabled style="flex: 1; min-width: 200px; background: var(--color-border); color: var(--color-text-secondary); border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span>📥</span> Скоро
+                    </button>
+                    <button id="modalOpenBtn" style="flex: 1; min-width: 200px; background: white; color: var(--color-sbory-main); border: 2px solid var(--color-sbory-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; display: none; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span>📄</span> Открыть PDF
                     </button>
                     <button onclick="closeDocumentModal()" style="flex: 1; min-width: 200px; background: white; color: var(--color-sbory-main); border: 2px solid var(--color-sbory-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-sbory-main)'; this.style.color='white';" onmouseout="this.style.background='white'; this.style.color='var(--color-sbory-main)';">
                         Закрыть
@@ -2385,37 +2388,47 @@
             'polozhenie': {
                 title: 'Положение о проведении военно-полевых сборов',
                 icon: '📋',
-                name: 'Положение о проведении военно-полевых сборов для 8 и 10 классов',
-                type: 'PDF, 1.2 МБ',
-                description: 'Нормативный документ, регламентирующий порядок организации и проведения военно-полевых сборов для учащихся 8 и 10 классов в соответствии с ФГОС ОБЗР.'
+                name: 'Положение об организации и проведении учебных сборов (2026-2027)',
+                type: 'DOCX + PDF',
+                file: 'files/sbory/polozhenie-o-sborah-2026-2027.pdf',
+                fileEdit: 'files/sbory/polozhenie-o-sborah-2026-2027.docx',
+                description: 'Нормативный документ: цели и задачи, участники, организация и безопасность, порядок допуска и медицинские требования, оценивание. Основание — Федеральный закон № 53-ФЗ и федеральная программа ОБЗР.'
             },
             'schedule': {
-                title: 'График проведения сборов 2025',
+                title: 'График проведения сборов 2026-2027',
                 icon: '📅',
-                name: 'График проведения военно-полевых сборов на 2024-2025 учебный год',
-                type: 'PDF, 0.8 МБ',
-                description: 'Календарный план проведения сборов с указанием дат, мест проведения, ответственных лиц и программы подготовки для каждого класса.'
+                name: 'График проведения учебных сборов на 2026-2027 учебный год',
+                type: 'DOCX + PDF',
+                file: 'files/sbory/grafik-sborov-2026-2027.pdf',
+                fileEdit: 'files/sbory/grafik-sborov-2026-2027.docx',
+                description: 'Ориентировочный календарный план: подготовка, пять дней сборов в марте 2027 года, распорядок дня, программа по дням. Даты уточняются приказом директора.'
             },
             'checklist': {
                 title: 'Список необходимых вещей для сборов',
                 icon: '📦',
                 name: 'Список необходимого снаряжения и личных вещей',
-                type: 'PDF, 0.5 МБ',
-                description: 'Подробный перечень одежды, обуви, средств личной гигиены и других необходимых предметов для участия в военно-полевых сборах. Включает рекомендации по выбору экипировки.'
+                type: 'DOCX + PDF',
+                file: 'files/sbory/spisok-veschey-dlya-sborov.pdf',
+                fileEdit: 'files/sbory/spisok-veschey-dlya-sborov.docx',
+                description: 'Перечень одежды, обуви, средств гигиены и документов для участия в сборах, что брать запрещено, рекомендации по выбору экипировки.'
             },
             'medical': {
                 title: 'Медицинские требования и допуск к сборам',
                 icon: '🏥',
                 name: 'Медицинские требования к участникам сборов',
-                type: 'PDF, 0.6 МБ',
-                description: 'Перечень медицинских противопоказаний, требования к медицинским справкам (форма 086-У), порядок прохождения медицинского осмотра перед сборами.'
+                type: 'DOCX + PDF',
+                file: 'files/sbory/medicinskie-trebovaniya-sbory.pdf',
+                fileEdit: 'files/sbory/medicinskie-trebovaniya-sbory.docx',
+                description: 'Какая справка нужна, порядок допуска, действия при плохом самочувствии, порядок освобождения по состоянию здоровья.'
             },
             'presentation': {
                 title: 'Презентация "Готовимся к военно-полевым сборам"',
                 icon: '📊',
-                name: 'Презентация для родительского собрания',
-                type: 'PPTX, 5.3 МБ',
-                description: 'Информационная презентация для родителей и учащихся о целях, задачах, программе и организации военно-полевых сборов. Содержит фотографии с прошлых сборов и подробную информацию о подготовке.'
+                name: 'Презентация для родительского собрания (2026-2027)',
+                type: 'PPTX + PDF',
+                file: 'files/sbory/prezentaciya-gotovimsya-k-sboram.pdf',
+                fileEdit: 'files/sbory/prezentaciya-gotovimsya-k-sboram.pptx',
+                description: 'Презентация для родителей и учащихся: цели и задачи, программа по дням, итоги прошлых сборов, оценивание, что взять с собой, безопасность и поддержка.'
             }
         };
 
@@ -2431,6 +2444,42 @@
             document.getElementById('infoName').textContent = doc.name;
             document.getElementById('infoType').textContent = doc.type;
             document.getElementById('infoDesc').textContent = doc.description;
+
+            // Кнопки: «Скачать» (DOCX/PPTX для редактирования) и «Открыть PDF»
+            const dlBtn = document.getElementById('modalDownloadBtn');
+            const openBtn = document.getElementById('modalOpenBtn');
+            const hint = document.getElementById('modalHint');
+            if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
+            const fileToDownload = doc.fileEdit || doc.file;
+            if (dlBtn && openBtn && fileToDownload) {
+                const ext = fileToDownload.split('.').pop().toUpperCase();
+                dlBtn.disabled = false;
+                dlBtn.style.cssText = 'flex: 1; min-width: 200px; background: var(--color-sbory-main); color: white; border: 2px solid var(--color-sbory-main); padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;';
+                dlBtn.innerHTML = '<span>📥</span> Скачать ' + ext;
+                dlBtn.onclick = function () {
+                    const a = document.createElement('a');
+                    a.href = fileToDownload;
+                    a.download = '';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                };
+                if (doc.file) {
+                    openBtn.style.display = 'flex';
+                    openBtn.onclick = function () { window.open(doc.file, '_blank'); };
+                } else {
+                    openBtn.style.display = 'none';
+                    openBtn.onclick = null;
+                }
+                if (hint) hint.textContent = 'Документ можно скачать для редактирования или открыть в браузере (PDF)';
+            } else if (dlBtn && openBtn) {
+                dlBtn.disabled = true;
+                dlBtn.textContent = '📥 Скоро';
+                dlBtn.onclick = null;
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = window.modalHintDefault;
+            }
 
             document.getElementById('documentModal').style.display = 'flex';
             document.body.classList.add('modal-open');

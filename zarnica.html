@@ -1700,8 +1700,8 @@
                 <div class="about-card">
                     <h3>🏛️ Основные сведения</h3>
                     <ul>
-                        <li><strong>Организатор:</strong> Министерство просвещения Российской Федерации, региональные органы образования</li>
-                        <li><strong>Этапы:</strong> Школьный → Муниципальный → Региональный → Всероссийский</li>
+                        <li><strong>Организаторы:</strong> Движение Первых, «Юнармия», Центр «ВОИН» при поддержке органов образования и военно-патриотических организаций</li>
+                        <li><strong>Этапы:</strong> Школьный → Муниципальный → Дивизионный → Региональный → Всероссийский</li>
                         <li><strong>Возрастные категории:</strong> Младшая (2-4 классы), Средняя (5-7 классы), Старшая (8-10 классы)</li>
                         <li><strong>Формат:</strong> Командные соревнования (8-12 человек в команде)</li>
                         <li><strong>Длительность:</strong> 1 день (школьный/муниципальный), 2-3 дня (региональный/всероссийский)</li>
@@ -2130,12 +2130,12 @@
             <div class="resources-list">
                 <div class="resource-item" onclick="openDocumentModal('polozhenie')">
                     <div class="resource-icon">📋</div>
-                    <div>Положение о проведении "Зарницы 2.0"</div>
+                    <div>Положение о проведении "Зарницы 2.0" на 2026-2027 учебный год</div>
                 </div>
 
                 <div class="resource-item" onclick="openDocumentModal('schedule')">
                     <div class="resource-icon">📅</div>
-                    <div>График подготовки команды</div>
+                    <div>График подготовки команды на 2026-2027 учебный год</div>
                 </div>
 
                 <div class="resource-item" onclick="openDocumentModal('methods')">
@@ -2144,7 +2144,7 @@
                 </div>
 
                 <div class="resource-item" onclick="openDocumentModal('history')">
-                    <div class="resource-icon">🔗</div>
+                    <div class="resource-icon">📜</div>
                     <div>История военно-патриотических игр в России</div>
                 </div>
 
@@ -2217,6 +2217,7 @@
             </div>
             <div class="document-preview">
                 <p class="document-description" id="docDescription">Описание документа</p>
+                <p id="docHint" style="font-size: 0.9rem; color: #7F8C8D;">Документ можно скачать для редактирования или открыть в браузере (PDF)</p>
                 
                 <div class="document-info">
                     <div class="document-info-grid">
@@ -2233,7 +2234,8 @@
             </div>
 
             <div class="document-modal-footer">
-                <button class="modal-btn primary" disabled>Скачать документ</button>
+                <button class="modal-btn primary" id="docDownloadBtn" disabled>Скоро</button>
+                <button class="modal-btn secondary" id="docOpenBtn" style="display: none;">Открыть PDF</button>
                 <button class="modal-btn secondary" onclick="closeDocumentModal()">Закрыть</button>
             </div>
         </div>
@@ -2459,51 +2461,47 @@
             'polozhenie': {
                 title: 'Положение о проведении "Зарницы 2.0"',
                 icon: '📋',
-                name: 'Положение о проведении военно-спортивной игры "Зарница 2.0"',
-                type: 'PDF',
-                description: 'Официальное положение с регламентом соревнований, критериями оценки по всем дисциплинам, требованиями к участникам и организаторам'
+                name: 'Положение о проведении военно-патриотической игры "Зарница 2.0" (2026-2027)',
+                type: 'DOCX + PDF',
+                file: 'files/zarnica/polozhenie-zarnica-2-0-2026-2027.pdf',
+                fileEdit: 'files/zarnica/polozhenie-zarnica-2-0-2026-2027.docx',
+                description: 'Школьное положение о подготовке и участии в игре: цели, этапы, состав отряда и роли, направления состязаний, порядок отбора, безопасность. Регламент федерального уровня — на официальном сайте игры'
             },
             'schedule': {
-                title: 'График подготовки команды',
+                title: 'График подготовки команды на 2026-2027 учебный год',
                 icon: '📅',
-                name: 'График подготовки команды к "Зарнице 2.0"',
-                type: 'PDF',
-                description: 'Расписание тренировок по всем дисциплинам (строевая, стрелковая, медицинская, физическая подготовка), ответственные лица, места проведения'
+                name: 'График подготовки команды к "Зарнице 2.0" на 2026-2027 учебный год',
+                type: 'DOCX + PDF',
+                file: 'files/zarnica/grafik-podgotovki-zarnica-2026-2027.pdf',
+                fileEdit: 'files/zarnica/grafik-podgotovki-zarnica-2026-2027.docx',
+                description: 'Расписание тренировок по направлениям (строевая, стрелковая, медицинская, физическая подготовка и др.), ориентировочные даты этапов, места проведения'
             },
             'methods': {
                 title: 'Методические рекомендации для участников',
                 icon: '📖',
                 name: 'Методические рекомендации по подготовке к "Зарнице 2.0"',
-                type: 'PDF',
-                description: 'Советы по подготовке к каждому этапу соревнований, разбор типичных ошибок, лайфхаки от опытных участников и тренеров'
+                type: 'DOCX + PDF',
+                file: 'files/zarnica/metodicheskie-rekomendacii-zarnica.pdf',
+                fileEdit: 'files/zarnica/metodicheskie-rekomendacii-zarnica.docx',
+                description: 'Как готовиться к каждому направлению состязаний, типичные ошибки, советы командирам и наставникам, чек-лист экипировки'
             },
             'history': {
                 title: 'История военно-патриотических игр в России',
-                icon: '🔗',
+                icon: '📜',
                 name: 'История военно-патриотических игр',
-                type: 'Внешняя ссылка',
-                description: 'Подробная статья об истории игры "Зарница" с 1967 года до современности, эволюция формата, трансформация в "Зарницу 2.0"'
-            },
-            'official': {
-                title: 'Официальный сайт Всероссийской "Зарницы"',
-                icon: '🔗',
-                name: 'Официальный портал "Зарница 2.0"',
-                type: 'Внешняя ссылка',
-                description: 'Федеральный портал с актуальными новостями, результатами всероссийских этапов, фото- и видеоматериалами, нормативными документами'
-            },
-            'video': {
-                title: 'Видео с регионального этапа 2024',
-                icon: '🎥',
-                name: 'Видеорепортаж "Зарница 2.0 — Региональный этап 2024"',
-                type: 'Видео (YouTube)',
-                description: 'Репортаж с регионального этапа соревнований, интервью с участниками и организаторами, яркие моменты всех дисциплин'
+                type: 'DOCX + PDF',
+                file: 'files/zarnica/istoriya-voenno-patrioticheskih-igr.pdf',
+                fileEdit: 'files/zarnica/istoriya-voenno-patrioticheskih-igr.docx',
+                description: 'Статья об истории игры «Зарница» с 1964–1967 годов до современной «Зарницы 2.0»: эволюция формата и преемственность поколений'
             },
             'presentation': {
                 title: 'Презентация "Готовимся к Зарнице 2.0"',
                 icon: '📊',
-                name: 'Презентация "Готовимся к Зарнице 2.0"',
-                type: 'PPTX',
-                description: 'Презентация для родителей и участников о структуре игры, этапах подготовки, необходимой форме и экипировке, календарном плане'
+                name: 'Презентация "Готовимся к Зарнице 2.0" (2026-2027)',
+                type: 'PPTX + PDF',
+                file: 'files/zarnica/prezentaciya-gotovimsya-k-zarnice-2026-2027.pdf',
+                fileEdit: 'files/zarnica/prezentaciya-gotovimsya-k-zarnice-2026-2027.pptx',
+                description: 'Презентация для родителей и участников: структура игры, этапы, подготовка, форма и экипировка, календарный план'
             }
         };
 
@@ -2517,6 +2515,42 @@
             document.getElementById('docDescription').textContent = doc.description;
             document.getElementById('docType').textContent = doc.type;
             document.getElementById('docDesc').textContent = doc.description;
+
+            // Кнопки: «Скачать» (DOCX/PPTX для редактирования) и «Открыть PDF»
+            const dlBtn = document.getElementById('docDownloadBtn');
+            const openBtn = document.getElementById('docOpenBtn');
+            const hint = document.getElementById('docHint');
+            if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
+            const fileToDownload = doc.fileEdit || doc.file;
+            if (dlBtn && openBtn && fileToDownload) {
+                const ext = fileToDownload.split('.').pop().toUpperCase();
+                dlBtn.disabled = false;
+                dlBtn.style.cssText = '';
+                dlBtn.innerHTML = '<span>📥</span> Скачать ' + ext;
+                dlBtn.onclick = function () {
+                    const a = document.createElement('a');
+                    a.href = fileToDownload;
+                    a.download = '';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                };
+                if (doc.file) {
+                    openBtn.style.display = '';
+                    openBtn.onclick = function () { window.open(doc.file, '_blank'); };
+                } else {
+                    openBtn.style.display = 'none';
+                    openBtn.onclick = null;
+                }
+                if (hint) hint.textContent = 'Документ можно скачать для редактирования или открыть в браузере (PDF)';
+            } else if (dlBtn && openBtn) {
+                dlBtn.disabled = true;
+                dlBtn.textContent = '📥 Скоро';
+                dlBtn.onclick = null;
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = window.modalHintDefault;
+            }
 
             document.getElementById('documentModal').style.display = 'flex';
             document.body.classList.add('modal-open');

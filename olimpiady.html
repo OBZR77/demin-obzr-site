@@ -1988,12 +1988,12 @@
             <div class="resources-list">
                 <div class="resource-item" onclick="openDocumentModal('program')">
                     <span class="resource-icon">📄</span>
-                    Программа подготовки к олимпиаде по ОБЗР (2024-2025 уч. год) (PDF)
+                    Программа подготовки к олимпиаде по ОБЗР (2026-2027 уч. год)
                 </div>
                 
                 <div class="resource-item" onclick="openDocumentModal('schedule')">
                     <span class="resource-icon">📅</span>
-                    Расписание занятий олимпиадников
+                    Расписание занятий олимпиадников на 2026-2027 уч. год
                 </div>
                 
                 <div class="resource-item" onclick="openDocumentModal('regulations')">
@@ -2072,7 +2072,7 @@
                 <div class="icon" id="modalIcon">📊</div>
                 <h4 id="modalDocName">Презентация о движении Юнармия</h4>
                 <p id="modalDescription">Презентация для родительских собраний и классных часов о движении Юнармия</p>
-                <p style="font-size: 0.9rem; color: #7F8C8D;">Для просмотра PPTX документов используйте кнопку "Скачать документ" ниже</p>
+                <p id="modalHint" style="font-size: 0.9rem; color: #7F8C8D;">Для просмотра PPTX документов используйте кнопку "Скачать документ" ниже</p>
             </div>
 
             <div class="document-info">
@@ -2092,7 +2092,8 @@
             </div>
 
             <div class="document-modal-footer">
-                <button class="modal-btn modal-btn-primary" disabled>📥 Скоро</button>
+                <button class="modal-btn modal-btn-primary" id="modalDownloadBtn" disabled>📥 Скоро</button>
+                <button class="modal-btn modal-btn-secondary" id="modalOpenBtn" style="display: none;">📄 Открыть PDF</button>
                 <button class="modal-btn modal-btn-secondary" onclick="closeDocumentModal()">⨯ Закрыть</button>
             </div>
         </div>
@@ -2653,39 +2654,49 @@
         // ============================================
         const documents = {
             'program': {
-                title: 'Программа подготовки к олимпиаде по ОБЗР (2024-2025 уч. год)',
+                title: 'Программа подготовки к олимпиаде по ОБЗР (2026-2027 уч. год)',
                 icon: '📊',
-                name: 'Программа подготовки к олимпиаде по ОБЗР (2024-2025 уч. год)',
-                type: 'PDF',
-                description: 'Программа комплексной подготовки учащихся к всероссийской олимпиаде школьников по ОБЗР'
+                name: 'Программа подготовки к олимпиаде по ОБЗР (2026-2027 уч. год)',
+                type: 'DOCX + PDF',
+                file: 'files/olimpiady/programma-podgotovki-olimpiada-obzr-2026-2027.pdf',
+                fileEdit: 'files/olimpiady/programma-podgotovki-olimpiada-obzr-2026-2027.docx',
+                description: 'Программа комплексной подготовки учащихся 8–11 классов к всероссийской олимпиаде школьников по ОБЗР: цели, тематический план по модулям, теоретическая и практическая подготовка, контроль и критерии результата'
             },
             'schedule': {
-                title: 'Расписание занятий олимпиадников',
+                title: 'Расписание занятий олимпиадников на 2026-2027 уч. год',
                 icon: '📋',
-                name: 'Расписание занятий олимпиадников',
-                type: 'DOCX',
-                description: 'График проведения тренировок и занятий по подготовке к олимпиаде по ОБЗР на 2024-2025 учебный год'
+                name: 'Расписание занятий олимпиадников на 2026-2027 уч. год',
+                type: 'DOCX + PDF',
+                file: 'files/olimpiady/raspisanie-zanyatij-olimpiadnikov-2026-2027.pdf',
+                fileEdit: 'files/olimpiady/raspisanie-zanyatij-olimpiadnikov-2026-2027.docx',
+                description: 'График занятий и тренировок по подготовке к олимпиаде по ОБЗР на 2026-2027 учебный год: дни, время, темы по месяцам, контрольные точки'
             },
             'regulations': {
                 title: 'Положение о всероссийской олимпиаде школьников по ОБЗР',
                 icon: '📋',
                 name: 'Положение о всероссийской олимпиаде школьников по ОБЗР',
-                type: 'PDF',
-                description: 'Официальный нормативный документ, регламентирующий проведение всероссийской олимпиады по ОБЗР'
+                type: 'DOCX + PDF',
+                file: 'files/olimpiady/polozhenie-vsosh-obzr.pdf',
+                fileEdit: 'files/olimpiady/polozhenie-vsosh-obzr.docx',
+                description: 'Краткая памятка по Порядку проведения ВсОШ (приказ Минпросвещения России от 27.11.2020 № 678): этапы, участники, структура заданий, порядок подачи апелляций, ссылки на первоисточники'
             },
             'methods': {
                 title: 'Методические рекомендации по подготовке к олимпиаде',
                 icon: '📖',
                 name: 'Методические рекомендации по подготовке к олимпиаде',
-                type: 'PDF',
-                description: 'Методические материалы для подготовки к олимпиаде: планирование занятий, отработка практических навыков, психологическая подготовка'
+                type: 'DOCX + PDF',
+                file: 'files/olimpiady/metodicheskie-rekomendacii-olimpiada-obzr.pdf',
+                fileEdit: 'files/olimpiady/metodicheskie-rekomendacii-olimpiada-obzr.docx',
+                description: 'Как планировать подготовку, отрабатывать практические навыки, работать с заданиями прошлых лет и готовиться психологически; советы ученику, родителю и учителю'
             },
             'presentation': {
                 title: 'Презентация "Как готовиться к олимпиаде по ОБЗР"',
-                icon: '📊',
+                icon: '🖼️',
                 name: 'Презентация "Как готовиться к олимпиаде по ОБЗР"',
-                type: 'PPTX',
-                description: 'Презентация для учащихся и родителей о структуре олимпиады, этапах подготовки и критериях оценивания'
+                type: 'PPTX + PDF',
+                file: 'files/olimpiady/prezentaciya-kak-gotovitsya-k-olimpiade-obzr.pdf',
+                fileEdit: 'files/olimpiady/prezentaciya-kak-gotovitsya-k-olimpiade-obzr.pptx',
+                description: 'Презентация для учащихся и родителей: структура олимпиады, этапы, план подготовки, критерии оценивания, практические советы'
             }
         };
 
@@ -2700,6 +2711,42 @@
             document.getElementById('infoName').textContent = doc.name;
             document.getElementById('infoType').textContent = doc.type;
             document.getElementById('infoDesc').textContent = doc.description;
+
+            // Кнопки: «Скачать» (DOCX/PPTX для редактирования) и «Открыть PDF»
+            const dlBtn = document.getElementById('modalDownloadBtn');
+            const openBtn = document.getElementById('modalOpenBtn');
+            const hint = document.getElementById('modalHint');
+            if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
+            const fileToDownload = doc.fileEdit || doc.file;
+            if (dlBtn && openBtn && fileToDownload) {
+                const ext = fileToDownload.split('.').pop().toUpperCase();
+                dlBtn.disabled = false;
+                dlBtn.style.cssText = '';
+                dlBtn.innerHTML = '<span>📥</span> Скачать ' + ext;
+                dlBtn.onclick = function () {
+                    const a = document.createElement('a');
+                    a.href = fileToDownload;
+                    a.download = '';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                };
+                if (doc.file) {
+                    openBtn.style.display = '';
+                    openBtn.onclick = function () { window.open(doc.file, '_blank'); };
+                } else {
+                    openBtn.style.display = 'none';
+                    openBtn.onclick = null;
+                }
+                if (hint) hint.textContent = 'Документ можно скачать для редактирования или открыть в браузере (PDF)';
+            } else if (dlBtn && openBtn) {
+                dlBtn.disabled = true;
+                dlBtn.textContent = '📥 Скоро';
+                dlBtn.onclick = null;
+                openBtn.style.display = 'none';
+                openBtn.onclick = null;
+                if (hint) hint.textContent = window.modalHintDefault;
+            }
 
             document.getElementById('documentModal').style.display = 'flex';
             document.body.classList.add('modal-open');
