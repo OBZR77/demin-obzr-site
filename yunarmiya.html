@@ -2084,7 +2084,7 @@
                 </div>
                 <div class="resource-item" onclick="openDocumentModal('methods')">
                     <span class="resource-icon">📖</span>
-                    Методические рекомендации для занятий
+                    Методические рекомендации для занятий (DOCX, PDF)
                 </div>
                 <a href="https://yunarmy.ru" target="_blank" class="resource-item">
                     <span class="resource-icon">🌐</span>
@@ -2758,15 +2758,19 @@
                 title: 'Методические рекомендации для занятий',
                 icon: '📖',
                 name: 'Методические рекомендации для занятий',
-                type: 'PDF',
-                description: 'Методические материалы для проведения занятий по строевой, огневой и физической подготовке'
+                type: 'DOCX + PDF',
+                file: 'files/yunarmiya/metodicheskie-rekomendacii-yunarmiya.pdf',
+                fileEdit: 'files/yunarmiya/metodicheskie-rekomendacii-yunarmiya.docx',
+                description: 'Для руководителя отряда: структура занятия, методика по строевой, огневой, физической, медицинской подготовке, топографии, играм и ритуалам, безопасность, работа с партнёрами и родителями, диагностика, чек-листы, шаблоны конспекта и отчёта'
             },
             'presentation_about': {
                 title: 'Презентация о движении Юнармия',
                 icon: '📊',
                 name: 'Презентация о движении Юнармия',
-                type: 'PPTX',
-                description: 'Презентация для родительских собраний и классных часов о движении Юнармия, истории создания и основных направлениях работы'
+                type: 'PPTX + PDF',
+                file: 'files/yunarmiya/prezentaciya-yunarmiya-2026-2027.pdf',
+                fileEdit: 'files/yunarmiya/prezentaciya-yunarmiya-2026-2027.pptx',
+                description: 'Презентация для родительских собраний и классных часов: что такое «Юнармия», отряд «Вымпел», направления подготовки, структура программы, события года, как вступить (14 слайдов)'
             }
         };
 
@@ -2788,11 +2792,12 @@
             const hint = document.getElementById('modalHint');
             if (hint && !window.modalHintDefault) window.modalHintDefault = hint.textContent;
             if (doc.file) {
+                const dlFile = doc.fileEdit || doc.file;
                 dlBtn.disabled = false;
-                dlBtn.textContent = '📥 Скачать документ';
+                dlBtn.textContent = doc.fileEdit ? ('📥 Скачать ' + dlFile.split('.').pop().toUpperCase()) : '📥 Скачать документ';
                 dlBtn.onclick = function () {
                     const a = document.createElement('a');
-                    a.href = doc.file;
+                    a.href = dlFile;
                     a.download = '';
                     document.body.appendChild(a);
                     a.click();
@@ -2800,7 +2805,7 @@
                 };
                 openBtn.style.display = '';
                 openBtn.onclick = function () { window.open(doc.file, '_blank'); };
-                if (hint) hint.textContent = 'Документ можно скачать или открыть в браузере (PDF)';
+                if (hint) hint.textContent = doc.fileEdit ? 'Документ можно скачать для редактирования или открыть в браузере (PDF)' : 'Документ можно скачать или открыть в браузере (PDF)';
             } else if (doc.href) {
                 dlBtn.disabled = false;
                 dlBtn.textContent = '🌐 Открыть на сайте Юнармии';
