@@ -1251,6 +1251,30 @@
                 padding: 1rem;
             }
         }
+/* Окно документа на телефонах: текст и кнопки без горизонтальной прокрутки */
+@media (max-width: 600px) {
+    /* узкие телефоны (320 px): сетки с минимальной шириной колонки 320 px не вылезают за экран */
+    .about-grid, .training-grid, .gallery-grid { grid-template-columns: minmax(0, 1fr); }
+    .document-modal { padding: 10px; }
+    .document-modal-content { max-width: 100%; max-height: 94vh; border-radius: 14px; }
+    .document-modal-header { padding: 0.9rem 1rem; gap: 0.5rem; }
+    .document-modal-header h3 { font-size: 1.05rem; line-height: 1.3; min-width: 0; overflow-wrap: anywhere; }
+    .modal-close-btn { flex-shrink: 0; }
+    .document-preview { padding: 0.75rem 1rem; }
+    .document-preview .icon { font-size: 2rem; margin-bottom: 0.25rem; }
+    .document-preview h4 { font-size: 1rem; margin-bottom: 0.5rem; overflow-wrap: anywhere; }
+    .document-preview p { font-size: 0.88rem; line-height: 1.5; margin-bottom: 0.5rem; overflow-wrap: anywhere; }
+    .document-info { margin: 0.5rem 0.75rem; padding: 0.5rem 0.9rem; }
+    .document-info h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .info-row { grid-template-columns: auto 1fr; gap: 0.5rem; padding: 0.35rem 0; }
+    .info-value { font-size: 0.9rem; overflow-wrap: anywhere; }
+    /* название и описание уже показаны выше — на телефоне не дублируем */
+    .document-info .info-row:nth-of-type(1),
+    .document-info .info-row:nth-of-type(3) { display: none; }
+    .document-modal-footer { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; padding: 0.75rem; }
+    .modal-btn { width: auto; flex: 1 1 120px; padding: 0.7rem 0.5rem; font-size: 0.9rem; }
+}
+
 /* Горизонтальная ориентация телефона */
 @media (max-width: 900px) and (orientation: landscape) {
     .mobile-menu-toggle {
@@ -2078,6 +2102,10 @@
                     <span class="resource-icon">📅</span>
                     Расписание занятий отряда "Вымпел" (PDF)
                 </div>
+                <div class="resource-item" onclick="openDocumentModal('polozhenie')">
+                    <span class="resource-icon">📋</span>
+                    Положение об отряде Юнармии МБОУ СШ № 2 (DOCX, PDF)
+                </div>
                 <div class="resource-item" onclick="openDocumentModal('plan')">
                     <span class="resource-icon">📋</span>
                     Устав ВВПОД "ЮНАРМИЯ" (PDF)
@@ -2745,6 +2773,15 @@
                 type: 'PDF',
                 file: 'files/yunarmiya/raspisanie-zanyatij-vympel-2026-2027.pdf',
                 description: 'Занятия по вторникам, 17:00–17:40 (спортивный зал и кабинет отряда «Юнармия»). В файле: режим занятий и календарный учебный график на 2026–2027 учебный год (с 08.09 по 25.05)'
+            },
+            'polozhenie': {
+                title: 'Положение об отряде Юнармии МБОУ СШ № 2',
+                icon: '📋',
+                name: 'Положение об отряде Юнармии МБОУ СШ № 2',
+                type: 'DOCX + PDF',
+                file: 'files/yunarmiya/polozhenie-ob-otryade-yunarmiya.pdf',
+                fileEdit: 'files/yunarmiya/polozhenie-ob-otryade-yunarmiya.docx',
+                description: 'Отряд «Вымпел» как первичная ячейка ВВПОД «ЮНАРМИЯ»: цели и задачи, порядок приёма и учёта юнармейцев, права и обязанности, структура и руководство отряда, безопасность занятий. Приложения: заявления, анкета, согласие родителей, Торжественная клятва юнармейца и порядок её проведения'
             },
             'plan': {
                 title: 'Устав ВВПОД "ЮНАРМИЯ"',
