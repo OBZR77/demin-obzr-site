@@ -303,6 +303,7 @@
         
         .download-link {
             background-color: var(--color-primary);
+            border: 2px solid var(--color-primary);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 6px;
@@ -320,6 +321,38 @@
             transform: scale(1.05);
         }
         
+        .document-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .document-actions .download-link {
+            font-size: 0.85rem;
+            padding: 0.45rem 0.8rem;
+            white-space: nowrap;
+        }
+
+        .document-item {
+            flex-wrap: wrap;
+            gap: 0.6rem 0.75rem;
+        }
+
+        .document-info {
+            flex: 1 1 210px;
+            min-width: 0;
+        }
+
+        .download-link.view-link {
+            background-color: white;
+            color: var(--color-primary);
+        }
+
+        .download-link.view-link:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
         /* INFO BOX */
         .info-box {
             background-color: #E3F2FD;
@@ -513,6 +546,26 @@
       .download-link {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .document-info {
+                flex: none;
+                width: 100%;
+            }
+
+            .document-actions {
+                width: 100%;
+            }
+
+            .document-actions .download-link {
+                flex: 1;
+                width: auto;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .document-actions .download-link span + span {
+                display: none;
             }
         }
 /* Горизонтальная ориентация телефона */
@@ -962,10 +1015,16 @@
                             <span class="document-icon">📘</span>
                             <span class="document-title">Рабочая программа ОБЗР 8-9 классы</span>
                         </div>
-                        <a href="porfolio/rabochaya-programma-obzr-8-9-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/rabochaya-programma-obzr-8-9-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/rabochaya-programma-obzr-8-9-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="document-item">
@@ -973,10 +1032,16 @@
                             <span class="document-icon">📕</span>
                             <span class="document-title">Рабочая программа ОБЗР 10-11 классы</span>
                         </div>
-                        <a href="porfolio/rabochaya-programma-obzr-10-11-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/rabochaya-programma-obzr-10-11-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/rabochaya-programma-obzr-10-11-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
  <!-- РАЗДЕЛИТЕЛЬ -->
                     <div style="margin: 2rem 0 1.5rem 0; border-top: 2px solid var(--color-border);"></div>
@@ -996,10 +1061,16 @@
                             <span class="document-icon">⭐</span>
                             <span class="document-title">Дополнительная общеобразовательная общеразвивающая программа "Юнармия"</span>
                         </div>
-                        <a href="files/yunarmiya/doop-yunarmiya-2026-2027.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="files/yunarmiya/doop-yunarmiya-2026-2027.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="files/yunarmiya/doop-yunarmiya-2026-2027.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="document-item">
@@ -1007,10 +1078,16 @@
                             <span class="document-icon">🚦</span>
                             <span class="document-title">Дополнительная общеобразовательная общеразвивающая программа «Юные инспекторы движения (ЮИД)»</span>
                         </div>
-                        <a href="files/yuid/doop-yuid-2026-2027.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="files/yuid/doop-yuid-2026-2027.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="files/yuid/doop-yuid-2026-2027.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -1023,10 +1100,16 @@
                             <span class="document-icon">📋</span>
                             <span class="document-title">КТП 8 класс</span>
                         </div>
-                        <a href="porfolio/ktp-obzr-8-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/ktp-obzr-8-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/ktp-obzr-8-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="document-item">
@@ -1034,10 +1117,16 @@
                             <span class="document-icon">📋</span>
                             <span class="document-title">КТП 9 класс</span>
                         </div>
-                        <a href="porfolio/ktp-obzr-9-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/ktp-obzr-9-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/ktp-obzr-9-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="document-item">
@@ -1045,10 +1134,16 @@
                             <span class="document-icon">📋</span>
                             <span class="document-title">КТП 10 класс</span>
                         </div>
-                        <a href="porfolio/ktp-obzr-10-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/ktp-obzr-10-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/ktp-obzr-10-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                     
                     <div class="document-item">
@@ -1056,10 +1151,16 @@
                             <span class="document-icon">📋</span>
                             <span class="document-title">КТП 11 класс</span>
                         </div>
-                        <a href="porfolio/ktp-obzr-11-2026.pdf" class="download-link">
-                            <span>Скачать PDF</span>
-                            <span>⬇️</span>
-                        </a>
+                        <div class="document-actions">
+                            <a href="porfolio/ktp-obzr-11-2026.pdf" class="download-link view-link" target="_blank" rel="noopener">
+                                <span>Открыть PDF</span>
+                                <span>📄</span>
+                            </a>
+                            <a href="porfolio/ktp-obzr-11-2026.pdf" class="download-link" download>
+                                <span>Скачать PDF</span>
+                                <span>⬇️</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
