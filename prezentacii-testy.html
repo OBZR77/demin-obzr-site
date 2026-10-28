@@ -1029,6 +1029,18 @@
                 top: 0.75rem;
             }
         }
+        /* Правка 28.10.2026: пункты блока с булавками идут сплошным текстом, а не двумя колонками (выровнено и на компьютере) */
+        .additional-info li {
+            display: block;
+            position: relative;
+            padding-left: 2rem;
+            overflow-wrap: break-word;
+        }
+        .additional-info li::before {
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+        }
     </style>
 </head>
 <body>
