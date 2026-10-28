@@ -961,6 +961,20 @@ body.modal-open {
     overflow: hidden;
     height: 100vh;
 }
+        /* Мобильная правка 28.10.2026: строки списка с жирным заголовком не помещались в экран телефона */
+        @media (max-width: 768px) {
+            .highlight-box li {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                overflow-wrap: break-word;
+            }
+            .highlight-box li::before {
+                position: absolute;
+                left: 0;
+                top: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>

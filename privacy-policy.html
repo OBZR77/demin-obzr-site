@@ -732,6 +732,16 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: длинное слово в заголовке не помещалось на узком экране */
+        @media (max-width: 360px) {
+            .privacy-header h2 {
+                font-size: 1.45rem;
+                overflow-wrap: break-word;
+            }
+            .privacy-section h3 {
+                overflow-wrap: break-word;
+            }
+        }
     </style>
 </head>
 <body>

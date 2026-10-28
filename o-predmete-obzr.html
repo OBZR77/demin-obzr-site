@@ -700,6 +700,37 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: строки списка с жирным заголовком не помещались в экран телефона */
+        @media (max-width: 768px) {
+            .additional-info li {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                overflow-wrap: break-word;
+            }
+            .additional-info li::before {
+                position: absolute;
+                left: 0;
+                top: 0.75rem;
+            }
+        }
+        /* Мобильная правка 28.10.2026: карточки курсов и блок-подсказка на узком экране (до 400 px) */
+        @media (max-width: 400px) {
+            .modules-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .module-card {
+                padding: 1.25rem 1rem;
+                overflow-wrap: break-word;
+            }
+            .module-card h3 {
+                font-size: 1rem;
+            }
+            .highlight-box {
+                padding: 1.25rem 1rem;
+                overflow-wrap: break-word;
+            }
+        }
     </style>
 </head>
 <body>

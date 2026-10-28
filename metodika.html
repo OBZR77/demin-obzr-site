@@ -761,6 +761,14 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: заголовок с крупным эмодзи не помещался на узком экране */
+        @media (max-width: 400px) {
+            main h3[style*="display: flex"] {
+                flex-wrap: wrap;
+                font-size: 1.5rem !important;
+                overflow-wrap: break-word;
+            }
+        }
     </style>
 </head>
 <body>

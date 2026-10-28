@@ -920,6 +920,31 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: строки списка с жирным заголовком не помещались в экран телефона */
+        @media (max-width: 768px) {
+            .info-box li {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                overflow-wrap: break-word;
+            }
+            .info-box li::before {
+                position: absolute;
+                left: 0;
+                top: 0.5rem;
+            }
+            .additional-info li {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                overflow-wrap: break-word;
+            }
+            .additional-info li::before {
+                position: absolute;
+                left: 0;
+                top: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>

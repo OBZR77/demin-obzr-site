@@ -1358,6 +1358,20 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: строки списка с жирным заголовком не помещались в экран телефона */
+        @media (max-width: 768px) {
+            .about-card li {
+                display: block;
+                position: relative;
+                padding-left: 2rem;
+                overflow-wrap: break-word;
+            }
+            .about-card li::before {
+                position: absolute;
+                left: 0;
+                top: 0.6rem;
+            }
+        }
     </style>
 </head>
 <body>

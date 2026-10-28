@@ -695,6 +695,16 @@
             overflow: hidden;
             height: 100vh;
         }
+        /* Мобильная правка 28.10.2026: блоки документов не должны расширять страницу на узком экране */
+        @media (max-width: 768px) {
+            .documents-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .document-block {
+                min-width: 0;
+                overflow-wrap: break-word;
+            }
+        }
     </style>
 </head>
 <body>      
