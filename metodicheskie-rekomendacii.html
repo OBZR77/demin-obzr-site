@@ -439,7 +439,7 @@
         }
 
         .material-btn {
-            padding: 0.65rem 1rem;
+            padding: 0.65rem 0.6rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
@@ -510,6 +510,15 @@
         .material-btn-disabled:hover {
             transform: none;
             box-shadow: none;
+        }
+
+        /* одиночная кнопка в карточке — такой же ширины, как кнопка в паре */
+        @media (min-width: 769px) {
+            .material-buttons .material-btn:only-child {
+                flex: 0 0 auto;
+                width: calc(50% - 0.375rem);
+                min-width: 0;
+            }
         }
 
         /* HIGHLIGHT BOX */
@@ -1336,7 +1345,7 @@
                                 <li>Требования к оснащению кабинета ОБЗР</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Презентация</button>
+                                <a href="files/prezentacii/nvp-8-pervaya-pomoshch-praktikum.pptx" download class="material-btn material-btn-primary">📥 Презентация</a>
                                 <button class="material-btn material-btn-disabled" disabled>🎬 Видео</button>
                             </div>
                         </div>
@@ -1411,8 +1420,8 @@
                                 <li>Примеры готовых презентаций</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📥 Инструкция</button>
-                                <button class="material-btn material-btn-disabled" disabled>🔗 Сервисы</button>
+                                <a href="files/metodicheskie/instrukciya-gigachat-prezentacii.docx" download class="material-btn material-btn-primary">📥 Инструкция</a>
+                                <a href="ai-resursy.html" target="_blank" rel="noopener" class="material-btn material-btn-primary">🔗 Сервисы</a>
                             </div>
                         </div>
 
@@ -1430,8 +1439,8 @@
                                 <li>Правила дорожного движения (визуализация)</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>📋 Промпты</button>
-                                <button class="material-btn material-btn-disabled" disabled>🖼️ Примеры</button>
+                                <a href="files/ai-kolleg/prompty-infografika-10-en.txt" download class="material-btn material-btn-primary">📋 Промпты</a>
+                                <a href="prezentacii-testy.html" target="_blank" rel="noopener" class="material-btn material-btn-primary">🖼️ Примеры</a>
                             </div>
                         </div>
 
@@ -1449,8 +1458,8 @@
                                 <li>Примеры готовых тестов по курсам ОБЗР</li>
                             </ul>
                             <div class="material-buttons">
-                                <button class="material-btn material-btn-disabled" disabled>🧪 Примеры</button>
-                                <button class="material-btn material-btn-disabled" disabled>📥 Шаблон</button>
+                                <a href="test-first-aid-module8.html" target="_blank" rel="noopener" class="material-btn material-btn-primary">🧪 Примеры</a>
+                                <a href="files/metodicheskie/shablon-interaktivnogo-testa.html" download class="material-btn material-btn-primary">📥 Шаблон</a>
                             </div>
                         </div>
 
@@ -1536,7 +1545,7 @@
                                 <li>Требования к результатам освоения (личностные, метапредметные, предметные)</li>
                             </ul>
                             <div class="material-buttons">
-                                <a href="https://fgos.ru" target="_blank" rel="noopener" class="material-btn material-btn-primary">🔗 Скачать ФГОС</a>
+                                <a href="https://fgos.ru" target="_blank" rel="noopener" class="material-btn material-btn-primary">🔗 Сайт ФГОС</a>
                                 <a href="files/metodicheskie/obzor-fgos-frp-obzr-2026-2027.pdf" target="_blank" class="material-btn material-btn-primary">📄 Обзор</a>
                             </div>
                         </div>
@@ -1607,44 +1616,120 @@
                                 <li>Взаимодействие с муниципальным штабом Юнармии</li>
                             </ul>
                             <div class="material-buttons mr-active">
-                                <a href="files/yunarmiya/doop-yunarmiya-2026-2027.pdf" target="_blank" class="material-btn material-btn-primary">📄 Программа (PDF)</a>
+                                <a href="files/yunarmiya/doop-yunarmiya-2026-2027.pdf" target="_blank" class="material-btn material-btn-primary">📄 Программа</a>
                             </div>
                         </div>
 
                         <!-- Материал 2 -->
                         <div class="material-card">
-                            <span class="material-icon">🏆</span>
-                            <div class="material-title">Проведение конкурса «Зарница 2.0»</div>
+                            <span class="material-icon">📋</span>
+                            <div class="material-title">Положение об отборочном (школьном) этапе «Зарницы 2.0»</div>
                             <div class="material-description">
-                                Сценарий, задания, критерии оценивания для школьного этапа конкурса
+                                Положение об организации и проведении отборочного (школьного) этапа Игры в МБОУ СШ № 2 г. Лысково на 2026–2027 учебный год (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
                             </div>
                             <ul class="material-list">
-                                <li>Сценарий проведения «Зарницы 2.0»</li>
-                                <li>Задания по этапам (строевая, ориентирование, первая помощь)</li>
-                                <li>Критерии оценивания команд</li>
-                                <li>Подготовка полигона и инвентаря</li>
+                                <li>Цели, категории участников по дате рождения</li>
+                                <li>Состав отряда и роли</li>
+                                <li>Порядок отборочного этапа и протоколов</li>
+                                <li>Допуск, безопасность; заявление и согласие родителей</li>
                             </ul>
-                            <div class="material-buttons mr-active">
-                                <a href="files/metodicheskie/zarnica-scenariy-shkolnyy-etap.docx" download class="material-btn material-btn-primary">📥 Сценарий</a>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/polozhenie-zarnica-2-0-2026-2027.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
+                                <a href="files/zarnica/polozhenie-zarnica-2-0-2026-2027.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
                             </div>
                         </div>
 
                         <!-- Материал 3 -->
                         <div class="material-card">
-                            <span class="material-icon">📋</span>
-                            <div class="material-title">Памятка классному руководителю: смотр строя и песни и «Зарница 2.0»</div>
+                            <span class="material-icon">📅</span>
+                            <div class="material-title">График подготовки отрядов на 2026–2027 учебный год</div>
                             <div class="material-description">
-                                Как за 4–5 недель подготовить класс к смотру строя и песни и к игре «Зарница 2.0»
+                                Календарный план подготовки отрядов к «Зарнице 2.0» (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
                             </div>
                             <ul class="material-list">
-                                <li>Календарь подготовки по неделям</li>
-                                <li>Что оценивает жюри, роли командира и запевалы</li>
-                                <li>Безопасность и этика: допуск, форма, фото детей (ФЗ-152)</li>
-                                <li>Что сделать за день до конкурса</li>
+                                <li>Календарный план по месяцам</li>
+                                <li>Подготовка по ролям и отрядным состязаниям</li>
+                                <li>Контрольные точки</li>
+                                <li>Даты этапов 2027 года организаторы пока не объявили</li>
                             </ul>
-                            <div class="material-buttons mr-active">
-                                <a href="files/metodicheskie/pamyatka-klassnomu-rukovoditelyu-smotr-zarnica.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
-                                <a href="files/metodicheskie/pamyatka-klassnomu-rukovoditelyu-smotr-zarnica.pdf" target="_blank" class="material-btn material-btn-primary">📄 Открыть PDF</a>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/grafik-podgotovki-zarnica-2026-2027.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
+                                <a href="files/zarnica/grafik-podgotovki-zarnica-2026-2027.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
+                            </div>
+                        </div>
+
+                        <!-- Материал 4 -->
+                        <div class="material-card">
+                            <span class="material-icon">📖</span>
+                            <div class="material-title">Методические рекомендации по подготовке к «Зарнице 2.0»</div>
+                            <div class="material-description">
+                                Для участников, родителей и наставников (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
+                            </div>
+                            <ul class="material-list">
+                                <li>Как устроена Игра</li>
+                                <li>Подготовка по каждой роли и отрядные состязания</li>
+                                <li>Младшая категория</li>
+                                <li>Чек-лист перед этапом</li>
+                            </ul>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/metodicheskie-rekomendacii-zarnica.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
+                                <a href="files/zarnica/metodicheskie-rekomendacii-zarnica.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
+                            </div>
+                        </div>
+
+                        <!-- Материал 5 -->
+                        <div class="material-card">
+                            <span class="material-icon">🧾</span>
+                            <div class="material-title">Памятка наставника и родителей</div>
+                            <div class="material-description">
+                                Регистрация, отряд, заявка и документы на этапы (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
+                            </div>
+                            <ul class="material-list">
+                                <li>Регистрация участника и наставника на платформе Игры</li>
+                                <li>Создание отряда, отборочный этап и протоколы</li>
+                                <li>Подача заявки</li>
+                                <li>Таблица документов по этапам</li>
+                            </ul>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/pamyatka-nastavnika-zarnica.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
+                                <a href="files/zarnica/pamyatka-nastavnika-zarnica.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
+                            </div>
+                        </div>
+
+                        <!-- Материал 6 -->
+                        <div class="material-card">
+                            <span class="material-icon">📜</span>
+                            <div class="material-title">История военно-патриотических игр в России</div>
+                            <div class="material-description">
+                                От школьной игры 1964 года до «Зарницы 2.0» сезона 2026 (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
+                            </div>
+                            <ul class="material-list">
+                                <li>Школьная игра 1964 года и всесоюзная «Зарница»</li>
+                                <li>Категории, роли, этапы «Зарницы 2.0»</li>
+                                <li>Наши результаты</li>
+                            </ul>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/istoriya-voenno-patrioticheskih-igr.docx" download class="material-btn material-btn-primary">📥 Скачать DOCX</a>
+                                <a href="files/zarnica/istoriya-voenno-patrioticheskih-igr.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
+                            </div>
+                        </div>
+
+                        <!-- Материал 7 -->
+                        <div class="material-card">
+                            <span class="material-icon">📊</span>
+                            <div class="material-title">Презентация «Готовимся к Зарнице 2.0»</div>
+                            <div class="material-description">
+                                Для родителей и участников, 13 слайдов (тот же документ — на странице <a href="zarnica.html">«Зарница 2.0»</a>)
+                            </div>
+                            <ul class="material-list">
+                                <li>Что такое Игра, категории, этапы, роли</li>
+                                <li>Регистрация и отборочный этап</li>
+                                <li>Подготовка и безопасность</li>
+                                <li>Документы и график</li>
+                            </ul>
+                            <div class="material-buttons">
+                                <a href="files/zarnica/prezentaciya-gotovimsya-k-zarnice-2026-2027.pptx" download class="material-btn material-btn-primary">📥 Скачать PPTX</a>
+                                <a href="files/zarnica/prezentaciya-gotovimsya-k-zarnice-2026-2027.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Открыть PDF</a>
                             </div>
                         </div>
 

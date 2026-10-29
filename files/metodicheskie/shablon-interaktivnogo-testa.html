@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шаблон интерактивного теста по ОБЗР</title>
+<!--
+  ШАБЛОН ИНТЕРАКТИВНОГО ТЕСТА (один файл, без внешних библиотек и без сохранения данных)
+  Как использовать:
+  1. Найдите ниже блок «НАСТРОЙКИ ТЕСТА» (между строк «ЗДЕСЬ МЕНЯЕТЕ»).
+  2. Замените название, класс, тему и вопросы на свои. Для каждого вопроса:
+     q — текст вопроса, options — 4 варианта, correct — номер верного ответа (счёт с 0: первый = 0),
+     why — пояснение, которое увидит ученик после ответа.
+  3. Сохраните файл (например, test-modul-8.html) и загрузите в репозиторий сайта рядом с index.html.
+  4. Ссылка на тест: https://ваш-сайт/test-modul-8.html
+  Результаты нигде не сохраняются и не отправляются — это безопасно по ФЗ-152.
+  Материал подготовлен с использованием ИИ и проверен преподавателем.
+-->
+<style>
+:root{--primary:#003D7A;--primary-h:#00518A;--danger:#B71C1C;--ok:#1B5E20;--bg:#F5F7FA;--ink:#2C3E50;--muted:#5B6675;--line:#CBD5E1}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+header{background:var(--primary);color:#fff;padding:20px 16px}
+header .wrap{padding:0 16px}
+h1{font-family:Merriweather,Georgia,serif;font-size:1.6rem;line-height:1.25;margin:0 0 6px}
+header p{margin:0;opacity:.95}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin:16px 0}
+.progress{height:10px;background:#E2E8F0;border-radius:6px;overflow:hidden}
+.progress>div{height:100%;background:var(--primary);width:0;transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.95rem;margin-bottom:8px}
+fieldset{border:0;margin:0;padding:0}
+legend{font-weight:700;font-size:1.15rem;margin-bottom:12px;padding:0}
+.opt{display:block;margin:8px 0}
+.opt input{position:absolute;opacity:0}
+.opt span{display:block;padding:12px 14px;border:2px solid var(--line);border-radius:10px;cursor:pointer;background:#fff}
+.opt input:focus-visible+span{outline:3px solid #F9A825;outline-offset:2px}
+.opt input:checked+span{border-color:var(--primary);background:#EAF1FB}
+.opt.right span{border-color:var(--ok);background:#E8F5E9}
+.opt.wrong span{border-color:var(--danger);background:#FDECEA}
+button{font:inherit;font-weight:600;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:12px 22px;cursor:pointer;min-height:44px}
+button:hover{background:var(--primary-h)}
+button:focus-visible{outline:3px solid #F9A825;outline-offset:2px}
+button:disabled{background:#94A3B8;cursor:not-allowed}
+button.sec{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+.fb{margin-top:14px;padding:12px 14px;border-radius:10px;background:#F1F5F9}
+.fb strong.ok{color:var(--ok)}.fb strong.bad{color:var(--danger)}
+.score{font-family:Merriweather,Georgia,serif;font-size:2.4rem;color:var(--primary);margin:0}
+.review li{margin:10px 0}
+footer{color:var(--muted);font-size:.9rem;padding-bottom:32px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1 id="title"></h1>
+  <p id="subtitle"></p>
+</div></header>
+<main class="wrap" id="main">
+  <section class="card" id="start">
+    <p id="intro"></p>
+    <button id="btnStart" type="button">Начать тест</button>
+  </section>
+
+  <section class="card" id="quiz" hidden aria-live="polite">
+    <div class="meta"><span id="counter"></span><span id="scoreNow"></span></div>
+    <div class="progress" role="progressbar" aria-label="Прогресс теста" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pbar"><div id="pfill"></div></div>
+    <form id="form" onsubmit="return false" style="margin-top:18px">
+      <fieldset id="fs"><legend id="qtext"></legend><div id="opts"></div></fieldset>
+    </form>
+    <div class="fb" id="fb" hidden role="status"></div>
+    <p style="margin-bottom:0">
+      <button id="btnCheck" type="button" disabled>Проверить</button>
+      <button id="btnNext" type="button" hidden>Дальше</button>
+    </p>
+  </section>
+
+  <section class="card" id="result" hidden>
+    <h2 style="margin-top:0">Результат</h2>
+    <p class="score" id="resScore"></p>
+    <p id="resText"></p>
+    <h3>Разбор ответов</h3>
+    <ol class="review" id="review"></ol>
+    <button id="btnAgain" type="button">Пройти ещё раз</button>
+  </section>
+
+  <footer>
+    <p>Результаты теста нигде не сохраняются и не отправляются. Материал подготовлен с использованием инструментов искусственного интеллекта и проверен преподавателем.</p>
+  </footer>
+</main>
+
+<script>
+/* ===================== ЗДЕСЬ МЕНЯЕТЕ: НАСТРОЙКИ ТЕСТА ===================== */
+const TEST = {
+  title: 'Тест: первая помощь при кровотечении',
+  subtitle: 'ОБЗР · 8 класс · модуль «Основы медицинских знаний. Оказание первой помощи»',
+  intro: 'Ответьте на 5 вопросов. После каждого ответа вы увидите пояснение. Время не ограничено.',
+  // пороги отметок в процентах: [для «5», для «4», для «3»] — привяжите к положению об оценивании вашей школы
+  thresholds: [85, 65, 45],
+  questions: [
+    { q: 'Что нужно сделать в первую очередь, прежде чем подойти к пострадавшему?',
+      options: ['Сразу начать оказывать помощь', 'Убедиться, что место безопасно для вас и пострадавшего', 'Позвонить родителям', 'Дождаться взрослых'],
+      correct: 1, why: 'Первый шаг алгоритма — оценить безопасность. Если вам угрожает опасность, вы не сможете помочь.' },
+    { q: 'Как проверить дыхание у лежащего без сознания человека?',
+      options: ['Смотрю, слушаю, ощущаю — не более 10 секунд', 'Прикладываю зеркало на минуту', 'Проверять дыхание не нужно', 'Трясу человека изо всех сил'],
+      correct: 0, why: 'Проверка дыхания: смотрю за движением грудной клетки, слушаю, ощущаю дыхание щекой — не более 10 секунд.' },
+    { q: 'В каком соотношении выполняют надавливания и вдохи при сердечно-лёгочной реанимации?',
+      options: ['5 : 1', '15 : 5', '30 : 2', '10 : 10'],
+      correct: 2, why: 'Соотношение — 30 надавливаний к 2 вдохам, темп надавливаний 100–120 в минуту.' },
+    { q: 'Что нужно отметить после наложения кровоостанавливающего жгута?',
+      options: ['Цвет жгута', 'Время наложения', 'Имя того, кто накладывал', 'Размер жгута'],
+      correct: 1, why: 'Время наложения жгута фиксируют обязательно и сообщают бригаде скорой помощи.' },
+    { q: 'По каким номерам можно вызвать скорую помощь?',
+      options: ['01 и 02', '103 или 112', '04 и 05', '115 и 116'],
+      correct: 1, why: 'Скорая помощь — 103, единый номер экстренных служб — 112.' }
+  ]
+};
+/* ===================== ДАЛЬШЕ ЧТО-ЛИБО МЕНЯТЬ НЕ НУЖНО ===================== */
+
+const $ = id => document.getElementById(id);
+let i = 0, score = 0, answers = [], checked = false;
+
+$('title').textContent = TEST.title;
+$('subtitle').textContent = TEST.subtitle;
+$('intro').textContent = TEST.intro;
+document.title = TEST.title;
+
+function show(id){ ['start','quiz','result'].forEach(s => $(s).hidden = (s !== id)); }
+
+function render(){
+  const q = TEST.questions[i];
+  checked = false;
+  $('counter').textContent = 'Вопрос ' + (i+1) + ' из ' + TEST.questions.length;
+  $('scoreNow').textContent = 'Верно: ' + score;
+  const pct = Math.round(i / TEST.questions.length * 100);
+  $('pfill').style.width = pct + '%';
+  $('pbar').setAttribute('aria-valuenow', pct);
+  $('qtext').textContent = q.q;
+  $('opts').innerHTML = '';
+  q.options.forEach((t, k) => {
+    const lab = document.createElement('label');
+    lab.className = 'opt';
+    const inp = document.createElement('input');
+    inp.type = 'radio'; inp.name = 'ans'; inp.value = k;
+    inp.addEventListener('change', () => { $('btnCheck').disabled = false; });
+    const sp = document.createElement('span'); sp.textContent = t;
+    lab.append(inp, sp);
+    $('opts').appendChild(lab);
+  });
+  $('fb').hidden = true; $('btnCheck').hidden = false; $('btnCheck').disabled = true; $('btnNext').hidden = true;
+  $('btnNext').textContent = (i === TEST.questions.length - 1) ? 'Показать результат' : 'Дальше';
+}
+
+function check(){
+  const sel = document.querySelector('input[name="ans"]:checked');
+  if(!sel || checked) return;
+  checked = true;
+  const q = TEST.questions[i], pick = +sel.value, ok = pick === q.correct;
+  if(ok) score++;
+  answers.push({pick, ok});
+  document.querySelectorAll('.opt').forEach((l, k) => {
+    l.querySelector('input').disabled = true;
+    if(k === q.correct) l.classList.add('right');
+    else if(k === pick) l.classList.add('wrong');
+  });
+  $('fb').innerHTML = '<strong class="' + (ok ? 'ok' : 'bad') + '">' + (ok ? 'Верно.' : 'Неверно.') + '</strong> ';
+  $('fb').appendChild(document.createTextNode(q.why));
+  $('fb').hidden = false;
+  $('scoreNow').textContent = 'Верно: ' + score;
+  $('btnCheck').hidden = true; $('btnNext').hidden = false; $('btnNext').focus();
+}
+
+function finish(){
+  const n = TEST.questions.length, pct = Math.round(score / n * 100);
+  const t = TEST.thresholds;
+  const mark = pct >= t[0] ? 5 : pct >= t[1] ? 4 : pct >= t[2] ? 3 : 2;
+  $('resScore').textContent = score + ' из ' + n + ' (' + pct + ' %) · отметка «' + mark + '»';
+  $('resText').textContent = mark >= 4 ? 'Хороший результат. Материал освоен.' : 'Повторите тему и попробуйте ещё раз — разбор ниже поможет.';
+  $('review').innerHTML = '';
+  TEST.questions.forEach((q, k) => {
+    const li = document.createElement('li');
+    const a = answers[k];
+    li.textContent = q.q + ' — ' + (a.ok ? 'верно. ' : 'неверно. Правильный ответ: «' + q.options[q.correct] + '». ') + q.why;
+    $('review').appendChild(li);
+  });
+  show('result'); $('result').querySelector('h2').setAttribute('tabindex','-1'); $('result').querySelector('h2').focus();
+}
+
+$('btnStart').addEventListener('click', () => { i = 0; score = 0; answers = []; show('quiz'); render(); });
+$('btnCheck').addEventListener('click', check);
+$('btnNext').addEventListener('click', () => { if(i < TEST.questions.length - 1){ i++; render(); } else { $('pfill').style.width = '100%'; finish(); } });
+$('btnAgain').addEventListener('click', () => { i = 0; score = 0; answers = []; show('quiz'); render(); });
+</script>
+</body>
+</html>
