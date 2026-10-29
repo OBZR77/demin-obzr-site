@@ -316,9 +316,21 @@
             gap: 0.4rem;
         }
         
-        .download-link:hover {
-            background-color: var(--color-primary-hover);
-            transform: scale(1.05);
+        .download-link:hover,
+        .download-link:focus-visible {
+            background-color: var(--color-danger);
+            border-color: var(--color-danger);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(229, 57, 53, 0.4);
+        }
+
+        .download-link:active {
+            background-color: #C62828;
+            border-color: #C62828;
+            color: white;
+            transform: translateY(0) scale(0.97);
+            box-shadow: 0 2px 6px rgba(229, 57, 53, 0.4);
         }
         
         .document-actions {
@@ -348,8 +360,16 @@
             color: var(--color-primary);
         }
 
-        .download-link.view-link:hover {
-            background-color: var(--color-primary);
+        .download-link.view-link:hover,
+        .download-link.view-link:focus-visible {
+            background-color: var(--color-danger);
+            border-color: var(--color-danger);
+            color: white;
+        }
+
+        .download-link.view-link:active {
+            background-color: #C62828;
+            border-color: #C62828;
             color: white;
         }
 
