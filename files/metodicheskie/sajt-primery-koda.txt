@@ -1,0 +1,115 @@
+ПРИМЕРЫ КОДА ДЛЯ ПЕРСОНАЛЬНОГО САЙТА УЧИТЕЛЯ
+================================================
+Это учебные фрагменты: их можно копировать и подставлять свои данные.
+В файле нет ключей, паролей и адресов реальных форм. Замените всё, что в [квадратных скобках].
+
+1. КАРКАС СТРАНИЦЫ (HTML)
+------------------------------------------------
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Название страницы] — [ФИО], учитель ОБЗР</title>
+</head>
+<body>
+  <a href="#main" class="skip">Перейти к содержимому</a>
+  <header>
+    <nav aria-label="Основное меню">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О себе</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+  </header>
+  <main id="main">
+    <h1>[Заголовок страницы]</h1>
+    <p>[Текст]</p>
+  </main>
+  <footer>
+    <p>[Копирайт]. Материалы подготовлены с использованием ИИ и проверены преподавателем.</p>
+  </footer>
+</body>
+</html>
+
+2. ДОСТУПНЫЕ СТИЛИ: ЦВЕТА И ФОКУС (CSS)
+------------------------------------------------
+:root {
+  --color-text: #2C3E50;
+  --color-bg: #FFFFFF;
+  --color-primary: #003D7A;
+}
+body { font-family: 'Open Sans', Arial, sans-serif; font-size: 16px; line-height: 1.6; color: var(--color-text); background: var(--color-bg); }
+a:focus-visible, button:focus-visible { outline: 3px solid #FFA500; outline-offset: 2px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 8px; top: 8px; background: #fff; padding: 8px; }
+img { max-width: 100%; height: auto; }
+
+3. КНОПКИ «СКАЧАТЬ» И «ОТКРЫТЬ PDF» (HTML)
+------------------------------------------------
+<a href="files/[папка]/[имя-файла].docx" download class="material-btn">📥 Скачать</a>
+<a href="files/[папка]/[имя-файла].pdf" target="_blank" rel="noopener" class="material-btn">📄 Открыть PDF</a>
+Совет: имена файлов пишите латиницей через дефис — так ссылки надёжнее.
+
+4. МИНИ-ТЕСТ НА JAVASCRIPT
+------------------------------------------------
+<div id="quiz"></div>
+<script>
+const questions = [
+  { q: "По какому единому номеру можно вызвать экстренные службы с мобильного телефона?",
+    options: ["101", "102", "112", "103"], correct: 2 },
+  { q: "[Ваш вопрос]", options: ["[А]", "[Б]", "[В]", "[Г]"], correct: 0 }
+];
+const box = document.getElementById("quiz");
+let score = 0;
+questions.forEach((item, i) => {
+  const fs = document.createElement("fieldset");
+  const lg = document.createElement("legend");
+  lg.textContent = (i + 1) + ". " + item.q;
+  fs.appendChild(lg);
+  item.options.forEach((text, j) => {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "radio"; input.name = "q" + i; input.value = j;
+    label.append(input, " " + text);
+    label.style.display = "block";
+    fs.appendChild(label);
+  });
+  box.appendChild(fs);
+});
+const btn = document.createElement("button");
+btn.textContent = "Проверить";
+const out = document.createElement("p");
+out.setAttribute("aria-live", "polite");
+btn.onclick = () => {
+  score = 0;
+  questions.forEach((item, i) => {
+    const sel = document.querySelector('input[name="q' + i + '"]:checked');
+    if (sel && Number(sel.value) === item.correct) score++;
+  });
+  out.textContent = "Результат: " + score + " из " + questions.length;
+};
+box.append(btn, out);
+</script>
+
+5. ВСТАВКА ФОРМЫ ЯНДЕКС ФОРМ (HTML)
+------------------------------------------------
+<!-- Адрес формы возьмите в Яндекс Формах: «Поделиться» → «Встроить». Своих данных в код не вставляйте заранее. -->
+<iframe src="[адрес-формы-из-Яндекс-Форм]" width="100%" height="600" title="Форма: вопрос учителю"></iframe>
+
+6. КАРТА САЙТА (sitemap.xml)
+------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://[ваш-домен]/index.html</loc></url>
+  <url><loc>https://[ваш-домен]/about.html</loc></url>
+</urlset>
+
+7. ПРОВЕРКА ПЕРЕД ПУБЛИКАЦИЕЙ
+------------------------------------------------
+- Все ссылки открываются; файлы лежат в нужных папках.
+- Страница читается на телефоне.
+- У изображений есть описание (alt).
+- В материалах нет персональных данных обучающихся.
+- Сделана резервная копия.
+
+Материал подготовлен с использованием инструментов искусственного интеллекта и проверен преподавателем. Носит методический и рекомендательный характер.
