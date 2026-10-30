@@ -481,23 +481,27 @@
 
         .material-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
             margin-top: 1rem;
         }
 
         .material-btn {
-            padding: 0.65rem 1rem;
+            flex: 1 1 0;
+            min-width: 0;
+            white-space: nowrap;
+            padding: 0.65rem 0.2rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.73rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             text-decoration: none;
         }
 
@@ -506,10 +510,22 @@
             color: white;
         }
 
-        .material-btn-primary:hover {
-            background: var(--color-primary-hover);
+        .material-btn-primary:hover,
+        .material-btn-primary:active,
+        .material-btn-primary:focus-visible {
+            background: var(--color-danger);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+            box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+
+        .material-btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .material-btn-primary:focus-visible {
+            outline: 3px solid #FFA500;
+            outline-offset: 2px;
         }
 
         .material-btn-disabled {
@@ -522,6 +538,17 @@
         .material-btn-disabled:hover {
             transform: none;
             box-shadow: none;
+        }
+
+        @media (max-width: 600px) {
+            .material-buttons {
+                flex-direction: column;
+            }
+
+            .material-btn {
+                font-size: 0.9rem;
+                padding: 0.65rem 1rem;
+            }
         }
 
         /* NO RESULTS */
@@ -796,9 +823,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .material-buttons {
-                flex-direction: column;
-            }
 
             #qrFloatingButton {
                 animation: none !important;
@@ -1463,7 +1487,7 @@
                                 </ul>
                                 <div class="material-buttons">
                                     <a href="files/roditeli/instrukciya-ognetushitel.docx" download class="material-btn material-btn-primary">📥 Скачать инструкцию</a>
-                                    <a href="files/roditeli/shablon-ognetushitel.pptx" download class="material-btn material-btn-primary">🎨 Шаблон для Canva (PPTX)</a>
+                                    <a href="files/roditeli/shablon-ognetushitel.pptx" download class="material-btn material-btn-primary">🎨 Шаблон Canva</a>
                                 </div>
                             </div>
                         </div>
@@ -1546,7 +1570,7 @@
                                     <li>Что брать НЕ нужно</li>
                                 </ul>
                                 <div class="material-buttons">
-                                    <a href="files/sbory/spisok-veschey-dlya-sborov.docx" download class="material-btn material-btn-primary">✅ Универсальный список</a>
+                                    <a href="files/sbory/spisok-veschey-dlya-sborov.docx" download class="material-btn material-btn-primary">✅ Общий список</a>
                                     <a href="files/roditeli/prompt-personalizirovat-spisok-veschej.txt" download class="material-btn material-btn-primary">📝 Персонализировать</a>
                                 </div>
                             </div>
@@ -1609,7 +1633,7 @@
                                 </ul>
                                 <div class="material-buttons">
                                     <a href="files/roditeli/infografika-zashchita-personalnyh-dannyh.pdf" download class="material-btn material-btn-primary">📥 Скачать инфографику</a>
-                                    <a href="files/roditeli/shablon-infografika-pd.pptx" download class="material-btn material-btn-primary">🎨 Шаблон для Canva (PPTX)</a>
+                                    <a href="files/roditeli/shablon-infografika-pd.pptx" download class="material-btn material-btn-primary">🎨 Шаблон Canva</a>
                                 </div>
                             </div>
                         </div>
@@ -1737,7 +1761,7 @@
                                 </ul>
                                 <div class="material-buttons">
                                     <a href="files/roditeli/nastolnaya-igra-bezopasnyj-dom.pdf" download class="material-btn material-btn-primary">🎲 Скачать игру PDF</a>
-                                    <a href="files/roditeli/prompty-illyustracii-igra.txt" download class="material-btn material-btn-primary">🖼️ Промпты для иллюстраций</a>
+                                    <a href="files/roditeli/prompty-illyustracii-igra.txt" download class="material-btn material-btn-primary">🖼️ Промпты картинок</a>
                                 </div>
                             </div>
                         </div>

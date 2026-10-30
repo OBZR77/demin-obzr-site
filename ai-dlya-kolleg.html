@@ -452,22 +452,27 @@
 
         .material-buttons {
             display: flex;
-            gap: 0.75rem;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
         }
 
         .material-btn {
-            flex: 1;
-            padding: 0.65rem 1rem;
+            flex: 1 1 0;
+            min-width: 0;
+            white-space: nowrap;
+            padding: 0.65rem 0.2rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.73rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             text-decoration: none;
         }
 
@@ -476,10 +481,22 @@
             color: white;
         }
 
-        .material-btn-primary:hover {
-            background: var(--color-primary-hover);
+        .material-btn-primary:hover,
+        .material-btn-primary:active,
+        .material-btn-primary:focus-visible {
+            background: var(--color-danger);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.3);
+            box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+        }
+
+        .material-btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .material-btn-primary:focus-visible {
+            outline: 3px solid #FFA500;
+            outline-offset: 2px;
         }
 
         .material-btn-disabled {
@@ -492,6 +509,17 @@
         .material-btn-disabled:hover {
             transform: none;
             box-shadow: none;
+        }
+
+        @media (max-width: 600px) {
+            .material-buttons {
+                flex-direction: column;
+            }
+
+            .material-btn {
+                font-size: 0.9rem;
+                padding: 0.65rem 1rem;
+            }
         }
 
         /* NO RESULTS */
@@ -763,9 +791,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .material-buttons {
-                flex-direction: column;
-            }
 
             #qrFloatingButton {
                 animation: none !important;
@@ -1349,7 +1374,7 @@
                             </div>
                             <div class="material-buttons">
                                 <a href="files/ai-kolleg/prompt-konspekt-uroka.txt" download class="material-btn material-btn-primary">📥 Скачать промпт (.txt)</a>
-                                <a href="files/konspekty/nvp-8-pervaya-pomoshch.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">👁️ Пример использования</a>
+                                <a href="files/konspekty/nvp-8-pervaya-pomoshch.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">👁️ Пример</a>
                             </div>
                         </div>
 
@@ -1435,7 +1460,7 @@
                             </div>
                             <div class="material-buttons">
                                 <a href="files/ai-kolleg/prompty-infografika-10-en.txt" download class="material-btn material-btn-primary">📥 10 промптов (EN)</a>
-                                <a href="prezentacii-testy.html" target="_blank" rel="noopener" class="material-btn material-btn-primary">🖼️ Примеры инфографики</a>
+                                <a href="prezentacii-testy.html" target="_blank" rel="noopener" class="material-btn material-btn-primary">🖼️ Инфографика</a>
                             </div>
                         </div>
 
@@ -1451,7 +1476,7 @@
                                 Шаблоны и промпты для создания профессиональных плакатов формата A2-A3 для оформления кабинета: первая помощь, пожарная безопасность, строевые приёмы, знаки безопасности.
                             </div>
                             <div class="material-buttons">
-                                <a href="files/ai-kolleg/shablony-naglyadnye-posobiya-A3.pptx" download class="material-btn material-btn-primary">🎨 Шаблоны для Canva (PPTX)</a>
+                                <a href="files/ai-kolleg/shablony-naglyadnye-posobiya-A3.pptx" download class="material-btn material-btn-primary">🎨 Шаблоны Canva</a>
                                 <a href="files/ai-kolleg/prompty-naglyadnye-posobiya.txt" download class="material-btn material-btn-primary">📥 Промпты для ИИ</a>
                             </div>
                         </div>
@@ -1572,7 +1597,7 @@
                                 ИИ задаёт структурированные вопросы и помогает составить развёрнутый самоанализ урока: что получилось, что нужно улучшить, как повысить эффективность, анализ достижения целей.
                             </div>
                             <div class="material-buttons">
-                                <a href="files/ai-kolleg/prompt-analiz-uroka.txt" download class="material-btn material-btn-primary">💬 Интерактивный промпт</a>
+                                <a href="files/ai-kolleg/prompt-analiz-uroka.txt" download class="material-btn material-btn-primary">💬 Промпт-интерактив</a>
                                 <a href="files/ai-kolleg/shablon-analiza-uroka.docx" download class="material-btn material-btn-primary">📋 Шаблон анализа</a>
                             </div>
                         </div>
@@ -1590,7 +1615,7 @@
                             </div>
                             <div class="material-buttons">
                                 <a href="files/ai-kolleg/prompt-rabochaya-tetrad.txt" download class="material-btn material-btn-primary">📥 Скачать промпт</a>
-                                <a href="files/ai-kolleg/primer-rabochej-tetradi-pervaya-pomoshch.docx" download class="material-btn material-btn-primary">📖 Пример рабочей тетради</a>
+                                <a href="files/ai-kolleg/primer-rabochej-tetradi-pervaya-pomoshch.docx" download class="material-btn material-btn-primary">📖 Пример тетради</a>
                             </div>
                         </div>
 
@@ -1695,7 +1720,7 @@
                             </div>
                             <div class="material-buttons">
                                 <a href="files/ai-kolleg/prompt-pismo-roditelyam.txt" download class="material-btn material-btn-primary">📥 Скачать промпт</a>
-                                <a href="files/ai-kolleg/shablon-pisma-roditelyam.docx" download class="material-btn material-btn-primary">📄 Шаблон письма (Word)</a>
+                                <a href="files/ai-kolleg/shablon-pisma-roditelyam.docx" download class="material-btn material-btn-primary">📄 Шаблон (Word)</a>
                             </div>
                         </div>
 
@@ -1729,7 +1754,7 @@
                             </div>
                             <div class="material-buttons">
                                 <a href="files/ai-kolleg/prompt-buklet-roditelyam.txt" download class="material-btn material-btn-primary">📥 Скачать промпт</a>
-                                <a href="files/books/cifrovoy-fantom-pamyatka-roditelyam.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Примеры буклетов (PDF)</a>
+                                <a href="files/books/cifrovoy-fantom-pamyatka-roditelyam.pdf" target="_blank" rel="noopener" class="material-btn material-btn-primary">📄 Буклеты (PDF)</a>
                             </div>
                         </div>
 
