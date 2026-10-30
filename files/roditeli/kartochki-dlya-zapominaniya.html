@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карточки для запоминания по ОБЗР — пример</title>
+<style>
+:root{--blue:#003D7A;--blue-h:#00518A;--red:#E53935;--red-d:#C62828;--green:#2E7D32;--bg:#F5F7FA;--ink:#1F2A37;--grey:#5B6675;--line:#D6DEE8}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:16px}
+header{background:var(--blue);color:#fff;border-radius:14px;padding:18px 20px;margin-bottom:14px}
+header h1{margin:0 0 4px;font-size:1.45rem}
+header p{margin:0;font-size:.95rem;opacity:.95}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.bar .lbl{font-weight:600;color:var(--grey);font-size:.9rem;margin-right:2px}
+button{font:inherit;cursor:pointer;min-height:44px;padding:8px 16px;border-radius:10px;border:2px solid var(--blue);background:#fff;color:var(--blue);font-weight:600;transition:transform .12s,background .12s,color .12s,box-shadow .12s}
+button:hover,button:focus-visible{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-2px);box-shadow:0 5px 12px rgba(229,57,53,.35)}
+button:active{background:var(--red-d);border-color:var(--red-d);color:#fff;transform:scale(.97)}
+button[aria-pressed="true"],button.on{background:var(--blue);color:#fff}
+button[aria-pressed="true"]:hover,button.on:hover{background:var(--red);border-color:var(--red)}
+button:focus-visible{outline:3px solid #FFA500;outline-offset:2px}
+.stats{margin:6px 0 12px;color:var(--grey);font-size:.95rem}
+.stats b{color:var(--ink)}
+.card-box{perspective:1200px;margin:6px 0 14px}
+.card{position:relative;min-height:260px;cursor:pointer;transition:transform .5s;transform-style:preserve-3d}
+.card.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;background:#fff;border:2px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{transform:rotateY(180deg);border-color:var(--blue);background:#F0F5FB}
+.tag{position:absolute;top:12px;left:14px;font-size:.78rem;font-weight:700;letter-spacing:.4px;color:#fff;padding:2px 10px;border-radius:99px}
+.tag.nvp{background:var(--blue)}.tag.bzh{background:var(--red)}
+.q{font-size:1.35rem;font-weight:700;color:var(--blue)}
+.a{font-size:1.15rem}
+.hint{margin-top:14px;color:var(--grey);font-size:.85rem}
+.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.nav .ok{border-color:var(--green);color:var(--green)}
+.nav .ok:hover,.nav .ok:focus-visible{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 5px 12px rgba(46,125,50,.35)}
+.panel{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px}
+.opts{display:grid;gap:10px;margin-top:14px}
+.opts button{text-align:left;font-weight:500;color:var(--ink);border-color:var(--line)}
+.opts button.right{background:#E8F5E9;border-color:var(--green);color:#1B5E20}
+.opts button.wrong{background:#FDECEA;border-color:var(--red);color:#B71C1C}
+.opts button:disabled{cursor:default;transform:none;box-shadow:none}
+.opts button:disabled:hover{color:inherit}
+.fb{margin-top:12px;min-height:1.5em;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(min-width:620px){.grid{grid-template-columns:repeat(4,1fr)}}
+.tile{min-height:92px;padding:8px;font-size:.88rem;font-weight:600;line-height:1.25;color:var(--blue);background:#fff;border-color:var(--line);overflow:hidden}
+.tile.open{background:#F0F5FB;border-color:var(--blue)}
+.tile.done{background:#E8F5E9;border-color:var(--green);color:#1B5E20}
+.tile.open,.tile.open:hover,.tile.open:focus-visible{background:#F0F5FB;border-color:var(--blue);color:var(--blue);transform:none;box-shadow:none}
+.tile.done,.tile.done:hover{background:#E8F5E9;border-color:var(--green);color:#1B5E20;transform:none;box-shadow:none}
+.tile.hide{color:transparent;background:var(--blue);border-color:var(--blue);position:relative}
+.tile.hide::after{content:'?';color:#fff;font-size:1.6rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+footer{margin:16px 0 4px;font-size:.82rem;color:var(--grey);text-align:center}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Карточки для запоминания: ОБЗР</h1>
+<p>Пример готового набора из 24 карточек по курсам НВП и БЖ. Переверните карточку, пройдите тест или сыграйте в «Найди пару».</p>
+</header>
+<div class="bar" role="group" aria-label="Режим">
+<span class="lbl">Режим:</span>
+<button type="button" data-mode="learn" aria-pressed="true">Заучивание</button>
+<button type="button" data-mode="test" aria-pressed="false">Тест</button>
+<button type="button" data-mode="game" aria-pressed="false">Игра «Найди пару»</button>
+</div>
+<div class="bar" role="group" aria-label="Курс">
+<span class="lbl">Курс:</span>
+<button type="button" data-course="all" aria-pressed="true">Все</button>
+<button type="button" data-course="nvp" aria-pressed="false">НВП</button>
+<button type="button" data-course="bzh" aria-pressed="false">БЖ</button>
+</div>
+<div id="stage"></div>
+<footer>Набор подготовлен с использованием инструментов искусственного интеллекта и проверен преподавателем. Карточки носят учебный характер: сверяйте их с учебником и материалами уроков на сайте demin-obzr.ru.</footer>
+</div>
+<script>
+(function(){
+'use strict';
+var CARDS=[
+{c:'nvp',q:'Из каких видов состоят Вооружённые Силы РФ?',a:'Сухопутные войска, Воздушно-космические силы и Военно-морской флот.'},
+{c:'nvp',q:'Что значит команда «Смирно»?',a:'Принять строевую стойку: пятки вместе, носки врозь на ширину ступни, корпус прямой, руки опущены, смотреть прямо.'},
+{c:'nvp',q:'Что нужно сделать по команде «Равняйсь»?',a:'Повернуть голову в сторону, указанную в команде, так, чтобы видеть грудь четвёртого человека в строю.'},
+{c:'nvp',q:'Что значит команда «Вольно»?',a:'Стоять свободно, ослабив ногу; не разговаривать и не покидать место в строю.'},
+{c:'nvp',q:'Какой калибр у автомата АК-74?',a:'5,45 мм.'},
+{c:'nvp',q:'Главное правило безопасности при обращении с оружием',a:'Никогда не направлять оружие на людей, даже если оно не заряжено.'},
+{c:'nvp',q:'Какое кровотечение останавливают первым в тактической медицине?',a:'Сильное (массивное) наружное кровотечение.'},
+{c:'nvp',q:'Как накладывают жгут?',a:'На конечность выше раны, на мягкую подкладку, не на сустав; записывают время наложения.'},
+{c:'nvp',q:'Как долго можно держать жгут?',a:'Не дольше двух часов.'},
+{c:'nvp',q:'Когда в России отмечают День защитника Отечества?',a:'23 февраля.'},
+{c:'nvp',q:'Что означает команда «Разойдись»?',a:'Строй распускается: участники расходятся по своим делам, не нарушая порядок.'},
+{c:'nvp',q:'Какой единый номер вызова экстренных служб?',a:'112.'},
+{c:'bzh',q:'В каком порядке действуют при оказании первой помощи?',a:'Безопасность → сознание и дыхание → остановка кровотечения → осмотр → помощь → положение тела и вызов скорой → наблюдение.'},
+{c:'bzh',q:'Как проводят СЛР у взрослого?',a:'30 нажатий и 2 вдоха; глубина 5–6 см, частота 100–120 нажатий в минуту.'},
+{c:'bzh',q:'Как остановить наружное кровотечение?',a:'Прямое давление на рану, затем давящая повязка; жгут — только на конечность, если давление не помогает.'},
+{c:'bzh',q:'Как оказывают помощь при термическом ожоге?',a:'Охлаждают проточной водой 20 минут, пузыри не вскрывают, накрывают чистой повязкой.'},
+{c:'bzh',q:'Что делают при полной закупорке дыхательных путей?',a:'5 ударов по спине, затем 5 толчков в живот; приёмы чередуют.'},
+{c:'bzh',q:'Номер пожарной охраны?',a:'101 (также можно позвонить 112).'},
+{c:'bzh',q:'Номер скорой помощи?',a:'103 (также можно позвонить 112).'},
+{c:'bzh',q:'Что делают при запахе газа в квартире?',a:'Не включают свет и приборы, не зажигают огонь, открывают окна, выходят и звонят 104 или 112.'},
+{c:'bzh',q:'Можно ли при пожаре спускаться на лифте?',a:'Нет. Выходят по лестнице; в дыму пригибаются к полу.'},
+{c:'bzh',q:'Что делать, если пришла ссылка от «банка»?',a:'Не переходить по ней, никому не сообщать коды, позвонить в банк по номеру с карты или официального сайта.'},
+{c:'bzh',q:'Что делать, если ребёнка травят в сети?',a:'Сохранить скриншоты, не отвечать агрессией, заблокировать, рассказать взрослому.'},
+{c:'bzh',q:'Телефон доверия для детей и подростков?',a:'8-800-2000-122: круглосуточно, бесплатно, анонимно.'}
+];
+var mode='learn',course='all',stage=document.getElementById('stage');
+function pool(){return CARDS.filter(function(c){return course==='all'||c.c===course;});}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function el(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
+function btn(txt,fn,cls){var b=el('button',cls||'',txt);b.type='button';b.addEventListener('click',fn);return b;}
+function tag(c){return el('span','tag '+c,c==='nvp'?'НВП':'БЖ');}
+
+/* ----- Заучивание ----- */
+function learn(){
+ var deck=shuffle(pool()),i=0,known={},st={};
+ stage.innerHTML='';
+ var stats=el('div','stats');stage.appendChild(stats);
+ var box=el('div','card-box');stage.appendChild(box);
+ var nav=el('div','nav');stage.appendChild(nav);
+ function render(){
+  var c=deck[i];
+  stats.innerHTML='Карточка <b>'+(i+1)+'</b> из <b>'+deck.length+'</b> · знаю: <b>'+Object.keys(known).length+'</b>';
+  box.innerHTML='';
+  var card=el('div','card');card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Карточка. Нажмите, чтобы перевернуть');
+  var f=el('div','face');f.appendChild(tag(c.c));f.appendChild(el('div','q',c.q));f.appendChild(el('div','hint','Нажмите на карточку или пробел, чтобы увидеть ответ'));
+  var b=el('div','face back');b.appendChild(tag(c.c));b.appendChild(el('div','a',c.a));
+  card.appendChild(f);card.appendChild(b);
+  function flip(){card.classList.toggle('flip');}
+  card.addEventListener('click',flip);
+  card.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();flip();}});
+  box.appendChild(card);
+ }
+ function go(d){i=(i+d+deck.length)%deck.length;render();}
+ nav.appendChild(btn('← Назад',function(){go(-1);}));
+ nav.appendChild(btn('Знаю ✓',function(){known[i]=1;go(1);},'ok'));
+ nav.appendChild(btn('Повторить',function(){delete known[i];go(1);}));
+ nav.appendChild(btn('Вперёд →',function(){go(1);}));
+ nav.appendChild(btn('Перемешать',function(){deck=shuffle(pool());i=0;known={};render();}));
+ render();
+}
+
+/* ----- Тест ----- */
+function test(){
+ var deck=shuffle(pool()).slice(0,10),i=0,score=0;
+ stage.innerHTML='';
+ var panel=el('div','panel');stage.appendChild(panel);
+ function render(){
+  panel.innerHTML='';
+  if(i>=deck.length){
+   panel.appendChild(el('h2','', 'Результат: '+score+' из '+deck.length));
+   var pct=Math.round(score/deck.length*100);
+   panel.appendChild(el('p','', pct>=80?'Отлично! Материал усвоен хорошо.':pct>=50?'Неплохо. Вернитесь в режим «Заучивание» и повторите карточки с ошибками.':'Нужно повторить. Пройдите карточки в режиме «Заучивание» и попробуйте ещё раз.'));
+   panel.appendChild(btn('Пройти заново',test));
+   return;}
+  var c=deck[i];
+  panel.appendChild(el('div','stats','Вопрос '+(i+1)+' из '+deck.length+' · верно: '+score));
+  panel.appendChild(el('div','q',c.q));
+  var others=shuffle(CARDS.filter(function(x){return x!==c&&x.c===c.c;})).slice(0,3);
+  var opts=shuffle([c].concat(others));
+  var box=el('div','opts');var fb=el('div','fb');fb.setAttribute('aria-live','polite');
+  opts.forEach(function(o){
+   var b=btn(o.a,function(){
+    var all=box.querySelectorAll('button');
+    all.forEach(function(x){x.disabled=true;});
+    if(o===c){b.classList.add('right');score++;fb.textContent='Верно!';}
+    else{b.classList.add('wrong');fb.textContent='Неверно. Правильный ответ выделен зелёным.';
+     all.forEach(function(x,k){if(opts[k]===c)x.classList.add('right');});}
+    var next=btn(i===deck.length-1?'Показать результат':'Дальше →',function(){i++;render();});
+    next.style.marginTop='12px';panel.appendChild(next);next.focus();
+   });
+   box.appendChild(b);});
+  panel.appendChild(box);panel.appendChild(fb);
+ }
+ render();
+}
+
+/* ----- Игра ----- */
+function game(){
+ var cards=shuffle(pool()).slice(0,6);
+ var tiles=[];cards.forEach(function(c,k){tiles.push({k:k,t:c.q,kind:'q'});tiles.push({k:k,t:c.a,kind:'a'});});
+ tiles=shuffle(tiles);
+ stage.innerHTML='';
+ var moves=0,found=0,first=null,lock=false;
+ var stats=el('div','stats');stage.appendChild(stats);
+ var msg=el('div','fb');msg.setAttribute('aria-live','polite');
+ var grid=el('div','grid');stage.appendChild(grid);stage.appendChild(msg);
+ function upd(){stats.innerHTML='Пар найдено: <b>'+found+'</b> из <b>'+cards.length+'</b> · ходов: <b>'+moves+'</b>';}
+ upd();
+ tiles.forEach(function(t){
+  var b=el('button','tile hide');b.type='button';b.setAttribute('aria-label','Закрытая карточка');
+  b.addEventListener('click',function(){
+   if(lock||b.classList.contains('open')||b.classList.contains('done'))return;
+   b.classList.remove('hide');b.classList.add('open');b.textContent=t.t;
+   if(!first){first=[b,t];return;}
+   moves++;
+   if(first[1].k===t.k&&first[1].kind!==t.kind){
+    first[0].classList.remove('open');first[0].classList.add('done');b.classList.remove('open');b.classList.add('done');found++;first=null;upd();
+    if(found===cards.length){msg.textContent='Все пары найдены за '+moves+' ходов!';}
+   }else{
+    lock=true;var f=first;first=null;upd();
+    setTimeout(function(){f[0].classList.remove('open');f[0].classList.add('hide');f[0].textContent='';b.classList.remove('open');b.classList.add('hide');b.textContent='';lock=false;},1300);
+   }
+  });
+  grid.appendChild(b);});
+ var again=btn('Играть заново',game);again.style.marginTop='14px';stage.appendChild(again);
+ stage.insertBefore(el('p','stats','Откройте две карточки: вопрос и подходящий к нему ответ.'),grid);
+}
+
+function run(){if(mode==='learn')learn();else if(mode==='test')test();else game();}
+document.querySelectorAll('[data-mode]').forEach(function(b){b.addEventListener('click',function(){
+ mode=b.getAttribute('data-mode');document.querySelectorAll('[data-mode]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});run();});});
+document.querySelectorAll('[data-course]').forEach(function(b){b.addEventListener('click',function(){
+ course=b.getAttribute('data-course');document.querySelectorAll('[data-course]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});run();});});
+run();
+})();
+</script>
+</body>
+</html>

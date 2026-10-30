@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Семейная викторина по ОБЗР — пример</title>
+<style>
+:root{--blue:#003D7A;--red:#E53935;--red-d:#C62828;--green:#2E7D32;--bg:#F5F7FA;--ink:#1F2A37;--grey:#5B6675;--line:#D6DEE8}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+header{background:var(--blue);color:#fff;border-radius:14px;padding:18px 20px;margin-bottom:14px}
+header h1{margin:0 0 4px;font-size:1.45rem}header p{margin:0;font-size:.95rem}
+.panel{background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px;margin-bottom:12px}
+h2{margin:0 0 10px;color:var(--blue);font-size:1.25rem}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input[type=text]{width:100%;font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:10px;min-height:44px}
+input[type=text]:focus{outline:3px solid #FFA500;outline-offset:1px;border-color:var(--blue)}
+button{font:inherit;cursor:pointer;min-height:44px;padding:8px 18px;border-radius:10px;border:2px solid var(--blue);background:#fff;color:var(--blue);font-weight:600;transition:transform .12s,background .12s,color .12s,box-shadow .12s}
+button:hover,button:focus-visible{background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-2px);box-shadow:0 5px 12px rgba(229,57,53,.35)}
+button:active{background:var(--red-d);border-color:var(--red-d);color:#fff;transform:scale(.97)}
+button:focus-visible{outline:3px solid #FFA500;outline-offset:2px}
+button.primary{background:var(--blue);color:#fff}
+button.primary:hover,button.primary:focus-visible{background:var(--red)}
+.count{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 8px}
+.count button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.count button[aria-pressed="true"]:hover{background:var(--red)}
+.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--grey);font-size:.95rem;margin-bottom:8px}
+.who{display:inline-block;background:var(--red);color:#fff;border-radius:99px;padding:2px 12px;font-weight:700}
+.cat{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.4px;color:#fff;background:var(--blue);padding:2px 10px;border-radius:99px;margin-bottom:8px}
+.q{font-size:1.25rem;font-weight:700;color:var(--blue);margin:2px 0 4px}
+.opts{display:grid;gap:10px;margin-top:12px}
+.opts button{text-align:left;font-weight:500;color:var(--ink);border-color:var(--line)}
+.opts button.right{background:#E8F5E9;border-color:var(--green);color:#1B5E20}
+.opts button.wrong{background:#FDECEA;border-color:var(--red);color:#B71C1C}
+.opts button:disabled{cursor:default;transform:none;box-shadow:none}
+.fb{margin-top:12px;font-weight:600;min-height:1.5em}
+.expl{margin-top:4px;color:var(--grey);font-weight:400}
+table{width:100%;border-collapse:collapse;margin:8px 0}
+th,td{padding:8px 10px;border:1px solid var(--line);text-align:left}
+th{background:#E8EEF7;color:var(--blue)}
+tr.win td{background:#E8F5E9;font-weight:700}
+.title-win{font-size:1.2rem;color:var(--blue);font-weight:700;margin:6px 0}
+footer{font-size:.82rem;color:var(--grey);text-align:center;margin:14px 0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Семейная викторина по безопасности</h1><p>15 вопросов: пожарная безопасность, первая помощь, дом, дорога, интернет. Играйте всей семьёй по очереди.</p></header>
+
+<div id="start" class="panel">
+<h2>Кто играет?</h2>
+<p>Выберите число игроков и впишите имена или прозвища. Имена не сохраняются и никуда не отправляются.</p>
+<div class="count" role="group" aria-label="Число игроков">
+<button type="button" data-n="1" aria-pressed="false">1</button><button type="button" data-n="2" aria-pressed="true">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button>
+</div>
+<div id="names"></div>
+<p style="margin-top:14px"><button type="button" class="primary" id="go">Начать игру</button></p>
+</div>
+
+<div id="play" class="panel" hidden>
+<div class="top"><span>Вопрос <b id="qn">1</b> из <b id="qt">15</b></span><span>Отвечает: <span class="who" id="who"></span></span></div>
+<span class="cat" id="cat"></span>
+<div class="q" id="q" aria-live="polite"></div>
+<div class="opts" id="opts"></div>
+<div class="fb" id="fb" aria-live="polite"></div>
+<p><button type="button" class="primary" id="next" hidden>Дальше →</button></p>
+</div>
+
+<div id="end" class="panel" hidden>
+<h2>Результаты</h2>
+<div class="title-win" id="winner"></div>
+<table><thead><tr><th>Игрок</th><th>Баллов</th><th>Звание</th></tr></thead><tbody id="rows"></tbody></table>
+<p><button type="button" class="primary" id="again">Играть ещё раз</button></p>
+</div>
+<footer>Викторина подготовлена с использованием ИИ и проверена взрослым. Вопросы носят учебный характер; сверяйте правила с официальными материалами МЧС, ПДД и сайта demin-obzr.ru.</footer>
+</div>
+<script>
+(function(){
+'use strict';
+var Q=[
+{c:'Пожар',q:'По какому номеру звонят в пожарную охрану?',a:'101 (или единый номер 112)',w:['103','102','104'],e:'Номера: 101 — пожарная охрана, 102 — полиция, 103 — скорая, 104 — газовая служба; 112 — единый номер экстренных служб.'},
+{c:'Пожар',q:'На сковороде загорелось масло. Что делать?',a:'Выключить плиту и накрыть сковороду плотной крышкой',w:['Залить водой','Вынести сковороду на балкон','Накрыть полотенцем и перемешать'],e:'Вода на горящем масле приводит к разбрызгиванию и вспышке. Нужно перекрыть доступ воздуха.'},
+{c:'Пожар',q:'Можно ли пользоваться лифтом при пожаре?',a:'Нет, нужно выходить по лестнице',w:['Да, это быстрее','Только если нет дыма','Только детям'],e:'Лифт может остановиться или заполниться дымом, поэтому при пожаре им не пользуются.'},
+{c:'Пожар',q:'Как двигаться в сильно задымлённом помещении?',a:'Пригнувшись к полу, прикрыв нос и рот влажной тканью',w:['Выпрямившись, чтобы быстрее','Бегом, задержав дыхание','Прижавшись к потолку'],e:'Дым поднимается вверх, у пола воздуха больше. Влажная ткань уменьшает вдыхание дыма.'},
+{c:'Пожар',q:'Загорелся электроприбор. Что делают первым?',a:'Отключают его от питания, не заливая водой',w:['Заливают водой','Накрывают одеялом и оставляют','Относят к соседям'],e:'Вода проводит ток. Сначала обесточьте прибор, если это безопасно, а при сильном горении звоните 112.'},
+{c:'Первая помощь',q:'С чего начинают оказание первой помощи?',a:'С оценки безопасности',w:['С вызова блогера','С наложения жгута','С переноса пострадавшего'],e:'Сначала убедитесь, что опасности для вас и пострадавшего нет.'},
+{c:'Первая помощь',q:'Что проверяют сразу после оценки безопасности?',a:'Сознание и дыхание',w:['Наличие документов','Рост и вес','Размер обуви'],e:'Порядок: безопасность → сознание и дыхание → остановка кровотечения → осмотр → помощь → положение тела и вызов скорой → наблюдение.'},
+{c:'Первая помощь',q:'Как помочь при ожоге кипятком?',a:'Охлаждать проточной водой около 20 минут',w:['Смазать маслом','Приложить лёд','Вскрыть пузыри и обработать йодом'],e:'Охлаждение водой снижает глубину повреждения. Масло, лёд и вскрытие пузырей не применяют.'},
+{c:'Первая помощь',q:'В каком соотношении чередуют нажатия и вдохи при СЛР у взрослого?',a:'30 нажатий и 2 вдоха',w:['10 нажатий и 1 вдох','60 нажатий и 5 вдохов','5 нажатий и 1 вдох'],e:'Глубина нажатий 5–6 см, частота 100–120 в минуту.'},
+{c:'Первая помощь',q:'Как держат голову при носовом кровотечении?',a:'Слегка наклонив вперёд',w:['Запрокинув назад','Положив на подушку','Откинув на спинку кресла'],e:'Если голову запрокинуть, кровь стекает в горло. Крылья носа прижимают на 10–15 минут и прикладывают холод.'},
+{c:'Дом',q:'Чего нельзя делать при запахе газа?',a:'Включать свет и зажигать огонь',w:['Открывать окна','Выходить из квартиры','Звонить с улицы 104 или 112'],e:'Искра от выключателя или спички может вызвать взрыв.'},
+{c:'Дом',q:'Какой номер у аварийной газовой службы?',a:'104',w:['101','103','105'],e:'104 — газовая служба; единый номер 112 тоже подходит.'},
+{c:'Дорога',q:'Где следует переходить дорогу?',a:'По пешеходному переходу на зелёный сигнал светофора',w:['Там, где ближе','Между припаркованными машинами','На красный, если нет машин'],e:'Переходите по переходу, убедившись, что транспорт остановился.'},
+{c:'Дорога',q:'Как двигаются пешеходы по дороге без тротуара за городом?',a:'По обочине или краю проезжей части навстречу транспорту',w:['По середине дороги','По обочине в попутном направлении','По разделительной полосе'],e:'Идя навстречу транспорту, вы видите приближающиеся машины.'},
+{c:'Интернет',q:'«Сотрудник банка» просит код из СМС. Что делать?',a:'Положить трубку и самому позвонить в банк по номеру с карты',w:['Продиктовать код','Спросить фамилию и отдать код','Перейти по его ссылке'],e:'Настоящие сотрудники никогда не просят коды из СМС и пароли.'}
+];
+var $=function(i){return document.getElementById(i);};
+var N=2,players=[],cur=0,qi=0,order=[];
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function names(){var b=$('names');b.innerHTML='';for(var i=1;i<=N;i++){var l=document.createElement('label');l.htmlFor='n'+i;l.textContent='Игрок '+i;var inp=document.createElement('input');inp.type='text';inp.id='n'+i;inp.maxLength=20;inp.placeholder='Игрок '+i;inp.autocomplete='off';b.appendChild(l);b.appendChild(inp);}}
+document.querySelectorAll('.count button').forEach(function(b){b.addEventListener('click',function(){N=+b.getAttribute('data-n');document.querySelectorAll('.count button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});names();});});
+names();
+$('go').addEventListener('click',function(){
+ players=[];for(var i=1;i<=N;i++){var v=$('n'+i).value.trim();players.push({name:v||('Игрок '+i),score:0,asked:0});}
+ order=shuffle(Q);qi=0;cur=0;$('start').hidden=true;$('end').hidden=true;$('play').hidden=false;show();});
+function show(){
+ var q=order[qi];$('qn').textContent=qi+1;$('qt').textContent=order.length;$('who').textContent=players[cur].name;$('cat').textContent=q.c;$('q').textContent=q.q;
+ $('fb').innerHTML='';$('next').hidden=true;var box=$('opts');box.innerHTML='';
+ shuffle([q.a].concat(q.w)).forEach(function(t){var b=document.createElement('button');b.type='button';b.textContent=t;
+  b.addEventListener('click',function(){
+   players[cur].asked++;var all=box.querySelectorAll('button');all.forEach(function(x){x.disabled=true;if(x.textContent===q.a)x.classList.add('right');});
+   var f=$('fb');
+   if(t===q.a){players[cur].score++;f.textContent='Верно! +1 балл';}else{b.classList.add('wrong');f.textContent='Неверно.';}
+   var ex=document.createElement('div');ex.className='expl';ex.textContent=q.e;f.appendChild(ex);
+   $('next').hidden=false;$('next').textContent=qi===order.length-1?'Показать результаты':'Дальше →';$('next').focus();});
+  box.appendChild(b);});
+}
+$('next').addEventListener('click',function(){qi++;cur=(cur+1)%players.length;if(qi>=order.length)finish();else show();});
+function finish(){
+ $('play').hidden=true;$('end').hidden=false;
+ var max=Math.max.apply(null,players.map(function(p){return p.score;}));
+ var winners=players.filter(function(p){return p.score===max;});
+ var sorted=players.slice().sort(function(a,b){return b.score-a.score;});
+ var rows=$('rows');rows.innerHTML='';
+ var ttl=['Главный по безопасности','Серебро безопасности','Бронза безопасности','Участник семейных тренировок'];
+ sorted.forEach(function(p,i){var tr=document.createElement('tr');if(p.score===max)tr.className='win';
+  [p.name,p.score+' из '+p.asked,p.score===max?'Победитель':ttl[Math.min(i,3)]].forEach(function(t){var td=document.createElement('td');td.textContent=t;tr.appendChild(td);});rows.appendChild(tr);});
+ $('winner').textContent=winners.length>1?'Ничья! Победители: '+winners.map(function(w){return w.name;}).join(', '):'Победитель: '+winners[0].name+'. Поздравляем!';
+}
+$('again').addEventListener('click',function(){$('end').hidden=true;$('start').hidden=false;});
+})();
+</script>
+</body>
+</html>
